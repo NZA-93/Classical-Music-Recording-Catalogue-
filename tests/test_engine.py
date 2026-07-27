@@ -366,5 +366,33 @@ class TestSeedIntegrity(unittest.TestCase):
                 self.assertIsNone(c["mbid"])
 
 
+class TestDataSourceTextGuard(unittest.TestCase):
+    """S1-05: planting pasted prose in data/ must fail validation."""
+
+    def test_clean_tree_passes(self):
+        self.assertEqual(val.scan_data_tree(ROOT / "data"), [])
+
+    def test_long_characterisation_fails(self):
+        import tempfile
+        paste = "word " * 80  # well over 240 characters
+        doc = [{"recording": "x", "characterisation": paste, "axis": "interpretation"}]
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "planted.json"
+            p.write_text(json.dumps(doc), encoding="utf-8")
+            # scan_data_file on the planted file
+            errs = val.scan_data_file(p)
+        self.assertTrue(any("characterisation" in e and "characters" in e for e in errs))
+
+    def test_quoted_run_in_characterisation_fails(self):
+        text = 'He wrote "the finest of all the many recordings made in that decade ever"'
+        doc = [{"characterisation": text}]
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "quoted.json"
+            p.write_text(json.dumps(doc), encoding="utf-8")
+            errs = val.scan_data_file(p)
+        self.assertTrue(any("quoted" in e.lower() for e in errs))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

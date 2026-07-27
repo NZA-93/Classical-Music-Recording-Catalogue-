@@ -211,17 +211,89 @@ def validate_editorial(entry: dict, path: pathlib.Path, recs: set[str]):
     return errs, warns
 
 
+# --------------------------------------------------------------- data/ prose scan
+# S1-05: contributions and editorial already go through validate(); the catalogue
+# data layer itself had no mechanical check. A pasted paragraph in a statement
+# file must fail the build.
+
+DATA_ROOT = pathlib.Path("data")
+PROSE_KEYS = frozenset({
+    "characterisation", "characterization", "characterization_en",
+})
+# Long free-text keys that may legitimately exceed 240 chars (facts, not
+# contribution characterisations) — still scanned for quoted review runs.
+LONG_OK_KEYS = frozenset({
+    "note", "listen_for", "standfirst", "transfer", "text", "album",
+    "locator_caveat", "description",
+})
+
+
+def _walk_strings(obj, path="$"):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            yield from _walk_strings(v, f"{path}.{k}")
+    elif isinstance(obj, list):
+        for i, v in enumerate(obj):
+            yield from _walk_strings(v, f"{path}[{i}]")
+    elif isinstance(obj, str):
+        yield path, obj
+
+
+def scan_data_file(path: pathlib.Path) -> list[str]:
+    """Return error strings for one JSON file under data/."""
+    errs = []
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as err:
+        return [f"{path}: not valid JSON — {err}"]
+
+    rel = path.as_posix()
+    for keypath, text in _walk_strings(doc):
+        key = keypath.rsplit(".", 1)[-1]
+        if key in PROSE_KEYS:
+            if len(text) > MAX_CHARACTERISATION:
+                errs.append(
+                    f"{rel}: `{key}` is {len(text)} characters; limit is "
+                    f"{MAX_CHARACTERISATION} (S1-05 source-text guard)"
+                )
+            if QUOTE_RUN.search(text):
+                errs.append(
+                    f"{rel}: `{key}` looks like quoted review text (S1-05)"
+                )
+        elif key in LONG_OK_KEYS or key.endswith("_note"):
+            if QUOTE_RUN.search(text):
+                errs.append(
+                    f"{rel}: `{key}` contains a quoted run that reads as "
+                    f"reproduced prose (S1-05)"
+                )
+        elif len(text) > MAX_CHARACTERISATION and QUOTE_RUN.search(text):
+            errs.append(
+                f"{rel}: long field `{key}` looks like pasted review prose (S1-05)"
+            )
+    return errs
+
+
+def scan_data_tree(root: pathlib.Path = DATA_ROOT) -> list[str]:
+    errs = []
+    if not root.exists():
+        return errs
+    for path in sorted(root.rglob("*.json")):
+        if path.name.startswith("_"):
+            continue
+        errs.extend(scan_data_file(path))
+    return errs
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--strict", action="store_true", help="treat warnings as failures")
+    ap.add_argument("--skip-data", action="store_true",
+                    help="skip the data/ source-text scan (emergency only)")
     args = ap.parse_args()
 
     recs, eds = known_ids()
     files = sorted(f for f in CONTRIB.glob("*.json")
              if not f.name.startswith("_")) if CONTRIB.exists() else []
-    if not files:
-        print("no contributions to check")
-        return 0
 
     all_errs, all_warns = [], []
     for path in files:
@@ -250,6 +322,9 @@ def main() -> int:
             all_warns += w
     files = files + ed_files
 
+    data_errs = [] if args.skip_data else scan_data_tree()
+    all_errs += data_errs
+
     for w in all_warns:
         print(f"  warning  {w}")
     for e in all_errs:
@@ -258,7 +333,8 @@ def main() -> int:
     n = len(files)
     print(f"\n{n} file{'s' if n != 1 else ''} checked · "
           f"{len(all_errs)} error{'s' if len(all_errs) != 1 else ''} · "
-          f"{len(all_warns)} warning{'s' if len(all_warns) != 1 else ''}")
+          f"{len(all_warns)} warning{'s' if len(all_warns) != 1 else ''}"
+          f" · data/ scan {'skipped' if args.skip_data else 'on'}")
     return 1 if all_errs or (args.strict and all_warns) else 0
 
 
