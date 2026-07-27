@@ -1,0 +1,1634 @@
+{
+  "schema": "seed/1",
+  "composers": [
+    {
+      "id": "bach",
+      "name": "Johann Sebastian Bach",
+      "dates": "1685–1750",
+      "works": 12
+    },
+    {
+      "id": "beethoven",
+      "name": "Ludwig van Beethoven",
+      "dates": "1770–1827",
+      "works": 12
+    },
+    {
+      "id": "mozart",
+      "name": "Wolfgang Amadeus Mozart",
+      "dates": "1756–1791",
+      "works": 12
+    },
+    {
+      "id": "puccini",
+      "name": "Giacomo Puccini",
+      "dates": "1858–1924",
+      "works": 11
+    },
+    {
+      "id": "shostakovich",
+      "name": "Dmitri Shostakovich",
+      "dates": "1906–1975",
+      "works": 12
+    }
+  ],
+  "works": [
+    {
+      "id": "bach/brandenburg",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Brandenburg Concertos",
+      "catalogue": "BWV 1046–1051",
+      "year": "1721",
+      "note": "Concerto grosso and solo forms; the central HIP battleground.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "bach/brandenburg/0",
+          "soloists": "Trevor Pinnock, harpsichord",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/brandenburg/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/brandenburg/2",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Orchestra Mozart",
+          "label": "Deutsche Grammophon",
+          "year": "2007",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/brandenburg/3",
+          "soloists": "",
+          "director": "Benjamin Britten",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Decca",
+          "year": "1968",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "bach/suites",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Orchestral Suites",
+      "catalogue": "BWV 1066–1069",
+      "year": "c. 1725–39",
+      "note": "French overture style; the Air of No. 3 and the B minor flute suite.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "bach/violin_concertos",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Violin Concertos",
+      "catalogue": "BWV 1041–1043",
+      "year": "c. 1730",
+      "note": "Including the Double Concerto, a repertory staple in every style.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "bach/cello_suites",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Cello Suites",
+      "catalogue": "BWV 1007–1012",
+      "year": "c. 1720",
+      "note": "Solo cello as complete polyphony; the most re-recorded solo cycle.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "bach/cello_suites/0",
+          "soloists": "Pablo Casals",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1936–39",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/cello_suites/1",
+          "soloists": "Pierre Fournier",
+          "director": "",
+          "ensemble": "",
+          "label": "Archiv",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/cello_suites/2",
+          "soloists": "Anner Bylsma",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony Vivarte",
+          "year": "1992",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "bach/sonatas_partitas",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Sonatas and Partitas for Solo Violin",
+      "catalogue": "BWV 1001–1006",
+      "year": "1720",
+      "note": "The Chaconne of the D minor Partita.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "bach/sonatas_partitas/0",
+          "soloists": "Nathan Milstein",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1973",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/sonatas_partitas/1",
+          "soloists": "Rachel Podger",
+          "director": "",
+          "ensemble": "",
+          "label": "Channel Classics",
+          "year": "1999",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "bach/goldberg",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Goldberg Variations",
+      "catalogue": "BWV 988",
+      "year": "1741",
+      "note": "Thirty variations over a bass; the piano-versus-harpsichord argument.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "bach/goldberg/0",
+          "soloists": "Glenn Gould",
+          "director": "",
+          "ensemble": "",
+          "label": "Columbia",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/goldberg/1",
+          "soloists": "Glenn Gould",
+          "director": "",
+          "ensemble": "",
+          "label": "CBS",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/goldberg/2",
+          "soloists": "Wanda Landowska",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1945",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "bach/wtc",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "The Well-Tempered Clavier, Books I & II",
+      "catalogue": "BWV 846–893",
+      "year": "1722 / 1742",
+      "note": "Forty-eight preludes and fugues.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "bach/mass_b_minor",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Mass in B minor",
+      "catalogue": "BWV 232",
+      "year": "1749",
+      "note": "Assembled late from a lifetime's work; the choral-forces question.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "bach/mass_b_minor/0",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1985",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/mass_b_minor/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1968",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "bach/matthew",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "St Matthew Passion",
+      "catalogue": "BWV 244",
+      "year": "1727",
+      "note": "Double choir and orchestra; the largest question of scale in Bach.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "bach/matthew/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/matthew/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "bach/john",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "St John Passion",
+      "catalogue": "BWV 245",
+      "year": "1724",
+      "note": "Sharper and more dramatic than the Matthew; several authorial versions.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "bach/art_of_fugue",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "The Art of Fugue",
+      "catalogue": "BWV 1080",
+      "year": "c. 1740–50",
+      "note": "Instrumentation unspecified, which makes every recording an argument.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "bach/harpsichord_concertos",
+      "composer_id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "composer_dates": "1685–1750",
+      "title": "Harpsichord Concertos",
+      "catalogue": "BWV 1052–1058",
+      "year": "c. 1738",
+      "note": "Mostly arrangements; the founding documents of the keyboard concerto.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/sym3",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Symphony No. 3, Eroica",
+      "catalogue": "Op. 55",
+      "year": "1804",
+      "note": "The break; tempo and weight decide everything.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/sym3/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym3/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1993",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/sym5",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Symphony No. 5",
+      "catalogue": "Op. 67",
+      "year": "1808",
+      "note": "The most recorded symphony; interpretation history in miniature.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/sym5/0",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1974",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym5/1",
+          "soloists": "",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/sym6",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Symphony No. 6, Pastoral",
+      "catalogue": "Op. 68",
+      "year": "1808",
+      "note": "Where a conductor's idea of nature becomes audible.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/sym7",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Symphony No. 7",
+      "catalogue": "Op. 92",
+      "year": "1812",
+      "note": "Rhythm as subject; the Allegretto's tempo is a critical fault line.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/sym7/0",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/sym9",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Symphony No. 9",
+      "catalogue": "Op. 125",
+      "year": "1824",
+      "note": "Chorus, soloists, and a century of political readings.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/sym9/0",
+          "soloists": "",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Bayreuth Festival",
+          "label": "EMI",
+          "year": "1951",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym9/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym9/2",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1992",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/pc4",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Piano Concerto No. 4",
+      "catalogue": "Op. 58",
+      "year": "1806",
+      "note": "The slow movement's dialogue between piano and strings.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/pc5",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Piano Concerto No. 5, Emperor",
+      "catalogue": "Op. 73",
+      "year": "1809",
+      "note": "Scale and grandeur against clarity.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/pc5/0",
+          "soloists": "Wilhelm Backhaus",
+          "director": "Hans Schmidt-Isserstedt",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc5/1",
+          "soloists": "Maurizio Pollini",
+          "director": "Karl Böhm",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/violin_concerto",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Violin Concerto",
+      "catalogue": "Op. 61",
+      "year": "1806",
+      "note": "Lyrical rather than virtuosic; cadenza choice is an interpretation.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/violin_concerto/0",
+          "soloists": "Jascha Heifetz",
+          "director": "Charles Munch",
+          "ensemble": "Boston Symphony",
+          "label": "RCA",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/violin_concerto/1",
+          "soloists": "Itzhak Perlman",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/late_quartets",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Late String Quartets",
+      "catalogue": "Opp. 127–135",
+      "year": "1825–26",
+      "note": "Including the Grosse Fuge; the summit of the chamber literature.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/late_quartets/0",
+          "soloists": "Busch Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1930s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/late_quartets/1",
+          "soloists": "Quartetto Italiano",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1967–75",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/hammerklavier",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Piano Sonata No. 29, Hammerklavier",
+      "catalogue": "Op. 106",
+      "year": "1818",
+      "note": "The fugue's tempo marking is still argued over.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/missa_solemnis",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Missa Solemnis",
+      "catalogue": "Op. 123",
+      "year": "1823",
+      "note": "Brutal on choirs; few recordings survive the Credo intact.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/missa_solemnis/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "New Philharmonia",
+          "label": "EMI",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "beethoven/fidelio",
+      "composer_id": "beethoven",
+      "composer": "Ludwig van Beethoven",
+      "composer_dates": "1770–1827",
+      "title": "Fidelio",
+      "catalogue": "Op. 72",
+      "year": "1805/1814",
+      "note": "Which overture, which version, which political moment.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "beethoven/fidelio/0",
+          "soloists": "Christa Ludwig, Jon Vickers",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/late_symphonies",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Symphonies Nos. 39, 40, 41",
+      "catalogue": "K. 543, 550, 551",
+      "year": "1788",
+      "note": "Written in a single summer; the Jupiter fugue-finale.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/late_symphonies/0",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/late_symphonies/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentgebouw",
+          "label": "Teldec",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/pc20",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Piano Concerto No. 20",
+      "catalogue": "K. 466",
+      "year": "1785",
+      "note": "D minor; Beethoven wrote cadenzas for it.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/pc20/0",
+          "soloists": "Clara Haskil",
+          "director": "Igor Markevitch",
+          "ensemble": "Orchestre des Concerts Lamoureux",
+          "label": "Philips",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc20/1",
+          "soloists": "Alfred Brendel",
+          "director": "Neville Marriner",
+          "ensemble": "Academy of St Martin in the Fields",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/pc23",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Piano Concerto No. 23",
+      "catalogue": "K. 488",
+      "year": "1786",
+      "note": "The F sharp minor Adagio.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "mozart/pc27",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Piano Concerto No. 27",
+      "catalogue": "K. 595",
+      "year": "1791",
+      "note": "Late, spare, and often played too gently.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "mozart/clarinet_concerto",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Clarinet Concerto",
+      "catalogue": "K. 622",
+      "year": "1791",
+      "note": "Basset clarinet versus modern instrument.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/clarinet_concerto/0",
+          "soloists": "Jack Brymer",
+          "director": "Thomas Beecham",
+          "ensemble": "Royal Philharmonic",
+          "label": "EMI",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/clarinet_concerto/1",
+          "soloists": "Antony Pay",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/requiem",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Requiem",
+      "catalogue": "K. 626",
+      "year": "1791",
+      "note": "Completion choice — Süssmayr, Beyer, Levin — is the first decision.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/requiem/0",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1971",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/requiem/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Philips",
+          "year": "1986",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/figaro",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Le nozze di Figaro",
+      "catalogue": "K. 492",
+      "year": "1786",
+      "note": "Ensemble comedy that depends entirely on pacing.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/figaro/0",
+          "soloists": "",
+          "director": "Erich Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/figaro/1",
+          "soloists": "",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/don_giovanni",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Don Giovanni",
+      "catalogue": "K. 527",
+      "year": "1787",
+      "note": "Prague or Vienna version; the supper scene.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/don_giovanni/0",
+          "soloists": "",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/don_giovanni/1",
+          "soloists": "",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "EMI",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/cosi",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Così fan tutte",
+      "catalogue": "K. 588",
+      "year": "1790",
+      "note": "Tone is the whole problem: cruelty, farce, or grief.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/cosi/0",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/zauberflote",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Die Zauberflöte",
+      "catalogue": "K. 620",
+      "year": "1791",
+      "note": "Singspiel; dialogue handling divides recordings sharply.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mozart/zauberflote/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/zauberflote/1",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mozart/mass_c_minor",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "Great Mass in C minor",
+      "catalogue": "K. 427",
+      "year": "1783",
+      "note": "Unfinished; several performing completions.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "mozart/string_quintets",
+      "composer_id": "mozart",
+      "composer": "Wolfgang Amadeus Mozart",
+      "composer_dates": "1756–1791",
+      "title": "String Quintets",
+      "catalogue": "K. 515, 516",
+      "year": "1787",
+      "note": "Two violas; the G minor is the darkest chamber music he wrote.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "puccini/manon_lescaut",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Manon Lescaut",
+      "catalogue": "—",
+      "year": "1893",
+      "note": "The first success; orchestrally the most Wagnerian.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "puccini/manon_lescaut/0",
+          "soloists": "Maria Callas, Giuseppe Di Stefano",
+          "director": "Tullio Serafin",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "puccini/boheme",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "La Bohème",
+      "catalogue": "—",
+      "year": "1896",
+      "note": "The most recorded of all; conducting decides sentiment or truth.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "puccini/boheme/0",
+          "soloists": "Victoria de los Ángeles, Jussi Björling",
+          "director": "Thomas Beecham",
+          "ensemble": "RCA Victor Orchestra",
+          "label": "EMI",
+          "year": "1956",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/boheme/1",
+          "soloists": "Mirella Freni, Luciano Pavarotti",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Decca",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "puccini/tosca",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Tosca",
+      "catalogue": "—",
+      "year": "1900",
+      "note": "Verismo at close range.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "puccini/tosca/0",
+          "soloists": "Maria Callas, Giuseppe Di Stefano, Tito Gobbi",
+          "director": "Victor de Sabata",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1953",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/tosca/1",
+          "soloists": "Leontyne Price, Giuseppe Di Stefano, Giuseppe Taddei",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/tosca/2",
+          "soloists": "Maria Callas, Carlo Bergonzi, Tito Gobbi",
+          "director": "Georges Prêtre",
+          "ensemble": "Paris Conservatoire",
+          "label": "EMI",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "puccini/butterfly",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Madama Butterfly",
+      "catalogue": "—",
+      "year": "1904",
+      "note": "Which of five versions is being performed matters.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "puccini/butterfly/0",
+          "soloists": "Renata Scotto, Carlo Bergonzi",
+          "director": "John Barbirolli",
+          "ensemble": "Rome Opera",
+          "label": "EMI",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/butterfly/1",
+          "soloists": "Mirella Freni, Luciano Pavarotti",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1974",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "puccini/fanciulla",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "La fanciulla del West",
+      "catalogue": "—",
+      "year": "1910",
+      "note": "Harmonically the most advanced; still under-recorded.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "puccini/fanciulla/0",
+          "soloists": "Renata Tebaldi, Mario Del Monaco",
+          "director": "Franco Capuana",
+          "ensemble": "Accademia di Santa Cecilia",
+          "label": "Decca",
+          "year": "1958",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "puccini/rondine",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "La rondine",
+      "catalogue": "—",
+      "year": "1917",
+      "note": "Operetta inheritance; the least settled discography.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "puccini/trittico",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Il trittico",
+      "catalogue": "—",
+      "year": "1918",
+      "note": "Three one-act operas, rarely recorded as the whole Puccini intended.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "puccini/turandot",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Turandot",
+      "catalogue": "—",
+      "year": "1926",
+      "note": "Unfinished; Alfano or Berio ending is a critical decision.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "puccini/turandot/0",
+          "soloists": "Birgit Nilsson, Franco Corelli",
+          "director": "Francesco Molinari-Pradelli",
+          "ensemble": "Rome Opera",
+          "label": "EMI",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/turandot/1",
+          "soloists": "Joan Sutherland, Luciano Pavarotti",
+          "director": "Zubin Mehta",
+          "ensemble": "London Philharmonic",
+          "label": "Decca",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "puccini/villi",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Le Villi",
+      "catalogue": "—",
+      "year": "1884",
+      "note": "First opera; documentary interest.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "puccini/edgar",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Edgar",
+      "catalogue": "—",
+      "year": "1889",
+      "note": "The failure, revised repeatedly.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "puccini/messa_gloria",
+      "composer_id": "puccini",
+      "composer": "Giacomo Puccini",
+      "composer_dates": "1858–1924",
+      "title": "Messa di Gloria",
+      "catalogue": "—",
+      "year": "1880",
+      "note": "Student work already recognisably him.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym1",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 1",
+      "catalogue": "Op. 10",
+      "year": "1925",
+      "note": "A conservatory graduation piece that went round the world within three years.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym4",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 4",
+      "catalogue": "Op. 43",
+      "year": "1936",
+      "note": "Withdrawn in rehearsal after the Pravda attack; unheard until 1961.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym5",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 5",
+      "catalogue": "Op. 47",
+      "year": "1937",
+      "note": "The rehabilitation, and the most argued-over finale in the repertory.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "shostakovich/sym5/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "various",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym5/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym5/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym5/3",
+          "soloists": "",
+          "director": "André Previn",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym5/4",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "National Symphony Orchestra",
+          "label": "Teldec",
+          "year": "1993",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym5/5",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2009",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym5/6",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2016",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym6",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 6",
+      "catalogue": "Op. 54",
+      "year": "1939",
+      "note": "A vast Largo followed by two fast movements; the proportions unsettle conductors.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym7",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 7, Leningrad",
+      "catalogue": "Op. 60",
+      "year": "1941",
+      "note": "Written under siege and flown out on microfilm; the invasion theme divides opinion still.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "shostakovich/sym7/0",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym8",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 8",
+      "catalogue": "Op. 65",
+      "year": "1943",
+      "note": "The war symphony without consolation. Officially disliked for exactly that.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "shostakovich/sym8/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Praga",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym8/1",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2016",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym9",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 9",
+      "catalogue": "Op. 70",
+      "year": "1945",
+      "note": "The victory symphony that refused to be one.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym10",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 10",
+      "catalogue": "Op. 93",
+      "year": "1953",
+      "note": "Written around Stalin's death; the DSCH monogram at its centre.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "shostakovich/sym10/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym10/1",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2010",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym10/2",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2015",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym11",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 11, The Year 1905",
+      "catalogue": "Op. 103",
+      "year": "1957",
+      "note": "Cinematic and continuous; read after 1956 as being about Hungary.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym13",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 13, Babi Yar",
+      "catalogue": "Op. 113",
+      "year": "1962",
+      "note": "Yevtushenko settings for bass and male chorus; censored before its premiere.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "shostakovich/sym13/0",
+          "soloists": "",
+          "director": "Kirill Kondrashin",
+          "ensemble": "Moscow Philharmonic",
+          "label": "Melodiya",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym14",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 14",
+      "catalogue": "Op. 135",
+      "year": "1969",
+      "note": "Eleven poems on death for two voices and chamber orchestra.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    },
+    {
+      "id": "shostakovich/sym15",
+      "composer_id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "composer_dates": "1906–1975",
+      "title": "Symphony No. 15",
+      "catalogue": "Op. 141",
+      "year": "1971",
+      "note": "The last, quoting Rossini and Wagner and explaining neither.",
+      "status": "awaiting sources",
+      "candidates": [],
+      "assessed": []
+    }
+  ],
+  "totals": {
+    "works": 59,
+    "candidates": 72
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_comment": "Signed editorial entries. See docs/adr/ADR-002-editorial-voice.md. An entry without author, date and revision does not publish. No agent may draft, complete or suggest any part of `text`, `stars` or `reference`.",
+  "work_id": "composer/work",
+  "entries": [
+    {
+      "recording": "recording_id",
+      "author": {
+        "id": "initials",
+        "name": "Full Name"
+      },
+      "date": "YYYY-MM-DD",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": [
+        "other_recording_id"
+      ],
+      "text": "The entry. Comparative by reflex — Diapason never assessed a recording in isolation, and neither should this. Say what it does that the alternatives do not, and be willing to prefer.",
+      "quotes": [
+        {
+          "_comment": "ADR-003. Max 2 per entry, 25 words each, 20% of the source notice. The entry must argue with the quote, not display it — that part is your responsibility, not the validator's.",
+          "text": "the quoted words",
+          "quoted_author": "Critic name",
+          "publication": "Diapason, no. 000, month year",
+          "locator": "p. 000",
+          "source_length_words": 120
+        }
+      ]
+    }
+  ]
+}

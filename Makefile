@@ -1,29 +1,34 @@
-# Critical Discography — build targets
-# Python 3.11+, standard library only.
+# Critical Discography — build targets. Python 3.11+, no third-party packages.
 
-.PHONY: all seed score render plan harvest validate clean
+.PHONY: all seed score site harvest test validate plan clean
 
-all: seed score render
+all: seed score site
 
-seed:
+seed:            ## regenerate data/seed.json from the editorial source
 	python3 engine/seed_catalogue.py
 
-score:
+score:           ## run the aggregation engine -> build/catalogue.json
 	python3 engine/aggregation_engine_v2.py
 
-render:
-	python3 site/render.py site/template.html build/catalogue.json docs/entries.html
+site: score      ## render docs/ (the published site). No network.
+	python3 site/render.py
 	python3 site/build_site.py
+	python3 site/build_gallery.py
 
-plan:
-	python3 agents/harvest.py data/seed.json --contact $${CONTACT:-maintainer@example.org} --dry-run --budget 300
+harvest:         ## agent round. Network. Writes proposals/, never the catalogue.
+	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --budget 300
 
-harvest:
-	@if [ -z "$$CONTACT" ]; then echo "Set CONTACT=you@example.org"; exit 1; fi
-	python3 agents/harvest.py data/seed.json --contact $$CONTACT --budget 300
-
-validate:
-	python3 agents/validate.py
+plan:            ## count what a harvest round would cost, without making requests
+	python3 agents/harvest.py data/seed.json --dry-run --budget 300
 
 clean:
-	rm -f build/catalogue.json data/seed.json docs/index.html docs/entries.html
+	rm -rf docs/index.html docs/entries.html build/catalogue.json proposals .cache
+
+validate:        ## check contributions/ against the project's own rules
+	python3 agents/validate.py
+
+queue:           ## where a signed entry is worth the most
+	python3 agents/editorial_queue.py
+
+test:            ## run the test suite
+	python3 -m unittest discover -s tests -q

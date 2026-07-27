@@ -1,0 +1,23 @@
+[
+  {
+    "award": "Gramophone Award — Orchestral",
+    "year": 2016,
+    "album": "Shostakovich: Symphony No. 10",
+    "performers": "Boston Symphony Orchestra, Andris Nelsons",
+    "label": "Deutsche Grammophon",
+    "covers_works": ["shostakovich/sym10"],
+    "locator": "https://symphony.org/boston-symphony-wins-gramophone-awards-for-shostakovich-and-abrahamsen-recordings/",
+    "corroboration": []
+  },
+  {
+    "award": "Gramophone Award — Orchestral",
+    "year": 2011,
+    "album": "Shostakovich: Symphony No. 10",
+    "performers": "Royal Liverpool Philharmonic Orchestra, Vasily Petrenko",
+    "label": "Naxos",
+    "covers_works": ["shostakovich/sym10"],
+    "locator": "https://www.naxos.com/News/Detail/?title=Gramophone_Awards_2011__Naxos_wins_Orchestral_Award_for_Shostakovich_10th_Symphony",
+    "locator_caveat": "Announced on the label's own site. The award itself is a public fact; the surrounding claims on that page are label promotion and must not be ingested as criticism.",
+    "corroboration": []
+  }
+]

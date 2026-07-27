@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Discography — Bach &amp; Puccini</title>
+<meta name="description" content="A work-first critical guide to classical recordings: interpretation, sound engineering, and which edition to buy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#E7EAE3; --paper:#FBFCF9; --ink:#191D1A; --ink-soft:#5B655D;
+    --hair:#C7CDC2; --verdigris:#2F6B60; --oxblood:#7A1220; --plate:#DDE2D8;
+    --gap:clamp(1rem,3vw,2rem);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--ground);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:17px;font-weight:300;line-height:1.6;
+    padding:0 var(--gap) 5rem}
+  .wrap{max-width:64rem;margin:0 auto}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft)}
+
+  /* masthead + disc identification */
+  .masthead{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;
+    padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--ink)}
+  .masthead h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.15rem;margin-right:auto}
+  .masthead nav{display:flex;gap:1.1rem}
+  .masthead a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+  .masthead a:hover,.masthead a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
+
+  .scan{display:flex;gap:.4rem;align-items:center;width:100%;padding:.9rem 0 0}
+  .scan input{
+    flex:1 1 12rem;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    padding:.5rem .6rem;border:1px solid var(--hair);background:var(--paper);color:var(--ink)}
+  .scan button{
+    font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:.55rem .7rem;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+  .scan button.ghost{background:none;color:var(--ink)}
+  .scan-msg{width:100%;font-size:.8rem;color:var(--ink-soft);padding-top:.4rem;min-height:1.2rem}
+  #cam{width:100%;max-width:22rem;margin-top:.6rem;display:none;border:1px solid var(--hair)}
+
+  /* work */
+  .work{padding:clamp(3rem,9vw,6rem) 0 0}
+  .work-head{max-width:44rem}
+  .work-head h2{font-family:"Bodoni Moda",serif;font-weight:400;
+    font-size:clamp(2.6rem,8vw,4.6rem);line-height:.94;letter-spacing:-.015em;margin:.5rem 0 .35rem}
+  .cat{font-family:"Bodoni Moda",serif;font-size:1.05rem;color:var(--ink-soft);font-style:italic}
+  .standfirst{margin-top:1.1rem;font-size:1.05rem;color:var(--ink-soft);max-width:36rem}
+  .strip{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin-top:1.6rem;padding-top:.7rem;
+    border-top:1px solid var(--hair);font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase}
+
+  .legend{margin-top:2.5rem;padding:1rem 1.1rem;background:var(--paper);border:1px solid var(--hair);
+    display:grid;gap:.6rem;font-size:.86rem;color:var(--ink-soft)}
+  .legend b{color:var(--ink);font-weight:500}
+  .legend .swatch{display:inline-block;width:2.2rem;height:.55rem;vertical-align:middle;margin-right:.4rem}
+  .sw-solid{background:var(--verdigris)}
+  .sw-hatch{background:repeating-linear-gradient(135deg,var(--hair) 0 3px,var(--paper) 3px 6px);border:1px solid var(--hair)}
+
+  /* entry */
+  .entry{display:grid;grid-template-columns:132px 1fr;gap:0 1.75rem;padding:2.4rem 0;border-top:1px solid var(--hair)}
+  .entry:first-of-type{border-top:1px solid var(--ink)}
+  .plate{width:132px;height:132px;position:relative;background:var(--plate)}
+  .plate img{width:100%;height:100%;object-fit:cover;display:block}
+  .plate-fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+    padding:.7rem;border:1px solid var(--hair);box-shadow:inset 0 0 0 1px var(--paper)}
+  .plate-fallback .lbl{font-family:"Bodoni Moda",serif;font-size:.95rem;line-height:1.15}
+  .plate-fallback .yr{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--ink-soft)}
+
+  .head-line{font-size:1.12rem;line-height:1.42;margin-bottom:.55rem}
+  .head-line .dir{font-weight:500}
+  .head-line .pub{color:var(--ink-soft)}
+
+  .verdict{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;margin-bottom:.4rem}
+  .stars{font-size:1.05rem;letter-spacing:.12em;line-height:1}
+  .stars .off{color:var(--hair)}
+  .badge{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--paper);background:var(--oxblood);padding:.2rem .45rem}
+  .figs{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-soft)}
+  .axes{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin-bottom:1rem;
+    font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.04em;color:var(--ink-soft)}
+  .meter{display:inline-block;width:3.4rem;height:.45rem;background:var(--hair);vertical-align:middle;margin:0 .35rem}
+  .meter i{display:block;height:100%;background:var(--verdigris)}
+
+  .commentary{max-width:38rem;margin-bottom:1.3rem}
+
+  /* signed editorial entry — ADR-002. No shared furniture with the aggregate. */
+  .signed{
+    background:var(--paper);border-top:2px solid var(--ink);border-bottom:1px solid var(--hair);
+    padding:1.5rem clamp(1rem,3vw,2rem) 1.2rem;margin:0 0 1.6rem;max-width:42rem}
+  .signed .kicker{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--oxblood);margin-bottom:.9rem}
+  .signed .body{font-size:1.06rem;line-height:1.62;text-align:justify;hyphens:auto}
+  .signed .body p+p{margin-top:.8rem;text-indent:1.2rem}
+  .signed .sig{margin-top:1rem;text-align:right;font-family:"Bodoni Moda",serif;
+    font-style:italic;font-size:.95rem}
+  .signed .sig span{font-family:"IBM Plex Mono",monospace;font-style:normal;
+    font-size:.6rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:.5rem}
+  .signed .verdict{border-bottom:0;padding-bottom:.4rem;margin-bottom:.9rem}
+  .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
+    color:var(--oxblood);border-left:2px solid var(--oxblood);padding-left:.6rem;margin:.9rem 0 0}
+  .unsigned{max-width:42rem;margin-bottom:1.5rem;padding:.9rem 1rem;
+    border:1px dashed var(--hair);font-size:.88rem;color:var(--ink-soft)}
+
+  .credits{border-left:2px solid var(--hair);padding:.15rem 0 .15rem .8rem;margin-bottom:1.4rem;
+    font-size:.85rem;color:var(--ink-soft);max-width:38rem}
+  .credits b{color:var(--ink);font-weight:500}
+  .unknown{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.06em;color:var(--oxblood)}
+
+  .modlabel{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);margin:0 0 .5rem}
+
+  .anchors{list-style:none;margin-bottom:1.6rem;max-width:38rem;display:grid;gap:.7rem}
+  .anchors li{padding-left:.9rem;border-left:1px solid var(--verdigris)}
+  .anchors .where{font-family:"Bodoni Moda",serif;font-size:.92rem;display:block}
+  .anchors .what{font-size:.92rem;color:var(--ink-soft)}
+  .anchors .t{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--ink-soft)}
+
+  table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.82rem}
+  th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+    padding:.35rem .5rem .35rem 0;border-bottom:1px solid var(--ink)}
+  td{padding:.5rem .5rem .5rem 0;border-bottom:1px solid var(--hair);vertical-align:top}
+  td.num{font-family:"IBM Plex Mono",monospace;font-size:.74rem;white-space:nowrap}
+  tr.hit{background:var(--paper);box-shadow:inset 3px 0 0 var(--oxblood)}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.08em;
+    text-transform:uppercase;padding:.15rem .4rem;white-space:nowrap;border:1px solid currentColor}
+  .chip.good{color:var(--verdigris)}
+  .chip.mid{color:var(--ink-soft)}
+  .chip.bad{color:var(--oxblood)}
+  .chip.none{color:var(--ink-soft);border-style:dashed}
+  .prov{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.06em;color:var(--ink-soft)}
+  .prov.draft{color:var(--oxblood)}
+
+  .ev-label{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:.35rem}
+  .influence{display:flex;height:30px;background:var(--paper);border:1px solid var(--hair);overflow:hidden}
+  .seg{position:relative;min-width:0;display:flex;align-items:center;background:var(--verdigris);
+    border-right:1px solid var(--paper);padding:0 .35rem;overflow:hidden;
+    font-family:"IBM Plex Mono",monospace;font-size:.58rem;color:var(--paper);white-space:nowrap}
+  .seg:last-child{border-right:0}
+  .seg.flag{background:repeating-linear-gradient(135deg,var(--hair) 0 3px,var(--paper) 3px 6px);color:var(--ink-soft)}
+  .agreement{position:relative;height:52px;margin-top:1.1rem}
+  .axis{position:absolute;left:0;right:0;top:26px;height:1px;background:var(--hair)}
+  .thresh{position:absolute;top:8px;bottom:14px;width:0;border-left:1px dashed var(--ink-soft)}
+  .thresh span{position:absolute;top:-.2rem;left:.3rem;font-family:"IBM Plex Mono",monospace;
+    font-size:.55rem;color:var(--ink-soft)}
+  .agg{position:absolute;top:6px;bottom:12px;width:2px;background:var(--ink)}
+  .agg span{position:absolute;bottom:-1.05rem;left:50%;transform:translateX(-50%);
+    font-family:"IBM Plex Mono",monospace;font-size:.6rem;white-space:nowrap}
+  .dot{position:absolute;top:26px;border-radius:50%;background:var(--verdigris);transform:translate(-50%,-50%)}
+  .dot.flag{background:var(--paper);border:1px solid var(--hair)}
+  .axis-ends{position:absolute;left:0;right:0;top:34px;display:flex;justify-content:space-between;
+    font-family:"IBM Plex Mono",monospace;font-size:.55rem;color:var(--ink-soft)}
+
+  .period{display:grid;grid-template-columns:5.5rem 1fr;gap:.3rem .9rem;padding:.5rem 0;border-bottom:1px solid var(--hair)}
+  .period:last-child{border-bottom:0}
+  .period .dec{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.06em;color:var(--ink-soft);padding-top:.2rem}
+  .period .txt{font-size:.92rem}
+
+  details{margin-top:1.4rem;border-top:1px solid var(--hair);padding-top:.7rem}
+  summary{cursor:pointer;list-style:none;font-family:"IBM Plex Mono",monospace;font-size:.63rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"+ "}
+  details[open] summary::before{content:"− "}
+  summary:hover,summary:focus-visible{color:var(--ink)}
+
+  footer{margin-top:5rem;padding-top:1.2rem;border-top:1px solid var(--ink);
+    font-size:.82rem;color:var(--ink-soft);display:grid;gap:.6rem;max-width:44rem}
+  footer a{color:var(--ink-soft)}
+  footer .mono{font-size:.68rem;letter-spacing:.04em}
+  :focus-visible{outline:2px solid var(--verdigris);outline-offset:2px}
+
+  @media (max-width:680px){
+    body{font-size:16px}
+    .entry{grid-template-columns:1fr;gap:1.1rem}
+    .plate{width:104px;height:104px}
+    .period{grid-template-columns:1fr}
+    table{font-size:.78rem}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .seg,.dot{animation:fade .5s ease both}
+    @keyframes fade{from{opacity:0}to{opacity:1}}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <h1>Critical Discography</h1>
+    <nav class="eyebrow">
+      <a href="#bach_brandenburg">Bach</a>
+      <a href="#puccini_tosca">Puccini</a>
+      <a href="index.html">Catalogue</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="#method">Method</a>
+    </nav>
+    <div class="scan">
+      <input id="bc" inputmode="numeric" placeholder="Barcode or catalogue number — identify a disc"
+             aria-label="Barcode or catalogue number">
+      <button id="bc-go">Find</button>
+      <button id="bc-cam" class="ghost" hidden>Scan</button>
+      <p class="scan-msg" id="bc-msg" role="status"></p>
+      <video id="cam" playsinline muted></video>
+    </div>
+  </header>
+
+  <main id="works"></main>
+
+  <footer id="method">
+    <p><b>Two judgements, kept apart.</b> Interpretation belongs to the recording and does not change: Pinnock in 1982 played what he played. Sound belongs to the edition — the pressing, the transfer, the remastering — and changes every time a label reissues it. Stars and Référence describe the interpretation only. The sound figure describes one specific disc, which is the thing you are actually holding in a shop.</p>
+    <p><b>How a claim earns its weight.</b> Source class sets a base weight; independence and citation scale it. A cited statement counts fully, a named source without a locator counts about seven-tenths, an uncited draft about a third. Commercial interest in the recording cuts the weight outright. This is what lets the catalogue accept contributions from readers and from research agents without letting either move a score before someone has checked the receipt.</p>
+    <p>Cover images come from the <a href="https://coverartarchive.org">Cover Art Archive</a> via <a href="https://musicbrainz.org">MusicBrainz</a> identifiers, resolved at build time. Catalogue data is CC0. This guide carries no advertising and no affiliate links, and never will: a guide that discounts commercial interest cannot take a share of the sale.</p>
+    <p class="mono" id="buildline"></p>
+  </footer>
+</div>
+
+<script>
+const CATALOGUE = /*__CATALOGUE__*/{};
+
+const DOMAIN=[2.40,3.00], THRESHOLD=2.70;
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pos=v=>((v-DOMAIN[0])/(DOMAIN[1]-DOMAIN[0]))*100;
+const CHIP={"preferred transfer":"good","sound and serviceable":"mid","pass if you can":"bad","not yet assessed":"none"};
+
+function plate(r){
+  const ed=r.editions.find(e=>e.mbid)||{};
+  const fb=`<div class="plate-fallback"><span class="lbl">${esc(r.published.split(",")[0])}</span>
+    <span class="yr">${esc(r.published.split(",").pop().trim())} · no front cover</span></div>`;
+  const img=ed.mbid?`<img src="https://coverartarchive.org/release/${ed.mbid}/front-500"
+    alt="Front cover" loading="lazy" onerror="this.remove()">`:"";
+  return `<div><div class="plate">${fb}${img}</div></div>`;
+}
+
+function meter(v){
+  if(v==null) return `<span class="unknown">sound not yet assessed</span>`;
+  const pct=Math.max(0,Math.min(100,((v-1.5)/1.5)*100));
+  return `Sound <span class="meter"><i style="width:${pct.toFixed(0)}%"></i></span>${v.toFixed(2)}`;
+}
+
+function credits(c){
+  const miss=`<span class="unknown">not established — contribute</span>`;
+  return `<p class="credits">
+    <b>${esc(c.venue)}</b>, ${esc(c.sessions)}.
+    Producer ${c.producer?esc(c.producer):miss}. Engineer ${c.engineer?esc(c.engineer):miss}.
+    <span class="prov${c.status==="cited"?"":" draft"}">credits ${esc(c.status)}</span>
+  </p>`;
+}
+
+function anchors(list){
+  return `<p class="modlabel">What to listen for</p><ul class="anchors">${list.map(a=>`
+    <li><span class="where">${esc(a.where)}</span>
+      <span class="what">${esc(a.listen_for)}</span>
+      ${a.timing?`<span class="t">${esc(a.timing)}</span>`:""}</li>`).join("")}</ul>`;
+}
+
+function editions(r){
+  const rows=r.editions.map(e=>`
+    <tr id="ed-${esc(e.id)}">
+      <td>${esc(e.label)} <span class="num">${esc(e.catno)}</span><br>
+        <span class="prov">${esc(e.format)}${e.verified?"":" · catalogue data unverified"}</span></td>
+      <td class="num">${esc(e.year)}</td>
+      <td>${esc(e.transfer)}</td>
+      <td class="num">${e.sound!=null?e.sound.toFixed(2):"—"}</td>
+      <td><span class="chip ${CHIP[e.verdict]||"none"}">${esc(e.verdict)}</span></td>
+      <td class="num">${e.barcode?esc(e.barcode):'<span class="prov draft">missing</span>'}</td>
+    </tr>`).join("");
+  const assessed=r.editions.filter(e=>e.sound!=null).length;
+  return `<p class="modlabel">Editions and transfers — ${assessed} of ${r.editions.length} assessed</p>
+    <table><thead><tr><th>Edition</th><th>Year</th><th>What it did to the sound</th>
+    <th>Sound</th><th>Verdict</th><th>Barcode</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function influence(r){
+  const tot=r.sources.reduce((a,s)=>a+s.weight,0)||1;
+  return r.sources.map(s=>{
+    const pct=(s.weight/tot)*100;
+    const shade=45+55*((s.score-DOMAIN[0])/(DOMAIN[1]-DOMAIN[0]));
+    const style=s.conflict?`flex:0 0 ${pct}%`
+      :`flex:0 0 ${pct}%;background:color-mix(in srgb, var(--verdigris) ${Math.round(shade)}%, #8FA9A2)`;
+    return `<div class="seg${s.conflict?" flag":""}" style="${style}"
+      title="${esc(s.source)} — ${esc(s.class)}, ${esc(s.provenance)}, score ${s.score.toFixed(2)}, weight ${s.weight.toFixed(2)}">
+      ${pct>14?s.weight.toFixed(2):""}</div>`;
+  }).join("");
+}
+
+function agreement(r){
+  const dots=r.sources.map(s=>{const d=5+s.weight*11;
+    return `<div class="dot${s.conflict?" flag":""}" style="left:${pos(s.score).toFixed(2)}%;
+      width:${d.toFixed(1)}px;height:${d.toFixed(1)}px" title="${esc(s.source)} — ${s.score.toFixed(2)}"></div>`;
+  }).join("");
+  return `<div class="agreement"><div class="axis"></div>
+    <div class="thresh" style="left:${pos(THRESHOLD).toFixed(2)}%"><span>2.70</span></div>${dots}
+    <div class="agg" style="left:${pos(r.interpretation).toFixed(2)}%"><span>S ${r.interpretation.toFixed(3)}</span></div>
+    <div class="axis-ends"><span>${DOMAIN[0].toFixed(2)}</span><span>${DOMAIN[1].toFixed(2)}</span></div></div>`;
+}
+
+function reception(r){
+  return `<details><summary>How its reputation was made (${r.reception.length} periods)</summary>
+    ${r.reception.map(p=>`<div class="period"><span class="dec">${esc(p.decade)}</span>
+      <span class="txt">${esc(p.note)}</span></div>`).join("")}</details>`;
+}
+
+function sources(r){
+  return `<details><summary>Sources behind the interpretation score (${r.sources.length})</summary>
+    <table><thead><tr><th>Source</th><th>Provenance</th><th>Score</th><th>Weight</th><th>Interest</th></tr></thead>
+    <tbody>${r.sources.map(s=>`<tr>
+      <td>${esc(s.source)}<br><span class="prov">${esc(s.class)}</span></td>
+      <td><span class="prov${s.provenance==="draft"?" draft":""}">${esc(s.provenance)}</span></td>
+      <td class="num">${s.score.toFixed(2)}</td>
+      <td class="num">${s.weight.toFixed(2)}</td>
+      <td class="num">${s.conflict?'<span class="prov draft">down-weighted</span>':"—"}</td>
+    </tr>`).join("")}</tbody></table></details>`;
+}
+
+function signed(r){
+  const e = r.editorial;
+  if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
+    weighted consensus of published sources; it is not a listening report.</div>`;
+  const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
+  const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
+  const div = r.divergence!==null && r.divergence!==0
+    ? `<p class="diverge">The weighted consensus gives ${r.stars} ★ here. The signed entry gives
+       ${e.stars}. The disagreement is deliberate; the reasoning is above.</p>` : "";
+  return `<div class="signed">
+    <p class="kicker">Signed entry</p>
+    <div class="verdict"><span class="stars">${st}</span>
+      ${e.reference?'<span class="badge">Référence</span>':""}</div>
+    <div class="body">${paras}</div>
+    <p class="sig">${esc(e.author.name || e.author.id)}
+      <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${div}
+  </div>`;
+}
+
+function entry(r){
+  const un = r.interpretation===null;
+  const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
+  return `<article class="entry" id="${esc(r.id)}">
+    ${plate(r)}
+    <div>
+      <p class="head-line">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
+        ${esc(r.ensemble)} <span class="pub">(${esc(r.published)})</span></p>
+      <div class="verdict">
+        <span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
+        ${r.reference?'<span class="badge">Référence</span>':""}
+        <span class="figs">${un?"awaiting sources — no citation yet":`interpretation ${r.interpretation.toFixed(3)} · confidence ${r.confidence.toFixed(2)}`}</span>
+      </div>
+      <div class="axes"><span>${meter(r.sound_best)}${r.sound_best!=null?" · best edition":""}</span></div>
+      ${signed(r)}\n      ${credits(r.engineering)}
+      ${anchors(r.anchors)}
+      ${editions(r)}
+      ${un?"":`<p class="ev-label" style="margin-top:1.6rem">Influence — who the interpretation verdict rests on</p>
+      <div class="influence">${influence(r)}</div>
+      <p class="ev-label" style="margin-top:1.1rem">Agreement — where each source landed</p>
+      ${agreement(r)}`}
+      ${reception(r)}
+      ${sources(r)}
+    </div>
+  </article>`;
+}
+
+document.getElementById("works").innerHTML = CATALOGUE.works.map((w,i)=>{
+  const refs=w.recordings.filter(r=>r.reference).length;
+  const eds=w.recordings.reduce((a,r)=>a+r.editions.length,0);
+  return `<section class="work" id="${esc(w.id)}">
+    <div class="work-head">
+      <p class="eyebrow">${esc(w.composer)} · ${esc(w.dates)}</p>
+      <h2>${esc(w.title)}</h2>
+      <p class="cat">${esc(w.cat)}</p>
+      <p class="standfirst">${esc(w.standfirst)}</p>
+      <p class="strip"><span>${w.recordings.length} recordings</span>
+        <span>${eds} editions tracked</span><span>${refs} référence</span></p>
+    </div>
+    ${i===0?`<div class="legend">
+      <p><span class="swatch sw-solid"></span><b>Influence</b> — bar widths are each source's share of the verdict. Darker means it rated the recording higher.</p>
+      <p><span class="swatch sw-hatch"></span><b>Hatched</b> — the source sells the recording, so its weight is cut and it takes up almost no width.</p>
+      <p><b>Sound is scored per edition</b>, not per recording. A great performance in a bad transfer is a bad purchase.</p>
+    </div>`:""}
+    ${w.recordings.map(entry).join("")}
+  </section>`;
+}).join("");
+
+document.getElementById("buildline").textContent =
+  `ALGORITHM V${CATALOGUE.algorithm_version} · BUILT ${CATALOGUE.built} · ${Object.keys(CATALOGUE.barcode_index).length} BARCODES INDEXED · NO TRACKERS, NO AFFILIATE LINKS`;
+
+/* ---- identify a disc: barcode or catalogue number, matched offline ---- */
+const msg=document.getElementById("bc-msg");
+function lookup(raw){
+  const q=String(raw||"").trim();
+  if(!q){msg.textContent="";return;}
+  document.querySelectorAll("tr.hit").forEach(t=>t.classList.remove("hit"));
+  const digits=q.replace(/\D/g,"");
+  let hit=digits && CATALOGUE.barcode_index[digits];
+  if(!hit){
+    for(const w of CATALOGUE.works) for(const r of w.recordings) for(const e of r.editions){
+      if(e.catno && e.catno!=="—" && e.catno.toLowerCase().replace(/\s/g,"")===q.toLowerCase().replace(/\s/g,""))
+        hit={recording:r.id,edition:e.id};
+    }
+  }
+  if(!hit){
+    msg.innerHTML=`Not in the catalogue yet. ${digits.length>=8?
+      `<a href="https://musicbrainz.org/search?query=${encodeURIComponent(digits)}&type=release">Look it up on MusicBrainz</a> and add it.`:
+      "Try the full barcode, or the catalogue number printed on the spine."}`;
+    return;
+  }
+  const row=document.getElementById("ed-"+hit.edition);
+  row.classList.add("hit");
+  row.scrollIntoView({block:"center"});
+  const verdict=row.querySelector(".chip").textContent.trim();
+  msg.textContent=`Matched — ${verdict}. Highlighted below.`;
+}
+document.getElementById("bc-go").addEventListener("click",()=>lookup(document.getElementById("bc").value));
+document.getElementById("bc").addEventListener("keydown",e=>{if(e.key==="Enter")lookup(e.target.value);});
+
+/* Camera scanning where the browser supports it; typing always works. */
+const camBtn=document.getElementById("bc-cam"), video=document.getElementById("cam");
+if("BarcodeDetector" in window){
+  camBtn.hidden=false;
+  camBtn.addEventListener("click",async()=>{
+    try{
+      const det=new BarcodeDetector({formats:["ean_13","upc_a","ean_8"]});
+      const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});
+      video.srcObject=stream; video.style.display="block"; await video.play();
+      msg.textContent="Point at the barcode on the back of the case.";
+      const tick=async()=>{
+        if(!video.srcObject) return;
+        const found=await det.detect(video).catch(()=>[]);
+        if(found.length){
+          stream.getTracks().forEach(t=>t.stop());
+          video.srcObject=null; video.style.display="none";
+          document.getElementById("bc").value=found[0].rawValue;
+          lookup(found[0].rawValue);
+          return;
+        }
+        requestAnimationFrame(tick);
+      };
+      tick();
+    }catch(err){ msg.textContent="Camera unavailable. Type or paste the number instead."; }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+{
+  "work_id": "shostakovich/sym5",
+  "recordings": [
+    {
+      "id": "shostakovich_sym5_nelsons",
+      "soloists": "",
+      "director": "Andris Nelsons",
+      "ensemble": "Boston Symphony Orchestra",
+      "published": "Deutsche Grammophon, 2016",
+      "venue": "Symphony Hall, Boston",
+      "sessions": "live, 2015",
+      "producer": null,
+      "engineer": null,
+      "credits_status": "unknown",
+      "anchors": [
+        {
+          "where": "First movement, opening canon",
+          "listen_for": "The two-note descending figure the whole symphony is built from. How heavily it is attacked sets the terms for everything after."
+        },
+        {
+          "where": "Third movement, Largo",
+          "listen_for": "Strings divided into eight parts, no brass at all. The question is whether the conductor lets it be slow enough to become uncomfortable."
+        },
+        {
+          "where": "Finale, the closing bars",
+          "listen_for": "The repeated A in the strings under a hammered D major. Whether this reads as triumph or as coercion is the central interpretive argument of the piece, and every recording answers it."
+        }
+      ],
+      "reception": [
+        {
+          "decade": "1937",
+          "note": "Premiered 21 November in Leningrad under Mravinsky; reported ovations of over half an hour. Received officially as rehabilitation after the 1936 Pravda attack."
+        },
+        {
+          "decade": "1940s–70s",
+          "note": "Established in the West as a repertory symphony. Read largely at face value: a heroic affirmation, sometimes discussed as Soviet neoclassicism."
+        },
+        {
+          "decade": "1979–",
+          "note": "Volkov's Testimony recasts the finale as forced rejoicing. Its authenticity is disputed; the reading is not. Performance practice divides along this line and has not reconverged."
+        },
+        {
+          "decade": "2010s–",
+          "note": "The BSO/Nelsons cycle brings the work back to prominence on record, winning the 2017 Grammy for Best Orchestral Performance."
+        }
+      ],
+      "editions": [
+        {
+          "id": "sym5_dg_2016",
+          "label": "Deutsche Grammophon",
+          "catno": "479 5201",
+          "year": "2016",
+          "fmt": "2×CD",
+          "transfer": "Original issue, live Symphony Hall recording. Grammy-winning album, coupled with Symphonies 8 and 9 and the Hamlet suite.",
+          "barcode": null,
+          "mbid": null,
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "shostakovich_sym5_mravinsky",
+      "soloists": "",
+      "director": "Yevgeny Mravinsky",
+      "ensemble": "Leningrad Philharmonic Orchestra",
+      "published": "various, 1954–1978",
+      "venue": "Moscow (1954); Tokyo (1973); Vienna (1978)",
+      "sessions": "1954 studio; later live performances",
+      "producer": null,
+      "engineer": "D. Gaklin (1954)",
+      "credits_status": "attributed",
+      "anchors": [
+        {
+          "where": "First movement, development",
+          "listen_for": "Mravinsky premiered the work in 1937. The tempo relationships here are the closest thing on record to a first reading."
+        },
+        {
+          "where": "Finale",
+          "listen_for": "The speed of the coda, which Mravinsky treats faster than most Western conductors — a documentary fact in the argument about what the ending means."
+        }
+      ],
+      "reception": [
+        {
+          "decade": "1937",
+          "note": "Mravinsky conducted the premiere and remained associated with the work for four decades."
+        },
+        {
+          "decade": "1950s–70s",
+          "note": "Successive Leningrad performances circulate on Soviet and Japanese issues; the discography is tangled and poorly documented."
+        },
+        {
+          "decade": "1990s–",
+          "note": "Japanese labels, chiefly Altus, issue restored live performances; edition identification becomes the practical problem for buyers."
+        }
+      ],
+      "editions": [
+        {
+          "id": "sym5_altus_alt002",
+          "label": "Altus",
+          "catno": "ALT002",
+          "year": "2002",
+          "fmt": "CD",
+          "transfer": "Japanese issue, 44:08. Cover art present in the Cover Art Archive.",
+          "barcode": null,
+          "mbid": "2ff96318-7c8b-47d5-9532-daf88fafd07e",
+          "verified": true
+        },
+        {
+          "id": "sym5_altus_alt289",
+          "label": "Altus",
+          "catno": "ALT289",
+          "year": "2014",
+          "fmt": "CD",
+          "transfer": "Vienna 1978 live, coupled with Schubert 8. Barcode verified.",
+          "barcode": "4543638002894",
+          "mbid": "e9d634b2-aa6b-4aab-8c95-0823cd8bcaf5",
+          "verified": true
+        },
+        {
+          "id": "sym5_praga",
+          "label": "Praga",
+          "catno": "PR 7250 085",
+          "year": "1995",
+          "fmt": "CD",
+          "transfer": "Coupled with Symphony No. 9 under Košler. Barcode verified.",
+          "barcode": "794881605422",
+          "mbid": "8113cf4a-dc95-49ec-8782-e38d6fbf33f8",
+          "verified": true
+        },
+        {
+          "id": "sym5_tokyo_1973",
+          "label": "Altus",
+          "catno": "—",
+          "year": "1973 recording",
+          "fmt": "CD",
+          "transfer": "Tokyo, 26 May 1973, live. Barcode verified; MusicBrainz release not yet matched.",
+          "barcode": "4543638000029",
+          "mbid": null,
+          "verified": false
+        }
+      ]
+    },
+    {
+      "id": "shostakovich_sym5_noseda",
+      "soloists": "",
+      "director": "Gianandrea Noseda",
+      "ensemble": "London Symphony Orchestra",
+      "published": "LSO Live, 2020",
+      "venue": "Barbican Hall, London",
+      "sessions": "September 2016 and March 2019, live",
+      "producer": "Nicholas Parker",
+      "engineer": "Classic Sound Ltd",
+      "credits_status": "cited",
+      "credits_locator": "https://lsolive.lso.co.uk/products/lso0802-shostakovich",
+      "anchors": [
+        {
+          "where": "Third movement, Largo",
+          "listen_for": "Barbican strings in eight parts, captured in DSD. A test of whether the hall's dry acoustic helps the transparency or thins the tone."
+        },
+        {
+          "where": "Finale, closing bars",
+          "listen_for": "Where this account sits on the triumph-or-coercion question. Compare directly against Mravinsky's faster coda."
+        }
+      ],
+      "reception": [
+        {
+          "decade": "2020–",
+          "note": "Issued as part of Noseda's nine-year LSO cycle, completed and boxed as LSO0907 in 2025. Reception of the cycle as a whole has been strong; individual-issue criticism of the Fifth is not yet cited here."
+        }
+      ],
+      "editions": [
+        {
+          "id": "sym5_lso0802",
+          "label": "LSO Live",
+          "catno": "LSO0802",
+          "year": "2020",
+          "fmt": "Hybrid SACD",
+          "transfer": "Original issue, coupled with Symphony No. 1. DSD source, also released as 24-bit/96 kHz FLAC.",
+          "barcode": "0822231180227",
+          "mbid": null,
+          "verified": true
+        },
+        {
+          "id": "sym5_lso0907_box",
+          "label": "LSO Live",
+          "catno": "LSO0907",
+          "year": "2025",
+          "fmt": "10×SACD",
+          "transfer": "Complete cycle box, Symphonies 1–15. Same recordings; transfer lineage not yet established.",
+          "barcode": null,
+          "mbid": null,
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

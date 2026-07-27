@@ -1,0 +1,12 @@
+{
+  "recording": "composer/work/index",
+  "axis": "interpretation",
+  "edition": null,
+  "source": "Publication or person",
+  "locator": "URL, or issue and page. Without this it stays `draft`.",
+  "scale": "stars_5",
+  "value": 5,
+  "characterisation": "One sentence, your own words, on what the source claims.",
+  "conflict": false,
+  "contributor": "your handle"
+}

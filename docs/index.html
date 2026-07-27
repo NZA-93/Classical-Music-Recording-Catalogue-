@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Discography — Catalogue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#E7EAE3;--paper:#FBFCF9;--ink:#191D1A;--ink-soft:#5B655D;--hair:#C7CDC2;
+--verdigris:#2F6B60;--oxblood:#7A1220}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;
+font-size:17px;font-weight:300;line-height:1.6;padding:0 clamp(1rem,3vw,2rem) 5rem}
+.wrap{max-width:64rem;margin:0 auto}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.masthead{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:baseline;
+padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--ink)}
+.masthead h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.15rem;margin-right:auto}
+.masthead nav{display:flex;gap:1.1rem;font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+letter-spacing:.16em;text-transform:uppercase}
+.masthead a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+.masthead a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.hero{padding:clamp(3rem,8vw,5rem) 0 2rem;max-width:44rem}
+.hero h2{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(2.2rem,7vw,3.8rem);
+line-height:.98;letter-spacing:-.015em;margin-bottom:.8rem}
+.hero p{color:var(--ink-soft);max-width:36rem}
+.tally{display:flex;flex-wrap:wrap;gap:1.6rem;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--ink)}
+.tally div{font-family:"IBM Plex Mono",monospace}
+.tally b{display:block;font-family:"Bodoni Moda",serif;font-weight:400;font-size:2rem;line-height:1}
+.tally span{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.bar{height:.5rem;background:var(--hair);margin-top:1.6rem;display:flex}
+.bar i{display:block;height:100%}
+.bar .b-done{background:var(--verdigris)}
+.bar .b-cand{background:var(--ink-soft);opacity:.45}
+.barkey{display:flex;gap:1.2rem;margin-top:.5rem;font-family:"IBM Plex Mono",monospace;
+font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+section{padding-top:clamp(2.5rem,6vw,4rem)}
+section h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:1.9rem;margin-bottom:.15rem}
+section .dates{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.12em;
+color:var(--ink-soft);text-transform:uppercase;margin-bottom:1rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
+letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+padding:.4rem .5rem .4rem 0;border-bottom:1px solid var(--ink)}
+td{padding:.55rem .5rem;border-bottom:1px solid var(--hair);vertical-align:top}
+td:first-child{padding-left:0}
+.w-title{font-family:"Bodoni Moda",serif;font-size:1.02rem}
+.w-cat{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--ink-soft)}
+.w-note{color:var(--ink-soft);font-size:.85rem}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:.56rem;letter-spacing:.08em;
+text-transform:uppercase;padding:.15rem .4rem;white-space:nowrap;border:1px solid currentColor}
+.c-done{color:var(--verdigris)}
+.c-cand{color:var(--ink-soft)}
+.c-none{color:var(--oxblood);border-style:dashed}
+a.entry{color:var(--verdigris)}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--ink);font-size:.82rem;
+color:var(--ink-soft);max-width:44rem;display:grid;gap:.5rem}
+footer .mono{font-size:.68rem;letter-spacing:.04em}
+@media(max-width:680px){body{font-size:16px}.w-note{display:none}td,th{padding-right:.3rem}}
+</style></head><body><div class="wrap">
+<header class="masthead"><h1>Critical Discography</h1>
+<nav><a href="#bach">Bach</a><a href="#beethoven">Beethoven</a><a href="#mozart">Mozart</a>
+<a href="#puccini">Puccini</a><a href="entries.html">Entries</a><a href="gallery.html">Gallery</a></nav></header>
+
+<div class="hero">
+  <h2>Forty-seven works,<br>and an honest ledger.</h2>
+  <p>Four composers seeded for round one. The works are settled; the assessments are not.
+  Nothing here carries a score until a source with a locator supplies one, which is why
+  most of this page reads as work still to do rather than work already done.</p>
+  <div class="tally">
+    <div><b>59</b><span>works</span></div>
+    <div><b>72</b><span>candidates queued</span></div>
+    <div><b>7</b><span>recordings assessed</span></div>
+    <div><b>5%</b><span>works with any assessment</span></div>
+  </div>
+  <div class="bar"><i class="b-done" style="width:5.1%"></i><i class="b-cand" style="width:52.5%"></i></div>
+  <div class="barkey"><span>assessed</span><span>candidates awaiting sources</span><span>unstarted</span></div>
+</div>
+
+<section id="bach">
+      <h3>Johann Sebastian Bach</h3>
+      <p class="dates">1685–1750 · 12 works · 1 with assessments</p>
+      <table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
+      <tbody><tr>
+      <td><span class="w-title">Brandenburg Concertos</span><br>
+        <span class="w-cat">BWV 1046–1051 · 1721</span></td>
+      <td class="w-note">Concerto grosso and solo forms; the central HIP battleground.</td>
+      <td><span class="chip c-done">2 assessed</span> <a class="entry" href="entries.html#bach_brandenburg">read</a></td>
+    </tr><tr>
+      <td><span class="w-title">Orchestral Suites</span><br>
+        <span class="w-cat">BWV 1066–1069 · c. 1725–39</span></td>
+      <td class="w-note">French overture style; the Air of No. 3 and the B minor flute suite.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Violin Concertos</span><br>
+        <span class="w-cat">BWV 1041–1043 · c. 1730</span></td>
+      <td class="w-note">Including the Double Concerto, a repertory staple in every style.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Cello Suites</span><br>
+        <span class="w-cat">BWV 1007–1012 · c. 1720</span></td>
+      <td class="w-note">Solo cello as complete polyphony; the most re-recorded solo cycle.</td>
+      <td><span class="chip c-cand">3 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Sonatas and Partitas for Solo Violin</span><br>
+        <span class="w-cat">BWV 1001–1006 · 1720</span></td>
+      <td class="w-note">The Chaconne of the D minor Partita.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Goldberg Variations</span><br>
+        <span class="w-cat">BWV 988 · 1741</span></td>
+      <td class="w-note">Thirty variations over a bass; the piano-versus-harpsichord argument.</td>
+      <td><span class="chip c-cand">3 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">The Well-Tempered Clavier, Books I &amp; II</span><br>
+        <span class="w-cat">BWV 846–893 · 1722 / 1742</span></td>
+      <td class="w-note">Forty-eight preludes and fugues.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Mass in B minor</span><br>
+        <span class="w-cat">BWV 232 · 1749</span></td>
+      <td class="w-note">Assembled late from a lifetime&#x27;s work; the choral-forces question.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">St Matthew Passion</span><br>
+        <span class="w-cat">BWV 244 · 1727</span></td>
+      <td class="w-note">Double choir and orchestra; the largest question of scale in Bach.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">St John Passion</span><br>
+        <span class="w-cat">BWV 245 · 1724</span></td>
+      <td class="w-note">Sharper and more dramatic than the Matthew; several authorial versions.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">The Art of Fugue</span><br>
+        <span class="w-cat">BWV 1080 · c. 1740–50</span></td>
+      <td class="w-note">Instrumentation unspecified, which makes every recording an argument.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Harpsichord Concertos</span><br>
+        <span class="w-cat">BWV 1052–1058 · c. 1738</span></td>
+      <td class="w-note">Mostly arrangements; the founding documents of the keyboard concerto.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr></tbody></table>
+    </section><section id="beethoven">
+      <h3>Ludwig van Beethoven</h3>
+      <p class="dates">1770–1827 · 12 works · 0 with assessments</p>
+      <table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
+      <tbody><tr>
+      <td><span class="w-title">Symphony No. 3, Eroica</span><br>
+        <span class="w-cat">Op. 55 · 1804</span></td>
+      <td class="w-note">The break; tempo and weight decide everything.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 5</span><br>
+        <span class="w-cat">Op. 67 · 1808</span></td>
+      <td class="w-note">The most recorded symphony; interpretation history in miniature.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 6, Pastoral</span><br>
+        <span class="w-cat">Op. 68 · 1808</span></td>
+      <td class="w-note">Where a conductor&#x27;s idea of nature becomes audible.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 7</span><br>
+        <span class="w-cat">Op. 92 · 1812</span></td>
+      <td class="w-note">Rhythm as subject; the Allegretto&#x27;s tempo is a critical fault line.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 9</span><br>
+        <span class="w-cat">Op. 125 · 1824</span></td>
+      <td class="w-note">Chorus, soloists, and a century of political readings.</td>
+      <td><span class="chip c-cand">3 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Piano Concerto No. 4</span><br>
+        <span class="w-cat">Op. 58 · 1806</span></td>
+      <td class="w-note">The slow movement&#x27;s dialogue between piano and strings.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Piano Concerto No. 5, Emperor</span><br>
+        <span class="w-cat">Op. 73 · 1809</span></td>
+      <td class="w-note">Scale and grandeur against clarity.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Violin Concerto</span><br>
+        <span class="w-cat">Op. 61 · 1806</span></td>
+      <td class="w-note">Lyrical rather than virtuosic; cadenza choice is an interpretation.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Late String Quartets</span><br>
+        <span class="w-cat">Opp. 127–135 · 1825–26</span></td>
+      <td class="w-note">Including the Grosse Fuge; the summit of the chamber literature.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Piano Sonata No. 29, Hammerklavier</span><br>
+        <span class="w-cat">Op. 106 · 1818</span></td>
+      <td class="w-note">The fugue&#x27;s tempo marking is still argued over.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Missa Solemnis</span><br>
+        <span class="w-cat">Op. 123 · 1823</span></td>
+      <td class="w-note">Brutal on choirs; few recordings survive the Credo intact.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Fidelio</span><br>
+        <span class="w-cat">Op. 72 · 1805/1814</span></td>
+      <td class="w-note">Which overture, which version, which political moment.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr></tbody></table>
+    </section><section id="mozart">
+      <h3>Wolfgang Amadeus Mozart</h3>
+      <p class="dates">1756–1791 · 12 works · 0 with assessments</p>
+      <table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
+      <tbody><tr>
+      <td><span class="w-title">Symphonies Nos. 39, 40, 41</span><br>
+        <span class="w-cat">K. 543, 550, 551 · 1788</span></td>
+      <td class="w-note">Written in a single summer; the Jupiter fugue-finale.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Piano Concerto No. 20</span><br>
+        <span class="w-cat">K. 466 · 1785</span></td>
+      <td class="w-note">D minor; Beethoven wrote cadenzas for it.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Piano Concerto No. 23</span><br>
+        <span class="w-cat">K. 488 · 1786</span></td>
+      <td class="w-note">The F sharp minor Adagio.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Piano Concerto No. 27</span><br>
+        <span class="w-cat">K. 595 · 1791</span></td>
+      <td class="w-note">Late, spare, and often played too gently.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Clarinet Concerto</span><br>
+        <span class="w-cat">K. 622 · 1791</span></td>
+      <td class="w-note">Basset clarinet versus modern instrument.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Requiem</span><br>
+        <span class="w-cat">K. 626 · 1791</span></td>
+      <td class="w-note">Completion choice — Süssmayr, Beyer, Levin — is the first decision.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Le nozze di Figaro</span><br>
+        <span class="w-cat">K. 492 · 1786</span></td>
+      <td class="w-note">Ensemble comedy that depends entirely on pacing.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Don Giovanni</span><br>
+        <span class="w-cat">K. 527 · 1787</span></td>
+      <td class="w-note">Prague or Vienna version; the supper scene.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Così fan tutte</span><br>
+        <span class="w-cat">K. 588 · 1790</span></td>
+      <td class="w-note">Tone is the whole problem: cruelty, farce, or grief.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Die Zauberflöte</span><br>
+        <span class="w-cat">K. 620 · 1791</span></td>
+      <td class="w-note">Singspiel; dialogue handling divides recordings sharply.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Great Mass in C minor</span><br>
+        <span class="w-cat">K. 427 · 1783</span></td>
+      <td class="w-note">Unfinished; several performing completions.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">String Quintets</span><br>
+        <span class="w-cat">K. 515, 516 · 1787</span></td>
+      <td class="w-note">Two violas; the G minor is the darkest chamber music he wrote.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr></tbody></table>
+    </section><section id="puccini">
+      <h3>Giacomo Puccini</h3>
+      <p class="dates">1858–1924 · 11 works · 1 with assessments</p>
+      <table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
+      <tbody><tr>
+      <td><span class="w-title">Manon Lescaut</span><br>
+        <span class="w-cat">— · 1893</span></td>
+      <td class="w-note">The first success; orchestrally the most Wagnerian.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">La Bohème</span><br>
+        <span class="w-cat">— · 1896</span></td>
+      <td class="w-note">The most recorded of all; conducting decides sentiment or truth.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Tosca</span><br>
+        <span class="w-cat">— · 1900</span></td>
+      <td class="w-note">Verismo at close range.</td>
+      <td><span class="chip c-done">2 assessed</span> <a class="entry" href="entries.html#puccini_tosca">read</a></td>
+    </tr><tr>
+      <td><span class="w-title">Madama Butterfly</span><br>
+        <span class="w-cat">— · 1904</span></td>
+      <td class="w-note">Which of five versions is being performed matters.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">La fanciulla del West</span><br>
+        <span class="w-cat">— · 1910</span></td>
+      <td class="w-note">Harmonically the most advanced; still under-recorded.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">La rondine</span><br>
+        <span class="w-cat">— · 1917</span></td>
+      <td class="w-note">Operetta inheritance; the least settled discography.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Il trittico</span><br>
+        <span class="w-cat">— · 1918</span></td>
+      <td class="w-note">Three one-act operas, rarely recorded as the whole Puccini intended.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Turandot</span><br>
+        <span class="w-cat">— · 1926</span></td>
+      <td class="w-note">Unfinished; Alfano or Berio ending is a critical decision.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Le Villi</span><br>
+        <span class="w-cat">— · 1884</span></td>
+      <td class="w-note">First opera; documentary interest.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Edgar</span><br>
+        <span class="w-cat">— · 1889</span></td>
+      <td class="w-note">The failure, revised repeatedly.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Messa di Gloria</span><br>
+        <span class="w-cat">— · 1880</span></td>
+      <td class="w-note">Student work already recognisably him.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr></tbody></table>
+    </section><section id="shostakovich">
+      <h3>Dmitri Shostakovich</h3>
+      <p class="dates">1906–1975 · 12 works · 1 with assessments</p>
+      <table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
+      <tbody><tr>
+      <td><span class="w-title">Symphony No. 1</span><br>
+        <span class="w-cat">Op. 10 · 1925</span></td>
+      <td class="w-note">A conservatory graduation piece that went round the world within three years.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 4</span><br>
+        <span class="w-cat">Op. 43 · 1936</span></td>
+      <td class="w-note">Withdrawn in rehearsal after the Pravda attack; unheard until 1961.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 5</span><br>
+        <span class="w-cat">Op. 47 · 1937</span></td>
+      <td class="w-note">The rehabilitation, and the most argued-over finale in the repertory.</td>
+      <td><span class="chip c-done">3 assessed</span> <a class="entry" href="entries.html#shostakovich_sym5">read</a></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 6</span><br>
+        <span class="w-cat">Op. 54 · 1939</span></td>
+      <td class="w-note">A vast Largo followed by two fast movements; the proportions unsettle conductors.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 7, Leningrad</span><br>
+        <span class="w-cat">Op. 60 · 1941</span></td>
+      <td class="w-note">Written under siege and flown out on microfilm; the invasion theme divides opinion still.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 8</span><br>
+        <span class="w-cat">Op. 65 · 1943</span></td>
+      <td class="w-note">The war symphony without consolation. Officially disliked for exactly that.</td>
+      <td><span class="chip c-cand">2 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 9</span><br>
+        <span class="w-cat">Op. 70 · 1945</span></td>
+      <td class="w-note">The victory symphony that refused to be one.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 10</span><br>
+        <span class="w-cat">Op. 93 · 1953</span></td>
+      <td class="w-note">Written around Stalin&#x27;s death; the DSCH monogram at its centre.</td>
+      <td><span class="chip c-cand">3 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 11, The Year 1905</span><br>
+        <span class="w-cat">Op. 103 · 1957</span></td>
+      <td class="w-note">Cinematic and continuous; read after 1956 as being about Hungary.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 13, Babi Yar</span><br>
+        <span class="w-cat">Op. 113 · 1962</span></td>
+      <td class="w-note">Yevtushenko settings for bass and male chorus; censored before its premiere.</td>
+      <td><span class="chip c-cand">1 queued</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 14</span><br>
+        <span class="w-cat">Op. 135 · 1969</span></td>
+      <td class="w-note">Eleven poems on death for two voices and chamber orchestra.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr><tr>
+      <td><span class="w-title">Symphony No. 15</span><br>
+        <span class="w-cat">Op. 141 · 1971</span></td>
+      <td class="w-note">The last, quoting Rossini and Wagner and explaining neither.</td>
+      <td><span class="chip c-none">no candidates</span></td>
+    </tr></tbody></table>
+    </section>
+
+<footer>
+  <p>Round one resolves identity for every candidate against MusicBrainz, then pulls editions,
+  barcodes and cover art. Critical assessments follow only as citations arrive: a locator, a
+  normalised score, and a characterisation written here rather than copied from a review.</p>
+  <p class="mono">SEED SCHEMA seed/1 · 59 WORKS · NO SCORES SEEDED · NO AFFILIATE LINKS</p>
+</footer>
+</div></body></html>

@@ -1,9 +1,22 @@
-Factual catalogue data (works, candidates, edition identifiers, barcodes)
-is released under CC0 1.0 Universal.
+Content licences for this repository
+====================================
 
-Editorial prose (standfirsts, anchors, reception notes, characterisations)
-is released under CC BY-SA 4.0.
+CODE  (engine/, agents/, site/, Makefile, workflows)
+    MIT — see LICENSE-CODE.
 
-Cover images are the property of their respective rights holders and are
-hotlinked from the Cover Art Archive; they are not redistributed by this
-project.
+FACTUAL CATALOGUE DATA  (data/seed.json: works, catalogue numbers, performers,
+labels, years, barcodes, MusicBrainz identifiers)
+    CC0 1.0 Universal. These are facts and are dedicated to the public domain.
+    Identifiers and release data originate from MusicBrainz, itself CC0.
+
+EDITORIAL PROSE  (commentary, listening anchors, reception notes, design notes)
+    CC BY-SA 4.0. Attribution to this project, share-alike.
+
+MATERIAL THAT IS NOT OURS TO LICENCE
+    Cover images served from the Cover Art Archive remain the property of their
+    rights holders and are hotlinked, not redistributed.
+    Criticism published by Gramophone, Diapason, ClassicsToday, Fanfare,
+    MusicWeb, the Penguin Guide and others is referenced by locator and
+    normalised score only. Review text is never stored or republished in this
+    repository. If you believe something here exceeds fair citation, open an
+    issue and it will be removed.

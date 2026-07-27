@@ -1,0 +1,26 @@
+[
+  {
+    "recording": "shostakovich_sym5_noseda",
+    "axis": "sound",
+    "edition": "sym5_lso0802",
+    "source": "NZA-93 (maintainer, own listening)",
+    "scale": "prose",
+    "value": null,
+    "characterisation": "Rates the hybrid SACD issue as top-quality sound.",
+    "conflict": false,
+    "contributor": "NZA-93",
+    "method": "human"
+  },
+  {
+    "recording": "shostakovich_sym5_noseda",
+    "axis": "interpretation",
+    "edition": null,
+    "source": "NZA-93 (maintainer, own listening)",
+    "scale": "prose",
+    "value": null,
+    "characterisation": "Describes the interpretation as daring.",
+    "conflict": false,
+    "contributor": "NZA-93",
+    "method": "human"
+  }
+]

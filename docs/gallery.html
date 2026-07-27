@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Discography — Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0E110E; --panel:#161A15; --raised:#1D221C;
+  --bone:#E8EBE3; --dim:#8A9488; --line:rgba(232,235,227,.14);
+  --verd:#5AA294; --crimson:#C4515C; --gold:#C9A227;
+}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--bone);
+  font-family:"Newsreader",Georgia,serif;font-weight:300;font-size:17px;line-height:1.6}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.lbl{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+a{color:var(--verd)}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:9;display:flex;align-items:center;gap:1.4rem;
+  padding:.9rem clamp(1rem,4vw,3rem);background:rgba(14,17,14,.92);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1rem;margin-right:auto}
+.bar a{text-decoration:none;color:var(--dim);font-family:"IBM Plex Mono",monospace;
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase}
+.bar a:hover{color:var(--bone)}
+
+/* hero */
+.hero{position:relative;min-height:clamp(20rem,46vh,30rem);display:flex;align-items:flex-end;
+  padding:clamp(2rem,6vw,4rem);overflow:hidden}
+.hero-art{position:absolute;inset:0;background-size:cover;background-position:center;
+  filter:blur(26px) saturate(.5) brightness(.42);transform:scale(1.15)}
+.hero-fall{position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 20% 0%,#22301f 0%,#0E110E 70%)}
+.hero-veil{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(14,17,14,.35) 0%,rgba(14,17,14,.92) 88%)}
+.hero-in{position:relative;max-width:46rem}
+.hero h2{font-family:"Bodoni Moda",serif;font-weight:400;
+  font-size:clamp(2.6rem,8vw,5.4rem);line-height:.92;letter-spacing:-.02em;margin:.4rem 0}
+.hero .cat{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--dim);font-size:1.05rem}
+.hero .stand{margin-top:1rem;color:var(--dim);max-width:34rem}
+
+/* rail */
+.rail-wrap{padding:clamp(1.6rem,4vw,2.6rem) clamp(1rem,4vw,3rem) 0}
+.rail{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory}
+.rail::-webkit-scrollbar{height:6px}
+.rail::-webkit-scrollbar-thumb{background:var(--line)}
+.card{flex:0 0 172px;scroll-snap-align:start;background:none;border:0;padding:0;
+  cursor:pointer;text-align:left;color:inherit;font:inherit}
+.card .art{width:172px;height:172px;background:var(--raised);position:relative;overflow:hidden;
+  border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.card .art img{width:100%;height:100%;object-fit:cover;display:block}
+.card .art .plate{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:space-between;padding:.7rem}
+.card .art .plate b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:1rem;line-height:1.1}
+.card[aria-selected="true"] .art{border-color:var(--verd);transform:translateY(-3px)}
+.card .who{margin-top:.5rem;font-size:.86rem;line-height:1.3}
+.card .meta{margin-top:.2rem;font-family:"IBM Plex Mono",monospace;font-size:.6rem;color:var(--dim)}
+.card .st{color:var(--gold);letter-spacing:.1em}
+.card .ref{color:var(--crimson)}
+
+/* detail */
+.detail{padding:clamp(1.6rem,4vw,3rem) clamp(1rem,4vw,3rem) 5rem;
+  display:grid;grid-template-columns:minmax(0,1fr) 20rem;gap:clamp(1.5rem,4vw,3rem);
+  max-width:88rem;margin:0 auto;align-items:start}
+.report{background:var(--panel);border:1px solid var(--line);padding:clamp(1.2rem,3vw,2rem)}
+.headline{font-size:1.2rem;line-height:1.4;margin-bottom:.7rem}
+.headline .dir{font-weight:500}
+.headline .pub{color:var(--dim)}
+.verdict{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;
+  padding-bottom:1rem;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
+.stars{color:var(--gold);font-size:1.1rem;letter-spacing:.12em}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#0E110E;background:var(--crimson);padding:.2rem .45rem}
+.figs{font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--dim)}
+.commentary{max-width:40rem;margin-bottom:1.5rem}
+.anchors{list-style:none;display:grid;gap:.75rem;margin:.6rem 0 1.6rem;max-width:40rem}
+.anchors li{padding-left:.9rem;border-left:1px solid var(--verd)}
+.anchors .w{font-family:"Bodoni Moda",serif;font-size:.95rem;display:block}
+.anchors .f{color:var(--dim);font-size:.9rem}
+
+.influence{display:flex;height:28px;border:1px solid var(--line);overflow:hidden;margin-bottom:.5rem}
+.seg{min-width:0;display:flex;align-items:center;padding:0 .35rem;overflow:hidden;
+  font-family:"IBM Plex Mono",monospace;font-size:.56rem;color:#0E110E;white-space:nowrap;
+  background:var(--verd);border-right:1px solid var(--void)}
+.seg.flag{background:repeating-linear-gradient(135deg,rgba(232,235,227,.16) 0 3px,transparent 3px 6px);
+  color:var(--dim)}
+
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.5rem}
+th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.55rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
+  padding:.35rem .5rem .35rem 0;border-bottom:1px solid var(--line)}
+td{padding:.5rem .5rem .5rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;white-space:nowrap}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:.54rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.15rem .4rem;border:1px solid currentColor;white-space:nowrap}
+.c-good{color:var(--verd)} .c-mid{color:var(--dim)}
+.c-bad{color:var(--crimson)} .c-none{color:var(--dim);border-style:dashed}
+
+/* credits column — the Roon idea, applied to people who shaped the sound */
+.aside{position:sticky;top:4.5rem;display:grid;gap:1.2rem}
+.panel{background:var(--panel);border:1px solid var(--line);padding:1.1rem}
+.panel h3{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);font-weight:500;margin-bottom:.8rem}
+.person{display:flex;justify-content:space-between;gap:.8rem;padding:.45rem 0;
+  border-bottom:1px solid var(--line);font-size:.9rem}
+.person:last-child{border-bottom:0}
+.person .role{font-family:"IBM Plex Mono",monospace;font-size:.58rem;color:var(--dim);
+  letter-spacing:.08em;text-transform:uppercase;padding-top:.25rem}
+.person .name{text-align:right}
+.person .name span{display:block;font-family:"IBM Plex Mono",monospace;
+  font-size:.55rem;color:var(--crimson);letter-spacing:.06em}
+.also{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.3rem}
+.also a{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.05em;
+  text-decoration:none;border:1px solid var(--line);padding:.2rem .4rem;color:var(--dim)}
+.also a:hover{color:var(--bone);border-color:var(--verd)}
+.meterline{display:flex;align-items:center;gap:.5rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.64rem;color:var(--dim)}
+.meter{flex:1;height:.4rem;background:rgba(232,235,227,.12)}
+.meter i{display:block;height:100%;background:var(--verd)}
+
+footer{padding:2rem clamp(1rem,4vw,3rem) 4rem;border-top:1px solid var(--line);
+  color:var(--dim);font-size:.82rem;max-width:46rem}
+
+@media(max-width:900px){.detail{grid-template-columns:1fr}.aside{position:static}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+
+<div class="bar">
+  <h1>Critical Discography</h1>
+  <a href="index.html">Catalogue</a>
+  <a href="entries.html">Report view</a>
+</div>
+
+<section class="hero">
+  <div class="hero-fall"></div>
+  <div class="hero-art" id="hero-art"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-in">
+    <p class="lbl" id="hero-cat"></p>
+    <h2 id="hero-title"></h2>
+    <p class="stand" id="hero-stand"></p>
+  </div>
+</section>
+
+<div class="rail-wrap">
+  <p class="lbl" style="margin-bottom:.7rem">Recordings assessed</p>
+  <div class="rail" id="rail" role="tablist"></div>
+</div>
+
+<div class="detail">
+  <div class="report" id="report"></div>
+  <div class="aside" id="aside"></div>
+</div>
+
+<footer>
+  <p>The gallery is the same catalogue as the report view, differently paced. Artwork and
+  credits carry you toward a judgement; they do not replace it. Every score here still shows
+  who it rests on, and every gap is still visible.</p>
+</footer>
+
+<script>
+const C = {"algorithm_version": "2.0", "built": "2026-07-26", "works": [{"composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Brandenburg Concertos", "cat": "BWV 1046–1051 · 1721", "standfirst": "Six concertos sent to Christian Ludwig of Brandenburg, and the work on which every argument about baroque performance style eventually lands.", "id": "bach_brandenburg", "recordings": [{"id": "bach_brandenburg_pinnock", "work": "bach_brandenburg", "status": "assessed", "editorial": null, "divergence": null, "soloists": "Trevor Pinnock, harpsichord", "director": "Trevor Pinnock", "ensemble": "The English Concert", "published": "Archiv, 1982", "engineering": {"venue": "Henry Wood Hall, London", "sessions": "1982", "producer": "Andreas Holschneider", "engineer": null, "status": "attributed"}, "interpretation": 2.853, "confidence": 0.745, "stars": 3, "reference": false, "sound_best": 2.6, "sound_best_edition": "pinnock_archiv_cd", "anchors": [{"where": "No. 5, first movement", "listen_for": "The harpsichord cadenza — Pinnock plays it as an argument rather than a display, and the ensemble waits on him rather than the reverse.", "timing": null}, {"where": "No. 6, second movement", "listen_for": "Two violas alone. Listen for how little vibrato is used to shape the line, and how the phrase still bends.", "timing": null}, {"where": "No. 3, outer movements", "listen_for": "Concertino and ripieno stay separable throughout; a good test of whether your copy has been compressed.", "timing": null}], "reception": [{"decade": "1980s", "note": "Received as the accessible face of period practice: the set that persuaded listeners who found Harnoncourt astringent."}, {"decade": "1990s–2000s", "note": "Settles into the standard library recommendation; the Penguin Guide keeps it in the front rank across editions."}, {"decade": "2010s–", "note": "Still cited at the head of surveys, now as much for consistency as for novelty. Pinnock's 2007 remake divides opinion — broader, some say safer."}], "editions": [{"id": "pinnock_archiv_lp", "label": "Archiv Produktion", "catno": "2742 003", "year": "1982", "format": "2×LP", "transfer": "Original analogue issue.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "pinnock_archiv_cd", "label": "Archiv Produktion", "catno": "410 500-2", "year": "1983", "format": "CD", "transfer": "First CD issue, Nos. 1–3. Early digital transfer of the 1982 tapes.", "barcode": "028941050021", "mbid": "b0255dd1-324d-4608-92e5-1638831c77b8", "verified": true, "sound": 2.6, "sound_confidence": 0.0, "verdict": "preferred transfer", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.6, "weight": 0.308, "conflict": false, "text": "Natural perspective, clear separation of concertino and ripieno, hall resonance well judged."}]}, {"id": "pinnock_archiv_2cd", "label": "Archiv Produktion", "catno": "—", "year": "1990s", "format": "2×CD", "transfer": "Concertos coupled with the Orchestral Suites; the widely circulated second-hand set.", "barcode": null, "mbid": "fc2fcc01-a4ea-45fb-84ce-d88fd1e8196b", "verified": true, "sound": 2.55, "sound_confidence": 0.0, "verdict": "preferred transfer", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.55, "weight": 0.308, "conflict": false, "text": "Same tapes, later mastering; slightly firmer bass, no obvious noise reduction."}]}, {"id": "pinnock_avie", "label": "Avie", "catno": "AV2119", "year": "2007", "format": "2×CD", "transfer": "Different recording, not a transfer: European Brandenburg Ensemble, broader tempos.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [{"source": "Gramophone / classical-music.com survey", "class": "specialist survey", "provenance": "attributed", "score": 2.95, "weight": 0.595, "conflict": false, "text": "Elegant simplicity, directness of expression and consistency of approach; a leading modern recommendation."}, {"source": "Independent critical consensus", "class": "independent critic", "provenance": "attributed", "score": 2.9, "weight": 0.63, "conflict": false, "text": "Frequently placed at the head of recent surveys as an HIP benchmark; crisp articulation throughout."}, {"source": "Penguin Guide, historical editions", "class": "specialist survey", "provenance": "attributed", "score": 2.8, "weight": 0.595, "conflict": false, "text": "Long-standing recommendation; refined and stylish."}, {"source": "Archiv / Avie promotional text", "class": "label promo", "provenance": "attributed", "score": 3.0, "weight": 0.175, "conflict": true, "text": "The definitive period-instrument Brandenburgs of our time."}, {"source": "Secondary discographic literature", "class": "secondary literature", "provenance": "attributed", "score": 2.7, "weight": 0.525, "conflict": false, "text": "A reference point for clarity and rhythmic vitality among HIP cycles."}], "algorithm_version": "2.0", "built": "2026-07-26"}, {"id": "bach_brandenburg_harnoncourt", "work": "bach_brandenburg", "status": "assessed", "editorial": null, "divergence": null, "soloists": "Alice Harnoncourt, Jürg Schaeftlein, Walter Holy and principals", "director": "Nikolaus Harnoncourt", "ensemble": "Concentus Musicus Wien", "published": "Teldec / Das Alte Werk, 1964", "engineering": {"venue": "Palais Schönburg, Vienna", "sessions": "April 1964", "producer": "Wolf Erichson (executive)", "engineer": null, "status": "cited"}, "interpretation": 2.814, "confidence": 0.747, "stars": 3, "reference": false, "sound_best": 2.1, "sound_best_edition": "harn_teldec_1992", "anchors": [{"where": "No. 1, first movement", "listen_for": "Hunting horns played as hunting horns — rough, forward, refusing to blend. The whole argument of the cycle is audible in thirty seconds.", "timing": null}, {"where": "No. 4, first movement", "listen_for": "Solo violin phrasing shaped by rhetoric rather than line; note where Harnoncourt lifts before a strong beat.", "timing": null}, {"where": "No. 2, slow movement", "listen_for": "Chamber scale. Four players, no conductor's blend, every entry exposed.", "timing": null}], "reception": [{"decade": "1960s", "note": "Received as provocation. Reviewers split between historical seriousness and complaints of thin, effortful playing."}, {"decade": "1970s–80s", "note": "Becomes the reference point of the early-music argument; imitated widely enough that its roughness stops sounding strange."}, {"decade": "1990s–", "note": "Reassessed as a founding document. Praise shifts from the playing itself to what the playing made possible."}], "editions": [{"id": "harn_teldec_lp", "label": "Telefunken Das Alte Werk", "catno": "SAWT 9459/60", "year": "1964", "format": "2×LP", "transfer": "Original analogue issue.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "harn_teldec_1992", "label": "Teldec", "catno": "9031-77611-2", "year": "1992", "format": "2×CD", "transfer": "1992 digital remastering of the 1964 tapes; the common second-hand CD.", "barcode": "090317761121", "mbid": "c11b8758-00d4-4868-bccf-2d830dc4ce0a", "verified": true, "sound": 2.1, "sound_confidence": 0.0, "verdict": "sound and serviceable", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.1, "weight": 0.308, "conflict": false, "text": "Dry 1964 analogue; remarkable clarity of inner parts, little hall, limited bass extension."}]}, {"id": "harn_warner_box", "label": "Warner Classics", "catno": "—", "year": "2010s", "format": "CD in box", "transfer": "Reissued inside Harnoncourt anthology boxes; transfer lineage not yet established.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [{"source": "Independent historical criticism", "class": "independent critic", "provenance": "attributed", "score": 2.85, "weight": 0.63, "conflict": false, "text": "Pioneering period-instrument cycle of enduring value; a foundational document."}, {"source": "Specialist early-music survey", "class": "specialist survey", "provenance": "attributed", "score": 2.75, "weight": 0.595, "conflict": false, "text": "Retains pioneering energy and chamber-scale intensity despite dry original sound."}, {"source": "Teldec / Warner reissue notes", "class": "label promo", "provenance": "attributed", "score": 2.95, "weight": 0.175, "conflict": true, "text": "Historic landmark recording that changed Bach performance practice."}, {"source": "Retrospective critical consensus", "class": "independent critic", "provenance": "attributed", "score": 2.8, "weight": 0.63, "conflict": false, "text": "Still regarded as a reference for its pioneering status and austere sonority."}], "algorithm_version": "2.0", "built": "2026-07-26"}]}, {"composer": "Dmitri Shostakovich", "dates": "1906–1975", "title": "Symphony No. 5", "cat": "Op. 47 · D minor · 1937", "standfirst": "Written after the Pravda attack and premiered to a half-hour ovation. Whether the finale is triumph or coercion is the argument, and every recording takes a side.", "id": "shostakovich/sym5", "recordings": [{"id": "shostakovich_sym5_nelsons", "work": "shostakovich/sym5", "status": "assessed", "editorial": null, "divergence": null, "soloists": "", "director": "Andris Nelsons", "ensemble": "Boston Symphony Orchestra", "published": "Deutsche Grammophon, 2016", "engineering": {"venue": "Symphony Hall, Boston", "sessions": "live, 2015", "producer": null, "engineer": null, "status": "unknown"}, "interpretation": 2.9, "confidence": 0.25, "stars": 3, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "First movement, opening canon", "listen_for": "The two-note descending figure the whole symphony is built from. How heavily it is attacked sets the terms for everything after.", "timing": null}, {"where": "Third movement, Largo", "listen_for": "Strings divided into eight parts, no brass at all. The question is whether the conductor lets it be slow enough to become uncomfortable.", "timing": null}, {"where": "Finale, the closing bars", "listen_for": "The repeated A in the strings under a hammered D major. Whether this reads as triumph or as coercion is the central interpretive argument of the piece, and every recording answers it.", "timing": null}], "reception": [{"decade": "1937", "note": "Premiered 21 November in Leningrad under Mravinsky; reported ovations of over half an hour. Received officially as rehabilitation after the 1936 Pravda attack."}, {"decade": "1940s–70s", "note": "Established in the West as a repertory symphony. Read largely at face value: a heroic affirmation, sometimes discussed as Soviet neoclassicism."}, {"decade": "1979–", "note": "Volkov's Testimony recasts the finale as forced rejoicing. Its authenticity is disputed; the reading is not. Performance practice divides along this line and has not reconverged."}, {"decade": "2010s–", "note": "The BSO/Nelsons cycle brings the work back to prominence on record, winning the 2017 Grammy for Best Orchestral Performance."}], "editions": [{"id": "sym5_dg_2016", "label": "Deutsche Grammophon", "catno": "479 5201", "year": "2016", "format": "2×CD", "transfer": "Original issue, live Symphony Hall recording. Grammy-winning album, coupled with Symphonies 8 and 9 and the Hamlet suite.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [{"source": "Grammy — Best Orchestral Performance, 59th Annual Grammy Awards", "class": "major award", "provenance": "cited", "score": 2.9, "weight": 0.9, "conflict": false, "text": "Awarded Best Orchestral Performance for the album containing Symphonies 5, 8 and 9."}], "algorithm_version": "2.0", "built": "2026-07-26"}, {"id": "shostakovich_sym5_mravinsky", "work": "shostakovich/sym5", "status": "awaiting sources", "editorial": null, "divergence": null, "soloists": "", "director": "Yevgeny Mravinsky", "ensemble": "Leningrad Philharmonic Orchestra", "published": "various, 1954–1978", "engineering": {"venue": "Moscow (1954); Tokyo (1973); Vienna (1978)", "sessions": "1954 studio; later live performances", "producer": null, "engineer": "D. Gaklin (1954)", "status": "attributed"}, "interpretation": null, "confidence": null, "stars": null, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "First movement, development", "listen_for": "Mravinsky premiered the work in 1937. The tempo relationships here are the closest thing on record to a first reading.", "timing": null}, {"where": "Finale", "listen_for": "The speed of the coda, which Mravinsky treats faster than most Western conductors — a documentary fact in the argument about what the ending means.", "timing": null}], "reception": [{"decade": "1937", "note": "Mravinsky conducted the premiere and remained associated with the work for four decades."}, {"decade": "1950s–70s", "note": "Successive Leningrad performances circulate on Soviet and Japanese issues; the discography is tangled and poorly documented."}, {"decade": "1990s–", "note": "Japanese labels, chiefly Altus, issue restored live performances; edition identification becomes the practical problem for buyers."}], "editions": [{"id": "sym5_altus_alt002", "label": "Altus", "catno": "ALT002", "year": "2002", "format": "CD", "transfer": "Japanese issue, 44:08. Cover art present in the Cover Art Archive.", "barcode": null, "mbid": "2ff96318-7c8b-47d5-9532-daf88fafd07e", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_altus_alt289", "label": "Altus", "catno": "ALT289", "year": "2014", "format": "CD", "transfer": "Vienna 1978 live, coupled with Schubert 8. Barcode verified.", "barcode": "4543638002894", "mbid": "e9d634b2-aa6b-4aab-8c95-0823cd8bcaf5", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_praga", "label": "Praga", "catno": "PR 7250 085", "year": "1995", "format": "CD", "transfer": "Coupled with Symphony No. 9 under Košler. Barcode verified.", "barcode": "794881605422", "mbid": "8113cf4a-dc95-49ec-8782-e38d6fbf33f8", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_tokyo_1973", "label": "Altus", "catno": "—", "year": "1973 recording", "format": "CD", "transfer": "Tokyo, 26 May 1973, live. Barcode verified; MusicBrainz release not yet matched.", "barcode": "4543638000029", "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [], "algorithm_version": "2.0", "built": "2026-07-26"}, {"id": "shostakovich_sym5_noseda", "work": "shostakovich/sym5", "status": "awaiting sources", "editorial": null, "divergence": null, "soloists": "", "director": "Gianandrea Noseda", "ensemble": "London Symphony Orchestra", "published": "LSO Live, 2020", "engineering": {"venue": "Barbican Hall, London", "sessions": "September 2016 and March 2019, live", "producer": "Nicholas Parker", "engineer": "Classic Sound Ltd", "status": "cited"}, "interpretation": null, "confidence": null, "stars": null, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "Third movement, Largo", "listen_for": "Barbican strings in eight parts, captured in DSD. A test of whether the hall's dry acoustic helps the transparency or thins the tone.", "timing": null}, {"where": "Finale, closing bars", "listen_for": "Where this account sits on the triumph-or-coercion question. Compare directly against Mravinsky's faster coda.", "timing": null}], "reception": [{"decade": "2020–", "note": "Issued as part of Noseda's nine-year LSO cycle, completed and boxed as LSO0907 in 2025. Reception of the cycle as a whole has been strong; individual-issue criticism of the Fifth is not yet cited here."}], "editions": [{"id": "sym5_lso0802", "label": "LSO Live", "catno": "LSO0802", "year": "2020", "format": "Hybrid SACD", "transfer": "Original issue, coupled with Symphony No. 1. DSD source, also released as 24-bit/96 kHz FLAC.", "barcode": "0822231180227", "mbid": null, "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_lso0907_box", "label": "LSO Live", "catno": "LSO0907", "year": "2025", "format": "10×SACD", "transfer": "Complete cycle box, Symphonies 1–15. Same recordings; transfer lineage not yet established.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [], "algorithm_version": "2.0", "built": "2026-07-26"}]}, {"composer": "Giacomo Puccini", "dates": "1858–1924", "title": "Tosca", "cat": "Teatro Costanzi, Rome · 14 January 1900", "standfirst": "Three acts of political violence at close range, and the opera where a recording either has dramatic nerve or has nothing.", "id": "puccini_tosca", "recordings": [{"id": "puccini_tosca_desabata", "work": "puccini_tosca", "status": "assessed", "editorial": null, "divergence": null, "soloists": "Maria Callas, Giuseppe Di Stefano, Tito Gobbi", "director": "Victor de Sabata", "ensemble": "Orchestra e Coro del Teatro alla Scala", "published": "EMI / Columbia, 1953", "engineering": {"venue": "Teatro alla Scala, Milan", "sessions": "10–21 August 1953", "producer": "Walter Legge", "engineer": null, "status": "cited"}, "interpretation": 2.955, "confidence": 0.749, "stars": 3, "reference": true, "sound_best": 2.5, "sound_best_edition": "tosca53_warner_2014", "anchors": [{"where": "Act II, 'Vissi d'arte'", "listen_for": "Vulnerability and defiance in the same phrase. Listen to where Callas stops singing legato and starts speaking.", "timing": null}, {"where": "Act II, Tosca and Scarpia", "listen_for": "Gobbi never raises the pressure by volume. The menace is in the timing of his answers.", "timing": null}, {"where": "Act I, Te Deum", "listen_for": "De Sabata builds it without letting the chorus swamp Scarpia's line — a balance most stereo remakes lose.", "timing": null}, {"where": "Act II, 'E avanti a lui tremava tutta Roma'", "listen_for": "Legge reportedly kept Callas on this one line for half an hour. Judge whether it was worth it.", "timing": null}], "reception": [{"decade": "1950s", "note": "An immediate commercial success and a critical event; praised for dramatic truth at a time when vocal beauty was the usual measure."}, {"decade": "1960s–70s", "note": "Karajan's stereo Tosca arrives and the discussion becomes sound versus performance — a framing the guide still inherits."}, {"decade": "1980s–2000s", "note": "Canonised. Appears at or near the top of nearly every opera survey; the mono limitation is treated as a price worth paying."}, {"decade": "2010s–", "note": "Remastering becomes the live question. Which transfer you own now matters more than whether to own it."}], "editions": [{"id": "tosca53_columbia_lp", "label": "Columbia", "catno": "33CX 1094-95", "year": "1953", "format": "2×LP", "transfer": "Original mono issue.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "tosca53_emi_groc", "label": "EMI", "catno": "—", "year": "1997", "format": "2×CD", "transfer": "Great Recordings of the Century series; earlier-generation digital transfer.", "barcode": null, "mbid": "90c4d760-736f-3dc3-8657-15dd4f0eb289", "verified": false, "sound": 1.95, "sound_confidence": 0.0, "verdict": "pass if you can", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 1.95, "weight": 0.308, "conflict": false, "text": "Mono. Legge's balance places the voices in a real theatre space; dynamic range limited by 1953 tape."}]}, {"id": "tosca53_warner_2014", "label": "Warner Classics", "catno": "—", "year": "2014", "format": "2×CD", "transfer": "Callas Remastered: new 24-bit transfers from original tapes.", "barcode": null, "mbid": null, "verified": false, "sound": 2.5, "sound_confidence": 0.0, "verdict": "preferred transfer", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.5, "weight": 0.308, "conflict": false, "text": "Fresh transfer from original tapes; more air at the top and less congestion in ensembles."}]}, {"id": "tosca53_pristine", "label": "Pristine Audio", "catno": "—", "year": "2010s", "format": "download / CD-R", "transfer": "XR reprocessing; a different philosophy of restoration, and divisive on principle.", "barcode": null, "mbid": null, "verified": false, "sound": 2.3, "sound_confidence": 0.0, "verdict": "sound and serviceable", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.3, "weight": 0.308, "conflict": false, "text": "Ambient reprocessing adds space that was never recorded. Rewards or falsifies, depending on your view."}]}], "sources": [{"source": "Gramophone / critical consensus", "class": "independent critic", "provenance": "attributed", "score": 3.0, "weight": 0.63, "conflict": false, "text": "Universally regarded as the dramatic benchmark; the Act II confrontation remains unmatched."}, {"source": "Multiple independent opera surveys", "class": "specialist survey", "provenance": "attributed", "score": 2.95, "weight": 0.595, "conflict": false, "text": "The greatest Tosca recording for many critics; a recording of permanent reference value."}, {"source": "Warner / EMI reissue notes", "class": "label promo", "provenance": "attributed", "score": 3.0, "weight": 0.175, "conflict": true, "text": "The legendary 1953 recording — one of the greatest opera recordings ever made."}, {"source": "Historical discographic literature", "class": "secondary literature", "provenance": "attributed", "score": 2.9, "weight": 0.525, "conflict": false, "text": "Landmark mono recording whose dramatic immediacy has never been surpassed."}, {"source": "Independent critics, various", "class": "independent critic", "provenance": "attributed", "score": 2.95, "weight": 0.63, "conflict": false, "text": "Benchmark status confirmed across decades of critical writing."}], "algorithm_version": "2.0", "built": "2026-07-26"}, {"id": "puccini_tosca_karajan", "work": "puccini_tosca", "status": "assessed", "editorial": null, "divergence": null, "soloists": "Leontyne Price, Giuseppe Di Stefano, Giuseppe Taddei", "director": "Herbert von Karajan", "ensemble": "Wiener Philharmoniker", "published": "Decca, 1962–63", "engineering": {"venue": "Sofiensaal, Vienna", "sessions": "24–30 September 1962", "producer": "John Culshaw", "engineer": "Gordon Parry", "status": "cited"}, "interpretation": 2.848, "confidence": 0.498, "stars": 3, "reference": false, "sound_best": 2.75, "sound_best_edition": "tosca62_decca_lp", "anchors": [{"where": "Act I, Te Deum", "listen_for": "Culshaw's staging: bells and chorus placed in depth, Scarpia forward. Stereo used dramatically, not decoratively.", "timing": null}, {"where": "Act II, 'Vissi d'arte'", "listen_for": "Price shapes it in long breaths where Callas breaks it into speech. The clearest illustration of two whole traditions.", "timing": null}, {"where": "Act III, prelude", "listen_for": "Vienna Philharmonic strings and Karajan's patience with orchestral sonority — the moment his critics and admirers both point at.", "timing": null}], "reception": [{"decade": "1960s", "note": "Welcomed as the modern Tosca the catalogue needed: stereo, and vocally distinguished enough to stand beside 1953."}, {"decade": "1970s–90s", "note": "Holds its place as the stereo recommendation; Taddei's Scarpia gains admirers over time."}, {"decade": "2000s–", "note": "Reassessed upward for engineering. Frequently cited as a demonstration of what Decca's team could do in 1962."}], "editions": [{"id": "tosca62_decca_lp", "label": "Decca", "catno": "5BB 123-4", "year": "1963", "format": "2×LP", "transfer": "Original stereo issue.", "barcode": null, "mbid": null, "verified": true, "sound": 2.75, "sound_confidence": 0.25, "verdict": "preferred transfer", "sources": [{"source": "Release documentation", "class": "engineering / mastering literature", "provenance": "cited", "score": 2.75, "weight": 0.88, "conflict": false, "text": "Culshaw and Parry at the Sofiensaal: wide stage, natural perspective, firm orchestral definition."}]}, {"id": "tosca62_decca_2006", "label": "Decca", "catno": "475 7522", "year": "2006", "format": "2×CD", "transfer": "96 kHz / 24-bit transfer; the standard modern CD.", "barcode": null, "mbid": null, "verified": false, "sound": 2.7, "sound_confidence": 0.0, "verdict": "preferred transfer", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.7, "weight": 0.308, "conflict": false, "text": "24-bit transfer preserves the stage; a small lift in level over earlier CD issues."}]}, {"id": "tosca62_pristine", "label": "Pristine Audio", "catno": "PACO223", "year": "2020s", "format": "download / CD-R", "transfer": "Stereo XR remastering by Andrew Rose.", "barcode": null, "mbid": null, "verified": true, "sound": 2.6, "sound_confidence": 0.0, "verdict": "preferred transfer", "sources": [{"source": "Draft technical note", "class": "engineering / mastering literature", "provenance": "draft", "score": 2.6, "weight": 0.308, "conflict": false, "text": "XR remastering; tighter bass, brighter top, and the usual argument about whether that is the tape or the engineer."}]}], "sources": [{"source": "Independent critical consensus", "class": "independent critic", "provenance": "attributed", "score": 2.9, "weight": 0.63, "conflict": false, "text": "Outstanding stereo alternative; Price sensuous and opulent, Karajan flexible and powerful."}, {"source": "Specialist opera survey", "class": "specialist survey", "provenance": "attributed", "score": 2.85, "weight": 0.595, "conflict": false, "text": "The finest stereo Tosca for many listeners; complementary to the de Sabata set."}, {"source": "Decca promotional material", "class": "label promo", "provenance": "attributed", "score": 2.95, "weight": 0.175, "conflict": true, "text": "One of the greatest stereo opera recordings."}, {"source": "Secondary literature", "class": "secondary literature", "provenance": "attributed", "score": 2.75, "weight": 0.525, "conflict": false, "text": "Strongly recommended stereo account; Te Deum and Act III prelude especially imposing."}], "algorithm_version": "2.0", "built": "2026-07-26"}]}], "barcode_index": {"028941050021": {"recording": "bach_brandenburg_pinnock", "edition": "pinnock_archiv_cd"}, "090317761121": {"recording": "bach_brandenburg_harnoncourt", "edition": "harn_teldec_1992"}, "4543638002894": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_altus_alt289"}, "794881605422": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_praga"}, "4543638000029": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_tokyo_1973"}, "0822231180227": {"recording": "shostakovich_sym5_noseda", "edition": "sym5_lso0802"}}};
+const FLAT = C.works.flatMap(w => w.recordings.map(r => ({...r, _w: w})));
+const CHIP = {"preferred transfer":"c-good","sound and serviceable":"c-mid",
+              "pass if you can":"c-bad","not yet assessed":"c-none"};
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cover = r => {
+  const e = (r.editions||[]).find(e=>e.mbid);
+  return e ? `https://coverartarchive.org/release/${e.mbid}/front-500` : null;
+};
+
+function art(r, big){
+  const url = cover(r);
+  const plate = `<div class="plate"><b>${esc(r.published.split(",")[0])}</b>
+    <span class="lbl">${esc(r.published.split(",").pop().trim())}</span></div>`;
+  return url ? `${plate}<img src="${url}" alt="" loading="lazy" onerror="this.remove()">` : plate;
+}
+
+/* rail */
+document.getElementById("rail").innerHTML = FLAT.map((r,i)=>`
+  <button class="card" role="tab" aria-selected="${i===0}" data-i="${i}">
+    <div class="art">${art(r)}</div>
+    <div class="who">${esc(r.director || r.soloists.split(",")[0])}</div>
+    <div class="meta"><span class="st">${r.stars?"★".repeat(r.stars):"—"}</span>
+      ${r.reference?'<span class="ref"> RÉF</span>':""} · ${esc(r.published.split(",").pop().trim())}</div>
+  </button>`).join("");
+
+function influence(r){
+  const tot = r.sources.reduce((a,s)=>a+s.weight,0)||1;
+  return r.sources.map(s=>{
+    const pct=(s.weight/tot)*100;
+    return `<div class="seg${s.conflict?" flag":""}" style="flex:0 0 ${pct}%"
+      title="${esc(s.source)} — ${esc(s.provenance)}, score ${s.score.toFixed(2)}, weight ${s.weight.toFixed(2)}">
+      ${pct>16?s.weight.toFixed(2):""}</div>`;
+  }).join("");
+}
+
+function render(i){
+  const r = FLAT[i], w = r._w;
+  document.querySelectorAll(".card").forEach((c,j)=>c.setAttribute("aria-selected", j===i));
+  const url = cover(r);
+  const heroArt = document.getElementById("hero-art");
+  heroArt.style.backgroundImage = url ? `url(${url})` : "";
+  heroArt.style.display = url ? "block" : "none";
+  document.getElementById("hero-title").textContent = w.title;
+  document.getElementById("hero-cat").textContent = `${w.composer} · ${w.cat}`;
+  document.getElementById("hero-stand").textContent = w.standfirst;
+
+  const eds = r.editions.map(e=>`<tr>
+    <td>${esc(e.label)} <span class="n">${esc(e.catno)}</span><br>
+      <span class="lbl">${esc(e.format)}</span></td>
+    <td class="n">${esc(e.year)}</td>
+    <td>${esc(e.transfer)}</td>
+    <td class="n">${e.sound!=null?e.sound.toFixed(2):"—"}</td>
+    <td><span class="chip ${CHIP[e.verdict]||"c-none"}">${esc(e.verdict)}</span></td></tr>`).join("");
+
+  document.getElementById("report").innerHTML = `
+    <p class="headline">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
+      ${esc(r.ensemble)} <span class="pub">(${esc(r.published)})</span></p>
+    <div class="verdict">
+      <span class="stars">${r.stars?"★".repeat(r.stars):""}</span>
+      ${r.reference?'<span class="badge">Référence</span>':""}
+      <span class="figs">${r.interpretation===null?"awaiting sources":`interpretation ${r.interpretation.toFixed(3)} · confidence ${r.confidence.toFixed(2)}`}</span>
+    </div>
+    <p class="lbl">What to listen for</p>
+    <ul class="anchors">${r.anchors.map(a=>`<li><span class="w">${esc(a.where)}</span>
+      <span class="f">${esc(a.listen_for)}</span></li>`).join("")}</ul>
+    ${r.interpretation===null?"":`<p class="lbl">Influence — who this verdict rests on</p>
+    <div class="influence">${influence(r)}</div>`}
+    <p class="lbl" style="margin-top:1.4rem">Editions and transfers</p>
+    <table><thead><tr><th>Edition</th><th>Year</th><th>What it did to the sound</th>
+      <th>Sound</th><th>Verdict</th></tr></thead><tbody>${eds}</tbody></table>`;
+
+  const e = r.engineering, miss = '<span>not established</span>';
+  const others = FLAT.filter((o,j)=>j!==i && (o.engineering.producer===e.producer ||
+                   o._w.id===w.id)).slice(0,4);
+  document.getElementById("aside").innerHTML = `
+    <div class="panel">
+      <h3>Made by</h3>
+      <div class="person"><span class="role">Venue</span><span class="name">${esc(e.venue)}</span></div>
+      <div class="person"><span class="role">Sessions</span><span class="name">${esc(e.sessions)}</span></div>
+      <div class="person"><span class="role">Producer</span><span class="name">${e.producer?esc(e.producer):miss}</span></div>
+      <div class="person"><span class="role">Engineer</span><span class="name">${e.engineer?esc(e.engineer):miss}</span></div>
+      <div class="person"><span class="role">Credits</span><span class="name">${esc(e.status)}</span></div>
+    </div>
+    <div class="panel">
+      <h3>Sound, best edition</h3>
+      <div class="meterline"><span class="meter"><i style="width:${r.sound_best!=null?(((r.sound_best-1.5)/1.5)*100).toFixed(0):0}%"></i></span>
+        ${r.sound_best!=null?r.sound_best.toFixed(2):"—"}</div>
+      <p class="lbl" style="margin-top:.7rem">${r.sound_best!=null?esc(r.sound_best_edition):"no edition assessed"}</p>
+    </div>
+    <div class="panel">
+      <h3>Follow the thread</h3>
+      <div class="also">${others.map(o=>`<a href="#" data-i="${FLAT.indexOf(o)}">${esc(o.director||o.soloists.split(",")[0])}</a>`).join("")}</div>
+    </div>`;
+  document.querySelectorAll(".also a").forEach(a=>a.addEventListener("click",ev=>{
+    ev.preventDefault(); render(+a.dataset.i); window.scrollTo({top:0,behavior:"smooth"});
+  }));
+}
+
+document.getElementById("rail").addEventListener("click", e=>{
+  const b = e.target.closest(".card"); if(b) render(+b.dataset.i);
+});
+render(0);
+</script>
+</body></html>
