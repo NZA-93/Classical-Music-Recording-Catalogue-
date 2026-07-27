@@ -1,0 +1,191 @@
+[
+  {
+    "target": "shostakovich_sym5_nelsons",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich_sym5_nelsons",
+      "work_id": "shostakovich/sym5",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 2017,
+      "album": "Shostakovich Under Stalin's Shadow: Symphonies Nos. 5, 8 and 9 — Suite from Hamlet",
+      "performers": "Boston Symphony Orchestra, Andris Nelsons",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://www.wgbh.org/news/local/2017-02-13/boston-symphony-orchestra-wins-second-consecutive-grammy-for-best-orchestral-performance",
+      "covers_works": [
+        "shostakovich/sym5",
+        "shostakovich/sym8",
+        "shostakovich/sym9"
+      ],
+      "characterisation": "Album award covering 3 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+      "note": "Album award covering three symphonies. See ADR-001: an album award is weaker evidence for any single work than a single-work award.",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2016",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:22:52.216685+00:00"
+  },
+  {
+    "target": "shostakovich/sym8/1",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym8/1",
+      "work_id": "shostakovich/sym8",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 2017,
+      "album": "Shostakovich Under Stalin's Shadow: Symphonies Nos. 5, 8 and 9 — Suite from Hamlet",
+      "performers": "Boston Symphony Orchestra, Andris Nelsons",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://www.wgbh.org/news/local/2017-02-13/boston-symphony-orchestra-wins-second-consecutive-grammy-for-best-orchestral-performance",
+      "covers_works": [
+        "shostakovich/sym5",
+        "shostakovich/sym8",
+        "shostakovich/sym9"
+      ],
+      "characterisation": "Album award covering 3 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+      "note": "Album award covering three symphonies. See ADR-001: an album award is weaker evidence for any single work than a single-work award.",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2016",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:22:52.216703+00:00"
+  },
+  {
+    "target": "shostakovich/sym10/2",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym10/2",
+      "work_id": "shostakovich/sym10",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 2016,
+      "album": "Shostakovich Under Stalin's Shadow: Symphony No. 10 / Lady Macbeth Passacaglia",
+      "performers": "Boston Symphony Orchestra, Andris Nelsons",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://www.bso.org/exhibits/andris-nelsons-and-the-bso-ten-years-and-counting",
+      "covers_works": [
+        "shostakovich/sym10"
+      ],
+      "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+      "note": null,
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2015",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:22:52.216731+00:00"
+  },
+  {
+    "target": "shostakovich/sym10/2",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym10/2",
+      "work_id": "shostakovich/sym10",
+      "award": "Gramophone Award — Orchestral",
+      "year": 2016,
+      "album": "Shostakovich: Symphony No. 10",
+      "performers": "Boston Symphony Orchestra, Andris Nelsons",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://symphony.org/boston-symphony-wins-gramophone-awards-for-shostakovich-and-abrahamsen-recordings/",
+      "covers_works": [
+        "shostakovich/sym10"
+      ],
+      "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+      "note": null,
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2015",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Gramophone Award — Orchestral",
+    "provenance": "cited",
+    "created": "2026-07-27T15:22:52.216757+00:00"
+  },
+  {
+    "target": "shostakovich/sym10/1",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym10/1",
+      "work_id": "shostakovich/sym10",
+      "award": "Gramophone Award — Orchestral",
+      "year": 2011,
+      "album": "Shostakovich: Symphony No. 10",
+      "performers": "Royal Liverpool Philharmonic Orchestra, Vasily Petrenko",
+      "label": "Naxos",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://www.naxos.com/News/Detail/?title=Gramophone_Awards_2011__Naxos_wins_Orchestral_Award_for_Shostakovich_10th_Symphony",
+      "covers_works": [
+        "shostakovich/sym10"
+      ],
+      "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+      "note": "Announced on the label's own site. The award itself is a public fact; the surrounding claims on that page are label promotion and must not be ingested as criticism.",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Vasily Petrenko",
+        "ensemble": "Royal Liverpool Philharmonic",
+        "label": "Naxos",
+        "year": "2010",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Gramophone Award — Orchestral",
+    "provenance": "cited",
+    "created": "2026-07-27T15:22:52.216782+00:00"
+  }
+]
