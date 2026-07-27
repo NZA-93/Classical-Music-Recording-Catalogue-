@@ -1,6 +1,6 @@
 {
   "algorithm_version": "2.0",
-  "built": "2026-07-26",
+  "built": "2026-07-27",
   "works": [
     {
       "composer": "Johann Sebastian Bach",
@@ -8,11 +8,11 @@
       "title": "Brandenburg Concertos",
       "cat": "BWV 1046–1051 · 1721",
       "standfirst": "Six concertos sent to Christian Ludwig of Brandenburg, and the work on which every argument about baroque performance style eventually lands.",
-      "id": "bach_brandenburg",
+      "id": "bach/brandenburg",
       "recordings": [
         {
           "id": "bach_brandenburg_pinnock",
-          "work": "bach_brandenburg",
+          "work": "bach/brandenburg",
           "status": "assessed",
           "editorial": null,
           "divergence": null,
@@ -194,11 +194,11 @@
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         },
         {
           "id": "bach_brandenburg_harnoncourt",
-          "work": "bach_brandenburg",
+          "work": "bach/brandenburg",
           "status": "assessed",
           "editorial": null,
           "divergence": null,
@@ -346,7 +346,7 @@
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         }
       ]
     },
@@ -445,7 +445,7 @@
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         },
         {
           "id": "shostakovich_sym5_mravinsky",
@@ -560,7 +560,7 @@
           ],
           "sources": [],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         },
         {
           "id": "shostakovich_sym5_noseda",
@@ -637,7 +637,7 @@
           ],
           "sources": [],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         }
       ]
     },
@@ -647,11 +647,11 @@
       "title": "Tosca",
       "cat": "Teatro Costanzi, Rome · 14 January 1900",
       "standfirst": "Three acts of political violence at close range, and the opera where a recording either has dramatic nerve or has nothing.",
-      "id": "puccini_tosca",
+      "id": "puccini/tosca",
       "recordings": [
         {
           "id": "puccini_tosca_desabata",
-          "work": "puccini_tosca",
+          "work": "puccini/tosca",
           "status": "assessed",
           "editorial": null,
           "divergence": null,
@@ -852,11 +852,11 @@
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         },
         {
           "id": "puccini_tosca_karajan",
-          "work": "puccini_tosca",
+          "work": "puccini/tosca",
           "status": "assessed",
           "editorial": null,
           "divergence": null,
@@ -1024,7 +1024,7 @@
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-07-27"
         }
       ]
     }

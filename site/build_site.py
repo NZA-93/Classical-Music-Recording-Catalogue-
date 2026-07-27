@@ -18,10 +18,9 @@ except FileNotFoundError:
 
 # map assessed recordings onto seed work ids
 done = defaultdict(list)
-ALIAS = {"bach_brandenburg": "bach/brandenburg", "puccini_tosca": "puccini/tosca"}
 for w in assessed.get("works", []):
     for r in w["recordings"]:
-        done[ALIAS.get(w["id"], w["id"])].append(r)
+        done[w["id"]].append(r)
 
 by_composer = defaultdict(list)
 for w in seed["works"]:
@@ -91,7 +90,7 @@ def row(w):
     d = done.get(w["id"], [])
     if d:
         chip = f'<span class="chip c-done">{len(d)} assessed</span>'
-        link = f' <a class="entry" href="entries.html#{escape(w["id"].replace("/", "_"))}">read</a>'
+        link = f' <a class="entry" href="entries.html#{escape(w["id"])}">read</a>'
     elif w["candidates"]:
         chip = f'<span class="chip c-cand">{len(w["candidates"])} queued</span>'
         link = ""

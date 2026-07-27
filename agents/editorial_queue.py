@@ -80,14 +80,10 @@ def main() -> int:
     args = ap.parse_args()
 
     cat, seed = load(CAT, {"works": []}), load(SEED, {"works": []})
-    # The hardcoded entries predate the data loader and use underscored ids.
-    # Until S2-01 completes, map them; otherwise assessed works look unassessed
-    # and the queue sends the author somewhere already covered.
-    ALIAS = {"bach_brandenburg": "bach/brandenburg", "puccini_tosca": "puccini/tosca"}
     recs_by_work: dict[str, list] = {}
     titles: dict[str, str] = {}
     for w in cat["works"]:
-        wid = ALIAS.get(w["id"], w["id"])
+        wid = w["id"]
         recs_by_work.setdefault(wid, []).extend(w["recordings"])
         titles[wid] = f'{w["composer"]} — {w["title"]}'
 

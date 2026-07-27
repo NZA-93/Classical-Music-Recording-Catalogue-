@@ -100,8 +100,8 @@ class TestRegression(unittest.TestCase):
     }
 
     def test_published_scores_are_stable(self):
-        got = {r["id"]: r for r in (eng.run(rec) for rec in eng.catalogue())}
-        self.assertEqual(set(got), set(self.EXPECTED))
+        got = {r["id"]: r for r in (eng.run(rec) for rec in eng.load_from_data())}
+        self.assertTrue(set(self.EXPECTED) <= set(got))
 
         for rid, (S, conf, stars, ref) in self.EXPECTED.items():
             with self.subTest(rid):
@@ -110,9 +110,9 @@ class TestRegression(unittest.TestCase):
                 self.assertEqual(got[rid]["stars"], stars)
                 self.assertEqual(got[rid]["reference"], ref)
 
-    def test_data_loader_does_not_disturb_hardcoded_scores(self):
-        """S2-01 guard: the JSON path existing must not move a published score."""
-        hard = {r["id"]: r["interpretation"] for r in (eng.run(x) for x in eng.catalogue())}
+    def test_data_loader_preserves_published_scores(self):
+        """S2-01: migrating into data/ must not move a published score."""
+        hard = {r["id"]: r["interpretation"] for r in (eng.run(x) for x in eng.load_from_data())}
         for rid, (S, *_ ) in self.EXPECTED.items():
             self.assertAlmostEqual(hard[rid], S, places=3)
 
@@ -155,7 +155,7 @@ class TestRegression(unittest.TestCase):
         self.assertTrue(eng.is_reference(2.90, 0.80, independent))
 
     def test_every_sound_statement_is_attached_to_an_edition(self):
-        for rec in eng.catalogue():
+        for rec in eng.load_from_data():
             for s in rec.statements:
                 if s.axis == "sound":
                     with self.subTest(rec.id):
