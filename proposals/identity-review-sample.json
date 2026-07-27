@@ -1,0 +1,28 @@
+[
+  {
+    "target": "bach/brandenburg/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "demo",
+      "mb_title": "Brandenburg Concertos",
+      "mb_first_release": "1982",
+      "match_score": 98
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-07-27T00:00:00+00:00"
+  },
+  {
+    "target": "bach/brandenburg/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "demo2",
+      "mb_title": "Bach Highlights: Brandenburg",
+      "mb_first_release": "1999",
+      "match_score": 55
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-07-27T00:00:00+00:00"
+  }
+]
