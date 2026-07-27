@@ -1,0 +1,95 @@
+[
+  {
+    "recording": "shostakovich/sym10/2",
+    "axis": "interpretation",
+    "edition": null,
+    "source": "Grammy — Best Orchestral Performance, 2016",
+    "locator": "https://www.bso.org/exhibits/andris-nelsons-and-the-bso-ten-years-and-counting",
+    "scale": "award",
+    "value": null,
+    "class": "major_award",
+    "provenance": "cited",
+    "method": "human",
+    "conflict": false,
+    "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+    "covers_works": [
+      "shostakovich/sym10"
+    ],
+    "note": null,
+    "_pending": {
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2015",
+        "year_ok": true,
+        "label_ok": true
+      },
+      "work_id": "shostakovich/sym10"
+    }
+  },
+  {
+    "recording": "shostakovich/sym10/2",
+    "axis": "interpretation",
+    "edition": null,
+    "source": "Gramophone Award — Orchestral, 2016",
+    "locator": "https://symphony.org/boston-symphony-wins-gramophone-awards-for-shostakovich-and-abrahamsen-recordings/",
+    "scale": "award",
+    "value": null,
+    "class": "major_award",
+    "provenance": "cited",
+    "method": "human",
+    "conflict": false,
+    "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+    "covers_works": [
+      "shostakovich/sym10"
+    ],
+    "note": null,
+    "_pending": {
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2015",
+        "year_ok": true,
+        "label_ok": true
+      },
+      "work_id": "shostakovich/sym10"
+    }
+  },
+  {
+    "recording": "shostakovich/sym10/1",
+    "axis": "interpretation",
+    "edition": null,
+    "source": "Gramophone Award — Orchestral, 2011",
+    "locator": "https://www.naxos.com/News/Detail/?title=Gramophone_Awards_2011__Naxos_wins_Orchestral_Award_for_Shostakovich_10th_Symphony",
+    "scale": "award",
+    "value": null,
+    "class": "major_award",
+    "provenance": "cited",
+    "method": "human",
+    "conflict": false,
+    "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+    "covers_works": [
+      "shostakovich/sym10"
+    ],
+    "note": "Announced on the label's own site. The award itself is a public fact; the surrounding claims on that page are label promotion and must not be ingested as criticism.",
+    "_pending": {
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Vasily Petrenko",
+        "ensemble": "Royal Liverpool Philharmonic",
+        "label": "Naxos",
+        "year": "2010",
+        "year_ok": true,
+        "label_ok": true
+      },
+      "work_id": "shostakovich/sym10"
+    }
+  }
+]

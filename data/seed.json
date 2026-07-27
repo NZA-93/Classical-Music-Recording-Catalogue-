@@ -683,6 +683,17 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "beethoven/missa_solemnis/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Monteverdi Choir, English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1989",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1321,7 +1332,19 @@
       "year": "1925",
       "note": "A conservatory graduation piece that went round the world within three years.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym1/0",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1334,7 +1357,30 @@
       "year": "1936",
       "note": "Withdrawn in rehearsal after the Pravda attack; unheard until 1961.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym4/0",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym4/1",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "CSO Resound",
+          "year": "2008",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1572,7 +1618,19 @@
       "year": "1957",
       "note": "Cinematic and continuous; read after 1956 as being about Hungary.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym11/0",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1629,6 +1687,6 @@
   ],
   "totals": {
     "works": 59,
-    "candidates": 72
+    "candidates": 77
   }
 }

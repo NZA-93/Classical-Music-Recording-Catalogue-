@@ -30,7 +30,7 @@ class TestPerformerMatch(unittest.TestCase):
 
 class TestAwardsRun(unittest.TestCase):
     def test_produces_nelsons_sym5_proposal(self):
-        props = aw.run(dry_run=True)
+        props = aw.run(dry_run=True, quiet=True)
         targets = [p["target"] for p in props]
         self.assertIn("shostakovich_sym5_nelsons", targets)
         nel = next(p for p in props if p["target"] == "shostakovich_sym5_nelsons")

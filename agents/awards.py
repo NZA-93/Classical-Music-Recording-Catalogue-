@@ -222,26 +222,28 @@ def proposal_for(award: dict, hit: dict) -> dict:
     }
 
 
-def run(dry_run: bool = False) -> list[dict]:
+def run(dry_run: bool = False, quiet: bool = False) -> list[dict]:
     awards = load_awards()
     recordings = catalogue_recordings()
     proposals = []
+    def say(*a, **k):
+        if not quiet:
+            print(*a, **k)
     for award in awards:
         if not award.get("locator"):
-            print(f"  skip (no locator): {award.get('award')} {award.get('year')}")
+            say(f"  skip (no locator): {award.get('award')} {award.get('year')}")
             continue
         hits = match_award(award, recordings)
         if not hits:
-            print(f"  no match: {award.get('award')} {award.get('year')} "
-                  f"({award.get('performers')})")
+            say(f"  no match: {award.get('award')} {award.get('year')} "
+                f"({award.get('performers')})")
             continue
-        # Group by work — one proposal per (award, recording).
         for hit in hits:
             prop = proposal_for(award, hit)
             proposals.append(prop)
             flag = " AMBIGUOUS" if hit["ambiguous_risk"] else ""
-            print(f"  match{flag}: {prop['target']} ← {award.get('award')} "
-                  f"{award.get('year')}")
+            say(f"  match{flag}: {prop['target']} ← {award.get('award')} "
+                f"{award.get('year')}")
     return proposals
 
 

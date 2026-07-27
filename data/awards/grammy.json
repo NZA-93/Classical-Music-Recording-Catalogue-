@@ -30,12 +30,15 @@
   {
     "award": "Grammy — Best Orchestral Performance",
     "year": 2018,
-    "ceremony": "61st Annual Grammy Awards",
+    "ceremony": "60th Annual Grammy Awards",
     "album": "Shostakovich Symphonies Nos. 4 and 11",
     "performers": "Boston Symphony Orchestra, Andris Nelsons",
     "label": "Deutsche Grammophon",
     "covers_works": ["shostakovich/sym4", "shostakovich/sym11"],
-    "locator": "https://www.bso.org/exhibits/andris-nelsons-and-the-bso-ten-years-and-counting",
-    "corroboration": []
+    "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+    "corroboration": [
+      "https://www.bso.org/exhibits/andris-nelsons-and-the-bso-ten-years-and-counting"
+    ],
+    "note": "Album award covering two symphonies. Wikipedia Best Orchestral Performance lists the win under 2019 ceremony year for the 2018 release cycle — confirm ceremony labelling before ingest. ADR-001 applies."
   }
 ]

@@ -1,0 +1,33 @@
+[
+  {
+    "recording": "beethoven/missa_solemnis/1",
+    "axis": "interpretation",
+    "edition": null,
+    "source": "Gramophone Award — Choral, 1991",
+    "locator": "https://www.gramophone.co.uk/reviews/beethoven-missa-solemnis-19",
+    "scale": "award",
+    "value": null,
+    "class": "major_award",
+    "provenance": "cited",
+    "method": "human",
+    "conflict": false,
+    "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+    "covers_works": [
+      "beethoven/missa_solemnis"
+    ],
+    "note": null,
+    "_pending": {
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "John Eliot Gardiner",
+        "ensemble": "Monteverdi Choir, English Baroque Soloists",
+        "label": "Archiv",
+        "year": "1989",
+        "year_ok": true,
+        "label_ok": true
+      },
+      "work_id": "beethoven/missa_solemnis"
+    }
+  }
+]

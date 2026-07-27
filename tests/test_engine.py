@@ -290,6 +290,8 @@ class TestSeedIntegrity(unittest.TestCase):
     def test_shape(self):
         self.assertEqual(len(self.seed["composers"]), 5)
         self.assertEqual(self.seed["totals"]["works"], 59)
+        self.assertEqual(self.seed["totals"]["candidates"],
+                         sum(len(w["candidates"]) for w in self.seed["works"]))
         for c in self.seed["composers"]:
             self.assertGreaterEqual(c["works"], 10)
             self.assertLessEqual(c["works"], 12)

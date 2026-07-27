@@ -36,7 +36,7 @@
     },
     "source": "Grammy — Best Orchestral Performance",
     "provenance": "cited",
-    "created": "2026-07-27T15:22:52.216685+00:00"
+    "created": "2026-07-27T15:26:11.293738+00:00"
   },
   {
     "target": "shostakovich/sym8/1",
@@ -75,7 +75,7 @@
     },
     "source": "Grammy — Best Orchestral Performance",
     "provenance": "cited",
-    "created": "2026-07-27T15:22:52.216703+00:00"
+    "created": "2026-07-27T15:26:11.293758+00:00"
   },
   {
     "target": "shostakovich/sym10/2",
@@ -112,7 +112,83 @@
     },
     "source": "Grammy — Best Orchestral Performance",
     "provenance": "cited",
-    "created": "2026-07-27T15:22:52.216731+00:00"
+    "created": "2026-07-27T15:26:11.293786+00:00"
+  },
+  {
+    "target": "shostakovich/sym4/0",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym4/0",
+      "work_id": "shostakovich/sym4",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 2018,
+      "album": "Shostakovich Symphonies Nos. 4 and 11",
+      "performers": "Boston Symphony Orchestra, Andris Nelsons",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+      "covers_works": [
+        "shostakovich/sym4",
+        "shostakovich/sym11"
+      ],
+      "characterisation": "Album award covering 2 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+      "note": "Album award covering two symphonies. Wikipedia Best Orchestral Performance lists the win under 2019 ceremony year for the 2018 release cycle — confirm ceremony labelling before ingest. ADR-001 applies.",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2018",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:26:11.293813+00:00"
+  },
+  {
+    "target": "shostakovich/sym11/0",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym11/0",
+      "work_id": "shostakovich/sym11",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 2018,
+      "album": "Shostakovich Symphonies Nos. 4 and 11",
+      "performers": "Boston Symphony Orchestra, Andris Nelsons",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+      "covers_works": [
+        "shostakovich/sym4",
+        "shostakovich/sym11"
+      ],
+      "characterisation": "Album award covering 2 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+      "note": "Album award covering two symphonies. Wikipedia Best Orchestral Performance lists the win under 2019 ceremony year for the 2018 release cycle — confirm ceremony labelling before ingest. ADR-001 applies.",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2018",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:26:11.293817+00:00"
   },
   {
     "target": "shostakovich/sym10/2",
@@ -149,7 +225,7 @@
     },
     "source": "Gramophone Award — Orchestral",
     "provenance": "cited",
-    "created": "2026-07-27T15:22:52.216757+00:00"
+    "created": "2026-07-27T15:26:11.293838+00:00"
   },
   {
     "target": "shostakovich/sym10/1",
@@ -186,6 +262,156 @@
     },
     "source": "Gramophone Award — Orchestral",
     "provenance": "cited",
-    "created": "2026-07-27T15:22:52.216782+00:00"
+    "created": "2026-07-27T15:26:11.293862+00:00"
+  },
+  {
+    "target": "shostakovich/sym1/0",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym1/0",
+      "work_id": "shostakovich/sym1",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 1991,
+      "album": "Shostakovich: Symphonies Nos. 1 & 7",
+      "performers": "Chicago Symphony Orchestra, Leonard Bernstein",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+      "covers_works": [
+        "shostakovich/sym1",
+        "shostakovich/sym7"
+      ],
+      "characterisation": "Album award covering 2 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+      "note": "Match only the Chicago/DG album. Seed also has a 1988 Bernstein Leningrad (NY?) candidate for Sym 7 — human must confirm identity before ingest (ambiguous_risk expected).",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": true,
+      "match": {
+        "director": "Leonard Bernstein",
+        "ensemble": "Chicago Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "1988",
+        "year_ok": false,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:26:11.293885+00:00"
+  },
+  {
+    "target": "shostakovich/sym7/0",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym7/0",
+      "work_id": "shostakovich/sym7",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 1991,
+      "album": "Shostakovich: Symphonies Nos. 1 & 7",
+      "performers": "Chicago Symphony Orchestra, Leonard Bernstein",
+      "label": "Deutsche Grammophon",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+      "covers_works": [
+        "shostakovich/sym1",
+        "shostakovich/sym7"
+      ],
+      "characterisation": "Album award covering 2 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+      "note": "Match only the Chicago/DG album. Seed also has a 1988 Bernstein Leningrad (NY?) candidate for Sym 7 — human must confirm identity before ingest (ambiguous_risk expected).",
+      "needs_human_confirmation": true,
+      "ambiguous_risk": true,
+      "match": {
+        "director": "Leonard Bernstein",
+        "ensemble": "Chicago Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "1988",
+        "year_ok": false,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:26:11.293888+00:00"
+  },
+  {
+    "target": "shostakovich/sym4/1",
+    "kind": "award",
+    "payload": {
+      "recording": "shostakovich/sym4/1",
+      "work_id": "shostakovich/sym4",
+      "award": "Grammy — Best Orchestral Performance",
+      "year": 2009,
+      "album": "Shostakovich: Symphony No. 4",
+      "performers": "Chicago Symphony Orchestra, Bernard Haitink",
+      "label": "CSO Resound",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+      "covers_works": [
+        "shostakovich/sym4"
+      ],
+      "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+      "note": null,
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Bernard Haitink",
+        "ensemble": "Chicago Symphony Orchestra",
+        "label": "CSO Resound",
+        "year": "2008",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Grammy — Best Orchestral Performance",
+    "provenance": "cited",
+    "created": "2026-07-27T15:26:11.293906+00:00"
+  },
+  {
+    "target": "beethoven/missa_solemnis/1",
+    "kind": "award",
+    "payload": {
+      "recording": "beethoven/missa_solemnis/1",
+      "work_id": "beethoven/missa_solemnis",
+      "award": "Gramophone Award — Choral",
+      "year": 1991,
+      "album": "Beethoven: Missa Solemnis",
+      "performers": "Monteverdi Choir, English Baroque Soloists, John Eliot Gardiner",
+      "label": "Archiv",
+      "scale": "award",
+      "provenance": "cited",
+      "class": "major_award",
+      "conflict": false,
+      "axis": "interpretation",
+      "locator": "https://www.gramophone.co.uk/reviews/beethoven-missa-solemnis-19",
+      "covers_works": [
+        "beethoven/missa_solemnis"
+      ],
+      "characterisation": "Award recorded as a public fact for this recording; see locator. Album coverage listed in covers_works (ADR-001).",
+      "note": null,
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "John Eliot Gardiner",
+        "ensemble": "Monteverdi Choir, English Baroque Soloists",
+        "label": "Archiv",
+        "year": "1989",
+        "year_ok": true,
+        "label_ok": true
+      }
+    },
+    "source": "Gramophone Award — Choral",
+    "provenance": "cited",
+    "created": "2026-07-27T15:26:11.293928+00:00"
   }
 ]

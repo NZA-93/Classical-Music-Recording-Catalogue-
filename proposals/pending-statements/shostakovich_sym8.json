@@ -1,0 +1,35 @@
+[
+  {
+    "recording": "shostakovich/sym8/1",
+    "axis": "interpretation",
+    "edition": null,
+    "source": "Grammy — Best Orchestral Performance, 2017",
+    "locator": "https://www.wgbh.org/news/local/2017-02-13/boston-symphony-orchestra-wins-second-consecutive-grammy-for-best-orchestral-performance",
+    "scale": "award",
+    "value": null,
+    "class": "major_award",
+    "provenance": "cited",
+    "method": "human",
+    "conflict": false,
+    "characterisation": "Album award covering 3 works; recorded once per matched recording as a shared benchmark signal (ADR-001).",
+    "covers_works": [
+      "shostakovich/sym5",
+      "shostakovich/sym8",
+      "shostakovich/sym9"
+    ],
+    "note": "Album award covering three symphonies. See ADR-001: an album award is weaker evidence for any single work than a single-work award.",
+    "_pending": {
+      "needs_human_confirmation": true,
+      "ambiguous_risk": false,
+      "match": {
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "label": "Deutsche Grammophon",
+        "year": "2016",
+        "year_ok": true,
+        "label_ok": true
+      },
+      "work_id": "shostakovich/sym8"
+    }
+  }
+]
