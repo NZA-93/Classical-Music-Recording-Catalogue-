@@ -15,6 +15,10 @@ try:
     assessed = json.loads(pathlib.Path("build/catalogue.json").read_text("utf-8"))
 except FileNotFoundError:
     assessed = {"works": []}
+try:
+    metrics = json.loads(pathlib.Path("build/metrics.json").read_text("utf-8"))
+except FileNotFoundError:
+    metrics = {}
 
 # map assessed recordings onto seed work ids
 done = defaultdict(list)
@@ -129,11 +133,13 @@ html = f"""<!DOCTYPE html>
 <style>{CSS}</style></head><body><div class="wrap">
 <header class="masthead"><h1>Critical Discography</h1>
 <nav><a href="#bach">Bach</a><a href="#beethoven">Beethoven</a><a href="#mozart">Mozart</a>
-<a href="#puccini">Puccini</a><a href="entries.html">Entries</a><a href="gallery.html">Gallery</a></nav></header>
+<a href="#puccini">Puccini</a><a href="#shostakovich">Shostakovich</a>
+<a href="entries.html">Entries</a><a href="gallery.html">Gallery</a>
+<a href="divergence.html">Divergence</a></nav></header>
 
 <div class="hero">
-  <h2>Forty-seven works,<br>and an honest ledger.</h2>
-  <p>Four composers seeded for round one. The works are settled; the assessments are not.
+  <h2>{n_works} works,<br>and an honest ledger.</h2>
+  <p>The works are settled; the assessments are not.
   Nothing here carries a score until a source with a locator supplies one, which is why
   most of this page reads as work still to do rather than work already done.</p>
   <div class="tally">
@@ -152,7 +158,10 @@ html = f"""<!DOCTYPE html>
   <p>Round one resolves identity for every candidate against MusicBrainz, then pulls editions,
   barcodes and cover art. Critical assessments follow only as citations arrive: a locator, a
   normalised score, and a characterisation written here rather than copied from a review.</p>
-  <p class="mono">SEED SCHEMA {escape(seed['schema'])} · {n_works} WORKS · NO SCORES SEEDED · NO AFFILIATE LINKS</p>
+  <p class="mono">SEED SCHEMA {escape(seed['schema'])} · {n_works} WORKS ·
+  CITATION RATIO {metrics.get('citation_ratio', 0):.0%} ·
+  SIGNED ENTRIES {metrics.get('signed_entries', 0)} ·
+  BARCODES {metrics.get('barcodes', 0)} · NO AFFILIATE LINKS</p>
 </footer>
 </div></body></html>"""
 

@@ -21,3 +21,5 @@ jobs:
         run: python3 agents/validate.py
       - name: Build site
         run: make site
+      - name: Metrics summary
+        run: python3 agents/metrics.py

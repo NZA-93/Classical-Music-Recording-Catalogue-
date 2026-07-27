@@ -1,4 +1,22 @@
 {
   "work_id": "shostakovich/sym5",
-  "entries": []
+  "entries": [],
+  "_stubs": [
+    {
+      "recording": "shostakovich_sym5_nelsons",
+      "author": {
+        "id": "",
+        "name": ""
+      },
+      "date": "",
+      "revision": 1,
+      "stars": null,
+      "reference": false,
+      "compared_with": [],
+      "text": "",
+      "quotes": [],
+      "_created": "2026-07-27",
+      "_note": "Fill author/date/text/stars then move into entries[]. ADR-002."
+    }
+  ]
 }

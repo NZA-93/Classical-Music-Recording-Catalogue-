@@ -1,0 +1,20 @@
+{
+  "works": 59,
+  "candidates": 77,
+  "recordings_assessed": 7,
+  "interpretation_statements": 19,
+  "cited_interpretation": 1,
+  "citation_ratio": 0.0526,
+  "sound_statements": 9,
+  "editions": 21,
+  "editions_per_recording": 3.0,
+  "barcodes": 6,
+  "barcode_coverage": 0.2857,
+  "editions_with_sound": 9,
+  "sound_coverage": 0.4286,
+  "signed_entries": 0,
+  "provenance_breakdown": {
+    "attributed": 18,
+    "cited": 1
+  }
+}
