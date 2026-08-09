@@ -678,7 +678,8 @@
       "uncertain": true,
       "review_flags": [
         "confidence 58 < 80",
-        "date off by 4 years (1955 vs 1959)"
+        "date off by 4 years (1955 vs 1959)",
+        "wrong work: MusicBrainz 'Concerto No. 1' does not match seed 'Violin Concerto'"
       ],
       "mb_url": "https://musicbrainz.org/release-group/49cf89ab-5aca-4e4b-849f-65dd786e336a",
       "query": "Violin Concerto AND artist:\"Charles Munch\"",
@@ -1053,7 +1054,8 @@
       "uncertain": true,
       "review_flags": [
         "confidence 26 < 80",
-        "date off by 12 years (1959 vs 1971)"
+        "date off by 12 years (1959 vs 1971)",
+        "wrong work: MusicBrainz 'Don Carlo' does not match seed 'Don Giovanni'"
       ],
       "mb_url": "https://musicbrainz.org/release-group/cd662363-659d-36f9-a6e6-f199be7c1b31",
       "query": "Don Giovanni AND artist:\"Carlo Maria Giulini\"",
@@ -1812,7 +1814,8 @@
       "needs_human_review": true,
       "uncertain": true,
       "review_flags": [
-        "date off by 24 years (1965 vs 1989)"
+        "date off by 24 years (1965 vs 1989)",
+        "wrong work: MusicBrainz 'The 5 Piano Concertos' does not match seed 'Symphony No. 5'"
       ],
       "mb_url": "https://musicbrainz.org/release-group/87a2210e-4579-334c-a3d8-d97a8014a55b",
       "query": "Symphony No. 5 AND artist:\"André Previn\"",
@@ -2007,7 +2010,8 @@
       "needs_human_review": true,
       "uncertain": true,
       "review_flags": [
-        "confidence 37 < 80"
+        "confidence 37 < 80",
+        "wrong work: MusicBrainz 'Piano Concertos' does not match seed 'Brandenburg Concertos'"
       ],
       "mb_url": "https://musicbrainz.org/release-group/a27ce34a-4598-46eb-ac49-09005407baf4",
       "query": "Brandenburg Concertos AND artist:\"Claudio Abbado\"",
@@ -3073,7 +3077,8 @@
       "needs_human_review": true,
       "uncertain": true,
       "review_flags": [
-        "date off by 4 years (1981 vs 1977)"
+        "date off by 4 years (1981 vs 1977)",
+        "wrong work: MusicBrainz '5 Klavierkonzerte' does not match seed 'Symphony No. 5'"
       ],
       "mb_url": "https://musicbrainz.org/release-group/2db46cb7-7946-4bdc-8c6c-6b4d3219a797",
       "query": "Symphony No. 5 AND artist:\"Bernard Haitink\"",
@@ -3380,7 +3385,8 @@
       "uncertain": true,
       "review_flags": [
         "confidence 29 < 80",
-        "date off by 20 years (1968 vs 1988)"
+        "date off by 20 years (1968 vs 1988)",
+        "wrong work: MusicBrainz 'Piano Concertos' does not match seed 'Brandenburg Concertos'"
       ],
       "mb_url": "https://musicbrainz.org/release-group/e577efe0-61fd-4627-9509-4e7bc7266aef",
       "query": "Brandenburg Concertos AND artist:\"Benjamin Britten\"",

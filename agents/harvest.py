@@ -44,7 +44,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.1"
+VERSION = "harvest/1.2"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -56,6 +56,29 @@ COMPILATION_RE = re.compile(
     r"\b(best of|collection|anthology|sampler|highlights)\b",
     re.IGNORECASE,
 )
+
+# Tokens that name a *genre/form*, not a specific work. Sharing only these
+# ("Concertos", "Symphony") must never count as an identity match — that is
+# how a Piano Concerto release-group lands on a Brandenburg candidate.
+WORK_STOPWORDS = {
+    "the", "a", "an", "and", "of", "for", "in", "on", "nos", "no", "nr", "n",
+    "op", "opp", "bwv", "hob", "woo", "kv", "k", "d", "wwv", "sz", "bb",
+}
+WORK_GENERIC = {
+    "concerto", "concertos", "konzert", "konzerte", "concerti", "concert",
+    "sonata", "sonatas", "sonate", "sonaten",
+    "symphony", "symphonies", "sinfonie", "sinfonien", "sinfonia",
+    "quartet", "quartets", "quartett", "quintet", "quintets",
+    "trio", "trios", "suite", "suites", "prelude", "preludes", "preludien",
+    "mass", "messe", "requiem", "opera", "operas",
+    "variation", "variations", "partita", "partitas",
+    "fugue", "fugues", "cantata", "cantatas",
+    "overture", "overtures", "ouverture",
+    "fantasy", "fantasia", "fantaisie", "impromptu", "impromptus",
+    "etude", "etudes", "étude", "études",
+    "nocturne", "nocturnes", "ballade", "ballades",
+    "complete", "works", "album", "selection", "volume", "vol",
+}
 
 STALE = {"identity": timedelta(days=365), "editions": timedelta(days=90),
          "cover": timedelta(days=90), "cover_miss": timedelta(days=14),
@@ -187,9 +210,169 @@ def normalise(scale: str, value) -> Optional[float]:
 
 # ------------------------------------------------------------------ adapters
 
+def _title_tokens(title: str) -> set[str]:
+    cleaned = re.sub(r"[^\w\s]", " ", (title or "").lower(), flags=re.UNICODE)
+    tokens = {w for w in cleaned.split() if w and w not in WORK_STOPWORDS}
+    # Split German compounds so Klavierkonzert → klavier + konzert.
+    extras: set[str] = set()
+    for t in list(tokens):
+        for stem in ("klavier", "violin", "cello", "viola", "flote", "flute",
+                     "oboe", "horn", "trumpet", "organ"):
+            if t.startswith(stem) and t != stem and len(t) > len(stem) + 3:
+                extras.add(stem)
+                rest = t[len(stem):]
+                if rest:
+                    extras.add(rest)
+    return tokens | extras
+
+
+def distinctive_work_tokens(title: str) -> set[str]:
+    """Name-bearing tokens (e.g. brandenburg), not bare form words (concertos)."""
+    return {w for w in _title_tokens(title) if w not in WORK_GENERIC and len(w) >= 4}
+
+
+def _token_overlap(seed_tok: str, mb_tok: str) -> bool:
+    """Prefix/containment so Brandenburg ≈ Brandenburgische / Brandenburgs."""
+    if seed_tok == mb_tok:
+        return True
+    if min(len(seed_tok), len(mb_tok)) < 4:
+        return False
+    return seed_tok in mb_tok or mb_tok in seed_tok
+
+
+# Cross-language form / instrument families. Sharing a family + work number
+# is enough; sharing only "concerto" across different works is not.
+FORM_FAMILIES = (
+    frozenset({"symphony", "symphonies", "symphonie", "sinfonie", "sinfonien",
+               "sinfonia"}),
+    frozenset({"concerto", "concertos", "konzert", "konzerte", "concerti",
+               "klavierkonzert", "violinkonzert", "concert"}),
+    frozenset({"sonata", "sonatas", "sonate", "sonaten"}),
+    frozenset({"quartet", "quartets", "quartett", "quartette"}),
+    frozenset({"quintet", "quintets", "quintett"}),
+    frozenset({"trio", "trios"}),
+    frozenset({"suite", "suites"}),
+    frozenset({"mass", "messe"}),
+    frozenset({"requiem"}),
+    frozenset({"prelude", "preludes", "preludien"}),
+    frozenset({"partita", "partitas"}),
+    frozenset({"cantata", "cantatas"}),
+    frozenset({"opera", "operas"}),
+)
+INSTRUMENT_FAMILIES = (
+    frozenset({"piano", "klavier", "pianoforte"}),
+    frozenset({"violin", "violino", "geige"}),
+    frozenset({"cello", "violoncello", "violoncelle"}),
+    frozenset({"clarinet", "klarinette"}),
+)
+
+
+def _family(tokens: set[str], families: tuple[frozenset, ...]) -> Optional[frozenset]:
+    for fam in families:
+        if tokens & fam:
+            return fam
+    return None
+
+
+def extract_work_numbers(title: str) -> set[str]:
+    """Symphony No. 5 / Symphonie Nr. 5 / nos. 5 & 9 → {'5'} / {'5','9'}."""
+    t = (title or "").lower()
+    nums = set(re.findall(r"\b(?:nos?|nr)\.?\s*(\d{1,3})\b", t))
+    # "Nos. 39, 40, 41" / "nos. 5 / 8 / 9"
+    for chunk in re.findall(r"\b(?:nos?|nr)\.?\s*([\d\s,/&and\-]+)", t):
+        nums |= set(re.findall(r"\d{1,3}", chunk))
+    nums |= set(re.findall(
+        r"\b(?:symphony|symphonies|symphonie|sinfonie|concerto|concertos|"
+        r"konzert|sonata|sonate|quartet|quartett|quintet|suite|suites|"
+        r"klavierkonzert|violinkonzert)\s+(?:nos?\.?\s*|nr\.?\s*)?(\d{1,3})\b",
+        t,
+    ))
+    return nums
+
+
+def work_title_compatible(seed_title: str, mb_title: str,
+                          catalogue: str = "") -> bool:
+    """True only when the MusicBrainz release-group is the same *work*.
+
+    Sharing a generic form word ("Concertos") alone is never enough — that is
+    how a Piano Concerto group was proposed under Brandenburg. Multilingual
+    equivalents (Symphony/Symphonie, Mass/Messe) and work numbers are allowed.
+    Ensemble names such as "The English Concert" are personnel and are not
+    consulted here.
+    """
+    if not (seed_title or "").strip() or not (mb_title or "").strip():
+        return False
+    seed_tokens = _title_tokens(seed_title)
+    mb_tokens = _title_tokens(mb_title)
+
+    # 1) Distinctive work name: Brandenburg, Tosca, Giovanni, Emperor…
+    dist = distinctive_work_tokens(seed_title)
+    if dist and any(_token_overlap(d, m) for d in dist for m in mb_tokens):
+        return True
+
+    seed_form = _family(seed_tokens, FORM_FAMILIES)
+    mb_form = _family(mb_tokens, FORM_FAMILIES)
+    seed_nums = extract_work_numbers(seed_title)
+    mb_nums = set(re.findall(r"\d{1,3}", mb_title or ""))
+
+    seed_inst = _family(seed_tokens, INSTRUMENT_FAMILIES)
+    mb_inst = _family(mb_tokens, INSTRUMENT_FAMILIES)
+
+    # 2) Numbered form works: same form family + shared work number.
+    #    "Symphony No. 5" ↔ "Symphonie Nr. 5" / "Symphonies nos. 5 & 9"
+    #    but not ↔ "The 5 Piano Concertos" (form family differs).
+    if seed_form and mb_form and seed_form is mb_form and seed_nums:
+        if seed_nums & mb_nums:
+            if seed_inst and mb_inst and seed_inst is not mb_inst:
+                return False
+            if seed_inst and not mb_inst:
+                # Seed says Violin Concerto No. 1; MB says only Concerto No. 1.
+                return False
+            return True
+
+    # 3) Mass in B minor ↔ Messe in h-Moll (German note names).
+    if seed_form and mb_form and seed_form is mb_form:
+        if ({"b", "minor"} <= seed_tokens and {"h", "moll"} <= mb_tokens) or (
+            {"h", "moll"} <= seed_tokens and {"b", "minor"} <= mb_tokens
+        ):
+            return True
+
+    # 4) Instrument + form without number: Cello Suites ↔ Suites pour violoncelle.
+    if seed_form and mb_form and seed_form is mb_form and seed_inst and mb_inst:
+        if seed_inst is mb_inst and not seed_nums:
+            return True
+
+    # 5) Unnumbered unique forms with no leftover distinctive seed token
+    #    (Requiem ↔ Requiem in D minor). Bare "Concerto" never reaches here
+    #    when the seed also names an instrument (that token is distinctive).
+    if seed_form and mb_form and seed_form is mb_form and not seed_nums and not dist:
+        return True
+
+    # 6) Numbered seed with nickname distinctive (Emperor) — allow if number +
+    #    form + instrument agree even when the nickname is absent on MB.
+    if (
+        dist and seed_form and mb_form and seed_form is mb_form
+        and seed_nums and (seed_nums & mb_nums)
+    ):
+        if seed_inst and mb_inst and seed_inst is mb_inst:
+            return True
+        if not seed_inst and not mb_inst:
+            return True
+
+    # 7) Catalogue number fragment (e.g. 1046 from BWV 1046–1051) in MB title.
+    for frag in re.findall(r"\d{3,4}", catalogue or ""):
+        if frag in (mb_title or ""):
+            return True
+    return False
+
+
 def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[str],
-                          confidence: Optional[int]) -> list[str]:
-    """Flags that block auto-accept. Humans still review clean matches too."""
+                          confidence: Optional[int],
+                          work: Optional[dict] = None) -> list[str]:
+    """Flags that block auto-accept. Humans still review clean matches too.
+
+    A wrong-work flag is fatal for apply.py — it cannot be force-overridden.
+    """
     flags: list[str] = []
     if confidence is None:
         flags.append("missing MusicBrainz confidence score")
@@ -203,6 +386,14 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
             flags.append(f"date off by {delta} years ({want} vs {got})")
     if mb_title and COMPILATION_RE.search(mb_title):
         flags.append(f"compilation-like title: {mb_title!r}")
+    if work and mb_title:
+        seed_title = work.get("title") or ""
+        catalogue = work.get("catalogue") or ""
+        if not work_title_compatible(seed_title, mb_title, catalogue):
+            flags.append(
+                f"wrong work: MusicBrainz {mb_title!r} does not match seed "
+                f"{seed_title!r}"
+            )
     return flags
 
 
@@ -210,7 +401,8 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
     """Resolve a candidate to a MusicBrainz release-group. CC0 data.
 
     Emits confidence and review flags. Matches below IDENTITY_MIN_CONFIDENCE
-    are never auto_accept_eligible — a human must decide.
+    are never auto_accept_eligible — a human must decide. Wrong-work titles
+    (Piano Concertos under a Brandenburg candidate) are never eligible.
     """
     if rec.get("mbid"):
         return []
@@ -229,7 +421,12 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
     def rank(g):
         d = (g.get("first-release-date") or "")[:4]
         near = abs(int(d) - int(want)) if d.isdigit() and want.isdigit() else 999
-        return (near, -g.get("score", 0))
+        title = g.get("title") or ""
+        # Prefer release-groups that actually name the seeded work.
+        wrong = 0 if work_title_compatible(
+            work.get("title") or "", title, work.get("catalogue") or ""
+        ) else 1
+        return (wrong, near, -g.get("score", 0))
 
     ranked = sorted(groups, key=rank)
     best = ranked[0]
@@ -238,7 +435,7 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
         confidence = int(confidence)
     mb_title = best.get("title") or ""
     mb_first = best.get("first-release-date")
-    flags = identity_review_flags(rec, mb_title, mb_first, confidence)
+    flags = identity_review_flags(rec, mb_title, mb_first, confidence, work=work)
     eligible = confidence is not None and confidence >= IDENTITY_MIN_CONFIDENCE and not flags
 
     alternatives = []
@@ -581,6 +778,10 @@ def write_pr_body(path: pathlib.Path, *, stamp: str, version: str, contact: str,
         "- [ ] Identity matches are the right recording, not a compilation / sampler",
         f"- [ ] No identity with confidence < {IDENTITY_MIN_CONFIDENCE} is treated "
         "as auto-accept",
+        "- [ ] Rows flagged `wrong work:` are rejected — never apply "
+        "(Piano Concertos must not land on Brandenburg, etc.)",
+        "- [ ] Ensemble names (e.g. The English Concert) are personnel, not "
+        "work titles",
         "- [ ] Uncertain rows reviewed against MusicBrainz (`mb_url`) before merge",
         "- [ ] Cover payloads are CAA / MusicBrainz hotlinks only (no binaries, "
         "no Discogs)",
