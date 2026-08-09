@@ -242,7 +242,7 @@ function render(i){
     :`<span class="stars">${st}</span><span class="v">${r.interpretation.toFixed(3)}</span>`;
   const stand = r.reference
     ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-    :`<span class="v muted">${un?"—":"no"}</span><span class="sub">référence</span>`;
+    :`<span class="v muted">—</span><span class="sub">${un?"awaiting sources":"not a référence"}</span>`;
 
   document.getElementById("report").innerHTML = `
     <p class="headline">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
