@@ -14,6 +14,11 @@ site: score      ## render docs/ (the published site). No network.
 	python3 site/render.py
 	python3 site/build_site.py
 	python3 site/build_gallery.py
+	# Legacy GitHub Pages still serves repo root (/); keep mirrors in sync
+	# until the Actions publish workflow (#1) is live and Pages uses docs/.
+	cp docs/entries.html entries.html
+	cp docs/index.html index.html
+	cp docs/gallery.html gallery.html
 
 # CONTACT / HARVEST_CONTACT: publishable address for the MusicBrainz User-Agent.
 # Placeholder for local/agent runs: harvest@example.invalid
