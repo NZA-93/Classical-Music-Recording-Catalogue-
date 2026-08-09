@@ -320,8 +320,8 @@ class TestSeedIntegrity(unittest.TestCase):
         self.seed = json.loads((ROOT / "data/seed.json").read_text("utf-8"))
 
     def test_shape(self):
-        self.assertEqual(len(self.seed["composers"]), 5)
-        self.assertEqual(self.seed["totals"]["works"], 59)
+        self.assertEqual(len(self.seed["composers"]), 10)
+        self.assertEqual(self.seed["totals"]["works"], 119)
         for c in self.seed["composers"]:
             self.assertGreaterEqual(c["works"], 10)
             self.assertLessEqual(c["works"], 12)

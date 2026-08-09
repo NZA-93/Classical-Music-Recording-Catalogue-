@@ -222,6 +222,252 @@ CANDIDATES = {
     "puccini/fanciulla": [
         ("Renata Tebaldi, Mario Del Monaco", "Franco Capuana", "Accademia di Santa Cecilia", "Decca", "1958"),
     ],
+    # Brahms
+    "brahms/sym1": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1963"),
+        ("", "Otto Klemperer", "Philharmonia", "EMI", "1957"),
+        ("", "Carlo Maria Giulini", "Los Angeles Philharmonic", "Deutsche Grammophon", "1981"),
+    ],
+    "brahms/sym4": [
+        ("", "Carlos Kleiber", "Wiener Philharmoniker", "Deutsche Grammophon", "1980"),
+        ("", "Otto Klemperer", "Philharmonia", "EMI", "1957"),
+    ],
+    "brahms/pc1": [
+        ("Emil Gilels", "Eugen Jochum", "Berliner Philharmoniker", "Deutsche Grammophon", "1972"),
+        ("Clifford Curzon", "George Szell", "London Symphony Orchestra", "Decca", "1962"),
+    ],
+    "brahms/pc2": [
+        ("Emil Gilels", "Eugen Jochum", "Berliner Philharmoniker", "Deutsche Grammophon", "1972"),
+        ("Sviatoslav Richter", "Erich Leinsdorf", "Chicago Symphony Orchestra", "RCA", "1960"),
+    ],
+    "brahms/violin_concerto": [
+        ("David Oistrakh", "Otto Klemperer", "Orchestre National de la Radiodiffusion Française", "EMI", "1960"),
+        ("Jascha Heifetz", "Fritz Reiner", "Chicago Symphony Orchestra", "RCA", "1955"),
+    ],
+    "brahms/german_requiem": [
+        ("", "Otto Klemperer", "Philharmonia", "EMI", "1961"),
+        ("", "John Eliot Gardiner", "Orchestre Révolutionnaire et Romantique", "Philips", "1990"),
+    ],
+    "brahms/clarinet_quintet": [
+        ("Reginald Kell; Busch Quartet", "", "", "EMI", "1937"),
+        ("Karl Leister; Amadeus Quartet", "", "", "Deutsche Grammophon", "1967"),
+    ],
+    "brahms/piano_quintet": [
+        ("Artur Rubinstein; Guarneri Quartet", "", "", "RCA", "1967"),
+        ("Sviatoslav Richter; Borodin Quartet", "", "", "EMI", "1983"),
+    ],
+    "brahms/haydn_variations": [
+        ("", "Arturo Toscanini", "NBC Symphony Orchestra", "RCA", "1952"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1970s"),
+    ],
+    "brahms/liebeslieder": [
+        ("Mathis, Fassbaender, Schreier, Fischer-Dieskau; Karl Engel, Wolfgang Sawallisch, piano", "", "", "Deutsche Grammophon", "1974"),
+    ],
+    "brahms/academic_festival": [
+        ("", "George Szell", "Cleveland Orchestra", "CBS", "1960s"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1970s"),
+    ],
+    "brahms/tragic_overture": [
+        ("", "Carlos Kleiber", "Wiener Philharmoniker", "Deutsche Grammophon", "1980"),
+    ],
+    # Haydn
+    "haydn/sym104": [
+        ("", "Colin Davis", "Concertgebouw Orchestra", "Philips", "1975"),
+        ("", "Nikolaus Harnoncourt", "Concentus Musicus Wien", "Teldec", "1990s"),
+    ],
+    "haydn/sym94": [
+        ("", "Thomas Beecham", "Royal Philharmonic", "EMI", "1950s"),
+        ("", "Christopher Hogwood", "Academy of Ancient Music", "L'Oiseau-Lyre", "1980s"),
+    ],
+    "haydn/creation": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1969"),
+        ("", "John Eliot Gardiner", "English Baroque Soloists", "Archiv", "1996"),
+    ],
+    "haydn/op76": [
+        ("Quatuor Mosaïques", "", "", "Astree", "1990s"),
+        ("Amadeus Quartet", "", "", "Deutsche Grammophon", "1960s"),
+    ],
+    "haydn/trumpet_concerto": [
+        ("Maurice André", "Riccardo Muti", "Philharmonia", "EMI", "1980s"),
+        ("Wynton Marsalis", "Raymond Leppard", "National Philharmonic Orchestra", "CBS", "1982"),
+    ],
+    "haydn/cello_concerto1": [
+        ("Jacqueline du Pré", "Daniel Barenboim", "English Chamber Orchestra", "EMI", "1967"),
+        ("Anner Bylsma", "Frans Brüggen", "Orchestra of the 18th Century", "Philips", "1980s"),
+    ],
+    "haydn/seasons": [
+        ("", "Karl Böhm", "Wiener Philharmoniker", "Deutsche Grammophon", "1967"),
+        ("", "John Eliot Gardiner", "English Baroque Soloists", "Archiv", "1992"),
+    ],
+    "haydn/nelson_mass": [
+        ("", "David Willcocks", "King's College Choir, Cambridge", "EMI", "1962"),
+        ("", "Trevor Pinnock", "The English Concert", "Archiv", "1980s"),
+    ],
+    "haydn/piano_sonatas": [
+        ("Alfred Brendel", "", "", "Philips", "1970s–80s"),
+        ("András Schiff", "", "", "Teldec", "1990s"),
+    ],
+    "haydn/sym44": [
+        ("", "Antal Doráti", "Philharmonia Hungarica", "Decca", "1970s"),
+        ("", "Nikolaus Harnoncourt", "Concentus Musicus Wien", "Teldec", "1980s"),
+    ],
+    "haydn/sym45": [
+        ("", "Antal Doráti", "Philharmonia Hungarica", "Decca", "1970s"),
+        ("", "Christopher Hogwood", "Academy of Ancient Music", "L'Oiseau-Lyre", "1980s"),
+    ],
+    "haydn/seven_last_words": [
+        ("", "Juilliard Quartet", "", "Sony", "1980s"),
+        ("", "Henschel Quartet", "", "Hänssler", "2000s"),
+    ],
+    # Schubert
+    "schubert/sym8": [
+        ("", "Carlos Kleiber", "Wiener Philharmoniker", "Deutsche Grammophon", "1978"),
+        ("", "Günter Wand", "Berliner Philharmoniker", "RCA", "1990s"),
+    ],
+    "schubert/sym9": [
+        ("", "Josef Krips", "London Symphony Orchestra", "Decca", "1958"),
+        ("", "Carlo Maria Giulini", "Chicago Symphony Orchestra", "Deutsche Grammophon", "1976"),
+    ],
+    "schubert/winterreise": [
+        ("Dietrich Fischer-Dieskau; Gerald Moore, piano", "", "", "EMI", "1962"),
+        ("Peter Pears; Benjamin Britten, piano", "", "", "Decca", "1965"),
+    ],
+    "schubert/schone_mullerin": [
+        ("Dietrich Fischer-Dieskau; Gerald Moore, piano", "", "", "EMI", "1961"),
+        ("Fritz Wunderlich; Hubert Giesen, piano", "", "", "Deutsche Grammophon", "1960s"),
+    ],
+    "schubert/string_quintet": [
+        ("Amadeus Quartet; William Pleeth, cello", "", "", "Deutsche Grammophon", "1965"),
+        ("Alban Berg Quartet; Heinrich Schiff, cello", "", "", "EMI", "1982"),
+    ],
+    "schubert/death_maiden": [
+        ("Amadeus Quartet", "", "", "Deutsche Grammophon", "1960s"),
+        ("Quartetto Italiano", "", "", "Philips", "1965"),
+    ],
+    "schubert/sonata_d960": [
+        ("Arturo Benedetti Michelangeli", "", "", "Deutsche Grammophon", "1981"),
+        ("Alfred Brendel", "", "", "Philips", "1970s"),
+        ("Maurizio Pollini", "", "", "Deutsche Grammophon", "1987"),
+    ],
+    "schubert/trout": [
+        ("Clifford Curzon; members of the Vienna Octet", "", "", "Decca", "1957"),
+        ("Emil Gilels; Amadeus Quartet", "", "", "Deutsche Grammophon", "1970s"),
+    ],
+    "schubert/mass_e_flat": [
+        ("", "Wolfgang Sawallisch", "Bavarian Radio Symphony Orchestra", "EMI", "1970s"),
+        ("", "John Eliot Gardiner", "English Baroque Soloists", "Philips", "1990s"),
+    ],
+    "schubert/impromptus": [
+        ("Alfred Brendel", "", "", "Philips", "1970s"),
+        ("Murray Perahia", "", "", "Sony", "1980s"),
+    ],
+    "schubert/schwanengesang": [
+        ("Dietrich Fischer-Dieskau; Gerald Moore, piano", "", "", "EMI", "1962"),
+        ("Hans Hotter; Gerald Moore, piano", "", "", "EMI", "1954"),
+    ],
+    "schubert/rosamunde": [
+        ("", "Willi Boskovsky", "Wiener Philharmoniker", "Decca", "1960s"),
+        ("", "Claudio Abbado", "Chamber Orchestra of Europe", "Deutsche Grammophon", "1980s"),
+    ],
+    # Handel
+    "handel/messiah": [
+        ("", "Colin Davis", "London Symphony Orchestra", "Philips", "1966"),
+        ("", "Charles Mackerras", "English Chamber Orchestra", "EMI", "1967"),
+        ("", "John Eliot Gardiner", "English Baroque Soloists", "Philips", "1982"),
+    ],
+    "handel/water_music": [
+        ("", "Trevor Pinnock", "The English Concert", "Archiv", "1983"),
+        ("", "Neville Marriner", "Academy of St Martin in the Fields", "Decca", "1970s"),
+    ],
+    "handel/fireworks": [
+        ("", "Trevor Pinnock", "The English Concert", "Archiv", "1984"),
+        ("", "Charles Mackerras", "Pro Arte Orchestra", "Pye", "1959"),
+    ],
+    "handel/giulio_cesare": [
+        ("Janet Baker", "Charles Mackerras", "English National Opera", "EMI", "1984"),
+        ("", "René Jacobs", "Concerto Köln", "Harmonia Mundi", "1991"),
+    ],
+    "handel/alcina": [
+        ("Joan Sutherland", "Richard Bonynge", "London Symphony Orchestra", "Decca", "1962"),
+        ("", "Alan Curtis", "Il Complesso Barocco", "Deutsche Harmonia Mundi", "2000s"),
+    ],
+    "handel/op6": [
+        ("", "Trevor Pinnock", "The English Concert", "Archiv", "1982"),
+        ("", "Christopher Hogwood", "Academy of Ancient Music", "L'Oiseau-Lyre", "1980s"),
+    ],
+    "handel/organ_concertos": [
+        ("Simon Preston", "Trevor Pinnock", "The English Concert", "Archiv", "1980s"),
+        ("Peter Hurford", "Christopher Hogwood", "Academy of Ancient Music", "Decca", "1980s"),
+    ],
+    "handel/israel_in_egypt": [
+        ("", "John Eliot Gardiner", "Monteverdi Choir", "Philips", "1980"),
+        ("", "Andrew Parrott", "Taverner Choir and Players", "EMI", "1990"),
+    ],
+    "handel/solomon": [
+        ("", "John Eliot Gardiner", "English Baroque Soloists", "Philips", "1984"),
+        ("", "Daniel Barenboim", "English Chamber Orchestra", "Deutsche Grammophon", "1970s"),
+    ],
+    "handel/agrippina": [
+        ("", "John Eliot Gardiner", "English Baroque Soloists", "Philips", "1990s"),
+        ("", "René Jacobs", "Akademie für Alte Musik Berlin", "Harmonia Mundi", "2000s"),
+    ],
+    "handel/rodelinda": [
+        ("Joan Sutherland", "Richard Bonynge", "Welsh National Opera", "Decca", "1985"),
+        ("", "Alan Curtis", "Il Complesso Barocco", "Deutsche Harmonia Mundi", "2000s"),
+    ],
+    "handel/dixit_dominus": [
+        ("", "John Eliot Gardiner", "Monteverdi Choir", "Archiv", "1978"),
+        ("", "Marc Minkowski", "Les Musiciens du Louvre", "Archiv", "1990s"),
+    ],
+    # Chopin
+    "chopin/ballades": [
+        ("Arthur Rubinstein", "", "", "RCA", "1959–61"),
+        ("Krystian Zimerman", "", "", "Deutsche Grammophon", "1987"),
+    ],
+    "chopin/etudes": [
+        ("Maurizio Pollini", "", "", "Deutsche Grammophon", "1972"),
+        ("Murray Perahia", "", "", "Sony", "2002"),
+    ],
+    "chopin/preludes": [
+        ("Martha Argerich", "", "", "Deutsche Grammophon", "1977"),
+        ("Alfred Cortot", "", "", "EMI", "1933–34"),
+    ],
+    "chopin/sonata2": [
+        ("Arthur Rubinstein", "", "", "RCA", "1961"),
+        ("Maurizio Pollini", "", "", "Deutsche Grammophon", "1984"),
+    ],
+    "chopin/sonata3": [
+        ("Martha Argerich", "", "", "Deutsche Grammophon", "1960s"),
+        ("Arthur Rubinstein", "", "", "RCA", "1961"),
+    ],
+    "chopin/pc1": [
+        ("Krystian Zimerman", "Carlo Maria Giulini", "Los Angeles Philharmonic", "Deutsche Grammophon", "1979"),
+        ("Arthur Rubinstein", "Stanisław Skrowaczewski", "New Symphony Orchestra of London", "RCA", "1961"),
+    ],
+    "chopin/pc2": [
+        ("Arthur Rubinstein", "Stanisław Skrowaczewski", "New Symphony Orchestra of London", "RCA", "1958"),
+        ("Martha Argerich", "Charles Dutoit", "Orchestre Symphonique de Montréal", "EMI", "1999"),
+    ],
+    "chopin/nocturnes": [
+        ("Arthur Rubinstein", "", "", "RCA", "1965–67"),
+        ("Claudio Arrau", "", "", "Philips", "1978"),
+    ],
+    "chopin/polonaises": [
+        ("Arthur Rubinstein", "", "", "RCA", "1950s–60s"),
+        ("Maurizio Pollini", "", "", "Deutsche Grammophon", "1976"),
+    ],
+    "chopin/mazurkas": [
+        ("Arthur Rubinstein", "", "", "RCA", "1965–66"),
+        ("Ignaz Friedman", "", "", "Columbia", "1920s–30s"),
+    ],
+    "chopin/scherzi": [
+        ("Arthur Rubinstein", "", "", "RCA", "1959–61"),
+        ("Sviatoslav Richter", "", "", "various", "1960s"),
+    ],
+    "chopin/impromptus": [
+        ("Arthur Rubinstein", "", "", "RCA", "1960s"),
+        ("Murray Perahia", "", "", "Sony", "1980s"),
+    ],
 }
 
 SHOSTAKOVICH = [
@@ -239,12 +485,92 @@ SHOSTAKOVICH = [
     ("sym15", "Symphony No. 15", "Op. 141", "1971", "The last, quoting Rossini and Wagner and explaining neither."),
 ]
 
+BRAHMS = [
+    ("sym1", "Symphony No. 1", "Op. 68", "1876", "C minor; the long-delayed first symphony."),
+    ("sym4", "Symphony No. 4", "Op. 98", "1885", "E minor; passacaglia finale on a Bach bass."),
+    ("pc1", "Piano Concerto No. 1", "Op. 15", "1858", "D minor; begun as a symphony after Schumann's collapse."),
+    ("pc2", "Piano Concerto No. 2", "Op. 83", "1881", "B-flat; four movements, with a cello solo in the Andante."),
+    ("violin_concerto", "Violin Concerto", "Op. 77", "1878", "Written for Joachim; the double-stop opening of the finale."),
+    ("german_requiem", "Ein deutsches Requiem", "Op. 45", "1868", "Lutheran scripture in German, not the Latin Mass for the dead."),
+    ("clarinet_quintet", "Clarinet Quintet", "Op. 115", "1891", "Late chamber music for Mühlfeld."),
+    ("piano_quintet", "Piano Quintet", "Op. 34", "1864", "Reworked from a two-piano sonata and earlier string quintet."),
+    ("haydn_variations", "Variations on a Theme by Haydn", "Op. 56a", "1873", "Orchestral set on the St Antoni Chorale (attribution disputed)."),
+    ("liebeslieder", "Liebeslieder Waltzes", "Op. 52", "1869", "Vocal waltzes with piano duet."),
+    ("academic_festival", "Academic Festival Overture", "Op. 80", "1880", "Breslau doctorate thank-you built from student songs."),
+    ("tragic_overture", "Tragic Overture", "Op. 81", "1880", "Companion piece to the Academic Festival Overture."),
+]
+
+HAYDN = [
+    ("sym104", "Symphony No. 104, London", "Hob. I:104", "1795", "Last of the London symphonies."),
+    ("sym94", "Symphony No. 94, Surprise", "Hob. I:94", "1791", "Andante with the sudden fortissimo chord."),
+    ("creation", "The Creation", "Hob. XXI:2", "1798", "Oratorio after Genesis and Milton."),
+    ("op76", "String Quartets, Op. 76", "Hob. III:75–80", "1797", "Includes the Emperor and Fifths quartets."),
+    ("trumpet_concerto", "Trumpet Concerto", "Hob. VIIe:1", "1796", "Written for Weidinger's keyed trumpet."),
+    ("cello_concerto1", "Cello Concerto No. 1", "Hob. VIIb:1", "c. 1765", "C major; rediscovered in Prague in 1961."),
+    ("seasons", "The Seasons", "Hob. XXI:3", "1801", "Secular oratorio after Thomson."),
+    ("nelson_mass", "Missa in angustiis (Nelson Mass)", "Hob. XXII:11", "1798", "D minor Mass associated with Nelson's victories."),
+    ("piano_sonatas", "Piano Sonatas (selection)", "Hob. XVI", "1760s–1790s", "Scope set: late sonatas including Hob. XVI:49–52."),
+    ("sym44", "Symphony No. 44, Trauer", "Hob. I:44", "c. 1772", "E minor Sturm und Drang symphony."),
+    ("sym45", "Symphony No. 45, Farewell", "Hob. I:45", "1772", "Finale with progressive dismissal of the players."),
+    ("seven_last_words", "The Seven Last Words of Christ", "Hob. XX/1A", "1786", "Orchestral original later arranged for quartet and chorus."),
+]
+
+SCHUBERT = [
+    ("sym8", "Symphony No. 8, Unfinished", "D. 759", "1822", "Two completed movements in B minor."),
+    ("sym9", "Symphony No. 9, Great", "D. 944", "1825–26", "C major; length that long deterred early performances."),
+    ("winterreise", "Winterreise", "D. 911", "1827", "Twenty-four Müller songs for voice and piano."),
+    ("schone_mullerin", "Die schöne Müllerin", "D. 795", "1823", "Twenty Müller songs; the earlier song cycle."),
+    ("string_quintet", "String Quintet", "D. 956", "1828", "Two cellos; C major."),
+    ("death_maiden", "String Quartet No. 14, Death and the Maiden", "D. 810", "1824", "Variations on the earlier song in the Andante."),
+    ("sonata_d960", "Piano Sonata in B-flat", "D. 960", "1828", "Last piano sonata; long first-movement exposition repeat."),
+    ("trout", "Piano Quintet, Trout", "D. 667", "1819", "Piano and string quartet with double bass; variations on Die Forelle."),
+    ("mass_e_flat", "Mass in E-flat", "D. 950", "1828", "Last completed Mass."),
+    ("impromptus", "Impromptus", "D. 899 & D. 935", "1827", "Two sets of four piano pieces."),
+    ("schwanengesang", "Schwanengesang", "D. 957", "1828", "Fourteen songs published posthumously as a collection."),
+    ("rosamunde", "Rosamunde (incidental music)", "D. 797", "1823", "Overture and entr'actes for von Chézy's play."),
+]
+
+HANDEL = [
+    ("messiah", "Messiah", "HWV 56", "1741", "Oratorio; Dublin premiere 1742."),
+    ("water_music", "Water Music", "HWV 348–350", "1717", "Suites for the Thames royal water party."),
+    ("fireworks", "Music for the Royal Fireworks", "HWV 351", "1749", "Outdoor wind-band original for Green Park."),
+    ("giulio_cesare", "Giulio Cesare", "HWV 17", "1724", "Opera seria for the Royal Academy."),
+    ("alcina", "Alcina", "HWV 34", "1735", "Magic-opera for Covent Garden."),
+    ("op6", "Concerti grossi, Op. 6", "HWV 319–330", "1739", "Twelve concerti after Corelli's model."),
+    ("organ_concertos", "Organ Concertos", "Opp. 4 & 7", "1730s", "Interval concertos for Handel at the organ."),
+    ("israel_in_egypt", "Israel in Egypt", "HWV 54", "1739", "Chorus-heavy Exodus oratorio."),
+    ("solomon", "Solomon", "HWV 67", "1748", "Oratorio; includes the Arrival of the Queen of Sheba."),
+    ("agrippina", "Agrippina", "HWV 6", "1709", "Venetian opera on imperial intrigue."),
+    ("rodelinda", "Rodelinda", "HWV 19", "1725", "Opera seria for Cuzzoni and Senesino."),
+    ("dixit_dominus", "Dixit Dominus", "HWV 232", "1707", "Psalm setting from the Italian years."),
+]
+
+CHOPIN = [
+    ("ballades", "Ballades Nos. 1–4", "Opp. 23, 38, 47, 52", "1835–42", "Four large single-movement piano works."),
+    ("etudes", "Études", "Opp. 10 & 25", "1833 / 1837", "Twenty-four studies published in two books."),
+    ("preludes", "Preludes", "Op. 28", "1839", "Twenty-four preludes through the keys."),
+    ("sonata2", "Piano Sonata No. 2", "Op. 35", "1839", "B-flat minor; funeral-march third movement."),
+    ("sonata3", "Piano Sonata No. 3", "Op. 58", "1844", "B minor; four-movement sonata."),
+    ("pc1", "Piano Concerto No. 1", "Op. 11", "1830", "E minor; published second, composed after Op. 21."),
+    ("pc2", "Piano Concerto No. 2", "Op. 21", "1830", "F minor; the earlier of the two concertos."),
+    ("nocturnes", "Nocturnes", "Opp. 9–62", "1830–46", "Scope set across the published nocturne groups."),
+    ("polonaises", "Polonaises", "Opp. 26–53", "1830s–40s", "Including the Heroic, Op. 53."),
+    ("mazurkas", "Mazurkas (selection)", "Opp. 6–63", "1825–49", "Scope set from the published mazurka groups."),
+    ("scherzi", "Scherzi Nos. 1–4", "Opp. 20, 31, 39, 54", "1832–42", "Four scherzi for solo piano."),
+    ("impromptus", "Impromptus / Fantaisie-Impromptu", "Opp. 29, 36, 51; Op. 66", "1830s–40s", "Three published impromptus plus the posthumous Fantaisie-Impromptu."),
+]
+
 COMPOSERS = [
     ("bach", "Johann Sebastian Bach", "1685–1750", BACH),
     ("beethoven", "Ludwig van Beethoven", "1770–1827", BEETHOVEN),
     ("mozart", "Wolfgang Amadeus Mozart", "1756–1791", MOZART),
     ("puccini", "Giacomo Puccini", "1858–1924", PUCCINI),
     ("shostakovich", "Dmitri Shostakovich", "1906–1975", SHOSTAKOVICH),
+    ("brahms", "Johannes Brahms", "1833–1897", BRAHMS),
+    ("haydn", "Joseph Haydn", "1732–1809", HAYDN),
+    ("schubert", "Franz Schubert", "1797–1828", SCHUBERT),
+    ("handel", "George Frideric Handel", "1685–1759", HANDEL),
+    ("chopin", "Frédéric Chopin", "1810–1849", CHOPIN),
 ]
 
 
