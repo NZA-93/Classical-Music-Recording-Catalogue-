@@ -30,6 +30,36 @@
       "name": "Dmitri Shostakovich",
       "dates": "1906–1975",
       "works": 12
+    },
+    {
+      "id": "brahms",
+      "name": "Johannes Brahms",
+      "dates": "1833–1897",
+      "works": 12
+    },
+    {
+      "id": "haydn",
+      "name": "Joseph Haydn",
+      "dates": "1732–1809",
+      "works": 12
+    },
+    {
+      "id": "schubert",
+      "name": "Franz Schubert",
+      "dates": "1797–1828",
+      "works": 12
+    },
+    {
+      "id": "handel",
+      "name": "George Frideric Handel",
+      "dates": "1685–1759",
+      "works": 12
+    },
+    {
+      "id": "chopin",
+      "name": "Frédéric Chopin",
+      "dates": "1810–1849",
+      "works": 12
     }
   ],
   "works": [
@@ -1625,10 +1655,2181 @@
       "status": "awaiting sources",
       "candidates": [],
       "assessed": []
+    },
+    {
+      "id": "brahms/sym1",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Symphony No. 1",
+      "catalogue": "Op. 68",
+      "year": "1876",
+      "note": "C minor; the long-delayed first symphony.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/sym1/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1963",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/sym1/1",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/sym1/2",
+          "soloists": "",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Los Angeles Philharmonic",
+          "label": "Deutsche Grammophon",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/sym4",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Symphony No. 4",
+      "catalogue": "Op. 98",
+      "year": "1885",
+      "note": "E minor; passacaglia finale on a Bach bass.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/sym4/0",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/sym4/1",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/pc1",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Piano Concerto No. 1",
+      "catalogue": "Op. 15",
+      "year": "1858",
+      "note": "D minor; begun as a symphony after Schumann's collapse.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/pc1/0",
+          "soloists": "Emil Gilels",
+          "director": "Eugen Jochum",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/pc1/1",
+          "soloists": "Clifford Curzon",
+          "director": "George Szell",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/pc2",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Piano Concerto No. 2",
+      "catalogue": "Op. 83",
+      "year": "1881",
+      "note": "B-flat; four movements, with a cello solo in the Andante.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/pc2/0",
+          "soloists": "Emil Gilels",
+          "director": "Eugen Jochum",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/pc2/1",
+          "soloists": "Sviatoslav Richter",
+          "director": "Erich Leinsdorf",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "RCA",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/violin_concerto",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Violin Concerto",
+      "catalogue": "Op. 77",
+      "year": "1878",
+      "note": "Written for Joachim; the double-stop opening of the finale.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/violin_concerto/0",
+          "soloists": "David Oistrakh",
+          "director": "Otto Klemperer",
+          "ensemble": "Orchestre National de la Radiodiffusion Française",
+          "label": "EMI",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/violin_concerto/1",
+          "soloists": "Jascha Heifetz",
+          "director": "Fritz Reiner",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "RCA",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/german_requiem",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Ein deutsches Requiem",
+      "catalogue": "Op. 45",
+      "year": "1868",
+      "note": "Lutheran scripture in German, not the Latin Mass for the dead.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/german_requiem/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/german_requiem/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Philips",
+          "year": "1990",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/clarinet_quintet",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Clarinet Quintet",
+      "catalogue": "Op. 115",
+      "year": "1891",
+      "note": "Late chamber music for Mühlfeld.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/clarinet_quintet/0",
+          "soloists": "Reginald Kell; Busch Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1937",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/clarinet_quintet/1",
+          "soloists": "Karl Leister; Amadeus Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/piano_quintet",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Piano Quintet",
+      "catalogue": "Op. 34",
+      "year": "1864",
+      "note": "Reworked from a two-piano sonata and earlier string quintet.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/piano_quintet/0",
+          "soloists": "Artur Rubinstein; Guarneri Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/piano_quintet/1",
+          "soloists": "Sviatoslav Richter; Borodin Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/haydn_variations",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Variations on a Theme by Haydn",
+      "catalogue": "Op. 56a",
+      "year": "1873",
+      "note": "Orchestral set on the St Antoni Chorale (attribution disputed).",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/haydn_variations/0",
+          "soloists": "",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1952",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/haydn_variations/1",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/liebeslieder",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Liebeslieder Waltzes",
+      "catalogue": "Op. 52",
+      "year": "1869",
+      "note": "Vocal waltzes with piano duet.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/liebeslieder/0",
+          "soloists": "Mathis, Fassbaender, Schreier, Fischer-Dieskau; Karl Engel, Wolfgang Sawallisch, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1974",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/academic_festival",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Academic Festival Overture",
+      "catalogue": "Op. 80",
+      "year": "1880",
+      "note": "Breslau doctorate thank-you built from student songs.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/academic_festival/0",
+          "soloists": "",
+          "director": "George Szell",
+          "ensemble": "Cleveland Orchestra",
+          "label": "CBS",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/academic_festival/1",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "brahms/tragic_overture",
+      "composer_id": "brahms",
+      "composer": "Johannes Brahms",
+      "composer_dates": "1833–1897",
+      "title": "Tragic Overture",
+      "catalogue": "Op. 81",
+      "year": "1880",
+      "note": "Companion piece to the Academic Festival Overture.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "brahms/tragic_overture/0",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/sym104",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Symphony No. 104, London",
+      "catalogue": "Hob. I:104",
+      "year": "1795",
+      "note": "Last of the London symphonies.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/sym104/0",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1975",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym104/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/sym94",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Symphony No. 94, Surprise",
+      "catalogue": "Hob. I:94",
+      "year": "1791",
+      "note": "Andante with the sudden fortissimo chord.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/sym94/0",
+          "soloists": "",
+          "director": "Thomas Beecham",
+          "ensemble": "Royal Philharmonic",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym94/1",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/creation",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "The Creation",
+      "catalogue": "Hob. XXI:2",
+      "year": "1798",
+      "note": "Oratorio after Genesis and Milton.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/creation/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/creation/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1996",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/op76",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "String Quartets, Op. 76",
+      "catalogue": "Hob. III:75–80",
+      "year": "1797",
+      "note": "Includes the Emperor and Fifths quartets.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/op76/0",
+          "soloists": "Quatuor Mosaïques",
+          "director": "",
+          "ensemble": "",
+          "label": "Astree",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/op76/1",
+          "soloists": "Amadeus Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/trumpet_concerto",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Trumpet Concerto",
+      "catalogue": "Hob. VIIe:1",
+      "year": "1796",
+      "note": "Written for Weidinger's keyed trumpet.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/trumpet_concerto/0",
+          "soloists": "Maurice André",
+          "director": "Riccardo Muti",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/trumpet_concerto/1",
+          "soloists": "Wynton Marsalis",
+          "director": "Raymond Leppard",
+          "ensemble": "National Philharmonic Orchestra",
+          "label": "CBS",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/cello_concerto1",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Cello Concerto No. 1",
+      "catalogue": "Hob. VIIb:1",
+      "year": "c. 1765",
+      "note": "C major; rediscovered in Prague in 1961.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/cello_concerto1/0",
+          "soloists": "Jacqueline du Pré",
+          "director": "Daniel Barenboim",
+          "ensemble": "English Chamber Orchestra",
+          "label": "EMI",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/cello_concerto1/1",
+          "soloists": "Anner Bylsma",
+          "director": "Frans Brüggen",
+          "ensemble": "Orchestra of the 18th Century",
+          "label": "Philips",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/seasons",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "The Seasons",
+      "catalogue": "Hob. XXI:3",
+      "year": "1801",
+      "note": "Secular oratorio after Thomson.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/seasons/0",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/seasons/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1992",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/nelson_mass",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Missa in angustiis (Nelson Mass)",
+      "catalogue": "Hob. XXII:11",
+      "year": "1798",
+      "note": "D minor Mass associated with Nelson's victories.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/nelson_mass/0",
+          "soloists": "",
+          "director": "David Willcocks",
+          "ensemble": "King's College Choir, Cambridge",
+          "label": "EMI",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/nelson_mass/1",
+          "soloists": "",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/piano_sonatas",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Piano Sonatas (selection)",
+      "catalogue": "Hob. XVI",
+      "year": "1760s–1790s",
+      "note": "Scope set: late sonatas including Hob. XVI:49–52.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/piano_sonatas/0",
+          "soloists": "Alfred Brendel",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s–80s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/piano_sonatas/1",
+          "soloists": "András Schiff",
+          "director": "",
+          "ensemble": "",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/sym44",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Symphony No. 44, Trauer",
+      "catalogue": "Hob. I:44",
+      "year": "c. 1772",
+      "note": "E minor Sturm und Drang symphony.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/sym44/0",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "Philharmonia Hungarica",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym44/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/sym45",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "Symphony No. 45, Farewell",
+      "catalogue": "Hob. I:45",
+      "year": "1772",
+      "note": "Finale with progressive dismissal of the players.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/sym45/0",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "Philharmonia Hungarica",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym45/1",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "haydn/seven_last_words",
+      "composer_id": "haydn",
+      "composer": "Joseph Haydn",
+      "composer_dates": "1732–1809",
+      "title": "The Seven Last Words of Christ",
+      "catalogue": "Hob. XX/1A",
+      "year": "1786",
+      "note": "Orchestral original later arranged for quartet and chorus.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "haydn/seven_last_words/0",
+          "soloists": "",
+          "director": "Juilliard Quartet",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/seven_last_words/1",
+          "soloists": "",
+          "director": "Henschel Quartet",
+          "ensemble": "",
+          "label": "Hänssler",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/sym8",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Symphony No. 8, Unfinished",
+      "catalogue": "D. 759",
+      "year": "1822",
+      "note": "Two completed movements in B minor.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/sym8/0",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sym8/1",
+          "soloists": "",
+          "director": "Günter Wand",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "RCA",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/sym9",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Symphony No. 9, Great",
+      "catalogue": "D. 944",
+      "year": "1825–26",
+      "note": "C major; length that long deterred early performances.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/sym9/0",
+          "soloists": "",
+          "director": "Josef Krips",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1958",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sym9/1",
+          "soloists": "",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/winterreise",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Winterreise",
+      "catalogue": "D. 911",
+      "year": "1827",
+      "note": "Twenty-four Müller songs for voice and piano.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/winterreise/0",
+          "soloists": "Dietrich Fischer-Dieskau; Gerald Moore, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/winterreise/1",
+          "soloists": "Peter Pears; Benjamin Britten, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/schone_mullerin",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Die schöne Müllerin",
+      "catalogue": "D. 795",
+      "year": "1823",
+      "note": "Twenty Müller songs; the earlier song cycle.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/schone_mullerin/0",
+          "soloists": "Dietrich Fischer-Dieskau; Gerald Moore, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/schone_mullerin/1",
+          "soloists": "Fritz Wunderlich; Hubert Giesen, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/string_quintet",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "String Quintet",
+      "catalogue": "D. 956",
+      "year": "1828",
+      "note": "Two cellos; C major.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/string_quintet/0",
+          "soloists": "Amadeus Quartet; William Pleeth, cello",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/string_quintet/1",
+          "soloists": "Alban Berg Quartet; Heinrich Schiff, cello",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/death_maiden",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "String Quartet No. 14, Death and the Maiden",
+      "catalogue": "D. 810",
+      "year": "1824",
+      "note": "Variations on the earlier song in the Andante.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/death_maiden/0",
+          "soloists": "Amadeus Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/death_maiden/1",
+          "soloists": "Quartetto Italiano",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/sonata_d960",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Piano Sonata in B-flat",
+      "catalogue": "D. 960",
+      "year": "1828",
+      "note": "Last piano sonata; long first-movement exposition repeat.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/sonata_d960/0",
+          "soloists": "Arturo Benedetti Michelangeli",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sonata_d960/1",
+          "soloists": "Alfred Brendel",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sonata_d960/2",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1987",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/trout",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Piano Quintet, Trout",
+      "catalogue": "D. 667",
+      "year": "1819",
+      "note": "Piano and string quartet with double bass; variations on Die Forelle.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/trout/0",
+          "soloists": "Clifford Curzon; members of the Vienna Octet",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/trout/1",
+          "soloists": "Emil Gilels; Amadeus Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/mass_e_flat",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Mass in E-flat",
+      "catalogue": "D. 950",
+      "year": "1828",
+      "note": "Last completed Mass.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/mass_e_flat/0",
+          "soloists": "",
+          "director": "Wolfgang Sawallisch",
+          "ensemble": "Bavarian Radio Symphony Orchestra",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/mass_e_flat/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/impromptus",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Impromptus",
+      "catalogue": "D. 899 & D. 935",
+      "year": "1827",
+      "note": "Two sets of four piano pieces.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/impromptus/0",
+          "soloists": "Alfred Brendel",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/impromptus/1",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/schwanengesang",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Schwanengesang",
+      "catalogue": "D. 957",
+      "year": "1828",
+      "note": "Fourteen songs published posthumously as a collection.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/schwanengesang/0",
+          "soloists": "Dietrich Fischer-Dieskau; Gerald Moore, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/schwanengesang/1",
+          "soloists": "Hans Hotter; Gerald Moore, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "schubert/rosamunde",
+      "composer_id": "schubert",
+      "composer": "Franz Schubert",
+      "composer_dates": "1797–1828",
+      "title": "Rosamunde (incidental music)",
+      "catalogue": "D. 797",
+      "year": "1823",
+      "note": "Overture and entr'actes for von Chézy's play.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "schubert/rosamunde/0",
+          "soloists": "",
+          "director": "Willi Boskovsky",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/rosamunde/1",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Chamber Orchestra of Europe",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/messiah",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Messiah",
+      "catalogue": "HWV 56",
+      "year": "1741",
+      "note": "Oratorio; Dublin premiere 1742.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/messiah/0",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Philips",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/messiah/1",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "English Chamber Orchestra",
+          "label": "EMI",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/messiah/2",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Philips",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/water_music",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Water Music",
+      "catalogue": "HWV 348–350",
+      "year": "1717",
+      "note": "Suites for the Thames royal water party.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/water_music/0",
+          "soloists": "",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/water_music/1",
+          "soloists": "",
+          "director": "Neville Marriner",
+          "ensemble": "Academy of St Martin in the Fields",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/fireworks",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Music for the Royal Fireworks",
+      "catalogue": "HWV 351",
+      "year": "1749",
+      "note": "Outdoor wind-band original for Green Park.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/fireworks/0",
+          "soloists": "",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/fireworks/1",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "Pro Arte Orchestra",
+          "label": "Pye",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/giulio_cesare",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Giulio Cesare",
+      "catalogue": "HWV 17",
+      "year": "1724",
+      "note": "Opera seria for the Royal Academy.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/giulio_cesare/0",
+          "soloists": "Janet Baker",
+          "director": "Charles Mackerras",
+          "ensemble": "English National Opera",
+          "label": "EMI",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/giulio_cesare/1",
+          "soloists": "",
+          "director": "René Jacobs",
+          "ensemble": "Concerto Köln",
+          "label": "Harmonia Mundi",
+          "year": "1991",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/alcina",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Alcina",
+      "catalogue": "HWV 34",
+      "year": "1735",
+      "note": "Magic-opera for Covent Garden.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/alcina/0",
+          "soloists": "Joan Sutherland",
+          "director": "Richard Bonynge",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/alcina/1",
+          "soloists": "",
+          "director": "Alan Curtis",
+          "ensemble": "Il Complesso Barocco",
+          "label": "Deutsche Harmonia Mundi",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/op6",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Concerti grossi, Op. 6",
+      "catalogue": "HWV 319–330",
+      "year": "1739",
+      "note": "Twelve concerti after Corelli's model.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/op6/0",
+          "soloists": "",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/op6/1",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/organ_concertos",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Organ Concertos",
+      "catalogue": "Opp. 4 & 7",
+      "year": "1730s",
+      "note": "Interval concertos for Handel at the organ.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/organ_concertos/0",
+          "soloists": "Simon Preston",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/organ_concertos/1",
+          "soloists": "Peter Hurford",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/israel_in_egypt",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Israel in Egypt",
+      "catalogue": "HWV 54",
+      "year": "1739",
+      "note": "Chorus-heavy Exodus oratorio.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/israel_in_egypt/0",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Monteverdi Choir",
+          "label": "Philips",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/israel_in_egypt/1",
+          "soloists": "",
+          "director": "Andrew Parrott",
+          "ensemble": "Taverner Choir and Players",
+          "label": "EMI",
+          "year": "1990",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/solomon",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Solomon",
+      "catalogue": "HWV 67",
+      "year": "1748",
+      "note": "Oratorio; includes the Arrival of the Queen of Sheba.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/solomon/0",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Philips",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/solomon/1",
+          "soloists": "",
+          "director": "Daniel Barenboim",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/agrippina",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Agrippina",
+      "catalogue": "HWV 6",
+      "year": "1709",
+      "note": "Venetian opera on imperial intrigue.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/agrippina/0",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/agrippina/1",
+          "soloists": "",
+          "director": "René Jacobs",
+          "ensemble": "Akademie für Alte Musik Berlin",
+          "label": "Harmonia Mundi",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/rodelinda",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Rodelinda",
+      "catalogue": "HWV 19",
+      "year": "1725",
+      "note": "Opera seria for Cuzzoni and Senesino.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/rodelinda/0",
+          "soloists": "Joan Sutherland",
+          "director": "Richard Bonynge",
+          "ensemble": "Welsh National Opera",
+          "label": "Decca",
+          "year": "1985",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/rodelinda/1",
+          "soloists": "",
+          "director": "Alan Curtis",
+          "ensemble": "Il Complesso Barocco",
+          "label": "Deutsche Harmonia Mundi",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "handel/dixit_dominus",
+      "composer_id": "handel",
+      "composer": "George Frideric Handel",
+      "composer_dates": "1685–1759",
+      "title": "Dixit Dominus",
+      "catalogue": "HWV 232",
+      "year": "1707",
+      "note": "Psalm setting from the Italian years.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "handel/dixit_dominus/0",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Monteverdi Choir",
+          "label": "Archiv",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/dixit_dominus/1",
+          "soloists": "",
+          "director": "Marc Minkowski",
+          "ensemble": "Les Musiciens du Louvre",
+          "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/ballades",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Ballades Nos. 1–4",
+      "catalogue": "Opp. 23, 38, 47, 52",
+      "year": "1835–42",
+      "note": "Four large single-movement piano works.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/ballades/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1959–61",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/ballades/1",
+          "soloists": "Krystian Zimerman",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1987",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/etudes",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Études",
+      "catalogue": "Opp. 10 & 25",
+      "year": "1833 / 1837",
+      "note": "Twenty-four studies published in two books.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/etudes/0",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/etudes/1",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "2002",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/preludes",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Preludes",
+      "catalogue": "Op. 28",
+      "year": "1839",
+      "note": "Twenty-four preludes through the keys.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/preludes/0",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1977",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/preludes/1",
+          "soloists": "Alfred Cortot",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1933–34",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/sonata2",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Piano Sonata No. 2",
+      "catalogue": "Op. 35",
+      "year": "1839",
+      "note": "B-flat minor; funeral-march third movement.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/sonata2/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/sonata2/1",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/sonata3",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Piano Sonata No. 3",
+      "catalogue": "Op. 58",
+      "year": "1844",
+      "note": "B minor; four-movement sonata.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/sonata3/0",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/sonata3/1",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/pc1",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Piano Concerto No. 1",
+      "catalogue": "Op. 11",
+      "year": "1830",
+      "note": "E minor; published second, composed after Op. 21.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/pc1/0",
+          "soloists": "Krystian Zimerman",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Los Angeles Philharmonic",
+          "label": "Deutsche Grammophon",
+          "year": "1979",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/pc1/1",
+          "soloists": "Arthur Rubinstein",
+          "director": "Stanisław Skrowaczewski",
+          "ensemble": "New Symphony Orchestra of London",
+          "label": "RCA",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/pc2",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Piano Concerto No. 2",
+      "catalogue": "Op. 21",
+      "year": "1830",
+      "note": "F minor; the earlier of the two concertos.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/pc2/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "Stanisław Skrowaczewski",
+          "ensemble": "New Symphony Orchestra of London",
+          "label": "RCA",
+          "year": "1958",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/pc2/1",
+          "soloists": "Martha Argerich",
+          "director": "Charles Dutoit",
+          "ensemble": "Orchestre Symphonique de Montréal",
+          "label": "EMI",
+          "year": "1999",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/nocturnes",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Nocturnes",
+      "catalogue": "Opp. 9–62",
+      "year": "1830–46",
+      "note": "Scope set across the published nocturne groups.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/nocturnes/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1965–67",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/nocturnes/1",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/polonaises",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Polonaises",
+      "catalogue": "Opp. 26–53",
+      "year": "1830s–40s",
+      "note": "Including the Heroic, Op. 53.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/polonaises/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1950s–60s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/polonaises/1",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/mazurkas",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Mazurkas (selection)",
+      "catalogue": "Opp. 6–63",
+      "year": "1825–49",
+      "note": "Scope set from the published mazurka groups.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/mazurkas/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1965–66",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/mazurkas/1",
+          "soloists": "Ignaz Friedman",
+          "director": "",
+          "ensemble": "",
+          "label": "Columbia",
+          "year": "1920s–30s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/scherzi",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Scherzi Nos. 1–4",
+      "catalogue": "Opp. 20, 31, 39, 54",
+      "year": "1832–42",
+      "note": "Four scherzi for solo piano.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/scherzi/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1959–61",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/scherzi/1",
+          "soloists": "Sviatoslav Richter",
+          "director": "",
+          "ensemble": "",
+          "label": "various",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "chopin/impromptus",
+      "composer_id": "chopin",
+      "composer": "Frédéric Chopin",
+      "composer_dates": "1810–1849",
+      "title": "Impromptus / Fantaisie-Impromptu",
+      "catalogue": "Opp. 29, 36, 51; Op. 66",
+      "year": "1830s–40s",
+      "note": "Three published impromptus plus the posthumous Fantaisie-Impromptu.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "chopin/impromptus/0",
+          "soloists": "Arthur Rubinstein",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/impromptus/1",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
     }
   ],
   "totals": {
-    "works": 59,
-    "candidates": 72
+    "works": 119,
+    "candidates": 193
   }
 }

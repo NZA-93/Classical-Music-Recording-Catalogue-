@@ -1,6 +1,6 @@
 # Critical Discography — build targets. Python 3.11+, no third-party packages.
 
-.PHONY: all seed score site harvest test validate plan clean
+.PHONY: all seed score site harvest test validate plan clean queue queue-week expand-brief
 
 all: seed score site
 
@@ -15,20 +15,30 @@ site: score      ## render docs/ (the published site). No network.
 	python3 site/build_site.py
 	python3 site/build_gallery.py
 
+# CONTACT / HARVEST_CONTACT: publishable address for the MusicBrainz User-Agent.
+# Placeholder for local/agent runs: harvest@example.invalid
+CONTACT ?= $(or $(HARVEST_CONTACT),harvest@example.invalid)
+
 harvest:         ## agent round. Network. Writes proposals/, never the catalogue.
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --budget 300
 
 plan:            ## count what a harvest round would cost, without making requests
-	python3 agents/harvest.py data/seed.json --dry-run --budget 300
+	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --dry-run --budget 300
 
 clean:
-	rm -rf docs/index.html docs/entries.html build/catalogue.json proposals .cache
+	rm -rf docs/index.html docs/entries.html build/catalogue.json .cache
 
 validate:        ## check contributions/ against the project's own rules
 	python3 agents/validate.py
 
 queue:           ## where a signed entry is worth the most
 	python3 agents/editorial_queue.py
+
+queue-week:      ## next five composers from proposals/composer-queue.json
+	python3 agents/weekly_expand.py
+
+expand-brief:    ## write proposals/WEEK_BRIEF.md for Cursor agent launch
+	python3 agents/weekly_expand.py --write
 
 test:            ## run the test suite
 	python3 -m unittest discover -s tests -q

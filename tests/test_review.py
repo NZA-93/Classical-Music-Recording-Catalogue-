@@ -66,11 +66,26 @@ class TestReviewFlags(unittest.TestCase):
         items = rv.rows(props, SEED)
         self.assertEqual(items[0]["flags"], [])
 
+    def test_embedded_review_flags_preferred(self):
+        props = [{
+            "target": "bach/brandenburg/0", "kind": "identity",
+            "payload": {
+                "mbid": "x", "mb_title": "Brandenburg Concertos",
+                "mb_first_release": "1982", "confidence": 40,
+                "review_flags": ["confidence 40 < 80"],
+                "auto_accept_eligible": False,
+            },
+        }]
+        items = rv.rows(props, SEED)
+        self.assertEqual(items[0]["flags"], ["confidence 40 < 80"])
+        self.assertFalse(items[0]["mb"]["auto_accept_eligible"])
+
     def test_markdown_table(self):
         props = [{
             "target": "bach/brandenburg/0", "kind": "identity",
             "payload": {"mbid": "x", "mb_title": "Brandenburg Concertos",
-                        "mb_first_release": "1982", "match_score": 98},
+                        "mb_first_release": "1982", "match_score": 98,
+                        "auto_accept_eligible": True},
         }]
         md = rv.render_markdown(rv.rows(props, SEED))
         self.assertIn("| Target |", md)

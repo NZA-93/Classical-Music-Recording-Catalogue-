@@ -1,0 +1,3430 @@
+[
+  {
+    "target": "bach/brandenburg/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "bfa92d8f-6b21-3b68-b584-9e130b1405b3",
+      "mb_title": "Brandenburgische Konzerte",
+      "mb_first_release": "1967",
+      "match_score": 56,
+      "confidence": 56,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 56 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/bfa92d8f-6b21-3b68-b584-9e130b1405b3",
+      "query": "Brandenburg Concertos AND artist:\"Nikolaus Harnoncourt\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Brandenburg Concertos",
+        "director": "Nikolaus Harnoncourt",
+        "ensemble": "Concentus Musicus Wien",
+        "soloists": "",
+        "label": "Teldec",
+        "year": "1964"
+      },
+      "alternatives": [
+        {
+          "mbid": "b1bb3a00-9299-493d-b5df-f16dd39a4eb7",
+          "mb_title": "Brandenburg Concertos nos. 1, 2 & 4",
+          "mb_first_release": "1983",
+          "confidence": 73,
+          "mb_url": "https://musicbrainz.org/release-group/b1bb3a00-9299-493d-b5df-f16dd39a4eb7"
+        },
+        {
+          "mbid": "1da6bf31-800b-4334-8d43-760efeb2c90c",
+          "mb_title": "Brandenburg Concertos Nos. 1-6; Suites Nos. 2 & 3",
+          "mb_first_release": "1997",
+          "confidence": 65,
+          "mb_url": "https://musicbrainz.org/release-group/1da6bf31-800b-4334-8d43-760efeb2c90c"
+        },
+        {
+          "mbid": "6cc13c97-a1b7-3cb9-81ee-14686b2f2bc9",
+          "mb_title": "Piano Concertos",
+          "mb_first_release": "2000-04-11",
+          "confidence": 33,
+          "mb_url": "https://musicbrainz.org/release-group/6cc13c97-a1b7-3cb9-81ee-14686b2f2bc9"
+        },
+        {
+          "mbid": "6cf6b9b1-dba8-4d55-beed-040e3dc3fdbb",
+          "mb_title": "Brandenburg Concertos 1-6",
+          "mb_first_release": "2024",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/6cf6b9b1-dba8-4d55-beed-040e3dc3fdbb"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:01.504817+00:00"
+  },
+  {
+    "target": "bach/cello_suites/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "81d31b3e-99c0-3223-94e4-faaf4cedee89",
+      "mb_title": "Sechs Suiten für Violoncello solo, BWV 1007–1012",
+      "mb_first_release": "1961",
+      "match_score": 88,
+      "confidence": 88,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/81d31b3e-99c0-3223-94e4-faaf4cedee89",
+      "query": "Cello Suites AND artist:\"Pierre Fournier\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Cello Suites",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Pierre Fournier",
+        "label": "Archiv",
+        "year": "1961"
+      },
+      "alternatives": [
+        {
+          "mbid": "f78d59cc-c6f3-3593-bb51-3b7b10136929",
+          "mb_title": "6 Suites Pour Violoncelle",
+          "mb_first_release": "1997",
+          "confidence": 73,
+          "mb_url": "https://musicbrainz.org/release-group/f78d59cc-c6f3-3593-bb51-3b7b10136929"
+        },
+        {
+          "mbid": "3c9c719d-2b5c-4621-af24-55e6d25b0ab8",
+          "mb_title": "Bach Suites pour violoncelle seul No 1, 2 et 5",
+          "mb_first_release": "2011",
+          "confidence": 72,
+          "mb_url": "https://musicbrainz.org/release-group/3c9c719d-2b5c-4621-af24-55e6d25b0ab8"
+        },
+        {
+          "mbid": "aad572f7-b4a0-474d-8aa6-54c3076e61db",
+          "mb_title": "6 Suites for Unaccompanied Cello",
+          "mb_first_release": null,
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/aad572f7-b4a0-474d-8aa6-54c3076e61db"
+        },
+        {
+          "mbid": "1fb3852a-c275-3fb4-b8c2-ee3432533c00",
+          "mb_title": "Suites for Solo Cello",
+          "mb_first_release": null,
+          "confidence": 97,
+          "mb_url": "https://musicbrainz.org/release-group/1fb3852a-c275-3fb4-b8c2-ee3432533c00"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:05.662134+00:00"
+  },
+  {
+    "target": "bach/sonatas_partitas/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "1fbda302-ed20-339e-ad71-4cf455394ba3",
+      "mb_title": "Sonatas and Partitas for Solo Violin",
+      "mb_first_release": "1975",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/1fbda302-ed20-339e-ad71-4cf455394ba3",
+      "query": "Sonatas and Partitas for Solo Violin AND artist:\"Nathan Milstein\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Sonatas and Partitas for Solo Violin",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Nathan Milstein",
+        "label": "Deutsche Grammophon",
+        "year": "1973"
+      },
+      "alternatives": [
+        {
+          "mbid": "18cc5bef-d629-3cd4-8abb-9ea9bfc574aa",
+          "mb_title": "Sonatas & Partitas for Unaccompanied Violin",
+          "mb_first_release": "1993",
+          "confidence": 49,
+          "mb_url": "https://musicbrainz.org/release-group/18cc5bef-d629-3cd4-8abb-9ea9bfc574aa"
+        },
+        {
+          "mbid": "5e865212-aaf6-4e95-bf82-7486ae9aedf4",
+          "mb_title": "Works for Solo Violin",
+          "mb_first_release": "1995",
+          "confidence": 36,
+          "mb_url": "https://musicbrainz.org/release-group/5e865212-aaf6-4e95-bf82-7486ae9aedf4"
+        },
+        {
+          "mbid": "fe4ed52c-36c1-4d20-a8b8-648b07608440",
+          "mb_title": "Partitas for Unaccompanied Violin",
+          "mb_first_release": "1998",
+          "confidence": 42,
+          "mb_url": "https://musicbrainz.org/release-group/fe4ed52c-36c1-4d20-a8b8-648b07608440"
+        },
+        {
+          "mbid": "a691e196-c081-3e53-9ab6-3ad0b7daa095",
+          "mb_title": "Sonatas for Unaccompanied Violin",
+          "mb_first_release": "2001",
+          "confidence": 39,
+          "mb_url": "https://musicbrainz.org/release-group/a691e196-c081-3e53-9ab6-3ad0b7daa095"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:06.289088+00:00"
+  },
+  {
+    "target": "bach/goldberg/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+      "mb_title": "The Goldberg Variations",
+      "mb_first_release": "1956-03-01",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+      "query": "Goldberg Variations AND artist:\"Glenn Gould\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Goldberg Variations",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Glenn Gould",
+        "label": "Columbia",
+        "year": "1955"
+      },
+      "alternatives": [
+        {
+          "mbid": "7c8f2d45-d764-347a-9ab9-0aa771a3447d",
+          "mb_title": "The Goldberg Variations",
+          "mb_first_release": "1982",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/7c8f2d45-d764-347a-9ab9-0aa771a3447d"
+        },
+        {
+          "mbid": "fc2421ab-e158-4ad2-aa22-7babddb06660",
+          "mb_title": "The Goldberg Variations 1955 Performance: Zenph Re‐Performance",
+          "mb_first_release": "2007-05-29",
+          "confidence": 71,
+          "mb_url": "https://musicbrainz.org/release-group/fc2421ab-e158-4ad2-aa22-7babddb06660"
+        },
+        {
+          "mbid": "e81da777-60ac-4b32-b845-a6de6635920d",
+          "mb_title": "Glenn Gould Plays Bach: Goldberg Variations, BWV 988",
+          "mb_first_release": "2012-09-10",
+          "confidence": 70,
+          "mb_url": "https://musicbrainz.org/release-group/e81da777-60ac-4b32-b845-a6de6635920d"
+        },
+        {
+          "mbid": "59d64418-1d67-4eb4-8103-61b9334c18ac",
+          "mb_title": "Goldberg Variations (1954 CBC Broadcast Recording)",
+          "mb_first_release": "2022-10-26",
+          "confidence": 73,
+          "mb_url": "https://musicbrainz.org/release-group/59d64418-1d67-4eb4-8103-61b9334c18ac"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:07.277069+00:00"
+  },
+  {
+    "target": "bach/goldberg/2",
+    "kind": "identity",
+    "payload": {
+      "mbid": "d80f1d06-091b-4123-a734-e3d9e578a141",
+      "mb_title": "Goldberg Variations / Italian Concerto / Chromatic Fantasy and Fugue",
+      "mb_first_release": "1987",
+      "match_score": 62,
+      "confidence": 62,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 62 < 80",
+        "date off by 42 years (1945 vs 1987)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/d80f1d06-091b-4123-a734-e3d9e578a141",
+      "query": "Goldberg Variations AND artist:\"Wanda Landowska\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Goldberg Variations",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Wanda Landowska",
+        "label": "RCA",
+        "year": "1945"
+      },
+      "alternatives": [
+        {
+          "mbid": "8832fe18-f98f-4769-9c4d-af560ebdde46",
+          "mb_title": "Goldberg Variations BWV 988 / Chromatic Fantasia and Fugue BWV 903",
+          "mb_first_release": "1996",
+          "confidence": 64,
+          "mb_url": "https://musicbrainz.org/release-group/8832fe18-f98f-4769-9c4d-af560ebdde46"
+        },
+        {
+          "mbid": "974e0ab0-43b2-4220-ad01-5831edfde112",
+          "mb_title": "Goldberg Variations",
+          "mb_first_release": "2004-07-20",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/974e0ab0-43b2-4220-ad01-5831edfde112"
+        },
+        {
+          "mbid": "13e7265a-cc84-3fc3-95df-99069bd8a5f5",
+          "mb_title": "Goldberg Variations / Italian Concerto / Chromatic Fantasy and Fugue",
+          "mb_first_release": "2005-10-31",
+          "confidence": 62,
+          "mb_url": "https://musicbrainz.org/release-group/13e7265a-cc84-3fc3-95df-99069bd8a5f5"
+        },
+        {
+          "mbid": "ae7a6246-9240-46c2-9fa8-69215a1af3b0",
+          "mb_title": "Thirty Goldberg Variations",
+          "mb_first_release": null,
+          "confidence": 92,
+          "mb_url": "https://musicbrainz.org/release-group/ae7a6246-9240-46c2-9fa8-69215a1af3b0"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:08.291918+00:00"
+  },
+  {
+    "target": "bach/mass_b_minor/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "a8f4f772-424f-439b-884e-284df9883f74",
+      "mb_title": "Messe in h-Moll",
+      "mb_first_release": "1984",
+      "match_score": 52,
+      "confidence": 52,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 52 < 80",
+        "date off by 16 years (1968 vs 1984)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/a8f4f772-424f-439b-884e-284df9883f74",
+      "query": "Mass in B minor AND artist:\"Nikolaus Harnoncourt\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Mass in B minor",
+        "director": "Nikolaus Harnoncourt",
+        "ensemble": "Concentus Musicus Wien",
+        "soloists": "",
+        "label": "Teldec",
+        "year": "1968"
+      },
+      "alternatives": [
+        {
+          "mbid": "7da8fa57-1ec3-4197-91b8-d80a50ec8788",
+          "mb_title": "Orchestral Suite no. 2 in B minor, BWV 1067 / Orchestral Suite no. 3 in D major, BWV 1068",
+          "mb_first_release": "1985",
+          "confidence": 42,
+          "mb_url": "https://musicbrainz.org/release-group/7da8fa57-1ec3-4197-91b8-d80a50ec8788"
+        },
+        {
+          "mbid": "6d60f3cf-ae6f-4d58-88b8-373829374417",
+          "mb_title": "Grosse Messe in C-Moll, KV 427",
+          "mb_first_release": "1985",
+          "confidence": 26,
+          "mb_url": "https://musicbrainz.org/release-group/6d60f3cf-ae6f-4d58-88b8-373829374417"
+        },
+        {
+          "mbid": "8e4fd925-0576-4b62-8298-e770f95bb10b",
+          "mb_title": "Mass in B minor / Magnificat in D major, BWV 243",
+          "mb_first_release": "1996",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/8e4fd925-0576-4b62-8298-e770f95bb10b"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:11.509729+00:00"
+  },
+  {
+    "target": "bach/matthew/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e",
+      "mb_title": "St. Matthew Passion",
+      "mb_first_release": "1962",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/be359f8c-1a2a-3a3d-be77-787acb6bdb5e",
+      "query": "St Matthew Passion AND artist:\"Otto Klemperer\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — St Matthew Passion",
+        "director": "Otto Klemperer",
+        "ensemble": "Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1961"
+      },
+      "alternatives": [
+        {
+          "mbid": "6375660f-b65f-4dae-bb3f-88b173c896a3",
+          "mb_title": "Matthäus-Passion BWV 244",
+          "mb_first_release": "2001-04-10",
+          "confidence": 18,
+          "mb_url": "https://musicbrainz.org/release-group/6375660f-b65f-4dae-bb3f-88b173c896a3"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:12.503962+00:00"
+  },
+  {
+    "target": "beethoven/sym3/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "c7378351-8f92-49e5-a95b-1c50e02cac9c",
+      "mb_title": "Symphony no. 3 in E-flat \"Eroica\" / Grosse Fuge in B-flat",
+      "mb_first_release": "1985",
+      "match_score": 82,
+      "confidence": 82,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 26 years (1959 vs 1985)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/c7378351-8f92-49e5-a95b-1c50e02cac9c",
+      "query": "Symphony No. 3, Eroica AND artist:\"Otto Klemperer\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 3, Eroica",
+        "director": "Otto Klemperer",
+        "ensemble": "Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1959"
+      },
+      "alternatives": [
+        {
+          "mbid": "46a1cb62-a2ea-3c56-9d84-1ad4516009ca",
+          "mb_title": "Symphony No. 3 \"Eroica\" / Große Fugue",
+          "mb_first_release": "1998",
+          "confidence": 79,
+          "mb_url": "https://musicbrainz.org/release-group/46a1cb62-a2ea-3c56-9d84-1ad4516009ca"
+        },
+        {
+          "mbid": "6700a16b-ae0e-4d5a-8f88-23a4a7900f9d",
+          "mb_title": "Symphony no. 3 \"Eroica\" / Leonore Overtures nos. 2 & 3",
+          "mb_first_release": "2002-04-09",
+          "confidence": 94,
+          "mb_url": "https://musicbrainz.org/release-group/6700a16b-ae0e-4d5a-8f88-23a4a7900f9d"
+        },
+        {
+          "mbid": "cac1f9c8-c960-48e6-ac1d-02d3eedcc157",
+          "mb_title": "Symphony no. 3 \"Eroica\" / Overtures \"Leonore\" nos. 1 & 2",
+          "mb_first_release": "2002-03-11",
+          "confidence": 82,
+          "mb_url": "https://musicbrainz.org/release-group/cac1f9c8-c960-48e6-ac1d-02d3eedcc157"
+        },
+        {
+          "mbid": "1df631d4-5a90-4a3c-a992-8f62af9d10c5",
+          "mb_title": "Symphonies nos. 1 & 3 \"Eroica\"",
+          "mb_first_release": "2022-08-12",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/1df631d4-5a90-4a3c-a992-8f62af9d10c5"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:13.053264+00:00"
+  },
+  {
+    "target": "beethoven/sym5/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "12e3c0e9-6317-49ae-85c9-d4bf5781bd2a",
+      "mb_title": "Symphonie Nr. 5",
+      "mb_first_release": "1975",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/12e3c0e9-6317-49ae-85c9-d4bf5781bd2a",
+      "query": "Symphony No. 5 AND artist:\"Carlos Kleiber\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 5",
+        "director": "Carlos Kleiber",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1974"
+      },
+      "alternatives": [
+        {
+          "mbid": "1c71037d-a648-3093-ba2e-f3c0f00e520a",
+          "mb_title": "Symphonien nos. 5 & 7",
+          "mb_first_release": "1995-02-20",
+          "confidence": 77,
+          "mb_url": "https://musicbrainz.org/release-group/1c71037d-a648-3093-ba2e-f3c0f00e520a"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:14.014897+00:00"
+  },
+  {
+    "target": "beethoven/sym5/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "c70ccf61-d87d-4991-a9ff-a423b07f9076",
+      "mb_title": "Symphony n. 4 op. 60 / Symphony n. 5 op. 67 / “Coriolan”, Overture",
+      "mb_first_release": "1994",
+      "match_score": 70,
+      "confidence": 70,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 70 < 80",
+        "date off by 40 years (1954 vs 1994)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/c70ccf61-d87d-4991-a9ff-a423b07f9076",
+      "query": "Symphony No. 5 AND artist:\"Wilhelm Furtwängler\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 5",
+        "director": "Wilhelm Furtwängler",
+        "ensemble": "Berliner Philharmoniker",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1954"
+      },
+      "alternatives": [
+        {
+          "mbid": "606e6eb8-74a6-3301-adb8-60de6c9da049",
+          "mb_title": "Symphonies nos. 5 & 7",
+          "mb_first_release": "2000-10-20",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/606e6eb8-74a6-3301-adb8-60de6c9da049"
+        },
+        {
+          "mbid": "c29be5a2-6b11-4f8c-9336-106b01c3afb7",
+          "mb_title": "Symphonies No. 3, 5, & 9",
+          "mb_first_release": "2004",
+          "confidence": 81,
+          "mb_url": "https://musicbrainz.org/release-group/c29be5a2-6b11-4f8c-9336-106b01c3afb7"
+        },
+        {
+          "mbid": "632a2805-67c3-4f6e-abbf-0ab462cfb824",
+          "mb_title": "Post-War Radio Recordings, Vol. 5",
+          "mb_first_release": "2019-09-13",
+          "confidence": 69,
+          "mb_url": "https://musicbrainz.org/release-group/632a2805-67c3-4f6e-abbf-0ab462cfb824"
+        },
+        {
+          "mbid": "dba26730-8548-44fb-9418-33fba3ecad0b",
+          "mb_title": "Beethoven: Symphony No. 5: Anniversary Edition",
+          "mb_first_release": "2023-06-23",
+          "confidence": 95,
+          "mb_url": "https://musicbrainz.org/release-group/dba26730-8548-44fb-9418-33fba3ecad0b"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:15.211877+00:00"
+  },
+  {
+    "target": "beethoven/sym9/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "c37f6ceb-d1d8-4c2c-bdbe-1a9ac74a58d0",
+      "mb_title": "Sinfonie Nr.7 (Nr. 9) C-dur op. posth.",
+      "mb_first_release": "1958-12",
+      "match_score": 71,
+      "confidence": 71,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 71 < 80",
+        "date off by 7 years (1951 vs 1958)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/c37f6ceb-d1d8-4c2c-bdbe-1a9ac74a58d0",
+      "query": "Symphony No. 9 AND artist:\"Wilhelm Furtwängler\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 9",
+        "director": "Wilhelm Furtwängler",
+        "ensemble": "Bayreuth Festival",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1951"
+      },
+      "alternatives": [
+        {
+          "mbid": "67a06016-f9ca-38ab-8e1e-bff2eaa35498",
+          "mb_title": "Symphonie No. 9 (Orchester und Chor der Bayreuther Festspiele feat. conductor: Wilhelm Furtwängler)",
+          "mb_first_release": "1988",
+          "confidence": 69,
+          "mb_url": "https://musicbrainz.org/release-group/67a06016-f9ca-38ab-8e1e-bff2eaa35498"
+        },
+        {
+          "mbid": "9837e8f3-bed7-4bc3-8b20-0d20d6608e13",
+          "mb_title": "Symphonie no. 9 in D minor",
+          "mb_first_release": "1995",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/9837e8f3-bed7-4bc3-8b20-0d20d6608e13"
+        },
+        {
+          "mbid": "24039b0d-bc20-4838-bccf-ff28965ca4a0",
+          "mb_title": "The 9 Symphonies",
+          "mb_first_release": "2000",
+          "confidence": 73,
+          "mb_url": "https://musicbrainz.org/release-group/24039b0d-bc20-4838-bccf-ff28965ca4a0"
+        },
+        {
+          "mbid": "c29be5a2-6b11-4f8c-9336-106b01c3afb7",
+          "mb_title": "Symphonies No. 3, 5, & 9",
+          "mb_first_release": "2004",
+          "confidence": 83,
+          "mb_url": "https://musicbrainz.org/release-group/c29be5a2-6b11-4f8c-9336-106b01c3afb7"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:16.470505+00:00"
+  },
+  {
+    "target": "beethoven/sym9/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "97e41bfe-105b-45a9-95b1-5321210d5f8b",
+      "mb_title": "Symphonie No. 9",
+      "mb_first_release": "1986",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 24 years (1962 vs 1986)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/97e41bfe-105b-45a9-95b1-5321210d5f8b",
+      "query": "Symphony No. 9 AND artist:\"Herbert von Karajan\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 9",
+        "director": "Herbert von Karajan",
+        "ensemble": "Berliner Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1962"
+      },
+      "alternatives": [
+        {
+          "mbid": "7a863760-3267-34b1-9ecf-1a93a470f24a",
+          "mb_title": "Symphonie Nr. 9",
+          "mb_first_release": "1988",
+          "confidence": 97,
+          "mb_url": "https://musicbrainz.org/release-group/7a863760-3267-34b1-9ecf-1a93a470f24a"
+        },
+        {
+          "mbid": "a6233567-a455-31ca-a296-100579087201",
+          "mb_title": "Symphonien Nr. 8 & 9",
+          "mb_first_release": "1988",
+          "confidence": 74,
+          "mb_url": "https://musicbrainz.org/release-group/a6233567-a455-31ca-a296-100579087201"
+        },
+        {
+          "mbid": "c9d0597f-5c1e-4471-ad55-8a8f40411c1d",
+          "mb_title": "9 Symphonien",
+          "mb_first_release": "1989-09-01",
+          "confidence": 72,
+          "mb_url": "https://musicbrainz.org/release-group/c9d0597f-5c1e-4471-ad55-8a8f40411c1d"
+        },
+        {
+          "mbid": "b917c24f-c88f-4ba1-bd8a-bbc43270005f",
+          "mb_title": "Symphonie Nr. 9 d-moll op.125",
+          "mb_first_release": "2003",
+          "confidence": 72,
+          "mb_url": "https://musicbrainz.org/release-group/b917c24f-c88f-4ba1-bd8a-bbc43270005f"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:17.606450+00:00"
+  },
+  {
+    "target": "beethoven/violin_concerto/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "49cf89ab-5aca-4e4b-849f-65dd786e336a",
+      "mb_title": "Concerto No. 1",
+      "mb_first_release": "1959",
+      "match_score": 58,
+      "confidence": 58,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 58 < 80",
+        "date off by 4 years (1955 vs 1959)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/49cf89ab-5aca-4e4b-849f-65dd786e336a",
+      "query": "Violin Concerto AND artist:\"Charles Munch\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Violin Concerto",
+        "director": "Charles Munch",
+        "ensemble": "Boston Symphony",
+        "soloists": "Jascha Heifetz",
+        "label": "RCA",
+        "year": "1955"
+      },
+      "alternatives": [
+        {
+          "mbid": "df63cc4e-fe0a-3b20-b925-32efaaf35db7",
+          "mb_title": "Violin Concertos",
+          "mb_first_release": "1998-05-19",
+          "confidence": 82,
+          "mb_url": "https://musicbrainz.org/release-group/df63cc4e-fe0a-3b20-b925-32efaaf35db7"
+        },
+        {
+          "mbid": "ae61da13-7fae-40af-b6cc-44d11cccd8bf",
+          "mb_title": "Zino Francescatti, Vol. 3: Tchaikovsky: Violin Concerto / Brahms: Double Concerto",
+          "mb_first_release": "2009",
+          "confidence": 98,
+          "mb_url": "https://musicbrainz.org/release-group/ae61da13-7fae-40af-b6cc-44d11cccd8bf"
+        },
+        {
+          "mbid": "681487e5-834a-438f-9562-d60621cfdef5",
+          "mb_title": "Concerto no. 3",
+          "mb_first_release": "2013-02-08",
+          "confidence": 58,
+          "mb_url": "https://musicbrainz.org/release-group/681487e5-834a-438f-9562-d60621cfdef5"
+        },
+        {
+          "mbid": "f836a441-6387-4ed0-8bd6-2906dd6db3ef",
+          "mb_title": "Mendelssohn & Brahms Violin Concerto - Jascha Heifetz",
+          "mb_first_release": "2024",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/f836a441-6387-4ed0-8bd6-2906dd6db3ef"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:19.354118+00:00"
+  },
+  {
+    "target": "beethoven/missa_solemnis/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ffa5986f-aa8a-3b09-bd1b-51a7574b283d",
+      "mb_title": "Missa solemnis",
+      "mb_first_release": "1966-07",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/ffa5986f-aa8a-3b09-bd1b-51a7574b283d",
+      "query": "Missa Solemnis AND artist:\"Otto Klemperer\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Missa Solemnis",
+        "director": "Otto Klemperer",
+        "ensemble": "New Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1965"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:20.235627+00:00"
+  },
+  {
+    "target": "beethoven/fidelio/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "75c52db5-d9d8-4f26-8059-7b4e6a17dbfa",
+      "mb_title": "Fidelio",
+      "mb_first_release": "1989",
+      "match_score": 94,
+      "confidence": 94,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 27 years (1962 vs 1989)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/75c52db5-d9d8-4f26-8059-7b4e6a17dbfa",
+      "query": "Fidelio AND artist:\"Otto Klemperer\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Fidelio",
+        "director": "Otto Klemperer",
+        "ensemble": "Philharmonia",
+        "soloists": "Christa Ludwig, Jon Vickers",
+        "label": "EMI",
+        "year": "1962"
+      },
+      "alternatives": [
+        {
+          "mbid": "c61f4a4a-cd7c-4dc7-a89b-5396f3cfb0da",
+          "mb_title": "Fidelio",
+          "mb_first_release": "2003-11-03",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/c61f4a4a-cd7c-4dc7-a89b-5396f3cfb0da"
+        },
+        {
+          "mbid": "90507dca-5c19-49d8-b30e-69ccd0a664ef",
+          "mb_title": "Wagner: Wesendonck Lieder / Isoldes Liebestod / Brahms: Alto Rhapsody / Mahler: 5 Lieder / Beethoven: Abscheulicher! ('Fidelio')",
+          "mb_first_release": "2006",
+          "confidence": 59,
+          "mb_url": "https://musicbrainz.org/release-group/90507dca-5c19-49d8-b30e-69ccd0a664ef"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:21.486197+00:00"
+  },
+  {
+    "target": "mozart/pc20/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "e55b69cf-ee0b-345b-a957-c7e110f35c2d",
+      "mb_title": "Piano Concertos Nos. 20 & 24",
+      "mb_first_release": "2001",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 41 years (1960 vs 2001)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/e55b69cf-ee0b-345b-a957-c7e110f35c2d",
+      "query": "Piano Concerto No. 20 AND artist:\"Igor Markevitch\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Piano Concerto No. 20",
+        "director": "Igor Markevitch",
+        "ensemble": "Orchestre des Concerts Lamoureux",
+        "soloists": "Clara Haskil",
+        "label": "Philips",
+        "year": "1960"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:25.787493+00:00"
+  },
+  {
+    "target": "mozart/clarinet_concerto/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ab2029f9-1291-4345-95bf-f0fda9526820",
+      "mb_title": "Clarinet Concerto / Bassoon Concerto",
+      "mb_first_release": "1987",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 28 years (1959 vs 1987)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/ab2029f9-1291-4345-95bf-f0fda9526820",
+      "query": "Clarinet Concerto AND artist:\"Thomas Beecham\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Clarinet Concerto",
+        "director": "Thomas Beecham",
+        "ensemble": "Royal Philharmonic",
+        "soloists": "Jack Brymer",
+        "label": "EMI",
+        "year": "1959"
+      },
+      "alternatives": [
+        {
+          "mbid": "03e9bfb5-7d85-4ada-991d-e6265750c3f9",
+          "mb_title": "Concertos for Flute and Harp / Clarinet",
+          "mb_first_release": "1990",
+          "confidence": 43,
+          "mb_url": "https://musicbrainz.org/release-group/03e9bfb5-7d85-4ada-991d-e6265750c3f9"
+        },
+        {
+          "mbid": "eb5e4836-ba8a-4478-9b06-fdef9907b110",
+          "mb_title": "Eine kleine Nachtmusik / Serenata Notturna / Clarinet Concerto / Flute and Harp Concerto",
+          "mb_first_release": "1995-06-20",
+          "confidence": 64,
+          "mb_url": "https://musicbrainz.org/release-group/eb5e4836-ba8a-4478-9b06-fdef9907b110"
+        },
+        {
+          "mbid": "e7db8e6e-9d8d-4e9c-95b1-6f50628c1d44",
+          "mb_title": "Eine Klein Nachtmusic / Clarinet Concerto / Horn Concerto No. 4",
+          "mb_first_release": "1997",
+          "confidence": 71,
+          "mb_url": "https://musicbrainz.org/release-group/e7db8e6e-9d8d-4e9c-95b1-6f50628c1d44"
+        },
+        {
+          "mbid": "11f32dc7-b88d-4b0e-866c-6ca079c0af23",
+          "mb_title": "Symphony no. 41 “Jupiter” / Clarinet Concerto / Bassoon Concerto",
+          "mb_first_release": null,
+          "confidence": 79,
+          "mb_url": "https://musicbrainz.org/release-group/11f32dc7-b88d-4b0e-866c-6ca079c0af23"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:26.277122+00:00"
+  },
+  {
+    "target": "mozart/requiem/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "45923cf1-60da-395a-a8d3-786ec0f2042b",
+      "mb_title": "Requiem",
+      "mb_first_release": "1971",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/45923cf1-60da-395a-a8d3-786ec0f2042b",
+      "query": "Requiem AND artist:\"Karl Böhm\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Requiem",
+        "director": "Karl Böhm",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1971"
+      },
+      "alternatives": [
+        {
+          "mbid": "adea639e-bdf8-40af-9f23-d1ff9576c00a",
+          "mb_title": "Requiem",
+          "mb_first_release": "1988",
+          "confidence": 94,
+          "mb_url": "https://musicbrainz.org/release-group/adea639e-bdf8-40af-9f23-d1ff9576c00a"
+        },
+        {
+          "mbid": "6f125fda-4b82-4ba1-a082-d88a009ae6a7",
+          "mb_title": "The Early Years: Requiem, K. 626 / Symphonies K. 184, K. 318, K. 543, K. 550, K. 551",
+          "mb_first_release": "1994",
+          "confidence": 67,
+          "mb_url": "https://musicbrainz.org/release-group/6f125fda-4b82-4ba1-a082-d88a009ae6a7"
+        },
+        {
+          "mbid": "f07dae02-3de8-3293-906e-2dc88443713f",
+          "mb_title": "Symphonies nos. 39, 40 & 41 “Jupiter” / Requiem",
+          "mb_first_release": "2000",
+          "confidence": 68,
+          "mb_url": "https://musicbrainz.org/release-group/f07dae02-3de8-3293-906e-2dc88443713f"
+        },
+        {
+          "mbid": "7770d143-6f8d-4ab6-8b38-a91b89e9395b",
+          "mb_title": "Sinfonías nº 40 y 41 “Júpiter” / Réquiem",
+          "mb_first_release": "2005",
+          "confidence": 60,
+          "mb_url": "https://musicbrainz.org/release-group/7770d143-6f8d-4ab6-8b38-a91b89e9395b"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:27.672396+00:00"
+  },
+  {
+    "target": "mozart/figaro/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "d57db7e3-d76f-38e4-b948-cdf2942c9cac",
+      "mb_title": "Le nozze di Figaro",
+      "mb_first_release": "1989",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 34 years (1955 vs 1989)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/d57db7e3-d76f-38e4-b948-cdf2942c9cac",
+      "query": "Le nozze di Figaro AND artist:\"Erich Kleiber\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Le nozze di Figaro",
+        "director": "Erich Kleiber",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "",
+        "label": "Decca",
+        "year": "1955"
+      },
+      "alternatives": [
+        {
+          "mbid": "39bdd1ce-0c3e-458d-bac4-0a1e2147785d",
+          "mb_title": "Las bodas de Fígaro (II)",
+          "mb_first_release": "2006",
+          "confidence": 20,
+          "mb_url": "https://musicbrainz.org/release-group/39bdd1ce-0c3e-458d-bac4-0a1e2147785d"
+        },
+        {
+          "mbid": "b5824892-f0f4-4d32-85c6-7c432b356e8b",
+          "mb_title": "Las bodas de Fígaro (I)",
+          "mb_first_release": "2006",
+          "confidence": 20,
+          "mb_url": "https://musicbrainz.org/release-group/b5824892-f0f4-4d32-85c6-7c432b356e8b"
+        },
+        {
+          "mbid": "2cc57934-5930-43ca-8e68-68cb9fd1b52e",
+          "mb_title": "Le nozze di Figaro / Cosi fan tutte",
+          "mb_first_release": null,
+          "confidence": 74,
+          "mb_url": "https://musicbrainz.org/release-group/2cc57934-5930-43ca-8e68-68cb9fd1b52e"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:28.289559+00:00"
+  },
+  {
+    "target": "mozart/figaro/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "a27b1ac7-15b5-37f1-a0c4-241eb5363f22",
+      "mb_title": "Le nozze di Figaro",
+      "mb_first_release": "1961",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/a27b1ac7-15b5-37f1-a0c4-241eb5363f22",
+      "query": "Le nozze di Figaro AND artist:\"Carlo Maria Giulini\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Le nozze di Figaro",
+        "director": "Carlo Maria Giulini",
+        "ensemble": "Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1959"
+      },
+      "alternatives": [
+        {
+          "mbid": "9faf78f2-c5b0-4dae-b08e-f695f6f6c43c",
+          "mb_title": "Les Noces de Figaro",
+          "mb_first_release": "2020-07-02",
+          "confidence": 20,
+          "mb_url": "https://musicbrainz.org/release-group/9faf78f2-c5b0-4dae-b08e-f695f6f6c43c"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:29.397349+00:00"
+  },
+  {
+    "target": "mozart/don_giovanni/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "cd662363-659d-36f9-a6e6-f199be7c1b31",
+      "mb_title": "Don Carlo",
+      "mb_first_release": "1971",
+      "match_score": 26,
+      "confidence": 26,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 26 < 80",
+        "date off by 12 years (1959 vs 1971)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/cd662363-659d-36f9-a6e6-f199be7c1b31",
+      "query": "Don Giovanni AND artist:\"Carlo Maria Giulini\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Don Giovanni",
+        "director": "Carlo Maria Giulini",
+        "ensemble": "Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1959"
+      },
+      "alternatives": [
+        {
+          "mbid": "dee2f8cc-89c0-3de4-a753-17fbdf7ddb66",
+          "mb_title": "Don Giovanni",
+          "mb_first_release": "1987",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/dee2f8cc-89c0-3de4-a753-17fbdf7ddb66"
+        },
+        {
+          "mbid": "1ad538ae-96ba-4968-8403-a55bf33aded7",
+          "mb_title": "Don Giovanni Ouverture / Eine kleine Nachtmusik / Concerto per piano n. 20 / Sinfonia n. 40",
+          "mb_first_release": "1989",
+          "confidence": 40,
+          "mb_url": "https://musicbrainz.org/release-group/1ad538ae-96ba-4968-8403-a55bf33aded7"
+        },
+        {
+          "mbid": "50477dec-cce8-461d-b56d-a84d884fe841",
+          "mb_title": "Don Giovanni",
+          "mb_first_release": "1990",
+          "confidence": 98,
+          "mb_url": "https://musicbrainz.org/release-group/50477dec-cce8-461d-b56d-a84d884fe841"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:31.039742+00:00"
+  },
+  {
+    "target": "mozart/don_giovanni/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "2bd146b5-507b-4b82-9827-4c6ced0b4e73",
+      "mb_title": "Don Giovanni",
+      "mb_first_release": "1991",
+      "match_score": 97,
+      "confidence": 97,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 37 years (1954 vs 1991)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/2bd146b5-507b-4b82-9827-4c6ced0b4e73",
+      "query": "Don Giovanni AND artist:\"Wilhelm Furtwängler\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Don Giovanni",
+        "director": "Wilhelm Furtwängler",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1954"
+      },
+      "alternatives": [
+        {
+          "mbid": "6c7a1dda-c544-3837-b54d-4b44ab9270d3",
+          "mb_title": "Don Giovanni",
+          "mb_first_release": "2000",
+          "confidence": 98,
+          "mb_url": "https://musicbrainz.org/release-group/6c7a1dda-c544-3837-b54d-4b44ab9270d3"
+        },
+        {
+          "mbid": "972c79af-1814-4dd6-b59d-d1271cf2ef16",
+          "mb_title": "Don Giovanni",
+          "mb_first_release": "2003",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/972c79af-1814-4dd6-b59d-d1271cf2ef16"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:31.506821+00:00"
+  },
+  {
+    "target": "mozart/cosi/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "61bf5d6f-11dc-4580-87ea-9e1deed152ca",
+      "mb_title": "Così fan tutte",
+      "mb_first_release": "1988-10",
+      "match_score": 98,
+      "confidence": 98,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 26 years (1962 vs 1988)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/61bf5d6f-11dc-4580-87ea-9e1deed152ca",
+      "query": "Così fan tutte AND artist:\"Karl Böhm\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Così fan tutte",
+        "director": "Karl Böhm",
+        "ensemble": "Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1962"
+      },
+      "alternatives": [
+        {
+          "mbid": "f00f3fde-13e0-4b14-b618-52f499725231",
+          "mb_title": "Così fan tutte",
+          "mb_first_release": "1990-06-01",
+          "confidence": 98,
+          "mb_url": "https://musicbrainz.org/release-group/f00f3fde-13e0-4b14-b618-52f499725231"
+        },
+        {
+          "mbid": "f58ac378-2bd1-35cc-b9cd-682fc4fed9a2",
+          "mb_title": "Così fan tutte",
+          "mb_first_release": "1999",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/f58ac378-2bd1-35cc-b9cd-682fc4fed9a2"
+        },
+        {
+          "mbid": "806f7950-7e24-4f76-91dd-3eeb3e335c63",
+          "mb_title": "Die Zauberflöte und Così fan tutte (Auszüge)",
+          "mb_first_release": null,
+          "confidence": 71,
+          "mb_url": "https://musicbrainz.org/release-group/806f7950-7e24-4f76-91dd-3eeb3e335c63"
+        },
+        {
+          "mbid": "2cc57934-5930-43ca-8e68-68cb9fd1b52e",
+          "mb_title": "Le nozze di Figaro / Cosi fan tutte",
+          "mb_first_release": null,
+          "confidence": 58,
+          "mb_url": "https://musicbrainz.org/release-group/2cc57934-5930-43ca-8e68-68cb9fd1b52e"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:32.627805+00:00"
+  },
+  {
+    "target": "mozart/zauberflote/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ff5e3273-5154-346c-8ca0-26426e14f066",
+      "mb_title": "Die Zauberflöte",
+      "mb_first_release": "1964",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/ff5e3273-5154-346c-8ca0-26426e14f066",
+      "query": "Die Zauberflöte AND artist:\"Otto Klemperer\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Die Zauberflöte",
+        "director": "Otto Klemperer",
+        "ensemble": "Philharmonia",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1964"
+      },
+      "alternatives": [
+        {
+          "mbid": "a2ed1674-e081-4398-b613-5ed042be8c1f",
+          "mb_title": "The Magic Flute: Highlights",
+          "mb_first_release": "1987",
+          "confidence": 27,
+          "mb_url": "https://musicbrainz.org/release-group/a2ed1674-e081-4398-b613-5ed042be8c1f"
+        },
+        {
+          "mbid": "35433044-42d1-433c-8a88-d991e46b5659",
+          "mb_title": "Symphonien 35 \"Haffner\" / 36 \"Linzer\" / 38 \"Prager\" / Ouverture: Die Zauberflote",
+          "mb_first_release": "2000-04-03",
+          "confidence": 45,
+          "mb_url": "https://musicbrainz.org/release-group/35433044-42d1-433c-8a88-d991e46b5659"
+        },
+        {
+          "mbid": "486d9d88-2790-484d-94c4-91b6d931403c",
+          "mb_title": "Mozart: Le nozze di Figaro / Don Giovanni / Così fan tutte / Die Zauberflöte",
+          "mb_first_release": "2013-03-26",
+          "confidence": 49,
+          "mb_url": "https://musicbrainz.org/release-group/486d9d88-2790-484d-94c4-91b6d931403c"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:38.593274+00:00"
+  },
+  {
+    "target": "mozart/zauberflote/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "e9190425-fabe-38d7-a31a-7f49757e3651",
+      "mb_title": "Die Zauberflöte",
+      "mb_first_release": "1964",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/e9190425-fabe-38d7-a31a-7f49757e3651",
+      "query": "Die Zauberflöte AND artist:\"Karl Böhm\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Die Zauberflöte",
+        "director": "Karl Böhm",
+        "ensemble": "Berliner Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1964"
+      },
+      "alternatives": [
+        {
+          "mbid": "c9ddec4e-a652-49e3-87a6-ed779ff1ac0c",
+          "mb_title": "Die Zauberflöte",
+          "mb_first_release": "1960",
+          "confidence": 96,
+          "mb_url": "https://musicbrainz.org/release-group/c9ddec4e-a652-49e3-87a6-ed779ff1ac0c"
+        },
+        {
+          "mbid": "c7f31ac3-d344-3874-b0cc-73792c09eeff",
+          "mb_title": "Die Zauberflöte",
+          "mb_first_release": "1955",
+          "confidence": 98,
+          "mb_url": "https://musicbrainz.org/release-group/c7f31ac3-d344-3874-b0cc-73792c09eeff"
+        },
+        {
+          "mbid": "c4392105-fa77-4db9-8f97-4e0b8b50c4ad",
+          "mb_title": "Die Zauberflöte / Der Schauspieldirektor",
+          "mb_first_release": "1990",
+          "confidence": 70,
+          "mb_url": "https://musicbrainz.org/release-group/c4392105-fa77-4db9-8f97-4e0b8b50c4ad"
+        },
+        {
+          "mbid": "5ff4ba26-cab0-34a2-b853-9b15060298cd",
+          "mb_title": "Die Zauberflöte: Highlights",
+          "mb_first_release": "1998",
+          "confidence": 84,
+          "mb_url": "https://musicbrainz.org/release-group/5ff4ba26-cab0-34a2-b853-9b15060298cd"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:44.363543+00:00"
+  },
+  {
+    "target": "puccini/manon_lescaut/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "594d4bcd-1841-44fa-bf3b-3510100194cf",
+      "mb_title": "Manon Lescaut",
+      "mb_first_release": "1959",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/594d4bcd-1841-44fa-bf3b-3510100194cf",
+      "query": "Manon Lescaut AND artist:\"Tullio Serafin\"",
+      "seed": {
+        "work": "Giacomo Puccini — Manon Lescaut",
+        "director": "Tullio Serafin",
+        "ensemble": "Teatro alla Scala",
+        "soloists": "Maria Callas, Giuseppe Di Stefano",
+        "label": "EMI",
+        "year": "1957"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:44.667614+00:00"
+  },
+  {
+    "target": "puccini/boheme/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "5ba957dd-2a15-4eda-9bfe-1e6fd75163d1",
+      "mb_title": "La bohème",
+      "mb_first_release": "1956-12",
+      "match_score": 97,
+      "confidence": 97,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/5ba957dd-2a15-4eda-9bfe-1e6fd75163d1",
+      "query": "La Bohème AND artist:\"Thomas Beecham\"",
+      "seed": {
+        "work": "Giacomo Puccini — La Bohème",
+        "director": "Thomas Beecham",
+        "ensemble": "RCA Victor Orchestra",
+        "soloists": "Victoria de los Ángeles, Jussi Björling",
+        "label": "EMI",
+        "year": "1956"
+      },
+      "alternatives": [
+        {
+          "mbid": "0491bd90-296f-4131-899e-795846c59c5e",
+          "mb_title": "La Bohème",
+          "mb_first_release": null,
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/0491bd90-296f-4131-899e-795846c59c5e"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:45.717416+00:00"
+  },
+  {
+    "target": "puccini/boheme/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "4297f49e-0d9c-3fe5-8c07-6cb7a5c356e8",
+      "mb_title": "La bohème",
+      "mb_first_release": "1973",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/4297f49e-0d9c-3fe5-8c07-6cb7a5c356e8",
+      "query": "La Bohème AND artist:\"Herbert von Karajan\"",
+      "seed": {
+        "work": "Giacomo Puccini — La Bohème",
+        "director": "Herbert von Karajan",
+        "ensemble": "Berliner Philharmoniker",
+        "soloists": "Mirella Freni, Luciano Pavarotti",
+        "label": "Decca",
+        "year": "1972"
+      },
+      "alternatives": [
+        {
+          "mbid": "b73afafa-b99f-4d1e-a945-8207858883c3",
+          "mb_title": "La Bohème",
+          "mb_first_release": "1987",
+          "confidence": 95,
+          "mb_url": "https://musicbrainz.org/release-group/b73afafa-b99f-4d1e-a945-8207858883c3"
+        },
+        {
+          "mbid": "fd5e724d-cf22-3313-8d9e-620fba1173d0",
+          "mb_title": "La bohème",
+          "mb_first_release": "2002",
+          "confidence": 96,
+          "mb_url": "https://musicbrainz.org/release-group/fd5e724d-cf22-3313-8d9e-620fba1173d0"
+        },
+        {
+          "mbid": "f3e1e07f-51a3-4521-a4d6-811fcf9d3913",
+          "mb_title": "Puccini: La Bohème live conducted by Herbert von Karajan (Live)",
+          "mb_first_release": "2025",
+          "confidence": 69,
+          "mb_url": "https://musicbrainz.org/release-group/f3e1e07f-51a3-4521-a4d6-811fcf9d3913"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:47.072782+00:00"
+  },
+  {
+    "target": "puccini/tosca/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "37d60b7e-60fd-424d-ac7e-555ce6ecfed0",
+      "mb_title": "Tosca",
+      "mb_first_release": "1985-11-10",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 32 years (1953 vs 1985)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/37d60b7e-60fd-424d-ac7e-555ce6ecfed0",
+      "query": "Tosca AND artist:\"Victor de Sabata\"",
+      "seed": {
+        "work": "Giacomo Puccini — Tosca",
+        "director": "Victor de Sabata",
+        "ensemble": "Teatro alla Scala",
+        "soloists": "Maria Callas, Giuseppe Di Stefano, Tito Gobbi",
+        "label": "EMI",
+        "year": "1953"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:47.816497+00:00"
+  },
+  {
+    "target": "puccini/tosca/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "824c1d2e-7232-3fca-a4b7-9b72a52f8f06",
+      "mb_title": "Tosca",
+      "mb_first_release": "1984-11-22",
+      "match_score": 93,
+      "confidence": 93,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 22 years (1962 vs 1984)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/824c1d2e-7232-3fca-a4b7-9b72a52f8f06",
+      "query": "Tosca AND artist:\"Herbert von Karajan\"",
+      "seed": {
+        "work": "Giacomo Puccini — Tosca",
+        "director": "Herbert von Karajan",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "Leontyne Price, Giuseppe Di Stefano, Giuseppe Taddei",
+        "label": "Decca",
+        "year": "1962"
+      },
+      "alternatives": [
+        {
+          "mbid": "ef9dadac-2a75-306c-9c28-002bf001bef3",
+          "mb_title": "Tosca",
+          "mb_first_release": "1989",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/ef9dadac-2a75-306c-9c28-002bf001bef3"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:48.968036+00:00"
+  },
+  {
+    "target": "puccini/tosca/2",
+    "kind": "identity",
+    "payload": {
+      "mbid": "a748026f-ba23-3d1f-8de1-561f2817429f",
+      "mb_title": "Tosca",
+      "mb_first_release": "1989-05-16",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 25 years (1964 vs 1989)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/a748026f-ba23-3d1f-8de1-561f2817429f",
+      "query": "Tosca AND artist:\"Georges Prêtre\"",
+      "seed": {
+        "work": "Giacomo Puccini — Tosca",
+        "director": "Georges Prêtre",
+        "ensemble": "Paris Conservatoire",
+        "soloists": "Maria Callas, Carlo Bergonzi, Tito Gobbi",
+        "label": "EMI",
+        "year": "1964"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:55.767330+00:00"
+  },
+  {
+    "target": "puccini/butterfly/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "32474010-3c96-4b3f-b053-cd35019d2d74",
+      "mb_title": "Madama Butterfly",
+      "mb_first_release": "1986",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 20 years (1966 vs 1986)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/32474010-3c96-4b3f-b053-cd35019d2d74",
+      "query": "Madama Butterfly AND artist:\"John Barbirolli\"",
+      "seed": {
+        "work": "Giacomo Puccini — Madama Butterfly",
+        "director": "John Barbirolli",
+        "ensemble": "Rome Opera",
+        "soloists": "Renata Scotto, Carlo Bergonzi",
+        "label": "EMI",
+        "year": "1966"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:33:56.078861+00:00"
+  },
+  {
+    "target": "puccini/butterfly/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ee87d8a4-1c6d-391a-a09d-f4b8e2095b7a",
+      "mb_title": "Madama Butterfly",
+      "mb_first_release": "1974",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/ee87d8a4-1c6d-391a-a09d-f4b8e2095b7a",
+      "query": "Madama Butterfly AND artist:\"Herbert von Karajan\"",
+      "seed": {
+        "work": "Giacomo Puccini — Madama Butterfly",
+        "director": "Herbert von Karajan",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "Mirella Freni, Luciano Pavarotti",
+        "label": "Decca",
+        "year": "1974"
+      },
+      "alternatives": [
+        {
+          "mbid": "76a43839-e0eb-3e6d-af06-d45c0a158663",
+          "mb_title": "Madama Butterfly",
+          "mb_first_release": "1992-10-19",
+          "confidence": 94,
+          "mb_url": "https://musicbrainz.org/release-group/76a43839-e0eb-3e6d-af06-d45c0a158663"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:03.161453+00:00"
+  },
+  {
+    "target": "puccini/fanciulla/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "0eacf8ed-0fd3-45bc-9ad7-f59cc5933acf",
+      "mb_title": "La fanciulla del West",
+      "mb_first_release": "1988-10-26",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 30 years (1958 vs 1988)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/0eacf8ed-0fd3-45bc-9ad7-f59cc5933acf",
+      "query": "La fanciulla del West AND artist:\"Franco Capuana\"",
+      "seed": {
+        "work": "Giacomo Puccini — La fanciulla del West",
+        "director": "Franco Capuana",
+        "ensemble": "Accademia di Santa Cecilia",
+        "soloists": "Renata Tebaldi, Mario Del Monaco",
+        "label": "Decca",
+        "year": "1958"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:03.580612+00:00"
+  },
+  {
+    "target": "puccini/turandot/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "efdd6894-b777-33cf-a20d-b9810d3bd2cf",
+      "mb_title": "Turandot",
+      "mb_first_release": "1988",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 23 years (1965 vs 1988)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/efdd6894-b777-33cf-a20d-b9810d3bd2cf",
+      "query": "Turandot AND artist:\"Francesco Molinari-Pradelli\"",
+      "seed": {
+        "work": "Giacomo Puccini — Turandot",
+        "director": "Francesco Molinari-Pradelli",
+        "ensemble": "Rome Opera",
+        "soloists": "Birgit Nilsson, Franco Corelli",
+        "label": "EMI",
+        "year": "1965"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:04.513606+00:00"
+  },
+  {
+    "target": "puccini/turandot/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "aeb969c5-83e7-4160-9981-33991d54b991",
+      "mb_title": "Turandot",
+      "mb_first_release": "1973",
+      "match_score": 89,
+      "confidence": 89,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/aeb969c5-83e7-4160-9981-33991d54b991",
+      "query": "Turandot AND artist:\"Zubin Mehta\"",
+      "seed": {
+        "work": "Giacomo Puccini — Turandot",
+        "director": "Zubin Mehta",
+        "ensemble": "London Philharmonic",
+        "soloists": "Joan Sutherland, Luciano Pavarotti",
+        "label": "Decca",
+        "year": "1972"
+      },
+      "alternatives": [
+        {
+          "mbid": "d54fa495-cb0a-4e81-bfd4-f93f414287f1",
+          "mb_title": "Turandot",
+          "mb_first_release": "1998-10-10",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/d54fa495-cb0a-4e81-bfd4-f93f414287f1"
+        },
+        {
+          "mbid": "6dcf65c2-99e1-4ae6-a761-8a0377a3e3a6",
+          "mb_title": "Turandot",
+          "mb_first_release": "2015-04-01",
+          "confidence": 90,
+          "mb_url": "https://musicbrainz.org/release-group/6dcf65c2-99e1-4ae6-a761-8a0377a3e3a6"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:05.694474+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "21593018-cdca-42f6-9fc2-e082944ceac9",
+      "mb_title": "Symphony no. 5, op. 47 / Symphony no. 12 \"The Year 1917\"",
+      "mb_first_release": "2016-04-15",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 62 years (1954 vs 2016)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/21593018-cdca-42f6-9fc2-e082944ceac9",
+      "query": "Symphony No. 5 AND artist:\"Yevgeny Mravinsky\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "Yevgeny Mravinsky",
+        "ensemble": "Leningrad Philharmonic Orchestra",
+        "soloists": "",
+        "label": "various",
+        "year": "1954"
+      },
+      "alternatives": [
+        {
+          "mbid": "47c5188a-d7da-4498-a3a8-2f5e65f3e364",
+          "mb_title": "Symphonies Nos. 5 & 6",
+          "mb_first_release": "2016-03-18",
+          "confidence": 85,
+          "mb_url": "https://musicbrainz.org/release-group/47c5188a-d7da-4498-a3a8-2f5e65f3e364"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:06.737454+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "5113bac2-622a-49fa-a180-b82a0533285a",
+      "mb_title": "Symphony no. 5, op. 47",
+      "mb_first_release": "1959",
+      "match_score": 52,
+      "confidence": 52,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 52 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/5113bac2-622a-49fa-a180-b82a0533285a",
+      "query": "Symphony No. 5 AND artist:\"Leonard Bernstein\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "Leonard Bernstein",
+        "ensemble": "New York Philharmonic",
+        "soloists": "",
+        "label": "Columbia",
+        "year": "1959"
+      },
+      "alternatives": [
+        {
+          "mbid": "9759a660-f839-3f85-baae-ce77442cd790",
+          "mb_title": "Symphonies nos. 4, 5",
+          "mb_first_release": "1986",
+          "confidence": 72,
+          "mb_url": "https://musicbrainz.org/release-group/9759a660-f839-3f85-baae-ce77442cd790"
+        },
+        {
+          "mbid": "33ce5ac5-d1de-4834-b7d4-256e096bf147",
+          "mb_title": "Symphony No. 5",
+          "mb_first_release": "1992",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/33ce5ac5-d1de-4834-b7d4-256e096bf147"
+        },
+        {
+          "mbid": "09650b3a-04c4-435a-98f7-13af1b939468",
+          "mb_title": "Symphony no. 8 \"Unfinished\" / Symphony no. 5",
+          "mb_first_release": "2012-04-02",
+          "confidence": 72,
+          "mb_url": "https://musicbrainz.org/release-group/09650b3a-04c4-435a-98f7-13af1b939468"
+        },
+        {
+          "mbid": "54d2f10b-3eb4-4592-964a-6be697a92619",
+          "mb_title": "Symphony no. 5 in C‐sharp major",
+          "mb_first_release": null,
+          "confidence": 73,
+          "mb_url": "https://musicbrainz.org/release-group/54d2f10b-3eb4-4592-964a-6be697a92619"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:14.384438+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/3",
+    "kind": "identity",
+    "payload": {
+      "mbid": "87a2210e-4579-334c-a3d8-d97a8014a55b",
+      "mb_title": "The 5 Piano Concertos",
+      "mb_first_release": "1989",
+      "match_score": 89,
+      "confidence": 89,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 24 years (1965 vs 1989)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/87a2210e-4579-334c-a3d8-d97a8014a55b",
+      "query": "Symphony No. 5 AND artist:\"André Previn\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "André Previn",
+        "ensemble": "London Symphony Orchestra",
+        "soloists": "",
+        "label": "EMI",
+        "year": "1965"
+      },
+      "alternatives": [
+        {
+          "mbid": "43311bdb-721c-453a-a5cd-9d42974ea822",
+          "mb_title": "Piano Concertos 3 & 5 / \"Overture on Hebrew Themes\" / \"Autumnal\"",
+          "mb_first_release": "1996-05-24",
+          "confidence": 68,
+          "mb_url": "https://musicbrainz.org/release-group/43311bdb-721c-453a-a5cd-9d42974ea822"
+        },
+        {
+          "mbid": "d119dcd3-06f4-49bf-b4cc-d94e2e17a67a",
+          "mb_title": "Shostakovich: Symphonies 4 & 5 / Britten: Sinfonia da Requiem / Four Sea Interludes / Passacaglia (Peter Grimes)",
+          "mb_first_release": "1998-08-11",
+          "confidence": 68,
+          "mb_url": "https://musicbrainz.org/release-group/d119dcd3-06f4-49bf-b4cc-d94e2e17a67a"
+        },
+        {
+          "mbid": "fe2354a6-d743-4f4f-8a7f-c95c05d2b88d",
+          "mb_title": "Symphonies 5 & 7 / Symphony-Concerto / Cinderella (Suite)",
+          "mb_first_release": "2011",
+          "confidence": 87,
+          "mb_url": "https://musicbrainz.org/release-group/fe2354a6-d743-4f4f-8a7f-c95c05d2b88d"
+        },
+        {
+          "mbid": "2b12f013-1962-4e33-9406-06e452e004cb",
+          "mb_title": "Symphonies 5 & 7",
+          "mb_first_release": null,
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/2b12f013-1962-4e33-9406-06e452e004cb"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:20.780964+00:00"
+  },
+  {
+    "target": "shostakovich/sym10/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "8cbffcfd-93af-438f-8973-a11489b69b6e",
+      "mb_title": "Symphonie No. 10",
+      "mb_first_release": "1990-05-02",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 24 years (1966 vs 1990)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/8cbffcfd-93af-438f-8973-a11489b69b6e",
+      "query": "Symphony No. 10 AND artist:\"Herbert von Karajan\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 10",
+        "director": "Herbert von Karajan",
+        "ensemble": "Berliner Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1966"
+      },
+      "alternatives": [
+        {
+          "mbid": "75cfea37-2077-4a8c-ad18-a53d93dc4ae3",
+          "mb_title": "Von Karajan inédito 10",
+          "mb_first_release": "1998",
+          "confidence": 44,
+          "mb_url": "https://musicbrainz.org/release-group/75cfea37-2077-4a8c-ad18-a53d93dc4ae3"
+        },
+        {
+          "mbid": "1e6304b7-9226-47b9-b512-8d27f8c61aca",
+          "mb_title": "Britten 100: The Birthday Collection",
+          "mb_first_release": "2013",
+          "confidence": 17,
+          "mb_url": "https://musicbrainz.org/release-group/1e6304b7-9226-47b9-b512-8d27f8c61aca"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:21.197492+00:00"
+  },
+  {
+    "target": "shostakovich/sym13/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ab3c9b2b-89df-4630-968e-9448eb476500",
+      "mb_title": "Symphony No. 13, Op. 113 \"Babi Yar\"",
+      "mb_first_release": "2017-11-22",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 50 years (1967 vs 2017)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/ab3c9b2b-89df-4630-968e-9448eb476500",
+      "query": "Symphony No. 13, Babi Yar AND artist:\"Kirill Kondrashin\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 13, Babi Yar",
+        "director": "Kirill Kondrashin",
+        "ensemble": "Moscow Philharmonic",
+        "soloists": "",
+        "label": "Melodiya",
+        "year": "1967"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:22.223327+00:00"
+  },
+  {
+    "target": "bach/brandenburg/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "32c16638-b053-385c-b7b1-6d287cbabb83",
+      "mb_title": "Brandenburg Concertos nos. 4-6",
+      "mb_first_release": "1983-10-17",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/32c16638-b053-385c-b7b1-6d287cbabb83",
+      "query": "Brandenburg Concertos AND artist:\"Trevor Pinnock\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Brandenburg Concertos",
+        "director": "Trevor Pinnock",
+        "ensemble": "The English Concert",
+        "soloists": "Trevor Pinnock, harpsichord",
+        "label": "Archiv",
+        "year": "1982"
+      },
+      "alternatives": [
+        {
+          "mbid": "749fff5e-cf59-329b-81dc-d7695d46a63b",
+          "mb_title": "Brandenburg Concertos nos. 1 - 3",
+          "mb_first_release": "1983-10-17",
+          "confidence": 84,
+          "mb_url": "https://musicbrainz.org/release-group/749fff5e-cf59-329b-81dc-d7695d46a63b"
+        },
+        {
+          "mbid": "8c1ceccd-22e1-3a0c-8f3d-e648490744f5",
+          "mb_title": "Brandenburg Concertos Nos. 1, 3, 5",
+          "mb_first_release": "1992-04-14",
+          "confidence": 84,
+          "mb_url": "https://musicbrainz.org/release-group/8c1ceccd-22e1-3a0c-8f3d-e648490744f5"
+        },
+        {
+          "mbid": "05e2715d-310c-458d-b947-bc986a2346e9",
+          "mb_title": "Brandenburg Concertos nos. 1–3 / 2 Oboe Concertos",
+          "mb_first_release": "2002-10-08",
+          "confidence": 80,
+          "mb_url": "https://musicbrainz.org/release-group/05e2715d-310c-458d-b947-bc986a2346e9"
+        },
+        {
+          "mbid": "e94f9c56-68d9-47c2-8400-3286dc25613c",
+          "mb_title": "Brandenburg Concertos / 19 Concertos / Orchestral Suites",
+          "mb_first_release": "2011-03-08",
+          "confidence": 82,
+          "mb_url": "https://musicbrainz.org/release-group/e94f9c56-68d9-47c2-8400-3286dc25613c"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:23.378989+00:00"
+  },
+  {
+    "target": "bach/brandenburg/2",
+    "kind": "identity",
+    "payload": {
+      "mbid": "a27ce34a-4598-46eb-ac49-09005407baf4",
+      "mb_title": "Piano Concertos",
+      "mb_first_release": "2006-09-01",
+      "match_score": 37,
+      "confidence": 37,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 37 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/a27ce34a-4598-46eb-ac49-09005407baf4",
+      "query": "Brandenburg Concertos AND artist:\"Claudio Abbado\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Brandenburg Concertos",
+        "director": "Claudio Abbado",
+        "ensemble": "Orchestra Mozart",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "2007"
+      },
+      "alternatives": [
+        {
+          "mbid": "2e67ecce-c1e8-4cbe-85f5-cf3e9f965b17",
+          "mb_title": "Brandenburg Concertos 1-6",
+          "mb_first_release": "2011-01-26",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/2e67ecce-c1e8-4cbe-85f5-cf3e9f965b17"
+        },
+        {
+          "mbid": "b90f8ca5-6889-43ef-be05-5b5458e4f23b",
+          "mb_title": "Violin Concertos",
+          "mb_first_release": "2012-02-06",
+          "confidence": 33,
+          "mb_url": "https://musicbrainz.org/release-group/b90f8ca5-6889-43ef-be05-5b5458e4f23b"
+        },
+        {
+          "mbid": "5fa27f8d-eaba-476d-9294-bff7d244a9b2",
+          "mb_title": "Violin Concertos",
+          "mb_first_release": "1998-09-29",
+          "confidence": 34,
+          "mb_url": "https://musicbrainz.org/release-group/5fa27f8d-eaba-476d-9294-bff7d244a9b2"
+        },
+        {
+          "mbid": "cd451543-bea6-3691-82f9-af17bd682e81",
+          "mb_title": "Violin Concertos",
+          "mb_first_release": "1995-11-07",
+          "confidence": 33,
+          "mb_url": "https://musicbrainz.org/release-group/cd451543-bea6-3691-82f9-af17bd682e81"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:24.467113+00:00"
+  },
+  {
+    "target": "bach/cello_suites/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "a64a670b-9786-4d98-aecb-e92bbdeb64e3",
+      "mb_title": "Suites pour violoncelle seul N° 5 en do mineur / N° 6 en ré majeur",
+      "mb_first_release": "1957-07",
+      "match_score": 38,
+      "confidence": 38,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 38 < 80",
+        "date off by 21 years (1936 vs 1957)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/a64a670b-9786-4d98-aecb-e92bbdeb64e3",
+      "query": "Cello Suites AND artist:\"Pablo Casals\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Cello Suites",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Pablo Casals",
+        "label": "EMI",
+        "year": "1936–39"
+      },
+      "alternatives": [
+        {
+          "mbid": "a402e35c-5fdc-4161-b84e-ffec9fb2e083",
+          "mb_title": "Suites pour violoncelle seul N°3 en do majeur / N°4 en mi bémol majeur",
+          "mb_first_release": "1957",
+          "confidence": 38,
+          "mb_url": "https://musicbrainz.org/release-group/a402e35c-5fdc-4161-b84e-ffec9fb2e083"
+        },
+        {
+          "mbid": "89e7cd50-ed92-494f-afff-51d2d3e7a96d",
+          "mb_title": "Suites pour violoncelle seul N° 1 en sol majeur / N° 2 en ré mineur",
+          "mb_first_release": "1957-07",
+          "confidence": 33,
+          "mb_url": "https://musicbrainz.org/release-group/89e7cd50-ed92-494f-afff-51d2d3e7a96d"
+        },
+        {
+          "mbid": "4861dd4d-67d9-4a02-994f-d838e00c8e63",
+          "mb_title": "The Six Cello Suites",
+          "mb_first_release": "1972",
+          "confidence": 97,
+          "mb_url": "https://musicbrainz.org/release-group/4861dd4d-67d9-4a02-994f-d838e00c8e63"
+        },
+        {
+          "mbid": "8aeaeb97-3187-31a5-9231-c0dca413a0d1",
+          "mb_title": "Cello Suites nos. 1–6",
+          "mb_first_release": "2000",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/8aeaeb97-3187-31a5-9231-c0dca413a0d1"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:32.106201+00:00"
+  },
+  {
+    "target": "bach/cello_suites/2",
+    "kind": "identity",
+    "payload": {
+      "mbid": "e02a5c09-5a9f-34f2-8140-d514db16c9eb",
+      "mb_title": "Suites for Violoncello Solo, BWV 1007-1012",
+      "mb_first_release": "1992-01-31",
+      "match_score": 53,
+      "confidence": 53,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 53 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/e02a5c09-5a9f-34f2-8140-d514db16c9eb",
+      "query": "Cello Suites AND artist:\"Anner Bylsma\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Cello Suites",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Anner Bylsma",
+        "label": "Sony Vivarte",
+        "year": "1992"
+      },
+      "alternatives": [
+        {
+          "mbid": "4d7b5f11-77aa-47cf-b071-5f0f1de1195e",
+          "mb_title": "The Cello Suites, Volume 2",
+          "mb_first_release": "1999",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/4d7b5f11-77aa-47cf-b071-5f0f1de1195e"
+        },
+        {
+          "mbid": "0e1f8eb0-9e92-40fd-93d9-c2bb847fecf6",
+          "mb_title": "The Cello Suites, Volume 1",
+          "mb_first_release": "1999",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/0e1f8eb0-9e92-40fd-93d9-c2bb847fecf6"
+        },
+        {
+          "mbid": "c1759c1d-1068-40b4-a9fd-226d1e60113c",
+          "mb_title": "6 Suites à Violoncello solo senza Basso",
+          "mb_first_release": "1999",
+          "confidence": 81,
+          "mb_url": "https://musicbrainz.org/release-group/c1759c1d-1068-40b4-a9fd-226d1e60113c"
+        },
+        {
+          "mbid": "019c38dc-e83f-4d87-a410-1f73b558d069",
+          "mb_title": "Anner Bylsma Collection: Cello Suites / Sonatas",
+          "mb_first_release": "2014-01-24",
+          "confidence": 82,
+          "mb_url": "https://musicbrainz.org/release-group/019c38dc-e83f-4d87-a410-1f73b558d069"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:39.085175+00:00"
+  },
+  {
+    "target": "bach/sonatas_partitas/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "cf6c3764-9bb9-33b8-add9-1123270dd56e",
+      "mb_title": "Complete Sonatas & Partitas for Solo Violin",
+      "mb_first_release": "2002",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/cf6c3764-9bb9-33b8-add9-1123270dd56e",
+      "query": "Sonatas and Partitas for Solo Violin AND artist:\"Rachel Podger\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Sonatas and Partitas for Solo Violin",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Rachel Podger",
+        "label": "Channel Classics",
+        "year": "1999"
+      },
+      "alternatives": [
+        {
+          "mbid": "20205902-4d62-362e-8c8f-1e425e2ccdc4",
+          "mb_title": "Twelve Fantasies for Solo Violin",
+          "mb_first_release": "2010",
+          "confidence": 40,
+          "mb_url": "https://musicbrainz.org/release-group/20205902-4d62-362e-8c8f-1e425e2ccdc4"
+        },
+        {
+          "mbid": "f45af562-d5b0-44d8-bcd9-2aa611f7e786",
+          "mb_title": "Complete Sonatas for Keyboard and Violin",
+          "mb_first_release": "2014-10-20",
+          "confidence": 38,
+          "mb_url": "https://musicbrainz.org/release-group/f45af562-d5b0-44d8-bcd9-2aa611f7e786"
+        },
+        {
+          "mbid": "03f0cfd8-100d-4239-ac7c-91ad93638a25",
+          "mb_title": "Sonatas for Violin and Piano, op. 12 no. 1, op. 24 & op. 96",
+          "mb_first_release": "2022-03-25",
+          "confidence": 36,
+          "mb_url": "https://musicbrainz.org/release-group/03f0cfd8-100d-4239-ac7c-91ad93638a25"
+        },
+        {
+          "mbid": "3cee2cb4-91d9-4386-8daa-4542fac85912",
+          "mb_title": "Sonatas for Keyboard & Violin",
+          "mb_first_release": "2023-04-28",
+          "confidence": 40,
+          "mb_url": "https://musicbrainz.org/release-group/3cee2cb4-91d9-4386-8daa-4542fac85912"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:45.915960+00:00"
+  },
+  {
+    "target": "bach/goldberg/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "7c8f2d45-d764-347a-9ab9-0aa771a3447d",
+      "mb_title": "The Goldberg Variations",
+      "mb_first_release": "1982",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/7c8f2d45-d764-347a-9ab9-0aa771a3447d",
+      "query": "Goldberg Variations AND artist:\"Glenn Gould\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Goldberg Variations",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Glenn Gould",
+        "label": "CBS",
+        "year": "1981"
+      },
+      "alternatives": [
+        {
+          "mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+          "mb_title": "The Goldberg Variations",
+          "mb_first_release": "1956-03-01",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/dcff25f1-702d-3b5e-b0da-d48172e6e62a"
+        },
+        {
+          "mbid": "fc2421ab-e158-4ad2-aa22-7babddb06660",
+          "mb_title": "The Goldberg Variations 1955 Performance: Zenph Re‐Performance",
+          "mb_first_release": "2007-05-29",
+          "confidence": 71,
+          "mb_url": "https://musicbrainz.org/release-group/fc2421ab-e158-4ad2-aa22-7babddb06660"
+        },
+        {
+          "mbid": "e81da777-60ac-4b32-b845-a6de6635920d",
+          "mb_title": "Glenn Gould Plays Bach: Goldberg Variations, BWV 988",
+          "mb_first_release": "2012-09-10",
+          "confidence": 70,
+          "mb_url": "https://musicbrainz.org/release-group/e81da777-60ac-4b32-b845-a6de6635920d"
+        },
+        {
+          "mbid": "59d64418-1d67-4eb4-8103-61b9334c18ac",
+          "mb_title": "Goldberg Variations (1954 CBC Broadcast Recording)",
+          "mb_first_release": "2022-10-26",
+          "confidence": 73,
+          "mb_url": "https://musicbrainz.org/release-group/59d64418-1d67-4eb4-8103-61b9334c18ac"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:52.945596+00:00"
+  },
+  {
+    "target": "bach/mass_b_minor/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "9ff5f872-d22b-3dc7-a50e-dcba22248a51",
+      "mb_title": "Mass in B minor",
+      "mb_first_release": "1984-12-09",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/9ff5f872-d22b-3dc7-a50e-dcba22248a51",
+      "query": "Mass in B minor AND artist:\"John Eliot Gardiner\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Mass in B minor",
+        "director": "John Eliot Gardiner",
+        "ensemble": "English Baroque Soloists",
+        "soloists": "",
+        "label": "Archiv",
+        "year": "1985"
+      },
+      "alternatives": [
+        {
+          "mbid": "19be0088-a13f-4202-8629-ccf2fe35f9fb",
+          "mb_title": "Great Mass in C minor",
+          "mb_first_release": "1987",
+          "confidence": 34,
+          "mb_url": "https://musicbrainz.org/release-group/19be0088-a13f-4202-8629-ccf2fe35f9fb"
+        },
+        {
+          "mbid": "92898115-05c7-4215-a9bf-2e4d6ff362d2",
+          "mb_title": "Christmas Oratorio / St. Matthew Passion / St. John Passion / Mass in B minor",
+          "mb_first_release": "2002",
+          "confidence": 61,
+          "mb_url": "https://musicbrainz.org/release-group/92898115-05c7-4215-a9bf-2e4d6ff362d2"
+        },
+        {
+          "mbid": "304ec2cd-e0d0-4a16-a509-60fa36c39794",
+          "mb_title": "Mass in B Minor",
+          "mb_first_release": "2015-11-01",
+          "confidence": 93,
+          "mb_url": "https://musicbrainz.org/release-group/304ec2cd-e0d0-4a16-a509-60fa36c39794"
+        },
+        {
+          "mbid": "5ee06166-643d-4e63-9641-f8f8464daeb6",
+          "mb_title": "Requiem / Mass in C minor",
+          "mb_first_release": null,
+          "confidence": 30,
+          "mb_url": "https://musicbrainz.org/release-group/5ee06166-643d-4e63-9641-f8f8464daeb6"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:53.435139+00:00"
+  },
+  {
+    "target": "bach/matthew/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1",
+      "mb_title": "St. Matthew Passion",
+      "mb_first_release": "1989-09-15",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1",
+      "query": "St Matthew Passion AND artist:\"John Eliot Gardiner\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — St Matthew Passion",
+        "director": "John Eliot Gardiner",
+        "ensemble": "English Baroque Soloists",
+        "soloists": "",
+        "label": "Archiv",
+        "year": "1988"
+      },
+      "alternatives": [
+        {
+          "mbid": "f2d9da49-ce95-3375-8922-13f33de932a7",
+          "mb_title": "St. Matthew Passion: Arias and Choruses",
+          "mb_first_release": "1989-01-01",
+          "confidence": 72,
+          "mb_url": "https://musicbrainz.org/release-group/f2d9da49-ce95-3375-8922-13f33de932a7"
+        },
+        {
+          "mbid": "3698a10d-c604-3eaf-b783-2440ddc1da54",
+          "mb_title": "St. John Passion",
+          "mb_first_release": "1986-11-11",
+          "confidence": 36,
+          "mb_url": "https://musicbrainz.org/release-group/3698a10d-c604-3eaf-b783-2440ddc1da54"
+        },
+        {
+          "mbid": "92898115-05c7-4215-a9bf-2e4d6ff362d2",
+          "mb_title": "Christmas Oratorio / St. Matthew Passion / St. John Passion / Mass in B minor",
+          "mb_first_release": "2002",
+          "confidence": 68,
+          "mb_url": "https://musicbrainz.org/release-group/92898115-05c7-4215-a9bf-2e4d6ff362d2"
+        },
+        {
+          "mbid": "f04bd948-1bad-4d5e-9f7c-cd11b50d7c5f",
+          "mb_title": "St. John Passion",
+          "mb_first_release": "2022-03-04",
+          "confidence": 36,
+          "mb_url": "https://musicbrainz.org/release-group/f04bd948-1bad-4d5e-9f7c-cd11b50d7c5f"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:54.484201+00:00"
+  },
+  {
+    "target": "beethoven/sym3/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "51168602-2dcc-41e4-955a-250250030fb5",
+      "mb_title": "Symphony no. 3 \"Eroica\"",
+      "mb_first_release": null,
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/51168602-2dcc-41e4-955a-250250030fb5",
+      "query": "Symphony No. 3, Eroica AND artist:\"John Eliot Gardiner\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 3, Eroica",
+        "director": "John Eliot Gardiner",
+        "ensemble": "Orchestre Révolutionnaire et Romantique",
+        "soloists": "",
+        "label": "Archiv",
+        "year": "1993"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:55.385977+00:00"
+  },
+  {
+    "target": "beethoven/sym7/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "a38ae9a7-69cc-4eb0-b76e-1409ee5a2f8d",
+      "mb_title": "Symphonie Nr. 7",
+      "mb_first_release": "1976",
+      "match_score": 75,
+      "confidence": 75,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 75 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/a38ae9a7-69cc-4eb0-b76e-1409ee5a2f8d",
+      "query": "Symphony No. 7 AND artist:\"Carlos Kleiber\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 7",
+        "director": "Carlos Kleiber",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1976"
+      },
+      "alternatives": [
+        {
+          "mbid": "1c71037d-a648-3093-ba2e-f3c0f00e520a",
+          "mb_title": "Symphonien nos. 5 & 7",
+          "mb_first_release": "1995-02-20",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/1c71037d-a648-3093-ba2e-f3c0f00e520a"
+        },
+        {
+          "mbid": "4e168654-6e88-409b-9007-c8617c9f1185",
+          "mb_title": "Beethoven: Symphonies Nos. 4 & 7 · J. Strauss: Fledermaus Overture",
+          "mb_first_release": "1999-02-20",
+          "confidence": 45,
+          "mb_url": "https://musicbrainz.org/release-group/4e168654-6e88-409b-9007-c8617c9f1185"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:56.495337+00:00"
+  },
+  {
+    "target": "beethoven/sym9/2",
+    "kind": "identity",
+    "payload": {
+      "mbid": "94f6e952-c8ae-4e40-a4a1-e3db3252fe82",
+      "mb_title": "Symphonies no. 8 & 9",
+      "mb_first_release": "1993",
+      "match_score": 64,
+      "confidence": 64,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 64 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/94f6e952-c8ae-4e40-a4a1-e3db3252fe82",
+      "query": "Symphony No. 9 AND artist:\"John Eliot Gardiner\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Symphony No. 9",
+        "director": "John Eliot Gardiner",
+        "ensemble": "Orchestre Révolutionnaire et Romantique",
+        "soloists": "",
+        "label": "Archiv",
+        "year": "1992"
+      },
+      "alternatives": [
+        {
+          "mbid": "04784209-1585-35d5-8c18-d49c62316746",
+          "mb_title": "Brahms: 9 Hungarian Dances / Dvorak: Symphonic Variations / Czech Suite",
+          "mb_first_release": "1993-11-09",
+          "confidence": 55,
+          "mb_url": "https://musicbrainz.org/release-group/04784209-1585-35d5-8c18-d49c62316746"
+        },
+        {
+          "mbid": "90b28df2-dcbf-3381-bf73-73c7d2745d9b",
+          "mb_title": "9 Symphonies",
+          "mb_first_release": "1994-08-15",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/90b28df2-dcbf-3381-bf73-73c7d2745d9b"
+        },
+        {
+          "mbid": "0add5df0-948b-4069-a05a-4df693abcf25",
+          "mb_title": "Piano Concertos nos. 9 & 17",
+          "mb_first_release": "1995-06-06",
+          "confidence": 58,
+          "mb_url": "https://musicbrainz.org/release-group/0add5df0-948b-4069-a05a-4df693abcf25"
+        },
+        {
+          "mbid": "e28da7d4-1bb4-4235-9e15-b4fbc577e8a4",
+          "mb_title": "Piano Concertos nos. 9 & 11",
+          "mb_first_release": "1984",
+          "confidence": 52,
+          "mb_url": "https://musicbrainz.org/release-group/e28da7d4-1bb4-4235-9e15-b4fbc577e8a4"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:57.677012+00:00"
+  },
+  {
+    "target": "beethoven/pc5/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "94c47790-a11c-4617-a38e-e60acb326328",
+      "mb_title": "Klavierkonzert no. 5 Es-Dur op. 73",
+      "mb_first_release": "1979",
+      "match_score": 55,
+      "confidence": 55,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 55 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/94c47790-a11c-4617-a38e-e60acb326328",
+      "query": "Piano Concerto No. 5, Emperor AND artist:\"Karl Böhm\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Piano Concerto No. 5, Emperor",
+        "director": "Karl Böhm",
+        "ensemble": "Wiener Philharmoniker",
+        "soloists": "Maurizio Pollini",
+        "label": "Deutsche Grammophon",
+        "year": "1978"
+      },
+      "alternatives": [
+        {
+          "mbid": "5f62813b-65a1-47e0-aa32-d7a2c2bdccca",
+          "mb_title": "An der schönen blauen Donau / Kaiserwalzer / Perpetuum mobile / Tritsch‐Tratsch‐Polka / Rosen aus dem Süden",
+          "mb_first_release": "1988-04-06",
+          "confidence": 37,
+          "mb_url": "https://musicbrainz.org/release-group/5f62813b-65a1-47e0-aa32-d7a2c2bdccca"
+        },
+        {
+          "mbid": "36c67b93-cf5b-473e-9d84-6ec4f11ecade",
+          "mb_title": "Piano Concerto no. 5 / Choral Fantasy",
+          "mb_first_release": "1995-10-09",
+          "confidence": 94,
+          "mb_url": "https://musicbrainz.org/release-group/36c67b93-cf5b-473e-9d84-6ec4f11ecade"
+        },
+        {
+          "mbid": "89ff8084-4dc4-4a2d-aa8a-fa8b73d7e558",
+          "mb_title": "Klavierkonzert No. 5 - »Emperor« Concerto / Chorfantasie - Choral Fantasy",
+          "mb_first_release": "1996",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/89ff8084-4dc4-4a2d-aa8a-fa8b73d7e558"
+        },
+        {
+          "mbid": "b1742199-9c69-4c27-89ec-a7ad12389fec",
+          "mb_title": "Edwin Fisher Plays Beethoven: Pathétique Sonata / Appassionata Sonata / Emperor Concerto",
+          "mb_first_release": null,
+          "confidence": 87,
+          "mb_url": "https://musicbrainz.org/release-group/b1742199-9c69-4c27-89ec-a7ad12389fec"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:34:58.731032+00:00"
+  },
+  {
+    "target": "beethoven/violin_concerto/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ed260324-eed1-32b8-8cd1-b07f62fa2a73",
+      "mb_title": "Violin Concerto",
+      "mb_first_release": "1981",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/ed260324-eed1-32b8-8cd1-b07f62fa2a73",
+      "query": "Violin Concerto AND artist:\"Carlo Maria Giulini\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Violin Concerto",
+        "director": "Carlo Maria Giulini",
+        "ensemble": "Philharmonia",
+        "soloists": "Itzhak Perlman",
+        "label": "EMI",
+        "year": "1980"
+      },
+      "alternatives": [
+        {
+          "mbid": "55462010-3d84-372d-82f0-f5fb577b170e",
+          "mb_title": "Violin Concerto",
+          "mb_first_release": "1977",
+          "confidence": 98,
+          "mb_url": "https://musicbrainz.org/release-group/55462010-3d84-372d-82f0-f5fb577b170e"
+        },
+        {
+          "mbid": "6088cb02-6e98-4634-9e8b-e6d105dfc12f",
+          "mb_title": "Violin Concerto, Romances For Violin And Orchestra",
+          "mb_first_release": "1994",
+          "confidence": 67,
+          "mb_url": "https://musicbrainz.org/release-group/6088cb02-6e98-4634-9e8b-e6d105dfc12f"
+        },
+        {
+          "mbid": "88b40636-e142-44b9-8fdf-2138452e046a",
+          "mb_title": "Tchaikovsky: Violin Concerto / Dvořák: Symphony no. 7 / Mussorgsky: Khovanshchina - Prelude",
+          "mb_first_release": "2010-02",
+          "confidence": 53,
+          "mb_url": "https://musicbrainz.org/release-group/88b40636-e142-44b9-8fdf-2138452e046a"
+        },
+        {
+          "mbid": "ad9ed25c-118a-475b-8245-034c83203a1e",
+          "mb_title": "The Concerto Recordings",
+          "mb_first_release": "2013-11-18",
+          "confidence": 47,
+          "mb_url": "https://musicbrainz.org/release-group/ad9ed25c-118a-475b-8245-034c83203a1e"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:06.764086+00:00"
+  },
+  {
+    "target": "beethoven/late_quartets/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "4b9b2f01-ecc1-466c-91d9-10a79ee3faa5",
+      "mb_title": "Beethoven: The Late String Quartets (vol.2)",
+      "mb_first_release": "1993",
+      "match_score": 82,
+      "confidence": 82,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 63 years (1930 vs 1993)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/4b9b2f01-ecc1-466c-91d9-10a79ee3faa5",
+      "query": "Late String Quartets AND artist:\"Busch Quartet\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Late String Quartets",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Busch Quartet",
+        "label": "EMI",
+        "year": "1930s"
+      },
+      "alternatives": [
+        {
+          "mbid": "9a3603b8-36c5-45f7-bad4-2bcb72abd5d1",
+          "mb_title": "The Late String Quartets (vol.3)",
+          "mb_first_release": "1994",
+          "confidence": 81,
+          "mb_url": "https://musicbrainz.org/release-group/9a3603b8-36c5-45f7-bad4-2bcb72abd5d1"
+        },
+        {
+          "mbid": "e5f46a3b-f220-4a14-b429-369d27a2e9d2",
+          "mb_title": "The Late String Quartets",
+          "mb_first_release": "2008",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/e5f46a3b-f220-4a14-b429-369d27a2e9d2"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:07.198853+00:00"
+  },
+  {
+    "target": "beethoven/late_quartets/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "d6543510-6710-47cc-b8b6-d73de98a27b1",
+      "mb_title": "The Late String Quartets",
+      "mb_first_release": "1989",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 22 years (1967 vs 1989)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/d6543510-6710-47cc-b8b6-d73de98a27b1",
+      "query": "Late String Quartets AND artist:\"Quartetto Italiano\"",
+      "seed": {
+        "work": "Ludwig van Beethoven — Late String Quartets",
+        "director": "",
+        "ensemble": "",
+        "soloists": "Quartetto Italiano",
+        "label": "Philips",
+        "year": "1967–75"
+      },
+      "alternatives": [
+        {
+          "mbid": "60a606f8-d55a-37e5-9f17-27bdc957bb03",
+          "mb_title": "String Quartets",
+          "mb_first_release": "1990-03",
+          "confidence": 53,
+          "mb_url": "https://musicbrainz.org/release-group/60a606f8-d55a-37e5-9f17-27bdc957bb03"
+        },
+        {
+          "mbid": "c0e8f1a1-19af-31ed-8406-e8885a7a674f",
+          "mb_title": "Complete String Quartets",
+          "mb_first_release": "1996-04",
+          "confidence": 49,
+          "mb_url": "https://musicbrainz.org/release-group/c0e8f1a1-19af-31ed-8406-e8885a7a674f"
+        },
+        {
+          "mbid": "4e6f8d0b-c9c4-44d6-988d-057ec2161716",
+          "mb_title": "String Quartets",
+          "mb_first_release": "2016",
+          "confidence": 49,
+          "mb_url": "https://musicbrainz.org/release-group/4e6f8d0b-c9c4-44d6-988d-057ec2161716"
+        },
+        {
+          "mbid": "f4557ac9-b4eb-30c7-a4df-2b4ced19fef2",
+          "mb_title": "String Quartets",
+          "mb_first_release": null,
+          "confidence": 51,
+          "mb_url": "https://musicbrainz.org/release-group/f4557ac9-b4eb-30c7-a4df-2b4ced19fef2"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:08.249168+00:00"
+  },
+  {
+    "target": "mozart/late_symphonies/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "d1f5ef96-37c8-3c5c-896c-9abca2ad100a",
+      "mb_title": "Symphonies Nos. 39, 40 & 41",
+      "mb_first_release": "1999",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 39 years (1960 vs 1999)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/d1f5ef96-37c8-3c5c-896c-9abca2ad100a",
+      "query": "Symphonies Nos. 39, 40, 41 AND artist:\"Karl Böhm\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Symphonies Nos. 39, 40, 41",
+        "director": "Karl Böhm",
+        "ensemble": "Berliner Philharmoniker",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1960s"
+      },
+      "alternatives": [
+        {
+          "mbid": "f07dae02-3de8-3293-906e-2dc88443713f",
+          "mb_title": "Symphonies nos. 39, 40 & 41 “Jupiter” / Requiem",
+          "mb_first_release": "2000",
+          "confidence": 80,
+          "mb_url": "https://musicbrainz.org/release-group/f07dae02-3de8-3293-906e-2dc88443713f"
+        },
+        {
+          "mbid": "07e75106-c69b-3b91-b049-ac4bab1ec671",
+          "mb_title": "Symphonies Nos. 40 & 41",
+          "mb_first_release": "2001-04-10",
+          "confidence": 85,
+          "mb_url": "https://musicbrainz.org/release-group/07e75106-c69b-3b91-b049-ac4bab1ec671"
+        },
+        {
+          "mbid": "704e9254-4a1c-4a90-9995-ab3ac03934bd",
+          "mb_title": "Symphonies nos. 38 \"Prague\" / 39 / 41 \"Jupiter\"",
+          "mb_first_release": "2005",
+          "confidence": 74,
+          "mb_url": "https://musicbrainz.org/release-group/704e9254-4a1c-4a90-9995-ab3ac03934bd"
+        },
+        {
+          "mbid": "f66c336e-9f8c-4280-8ad0-9d2d368a18e7",
+          "mb_title": "Symphonies Nos.40 & 41 \"Jupiter\"",
+          "mb_first_release": "2011-07-20",
+          "confidence": 64,
+          "mb_url": "https://musicbrainz.org/release-group/f66c336e-9f8c-4280-8ad0-9d2d368a18e7"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:09.352682+00:00"
+  },
+  {
+    "target": "mozart/late_symphonies/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "f7d93ac6-6968-499d-8d90-7a43637e93b1",
+      "mb_title": "Symphonies nos. 40 & 41 “Jupiter”",
+      "mb_first_release": "1992",
+      "match_score": 99,
+      "confidence": 99,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 12 years (1980 vs 1992)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/f7d93ac6-6968-499d-8d90-7a43637e93b1",
+      "query": "Symphonies Nos. 39, 40, 41 AND artist:\"Nikolaus Harnoncourt\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Symphonies Nos. 39, 40, 41",
+        "director": "Nikolaus Harnoncourt",
+        "ensemble": "Concentgebouw",
+        "soloists": "",
+        "label": "Teldec",
+        "year": "1980s"
+      },
+      "alternatives": [
+        {
+          "mbid": "abd5553a-807b-43d0-ade3-881c8b904995",
+          "mb_title": "Les Trois Dernières Symphonies 39, 40 et 41 >Jupiter<",
+          "mb_first_release": "1992",
+          "confidence": 88,
+          "mb_url": "https://musicbrainz.org/release-group/abd5553a-807b-43d0-ade3-881c8b904995"
+        },
+        {
+          "mbid": "fa0b6f5b-9972-432d-b655-67dd79d6ba69",
+          "mb_title": "Symphonies nos. 40 & 41 \"Jupiter\"",
+          "mb_first_release": "1994",
+          "confidence": 95,
+          "mb_url": "https://musicbrainz.org/release-group/fa0b6f5b-9972-432d-b655-67dd79d6ba69"
+        },
+        {
+          "mbid": "0140f608-5005-43ad-a353-8a3061d2e38c",
+          "mb_title": "Symphonies nos. 39 & 41 \"Jupiter\"",
+          "mb_first_release": "1995",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/0140f608-5005-43ad-a353-8a3061d2e38c"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:10.338965+00:00"
+  },
+  {
+    "target": "mozart/pc20/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "dd75af9c-7a3c-4f57-be9c-f424c93d1d23",
+      "mb_title": "Piano Concertos no. 20, K. 466, & no. 24, K. 491 / Concert Rondo, K. 382",
+      "mb_first_release": "1982",
+      "match_score": 99,
+      "confidence": 99,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 12 years (1970 vs 1982)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/dd75af9c-7a3c-4f57-be9c-f424c93d1d23",
+      "query": "Piano Concerto No. 20 AND artist:\"Neville Marriner\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Piano Concerto No. 20",
+        "director": "Neville Marriner",
+        "ensemble": "Academy of St Martin in the Fields",
+        "soloists": "Alfred Brendel",
+        "label": "Philips",
+        "year": "1970s"
+      },
+      "alternatives": [
+        {
+          "mbid": "b7d07aec-dfa5-499c-a2ee-57a18c24bceb",
+          "mb_title": "Piano Concertos 20 & 23",
+          "mb_first_release": "1997",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/b7d07aec-dfa5-499c-a2ee-57a18c24bceb"
+        },
+        {
+          "mbid": "823a969f-0024-3cbd-b146-c9543d09b565",
+          "mb_title": "Piano Concertos nos. 20 & 23 / 2 Rondos",
+          "mb_first_release": "2005-11-08",
+          "confidence": 88,
+          "mb_url": "https://musicbrainz.org/release-group/823a969f-0024-3cbd-b146-c9543d09b565"
+        },
+        {
+          "mbid": "36687b4b-503e-4983-8244-4ff11b020871",
+          "mb_title": "Piano Concertos Nos 20, 23, 24, 25",
+          "mb_first_release": "2011-10-17",
+          "confidence": 92,
+          "mb_url": "https://musicbrainz.org/release-group/36687b4b-503e-4983-8244-4ff11b020871"
+        },
+        {
+          "mbid": "72004cce-3cf9-467b-8f3a-9b5a219dbd96",
+          "mb_title": "Piano Concertos 19, 20, 21, 23",
+          "mb_first_release": "2016-06-16",
+          "confidence": 96,
+          "mb_url": "https://musicbrainz.org/release-group/72004cce-3cf9-467b-8f3a-9b5a219dbd96"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:11.455244+00:00"
+  },
+  {
+    "target": "mozart/clarinet_concerto/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "ae22671e-2fae-3d12-93cb-9a74003dfe4a",
+      "mb_title": "Clarinet and Oboe Concertos",
+      "mb_first_release": "1986",
+      "match_score": 76,
+      "confidence": 76,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 76 < 80",
+        "date off by 6 years (1980 vs 1986)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/ae22671e-2fae-3d12-93cb-9a74003dfe4a",
+      "query": "Clarinet Concerto AND artist:\"Christopher Hogwood\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Clarinet Concerto",
+        "director": "Christopher Hogwood",
+        "ensemble": "Academy of Ancient Music",
+        "soloists": "Antony Pay",
+        "label": "L'Oiseau-Lyre",
+        "year": "1980s"
+      },
+      "alternatives": [
+        {
+          "mbid": "4919f496-c4e4-4d1c-a1e9-ccd4abf8208c",
+          "mb_title": "Trumpet Concerto, Horn Concerto No. 1, Organ Concerto No. 1",
+          "mb_first_release": "1987",
+          "confidence": 58,
+          "mb_url": "https://musicbrainz.org/release-group/4919f496-c4e4-4d1c-a1e9-ccd4abf8208c"
+        },
+        {
+          "mbid": "0cc6216b-0b29-4c8f-9be0-5ac2aa03caa1",
+          "mb_title": "Clarinet Concerto / Three Symphonies",
+          "mb_first_release": "1988-05-25",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/0cc6216b-0b29-4c8f-9be0-5ac2aa03caa1"
+        },
+        {
+          "mbid": "c2ed4cb0-add0-3ec7-aff8-ca44f361983d",
+          "mb_title": "Concertos for 3 & 4 Harpsichords / Concerto for 3 Violins",
+          "mb_first_release": "1990",
+          "confidence": 31,
+          "mb_url": "https://musicbrainz.org/release-group/c2ed4cb0-add0-3ec7-aff8-ca44f361983d"
+        },
+        {
+          "mbid": "a2a51758-4c3d-47c9-be98-6e857cd2b8d1",
+          "mb_title": "L’Estro Armonico / 6 Flute Concertos, op. 10",
+          "mb_first_release": "1998",
+          "confidence": 32,
+          "mb_url": "https://musicbrainz.org/release-group/a2a51758-4c3d-47c9-be98-6e857cd2b8d1"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:19.646476+00:00"
+  },
+  {
+    "target": "mozart/requiem/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "8e0283b2-14c3-3101-90ed-003a8434758f",
+      "mb_title": "Requiem in D minor / Kyrie in D minor",
+      "mb_first_release": "1987-09-03",
+      "match_score": 71,
+      "confidence": 71,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 71 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/8e0283b2-14c3-3101-90ed-003a8434758f",
+      "query": "Requiem AND artist:\"John Eliot Gardiner\"",
+      "seed": {
+        "work": "Wolfgang Amadeus Mozart — Requiem",
+        "director": "John Eliot Gardiner",
+        "ensemble": "English Baroque Soloists",
+        "soloists": "",
+        "label": "Philips",
+        "year": "1986"
+      },
+      "alternatives": [
+        {
+          "mbid": "09885a84-3d8b-3c34-aa04-c7edf0430039",
+          "mb_title": "Ein deutsches Requiem",
+          "mb_first_release": "1991-04-16",
+          "confidence": 83,
+          "mb_url": "https://musicbrainz.org/release-group/09885a84-3d8b-3c34-aa04-c7edf0430039"
+        },
+        {
+          "mbid": "192810b7-1549-3689-b8fd-2f754bca34b9",
+          "mb_title": "War Requiem",
+          "mb_first_release": "1992-08",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/192810b7-1549-3689-b8fd-2f754bca34b9"
+        },
+        {
+          "mbid": "17b4e55a-af44-3ce4-9500-93d83215266b",
+          "mb_title": "War Requiem / Spring Symphony / Five Flower Songs / Hymn to St. Cecilia",
+          "mb_first_release": "2002-02-01",
+          "confidence": 90,
+          "mb_url": "https://musicbrainz.org/release-group/17b4e55a-af44-3ce4-9500-93d83215266b"
+        },
+        {
+          "mbid": "1274fec1-8bd9-3e66-af50-ddba3338722c",
+          "mb_title": "Requiem (Messe des morts)",
+          "mb_first_release": "2007-11-19",
+          "confidence": 74,
+          "mb_url": "https://musicbrainz.org/release-group/1274fec1-8bd9-3e66-af50-ddba3338722c"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:20.096075+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/2",
+    "kind": "identity",
+    "payload": {
+      "mbid": "2db46cb7-7946-4bdc-8c6c-6b4d3219a797",
+      "mb_title": "5 Klavierkonzerte",
+      "mb_first_release": "1977",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 4 years (1981 vs 1977)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/2db46cb7-7946-4bdc-8c6c-6b4d3219a797",
+      "query": "Symphony No. 5 AND artist:\"Bernard Haitink\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "Bernard Haitink",
+        "ensemble": "Concertgebouw Orchestra",
+        "soloists": "",
+        "label": "Decca",
+        "year": "1981"
+      },
+      "alternatives": [
+        {
+          "mbid": "4d899c2e-cc2c-4ee0-bac6-d7c0aca54cd9",
+          "mb_title": "Symphonien Nr. 5 & 6 \"Pastorale\"",
+          "mb_first_release": "1990",
+          "confidence": 82,
+          "mb_url": "https://musicbrainz.org/release-group/4d899c2e-cc2c-4ee0-bac6-d7c0aca54cd9"
+        },
+        {
+          "mbid": "9d12e230-6d55-499c-9303-2a1159f53afb",
+          "mb_title": "5 Great Tone Poems",
+          "mb_first_release": "1994-08-16",
+          "confidence": 83,
+          "mb_url": "https://musicbrainz.org/release-group/9d12e230-6d55-499c-9303-2a1159f53afb"
+        },
+        {
+          "mbid": "c62645f9-b0d5-4f18-a82c-9a190e600d4f",
+          "mb_title": "Symphonies nos. 1 & 5",
+          "mb_first_release": "2012",
+          "confidence": 82,
+          "mb_url": "https://musicbrainz.org/release-group/c62645f9-b0d5-4f18-a82c-9a190e600d4f"
+        },
+        {
+          "mbid": "5345f35b-7e0a-4b9d-b5c1-7fd13dc4e715",
+          "mb_title": "Symphonie nr. 5",
+          "mb_first_release": null,
+          "confidence": 92,
+          "mb_url": "https://musicbrainz.org/release-group/5345f35b-7e0a-4b9d-b5c1-7fd13dc4e715"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:28.931654+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/4",
+    "kind": "identity",
+    "payload": {
+      "mbid": "49fa3b76-5086-4107-bccd-6c70e58ade2a",
+      "mb_title": "Cello Concerto no. 2 / Symphony no. 5",
+      "mb_first_release": "1993",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/49fa3b76-5086-4107-bccd-6c70e58ade2a",
+      "query": "Symphony No. 5 AND artist:\"Mstislav Rostropovich\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "Mstislav Rostropovich",
+        "ensemble": "National Symphony Orchestra",
+        "soloists": "",
+        "label": "Teldec",
+        "year": "1993"
+      },
+      "alternatives": [
+        {
+          "mbid": "930954f3-8590-495f-b38d-4426518cb626",
+          "mb_title": "Liszt: Piano Concertos nos. 1 & 2 / Beethoven: Sonata, op. 5 no. 2",
+          "mb_first_release": "1992",
+          "confidence": 40,
+          "mb_url": "https://musicbrainz.org/release-group/930954f3-8590-495f-b38d-4426518cb626"
+        },
+        {
+          "mbid": "b051fde7-be88-4a8f-88de-06e60e0c7abe",
+          "mb_title": "Cello-Suiten 1, 4 & 5",
+          "mb_first_release": "1995",
+          "confidence": 55,
+          "mb_url": "https://musicbrainz.org/release-group/b051fde7-be88-4a8f-88de-06e60e0c7abe"
+        },
+        {
+          "mbid": "602cc99b-ebbb-4b87-91f8-0372580043c6",
+          "mb_title": "Britten: Cello Sonata In C Major, Op.65 / Schumann: 5 Stücke im Volkston / Debussy: Cello Sonata",
+          "mb_first_release": "1997",
+          "confidence": 41,
+          "mb_url": "https://musicbrainz.org/release-group/602cc99b-ebbb-4b87-91f8-0372580043c6"
+        },
+        {
+          "mbid": "8bdd02bc-4a91-40e8-803d-b29b6a790089",
+          "mb_title": "5 Cello and Piano Sonatas",
+          "mb_first_release": "1999-03-16",
+          "confidence": 53,
+          "mb_url": "https://musicbrainz.org/release-group/8bdd02bc-4a91-40e8-803d-b29b6a790089"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:29.465364+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/5",
+    "kind": "identity",
+    "payload": {
+      "mbid": "dbdaeac8-3623-4c90-9f40-744e712d488c",
+      "mb_title": "Symphonies nos. 5 & 9",
+      "mb_first_release": "2009-10",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/dbdaeac8-3623-4c90-9f40-744e712d488c",
+      "query": "Symphony No. 5 AND artist:\"Vasily Petrenko\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "Vasily Petrenko",
+        "ensemble": "Royal Liverpool Philharmonic",
+        "soloists": "",
+        "label": "Naxos",
+        "year": "2009"
+      },
+      "alternatives": [
+        {
+          "mbid": "b21c8f14-7600-40cb-9145-d446981ce7f6",
+          "mb_title": "Symphonies 1, 2 and 5",
+          "mb_first_release": "2006-06",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/b21c8f14-7600-40cb-9145-d446981ce7f6"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:30.379382+00:00"
+  },
+  {
+    "target": "shostakovich/sym5/6",
+    "kind": "identity",
+    "payload": {
+      "mbid": "b0adf68d-0f8c-4124-92b1-f52abf9da7d7",
+      "mb_title": "Under Stalin’s Shadow: Symphonies nos. 5 / 8 / 9",
+      "mb_first_release": "2016-05-27",
+      "match_score": 37,
+      "confidence": 37,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 37 < 80"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/b0adf68d-0f8c-4124-92b1-f52abf9da7d7",
+      "query": "Symphony No. 5 AND artist:\"Andris Nelsons\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 5",
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "2016"
+      },
+      "alternatives": [
+        {
+          "mbid": "3e81088c-8c34-4981-924b-cb5e580c6d2c",
+          "mb_title": "Bruckner: Symphonies nos. 1 & 5 / Wagner: Tristan und Isolde: Prelude & Liebestod",
+          "mb_first_release": "2022-02-11",
+          "confidence": 27,
+          "mb_url": "https://musicbrainz.org/release-group/3e81088c-8c34-4981-924b-cb5e580c6d2c"
+        },
+        {
+          "mbid": "a1f9f584-2238-4c62-8bb6-2a0794cd84b0",
+          "mb_title": "Symphony no. 5",
+          "mb_first_release": "2026-05-01",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/a1f9f584-2238-4c62-8bb6-2a0794cd84b0"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:31.526754+00:00"
+  },
+  {
+    "target": "shostakovich/sym7/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "b02346ae-f6fc-3218-aea3-7dbc923c5dcc",
+      "mb_title": "Symphony no. 1 / Symphony no. 7 “Leningrad”",
+      "mb_first_release": "1989-09",
+      "match_score": 86,
+      "confidence": 86,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/b02346ae-f6fc-3218-aea3-7dbc923c5dcc",
+      "query": "Symphony No. 7, Leningrad AND artist:\"Leonard Bernstein\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 7, Leningrad",
+        "director": "Leonard Bernstein",
+        "ensemble": "Chicago Symphony Orchestra",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "1988"
+      },
+      "alternatives": [
+        {
+          "mbid": "fa6dd93d-e019-40e1-8b31-90fe60c9a5b2",
+          "mb_title": "Symphony No. 7 \"Leningrad\"",
+          "mb_first_release": "1993",
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/fa6dd93d-e019-40e1-8b31-90fe60c9a5b2"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:32.489226+00:00"
+  },
+  {
+    "target": "shostakovich/sym8/0",
+    "kind": "identity",
+    "payload": {
+      "mbid": "85516305-53a7-4c72-b9f1-ec8b2e22e654",
+      "mb_title": "Shostakovich: Symphony no. 8, op. 65 / Scriabin: Le Poème de l'extase, op. 54",
+      "mb_first_release": "2015-05-05",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "date off by 33 years (1982 vs 2015)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/85516305-53a7-4c72-b9f1-ec8b2e22e654",
+      "query": "Symphony No. 8 AND artist:\"Yevgeny Mravinsky\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 8",
+        "director": "Yevgeny Mravinsky",
+        "ensemble": "Leningrad Philharmonic Orchestra",
+        "soloists": "",
+        "label": "Praga",
+        "year": "1982"
+      },
+      "alternatives": []
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:40.989947+00:00"
+  },
+  {
+    "target": "shostakovich/sym8/1",
+    "kind": "identity",
+    "payload": {
+      "mbid": "b0adf68d-0f8c-4124-92b1-f52abf9da7d7",
+      "mb_title": "Under Stalin’s Shadow: Symphonies nos. 5 / 8 / 9",
+      "mb_first_release": "2016-05-27",
+      "match_score": 100,
+      "confidence": 100,
+      "auto_accept_eligible": true,
+      "needs_human_review": true,
+      "uncertain": false,
+      "review_flags": [],
+      "mb_url": "https://musicbrainz.org/release-group/b0adf68d-0f8c-4124-92b1-f52abf9da7d7",
+      "query": "Symphony No. 8 AND artist:\"Andris Nelsons\"",
+      "seed": {
+        "work": "Dmitri Shostakovich — Symphony No. 8",
+        "director": "Andris Nelsons",
+        "ensemble": "Boston Symphony Orchestra",
+        "soloists": "",
+        "label": "Deutsche Grammophon",
+        "year": "2016"
+      },
+      "alternatives": [
+        {
+          "mbid": "bb295d94-92b9-4715-8735-bd97dcc4f322",
+          "mb_title": "Bruckner: Symphonies nos. 2 & 8 / Wagner: Meistersinger Prelude",
+          "mb_first_release": "2021-02-05",
+          "confidence": 78,
+          "mb_url": "https://musicbrainz.org/release-group/bb295d94-92b9-4715-8735-bd97dcc4f322"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:35:48.859840+00:00"
+  },
+  {
+    "target": "bach/brandenburg/3",
+    "kind": "identity",
+    "payload": {
+      "mbid": "e577efe0-61fd-4627-9509-4e7bc7266aef",
+      "mb_title": "Piano Concertos",
+      "mb_first_release": "1988",
+      "match_score": 29,
+      "confidence": 29,
+      "auto_accept_eligible": false,
+      "needs_human_review": true,
+      "uncertain": true,
+      "review_flags": [
+        "confidence 29 < 80",
+        "date off by 20 years (1968 vs 1988)"
+      ],
+      "mb_url": "https://musicbrainz.org/release-group/e577efe0-61fd-4627-9509-4e7bc7266aef",
+      "query": "Brandenburg Concertos AND artist:\"Benjamin Britten\"",
+      "seed": {
+        "work": "Johann Sebastian Bach — Brandenburg Concertos",
+        "director": "Benjamin Britten",
+        "ensemble": "English Chamber Orchestra",
+        "soloists": "",
+        "label": "Decca",
+        "year": "1968"
+      },
+      "alternatives": [
+        {
+          "mbid": "1f4e0fd1-07b1-3277-9148-22143d46b4d9",
+          "mb_title": "Brandenburg Concertos 1-6",
+          "mb_first_release": "1995-02-06",
+          "confidence": 97,
+          "mb_url": "https://musicbrainz.org/release-group/1f4e0fd1-07b1-3277-9148-22143d46b4d9"
+        },
+        {
+          "mbid": "809c2e5c-ba1b-4309-aadb-e5a978c01ec7",
+          "mb_title": "Violin Concertos",
+          "mb_first_release": "2001-05",
+          "confidence": 29,
+          "mb_url": "https://musicbrainz.org/release-group/809c2e5c-ba1b-4309-aadb-e5a978c01ec7"
+        },
+        {
+          "mbid": "0caa5cd7-b381-4d62-987d-a58c0be2cd16",
+          "mb_title": "Violin Concertos",
+          "mb_first_release": "2009-09-29",
+          "confidence": 31,
+          "mb_url": "https://musicbrainz.org/release-group/0caa5cd7-b381-4d62-987d-a58c0be2cd16"
+        },
+        {
+          "mbid": "1af3f987-8271-42c5-b37e-9d44184cb41a",
+          "mb_title": "Brandenburg Concertos 1-4",
+          "mb_first_release": null,
+          "confidence": 100,
+          "mb_url": "https://musicbrainz.org/release-group/1af3f987-8271-42c5-b37e-9d44184cb41a"
+        }
+      ]
+    },
+    "source": "MusicBrainz",
+    "provenance": "cited",
+    "created": "2026-08-09T17:36:10.672482+00:00"
+  }
+]

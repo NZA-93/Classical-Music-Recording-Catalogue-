@@ -3,8 +3,8 @@
 review.py — human-readable side-by-side of harvest identity proposals.
 
 Prints each identity proposal: candidate as seeded vs MusicBrainz match.
-Flags match_score < 80, first-release date more than three years off, or a
-title containing compilation keywords.
+Flags confidence / match_score < 80, first-release date more than three years
+off, or a title containing compilation keywords.
 
     python3 agents/review.py proposals/proposals-YYYYMMDD.json
     python3 agents/review.py proposals/proposals-YYYYMMDD.json --markdown
@@ -27,6 +27,8 @@ COMPILATION_RE = re.compile(
     re.IGNORECASE,
 )
 
+IDENTITY_MIN_CONFIDENCE = 80
+
 
 def load(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -40,11 +42,23 @@ def index_candidates(seed: dict) -> dict[str, tuple[dict, dict]]:
     return out
 
 
+def _confidence(payload: dict) -> Optional[int]:
+    for key in ("confidence", "match_score"):
+        if payload.get(key) is not None:
+            return int(payload[key])
+    return None
+
+
 def flags_for(cand: dict, payload: dict) -> list[str]:
+    # Prefer flags already computed by harvest/1.1+
+    embedded = payload.get("review_flags")
+    if isinstance(embedded, list) and embedded:
+        return list(embedded)
+
     flags = []
-    score = payload.get("match_score")
-    if score is not None and score < 80:
-        flags.append(f"match_score {score} < 80")
+    score = _confidence(payload)
+    if score is not None and score < IDENTITY_MIN_CONFIDENCE:
+        flags.append(f"match_score {score} < {IDENTITY_MIN_CONFIDENCE}")
     want = str(cand.get("year") or "")[:4]
     got = str(payload.get("mb_first_release") or "")[:4]
     if want.isdigit() and got.isdigit():
@@ -89,7 +103,9 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
                 "mbid": payload.get("mbid"),
                 "title": payload.get("mb_title"),
                 "first_release": payload.get("mb_first_release"),
-                "match_score": payload.get("match_score"),
+                "match_score": _confidence(payload),
+                "auto_accept_eligible": payload.get("auto_accept_eligible"),
+                "mb_url": payload.get("mb_url"),
             },
             "flags": flags_for(cand, payload),
         })
@@ -117,6 +133,8 @@ def render_text(items: list[dict]) -> str:
             f"   mb:    {m.get('title')!r} · first {m.get('first_release')} · "
             f"score {m.get('match_score')} · {m.get('mbid')}"
         )
+        if m.get("auto_accept_eligible") is False:
+            lines.append("   auto_accept_eligible: no")
         for f in row["flags"]:
             lines.append(f"   !! {f}")
         lines.append("")
@@ -130,23 +148,28 @@ def render_markdown(items: list[dict]) -> str:
         f"{len(items)} identity proposals · "
         f"{sum(1 for i in items if i.get('flags'))} flagged",
         "",
-        "| Target | Seed | MusicBrainz | Score | Flags |",
-        "|---|---|---|---|---|",
+        "| Target | Seed | MusicBrainz | Score | Eligible | Flags |",
+        "|---|---|---|---|---|---|",
     ]
     for row in items:
         if row.get("missing"):
-            lines.append(f"| `{row['target']}` | — | — | — | missing |")
+            lines.append(f"| `{row['target']}` | — | — | — | — | missing |")
             continue
         s, m = row["seed"], row["mb"]
         seed = f"{s.get('director') or s.get('soloists') or '—'}; " \
                f"{s.get('label')}, {s.get('year')}"
         mb = f"{m.get('title')} ({m.get('first_release')})"
         flags = "; ".join(row["flags"]) if row["flags"] else ""
+        elig = "yes" if m.get("auto_accept_eligible") else "no"
         lines.append(
-            f"| `{row['target']}` | {seed} | {mb} | {m.get('match_score')} | {flags} |"
+            f"| `{row['target']}` | {seed} | {mb} | {m.get('match_score')} | "
+            f"{elig} | {flags} |"
         )
     lines.append("")
-    lines.append("Reject anything flagged. Do not auto-accept below 80.")
+    lines.append(
+        f"Reject anything flagged. Do not auto-accept below "
+        f"{IDENTITY_MIN_CONFIDENCE}."
+    )
     return "\n".join(lines)
 
 

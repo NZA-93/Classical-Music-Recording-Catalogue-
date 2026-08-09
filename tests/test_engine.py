@@ -258,13 +258,70 @@ class TestEditorialQuotation(unittest.TestCase):
         self.assertEqual(errs, [])
 
 
+class TestComposerRollup(unittest.TestCase):
+    """Composer scores are origin-weighted rollups, never a new judgement layer."""
+
+    def stmt(self, **kw):
+        base = dict(source="Gramophone", cls=eng.Cls.CRITIC, axis="interpretation",
+                    score=2.8, text="benchmark reading", prov=eng.Prov.CITED)
+        base.update(kw)
+        return eng.Statement(**base)
+
+    def rec(self, rid, stmts):
+        return eng.Recording(
+            id=rid, work_id="bach/brandenburg",
+            soloists="", director="D", ensemble="E", published="1980",
+            venue="", sessions="",
+            producer=None, engineer=None, credits_status="unknown",
+            anchors=[], reception=[], editions=[],
+            statements=stmts,
+        )
+
+    def test_withholds_until_evidence_floor(self):
+        out = eng.aggregate_composer(
+            [self.rec("a", [self.stmt()])],
+            composer="Bach", composer_id="bach",
+        )
+        self.assertIsNone(out["interpretation"])
+        self.assertEqual(out["n_strong"], 1)
+
+    def test_origin_weights_prefer_cited_critic_over_draft_promo(self):
+        critic = self.stmt(source="Diapason", cls=eng.Cls.CRITIC, score=3.0,
+                           prov=eng.Prov.CITED)
+        promo = self.stmt(source="Label", cls=eng.Cls.PROMO, score=1.0,
+                          prov=eng.Prov.DRAFT, conflict=True)
+        survey = self.stmt(source="Penguin", cls=eng.Cls.SURVEY, score=2.7,
+                           prov=eng.Prov.CITED)
+        out = eng.aggregate_composer(
+            [
+                self.rec("r1", [critic, promo]),
+                self.rec("r2", [survey, self.stmt(source="Award", cls=eng.Cls.AWARD,
+                                                   score=2.9)]),
+            ],
+            composer="Bach", composer_id="bach",
+        )
+        self.assertIsNotNone(out["interpretation"])
+        # Promo must not drag a cited-critic/award consensus down to the floor.
+        self.assertGreater(out["interpretation"], 2.5)
+        self.assertIn("independent critic", out["sources_by_class"])
+        self.assertIn("cited", out["sources_by_provenance"])
+
+    def test_regression_recordings_unchanged_when_rollup_added(self):
+        """Adding composers[] must not move the four published recording scores."""
+        results = {r["id"]: r for r in (eng.run(x) for x in eng.catalogue())}
+        self.assertAlmostEqual(results["bach_brandenburg_pinnock"]["interpretation"], 2.853, places=3)
+        self.assertAlmostEqual(results["bach_brandenburg_harnoncourt"]["interpretation"], 2.814, places=3)
+        self.assertAlmostEqual(results["puccini_tosca_desabata"]["interpretation"], 2.955, places=3)
+        self.assertAlmostEqual(results["puccini_tosca_karajan"]["interpretation"], 2.848, places=3)
+
+
 class TestSeedIntegrity(unittest.TestCase):
     def setUp(self):
         self.seed = json.loads((ROOT / "data/seed.json").read_text("utf-8"))
 
     def test_shape(self):
-        self.assertEqual(len(self.seed["composers"]), 5)
-        self.assertEqual(self.seed["totals"]["works"], 59)
+        self.assertEqual(len(self.seed["composers"]), 10)
+        self.assertEqual(self.seed["totals"]["works"], 119)
         for c in self.seed["composers"]:
             self.assertGreaterEqual(c["works"], 10)
             self.assertLessEqual(c["works"], 12)

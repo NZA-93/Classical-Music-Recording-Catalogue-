@@ -1,0 +1,264 @@
+{
+  "schema": "composer-queue/1",
+  "policy": "Five well-known composers per week. Queue order is editorial scope, not a critical ranking of recordings. Agents must not invent assessments when expanding the seed.",
+  "batch_size": 5,
+  "already_seeded": [
+    "bach",
+    "beethoven",
+    "mozart",
+    "puccini",
+    "shostakovich"
+  ],
+  "queue": [
+    {
+      "id": "brahms",
+      "name": "Johannes Brahms",
+      "dates": "1833–1897",
+      "status": "in_progress",
+      "week": "2026-08-09",
+      "core_works_hint": [
+        "Symphony No. 1",
+        "Symphony No. 4",
+        "Piano Concerto No. 1",
+        "Piano Concerto No. 2",
+        "Violin Concerto",
+        "German Requiem",
+        "Clarinet Quintet",
+        "Piano Quintet",
+        "Haydn Variations",
+        "Liebeslieder Waltzes",
+        "Academic Festival Overture",
+        "Tragic Overture"
+      ]
+    },
+    {
+      "id": "haydn",
+      "name": "Joseph Haydn",
+      "dates": "1732–1809",
+      "status": "in_progress",
+      "week": "2026-08-09",
+      "core_works_hint": [
+        "Symphony No. 104, London",
+        "Symphony No. 94, Surprise",
+        "The Creation",
+        "String Quartets Op. 76",
+        "Trumpet Concerto",
+        "Cello Concerto No. 1",
+        "The Seasons",
+        "Nelson Mass",
+        "Piano Sonatas (selection)",
+        "Symphony No. 44, Trauer",
+        "Symphony No. 45, Farewell",
+        "Seven Last Words"
+      ]
+    },
+    {
+      "id": "schubert",
+      "name": "Franz Schubert",
+      "dates": "1797–1828",
+      "status": "in_progress",
+      "week": "2026-08-09",
+      "core_works_hint": [
+        "Symphony No. 8, Unfinished",
+        "Symphony No. 9, Great",
+        "Winterreise",
+        "Die schöne Müllerin",
+        "String Quintet",
+        "Death and the Maiden Quartet",
+        "Piano Sonata D.960",
+        "Trout Quintet",
+        "Mass in E-flat",
+        "Impromptus",
+        "Schwanengesang",
+        "Rosamunde"
+      ]
+    },
+    {
+      "id": "handel",
+      "name": "George Frideric Handel",
+      "dates": "1685–1759",
+      "status": "in_progress",
+      "week": "2026-08-09",
+      "core_works_hint": [
+        "Messiah",
+        "Water Music",
+        "Music for the Royal Fireworks",
+        "Giulio Cesare",
+        "Alcina",
+        "Concerti grossi Op. 6",
+        "Organ Concertos",
+        "Israel in Egypt",
+        "Solomon",
+        "Agrippina",
+        "Rodelinda",
+        "Dixit Dominus"
+      ]
+    },
+    {
+      "id": "chopin",
+      "name": "Frédéric Chopin",
+      "dates": "1810–1849",
+      "status": "in_progress",
+      "week": "2026-08-09",
+      "core_works_hint": [
+        "Ballades",
+        "Études Op. 10 & 25",
+        "Preludes Op. 28",
+        "Piano Sonata No. 2",
+        "Piano Sonata No. 3",
+        "Piano Concerto No. 1",
+        "Piano Concerto No. 2",
+        "Nocturnes",
+        "Polonaises",
+        "Mazurkas (selection)",
+        "Scherzi",
+        "Fantaisie-Impromptu / Impromptus"
+      ]
+    },
+    {
+      "id": "tchaikovsky",
+      "name": "Pyotr Ilyich Tchaikovsky",
+      "dates": "1840–1893",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": [
+        "Symphony No. 6, Pathétique",
+        "Symphony No. 4",
+        "Symphony No. 5",
+        "Piano Concerto No. 1",
+        "Violin Concerto",
+        "Swan Lake",
+        "The Nutcracker",
+        "Eugene Onegin",
+        "Romeo and Juliet",
+        "Serenade for Strings",
+        "1812 Overture",
+        "Piano Trio"
+      ]
+    },
+    {
+      "id": "wagner",
+      "name": "Richard Wagner",
+      "dates": "1813–1883",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": [
+        "Tristan und Isolde",
+        "Die Walküre",
+        "Das Rheingold",
+        "Siegfried",
+        "Götterdämmerung",
+        "Die Meistersinger",
+        "Parsifal",
+        "Lohengrin",
+        "Tannhäuser",
+        "Der fliegende Holländer",
+        "Wesendonck Lieder",
+        "Siegfried Idyll"
+      ]
+    },
+    {
+      "id": "verdi",
+      "name": "Giuseppe Verdi",
+      "dates": "1813–1901",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": [
+        "La traviata",
+        "Rigoletto",
+        "Il trovatore",
+        "Aida",
+        "Otello",
+        "Falstaff",
+        "Don Carlos",
+        "Un ballo in maschera",
+        "Requiem",
+        "Macbeth",
+        "Simon Boccanegra",
+        "Nabucco"
+      ]
+    },
+    {
+      "id": "mahler",
+      "name": "Gustav Mahler",
+      "dates": "1860–1911",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": [
+        "Symphony No. 1",
+        "Symphony No. 2",
+        "Symphony No. 3",
+        "Symphony No. 4",
+        "Symphony No. 5",
+        "Symphony No. 6",
+        "Symphony No. 9",
+        "Das Lied von der Erde",
+        "Kindertotenlieder",
+        "Des Knaben Wunderhorn",
+        "Symphony No. 7",
+        "Symphony No. 8"
+      ]
+    },
+    {
+      "id": "debussy",
+      "name": "Claude Debussy",
+      "dates": "1862–1918",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": [
+        "Prélude à l'après-midi d'un faune",
+        "La mer",
+        "Nocturnes",
+        "Pelléas et Mélisande",
+        "Préludes Books I & II",
+        "Images",
+        "String Quartet",
+        "Children's Corner",
+        "Suite bergamasque",
+        "Jeux",
+        "Sonata for flute, viola and harp",
+        "Études"
+      ]
+    },
+    {
+      "id": "schumann",
+      "name": "Robert Schumann",
+      "dates": "1810–1856",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": []
+    },
+    {
+      "id": "mendelssohn",
+      "name": "Felix Mendelssohn",
+      "dates": "1809–1847",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": []
+    },
+    {
+      "id": "ravel",
+      "name": "Maurice Ravel",
+      "dates": "1875–1937",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": []
+    },
+    {
+      "id": "vivaldi",
+      "name": "Antonio Vivaldi",
+      "dates": "1678–1741",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": []
+    },
+    {
+      "id": "strauss_r",
+      "name": "Richard Strauss",
+      "dates": "1864–1949",
+      "status": "queued",
+      "week": null,
+      "core_works_hint": []
+    }
+  ]
+}
