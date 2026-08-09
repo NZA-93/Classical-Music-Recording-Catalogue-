@@ -1627,8 +1627,10 @@ function entry(r){
   return `<article class="entry" id="${esc(r.id)}">
     ${plate(r)}
     <div>
-      <p class="head-line">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
-        ${esc(r.ensemble)} <span class="pub">(${esc(r.published)})</span></p>
+      <p class="head-line">${esc(r.soloists)} —
+        <span class="dir">dir. ${esc(r.director)}</span> —
+        <span class="ens">ens. ${esc(r.ensemble)}</span>
+        <span class="pub">(${esc(r.published)})</span></p>
       <div class="verdict">
         <span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
         ${r.reference?'<span class="badge">Référence</span>':""}

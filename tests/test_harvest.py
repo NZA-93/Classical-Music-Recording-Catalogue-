@@ -50,6 +50,7 @@ REC = {
 WORK = {
     "composer": "Johann Sebastian Bach",
     "title": "Brandenburg Concertos",
+    "catalogue": "BWV 1046–1051",
 }
 
 
@@ -121,6 +122,33 @@ class TestIdentityConfidence(unittest.TestCase):
         self.assertEqual(p["mbid"], "mb-1")
         self.assertEqual(len(p["alternatives"]), 1)
         self.assertEqual(p["alternatives"][0]["mbid"], "mb-2")
+
+    def test_piano_concertos_never_match_brandenburg(self):
+        """The failure mode that would put the wrong work on a Brandenburg page."""
+        http = FakeHttp({
+            "release-group": self._groups(
+                ("mb-piano", "Piano Concertos", "2007", 100),
+            ),
+        })
+        p = har.adapter_identity(
+            {**REC, "id": "bach/brandenburg/2", "director": "Claudio Abbado",
+             "ensemble": "Orchestra Mozart", "year": "2007"},
+            WORK, http,
+        )[0].payload
+        self.assertFalse(p["auto_accept_eligible"])
+        self.assertTrue(any(f.startswith("wrong work:") for f in p["review_flags"]))
+
+    def test_german_brandenburgische_still_matches(self):
+        self.assertTrue(har.work_title_compatible(
+            "Brandenburg Concertos", "Brandenburgische Konzerte", "BWV 1046–1051"))
+
+    def test_english_concert_ensemble_is_not_a_work_title(self):
+        """Personnel label 'The English Concert' must not be confused with a concerto work."""
+        # Compatibility is work-to-work; ensemble names are out of scope.
+        self.assertTrue(har.work_title_compatible(
+            "Brandenburg Concertos", "Brandenburg Concertos nos. 4-6"))
+        self.assertFalse(har.work_title_compatible(
+            "Brandenburg Concertos", "The English Concert Plays Bach"))
 
 
 class TestCoverProposals(unittest.TestCase):

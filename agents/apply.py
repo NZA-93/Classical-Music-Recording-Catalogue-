@@ -32,6 +32,10 @@ PROPOSALS_DIR = ROOT / "proposals"
 
 KINDS = {"identity", "editions", "cover"}
 
+# Wrong-work identity matches must never enter the seed — not even with --force.
+# (e.g. MusicBrainz "Piano Concertos" under a Brandenburg Concertos candidate.)
+WRONG_WORK_PREFIX = "wrong work:"
+
 
 def load_json(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -48,6 +52,15 @@ def find_candidate(seed: dict, target: str) -> Optional[dict]:
         for cand in work.get("candidates", []):
             if cand.get("id") == target:
                 return cand
+    return None
+
+
+def find_work(seed: dict, target: str) -> Optional[dict]:
+    """Return the seed work dict for a candidate target id."""
+    wid = work_id_of(target)
+    for work in seed.get("works", []):
+        if work.get("id") == wid:
+            return work
     return None
 
 
@@ -111,12 +124,57 @@ def guard_verified(obj: dict, field: str, new_value: Any,
 
 
 def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
-                   log: list) -> bool:
+                   log: list, work: Optional[dict] = None) -> bool:
     mbid = payload.get("mbid")
     if not mbid:
         log.append({"action": "skip", "kind": "identity", "id": cand["id"],
                     "note": "no mbid in payload"})
         return False
+
+    flags = list(payload.get("review_flags") or [])
+    # Re-check work title even if the harvest payload omitted flags (old files).
+    mb_title = payload.get("mb_title") or ""
+    if work and mb_title:
+        try:
+            from harvest import work_title_compatible  # noqa: WPS433
+        except ImportError:
+            work_title_compatible = None  # type: ignore
+        if work_title_compatible is not None:
+            if not work_title_compatible(
+                work.get("title") or "", mb_title, work.get("catalogue") or ""
+            ):
+                flag = (
+                    f"wrong work: MusicBrainz {mb_title!r} does not match seed "
+                    f"{work.get('title')!r}"
+                )
+                if flag not in flags:
+                    flags.append(flag)
+
+    wrong = [f for f in flags if f.startswith(WRONG_WORK_PREFIX)]
+    if wrong:
+        log.append({
+            "action": "refused_wrong_work",
+            "kind": "identity",
+            "id": cand["id"],
+            "mbid": mbid,
+            "mb_title": mb_title,
+            "flags": wrong,
+            "note": "wrong-work identity cannot be applied (not even with --force)",
+        })
+        return False
+
+    if payload.get("auto_accept_eligible") is False and not force:
+        log.append({
+            "action": "refused_ineligible",
+            "kind": "identity",
+            "id": cand["id"],
+            "mbid": mbid,
+            "flags": flags,
+            "note": "auto_accept_eligible is false; pass --force with a reason "
+                    "only after human review (wrong-work still blocked)",
+        })
+        return False
+
     changed = False
     if cand.get("mbid") == mbid and cand.get("verified") is False:
         # Already applied; still refresh match metadata if missing.
@@ -331,7 +389,10 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
             continue
         payload = prop.get("payload") or {}
         if kind == "identity":
-            changed = apply_identity(cand, payload, force, reason, log) or changed
+            work = find_work(seed, target)
+            changed = apply_identity(
+                cand, payload, force, reason, log, work=work
+            ) or changed
         elif kind == "editions":
             changed = apply_editions(cand, payload, seed, force, reason, log,
                                      recordings_cache) or changed
@@ -385,7 +446,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         "log": log,
         "changes": sum(1 for e in log if e.get("action") not in
                        ("noop", "skip", "skipped_verified", "missing_target",
-                        "force_refused")),
+                        "force_refused", "refused_wrong_work",
+                        "refused_ineligible")),
     }
 
     print(f"{len(log)} log entries · {report['changes']} changes"
