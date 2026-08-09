@@ -7,7 +7,7 @@
 <meta name="description" content="A work-first critical guide to classical recordings: interpretation, sound engineering, and which edition to buy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ground:#E7EAE3; --paper:#FBFCF9; --ink:#191D1A; --ink-soft:#5B655D;
@@ -17,11 +17,11 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{background:var(--ground);color:var(--ink);
-    font-family:"Newsreader",Georgia,serif;font-size:17px;font-weight:300;line-height:1.6;
+    font-family:"Newsreader",Georgia,serif;font-size:17px;font-weight:400;line-height:1.6;
     padding:0 var(--gap) 5rem}
   .wrap{max-width:64rem;margin:0 auto}
   .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
-  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-soft)}
 
   /* masthead + disc identification */
@@ -62,38 +62,78 @@
   .sw-hatch{background:repeating-linear-gradient(135deg,var(--hair) 0 3px,var(--paper) 3px 6px);border:1px solid var(--hair)}
 
   /* entry */
-  .entry{display:grid;grid-template-columns:132px 1fr;gap:0 1.75rem;padding:2.4rem 0;border-top:1px solid var(--hair)}
+  .entry{display:grid;grid-template-columns:200px 1fr;gap:0 2rem;padding:2.4rem 0;border-top:1px solid var(--hair)}
   .entry:first-of-type{border-top:1px solid var(--ink)}
-  .plate{width:132px;height:132px;position:relative;background:var(--plate)}
-  .plate img{width:100%;height:100%;object-fit:cover;display:block}
-  .plate-fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
-    padding:.7rem;border:1px solid var(--hair);box-shadow:inset 0 0 0 1px var(--paper)}
-  .plate-fallback .lbl{font-family:"Bodoni Moda",serif;font-size:.95rem;line-height:1.15}
-  .plate-fallback .yr{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--ink-soft)}
+  .plate{width:200px;height:200px;position:relative;background:var(--plate);
+    border:1px solid var(--hair);overflow:hidden}
+  .plate img{position:absolute;inset:0;z-index:1;width:100%;height:100%;
+    object-fit:cover;display:block;background:var(--plate)}
+  .plate-fallback{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;
+    justify-content:space-between;padding:.85rem;box-shadow:inset 0 0 0 1px var(--paper)}
+  .plate.has-art .plate-fallback{visibility:hidden}
+  .plate-fallback .lbl{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.05rem;line-height:1.15}
+  .plate-fallback .yr{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;color:var(--ink-soft)}
+  .plate-cap{margin-top:.45rem;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:500;
+    letter-spacing:.06em;color:var(--ink-soft);max-width:200px}
 
-  .head-line{font-size:1.12rem;line-height:1.42;margin-bottom:.55rem}
-  .head-line .dir{font-weight:500}
-  .head-line .pub{color:var(--ink-soft)}
+  .head-line{font-size:1.14rem;font-weight:500;line-height:1.42;margin-bottom:.85rem}
+  .head-line .dir{font-weight:600}
+  .head-line .pub{color:var(--ink-soft);font-weight:400}
 
+  /* Morningstar-style score matrix: four cells, one glance */
+  .scorebox{display:grid;grid-template-columns:1fr 1fr;max-width:28rem;margin:0 0 1.35rem;
+    border:1px solid var(--ink);background:var(--paper)}
+  .scorebox .cell{padding:.7rem .85rem .75rem;min-height:5.1rem;
+    display:flex;flex-direction:column;justify-content:space-between;gap:.35rem}
+  .scorebox .cell:nth-child(odd){border-right:1px solid var(--hair)}
+  .scorebox .cell:nth-child(-n+2){border-bottom:1px solid var(--hair)}
+  .scorebox .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .scorebox .v{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.55rem;line-height:1;
+    letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .scorebox .v.muted{font-size:1.05rem;color:var(--ink-soft)}
+  .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
+    color:var(--ink-soft);letter-spacing:.03em}
+  .scorebox .stars{font-size:1.15rem;letter-spacing:.14em;line-height:1;color:var(--ink)}
+  .scorebox .stars .off{color:var(--hair)}
+  .scorebox .badge{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+    font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--paper);
+    background:var(--oxblood);padding:.25rem .45rem}
+  .scorebox .meter{display:block;width:100%;height:.5rem;background:var(--hair);margin-top:.15rem}
+  .scorebox .meter i{display:block;height:100%;background:var(--verdigris)}
   .verdict{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;margin-bottom:.4rem}
   .stars{font-size:1.05rem;letter-spacing:.12em;line-height:1}
   .stars .off{color:var(--hair)}
   .badge{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.13em;
     text-transform:uppercase;color:var(--paper);background:var(--oxblood);padding:.2rem .45rem}
-  .figs{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-soft)}
-  .axes{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin-bottom:1rem;
-    font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.04em;color:var(--ink-soft)}
-  .meter{display:inline-block;width:3.4rem;height:.45rem;background:var(--hair);vertical-align:middle;margin:0 .35rem}
-  .meter i{display:block;height:100%;background:var(--verdigris)}
 
   .commentary{max-width:38rem;margin-bottom:1.3rem}
 
-  .credits{border-left:2px solid var(--hair);padding:.15rem 0 .15rem .8rem;margin-bottom:1.4rem;
-    font-size:.85rem;color:var(--ink-soft);max-width:38rem}
-  .credits b{color:var(--ink);font-weight:500}
-  .unknown{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.06em;color:var(--oxblood)}
+  /* signed editorial entry — ADR-002. No shared furniture with the aggregate. */
+  .signed{
+    background:var(--paper);border-top:2px solid var(--ink);border-bottom:1px solid var(--hair);
+    padding:1.5rem clamp(1rem,3vw,2rem) 1.2rem;margin:0 0 1.6rem;max-width:42rem}
+  .signed .kicker{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--oxblood);margin-bottom:.9rem}
+  .signed .body{font-size:1.06rem;line-height:1.62;text-align:justify;hyphens:auto}
+  .signed .body p+p{margin-top:.8rem;text-indent:1.2rem}
+  .signed .sig{margin-top:1rem;text-align:right;font-family:"Bodoni Moda",serif;
+    font-style:italic;font-size:.95rem}
+  .signed .sig span{font-family:"IBM Plex Mono",monospace;font-style:normal;
+    font-size:.6rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:.5rem}
+  .signed .verdict{border-bottom:0;padding-bottom:.4rem;margin-bottom:.9rem}
+  .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
+    color:var(--oxblood);border-left:2px solid var(--oxblood);padding-left:.6rem;margin:.9rem 0 0}
+  .unsigned{max-width:42rem;margin-bottom:1.5rem;padding:.9rem 1rem;
+    border:1px dashed var(--hair);font-size:.88rem;color:var(--ink-soft)}
 
-  .modlabel{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+  .credits{border-left:2px solid var(--hair);padding:.15rem 0 .15rem .8rem;margin-bottom:1.4rem;
+    font-size:.9rem;font-weight:400;color:var(--ink-soft);max-width:38rem}
+  .credits b{color:var(--ink);font-weight:600}
+  .unknown{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
+    letter-spacing:.06em;color:var(--oxblood)}
+
+  .modlabel{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-soft);margin:0 0 .5rem}
 
   .anchors{list-style:none;margin-bottom:1.6rem;max-width:38rem;display:grid;gap:.7rem}
@@ -161,7 +201,10 @@
   @media (max-width:680px){
     body{font-size:16px}
     .entry{grid-template-columns:1fr;gap:1.1rem}
-    .plate{width:104px;height:104px}
+    .plate{width:152px;height:152px}
+    .plate-cap{max-width:152px}
+    .scorebox{max-width:none}
+    .scorebox .v{font-size:1.35rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -180,6 +223,7 @@
       <a href="#bach_brandenburg">Bach</a>
       <a href="#puccini_tosca">Puccini</a>
       <a href="index.html">Catalogue</a>
+      <a href="gallery.html">Gallery</a>
       <a href="#method">Method</a>
     </nav>
     <div class="scan">
@@ -205,7 +249,7 @@
 <script>
 const CATALOGUE = {
   "algorithm_version": "2.0",
-  "built": "2026-07-26",
+  "built": "2026-08-09",
   "works": [
     {
       "composer": "Johann Sebastian Bach",
@@ -218,6 +262,9 @@ const CATALOGUE = {
         {
           "id": "bach_brandenburg_pinnock",
           "work": "bach_brandenburg",
+          "status": "assessed",
+          "editorial": null,
+          "divergence": null,
           "soloists": "Trevor Pinnock, harpsichord",
           "director": "Trevor Pinnock",
           "ensemble": "The English Concert",
@@ -396,11 +443,14 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         },
         {
           "id": "bach_brandenburg_harnoncourt",
           "work": "bach_brandenburg",
+          "status": "assessed",
+          "editorial": null,
+          "divergence": null,
           "soloists": "Alice Harnoncourt, Jürg Schaeftlein, Walter Holy and principals",
           "director": "Nikolaus Harnoncourt",
           "ensemble": "Concentus Musicus Wien",
@@ -545,7 +595,298 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
+        }
+      ]
+    },
+    {
+      "composer": "Dmitri Shostakovich",
+      "dates": "1906–1975",
+      "title": "Symphony No. 5",
+      "cat": "Op. 47 · D minor · 1937",
+      "standfirst": "Written after the Pravda attack and premiered to a half-hour ovation. Whether the finale is triumph or coercion is the argument, and every recording takes a side.",
+      "id": "shostakovich/sym5",
+      "recordings": [
+        {
+          "id": "shostakovich_sym5_nelsons",
+          "work": "shostakovich/sym5",
+          "status": "assessed",
+          "editorial": null,
+          "divergence": null,
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "published": "Deutsche Grammophon, 2016",
+          "engineering": {
+            "venue": "Symphony Hall, Boston",
+            "sessions": "live, 2015",
+            "producer": null,
+            "engineer": null,
+            "status": "unknown"
+          },
+          "interpretation": 2.9,
+          "confidence": 0.25,
+          "stars": 3,
+          "reference": false,
+          "sound_best": null,
+          "sound_best_edition": null,
+          "anchors": [
+            {
+              "where": "First movement, opening canon",
+              "listen_for": "The two-note descending figure the whole symphony is built from. How heavily it is attacked sets the terms for everything after.",
+              "timing": null
+            },
+            {
+              "where": "Third movement, Largo",
+              "listen_for": "Strings divided into eight parts, no brass at all. The question is whether the conductor lets it be slow enough to become uncomfortable.",
+              "timing": null
+            },
+            {
+              "where": "Finale, the closing bars",
+              "listen_for": "The repeated A in the strings under a hammered D major. Whether this reads as triumph or as coercion is the central interpretive argument of the piece, and every recording answers it.",
+              "timing": null
+            }
+          ],
+          "reception": [
+            {
+              "decade": "1937",
+              "note": "Premiered 21 November in Leningrad under Mravinsky; reported ovations of over half an hour. Received officially as rehabilitation after the 1936 Pravda attack."
+            },
+            {
+              "decade": "1940s–70s",
+              "note": "Established in the West as a repertory symphony. Read largely at face value: a heroic affirmation, sometimes discussed as Soviet neoclassicism."
+            },
+            {
+              "decade": "1979–",
+              "note": "Volkov's Testimony recasts the finale as forced rejoicing. Its authenticity is disputed; the reading is not. Performance practice divides along this line and has not reconverged."
+            },
+            {
+              "decade": "2010s–",
+              "note": "The BSO/Nelsons cycle brings the work back to prominence on record, winning the 2017 Grammy for Best Orchestral Performance."
+            }
+          ],
+          "editions": [
+            {
+              "id": "sym5_dg_2016",
+              "label": "Deutsche Grammophon",
+              "catno": "479 5201",
+              "year": "2016",
+              "format": "2×CD",
+              "transfer": "Original issue, live Symphony Hall recording. Grammy-winning album, coupled with Symphonies 8 and 9 and the Hamlet suite.",
+              "barcode": null,
+              "mbid": null,
+              "verified": false,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            }
+          ],
+          "sources": [
+            {
+              "source": "Grammy — Best Orchestral Performance, 59th Annual Grammy Awards",
+              "class": "major award",
+              "provenance": "cited",
+              "score": 2.9,
+              "weight": 0.9,
+              "conflict": false,
+              "text": "Awarded Best Orchestral Performance for the album containing Symphonies 5, 8 and 9."
+            }
+          ],
+          "algorithm_version": "2.0",
+          "built": "2026-08-09"
+        },
+        {
+          "id": "shostakovich_sym5_mravinsky",
+          "work": "shostakovich/sym5",
+          "status": "awaiting sources",
+          "editorial": null,
+          "divergence": null,
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "published": "various, 1954–1978",
+          "engineering": {
+            "venue": "Moscow (1954); Tokyo (1973); Vienna (1978)",
+            "sessions": "1954 studio; later live performances",
+            "producer": null,
+            "engineer": "D. Gaklin (1954)",
+            "status": "attributed"
+          },
+          "interpretation": null,
+          "confidence": null,
+          "stars": null,
+          "reference": false,
+          "sound_best": null,
+          "sound_best_edition": null,
+          "anchors": [
+            {
+              "where": "First movement, development",
+              "listen_for": "Mravinsky premiered the work in 1937. The tempo relationships here are the closest thing on record to a first reading.",
+              "timing": null
+            },
+            {
+              "where": "Finale",
+              "listen_for": "The speed of the coda, which Mravinsky treats faster than most Western conductors — a documentary fact in the argument about what the ending means.",
+              "timing": null
+            }
+          ],
+          "reception": [
+            {
+              "decade": "1937",
+              "note": "Mravinsky conducted the premiere and remained associated with the work for four decades."
+            },
+            {
+              "decade": "1950s–70s",
+              "note": "Successive Leningrad performances circulate on Soviet and Japanese issues; the discography is tangled and poorly documented."
+            },
+            {
+              "decade": "1990s–",
+              "note": "Japanese labels, chiefly Altus, issue restored live performances; edition identification becomes the practical problem for buyers."
+            }
+          ],
+          "editions": [
+            {
+              "id": "sym5_altus_alt002",
+              "label": "Altus",
+              "catno": "ALT002",
+              "year": "2002",
+              "format": "CD",
+              "transfer": "Japanese issue, 44:08. Cover art present in the Cover Art Archive.",
+              "barcode": null,
+              "mbid": "2ff96318-7c8b-47d5-9532-daf88fafd07e",
+              "verified": true,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            },
+            {
+              "id": "sym5_altus_alt289",
+              "label": "Altus",
+              "catno": "ALT289",
+              "year": "2014",
+              "format": "CD",
+              "transfer": "Vienna 1978 live, coupled with Schubert 8. Barcode verified.",
+              "barcode": "4543638002894",
+              "mbid": "e9d634b2-aa6b-4aab-8c95-0823cd8bcaf5",
+              "verified": true,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            },
+            {
+              "id": "sym5_praga",
+              "label": "Praga",
+              "catno": "PR 7250 085",
+              "year": "1995",
+              "format": "CD",
+              "transfer": "Coupled with Symphony No. 9 under Košler. Barcode verified.",
+              "barcode": "794881605422",
+              "mbid": "8113cf4a-dc95-49ec-8782-e38d6fbf33f8",
+              "verified": true,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            },
+            {
+              "id": "sym5_tokyo_1973",
+              "label": "Altus",
+              "catno": "—",
+              "year": "1973 recording",
+              "format": "CD",
+              "transfer": "Tokyo, 26 May 1973, live. Barcode verified; MusicBrainz release not yet matched.",
+              "barcode": "4543638000029",
+              "mbid": null,
+              "verified": false,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            }
+          ],
+          "sources": [],
+          "algorithm_version": "2.0",
+          "built": "2026-08-09"
+        },
+        {
+          "id": "shostakovich_sym5_noseda",
+          "work": "shostakovich/sym5",
+          "status": "awaiting sources",
+          "editorial": null,
+          "divergence": null,
+          "soloists": "",
+          "director": "Gianandrea Noseda",
+          "ensemble": "London Symphony Orchestra",
+          "published": "LSO Live, 2020",
+          "engineering": {
+            "venue": "Barbican Hall, London",
+            "sessions": "September 2016 and March 2019, live",
+            "producer": "Nicholas Parker",
+            "engineer": "Classic Sound Ltd",
+            "status": "cited"
+          },
+          "interpretation": null,
+          "confidence": null,
+          "stars": null,
+          "reference": false,
+          "sound_best": null,
+          "sound_best_edition": null,
+          "anchors": [
+            {
+              "where": "Third movement, Largo",
+              "listen_for": "Barbican strings in eight parts, captured in DSD. A test of whether the hall's dry acoustic helps the transparency or thins the tone.",
+              "timing": null
+            },
+            {
+              "where": "Finale, closing bars",
+              "listen_for": "Where this account sits on the triumph-or-coercion question. Compare directly against Mravinsky's faster coda.",
+              "timing": null
+            }
+          ],
+          "reception": [
+            {
+              "decade": "2020–",
+              "note": "Issued as part of Noseda's nine-year LSO cycle, completed and boxed as LSO0907 in 2025. Reception of the cycle as a whole has been strong; individual-issue criticism of the Fifth is not yet cited here."
+            }
+          ],
+          "editions": [
+            {
+              "id": "sym5_lso0802",
+              "label": "LSO Live",
+              "catno": "LSO0802",
+              "year": "2020",
+              "format": "Hybrid SACD",
+              "transfer": "Original issue, coupled with Symphony No. 1. DSD source, also released as 24-bit/96 kHz FLAC.",
+              "barcode": "0822231180227",
+              "mbid": null,
+              "verified": true,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            },
+            {
+              "id": "sym5_lso0907_box",
+              "label": "LSO Live",
+              "catno": "LSO0907",
+              "year": "2025",
+              "format": "10×SACD",
+              "transfer": "Complete cycle box, Symphonies 1–15. Same recordings; transfer lineage not yet established.",
+              "barcode": null,
+              "mbid": null,
+              "verified": false,
+              "sound": null,
+              "sound_confidence": null,
+              "verdict": "not yet assessed",
+              "sources": []
+            }
+          ],
+          "sources": [],
+          "algorithm_version": "2.0",
+          "built": "2026-08-09"
         }
       ]
     },
@@ -560,6 +901,9 @@ const CATALOGUE = {
         {
           "id": "puccini_tosca_desabata",
           "work": "puccini_tosca",
+          "status": "assessed",
+          "editorial": null,
+          "divergence": null,
           "soloists": "Maria Callas, Giuseppe Di Stefano, Tito Gobbi",
           "director": "Victor de Sabata",
           "ensemble": "Orchestra e Coro del Teatro alla Scala",
@@ -757,11 +1101,14 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         },
         {
           "id": "puccini_tosca_karajan",
           "work": "puccini_tosca",
+          "status": "assessed",
+          "editorial": null,
+          "divergence": null,
           "soloists": "Leontyne Price, Giuseppe Di Stefano, Giuseppe Taddei",
           "director": "Herbert von Karajan",
           "ensemble": "Wiener Philharmoniker",
@@ -926,9 +1273,234 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         }
       ]
+    }
+  ],
+  "composers": [
+    {
+      "id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "dates": "1685–1750",
+      "interpretation": 2.836,
+      "confidence": 1.0,
+      "n_statements": 9,
+      "n_strong": 6,
+      "n_recordings_assessed": 2,
+      "sources_by_class": {
+        "specialist survey": 3,
+        "independent critic": 3,
+        "label promo": 2,
+        "secondary literature": 1
+      },
+      "sources_by_provenance": {
+        "attributed": 9
+      },
+      "sources": [
+        {
+          "source": "Gramophone / classical-music.com survey",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "Elegant simplicity, directness of expression and consistency of approach; a leading modern recommendation."
+        },
+        {
+          "source": "Independent critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.9,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Frequently placed at the head of recent surveys as an HIP benchmark; crisp articulation throughout."
+        },
+        {
+          "source": "Penguin Guide, historical editions",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.8,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "Long-standing recommendation; refined and stylish."
+        },
+        {
+          "source": "Archiv / Avie promotional text",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 3.0,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "The definitive period-instrument Brandenburgs of our time."
+        },
+        {
+          "source": "Secondary discographic literature",
+          "class": "secondary literature",
+          "provenance": "attributed",
+          "score": 2.7,
+          "weight": 0.525,
+          "conflict": false,
+          "text": "A reference point for clarity and rhythmic vitality among HIP cycles."
+        },
+        {
+          "source": "Independent historical criticism",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.85,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Pioneering period-instrument cycle of enduring value; a foundational document."
+        },
+        {
+          "source": "Specialist early-music survey",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.75,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "Retains pioneering energy and chamber-scale intensity despite dry original sound."
+        },
+        {
+          "source": "Teldec / Warner reissue notes",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "Historic landmark recording that changed Bach performance practice."
+        },
+        {
+          "source": "Retrospective critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.8,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Still regarded as a reference for its pioneering status and austere sonority."
+        }
+      ],
+      "note": "weighted rollup of ratified interpretation statements; origin = class × provenance"
+    },
+    {
+      "id": "puccini",
+      "composer": "Giacomo Puccini",
+      "dates": "1858–1924",
+      "interpretation": 2.909,
+      "confidence": 1.0,
+      "n_statements": 9,
+      "n_strong": 5,
+      "n_recordings_assessed": 2,
+      "sources_by_class": {
+        "independent critic": 3,
+        "specialist survey": 2,
+        "label promo": 2,
+        "secondary literature": 2
+      },
+      "sources_by_provenance": {
+        "attributed": 9
+      },
+      "sources": [
+        {
+          "source": "Gramophone / critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 3.0,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Universally regarded as the dramatic benchmark; the Act II confrontation remains unmatched."
+        },
+        {
+          "source": "Multiple independent opera surveys",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "The greatest Tosca recording for many critics; a recording of permanent reference value."
+        },
+        {
+          "source": "Warner / EMI reissue notes",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 3.0,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "The legendary 1953 recording — one of the greatest opera recordings ever made."
+        },
+        {
+          "source": "Historical discographic literature",
+          "class": "secondary literature",
+          "provenance": "attributed",
+          "score": 2.9,
+          "weight": 0.525,
+          "conflict": false,
+          "text": "Landmark mono recording whose dramatic immediacy has never been surpassed."
+        },
+        {
+          "source": "Independent critics, various",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Benchmark status confirmed across decades of critical writing."
+        },
+        {
+          "source": "Independent critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.9,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Outstanding stereo alternative; Price sensuous and opulent, Karajan flexible and powerful."
+        },
+        {
+          "source": "Specialist opera survey",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.85,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "The finest stereo Tosca for many listeners; complementary to the de Sabata set."
+        },
+        {
+          "source": "Decca promotional material",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "One of the greatest stereo opera recordings."
+        },
+        {
+          "source": "Secondary literature",
+          "class": "secondary literature",
+          "provenance": "attributed",
+          "score": 2.75,
+          "weight": 0.525,
+          "conflict": false,
+          "text": "Strongly recommended stereo account; Te Deum and Act III prelude especially imposing."
+        }
+      ],
+      "note": "weighted rollup of ratified interpretation statements; origin = class × provenance"
+    },
+    {
+      "id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "dates": "1906–1975",
+      "interpretation": null,
+      "confidence": null,
+      "n_statements": 1,
+      "n_strong": 1,
+      "n_recordings_assessed": 1,
+      "sources_by_class": {
+        "major award": 1
+      },
+      "sources_by_provenance": {
+        "cited": 1
+      },
+      "note": "rollup withheld until enough cited independent sources exist"
     }
   ],
   "barcode_index": {
@@ -939,6 +1511,22 @@ const CATALOGUE = {
     "090317761121": {
       "recording": "bach_brandenburg_harnoncourt",
       "edition": "harn_teldec_1992"
+    },
+    "4543638002894": {
+      "recording": "shostakovich_sym5_mravinsky",
+      "edition": "sym5_altus_alt289"
+    },
+    "794881605422": {
+      "recording": "shostakovich_sym5_mravinsky",
+      "edition": "sym5_praga"
+    },
+    "4543638000029": {
+      "recording": "shostakovich_sym5_mravinsky",
+      "edition": "sym5_tokyo_1973"
+    },
+    "0822231180227": {
+      "recording": "shostakovich_sym5_noseda",
+      "edition": "sym5_lso0802"
     }
   }
 };
@@ -948,19 +1536,63 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const pos=v=>((v-DOMAIN[0])/(DOMAIN[1]-DOMAIN[0]))*100;
 const CHIP={"preferred transfer":"good","sound and serviceable":"mid","pass if you can":"bad","not yet assessed":"none"};
 
-function plate(r){
-  const ed=r.editions.find(e=>e.mbid)||{};
-  const fb=`<div class="plate-fallback"><span class="lbl">${esc(r.published.split(",")[0])}</span>
-    <span class="yr">${esc(r.published.split(",").pop().trim())} · no front cover</span></div>`;
-  const img=ed.mbid?`<img src="https://coverartarchive.org/release/${ed.mbid}/front-500"
-    alt="Front cover" loading="lazy" onerror="this.remove()">`:"";
-  return `<div><div class="plate">${fb}${img}</div></div>`;
+function coverEdition(r){
+  const withMbid=(r.editions||[]).filter(e=>e.mbid);
+  if(!withMbid.length) return null;
+  const want=parseInt((String(r.published).match(/\d{4}/)||[])[0]||"",10);
+  if(!want) return withMbid[0];
+  return withMbid.slice().sort((a,b)=>{
+    const ya=parseInt((String(a.year).match(/\d{4}/)||[])[0]||"9999",10);
+    const yb=parseInt((String(b.year).match(/\d{4}/)||[])[0]||"9999",10);
+    return Math.abs(ya-want)-Math.abs(yb-want);
+  })[0];
 }
 
-function meter(v){
-  if(v==null) return `<span class="unknown">sound not yet assessed</span>`;
-  const pct=Math.max(0,Math.min(100,((v-1.5)/1.5)*100));
-  return `Sound <span class="meter"><i style="width:${pct.toFixed(0)}%"></i></span>${v.toFixed(2)}`;
+function plate(r){
+  const ed=coverEdition(r);
+  const label=esc((r.published.split(",")[0]||"").trim());
+  const year=esc((r.published.split(",").pop()||"").trim());
+  const fb=`<div class="plate-fallback" aria-hidden="true"><span class="lbl">${label}</span>
+    <span class="yr">${year}${ed?"":" · no front cover"}</span></div>`;
+  if(!ed) return `<div><div class="plate empty">${fb}</div>
+    <p class="plate-cap">No Cover Art Archive front yet</p></div>`;
+  const src=`https://coverartarchive.org/release/${ed.mbid}/front-500`;
+  const img=`<img src="${src}"
+    srcset="https://coverartarchive.org/release/${ed.mbid}/front-250 250w, ${src} 500w"
+    sizes="200px" alt="Front cover — ${label}, ${year}" loading="lazy"
+    onload="this.parentElement.classList.add('has-art')"
+    onerror="this.remove()">`;
+  const edYear=esc(String(ed.year||year));
+  const edLabel=esc(ed.label||"");
+  return `<div><div class="plate">${fb}${img}</div>
+    <p class="plate-cap">${edLabel}${edLabel&&edYear?" · ":""}${edYear}</p></div>`;
+}
+
+function scorebox(r){
+  const un=r.interpretation===null;
+  const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
+  const conf=un?null:r.confidence;
+  const confPct=conf==null?0:Math.max(0,Math.min(100,conf*100));
+  const sound=r.sound_best;
+  const soundCell=sound==null
+    ?`<span class="v muted">—</span><span class="sub">not yet assessed</span>`
+    :`<span class="v">${sound.toFixed(2)}</span><span class="sub">best edition</span>`;
+  const interpCell=un
+    ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
+    :`<span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
+       <span class="v">${r.interpretation.toFixed(3)}</span>`;
+  const stand=r.reference
+    ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
+    :`<span class="v muted">—</span><span class="sub">${un?"awaiting sources":"not a référence"}</span>`;
+  return `<div class="scorebox" role="group" aria-label="Recording scores">
+    <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
+    <div class="cell"><span class="k">Sound</span>${soundCell}</div>
+    <div class="cell"><span class="k">Confidence</span>
+      <span class="v">${conf==null?"—":conf.toFixed(2)}</span>
+      <span class="meter" aria-hidden="true"><i style="width:${confPct.toFixed(0)}%"></i></span>
+    </div>
+    <div class="cell"><span class="k">Standing</span>${stand}</div>
+  </div>`;
 }
 
 function credits(c){
@@ -1038,26 +1670,41 @@ function sources(r){
     </tr>`).join("")}</tbody></table></details>`;
 }
 
+function signed(r){
+  const e = r.editorial;
+  if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
+    weighted consensus of published sources; it is not a listening report.</div>`;
+  const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
+  const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
+  const div = r.divergence!==null && r.divergence!==0
+    ? `<p class="diverge">The weighted consensus gives ${r.stars} ★ here. The signed entry gives
+       ${e.stars}. The disagreement is deliberate; the reasoning is above.</p>` : "";
+  return `<div class="signed">
+    <p class="kicker">Signed entry</p>
+    <div class="verdict"><span class="stars">${st}</span>
+      ${e.reference?'<span class="badge">Référence</span>':""}</div>
+    <div class="body">${paras}</div>
+    <p class="sig">${esc(e.author.name || e.author.id)}
+      <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${div}
+  </div>`;
+}
+
 function entry(r){
-  const st=[0,1,2].map(i=>`<span class="${i<r.stars?"on":"off"}">★</span>`).join("");
+  const un = r.interpretation===null;
   return `<article class="entry" id="${esc(r.id)}">
     ${plate(r)}
     <div>
       <p class="head-line">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
         ${esc(r.ensemble)} <span class="pub">(${esc(r.published)})</span></p>
-      <div class="verdict">
-        <span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
-        ${r.reference?'<span class="badge">Référence</span>':""}
-        <span class="figs">interpretation ${r.interpretation.toFixed(3)} · confidence ${r.confidence.toFixed(2)}</span>
-      </div>
-      <div class="axes"><span>${meter(r.sound_best)}${r.sound_best!=null?" · best edition":""}</span></div>
-      ${credits(r.engineering)}
+      ${scorebox(r)}
+      ${signed(r)}\n      ${credits(r.engineering)}
       ${anchors(r.anchors)}
       ${editions(r)}
-      <p class="ev-label" style="margin-top:1.6rem">Influence — who the interpretation verdict rests on</p>
+      ${un?"":`<p class="ev-label" style="margin-top:1.6rem">Influence — who the interpretation verdict rests on</p>
       <div class="influence">${influence(r)}</div>
       <p class="ev-label" style="margin-top:1.1rem">Agreement — where each source landed</p>
-      ${agreement(r)}
+      ${agreement(r)}`}
       ${reception(r)}
       ${sources(r)}
     </div>
