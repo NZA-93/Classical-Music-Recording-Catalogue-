@@ -277,9 +277,17 @@ def scan_data_tree(root: pathlib.Path = DATA_ROOT) -> list[str]:
     errs = []
     if not root.exists():
         return errs
+    community = (root / "community").resolve()
     for path in sorted(root.rglob("*.json")):
         if path.name.startswith("_"):
             continue
+        # Community notes have their own validator; do not apply statement
+        # characterisation rules to public tip text.
+        try:
+            path.resolve().relative_to(community)
+            continue
+        except ValueError:
+            pass
         errs.extend(scan_data_file(path))
     return errs
 
@@ -324,6 +332,19 @@ def main() -> int:
 
     data_errs = [] if args.skip_data else scan_data_tree()
     all_errs += data_errs
+
+    # Community layer fence: must stay schema-valid and off the editorial path.
+    community = pathlib.Path("data/community/comments.json")
+    if community.exists():
+        try:
+            from community_comments import validate_store, load_store
+            seed_path = pathlib.Path("data/seed.json")
+            seed_doc = json.loads(seed_path.read_text(encoding="utf-8")) \
+                if seed_path.exists() else {}
+            for msg in validate_store(load_store(), seed_doc):
+                all_errs.append(f"community: {msg}")
+        except Exception as exc:  # noqa: BLE001 — surface import/IO clearly
+            all_errs.append(f"community: validate failed — {exc}")
 
     for w in all_warns:
         print(f"  warning  {w}")

@@ -13,7 +13,9 @@ arrive only through cited sources.
 | Tue–Wed | Role A | Seed PR: works + candidates |
 | Wed | Role B | Identity + CAA cover proposals (budget 300) |
 | Thu | Role C | Award / citation proposals for backlog *and* new works |
-| Fri | Human | Ratify identities; merge statement contributions; review citation ratio |
+| Fri | Human (owner) | Review board `/review/`; set accepts in `review-decisions.json`; `make review-apply` or owner-only Action |
+| Fri | Community | Optional notes via **Community review comment** issues → `data/community/` PRs |
+| Fri | Human | Merge statement contributions (still owner-ratified); review citation ratio |
 | Fri | Role D | Site/rollup green on `main` via PR |
 
 ## Source-coverage target

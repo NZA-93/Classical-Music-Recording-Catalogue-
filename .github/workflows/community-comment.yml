@@ -1,0 +1,60 @@
+# Ingest labeled community-review issues into data/community/ (PR, not main).
+# Does not touch data/editorial/ or data/statements/.
+name: Community comment ingest
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  ingest:
+    if: >
+      contains(join(github.event.issue.labels.*.name, ','), 'community-review')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Parse issue → community store
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$ISSUE_BODY" > /tmp/issue-body.md
+          python3 agents/ingest_community_issue.py \
+            --body-file /tmp/issue-body.md \
+            --author-fallback "$ISSUE_USER"
+          python3 agents/community_comments.py validate
+          python3 agents/review_queue.py --no-init || true
+          python3 site/build_review.py
+      - name: Open PR onto a community branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+          BRANCH="community/review-comment-${ISSUE}"
+          git config user.name "catalogue-community-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add data/community/comments.json docs/review/index.html review/index.html
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "Community review comment from #${ISSUE}"
+          git push -u origin "$BRANCH" --force
+          if ! gh pr list --head "$BRANCH" --json number -q '.[0].number' | grep -q .
+          then
+            gh pr create --base main --head "$BRANCH" \
+              --title "Community review comment (#${ISSUE})" \
+              --body "Ingests community note from #${ISSUE} into \`data/community/\` (layer separated from editorial). Owner may merge; does not apply identity decisions or statements."
+          fi
+          gh issue comment "$ISSUE" --body "Queued as a community-layer PR from this issue. It will **not** become an editorial entry or catalogue score."

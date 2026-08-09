@@ -70,11 +70,24 @@ make targets             # exit 0 only when floors met
 make loop                # targets + next week brief
 ```
 
+## Human review (online)
+
+See [`HUMAN_REVIEW.md`](HUMAN_REVIEW.md). Public board after publish:
+`/review/` on GitHub Pages. Owner (`NZA-93`) alone applies decisions;
+community comments land in `data/community/` and never mix with editorial.
+
+```bash
+make review-queue        # packs + review-decisions.json template
+make review-apply-dry    # preview accepts
+make review-apply        # owner applies mbids (facts only)
+```
+
 ## Makefile entry points
 
 ```bash
 make targets             # 10 composers · 100 works · 500 candidates
 make queue-week          # print next 5 composers + agent brief
 make expand-brief        # write proposals/WEEK_BRIEF.md for Cursor agents
-make score && make site  # includes composers[] rollup in catalogue.json
+make score && make site  # includes composers[] rollup + /review/ board
+make review-queue        # human review packs for the current proposals file
 ```
