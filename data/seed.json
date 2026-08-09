@@ -6523,6 +6523,17 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/agrippina/2",
+          "soloists": "Joyce DiDonato",
+          "director": "Maxim Emelyanychev",
+          "ensemble": "Il Pomo d'Oro",
+          "label": "Erato",
+          "year": "2020",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -7342,6 +7353,6 @@
   ],
   "totals": {
     "works": 119,
-    "candidates": 510
+    "candidates": 511
   }
 }

@@ -5,80 +5,80 @@ Orchestration: `docs/automation/README.md`.
 
 ## Batch (five composers)
 
-### Johannes Brahms (`brahms`, 1833–1897)
+### Pyotr Ilyich Tchaikovsky (`tchaikovsky`, 1840–1893)
+
+- Symphony No. 6, Pathétique
+- Symphony No. 4
+- Symphony No. 5
+- Piano Concerto No. 1
+- Violin Concerto
+- Swan Lake
+- The Nutcracker
+- Eugene Onegin
+- Romeo and Juliet
+- Serenade for Strings
+- 1812 Overture
+- Piano Trio
+
+### Richard Wagner (`wagner`, 1813–1883)
+
+- Tristan und Isolde
+- Die Walküre
+- Das Rheingold
+- Siegfried
+- Götterdämmerung
+- Die Meistersinger
+- Parsifal
+- Lohengrin
+- Tannhäuser
+- Der fliegende Holländer
+- Wesendonck Lieder
+- Siegfried Idyll
+
+### Giuseppe Verdi (`verdi`, 1813–1901)
+
+- La traviata
+- Rigoletto
+- Il trovatore
+- Aida
+- Otello
+- Falstaff
+- Don Carlos
+- Un ballo in maschera
+- Requiem
+- Macbeth
+- Simon Boccanegra
+- Nabucco
+
+### Gustav Mahler (`mahler`, 1860–1911)
 
 - Symphony No. 1
+- Symphony No. 2
+- Symphony No. 3
 - Symphony No. 4
-- Piano Concerto No. 1
-- Piano Concerto No. 2
-- Violin Concerto
-- German Requiem
-- Clarinet Quintet
-- Piano Quintet
-- Haydn Variations
-- Liebeslieder Waltzes
-- Academic Festival Overture
-- Tragic Overture
+- Symphony No. 5
+- Symphony No. 6
+- Symphony No. 9
+- Das Lied von der Erde
+- Kindertotenlieder
+- Des Knaben Wunderhorn
+- Symphony No. 7
+- Symphony No. 8
 
-### Joseph Haydn (`haydn`, 1732–1809)
+### Claude Debussy (`debussy`, 1862–1918)
 
-- Symphony No. 104, London
-- Symphony No. 94, Surprise
-- The Creation
-- String Quartets Op. 76
-- Trumpet Concerto
-- Cello Concerto No. 1
-- The Seasons
-- Nelson Mass
-- Piano Sonatas (selection)
-- Symphony No. 44, Trauer
-- Symphony No. 45, Farewell
-- Seven Last Words
-
-### Franz Schubert (`schubert`, 1797–1828)
-
-- Symphony No. 8, Unfinished
-- Symphony No. 9, Great
-- Winterreise
-- Die schöne Müllerin
-- String Quintet
-- Death and the Maiden Quartet
-- Piano Sonata D.960
-- Trout Quintet
-- Mass in E-flat
-- Impromptus
-- Schwanengesang
-- Rosamunde
-
-### George Frideric Handel (`handel`, 1685–1759)
-
-- Messiah
-- Water Music
-- Music for the Royal Fireworks
-- Giulio Cesare
-- Alcina
-- Concerti grossi Op. 6
-- Organ Concertos
-- Israel in Egypt
-- Solomon
-- Agrippina
-- Rodelinda
-- Dixit Dominus
-
-### Frédéric Chopin (`chopin`, 1810–1849)
-
-- Ballades
-- Études Op. 10 & 25
-- Preludes Op. 28
-- Piano Sonata No. 2
-- Piano Sonata No. 3
-- Piano Concerto No. 1
-- Piano Concerto No. 2
+- Prélude à l'après-midi d'un faune
+- La mer
 - Nocturnes
-- Polonaises
-- Mazurkas (selection)
-- Scherzi
-- Fantaisie-Impromptu / Impromptus
+- Pelléas et Mélisande
+- Préludes Books I & II
+- Images
+- String Quartet
+- Children's Corner
+- Suite bergamasque
+- Jeux
+- Sonata for flute, viola and harp
+- Études
 
 ## Role A — Seed expander
 

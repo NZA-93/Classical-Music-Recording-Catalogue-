@@ -481,6 +481,7 @@ EXTRA_CANDIDATES: dict[str, list[tuple]] = {
     "handel/agrippina": [
         ("", "René Jacobs", "Akademie für Alte Musik Berlin", "Harmonia Mundi", "2000s"),
         ("", "John Eliot Gardiner", "English Baroque Soloists", "Philips", "1990s"),
+        ("Joyce DiDonato", "Maxim Emelyanychev", "Il Pomo d'Oro", "Erato", "2020"),
     ],
     "handel/alcina": [
         ("Joyce DiDonato", "William Christie", "Les Arts Florissants", "Erato", "2000s"),
