@@ -30,18 +30,37 @@
   .masthead h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.15rem;margin-right:auto}
   .masthead nav{display:flex;gap:1.1rem}
   .masthead a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
-  .masthead a:hover,.masthead a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
+  .masthead a:hover,.masthead a:focus-visible,.masthead a[aria-current="page"]{
+    color:var(--ink);border-bottom-color:var(--ink)}
 
-  .scan{display:flex;gap:.4rem;align-items:center;width:100%;padding:.9rem 0 0}
-  .scan input{
-    flex:1 1 12rem;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+  .doors{width:100%;display:grid;gap:.55rem;padding:.9rem 0 0}
+  .find{position:relative}
+  .find input,.scan input{
+    width:100%;font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:500;
     padding:.5rem .6rem;border:1px solid var(--hair);background:var(--paper);color:var(--ink)}
+  .find input:focus,.scan input:focus{outline:2px solid var(--verdigris);outline-offset:2px;border-color:var(--verdigris)}
+  .find-panel{
+    display:none;position:absolute;left:0;right:0;top:calc(100% + 2px);z-index:8;
+    background:var(--paper);border:1px solid var(--ink);max-height:18rem;overflow:auto}
+  .find-panel.open{display:block}
+  .find-group{padding:.5rem .7rem .2rem;font-family:"IBM Plex Mono",monospace;font-size:.58rem;
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--hair)}
+  .find-group:first-child{border-top:0}
+  .find-hit{display:block;padding:.5rem .7rem;color:inherit;text-decoration:none}
+  .find-hit:hover,.find-hit:focus-visible{background:var(--ground)}
+  .find-hit .sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;
+    color:var(--ink-soft);margin-top:.12rem}
+  .find-empty{padding:.65rem .7rem;font-size:.88rem;color:var(--ink-soft)}
+  .scan{display:flex;gap:.4rem;align-items:center}
+  .scan input{flex:1 1 12rem;min-width:0}
   .scan button{
-    font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+    font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
     padding:.55rem .7rem;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
   .scan button.ghost{background:none;color:var(--ink)}
-  .scan-msg{width:100%;font-size:.8rem;color:var(--ink-soft);padding-top:.4rem;min-height:1.2rem}
+  .scan-msg{width:100%;font-size:.8rem;color:var(--ink-soft);min-height:1.2rem}
   #cam{width:100%;max-width:22rem;margin-top:.6rem;display:none;border:1px solid var(--hair)}
+  .door-lbl{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:.3rem}
 
   /* work */
   .work{padding:clamp(3rem,9vw,6rem) 0 0}
@@ -225,15 +244,30 @@
     <h1>Critical Discography</h1>
     <nav class="eyebrow">
       <a href="index.html">Catalogue</a>
+      <a href="entries.html" aria-current="page">Entries</a>
       <a href="gallery.html">Gallery</a>
     </nav>
-    <div class="scan">
-      <input id="bc" inputmode="numeric" placeholder="Barcode or catalogue number — identify a disc"
-             aria-label="Barcode or catalogue number">
-      <button id="bc-go">Find</button>
-      <button id="bc-cam" class="ghost" hidden>Scan</button>
-      <p class="scan-msg" id="bc-msg" role="status"></p>
-      <video id="cam" playsinline muted></video>
+    <div class="doors">
+      <div>
+        <p class="door-lbl">Find by name</p>
+        <div class="find">
+          <input id="q" type="search" autocomplete="off" spellcheck="false"
+            placeholder="Composer, work or recording — try pinnock, tosca"
+            aria-label="Find a composer, work or recording" aria-controls="q-panel">
+          <div class="find-panel" id="q-panel" role="listbox" aria-label="Search results"></div>
+        </div>
+      </div>
+      <div>
+        <p class="door-lbl">Identify a disc</p>
+        <div class="scan">
+          <input id="bc" inputmode="numeric" placeholder="Barcode or catalogue number"
+                 aria-label="Barcode or catalogue number">
+          <button id="bc-go">Find</button>
+          <button id="bc-cam" class="ghost" hidden>Scan</button>
+        </div>
+        <p class="scan-msg" id="bc-msg" role="status"></p>
+        <video id="cam" playsinline muted></video>
+      </div>
     </div>
   </header>
 
@@ -453,10 +487,12 @@ function entry(r){
   </article>`;
 }
 
+const workDomId=w=>String(w.id).replace(/\//g,"_");
+
 document.getElementById("works").innerHTML = CATALOGUE.works.map((w,i)=>{
   const refs=w.recordings.filter(r=>r.reference).length;
   const eds=w.recordings.reduce((a,r)=>a+r.editions.length,0);
-  return `<section class="work" id="${esc(w.id)}">
+  return `<section class="work" id="${esc(workDomId(w))}">
     <div class="work-head">
       <p class="eyebrow">${esc(w.composer)} · ${esc(w.dates)}</p>
       <h2>${esc(w.title)}</h2>
@@ -477,6 +513,60 @@ document.getElementById("works").innerHTML = CATALOGUE.works.map((w,i)=>{
 
 document.getElementById("buildline").textContent =
   `ALGORITHM V${CATALOGUE.algorithm_version} · BUILT ${CATALOGUE.built} · ${Object.keys(CATALOGUE.barcode_index).length} BARCODES INDEXED · NO TRACKERS, NO AFFILIATE LINKS`;
+
+/* ---- find by name: composers / works / recordings on this page ---- */
+const FIND_INDEX=[];
+const seenComposer=new Set();
+for(const w of CATALOGUE.works){
+  const wid=workDomId(w);
+  const surname=(w.composer||"").split(" ").pop();
+  if(!seenComposer.has(w.composer)){
+    seenComposer.add(w.composer);
+    FIND_INDEX.push({kind:"composer",label:w.composer,sub:`${w.dates||""}`.trim(),
+      href:"#"+wid,keys:`${w.composer} ${surname}`.toLowerCase()});
+  }
+  FIND_INDEX.push({kind:"work",label:w.title,sub:`${w.composer} · ${w.cat}`,
+    href:"#"+wid,keys:`${w.title} ${w.cat} ${w.composer} ${surname}`.toLowerCase()});
+  for(const r of w.recordings){
+    const who=[r.director,r.ensemble,r.soloists].filter(Boolean).join(" / ");
+    FIND_INDEX.push({kind:"recording",label:who||r.id,
+      sub:`${w.composer} · ${w.title} · ${r.published||""}`,
+      href:"#"+r.id,
+      keys:`${who} ${r.published||""} ${w.title} ${w.composer}`.toLowerCase()});
+  }
+}
+const KIND_ORDER={composer:0,work:1,recording:2};
+const KIND_LABEL={composer:"Composers",work:"Works",recording:"Recordings"};
+const qInput=document.getElementById("q"), qPanel=document.getElementById("q-panel");
+function nameSearch(q){
+  q=q.trim().toLowerCase().replace(/\s+/g," ");
+  if(q.length<2) return [];
+  const tokens=q.split(" ");
+  return FIND_INDEX.filter(item=>tokens.every(t=>item.keys.includes(t)))
+    .sort((a,b)=>KIND_ORDER[a.kind]-KIND_ORDER[b.kind]||a.label.localeCompare(b.label))
+    .slice(0,20);
+}
+function renderNameHits(hits){
+  if(!qInput.value.trim()){qPanel.classList.remove("open");qPanel.innerHTML="";return;}
+  if(!hits.length){
+    qPanel.classList.add("open");
+    qPanel.innerHTML=`<p class="find-empty">Nothing on this page matches. Try the <a href="index.html">catalogue</a>.</p>`;
+    return;
+  }
+  let html="",kind=null;
+  for(const h of hits){
+    if(h.kind!==kind){kind=h.kind;html+=`<p class="find-group">${KIND_LABEL[kind]}</p>`;}
+    html+=`<a class="find-hit" href="${esc(h.href)}"><span class="lbl">${esc(h.label)}</span>
+      <span class="sub">${esc(h.sub)}</span></a>`;
+  }
+  qPanel.classList.add("open"); qPanel.innerHTML=html;
+}
+qInput.addEventListener("input",()=>renderNameHits(nameSearch(qInput.value)));
+qInput.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){qPanel.classList.remove("open");qInput.blur();}
+  if(e.key==="Enter"){const first=qPanel.querySelector(".find-hit"); if(first){e.preventDefault();first.click();}}
+});
+document.addEventListener("click",e=>{if(!e.target.closest(".find")) qPanel.classList.remove("open");});
 
 /* ---- identify a disc: barcode or catalogue number, matched offline ---- */
 const msg=document.getElementById("bc-msg");
