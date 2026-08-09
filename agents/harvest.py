@@ -36,6 +36,7 @@ import json
 import pathlib
 import re
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -63,7 +64,21 @@ COMPILATION_RE = re.compile(
 WORK_STOPWORDS = {
     "the", "a", "an", "and", "of", "for", "in", "on", "nos", "no", "nr", "n",
     "op", "opp", "bwv", "hob", "woo", "kv", "k", "d", "wwv", "sz", "bb",
+    # Common articles in MB titles — not work-identity signal.
+    "die", "der", "das", "dem", "den", "des", "ein", "eine",
+    "la", "le", "les", "el", "il", "lo", "gli", "une", "un",
 }
+
+# Multilingual title stems that name the same work (folded, no diacritics).
+# Used only when both sides hit the same group — never alone as a form word.
+TITLE_EQUIV_GROUPS = (
+    frozenset({"creation", "schopfung", "schöpfung"}),
+    frozenset({"seasons", "jahreszeiten"}),
+    frozenset({"magic", "zauberflote", "zauberflöte"}),
+    frozenset({"figaro", "nozze"}),
+    frozenset({"matthew", "matthaus", "matthäus", "matthieu"}),
+    frozenset({"john", "johannes", "jean"}),
+)
 WORK_GENERIC = {
     "concerto", "concertos", "konzert", "konzerte", "concerti", "concert",
     "sonata", "sonatas", "sonate", "sonaten",
@@ -77,6 +92,7 @@ WORK_GENERIC = {
     "fantasy", "fantasia", "fantaisie", "impromptu", "impromptus",
     "etude", "etudes", "étude", "études",
     "nocturne", "nocturnes", "ballade", "ballades",
+    "passion", "passions",  # St Matthew / St John — evangelist token decides
     "complete", "works", "album", "selection", "volume", "vol",
 }
 
@@ -226,9 +242,56 @@ def _title_tokens(title: str) -> set[str]:
     return tokens | extras
 
 
+# Short / honorific tokens that must not alone identify a work ("don" would
+# otherwise equate Don Giovanni with Don Carlo).
+WEAK_DISTINCTIVE = frozenset({
+    "don", "st", "saint", "ste", "lord", "sir", "von", "van", "de", "di", "du",
+})
+
+
 def distinctive_work_tokens(title: str) -> set[str]:
-    """Name-bearing tokens (e.g. brandenburg), not bare form words (concertos)."""
-    return {w for w in _title_tokens(title) if w not in WORK_GENERIC and len(w) >= 4}
+    """Name-bearing tokens (e.g. brandenburg), not bare form words (concertos).
+
+    Length floor is 3 so short stems like "art" (Art of Fugue) count; bare
+    form words stay excluded via WORK_GENERIC.
+    """
+    return {
+        w for w in _title_tokens(title)
+        if w not in WORK_GENERIC and w not in WEAK_DISTINCTIVE and len(w) >= 3
+    }
+
+
+def _fold_token(tok: str) -> str:
+    """ASCII-ish fold for alias lookup (schöpfung → schopfung)."""
+    decomp = unicodedata.normalize("NFKD", tok or "")
+    return "".join(c for c in decomp if not unicodedata.combining(c)).lower()
+
+
+def _equiv_group(tok: str) -> Optional[frozenset]:
+    folded = _fold_token(tok)
+    for group in TITLE_EQUIV_GROUPS:
+        folded_group = {_fold_token(g) for g in group}
+        if folded in folded_group or tok in group:
+            return group
+    return None
+
+
+def _extract_keys(title: str) -> set[str]:
+    """Normalised tonal keys mentioned in a title (b-minor, c-minor, …)."""
+    t = _fold_token(title or "").replace("♭", "b").replace("sharp", "#")
+    keys: set[str] = set()
+    for note, mode in re.findall(
+        r"\b([a-gh])\s*[-\s]?(major|minor|dur|moll)\b", t
+    ):
+        n = "b" if note == "h" else note
+        m = "minor" if mode in ("minor", "moll") else "major"
+        keys.add(f"{n}-{m}")
+    return keys
+
+
+def _keys_conflict(seed_title: str, mb_title: str) -> bool:
+    sk, mk = _extract_keys(seed_title), _extract_keys(mb_title)
+    return bool(sk and mk and sk.isdisjoint(mk))
 
 
 def _token_overlap(seed_tok: str, mb_tok: str) -> bool:
@@ -243,8 +306,8 @@ def _token_overlap(seed_tok: str, mb_tok: str) -> bool:
 # Cross-language form / instrument families. Sharing a family + work number
 # is enough; sharing only "concerto" across different works is not.
 FORM_FAMILIES = (
-    frozenset({"symphony", "symphonies", "symphonie", "sinfonie", "sinfonien",
-               "sinfonia"}),
+    frozenset({"symphony", "symphonies", "symphonie", "symphonien",
+               "sinfonie", "sinfonien", "sinfonia"}),
     frozenset({"concerto", "concertos", "konzert", "konzerte", "concerti",
                "klavierkonzert", "violinkonzert", "concert"}),
     frozenset({"sonata", "sonatas", "sonate", "sonaten"}),
@@ -258,6 +321,8 @@ FORM_FAMILIES = (
     frozenset({"partita", "partitas"}),
     frozenset({"cantata", "cantatas"}),
     frozenset({"opera", "operas"}),
+    frozenset({"etude", "etudes", "étude", "études"}),
+    frozenset({"overture", "overtures", "ouverture", "ouvertures"}),
 )
 INSTRUMENT_FAMILIES = (
     frozenset({"piano", "klavier", "pianoforte"}),
@@ -305,10 +370,28 @@ def work_title_compatible(seed_title: str, mb_title: str,
     seed_tokens = _title_tokens(seed_title)
     mb_tokens = _title_tokens(mb_title)
 
+    # 0) Identical work title after stopword/digit stripping
+    #    ("The Art of Fugue" ↔ "Art of Fugue" / "The Art of the Fugue").
+    seed_key = {t for t in seed_tokens if not t.isdigit()}
+    mb_key = {t for t in mb_tokens if not t.isdigit()}
+    if seed_key and seed_key == mb_key:
+        return True
+
+    # 0b) Known multilingual equivalents (Creation ↔ Die Schöpfung).
+    seed_groups = {_equiv_group(t) for t in seed_key}
+    mb_groups = {_equiv_group(t) for t in mb_key}
+    seed_groups.discard(None)
+    mb_groups.discard(None)
+    if seed_groups and seed_groups & mb_groups:
+        return True
+
     # 1) Distinctive work name: Brandenburg, Tosca, Giovanni, Emperor…
+    #    "don"/"st" are weak and excluded, so Don Giovanni ↛ Don Carlo.
     dist = distinctive_work_tokens(seed_title)
     if dist and any(_token_overlap(d, m) for d in dist for m in mb_tokens):
-        return True
+        # Key conflict still blocks (Mass in C minor ↛ Mass in B minor).
+        if not _keys_conflict(seed_title, mb_title):
+            return True
 
     seed_form = _family(seed_tokens, FORM_FAMILIES)
     mb_form = _family(mb_tokens, FORM_FAMILIES)
@@ -327,6 +410,8 @@ def work_title_compatible(seed_title: str, mb_title: str,
                 return False
             if seed_inst and not mb_inst:
                 # Seed says Violin Concerto No. 1; MB says only Concerto No. 1.
+                return False
+            if _keys_conflict(seed_title, mb_title):
                 return False
             return True
 

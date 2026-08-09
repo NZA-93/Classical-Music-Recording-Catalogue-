@@ -60,6 +60,36 @@
       "name": "Frédéric Chopin",
       "dates": "1810–1849",
       "works": 12
+    },
+    {
+      "id": "tchaikovsky",
+      "name": "Pyotr Ilyich Tchaikovsky",
+      "dates": "1840–1893",
+      "works": 12
+    },
+    {
+      "id": "wagner",
+      "name": "Richard Wagner",
+      "dates": "1813–1883",
+      "works": 12
+    },
+    {
+      "id": "verdi",
+      "name": "Giuseppe Verdi",
+      "dates": "1813–1901",
+      "works": 12
+    },
+    {
+      "id": "mahler",
+      "name": "Gustav Mahler",
+      "dates": "1860–1911",
+      "works": 12
+    },
+    {
+      "id": "debussy",
+      "name": "Claude Debussy",
+      "dates": "1862–1918",
+      "works": 12
     }
   ],
   "works": [
@@ -7349,10 +7379,3490 @@
         }
       ],
       "assessed": []
+    },
+    {
+      "id": "tchaikovsky/sym6",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Symphony No. 6, Pathétique",
+      "catalogue": "Op. 74",
+      "year": "1893",
+      "note": "B minor; finale Adagio lamentoso.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/sym6/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym6/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym6/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym6/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/sym4",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Symphony No. 4",
+      "catalogue": "Op. 36",
+      "year": "1878",
+      "note": "F minor; fate-motif opening.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/sym4/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym4/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym4/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym4/3",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/sym5",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Symphony No. 5",
+      "catalogue": "Op. 64",
+      "year": "1888",
+      "note": "E minor; motto returns in the finale.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/sym5/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym5/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym5/2",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/sym5/3",
+          "soloists": "",
+          "director": "Mariss Jansons",
+          "ensemble": "Oslo Philharmonic",
+          "label": "Chandos",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/pc1",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Piano Concerto No. 1",
+      "catalogue": "Op. 23",
+      "year": "1875",
+      "note": "B-flat minor; revised after the 1875 premiere.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/pc1/0",
+          "soloists": "Van Cliburn",
+          "director": "Kirill Kondrashin",
+          "ensemble": "RCA Symphony Orchestra",
+          "label": "RCA",
+          "year": "1958",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/pc1/1",
+          "soloists": "Martha Argerich",
+          "director": "Charles Dutoit",
+          "ensemble": "Orchestre de la Suisse Romande",
+          "label": "Deutsche Grammophon",
+          "year": "1975",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/pc1/2",
+          "soloists": "Sviatoslav Richter",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Symphoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/pc1/3",
+          "soloists": "Emil Gilels",
+          "director": "Fritz Reiner",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "RCA",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/violin_concerto",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Violin Concerto",
+      "catalogue": "Op. 35",
+      "year": "1878",
+      "note": "D major; written in Clarens.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/violin_concerto/0",
+          "soloists": "Jascha Heifetz",
+          "director": "Fritz Reiner",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "RCA",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/violin_concerto/1",
+          "soloists": "David Oistrakh",
+          "director": "Eugene Ormandy",
+          "ensemble": "Philadelphia Orchestra",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/violin_concerto/2",
+          "soloists": "Kyung-Wha Chung",
+          "director": "André Previn",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/violin_concerto/3",
+          "soloists": "Itzhak Perlman",
+          "director": "Eugene Ormandy",
+          "ensemble": "Philadelphia Orchestra",
+          "label": "EMI",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/swan_lake",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Swan Lake",
+      "catalogue": "Op. 20",
+      "year": "1877",
+      "note": "Ballet; complete-score versus suite choice.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/swan_lake/0",
+          "soloists": "",
+          "director": "André Previn",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/swan_lake/1",
+          "soloists": "",
+          "director": "Ernest Ansermet",
+          "ensemble": "Orchestre de la Suisse Romande",
+          "label": "Decca",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/swan_lake/2",
+          "soloists": "",
+          "director": "Gennady Rozhdestvensky",
+          "ensemble": "Moscow Radio Symphony Orchestra",
+          "label": "Melodiya",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/swan_lake/3",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "Minneapolis Symphony Orchestra",
+          "label": "Mercury",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/nutcracker",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "The Nutcracker",
+      "catalogue": "Op. 71",
+      "year": "1892",
+      "note": "Ballet and concert suite Op. 71a.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/nutcracker/0",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Mercury",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/nutcracker/1",
+          "soloists": "",
+          "director": "André Previn",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/nutcracker/2",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Telarc",
+          "year": "1986",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/nutcracker/3",
+          "soloists": "",
+          "director": "Neeme Järvi",
+          "ensemble": "Scottish National Orchestra",
+          "label": "Chandos",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/eugene_onegin",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Eugene Onegin",
+      "catalogue": "Op. 24",
+      "year": "1879",
+      "note": "Lyric scenes after Pushkin.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/eugene_onegin/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "Decca",
+          "year": "1974",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/eugene_onegin/1",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/eugene_onegin/2",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "Orchestra of the Bolshoi Theatre",
+          "label": "EMI",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/eugene_onegin/3",
+          "soloists": "",
+          "director": "Semyon Bychkov",
+          "ensemble": "Orchestre de Paris",
+          "label": "Philips",
+          "year": "1993",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/romeo_juliet",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Romeo and Juliet",
+      "catalogue": "—",
+      "year": "1880",
+      "note": "Overture-fantasy; third version.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/romeo_juliet/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/romeo_juliet/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/romeo_juliet/2",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/romeo_juliet/3",
+          "soloists": "",
+          "director": "Riccardo Muti",
+          "ensemble": "Philadelphia Orchestra",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/serenade_strings",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Serenade for Strings",
+      "catalogue": "Op. 48",
+      "year": "1880",
+      "note": "C major; four movements.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/serenade_strings/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/serenade_strings/1",
+          "soloists": "",
+          "director": "Neville Marriner",
+          "ensemble": "Academy of St Martin in the Fields",
+          "label": "Argo",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/serenade_strings/2",
+          "soloists": "",
+          "director": "John Barbirolli",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/serenade_strings/3",
+          "soloists": "",
+          "director": "I Musici",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/overture_1812",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "1812 Overture",
+      "catalogue": "Op. 49",
+      "year": "1880",
+      "note": "Festival overture with optional artillery.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/overture_1812/0",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "Minneapolis Symphony Orchestra",
+          "label": "Mercury",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/overture_1812/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/overture_1812/2",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/overture_1812/3",
+          "soloists": "",
+          "director": "Erich Kunzel",
+          "ensemble": "Cincinnati Symphony Orchestra",
+          "label": "Telarc",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "tchaikovsky/piano_trio",
+      "composer_id": "tchaikovsky",
+      "composer": "Pyotr Ilyich Tchaikovsky",
+      "composer_dates": "1840–1893",
+      "title": "Piano Trio",
+      "catalogue": "Op. 50",
+      "year": "1882",
+      "note": "A minor; in memory of Nikolai Rubinstein.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "tchaikovsky/piano_trio/0",
+          "soloists": "Beaux Arts Trio",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/piano_trio/1",
+          "soloists": "Vladimir Ashkenazy; Itzhak Perlman; Lynn Harrell",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/piano_trio/2",
+          "soloists": "Martha Argerich; Gidon Kremer; Mischa Maisky",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "tchaikovsky/piano_trio/3",
+          "soloists": "Suk Trio",
+          "director": "",
+          "ensemble": "",
+          "label": "Supraphon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/tristan",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Tristan und Isolde",
+      "catalogue": "WWV 90",
+      "year": "1865",
+      "note": "Music drama; prelude and Liebestod often excerpted.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/tristan/0",
+          "soloists": "Kirsten Flagstad, Ludwig Suthaus",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1952",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/tristan/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/tristan/2",
+          "soloists": "Birgit Nilsson, Wolfgang Windgassen",
+          "director": "Karl Böhm",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/tristan/3",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Staatskapelle Dresden",
+          "label": "Deutsche Grammophon",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/walkure",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Die Walküre",
+      "catalogue": "WWV 86B",
+      "year": "1870",
+      "note": "Second evening of Der Ring des Nibelungen.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/walkure/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/walkure/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/walkure/2",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/walkure/3",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/rheingold",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Das Rheingold",
+      "catalogue": "WWV 86A",
+      "year": "1869",
+      "note": "Vorabend of the Ring cycle.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/rheingold/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1958",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/rheingold/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1968",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/rheingold/2",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/rheingold/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Bavarian Radio Symphony Orchestra",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/siegfried",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Siegfried",
+      "catalogue": "WWV 86C",
+      "year": "1876",
+      "note": "Third evening of the Ring.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/siegfried/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/siegfried/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/siegfried/2",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/siegfried/3",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/gotterdammerung",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Götterdämmerung",
+      "catalogue": "WWV 86D",
+      "year": "1876",
+      "note": "Final evening of the Ring.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/gotterdammerung/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/gotterdammerung/1",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/gotterdammerung/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/gotterdammerung/3",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/meistersinger",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Die Meistersinger von Nürnberg",
+      "catalogue": "WWV 96",
+      "year": "1868",
+      "note": "Comedy in three acts.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/meistersinger/0",
+          "soloists": "",
+          "director": "Eugen Jochum",
+          "ensemble": "Deutsche Oper Berlin",
+          "label": "Deutsche Grammophon",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/meistersinger/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Dresden Staatskapelle",
+          "label": "EMI",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/meistersinger/2",
+          "soloists": "",
+          "director": "Rafael Kubelík",
+          "ensemble": "Bayerisches Rundfunk-Sinfonieorchester",
+          "label": "CBS",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/meistersinger/3",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1975",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/parsifal",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Parsifal",
+      "catalogue": "WWV 111",
+      "year": "1882",
+      "note": "Bühnenweihfestspiel for Bayreuth.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/parsifal/0",
+          "soloists": "",
+          "director": "Hans Knappertsbusch",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/parsifal/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/parsifal/2",
+          "soloists": "",
+          "director": "Rafael Kubelík",
+          "ensemble": "Bayerisches Rundfunk-Sinfonieorchester",
+          "label": "Arts",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/parsifal/3",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1991",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/lohengrin",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Lohengrin",
+      "catalogue": "WWV 75",
+      "year": "1850",
+      "note": "Romantic opera; Weimar premiere under Liszt.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/lohengrin/0",
+          "soloists": "",
+          "director": "Rudolf Kempe",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "EMI",
+          "year": "1962–63",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/lohengrin/1",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1986",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/lohengrin/2",
+          "soloists": "",
+          "director": "Rafael Kubelík",
+          "ensemble": "Bayerisches Rundfunk-Sinfonieorchester",
+          "label": "Deutsche Grammophon",
+          "year": "1971",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/lohengrin/3",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/tannhauser",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Tannhäuser",
+      "catalogue": "WWV 70",
+      "year": "1845/1861",
+      "note": "Dresden and Paris versions.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/tannhauser/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/tannhauser/1",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Bavarian Radio Symphony Orchestra",
+          "label": "EMI",
+          "year": "1985",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/tannhauser/2",
+          "soloists": "",
+          "director": "Giuseppe Sinopoli",
+          "ensemble": "Philharmonia",
+          "label": "Deutsche Grammophon",
+          "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/tannhauser/3",
+          "soloists": "",
+          "director": "Wolfgang Sawallisch",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/hollander",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Der fliegende Holländer",
+      "catalogue": "WWV 63",
+      "year": "1843",
+      "note": "Romantic opera in one or three acts.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/hollander/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1968",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/hollander/1",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Decca",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/hollander/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/hollander/3",
+          "soloists": "",
+          "director": "Woldemar Nelsson",
+          "ensemble": "Bayreuth Festival Orchestra",
+          "label": "Philips",
+          "year": "1985",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/wesendonck",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Wesendonck Lieder",
+      "catalogue": "WWV 91",
+      "year": "1857–58",
+      "note": "Five songs; piano and orchestral versions.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/wesendonck/0",
+          "soloists": "Kirsten Flagstad; Gerald Moore, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/wesendonck/1",
+          "soloists": "Jessye Norman",
+          "director": "Colin Davis",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/wesendonck/2",
+          "soloists": "Janet Baker",
+          "director": "Raymond Leppard",
+          "ensemble": "London Philharmonic Orchestra",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/wesendonck/3",
+          "soloists": "Soile Isokoski",
+          "director": "Marek Janowski",
+          "ensemble": "Orchestra of the Deutsche Oper Berlin",
+          "label": "Ondine",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "wagner/siegfried_idyll",
+      "composer_id": "wagner",
+      "composer": "Richard Wagner",
+      "composer_dates": "1813–1883",
+      "title": "Siegfried Idyll",
+      "catalogue": "WWV 103",
+      "year": "1870",
+      "note": "Chamber-orchestra birthday piece.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "wagner/siegfried_idyll/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/siegfried_idyll/1",
+          "soloists": "",
+          "director": "Bruno Walter",
+          "ensemble": "Columbia Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/siegfried_idyll/2",
+          "soloists": "",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "wagner/siegfried_idyll/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/traviata",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "La traviata",
+      "catalogue": "—",
+      "year": "1853",
+      "note": "After Dumas fils; Violetta.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/traviata/0",
+          "soloists": "Maria Callas",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/traviata/1",
+          "soloists": "Ileana Cotrubas, Plácido Domingo",
+          "director": "Carlos Kleiber",
+          "ensemble": "Bayerisches Staatsorchester",
+          "label": "Deutsche Grammophon",
+          "year": "1977",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/traviata/2",
+          "soloists": "Joan Sutherland",
+          "director": "John Pritchard",
+          "ensemble": "Maggio Musicale Fiorentino",
+          "label": "Decca",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/traviata/3",
+          "soloists": "Angela Gheorghiu",
+          "director": "Georg Solti",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "Decca",
+          "year": "1994",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/rigoletto",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Rigoletto",
+      "catalogue": "—",
+      "year": "1851",
+      "note": "After Hugo; Mantua court.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/rigoletto/0",
+          "soloists": "Maria Callas, Tito Gobbi",
+          "director": "Tullio Serafin",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/rigoletto/1",
+          "soloists": "Joan Sutherland, Luciano Pavarotti",
+          "director": "Richard Bonynge",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1971",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/rigoletto/2",
+          "soloists": "Piero Cappuccilli",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/rigoletto/3",
+          "soloists": "Sherrill Milnes",
+          "director": "Francesco Molinari-Pradelli",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/trovatore",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Il trovatore",
+      "catalogue": "—",
+      "year": "1853",
+      "note": "Spanish melodrama; Anvil Chorus.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/trovatore/0",
+          "soloists": "Maria Callas",
+          "director": "Herbert von Karajan",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1956",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/trovatore/1",
+          "soloists": "Leontyne Price",
+          "director": "Zubin Mehta",
+          "ensemble": "New Philharmonia",
+          "label": "RCA",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/trovatore/2",
+          "soloists": "Plácido Domingo",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "Deutsche Grammophon",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/trovatore/3",
+          "soloists": "Franco Corelli",
+          "director": "Thomas Schippers",
+          "ensemble": "Rome Opera",
+          "label": "EMI",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/aida",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Aida",
+      "catalogue": "—",
+      "year": "1871",
+      "note": "Commissioned for Cairo.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/aida/0",
+          "soloists": "Maria Callas",
+          "director": "Tullio Serafin",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/aida/1",
+          "soloists": "Leontyne Price",
+          "director": "Georg Solti",
+          "ensemble": "Rome Opera",
+          "label": "Decca",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/aida/2",
+          "soloists": "Montserrat Caballé",
+          "director": "Riccardo Muti",
+          "ensemble": "New Philharmonia",
+          "label": "EMI",
+          "year": "1974",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/aida/3",
+          "soloists": "Mirella Freni",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "EMI",
+          "year": "1979",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/otello",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Otello",
+      "catalogue": "—",
+      "year": "1887",
+      "note": "After Shakespeare; Boito libretto.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/otello/0",
+          "soloists": "Jon Vickers",
+          "director": "Tullio Serafin",
+          "ensemble": "Rome Opera",
+          "label": "RCA",
+          "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/otello/1",
+          "soloists": "Plácido Domingo",
+          "director": "James Levine",
+          "ensemble": "National Philharmonic Orchestra",
+          "label": "RCA",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/otello/2",
+          "soloists": "Mario Del Monaco",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/otello/3",
+          "soloists": "Ramón Vinay",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1947",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/falstaff",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Falstaff",
+      "catalogue": "—",
+      "year": "1893",
+      "note": "Final opera; after Merry Wives and Henry IV.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/falstaff/0",
+          "soloists": "Tito Gobbi",
+          "director": "Herbert von Karajan",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1956",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/falstaff/1",
+          "soloists": "Renato Bruson",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Los Angeles Philharmonic",
+          "label": "Deutsche Grammophon",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/falstaff/2",
+          "soloists": "Giuseppe Taddei",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/falstaff/3",
+          "soloists": "Bryn Terfel",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "2001",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/don_carlos",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Don Carlos",
+      "catalogue": "—",
+      "year": "1867/1884",
+      "note": "French grand opera; Italian revisions.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/don_carlos/0",
+          "soloists": "Plácido Domingo",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "EMI",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/don_carlos/1",
+          "soloists": "José Carreras",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1979",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/don_carlos/2",
+          "soloists": "Carlo Bergonzi",
+          "director": "Georg Solti",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "Decca",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/don_carlos/3",
+          "soloists": "Plácido Domingo",
+          "director": "Claudio Abbado",
+          "ensemble": "Teatro alla Scala",
+          "label": "Deutsche Grammophon",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/ballo",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Un ballo in maschera",
+      "catalogue": "—",
+      "year": "1859",
+      "note": "Gustavus / Riccardo versions.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/ballo/0",
+          "soloists": "Maria Callas",
+          "director": "Antonino Votto",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1956",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/ballo/1",
+          "soloists": "Leontyne Price",
+          "director": "Erich Leinsdorf",
+          "ensemble": "RCA Italiana Orchestra",
+          "label": "RCA",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/ballo/2",
+          "soloists": "Plácido Domingo",
+          "director": "Claudio Abbado",
+          "ensemble": "Teatro alla Scala",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/ballo/3",
+          "soloists": "Luciano Pavarotti",
+          "director": "Georg Solti",
+          "ensemble": "National Philharmonic Orchestra",
+          "label": "Decca",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/requiem",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Messa da Requiem",
+      "catalogue": "—",
+      "year": "1874",
+      "note": "For Manzoni; four soloists, chorus, orchestra.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/requiem/0",
+          "soloists": "",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1951",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/requiem/1",
+          "soloists": "",
+          "director": "Carlo Maria Giulini",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/requiem/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/requiem/3",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Philips",
+          "year": "1992",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/macbeth",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Macbeth",
+      "catalogue": "—",
+      "year": "1847/1865",
+      "note": "First Shakespeare opera; Paris revision.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/macbeth/0",
+          "soloists": "Maria Callas",
+          "director": "Victor de Sabata",
+          "ensemble": "Teatro alla Scala",
+          "label": "EMI",
+          "year": "1952",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/macbeth/1",
+          "soloists": "Piero Cappuccilli",
+          "director": "Claudio Abbado",
+          "ensemble": "Teatro alla Scala",
+          "label": "Deutsche Grammophon",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/macbeth/2",
+          "soloists": "Sherrill Milnes",
+          "director": "Riccardo Muti",
+          "ensemble": "New Philharmonia",
+          "label": "EMI",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/macbeth/3",
+          "soloists": "Leonard Warren",
+          "director": "Erich Leinsdorf",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "RCA",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/boccanegra",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Simon Boccanegra",
+      "catalogue": "—",
+      "year": "1857/1881",
+      "note": "Revised with Boito.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/boccanegra/0",
+          "soloists": "Piero Cappuccilli",
+          "director": "Claudio Abbado",
+          "ensemble": "Teatro alla Scala",
+          "label": "Deutsche Grammophon",
+          "year": "1977",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/boccanegra/1",
+          "soloists": "Tito Gobbi",
+          "director": "Gabriele Santini",
+          "ensemble": "Rome Opera",
+          "label": "EMI",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/boccanegra/2",
+          "soloists": "Plácido Domingo",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/boccanegra/3",
+          "soloists": "José Carreras",
+          "director": "Claudio Abbado",
+          "ensemble": "Teatro alla Scala",
+          "label": "Deutsche Grammophon",
+          "year": "1977",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "verdi/nabucco",
+      "composer_id": "verdi",
+      "composer": "Giuseppe Verdi",
+      "composer_dates": "1813–1901",
+      "title": "Nabucco",
+      "catalogue": "—",
+      "year": "1842",
+      "note": "Third opera; Va, pensiero.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "verdi/nabucco/0",
+          "soloists": "Tito Gobbi",
+          "director": "Lamberto Gardelli",
+          "ensemble": "Vienna Opera Orchestra",
+          "label": "Decca",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/nabucco/1",
+          "soloists": "Piero Cappuccilli",
+          "director": "Lamberto Gardelli",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/nabucco/2",
+          "soloists": "Renato Bruson",
+          "director": "Riccardo Muti",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "verdi/nabucco/3",
+          "soloists": "Matteo Manuguerra",
+          "director": "Riccardo Muti",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym1",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 1",
+      "catalogue": "—",
+      "year": "1888",
+      "note": "D major; Blumine movement sometimes restored.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym1/0",
+          "soloists": "",
+          "director": "Rafael Kubelík",
+          "ensemble": "Bayerisches Rundfunk-Sinfonieorchester",
+          "label": "Deutsche Grammophon",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym1/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1987",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym1/2",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym1/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym2",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 2, Resurrection",
+      "catalogue": "—",
+      "year": "1894",
+      "note": "C minor; chorus and soloists in the finale.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym2/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym2/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1963",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym2/2",
+          "soloists": "",
+          "director": "Simon Rattle",
+          "ensemble": "City of Birmingham Symphony Orchestra",
+          "label": "EMI",
+          "year": "1987",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym2/3",
+          "soloists": "",
+          "director": "Zubin Mehta",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1975",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym3",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 3",
+      "catalogue": "—",
+      "year": "1896",
+      "note": "Six movements; alto solo and choirs.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym3/0",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym3/1",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym3/2",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym3/3",
+          "soloists": "",
+          "director": "Jascha Horenstein",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Unicorn",
+          "year": "1970",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym4",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 4",
+      "catalogue": "—",
+      "year": "1900",
+      "note": "G major; soprano finale.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym4/0",
+          "soloists": "",
+          "director": "George Szell",
+          "ensemble": "Cleveland Orchestra",
+          "label": "Columbia",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym4/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1987",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym4/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym4/3",
+          "soloists": "",
+          "director": "Willem Mengelberg",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1939",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym5",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 5",
+      "catalogue": "—",
+      "year": "1902",
+      "note": "C-sharp minor; Adagietto.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym5/0",
+          "soloists": "",
+          "director": "John Barbirolli",
+          "ensemble": "New Philharmonia",
+          "label": "EMI",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym5/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1987",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym5/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1973",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym5/3",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym6",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 6, Tragic",
+      "catalogue": "—",
+      "year": "1904",
+      "note": "A minor; order of the middle movements disputed.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym6/0",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym6/1",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "2005",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym6/2",
+          "soloists": "",
+          "director": "Klaus Tennstedt",
+          "ensemble": "London Philharmonic Orchestra",
+          "label": "EMI",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym6/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym9",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 9",
+      "catalogue": "—",
+      "year": "1909",
+      "note": "D major; last completed symphony.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym9/0",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1985",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym9/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym9/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym9/3",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1999",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/lied_von_der_erde",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Das Lied von der Erde",
+      "catalogue": "—",
+      "year": "1909",
+      "note": "Symphony for two voices and orchestra after Bethge.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/lied_von_der_erde/0",
+          "soloists": "Kathleen Ferrier, Julius Patzak",
+          "director": "Bruno Walter",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1952",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/lied_von_der_erde/1",
+          "soloists": "Christa Ludwig, Fritz Wunderlich",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/lied_von_der_erde/2",
+          "soloists": "Janet Baker, James King",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1975",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/lied_von_der_erde/3",
+          "soloists": "Christa Ludwig, René Kollo",
+          "director": "Leonard Bernstein",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Decca",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/kindertotenlieder",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Kindertotenlieder",
+      "catalogue": "—",
+      "year": "1904",
+      "note": "Five Rückert songs for voice and orchestra.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/kindertotenlieder/0",
+          "soloists": "Janet Baker",
+          "director": "John Barbirolli",
+          "ensemble": "Hallé Orchestra",
+          "label": "EMI",
+          "year": "1967",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/kindertotenlieder/1",
+          "soloists": "Dietrich Fischer-Dieskau",
+          "director": "Karl Böhm",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/kindertotenlieder/2",
+          "soloists": "Maureen Forrester",
+          "director": "Bruno Walter",
+          "ensemble": "Columbia Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/kindertotenlieder/3",
+          "soloists": "Thomas Hampson",
+          "director": "Leonard Bernstein",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/knaben_wunderhorn",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Des Knaben Wunderhorn",
+      "catalogue": "—",
+      "year": "1892–1901",
+      "note": "Song settings from the Arnim/Brentano collection.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/knaben_wunderhorn/0",
+          "soloists": "Elisabeth Schwarzkopf; Dietrich Fischer-Dieskau",
+          "director": "George Szell",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1968",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/knaben_wunderhorn/1",
+          "soloists": "Anne Sofie von Otter; Thomas Quasthoff",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/knaben_wunderhorn/2",
+          "soloists": "Janet Baker; Geraint Evans",
+          "director": "Wyn Morris",
+          "ensemble": "London Philharmonic Orchestra",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/knaben_wunderhorn/3",
+          "soloists": "Lucia Popp; Bernd Weikl",
+          "director": "Klaus Tennstedt",
+          "ensemble": "London Philharmonic Orchestra",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym7",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 7",
+      "catalogue": "—",
+      "year": "1905",
+      "note": "E minor; five movements with two Nachtmusiken.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym7/0",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym7/1",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym7/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym7/3",
+          "soloists": "",
+          "director": "Michael Tilson Thomas",
+          "ensemble": "London Symphony Orchestra",
+          "label": "RCA",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "mahler/sym8",
+      "composer_id": "mahler",
+      "composer": "Gustav Mahler",
+      "composer_dates": "1860–1911",
+      "title": "Symphony No. 8",
+      "catalogue": "—",
+      "year": "1906",
+      "note": "E-flat; Veni creator and Faust Part II.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "mahler/sym8/0",
+          "soloists": "",
+          "director": "Georg Solti",
+          "ensemble": "Chicago Symphony Orchestra",
+          "label": "Decca",
+          "year": "1971",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym8/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym8/2",
+          "soloists": "",
+          "director": "Klaus Tennstedt",
+          "ensemble": "London Philharmonic Orchestra",
+          "label": "EMI",
+          "year": "1986",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mahler/sym8/3",
+          "soloists": "",
+          "director": "Simon Rattle",
+          "ensemble": "City of Birmingham Symphony Orchestra",
+          "label": "EMI",
+          "year": "2004",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/apres_midi",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Prélude à l'après-midi d'un faune",
+      "catalogue": "—",
+      "year": "1894",
+      "note": "Orchestral prelude after Mallarmé.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/apres_midi/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/apres_midi/1",
+          "soloists": "",
+          "director": "Pierre Boulez",
+          "ensemble": "New Philharmonia",
+          "label": "CBS",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/apres_midi/2",
+          "soloists": "",
+          "director": "Pierre Monteux",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Decca",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/apres_midi/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/la_mer",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "La mer",
+      "catalogue": "—",
+      "year": "1905",
+      "note": "Three symphonic sketches.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/la_mer/0",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/la_mer/1",
+          "soloists": "",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1950",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/la_mer/2",
+          "soloists": "",
+          "director": "Pierre Boulez",
+          "ensemble": "Cleveland Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1995",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/la_mer/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/nocturnes",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Nocturnes",
+      "catalogue": "—",
+      "year": "1899",
+      "note": "Nuages, Fêtes, Sirènes; female chorus in III.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/nocturnes/0",
+          "soloists": "",
+          "director": "Pierre Boulez",
+          "ensemble": "Cleveland Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/nocturnes/1",
+          "soloists": "",
+          "director": "Pierre Monteux",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "RCA",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/nocturnes/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/nocturnes/3",
+          "soloists": "",
+          "director": "Charles Dutoit",
+          "ensemble": "Orchestre Symphonique de Montréal",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/pelleas",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Pelléas et Mélisande",
+      "catalogue": "—",
+      "year": "1902",
+      "note": "Opera after Maeterlinck.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/pelleas/0",
+          "soloists": "",
+          "director": "Roger Désormière",
+          "ensemble": "Orchestre de la Société des Concerts du Conservatoire",
+          "label": "EMI",
+          "year": "1941",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/pelleas/1",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/pelleas/2",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1991",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/pelleas/3",
+          "soloists": "",
+          "director": "Pierre Boulez",
+          "ensemble": "Orchestra of the Royal Opera House",
+          "label": "CBS",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/preludes",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Préludes, Books I & II",
+      "catalogue": "—",
+      "year": "1910 / 1913",
+      "note": "Twenty-four piano preludes.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/preludes/0",
+          "soloists": "Walter Gieseking",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1953–54",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/preludes/1",
+          "soloists": "Arturo Benedetti Michelangeli",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/preludes/2",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1979",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/preludes/3",
+          "soloists": "Krystian Zimerman",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1991",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/images",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Images (piano)",
+      "catalogue": "—",
+      "year": "1905 / 1907",
+      "note": "Two books of piano Images.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/images/0",
+          "soloists": "Walter Gieseking",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/images/1",
+          "soloists": "Arturo Benedetti Michelangeli",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1971",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/images/2",
+          "soloists": "Jean-Yves Thibaudet",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/images/3",
+          "soloists": "Zoltán Kocsis",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/string_quartet",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "String Quartet",
+      "catalogue": "—",
+      "year": "1893",
+      "note": "G minor, Op. 10.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/string_quartet/0",
+          "soloists": "Quatuor Ébène",
+          "director": "",
+          "ensemble": "",
+          "label": "Virgin Classics",
+          "year": "2008",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/string_quartet/1",
+          "soloists": "Quartetto Italiano",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/string_quartet/2",
+          "soloists": "Juilliard Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/string_quartet/3",
+          "soloists": "Tokyo String Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/childrens_corner",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Children's Corner",
+      "catalogue": "—",
+      "year": "1908",
+      "note": "Six piano pieces dedicated to Chou-Chou.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/childrens_corner/0",
+          "soloists": "Walter Gieseking",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/childrens_corner/1",
+          "soloists": "Arturo Benedetti Michelangeli",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1971",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/childrens_corner/2",
+          "soloists": "Jean-Yves Thibaudet",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/childrens_corner/3",
+          "soloists": "Samson François",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/suite_bergamasque",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Suite bergamasque",
+      "catalogue": "—",
+      "year": "1905",
+      "note": "Piano suite; includes Clair de lune.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/suite_bergamasque/0",
+          "soloists": "Walter Gieseking",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/suite_bergamasque/1",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/suite_bergamasque/2",
+          "soloists": "Jean-Yves Thibaudet",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/suite_bergamasque/3",
+          "soloists": "Samson François",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/jeux",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Jeux",
+      "catalogue": "—",
+      "year": "1913",
+      "note": "Poème dansé for Diaghilev.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/jeux/0",
+          "soloists": "",
+          "director": "Pierre Boulez",
+          "ensemble": "Orchestre National de la RTF",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/jeux/1",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/jeux/2",
+          "soloists": "",
+          "director": "Michael Tilson Thomas",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/jeux/3",
+          "soloists": "",
+          "director": "Pierre Monteux",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Philips",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/sonata_flute_viola_harp",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Sonata for flute, viola and harp",
+      "catalogue": "—",
+      "year": "1915",
+      "note": "Late chamber sonata.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/sonata_flute_viola_harp/0",
+          "soloists": "Melos Ensemble",
+          "director": "",
+          "ensemble": "",
+          "label": "L'Oiseau-Lyre",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/sonata_flute_viola_harp/1",
+          "soloists": "members of the Berliner Philharmoniker",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/sonata_flute_viola_harp/2",
+          "soloists": "Nash Ensemble",
+          "director": "",
+          "ensemble": "",
+          "label": "Virgin Classics",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/sonata_flute_viola_harp/3",
+          "soloists": "Ensemble Wien-Berlin",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
+    },
+    {
+      "id": "debussy/etudes",
+      "composer_id": "debussy",
+      "composer": "Claude Debussy",
+      "composer_dates": "1862–1918",
+      "title": "Études",
+      "catalogue": "—",
+      "year": "1915",
+      "note": "Twelve piano studies in two books.",
+      "status": "awaiting sources",
+      "candidates": [
+        {
+          "id": "debussy/etudes/0",
+          "soloists": "Mitsuko Uchida",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1989",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/etudes/1",
+          "soloists": "Pierre-Laurent Aimard",
+          "director": "",
+          "ensemble": "",
+          "label": "Warner",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/etudes/2",
+          "soloists": "Jean-Efflam Bavouzet",
+          "director": "",
+          "ensemble": "",
+          "label": "Chandos",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "debussy/etudes/3",
+          "soloists": "Walter Gieseking",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
+      "assessed": []
     }
   ],
   "totals": {
-    "works": 119,
-    "candidates": 511
+    "works": 179,
+    "candidates": 751
   }
 }
