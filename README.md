@@ -29,14 +29,14 @@ take a share of the sale.
 
 | | |
 |---|---|
-| Composers | 4 — Bach, Beethoven, Mozart, Puccini |
-| Works | 47 |
-| Candidate recordings | 58, awaiting identity verification |
-| Recordings assessed | 4 |
-| Works with any assessment | 4% |
+| Composers | 5 — Bach, Beethoven, Mozart, Puccini, Shostakovich |
+| Works | 59 |
+| Candidate recordings | 72, awaiting identity verification |
+| Recordings assessed | 7 |
+| Growth plan | +5 well-known composers / week (`proposals/composer-queue.json`) |
 
-That last number is the honest one. A guide that hides its gaps cannot ask anyone to
-fill them.
+That coverage figure is the honest one. A guide that hides its gaps cannot ask anyone to
+fill them. Agent coordination lives in [`docs/automation/`](docs/automation/README.md).
 
 ---
 

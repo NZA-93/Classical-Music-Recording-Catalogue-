@@ -31,9 +31,14 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 import pathlib
-from typing import Optional
+from typing import Dict, Optional
 
 ALGORITHM_VERSION = "2.0"
+
+# Composer rollup is shown only when enough ratified interpretation signal exists.
+# Below these floors the honest value is null — not a low score.
+COMPOSER_MIN_STRONG = 3
+COMPOSER_MIN_RECORDINGS = 2
 
 
 # ---------------------------------------------------------------- weighting
@@ -202,6 +207,72 @@ def edition_verdict(S: float, n: int) -> str:
         if S >= floor:
             return label
     return "not yet assessed"
+
+
+def aggregate_composer(
+    recordings: list[Recording],
+    *,
+    composer: str,
+    composer_id: str,
+    dates: str = "",
+) -> dict:
+    """Roll up interpretation statements across a composer's assessed recordings.
+
+    This is not a new judgement. It reuses Statement.weight() so review *origin*
+    (source class × provenance × conflict) still governs the mean. Signed
+    editorial entries are never inputs. Returns interpretation=None when the
+    evidence floor is not met.
+    """
+    interp: list[Statement] = []
+    assessed_ids: list[str] = []
+    for rec in recordings:
+        rec_interp = [s for s in rec.statements if s.axis == "interpretation"]
+        if rec_interp:
+            assessed_ids.append(rec.id)
+            interp.extend(rec_interp)
+
+    by_class: Dict[str, int] = {}
+    by_prov: Dict[str, int] = {}
+    for s in interp:
+        by_class[s.cls.value] = by_class.get(s.cls.value, 0) + 1
+        by_prov[s.prov.value] = by_prov.get(s.prov.value, 0) + 1
+
+    strong = sum(1 for s in interp if s.is_strong())
+    floor_ok = (
+        strong >= COMPOSER_MIN_STRONG
+        and len(assessed_ids) >= COMPOSER_MIN_RECORDINGS
+    )
+
+    if not interp or not floor_ok:
+        return {
+            "id": composer_id,
+            "composer": composer,
+            "dates": dates,
+            "interpretation": None,
+            "confidence": None,
+            "n_statements": len(interp),
+            "n_strong": strong,
+            "n_recordings_assessed": len(assessed_ids),
+            "sources_by_class": by_class,
+            "sources_by_provenance": by_prov,
+            "note": "rollup withheld until enough cited independent sources exist",
+        }
+
+    S, conf, contrib = aggregate(interp)
+    return {
+        "id": composer_id,
+        "composer": composer,
+        "dates": dates,
+        "interpretation": round(S, 3),
+        "confidence": round(conf, 3),
+        "n_statements": len(interp),
+        "n_strong": strong,
+        "n_recordings_assessed": len(assessed_ids),
+        "sources_by_class": by_class,
+        "sources_by_provenance": by_prov,
+        "sources": contrib,
+        "note": "weighted rollup of ratified interpretation statements; origin = class × provenance",
+    }
 
 
 EDITORIAL: Dict[str, dict] = {}
@@ -598,14 +669,53 @@ WORKS = {
 }
 
 
+def _composer_id_from_work(work_id: str, composer_name: str) -> str:
+    if "/" in work_id:
+        return work_id.split("/", 1)[0]
+    # legacy inline ids: bach_brandenburg, puccini_tosca
+    slug = composer_name.lower()
+    for token in ("johann sebastian ", "giacomo ", "dmitri ", "wolfgang amadeus ",
+                  "ludwig van "):
+        slug = slug.replace(token, "")
+    slug = slug.replace(" ", "_")
+    return {
+        "Johann Sebastian Bach": "bach",
+        "Giacomo Puccini": "puccini",
+        "Dmitri Shostakovich": "shostakovich",
+        "Ludwig van Beethoven": "beethoven",
+        "Wolfgang Amadeus Mozart": "mozart",
+    }.get(composer_name, slug)
+
+
 if __name__ == "__main__":
     EDITORIAL.update(load_editorial())
-    results = [run(r) for r in catalogue()] + [run(r) for r in load_from_data()]
+    all_recs = catalogue() + load_from_data()
+    results = [run(r) for r in all_recs]
 
     works = []
     for wid, meta in WORKS.items():
         works.append({**meta, "id": wid,
                       "recordings": [r for r in results if r["work"] == wid]})
+
+    by_composer: Dict[str, list[Recording]] = {}
+    composer_meta: Dict[str, tuple[str, str]] = {}
+    for rec in all_recs:
+        meta = WORKS.get(rec.work_id, {})
+        name = meta.get("composer", "Unknown")
+        dates = meta.get("dates", "")
+        cid = _composer_id_from_work(rec.work_id, name)
+        by_composer.setdefault(cid, []).append(rec)
+        composer_meta[cid] = (name, dates)
+
+    composers = [
+        aggregate_composer(
+            recs,
+            composer=composer_meta[cid][0],
+            composer_id=cid,
+            dates=composer_meta[cid][1],
+        )
+        for cid, recs in sorted(by_composer.items())
+    ]
 
     barcodes = {
         e["barcode"]: {"recording": r["id"], "edition": e["id"]}
@@ -614,7 +724,9 @@ if __name__ == "__main__":
 
     out = {"algorithm_version": ALGORITHM_VERSION,
            "built": datetime.now(timezone.utc).date().isoformat(),
-           "works": works, "barcode_index": barcodes}
+           "works": works,
+           "composers": composers,
+           "barcode_index": barcodes}
 
     with open("build/catalogue.json", "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2, ensure_ascii=False)
@@ -631,4 +743,11 @@ if __name__ == "__main__":
                   f"({'★' * r['stars']}{' RÉFÉRENCE' if r['reference'] else ''})  "
                   f"best sound {r['sound_best'] if r['sound_best'] else '—'}  "
                   f"editions {assessed}/{ed} assessed")
+    for c in composers:
+        if c["interpretation"] is None:
+            print(f"  composer:{c['id']:<24} rollup withheld "
+                  f"({c['n_strong']} strong / {c['n_recordings_assessed']} recordings)")
+        else:
+            print(f"  composer:{c['id']:<24} rollup {c['interpretation']:.3f} "
+                  f"conf {c['confidence']:.3f} · {c['n_statements']} stmts")
     print(f"\n{len(barcodes)} barcodes indexed · wrote catalogue.json")

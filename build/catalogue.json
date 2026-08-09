@@ -1029,6 +1029,231 @@
       ]
     }
   ],
+  "composers": [
+    {
+      "id": "bach",
+      "composer": "Johann Sebastian Bach",
+      "dates": "1685–1750",
+      "interpretation": 2.836,
+      "confidence": 1.0,
+      "n_statements": 9,
+      "n_strong": 6,
+      "n_recordings_assessed": 2,
+      "sources_by_class": {
+        "specialist survey": 3,
+        "independent critic": 3,
+        "label promo": 2,
+        "secondary literature": 1
+      },
+      "sources_by_provenance": {
+        "attributed": 9
+      },
+      "sources": [
+        {
+          "source": "Gramophone / classical-music.com survey",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "Elegant simplicity, directness of expression and consistency of approach; a leading modern recommendation."
+        },
+        {
+          "source": "Independent critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.9,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Frequently placed at the head of recent surveys as an HIP benchmark; crisp articulation throughout."
+        },
+        {
+          "source": "Penguin Guide, historical editions",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.8,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "Long-standing recommendation; refined and stylish."
+        },
+        {
+          "source": "Archiv / Avie promotional text",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 3.0,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "The definitive period-instrument Brandenburgs of our time."
+        },
+        {
+          "source": "Secondary discographic literature",
+          "class": "secondary literature",
+          "provenance": "attributed",
+          "score": 2.7,
+          "weight": 0.525,
+          "conflict": false,
+          "text": "A reference point for clarity and rhythmic vitality among HIP cycles."
+        },
+        {
+          "source": "Independent historical criticism",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.85,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Pioneering period-instrument cycle of enduring value; a foundational document."
+        },
+        {
+          "source": "Specialist early-music survey",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.75,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "Retains pioneering energy and chamber-scale intensity despite dry original sound."
+        },
+        {
+          "source": "Teldec / Warner reissue notes",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "Historic landmark recording that changed Bach performance practice."
+        },
+        {
+          "source": "Retrospective critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.8,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Still regarded as a reference for its pioneering status and austere sonority."
+        }
+      ],
+      "note": "weighted rollup of ratified interpretation statements; origin = class × provenance"
+    },
+    {
+      "id": "puccini",
+      "composer": "Giacomo Puccini",
+      "dates": "1858–1924",
+      "interpretation": 2.909,
+      "confidence": 1.0,
+      "n_statements": 9,
+      "n_strong": 5,
+      "n_recordings_assessed": 2,
+      "sources_by_class": {
+        "independent critic": 3,
+        "specialist survey": 2,
+        "label promo": 2,
+        "secondary literature": 2
+      },
+      "sources_by_provenance": {
+        "attributed": 9
+      },
+      "sources": [
+        {
+          "source": "Gramophone / critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 3.0,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Universally regarded as the dramatic benchmark; the Act II confrontation remains unmatched."
+        },
+        {
+          "source": "Multiple independent opera surveys",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "The greatest Tosca recording for many critics; a recording of permanent reference value."
+        },
+        {
+          "source": "Warner / EMI reissue notes",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 3.0,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "The legendary 1953 recording — one of the greatest opera recordings ever made."
+        },
+        {
+          "source": "Historical discographic literature",
+          "class": "secondary literature",
+          "provenance": "attributed",
+          "score": 2.9,
+          "weight": 0.525,
+          "conflict": false,
+          "text": "Landmark mono recording whose dramatic immediacy has never been surpassed."
+        },
+        {
+          "source": "Independent critics, various",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Benchmark status confirmed across decades of critical writing."
+        },
+        {
+          "source": "Independent critical consensus",
+          "class": "independent critic",
+          "provenance": "attributed",
+          "score": 2.9,
+          "weight": 0.63,
+          "conflict": false,
+          "text": "Outstanding stereo alternative; Price sensuous and opulent, Karajan flexible and powerful."
+        },
+        {
+          "source": "Specialist opera survey",
+          "class": "specialist survey",
+          "provenance": "attributed",
+          "score": 2.85,
+          "weight": 0.595,
+          "conflict": false,
+          "text": "The finest stereo Tosca for many listeners; complementary to the de Sabata set."
+        },
+        {
+          "source": "Decca promotional material",
+          "class": "label promo",
+          "provenance": "attributed",
+          "score": 2.95,
+          "weight": 0.175,
+          "conflict": true,
+          "text": "One of the greatest stereo opera recordings."
+        },
+        {
+          "source": "Secondary literature",
+          "class": "secondary literature",
+          "provenance": "attributed",
+          "score": 2.75,
+          "weight": 0.525,
+          "conflict": false,
+          "text": "Strongly recommended stereo account; Te Deum and Act III prelude especially imposing."
+        }
+      ],
+      "note": "weighted rollup of ratified interpretation statements; origin = class × provenance"
+    },
+    {
+      "id": "shostakovich",
+      "composer": "Dmitri Shostakovich",
+      "dates": "1906–1975",
+      "interpretation": null,
+      "confidence": null,
+      "n_statements": 1,
+      "n_strong": 1,
+      "n_recordings_assessed": 1,
+      "sources_by_class": {
+        "major award": 1
+      },
+      "sources_by_provenance": {
+        "cited": 1
+      },
+      "note": "rollup withheld until enough cited independent sources exist"
+    }
+  ],
   "barcode_index": {
     "028941050021": {
       "recording": "bach_brandenburg_pinnock",
