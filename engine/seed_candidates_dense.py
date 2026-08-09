@@ -576,4 +576,245 @@ EXTRA_CANDIDATES: dict[str, list[tuple]] = {
         ("Maurizio Pollini", "", "", "Deutsche Grammophon", "1980s"),
         ("Claudio Arrau", "", "", "Philips", "1970s"),
     ],
+    # ── Tchaikovsky / Wagner / Verdi / Mahler / Debussy (week2) ──
+    "tchaikovsky/sym6": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1976"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1980s"),
+    ],
+    "tchaikovsky/sym4": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+        ("", "Claudio Abbado", "Wiener Philharmoniker", "Deutsche Grammophon", "1970s"),
+    ],
+    "tchaikovsky/sym5": [
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1960s"),
+        ("", "Mariss Jansons", "Oslo Philharmonic", "Chandos", "1984"),
+    ],
+    "tchaikovsky/pc1": [
+        ("Sviatoslav Richter", "Herbert von Karajan", "Wiener Symphoniker", "Deutsche Grammophon", "1962"),
+        ("Emil Gilels", "Fritz Reiner", "Chicago Symphony Orchestra", "RCA", "1955"),
+    ],
+    "tchaikovsky/violin_concerto": [
+        ("Kyung-Wha Chung", "André Previn", "London Symphony Orchestra", "Decca", "1970"),
+        ("Itzhak Perlman", "Eugene Ormandy", "Philadelphia Orchestra", "EMI", "1978"),
+    ],
+    "tchaikovsky/swan_lake": [
+        ("", "Gennady Rozhdestvensky", "Moscow Radio Symphony Orchestra", "Melodiya", "1969"),
+        ("", "Antal Doráti", "Minneapolis Symphony Orchestra", "Mercury", "1950s"),
+    ],
+    "tchaikovsky/nutcracker": [
+        ("", "Charles Mackerras", "London Symphony Orchestra", "Telarc", "1986"),
+        ("", "Neeme Järvi", "Scottish National Orchestra", "Chandos", "1980s"),
+    ],
+    "tchaikovsky/eugene_onegin": [
+        ("", "Mstislav Rostropovich", "Orchestra of the Bolshoi Theatre", "EMI", "1970"),
+        ("", "Semyon Bychkov", "Orchestre de Paris", "Philips", "1993"),
+    ],
+    "tchaikovsky/romeo_juliet": [
+        ("", "Yevgeny Mravinsky", "Leningrad Philharmonic Orchestra", "Melodiya", "1950s"),
+        ("", "Riccardo Muti", "Philadelphia Orchestra", "EMI", "1980s"),
+    ],
+    "tchaikovsky/serenade_strings": [
+        ("", "John Barbirolli", "London Symphony Orchestra", "EMI", "1960s"),
+        ("", "I Musici", "", "Philips", "1970s"),
+    ],
+    "tchaikovsky/overture_1812": [
+        ("", "Georg Solti", "Chicago Symphony Orchestra", "Decca", "1980s"),
+        ("", "Erich Kunzel", "Cincinnati Symphony Orchestra", "Telarc", "1978"),
+    ],
+    "tchaikovsky/piano_trio": [
+        ("Martha Argerich; Gidon Kremer; Mischa Maisky", "", "", "Deutsche Grammophon", "1990s"),
+        ("Suk Trio", "", "", "Supraphon", "1960s"),
+    ],
+    "wagner/tristan": [
+        ("Birgit Nilsson, Wolfgang Windgassen", "Karl Böhm", "Bayreuth Festival Orchestra", "Philips", "1966"),
+        ("", "Carlos Kleiber", "Staatskapelle Dresden", "Deutsche Grammophon", "1982"),
+    ],
+    "wagner/walkure": [
+        ("", "Karl Böhm", "Bayreuth Festival Orchestra", "Philips", "1967"),
+        ("", "James Levine", "Metropolitan Opera Orchestra", "Deutsche Grammophon", "1980s"),
+    ],
+    "wagner/rheingold": [
+        ("", "Karl Böhm", "Bayreuth Festival Orchestra", "Philips", "1966"),
+        ("", "Bernard Haitink", "Bavarian Radio Symphony Orchestra", "EMI", "1980s"),
+    ],
+    "wagner/siegfried": [
+        ("", "Karl Böhm", "Bayreuth Festival Orchestra", "Philips", "1966"),
+        ("", "James Levine", "Metropolitan Opera Orchestra", "Deutsche Grammophon", "1990s"),
+    ],
+    "wagner/gotterdammerung": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1970"),
+        ("", "James Levine", "Metropolitan Opera Orchestra", "Deutsche Grammophon", "1990s"),
+    ],
+    "wagner/meistersinger": [
+        ("", "Rafael Kubelík", "Bayerisches Rundfunk-Sinfonieorchester", "CBS", "1967"),
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1975"),
+    ],
+    "wagner/parsifal": [
+        ("", "Rafael Kubelík", "Bayerisches Rundfunk-Sinfonieorchester", "Arts", "1980"),
+        ("", "James Levine", "Metropolitan Opera Orchestra", "Deutsche Grammophon", "1991"),
+    ],
+    "wagner/lohengrin": [
+        ("", "Rafael Kubelík", "Bayerisches Rundfunk-Sinfonieorchester", "Deutsche Grammophon", "1971"),
+        ("", "Claudio Abbado", "Wiener Philharmoniker", "Deutsche Grammophon", "1990s"),
+    ],
+    "wagner/tannhauser": [
+        ("", "Giuseppe Sinopoli", "Philharmonia", "Deutsche Grammophon", "1988"),
+        ("", "Wolfgang Sawallisch", "Bayreuth Festival Orchestra", "Philips", "1962"),
+    ],
+    "wagner/hollander": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "EMI", "1981"),
+        ("", "Woldemar Nelsson", "Bayreuth Festival Orchestra", "Philips", "1985"),
+    ],
+    "wagner/wesendonck": [
+        ("Janet Baker", "Raymond Leppard", "London Philharmonic Orchestra", "EMI", "1970s"),
+        ("Soile Isokoski", "Marek Janowski", "Orchestra of the Deutsche Oper Berlin", "Ondine", "2000s"),
+    ],
+    "wagner/siegfried_idyll": [
+        ("", "Arturo Toscanini", "NBC Symphony Orchestra", "RCA", "1950s"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1970s"),
+    ],
+    "verdi/traviata": [
+        ("Joan Sutherland", "John Pritchard", "Maggio Musicale Fiorentino", "Decca", "1962"),
+        ("Angela Gheorghiu", "Georg Solti", "Orchestra of the Royal Opera House", "Decca", "1994"),
+    ],
+    "verdi/rigoletto": [
+        ("Piero Cappuccilli", "Carlo Maria Giulini", "Wiener Philharmoniker", "Deutsche Grammophon", "1980"),
+        ("Sherrill Milnes", "Francesco Molinari-Pradelli", "London Symphony Orchestra", "Decca", "1972"),
+    ],
+    "verdi/trovatore": [
+        ("Plácido Domingo", "Carlo Maria Giulini", "Orchestra of the Royal Opera House", "Deutsche Grammophon", "1983"),
+        ("Franco Corelli", "Thomas Schippers", "Rome Opera", "EMI", "1965"),
+    ],
+    "verdi/aida": [
+        ("Montserrat Caballé", "Riccardo Muti", "New Philharmonia", "EMI", "1974"),
+        ("Mirella Freni", "Herbert von Karajan", "Wiener Philharmoniker", "EMI", "1979"),
+    ],
+    "verdi/otello": [
+        ("Mario Del Monaco", "Herbert von Karajan", "Wiener Philharmoniker", "Decca", "1961"),
+        ("Ramón Vinay", "Arturo Toscanini", "NBC Symphony Orchestra", "RCA", "1947"),
+    ],
+    "verdi/falstaff": [
+        ("Giuseppe Taddei", "Herbert von Karajan", "Wiener Philharmoniker", "Deutsche Grammophon", "1980"),
+        ("Bryn Terfel", "Claudio Abbado", "Berliner Philharmoniker", "Deutsche Grammophon", "2001"),
+    ],
+    "verdi/don_carlos": [
+        ("Carlo Bergonzi", "Georg Solti", "Orchestra of the Royal Opera House", "Decca", "1965"),
+        ("Plácido Domingo", "Claudio Abbado", "Teatro alla Scala", "Deutsche Grammophon", "1983"),
+    ],
+    "verdi/ballo": [
+        ("Plácido Domingo", "Claudio Abbado", "Teatro alla Scala", "Deutsche Grammophon", "1980"),
+        ("Luciano Pavarotti", "Georg Solti", "National Philharmonic Orchestra", "Decca", "1983"),
+    ],
+    "verdi/requiem": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1972"),
+        ("", "John Eliot Gardiner", "Orchestre Révolutionnaire et Romantique", "Philips", "1992"),
+    ],
+    "verdi/macbeth": [
+        ("Sherrill Milnes", "Riccardo Muti", "New Philharmonia", "EMI", "1976"),
+        ("Leonard Warren", "Erich Leinsdorf", "Metropolitan Opera Orchestra", "RCA", "1959"),
+    ],
+    "verdi/boccanegra": [
+        ("Plácido Domingo", "James Levine", "Metropolitan Opera Orchestra", "Deutsche Grammophon", "1980s"),
+        ("José Carreras", "Claudio Abbado", "Teatro alla Scala", "Deutsche Grammophon", "1977"),
+    ],
+    "verdi/nabucco": [
+        ("Renato Bruson", "Riccardo Muti", "Philharmonia", "EMI", "1978"),
+        ("Matteo Manuguerra", "Riccardo Muti", "Philharmonia", "EMI", "1970s"),
+    ],
+    "mahler/sym1": [
+        ("", "Georg Solti", "Chicago Symphony Orchestra", "Decca", "1980s"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1972"),
+    ],
+    "mahler/sym2": [
+        ("", "Simon Rattle", "City of Birmingham Symphony Orchestra", "EMI", "1987"),
+        ("", "Zubin Mehta", "Wiener Philharmoniker", "Decca", "1975"),
+    ],
+    "mahler/sym3": [
+        ("", "Claudio Abbado", "Wiener Philharmoniker", "Deutsche Grammophon", "1980s"),
+        ("", "Jascha Horenstein", "London Symphony Orchestra", "Unicorn", "1970"),
+    ],
+    "mahler/sym4": [
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1967"),
+        ("", "Willem Mengelberg", "Concertgebouw Orchestra", "Philips", "1939"),
+    ],
+    "mahler/sym5": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1973"),
+        ("", "Claudio Abbado", "Chicago Symphony Orchestra", "Deutsche Grammophon", "1980"),
+    ],
+    "mahler/sym6": [
+        ("", "Klaus Tennstedt", "London Philharmonic Orchestra", "EMI", "1983"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1969"),
+    ],
+    "mahler/sym9": [
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1969"),
+        ("", "Claudio Abbado", "Berliner Philharmoniker", "Deutsche Grammophon", "1999"),
+    ],
+    "mahler/lied_von_der_erde": [
+        ("Janet Baker, James King", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1975"),
+        ("Christa Ludwig, René Kollo", "Leonard Bernstein", "Wiener Philharmoniker", "Decca", "1972"),
+    ],
+    "mahler/kindertotenlieder": [
+        ("Maureen Forrester", "Bruno Walter", "Columbia Symphony Orchestra", "Columbia", "1960s"),
+        ("Thomas Hampson", "Leonard Bernstein", "Wiener Philharmoniker", "Deutsche Grammophon", "1980s"),
+    ],
+    "mahler/knaben_wunderhorn": [
+        ("Janet Baker; Geraint Evans", "Wyn Morris", "London Philharmonic Orchestra", "EMI", "1960s"),
+        ("Lucia Popp; Bernd Weikl", "Klaus Tennstedt", "London Philharmonic Orchestra", "EMI", "1980s"),
+    ],
+    "mahler/sym7": [
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1969"),
+        ("", "Michael Tilson Thomas", "London Symphony Orchestra", "RCA", "1990s"),
+    ],
+    "mahler/sym8": [
+        ("", "Klaus Tennstedt", "London Philharmonic Orchestra", "EMI", "1986"),
+        ("", "Simon Rattle", "City of Birmingham Symphony Orchestra", "EMI", "2004"),
+    ],
+    "debussy/apres_midi": [
+        ("", "Pierre Monteux", "London Symphony Orchestra", "Decca", "1961"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1970s"),
+    ],
+    "debussy/la_mer": [
+        ("", "Pierre Boulez", "Cleveland Orchestra", "Deutsche Grammophon", "1995"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1976"),
+    ],
+    "debussy/nocturnes": [
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1970s"),
+        ("", "Charles Dutoit", "Orchestre Symphonique de Montréal", "Decca", "1980s"),
+    ],
+    "debussy/pelleas": [
+        ("", "Claudio Abbado", "Wiener Philharmoniker", "Deutsche Grammophon", "1991"),
+        ("", "Pierre Boulez", "Orchestra of the Royal Opera House", "CBS", "1969"),
+    ],
+    "debussy/preludes": [
+        ("Claudio Arrau", "", "", "Philips", "1979"),
+        ("Krystian Zimerman", "", "", "Deutsche Grammophon", "1991"),
+    ],
+    "debussy/images": [
+        ("Jean-Yves Thibaudet", "", "", "Decca", "1990s"),
+        ("Zoltán Kocsis", "", "", "Philips", "1980s"),
+    ],
+    "debussy/string_quartet": [
+        ("Juilliard Quartet", "", "", "Sony", "1960s"),
+        ("Tokyo String Quartet", "", "", "Deutsche Grammophon", "1980s"),
+    ],
+    "debussy/childrens_corner": [
+        ("Jean-Yves Thibaudet", "", "", "Decca", "1990s"),
+        ("Samson François", "", "", "EMI", "1960s"),
+    ],
+    "debussy/suite_bergamasque": [
+        ("Jean-Yves Thibaudet", "", "", "Decca", "1990s"),
+        ("Samson François", "", "", "EMI", "1960s"),
+    ],
+    "debussy/jeux": [
+        ("", "Michael Tilson Thomas", "London Symphony Orchestra", "Sony", "1990s"),
+        ("", "Pierre Monteux", "London Symphony Orchestra", "Philips", "1960s"),
+    ],
+    "debussy/sonata_flute_viola_harp": [
+        ("Nash Ensemble", "", "", "Virgin Classics", "1990s"),
+        ("Ensemble Wien-Berlin", "", "", "Sony", "1980s"),
+    ],
+    "debussy/etudes": [
+        ("Jean-Efflam Bavouzet", "", "", "Chandos", "2000s"),
+        ("Walter Gieseking", "", "", "EMI", "1950s"),
+    ],
 }
