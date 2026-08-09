@@ -106,6 +106,33 @@ def row(w):
     </tr>"""
 
 
+composer_scores = {c["id"]: c for c in assessed.get("composers", [])}
+
+
+def composer_rollup_line(cid: str) -> str:
+    """Show origin-weighted composer rollup when the engine publishes one."""
+    c = composer_scores.get(cid)
+    if not c:
+        return ""
+    if c.get("interpretation") is None:
+        return (
+            f'<p class="dates">Composer rollup: withheld '
+            f'({c.get("n_strong", 0)} strong sources · '
+            f'{c.get("n_recordings_assessed", 0)} recordings assessed)</p>'
+        )
+    classes = c.get("sources_by_class") or {}
+    origin = ", ".join(f"{k} ×{v}" for k, v in sorted(classes.items())) or "—"
+    return (
+        f'<p class="dates">Composer rollup {c["interpretation"]:.3f} '
+        f'(confidence {c["confidence"]:.3f}) · origin mix: {escape(origin)}</p>'
+    )
+
+
+nav_links = "".join(
+    f'<a href="#{escape(cid)}">{escape(name.split()[-1])}</a>'
+    for (cid, name, _dates) in by_composer
+)
+
 sections = []
 for (cid, name, dates), works in by_composer.items():
     rows = "".join(row(w) for w in works)
@@ -113,9 +140,12 @@ for (cid, name, dates), works in by_composer.items():
     sections.append(f"""<section id="{cid}">
       <h3>{escape(name)}</h3>
       <p class="dates">{escape(dates)} · {len(works)} works · {dn} with assessments</p>
+      {composer_rollup_line(cid)}
       <table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
       <tbody>{rows}</tbody></table>
     </section>""")
+
+n_composers = len(by_composer)
 
 pct_done = n_works_done / n_works * 100
 pct_cand = sum(1 for w in seed["works"] if w["candidates"] and not done.get(w["id"])) / n_works * 100
@@ -129,14 +159,13 @@ html = f"""<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body><div class="wrap">
 <header class="masthead"><h1>Critical Discography</h1>
-<nav><a href="#bach">Bach</a><a href="#beethoven">Beethoven</a><a href="#mozart">Mozart</a>
-<a href="#puccini">Puccini</a><a href="entries.html">Entries</a><a href="gallery.html">Gallery</a></nav></header>
+<nav>{nav_links}<a href="entries.html">Entries</a><a href="gallery.html">Gallery</a></nav></header>
 
 <div class="hero">
-  <h2>Forty-seven works,<br>and an honest ledger.</h2>
-  <p>Four composers seeded for round one. The works are settled; the assessments are not.
-  Nothing here carries a score until a source with a locator supplies one, which is why
-  most of this page reads as work still to do rather than work already done.</p>
+  <h2>{n_works} works,<br>and an honest ledger.</h2>
+  <p>{n_composers} composers in the seed. The works are scope; the assessments are not
+  invented here. A recording score needs a locator. A composer rollup is only the same
+  origin-weighted mean across ratified sources — never a substitute for reading the entries.</p>
   <div class="tally">
     <div><b>{n_works}</b><span>works</span></div>
     <div><b>{n_cand}</b><span>candidates queued</span></div>
