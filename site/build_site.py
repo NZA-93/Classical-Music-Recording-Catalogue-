@@ -37,7 +37,7 @@ CSS = """
 --verdigris:#2F6B60;--oxblood:#7A1220}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;
-font-size:17px;font-weight:300;line-height:1.6;padding:0 clamp(1rem,3vw,2rem) 5rem}
+font-size:17px;font-weight:400;line-height:1.6;padding:0 clamp(1rem,3vw,2rem) 5rem}
 .wrap{max-width:64rem;margin:0 auto}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
 .masthead{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:baseline;
@@ -126,7 +126,7 @@ html = f"""<!DOCTYPE html>
 <title>Critical Discography — Catalogue</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body><div class="wrap">
 <header class="masthead"><h1>Critical Discography</h1>
 <nav><a href="#bach">Bach</a><a href="#beethoven">Beethoven</a><a href="#mozart">Mozart</a>

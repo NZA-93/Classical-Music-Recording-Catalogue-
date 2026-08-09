@@ -24,9 +24,9 @@ CSS = """
 }
 html{scroll-behavior:smooth}
 body{background:var(--void);color:var(--bone);
-  font-family:"Newsreader",Georgia,serif;font-weight:300;font-size:17px;line-height:1.6}
+  font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:17px;line-height:1.6}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
-.lbl{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;
+.lbl{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:500;letter-spacing:.16em;
   text-transform:uppercase;color:var(--dim)}
 a{color:var(--verd)}
 
@@ -59,17 +59,18 @@ a{color:var(--verd)}
 .rail{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory}
 .rail::-webkit-scrollbar{height:6px}
 .rail::-webkit-scrollbar-thumb{background:var(--line)}
-.card{flex:0 0 172px;scroll-snap-align:start;background:none;border:0;padding:0;
+.card{flex:0 0 188px;scroll-snap-align:start;background:none;border:0;padding:0;
   cursor:pointer;text-align:left;color:inherit;font:inherit}
-.card .art{width:172px;height:172px;background:var(--raised);position:relative;overflow:hidden;
+.card .art{width:188px;height:188px;background:var(--raised);position:relative;overflow:hidden;
   border:1px solid var(--line);transition:border-color .2s,transform .2s}
-.card .art img{width:100%;height:100%;object-fit:cover;display:block}
-.card .art .plate{position:absolute;inset:0;display:flex;flex-direction:column;
+.card .art img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.card .art .plate{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;
   justify-content:space-between;padding:.7rem}
-.card .art .plate b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:1rem;line-height:1.1}
+.card .art.has-art .plate{visibility:hidden}
+.card .art .plate b{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.05rem;line-height:1.1}
 .card[aria-selected="true"] .art{border-color:var(--verd);transform:translateY(-3px)}
-.card .who{margin-top:.5rem;font-size:.86rem;line-height:1.3}
-.card .meta{margin-top:.2rem;font-family:"IBM Plex Mono",monospace;font-size:.6rem;color:var(--dim)}
+.card .who{margin-top:.5rem;font-size:.9rem;font-weight:500;line-height:1.3}
+.card .meta{margin-top:.2rem;font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;color:var(--dim)}
 .card .st{color:var(--gold);letter-spacing:.1em}
 .card .ref{color:var(--crimson)}
 
@@ -78,9 +79,26 @@ a{color:var(--verd)}
   display:grid;grid-template-columns:minmax(0,1fr) 20rem;gap:clamp(1.5rem,4vw,3rem);
   max-width:88rem;margin:0 auto;align-items:start}
 .report{background:var(--panel);border:1px solid var(--line);padding:clamp(1.2rem,3vw,2rem)}
-.headline{font-size:1.2rem;line-height:1.4;margin-bottom:.7rem}
-.headline .dir{font-weight:500}
-.headline .pub{color:var(--dim)}
+.headline{font-size:1.22rem;font-weight:500;line-height:1.4;margin-bottom:.9rem}
+.headline .dir{font-weight:600}
+.headline .pub{color:var(--dim);font-weight:400}
+.scorebox{display:grid;grid-template-columns:1fr 1fr;margin:0 0 1.4rem;
+  border:1px solid var(--line);background:var(--raised)}
+.scorebox .cell{padding:.75rem .85rem;min-height:5rem;display:flex;flex-direction:column;
+  justify-content:space-between;gap:.35rem}
+.scorebox .cell:nth-child(odd){border-right:1px solid var(--line)}
+.scorebox .cell:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.scorebox .k{font-family:"IBM Plex Mono",monospace;font-size:.6rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.scorebox .v{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.5rem;line-height:1}
+.scorebox .v.muted{font-size:1.05rem;color:var(--dim)}
+.scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;color:var(--dim)}
+.scorebox .stars{color:var(--gold);font-size:1.15rem;letter-spacing:.14em}
+.scorebox .badge{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.6rem;
+  font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#0E110E;
+  background:var(--crimson);padding:.25rem .45rem}
+.scorebox .meter{display:block;width:100%;height:.5rem;background:rgba(232,235,227,.12)}
+.scorebox .meter i{display:block;height:100%;background:var(--verd)}
 .verdict{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;
   padding-bottom:1rem;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
 .stars{color:var(--gold);font-size:1.1rem;letter-spacing:.12em}
@@ -146,16 +164,33 @@ const FLAT = C.works.flatMap(w => w.recordings.map(r => ({...r, _w: w})));
 const CHIP = {"preferred transfer":"c-good","sound and serviceable":"c-mid",
               "pass if you can":"c-bad","not yet assessed":"c-none"};
 const esc = s => String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const coverEdition = r => {
+  const withMbid = (r.editions||[]).filter(e=>e.mbid);
+  if(!withMbid.length) return null;
+  const want = parseInt((String(r.published).match(/\\d{4}/)||[])[0]||"",10);
+  if(!want) return withMbid[0];
+  return withMbid.slice().sort((a,b)=>{
+    const ya=parseInt((String(a.year).match(/\\d{4}/)||[])[0]||"9999",10);
+    const yb=parseInt((String(b.year).match(/\\d{4}/)||[])[0]||"9999",10);
+    return Math.abs(ya-want)-Math.abs(yb-want);
+  })[0];
+};
 const cover = r => {
-  const e = (r.editions||[]).find(e=>e.mbid);
+  const e = coverEdition(r);
   return e ? `https://coverartarchive.org/release/${e.mbid}/front-500` : null;
 };
 
-function art(r, big){
-  const url = cover(r);
+function art(r){
+  const ed = coverEdition(r);
   const plate = `<div class="plate"><b>${esc(r.published.split(",")[0])}</b>
-    <span class="lbl">${esc(r.published.split(",").pop().trim())}</span></div>`;
-  return url ? `${plate}<img src="${url}" alt="" loading="lazy" onerror="this.remove()">` : plate;
+    <span class="lbl">${esc(r.published.split(",").pop().trim())}${ed?"":" · no cover"}</span></div>`;
+  if(!ed) return plate;
+  const url = `https://coverartarchive.org/release/${ed.mbid}/front-500`;
+  return `${plate}<img src="${url}"
+    srcset="https://coverartarchive.org/release/${ed.mbid}/front-250 250w, ${url} 500w"
+    sizes="188px" alt="" loading="lazy"
+    onload="this.parentElement.classList.add('has-art')"
+    onerror="this.remove()">`;
 }
 
 /* rail */
@@ -196,13 +231,30 @@ function render(i){
     <td class="n">${e.sound!=null?e.sound.toFixed(2):"—"}</td>
     <td><span class="chip ${CHIP[e.verdict]||"c-none"}">${esc(e.verdict)}</span></td></tr>`).join("");
 
+  const un = r.interpretation===null;
+  const st = [0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
+  const confPct = un?0:Math.max(0,Math.min(100,r.confidence*100));
+  const soundCell = r.sound_best==null
+    ?`<span class="v muted">—</span><span class="sub">not yet assessed</span>`
+    :`<span class="v">${r.sound_best.toFixed(2)}</span><span class="sub">best edition</span>`;
+  const interpCell = un
+    ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
+    :`<span class="stars">${st}</span><span class="v">${r.interpretation.toFixed(3)}</span>`;
+  const stand = r.reference
+    ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
+    :`<span class="v muted">${un?"—":"no"}</span><span class="sub">référence</span>`;
+
   document.getElementById("report").innerHTML = `
     <p class="headline">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
       ${esc(r.ensemble)} <span class="pub">(${esc(r.published)})</span></p>
-    <div class="verdict">
-      <span class="stars">${r.stars?"★".repeat(r.stars):""}</span>
-      ${r.reference?'<span class="badge">Référence</span>':""}
-      <span class="figs">${r.interpretation===null?"awaiting sources":`interpretation ${r.interpretation.toFixed(3)} · confidence ${r.confidence.toFixed(2)}`}</span>
+    <div class="scorebox" role="group" aria-label="Recording scores">
+      <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
+      <div class="cell"><span class="k">Sound</span>${soundCell}</div>
+      <div class="cell"><span class="k">Confidence</span>
+        <span class="v">${un?"—":r.confidence.toFixed(2)}</span>
+        <span class="meter" aria-hidden="true"><i style="width:${confPct.toFixed(0)}%"></i></span>
+      </div>
+      <div class="cell"><span class="k">Standing</span>${stand}</div>
     </div>
     <p class="lbl">What to listen for</p>
     <ul class="anchors">${r.anchors.map(a=>`<li><span class="w">${esc(a.where)}</span>
@@ -252,7 +304,7 @@ html = f"""<!DOCTYPE html>
 <title>Critical Discography — Gallery</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body>
 
 <div class="bar">

@@ -7,7 +7,7 @@
 <meta name="description" content="A work-first critical guide to classical recordings: interpretation, sound engineering, and which edition to buy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ground:#E7EAE3; --paper:#FBFCF9; --ink:#191D1A; --ink-soft:#5B655D;
@@ -17,11 +17,11 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{background:var(--ground);color:var(--ink);
-    font-family:"Newsreader",Georgia,serif;font-size:17px;font-weight:300;line-height:1.6;
+    font-family:"Newsreader",Georgia,serif;font-size:17px;font-weight:400;line-height:1.6;
     padding:0 var(--gap) 5rem}
   .wrap{max-width:64rem;margin:0 auto}
   .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
-  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-soft)}
 
   /* masthead + disc identification */
@@ -62,29 +62,50 @@
   .sw-hatch{background:repeating-linear-gradient(135deg,var(--hair) 0 3px,var(--paper) 3px 6px);border:1px solid var(--hair)}
 
   /* entry */
-  .entry{display:grid;grid-template-columns:132px 1fr;gap:0 1.75rem;padding:2.4rem 0;border-top:1px solid var(--hair)}
+  .entry{display:grid;grid-template-columns:176px 1fr;gap:0 1.9rem;padding:2.4rem 0;border-top:1px solid var(--hair)}
   .entry:first-of-type{border-top:1px solid var(--ink)}
-  .plate{width:132px;height:132px;position:relative;background:var(--plate)}
-  .plate img{width:100%;height:100%;object-fit:cover;display:block}
-  .plate-fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
-    padding:.7rem;border:1px solid var(--hair);box-shadow:inset 0 0 0 1px var(--paper)}
-  .plate-fallback .lbl{font-family:"Bodoni Moda",serif;font-size:.95rem;line-height:1.15}
-  .plate-fallback .yr{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--ink-soft)}
+  .plate{width:176px;height:176px;position:relative;background:var(--plate);
+    border:1px solid var(--hair);overflow:hidden}
+  .plate img{position:absolute;inset:0;z-index:1;width:100%;height:100%;
+    object-fit:cover;display:block;background:var(--plate)}
+  .plate-fallback{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;
+    justify-content:space-between;padding:.85rem;box-shadow:inset 0 0 0 1px var(--paper)}
+  .plate.has-art .plate-fallback{visibility:hidden}
+  .plate-fallback .lbl{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.05rem;line-height:1.15}
+  .plate-fallback .yr{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;color:var(--ink-soft)}
+  .plate-cap{margin-top:.45rem;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:500;
+    letter-spacing:.06em;color:var(--ink-soft);max-width:176px}
 
-  .head-line{font-size:1.12rem;line-height:1.42;margin-bottom:.55rem}
-  .head-line .dir{font-weight:500}
-  .head-line .pub{color:var(--ink-soft)}
+  .head-line{font-size:1.14rem;font-weight:500;line-height:1.42;margin-bottom:.85rem}
+  .head-line .dir{font-weight:600}
+  .head-line .pub{color:var(--ink-soft);font-weight:400}
 
+  /* Morningstar-style score matrix: four cells, one glance */
+  .scorebox{display:grid;grid-template-columns:1fr 1fr;max-width:28rem;margin:0 0 1.35rem;
+    border:1px solid var(--ink);background:var(--paper)}
+  .scorebox .cell{padding:.7rem .85rem .75rem;min-height:5.1rem;
+    display:flex;flex-direction:column;justify-content:space-between;gap:.35rem}
+  .scorebox .cell:nth-child(odd){border-right:1px solid var(--hair)}
+  .scorebox .cell:nth-child(-n+2){border-bottom:1px solid var(--hair)}
+  .scorebox .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .scorebox .v{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.55rem;line-height:1;
+    letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .scorebox .v.muted{font-size:1.05rem;color:var(--ink-soft)}
+  .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
+    color:var(--ink-soft);letter-spacing:.03em}
+  .scorebox .stars{font-size:1.15rem;letter-spacing:.14em;line-height:1;color:var(--ink)}
+  .scorebox .stars .off{color:var(--hair)}
+  .scorebox .badge{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+    font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--paper);
+    background:var(--oxblood);padding:.25rem .45rem}
+  .scorebox .meter{display:block;width:100%;height:.5rem;background:var(--hair);margin-top:.15rem}
+  .scorebox .meter i{display:block;height:100%;background:var(--verdigris)}
   .verdict{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;margin-bottom:.4rem}
   .stars{font-size:1.05rem;letter-spacing:.12em;line-height:1}
   .stars .off{color:var(--hair)}
   .badge{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.13em;
     text-transform:uppercase;color:var(--paper);background:var(--oxblood);padding:.2rem .45rem}
-  .figs{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--ink-soft)}
-  .axes{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin-bottom:1rem;
-    font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.04em;color:var(--ink-soft)}
-  .meter{display:inline-block;width:3.4rem;height:.45rem;background:var(--hair);vertical-align:middle;margin:0 .35rem}
-  .meter i{display:block;height:100%;background:var(--verdigris)}
 
   .commentary{max-width:38rem;margin-bottom:1.3rem}
 
@@ -107,11 +128,12 @@
     border:1px dashed var(--hair);font-size:.88rem;color:var(--ink-soft)}
 
   .credits{border-left:2px solid var(--hair);padding:.15rem 0 .15rem .8rem;margin-bottom:1.4rem;
-    font-size:.85rem;color:var(--ink-soft);max-width:38rem}
-  .credits b{color:var(--ink);font-weight:500}
-  .unknown{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.06em;color:var(--oxblood)}
+    font-size:.9rem;font-weight:400;color:var(--ink-soft);max-width:38rem}
+  .credits b{color:var(--ink);font-weight:600}
+  .unknown{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
+    letter-spacing:.06em;color:var(--oxblood)}
 
-  .modlabel{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+  .modlabel{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-soft);margin:0 0 .5rem}
 
   .anchors{list-style:none;margin-bottom:1.6rem;max-width:38rem;display:grid;gap:.7rem}
@@ -179,7 +201,10 @@
   @media (max-width:680px){
     body{font-size:16px}
     .entry{grid-template-columns:1fr;gap:1.1rem}
-    .plate{width:104px;height:104px}
+    .plate{width:140px;height:140px}
+    .plate-cap{max-width:140px}
+    .scorebox{max-width:none}
+    .scorebox .v{font-size:1.35rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -224,7 +249,7 @@
 <script>
 const CATALOGUE = {
   "algorithm_version": "2.0",
-  "built": "2026-07-26",
+  "built": "2026-08-09",
   "works": [
     {
       "composer": "Johann Sebastian Bach",
@@ -418,7 +443,7 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         },
         {
           "id": "bach_brandenburg_harnoncourt",
@@ -570,7 +595,7 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         }
       ]
     },
@@ -669,7 +694,7 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         },
         {
           "id": "shostakovich_sym5_mravinsky",
@@ -784,7 +809,7 @@ const CATALOGUE = {
           ],
           "sources": [],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         },
         {
           "id": "shostakovich_sym5_noseda",
@@ -861,7 +886,7 @@ const CATALOGUE = {
           ],
           "sources": [],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         }
       ]
     },
@@ -1076,7 +1101,7 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         },
         {
           "id": "puccini_tosca_karajan",
@@ -1248,7 +1273,7 @@ const CATALOGUE = {
             }
           ],
           "algorithm_version": "2.0",
-          "built": "2026-07-26"
+          "built": "2026-08-09"
         }
       ]
     }
@@ -1286,19 +1311,63 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const pos=v=>((v-DOMAIN[0])/(DOMAIN[1]-DOMAIN[0]))*100;
 const CHIP={"preferred transfer":"good","sound and serviceable":"mid","pass if you can":"bad","not yet assessed":"none"};
 
-function plate(r){
-  const ed=r.editions.find(e=>e.mbid)||{};
-  const fb=`<div class="plate-fallback"><span class="lbl">${esc(r.published.split(",")[0])}</span>
-    <span class="yr">${esc(r.published.split(",").pop().trim())} · no front cover</span></div>`;
-  const img=ed.mbid?`<img src="https://coverartarchive.org/release/${ed.mbid}/front-500"
-    alt="Front cover" loading="lazy" onerror="this.remove()">`:"";
-  return `<div><div class="plate">${fb}${img}</div></div>`;
+function coverEdition(r){
+  const withMbid=(r.editions||[]).filter(e=>e.mbid);
+  if(!withMbid.length) return null;
+  const want=parseInt((String(r.published).match(/\d{4}/)||[])[0]||"",10);
+  if(!want) return withMbid[0];
+  return withMbid.slice().sort((a,b)=>{
+    const ya=parseInt((String(a.year).match(/\d{4}/)||[])[0]||"9999",10);
+    const yb=parseInt((String(b.year).match(/\d{4}/)||[])[0]||"9999",10);
+    return Math.abs(ya-want)-Math.abs(yb-want);
+  })[0];
 }
 
-function meter(v){
-  if(v==null) return `<span class="unknown">sound not yet assessed</span>`;
-  const pct=Math.max(0,Math.min(100,((v-1.5)/1.5)*100));
-  return `Sound <span class="meter"><i style="width:${pct.toFixed(0)}%"></i></span>${v.toFixed(2)}`;
+function plate(r){
+  const ed=coverEdition(r);
+  const label=esc((r.published.split(",")[0]||"").trim());
+  const year=esc((r.published.split(",").pop()||"").trim());
+  const fb=`<div class="plate-fallback" aria-hidden="true"><span class="lbl">${label}</span>
+    <span class="yr">${year}${ed?"":" · no front cover"}</span></div>`;
+  if(!ed) return `<div><div class="plate empty">${fb}</div>
+    <p class="plate-cap">No Cover Art Archive front yet</p></div>`;
+  const src=`https://coverartarchive.org/release/${ed.mbid}/front-500`;
+  const img=`<img src="${src}"
+    srcset="https://coverartarchive.org/release/${ed.mbid}/front-250 250w, ${src} 500w"
+    sizes="176px" alt="Front cover — ${label}, ${year}" loading="lazy"
+    onload="this.parentElement.classList.add('has-art')"
+    onerror="this.remove()">`;
+  const edYear=esc(String(ed.year||year));
+  const edLabel=esc(ed.label||"");
+  return `<div><div class="plate">${fb}${img}</div>
+    <p class="plate-cap">${edLabel}${edLabel&&edYear?" · ":""}${edYear}</p></div>`;
+}
+
+function scorebox(r){
+  const un=r.interpretation===null;
+  const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
+  const conf=un?null:r.confidence;
+  const confPct=conf==null?0:Math.max(0,Math.min(100,conf*100));
+  const sound=r.sound_best;
+  const soundCell=sound==null
+    ?`<span class="v muted">—</span><span class="sub">not yet assessed</span>`
+    :`<span class="v">${sound.toFixed(2)}</span><span class="sub">best edition</span>`;
+  const interpCell=un
+    ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
+    :`<span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
+       <span class="v">${r.interpretation.toFixed(3)}</span>`;
+  const stand=r.reference
+    ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
+    :`<span class="v muted">${un?"—":"no"}</span><span class="sub">référence</span>`;
+  return `<div class="scorebox" role="group" aria-label="Recording scores">
+    <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
+    <div class="cell"><span class="k">Sound</span>${soundCell}</div>
+    <div class="cell"><span class="k">Confidence</span>
+      <span class="v">${conf==null?"—":conf.toFixed(2)}</span>
+      <span class="meter" aria-hidden="true"><i style="width:${confPct.toFixed(0)}%"></i></span>
+    </div>
+    <div class="cell"><span class="k">Standing</span>${stand}</div>
+  </div>`;
 }
 
 function credits(c){
@@ -1398,18 +1467,12 @@ function signed(r){
 
 function entry(r){
   const un = r.interpretation===null;
-  const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
   return `<article class="entry" id="${esc(r.id)}">
     ${plate(r)}
     <div>
       <p class="head-line">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
         ${esc(r.ensemble)} <span class="pub">(${esc(r.published)})</span></p>
-      <div class="verdict">
-        <span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
-        ${r.reference?'<span class="badge">Référence</span>':""}
-        <span class="figs">${un?"awaiting sources — no citation yet":`interpretation ${r.interpretation.toFixed(3)} · confidence ${r.confidence.toFixed(2)}`}</span>
-      </div>
-      <div class="axes"><span>${meter(r.sound_best)}${r.sound_best!=null?" · best edition":""}</span></div>
+      ${scorebox(r)}
       ${signed(r)}\n      ${credits(r.engineering)}
       ${anchors(r.anchors)}
       ${editions(r)}
