@@ -1,0 +1,23 @@
+# Gate every pull request: tests, contribution validation, site build.
+# Publishing never depends on the network beyond the checkout.
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Tests
+        run: python3 -m unittest discover -s tests -q
+      - name: Validate contributions and editorial
+        run: python3 agents/validate.py
+      - name: Build site
+        run: make site
