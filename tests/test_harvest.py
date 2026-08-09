@@ -198,5 +198,24 @@ class TestPrBodyPlan(unittest.TestCase):
             self.assertIn("confidence < 80", text)
 
 
+class TestMergeProposals(unittest.TestCase):
+    def test_upsert_by_target_and_kind(self):
+        existing = [{
+            "target": "a/0", "kind": "identity",
+            "payload": {"confidence": 10}, "source": "MusicBrainz",
+            "provenance": "cited", "created": "old",
+        }]
+        newer = har.Proposal(
+            "a/0", "identity", {"confidence": 90}, "MusicBrainz", "cited",
+        )
+        extra = har.Proposal(
+            "b/0", "identity", {"confidence": 80}, "MusicBrainz", "cited",
+        )
+        merged = har.merge_proposals(existing, [newer, extra])
+        by = {(m["target"], m["kind"]): m for m in merged}
+        self.assertEqual(by[("a/0", "identity")]["payload"]["confidence"], 90)
+        self.assertIn(("b/0", "identity"), by)
+
+
 if __name__ == "__main__":
     unittest.main()

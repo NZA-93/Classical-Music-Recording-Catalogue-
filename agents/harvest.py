@@ -87,6 +87,9 @@ class Http:
         self.dry = dry
         self.last: dict[str, float] = {}
         self.robots: dict[str, urllib.robotparser.RobotFileParser] = {}
+        # ok | empty | error | robots | dry — so the queue does not apply a
+        # multi-day backoff after a 503/timeout.
+        self.last_status: str = "ok"
         CACHE.mkdir(exist_ok=True)
 
     def allowed(self, url: str) -> bool:
@@ -112,9 +115,11 @@ class Http:
             raise BudgetExhausted()
         if not self.allowed(url):
             print(f"    robots.txt disallows {url}")
+            self.last_status = "robots"
             return None
         if self.dry:
             self.spent += 1
+            self.last_status = "dry"
             return None
 
         host = urllib.parse.urlparse(url).netloc
@@ -129,15 +134,20 @@ class Http:
             with urllib.request.urlopen(req, timeout=20) as r:
                 body = r.read()
                 if "json" in r.headers.get("Content-Type", ""):
+                    self.last_status = "ok"
                     return json.loads(body)
+                self.last_status = "ok"
                 return body
         except urllib.error.HTTPError as e:
             if e.code == 404:
+                self.last_status = "empty"
                 return None
             print(f"    HTTP {e.code} {url}")
+            self.last_status = "error"
             return None
         except Exception as e:
             print(f"    {type(e).__name__} {url}")
+            self.last_status = "error"
             return None
 
 
@@ -471,6 +481,13 @@ def write_pr_body(path: pathlib.Path, *, stamp: str, version: str, contact: str,
     uncertain = sum(1 for p in identities if p.payload.get("uncertain"))
     cover_hits = sum(1 for p in covers if p.payload.get("status") == "hit")
     cover_miss = sum(1 for p in covers if p.payload.get("status") == "miss")
+    have_ids = {p.target for p in identities}
+    unresolved = [
+        c["id"]
+        for w in seed.get("works", [])
+        for c in (w.get("candidates") or [])
+        if c["id"] not in have_ids and not c.get("mbid")
+    ]
 
     title = f"# Harvest {stamp}" + (" · DRY RUN (plan only)" if dry else "")
     body = [
@@ -509,10 +526,11 @@ def write_pr_body(path: pathlib.Path, *, stamp: str, version: str, contact: str,
             "",
             "## Identity confidence",
             "",
-            f"- Identity proposals: **{len(identities)}**",
+            f"- Identity proposals: **{len(identities)}** / {n_cands} candidates",
             f"- `auto_accept_eligible` (confidence ≥ {IDENTITY_MIN_CONFIDENCE}, "
             f"no compilation/date flags): **{eligible}**",
             f"- Uncertain / must stay for human review: **{uncertain}**",
+            f"- Unresolved (no MusicBrainz hit this run): **{len(unresolved)}**",
             "- **Do not auto-accept below 80.** Reject compilations, samplers, "
             "wrong-decade matches.",
             "",
@@ -520,9 +538,14 @@ def write_pr_body(path: pathlib.Path, *, stamp: str, version: str, contact: str,
             "",
             f"- Cover proposals: **{len(covers)}** · hits **{cover_hits}** · "
             f"misses **{cover_miss}**",
-            "- Payloads carry CAA hotlinks only — no image binaries, no Discogs.",
-            "- Misses include an upstream upload prompt (MusicBrainz / CAA).",
+            "- Cover stage stays gated until identity mbids are human-merged "
+            "(pipeline does not build on unreviewed guesses).",
+            "- When covers run: CAA JSON hotlinks only — no image binaries, "
+            "no Discogs. Misses include an upstream upload prompt.",
         ]
+        if unresolved:
+            body += ["", "### Unresolved candidates", ""]
+            body += [f"- `{u}`" for u in unresolved]
 
         if identities:
             body += ["", "### Identity review table", "",
@@ -575,6 +598,16 @@ def write_pr_body(path: pathlib.Path, *, stamp: str, version: str, contact: str,
 
 # ------------------------------------------------------------------ main
 
+def merge_proposals(existing: list[dict], new: list[Proposal]) -> list[dict]:
+    """Upsert by (target, kind) so a resume run does not erase earlier work."""
+    by_key: dict[tuple[str, str], dict] = {}
+    for raw in existing:
+        by_key[(raw.get("target", ""), raw.get("kind", ""))] = raw
+    for p in new:
+        by_key[(p.target, p.kind)] = asdict(p)
+    return list(by_key.values())
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("seed", type=pathlib.Path)
@@ -582,7 +615,14 @@ def main() -> int:
     ap.add_argument("--budget", type=int, default=300)
     ap.add_argument("--dry-run", action="store_true",
                     help="plan the run and count requests without making them")
+    ap.add_argument("--only", default="",
+                    help="comma-separated stages to run (default: all). "
+                         "Example: --only identity,cover")
     args = ap.parse_args()
+
+    only = {s.strip() for s in args.only.split(",") if s.strip()}
+    if only and not only.issubset(set(STAGES)):
+        ap.error(f"--only entries must be in {STAGES}")
 
     seed = json.loads(args.seed.read_text("utf-8"))
     state_path = CACHE / "harvest_state.json"
@@ -595,10 +635,13 @@ def main() -> int:
     n_works, n_cands, _ = _seed_counts(seed)
     print(f"{VERSION} · {n_works} works · {n_cands} candidates · "
           f"budget {args.budget} requests"
-          + (" · DRY RUN" if args.dry_run else ""))
+          + (" · DRY RUN" if args.dry_run else "")
+          + (f" · only {','.join(sorted(only))}" if only else ""))
 
     try:
         for stage, work, rec in queue(seed, state):
+            if only and stage not in only:
+                continue
             planned[stage] = planned.get(stage, 0) + 1
             if args.dry_run and stage != "citation":
                 http.spent += 1
@@ -607,6 +650,11 @@ def main() -> int:
                 continue
             print(f"  [{stage}] {rec['id']}")
             got = ADAPTERS[stage](rec, work, http)
+            # Transient transport failures must not advance the cursor into a
+            # week-long backoff — retry next run (or later in this budget).
+            if not got and http.last_status == "error":
+                print("    transient failure — cursor not advanced")
+                continue
             proposals.extend(got)
             prev = state.setdefault(rec["id"], {}).get(stage, {})
             state[rec["id"]][stage] = {
@@ -619,28 +667,49 @@ def main() -> int:
 
     OUT.mkdir(exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
+    out_path = OUT / f"proposals-{stamp}.json"
 
     if not args.dry_run:
         CACHE.mkdir(exist_ok=True)
         state_path.write_text(json.dumps(state, indent=2), "utf-8")
-        (OUT / f"proposals-{stamp}.json").write_text(
-            json.dumps([asdict(p) for p in proposals], indent=2, ensure_ascii=False),
-            "utf-8")
+        existing: list[dict] = []
+        if out_path.exists():
+            try:
+                prev = json.loads(out_path.read_text("utf-8"))
+                if isinstance(prev, list):
+                    existing = prev
+            except json.JSONDecodeError:
+                existing = []
+        merged = merge_proposals(existing, proposals)
+        out_path.write_text(
+            json.dumps(merged, indent=2, ensure_ascii=False), "utf-8")
+        # Report on the merged set so PR_BODY reflects the full day file.
+        report_props = [
+            Proposal(
+                target=m["target"], kind=m["kind"], payload=m["payload"],
+                source=m["source"], provenance=m["provenance"],
+                created=m.get("created") or datetime.now(timezone.utc).isoformat(),
+            )
+            for m in merged
+        ]
+    else:
+        report_props = proposals
 
     write_pr_body(
         OUT / "PR_BODY.md",
         stamp=stamp, version=VERSION, contact=args.contact,
         budget=args.budget, spent=http.spent, planned=planned,
-        proposals=proposals, seed=seed, dry=args.dry_run,
+        proposals=report_props, seed=seed, dry=args.dry_run,
     )
 
-    print(f"\n{http.spent} requests · {len(proposals)} proposals")
+    n_wrote = len(report_props) if not args.dry_run else len(proposals)
+    print(f"\n{http.spent} requests · {len(proposals)} new / {n_wrote} in file")
     for k, v in sorted(planned.items()):
         print(f"  {k:<10} {v:>4} queued")
     if args.dry_run:
         print(f"wrote {OUT}/PR_BODY.md (plan only — no proposals file, state untouched)")
     else:
-        print(f"wrote {OUT}/proposals-{stamp}.json and PR_BODY.md")
+        print(f"wrote {out_path} and PR_BODY.md")
     return 0
 
 
