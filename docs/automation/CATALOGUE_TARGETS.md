@@ -10,6 +10,10 @@ Hard floor for usefulness of the seed (facts only — no scores):
 
 Current progress: `make targets` (or `python3 agents/catalogue_loop.py`).
 
+> **This PR exceeds the 10 · 100 · 500 floor** (Role A week-2 seed: Tchaikovsky,
+> Wagner, Verdi, Mahler, Debussy). Keep `agents/catalogue_loop.py` targets at
+> 10 · 100 · 500 so `make targets` still exits 0; the *next* floor to chase is below.
+
 ## Quality bar (non-negotiable)
 
 1. **Facts only** in the seed: performers, director, ensemble, label, year.  
@@ -34,6 +38,14 @@ make seed && make test && make site
 Exit code of `catalogue_loop.py`: **0** only when all three floors are met.
 Until then agents keep opening densify / seed PRs — never inventing judgements to “look done”.
 
-## After the floor
+## Next ceiling (after this batch)
 
-Raise the next ceiling in this file (e.g. 15 composers · 150 works · 750 candidates) and continue the same loop. Citation ratio and signed entries remain the editorial bottleneck — see `SPRINTS.md`.
+Raise the enforced floor in a follow-up once identity/citation catch up:
+
+| Metric | Next floor |
+|---|---|
+| Composers | **≥ 15** |
+| Works | **≥ 150** |
+| Candidate recordings | **≥ 750** |
+
+Continue the same loop toward 15 · 150 · 750. Citation ratio and signed entries remain the editorial bottleneck — see `SPRINTS.md`.

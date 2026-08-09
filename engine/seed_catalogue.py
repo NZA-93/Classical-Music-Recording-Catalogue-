@@ -468,6 +468,248 @@ CANDIDATES = {
         ("Arthur Rubinstein", "", "", "RCA", "1960s"),
         ("Murray Perahia", "", "", "Sony", "1980s"),
     ],
+    # Tchaikovsky / Wagner / Verdi / Mahler / Debussy (week 2026-08-09 batch 2)
+    "tchaikovsky/sym6": [
+        ("", "Yevgeny Mravinsky", "Leningrad Philharmonic Orchestra", "Deutsche Grammophon", "1960"),
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1960s"),
+    ],
+    "tchaikovsky/sym4": [
+        ("", "Yevgeny Mravinsky", "Leningrad Philharmonic Orchestra", "Deutsche Grammophon", "1960"),
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1950s"),
+    ],
+    "tchaikovsky/sym5": [
+        ("", "Yevgeny Mravinsky", "Leningrad Philharmonic Orchestra", "Deutsche Grammophon", "1960"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+    ],
+    "tchaikovsky/pc1": [
+        ("Van Cliburn", "Kirill Kondrashin", "RCA Symphony Orchestra", "RCA", "1958"),
+        ("Martha Argerich", "Charles Dutoit", "Orchestre de la Suisse Romande", "Deutsche Grammophon", "1975"),
+    ],
+    "tchaikovsky/violin_concerto": [
+        ("Jascha Heifetz", "Fritz Reiner", "Chicago Symphony Orchestra", "RCA", "1957"),
+        ("David Oistrakh", "Eugene Ormandy", "Philadelphia Orchestra", "Columbia", "1960s"),
+    ],
+    "tchaikovsky/swan_lake": [
+        ("", "André Previn", "London Symphony Orchestra", "EMI", "1976"),
+        ("", "Ernest Ansermet", "Orchestre de la Suisse Romande", "Decca", "1950s"),
+    ],
+    "tchaikovsky/nutcracker": [
+        ("", "Antal Doráti", "London Symphony Orchestra", "Mercury", "1962"),
+        ("", "André Previn", "London Symphony Orchestra", "EMI", "1972"),
+    ],
+    "tchaikovsky/eugene_onegin": [
+        ("", "Georg Solti", "Orchestra of the Royal Opera House", "Decca", "1974"),
+        ("", "James Levine", "Metropolitan Opera Orchestra", "Deutsche Grammophon", "1980s"),
+    ],
+    "tchaikovsky/romeo_juliet": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1960s"),
+    ],
+    "tchaikovsky/serenade_strings": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+        ("", "Neville Marriner", "Academy of St Martin in the Fields", "Argo", "1970s"),
+    ],
+    "tchaikovsky/overture_1812": [
+        ("", "Antal Doráti", "Minneapolis Symphony Orchestra", "Mercury", "1954"),
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1960s"),
+    ],
+    "tchaikovsky/piano_trio": [
+        ("Beaux Arts Trio", "", "", "Philips", "1970s"),
+        ("Vladimir Ashkenazy; Itzhak Perlman; Lynn Harrell", "", "", "EMI", "1980s"),
+    ],
+    "wagner/tristan": [
+        ("Kirsten Flagstad, Ludwig Suthaus", "Wilhelm Furtwängler", "Philharmonia", "EMI", "1952"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "EMI", "1972"),
+    ],
+    "wagner/walkure": [
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1965"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1966"),
+    ],
+    "wagner/rheingold": [
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1958"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1968"),
+    ],
+    "wagner/siegfried": [
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1962"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1969"),
+    ],
+    "wagner/gotterdammerung": [
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1964"),
+        ("", "Karl Böhm", "Bayreuth Festival Orchestra", "Philips", "1967"),
+    ],
+    "wagner/meistersinger": [
+        ("", "Eugen Jochum", "Deutsche Oper Berlin", "Deutsche Grammophon", "1976"),
+        ("", "Herbert von Karajan", "Dresden Staatskapelle", "EMI", "1970"),
+    ],
+    "wagner/parsifal": [
+        ("", "Hans Knappertsbusch", "Bayreuth Festival Orchestra", "Philips", "1962"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1980"),
+    ],
+    "wagner/lohengrin": [
+        ("", "Rudolf Kempe", "Wiener Philharmoniker", "EMI", "1962–63"),
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1986"),
+    ],
+    "wagner/tannhauser": [
+        ("", "Georg Solti", "Wiener Philharmoniker", "Decca", "1970"),
+        ("", "Bernard Haitink", "Bavarian Radio Symphony Orchestra", "EMI", "1985"),
+    ],
+    "wagner/hollander": [
+        ("", "Otto Klemperer", "Philharmonia", "EMI", "1968"),
+        ("", "Georg Solti", "Chicago Symphony Orchestra", "Decca", "1976"),
+    ],
+    "wagner/wesendonck": [
+        ("Kirsten Flagstad; Gerald Moore, piano", "", "", "EMI", "1950s"),
+        ("Jessye Norman", "Colin Davis", "London Symphony Orchestra", "Philips", "1970s"),
+    ],
+    "wagner/siegfried_idyll": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+        ("", "Bruno Walter", "Columbia Symphony Orchestra", "Columbia", "1950s"),
+    ],
+    "verdi/traviata": [
+        ("Maria Callas", "Carlo Maria Giulini", "Teatro alla Scala", "EMI", "1955"),
+        ("Ileana Cotrubas, Plácido Domingo", "Carlos Kleiber", "Bayerisches Staatsorchester", "Deutsche Grammophon", "1977"),
+    ],
+    "verdi/rigoletto": [
+        ("Maria Callas, Tito Gobbi", "Tullio Serafin", "Teatro alla Scala", "EMI", "1955"),
+        ("Joan Sutherland, Luciano Pavarotti", "Richard Bonynge", "London Symphony Orchestra", "Decca", "1971"),
+    ],
+    "verdi/trovatore": [
+        ("Maria Callas", "Herbert von Karajan", "Teatro alla Scala", "EMI", "1956"),
+        ("Leontyne Price", "Zubin Mehta", "New Philharmonia", "RCA", "1969"),
+    ],
+    "verdi/aida": [
+        ("Maria Callas", "Tullio Serafin", "Teatro alla Scala", "EMI", "1955"),
+        ("Leontyne Price", "Georg Solti", "Rome Opera", "Decca", "1961"),
+    ],
+    "verdi/otello": [
+        ("Jon Vickers", "Tullio Serafin", "Rome Opera", "RCA", "1960"),
+        ("Plácido Domingo", "James Levine", "National Philharmonic Orchestra", "RCA", "1978"),
+    ],
+    "verdi/falstaff": [
+        ("Tito Gobbi", "Herbert von Karajan", "Philharmonia", "EMI", "1956"),
+        ("Renato Bruson", "Carlo Maria Giulini", "Los Angeles Philharmonic", "Deutsche Grammophon", "1982"),
+    ],
+    "verdi/don_carlos": [
+        ("Plácido Domingo", "Carlo Maria Giulini", "Orchestra of the Royal Opera House", "EMI", "1970"),
+        ("José Carreras", "Herbert von Karajan", "Berliner Philharmoniker", "EMI", "1979"),
+    ],
+    "verdi/ballo": [
+        ("Maria Callas", "Antonino Votto", "Teatro alla Scala", "EMI", "1956"),
+        ("Leontyne Price", "Erich Leinsdorf", "RCA Italiana Orchestra", "RCA", "1966"),
+    ],
+    "verdi/requiem": [
+        ("", "Arturo Toscanini", "NBC Symphony Orchestra", "RCA", "1951"),
+        ("", "Carlo Maria Giulini", "Philharmonia", "EMI", "1964"),
+    ],
+    "verdi/macbeth": [
+        ("Maria Callas", "Victor de Sabata", "Teatro alla Scala", "EMI", "1952"),
+        ("Piero Cappuccilli", "Claudio Abbado", "Teatro alla Scala", "Deutsche Grammophon", "1976"),
+    ],
+    "verdi/boccanegra": [
+        ("Piero Cappuccilli", "Claudio Abbado", "Teatro alla Scala", "Deutsche Grammophon", "1977"),
+        ("Tito Gobbi", "Gabriele Santini", "Rome Opera", "EMI", "1957"),
+    ],
+    "verdi/nabucco": [
+        ("Tito Gobbi", "Lamberto Gardelli", "Vienna Opera Orchestra", "Decca", "1965"),
+        ("Piero Cappuccilli", "Lamberto Gardelli", "Orchestra of the Royal Opera House", "Philips", "1970s"),
+    ],
+    "mahler/sym1": [
+        ("", "Rafael Kubelík", "Bayerisches Rundfunk-Sinfonieorchester", "Deutsche Grammophon", "1967"),
+        ("", "Leonard Bernstein", "Concertgebouw Orchestra", "Deutsche Grammophon", "1987"),
+    ],
+    "mahler/sym2": [
+        ("", "Otto Klemperer", "Philharmonia", "EMI", "1962"),
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1963"),
+    ],
+    "mahler/sym3": [
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1960s"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1966"),
+    ],
+    "mahler/sym4": [
+        ("", "George Szell", "Cleveland Orchestra", "Columbia", "1965"),
+        ("", "Leonard Bernstein", "Concertgebouw Orchestra", "Deutsche Grammophon", "1987"),
+    ],
+    "mahler/sym5": [
+        ("", "John Barbirolli", "New Philharmonia", "EMI", "1969"),
+        ("", "Leonard Bernstein", "Wiener Philharmoniker", "Deutsche Grammophon", "1987"),
+    ],
+    "mahler/sym6": [
+        ("", "Leonard Bernstein", "Wiener Philharmoniker", "Deutsche Grammophon", "1988"),
+        ("", "Claudio Abbado", "Berliner Philharmoniker", "Deutsche Grammophon", "2005"),
+    ],
+    "mahler/sym9": [
+        ("", "Leonard Bernstein", "Concertgebouw Orchestra", "Deutsche Grammophon", "1985"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1982"),
+    ],
+    "mahler/lied_von_der_erde": [
+        ("Kathleen Ferrier, Julius Patzak", "Bruno Walter", "Wiener Philharmoniker", "Decca", "1952"),
+        ("Christa Ludwig, Fritz Wunderlich", "Otto Klemperer", "Philharmonia", "EMI", "1964"),
+    ],
+    "mahler/kindertotenlieder": [
+        ("Janet Baker", "John Barbirolli", "Hallé Orchestra", "EMI", "1967"),
+        ("Dietrich Fischer-Dieskau", "Karl Böhm", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+    ],
+    "mahler/knaben_wunderhorn": [
+        ("Elisabeth Schwarzkopf; Dietrich Fischer-Dieskau", "George Szell", "London Symphony Orchestra", "EMI", "1968"),
+        ("Anne Sofie von Otter; Thomas Quasthoff", "Claudio Abbado", "Berliner Philharmoniker", "Deutsche Grammophon", "1990s"),
+    ],
+    "mahler/sym7": [
+        ("", "Leonard Bernstein", "New York Philharmonic", "Columbia", "1965"),
+        ("", "Claudio Abbado", "Chicago Symphony Orchestra", "Deutsche Grammophon", "1984"),
+    ],
+    "mahler/sym8": [
+        ("", "Georg Solti", "Chicago Symphony Orchestra", "Decca", "1971"),
+        ("", "Leonard Bernstein", "London Symphony Orchestra", "Columbia", "1966"),
+    ],
+    "debussy/apres_midi": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1960s"),
+        ("", "Pierre Boulez", "New Philharmonia", "CBS", "1960s"),
+    ],
+    "debussy/la_mer": [
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "Deutsche Grammophon", "1964"),
+        ("", "Arturo Toscanini", "NBC Symphony Orchestra", "RCA", "1950"),
+    ],
+    "debussy/nocturnes": [
+        ("", "Pierre Boulez", "Cleveland Orchestra", "Deutsche Grammophon", "1990s"),
+        ("", "Pierre Monteux", "Boston Symphony Orchestra", "RCA", "1950s"),
+    ],
+    "debussy/pelleas": [
+        ("", "Roger Désormière", "Orchestre de la Société des Concerts du Conservatoire", "EMI", "1941"),
+        ("", "Herbert von Karajan", "Berliner Philharmoniker", "EMI", "1978"),
+    ],
+    "debussy/preludes": [
+        ("Walter Gieseking", "", "", "EMI", "1953–54"),
+        ("Arturo Benedetti Michelangeli", "", "", "Deutsche Grammophon", "1978"),
+    ],
+    "debussy/images": [
+        ("Walter Gieseking", "", "", "EMI", "1950s"),
+        ("Arturo Benedetti Michelangeli", "", "", "Deutsche Grammophon", "1971"),
+    ],
+    "debussy/string_quartet": [
+        ("Quatuor Ébène", "", "", "Virgin Classics", "2008"),
+        ("Quartetto Italiano", "", "", "Philips", "1965"),
+    ],
+    "debussy/childrens_corner": [
+        ("Walter Gieseking", "", "", "EMI", "1950s"),
+        ("Arturo Benedetti Michelangeli", "", "", "Deutsche Grammophon", "1971"),
+    ],
+    "debussy/suite_bergamasque": [
+        ("Walter Gieseking", "", "", "EMI", "1950s"),
+        ("Claudio Arrau", "", "", "Philips", "1970s"),
+    ],
+    "debussy/jeux": [
+        ("", "Pierre Boulez", "Orchestre National de la RTF", "Columbia", "1960s"),
+        ("", "Bernard Haitink", "Concertgebouw Orchestra", "Philips", "1970s"),
+    ],
+    "debussy/sonata_flute_viola_harp": [
+        ("Melos Ensemble", "", "", "L'Oiseau-Lyre", "1960s"),
+        ("members of the Berliner Philharmoniker", "", "", "Deutsche Grammophon", "1970s"),
+    ],
+    "debussy/etudes": [
+        ("Mitsuko Uchida", "", "", "Philips", "1989"),
+        ("Pierre-Laurent Aimard", "", "", "Warner", "2000s"),
+    ],
+
 }
 
 
@@ -582,6 +824,82 @@ CHOPIN = [
     ("impromptus", "Impromptus / Fantaisie-Impromptu", "Opp. 29, 36, 51; Op. 66", "1830s–40s", "Three published impromptus plus the posthumous Fantaisie-Impromptu."),
 ]
 
+TCHAIKOVSKY = [
+    ("sym6", "Symphony No. 6, Pathétique", "Op. 74", "1893", "B minor; finale Adagio lamentoso."),
+    ("sym4", "Symphony No. 4", "Op. 36", "1878", "F minor; fate-motif opening."),
+    ("sym5", "Symphony No. 5", "Op. 64", "1888", "E minor; motto returns in the finale."),
+    ("pc1", "Piano Concerto No. 1", "Op. 23", "1875", "B-flat minor; revised after the 1875 premiere."),
+    ("violin_concerto", "Violin Concerto", "Op. 35", "1878", "D major; written in Clarens."),
+    ("swan_lake", "Swan Lake", "Op. 20", "1877", "Ballet; complete-score versus suite choice."),
+    ("nutcracker", "The Nutcracker", "Op. 71", "1892", "Ballet and concert suite Op. 71a."),
+    ("eugene_onegin", "Eugene Onegin", "Op. 24", "1879", "Lyric scenes after Pushkin."),
+    ("romeo_juliet", "Romeo and Juliet", "—", "1880", "Overture-fantasy; third version."),
+    ("serenade_strings", "Serenade for Strings", "Op. 48", "1880", "C major; four movements."),
+    ("overture_1812", "1812 Overture", "Op. 49", "1880", "Festival overture with optional artillery."),
+    ("piano_trio", "Piano Trio", "Op. 50", "1882", "A minor; in memory of Nikolai Rubinstein."),
+]
+
+WAGNER = [
+    ("tristan", "Tristan und Isolde", "WWV 90", "1865", "Music drama; prelude and Liebestod often excerpted."),
+    ("walkure", "Die Walküre", "WWV 86B", "1870", "Second evening of Der Ring des Nibelungen."),
+    ("rheingold", "Das Rheingold", "WWV 86A", "1869", "Vorabend of the Ring cycle."),
+    ("siegfried", "Siegfried", "WWV 86C", "1876", "Third evening of the Ring."),
+    ("gotterdammerung", "Götterdämmerung", "WWV 86D", "1876", "Final evening of the Ring."),
+    ("meistersinger", "Die Meistersinger von Nürnberg", "WWV 96", "1868", "Comedy in three acts."),
+    ("parsifal", "Parsifal", "WWV 111", "1882", "Bühnenweihfestspiel for Bayreuth."),
+    ("lohengrin", "Lohengrin", "WWV 75", "1850", "Romantic opera; Weimar premiere under Liszt."),
+    ("tannhauser", "Tannhäuser", "WWV 70", "1845/1861", "Dresden and Paris versions."),
+    ("hollander", "Der fliegende Holländer", "WWV 63", "1843", "Romantic opera in one or three acts."),
+    ("wesendonck", "Wesendonck Lieder", "WWV 91", "1857–58", "Five songs; piano and orchestral versions."),
+    ("siegfried_idyll", "Siegfried Idyll", "WWV 103", "1870", "Chamber-orchestra birthday piece."),
+]
+
+VERDI = [
+    ("traviata", "La traviata", "—", "1853", "After Dumas fils; Violetta."),
+    ("rigoletto", "Rigoletto", "—", "1851", "After Hugo; Mantua court."),
+    ("trovatore", "Il trovatore", "—", "1853", "Spanish melodrama; Anvil Chorus."),
+    ("aida", "Aida", "—", "1871", "Commissioned for Cairo."),
+    ("otello", "Otello", "—", "1887", "After Shakespeare; Boito libretto."),
+    ("falstaff", "Falstaff", "—", "1893", "Final opera; after Merry Wives and Henry IV."),
+    ("don_carlos", "Don Carlos", "—", "1867/1884", "French grand opera; Italian revisions."),
+    ("ballo", "Un ballo in maschera", "—", "1859", "Gustavus / Riccardo versions."),
+    ("requiem", "Messa da Requiem", "—", "1874", "For Manzoni; four soloists, chorus, orchestra."),
+    ("macbeth", "Macbeth", "—", "1847/1865", "First Shakespeare opera; Paris revision."),
+    ("boccanegra", "Simon Boccanegra", "—", "1857/1881", "Revised with Boito."),
+    ("nabucco", "Nabucco", "—", "1842", "Third opera; Va, pensiero."),
+]
+
+MAHLER = [
+    ("sym1", "Symphony No. 1", "—", "1888", "D major; Blumine movement sometimes restored."),
+    ("sym2", "Symphony No. 2, Resurrection", "—", "1894", "C minor; chorus and soloists in the finale."),
+    ("sym3", "Symphony No. 3", "—", "1896", "Six movements; alto solo and choirs."),
+    ("sym4", "Symphony No. 4", "—", "1900", "G major; soprano finale."),
+    ("sym5", "Symphony No. 5", "—", "1902", "C-sharp minor; Adagietto."),
+    ("sym6", "Symphony No. 6, Tragic", "—", "1904", "A minor; order of the middle movements disputed."),
+    ("sym9", "Symphony No. 9", "—", "1909", "D major; last completed symphony."),
+    ("lied_von_der_erde", "Das Lied von der Erde", "—", "1909", "Symphony for two voices and orchestra after Bethge."),
+    ("kindertotenlieder", "Kindertotenlieder", "—", "1904", "Five Rückert songs for voice and orchestra."),
+    ("knaben_wunderhorn", "Des Knaben Wunderhorn", "—", "1892–1901", "Song settings from the Arnim/Brentano collection."),
+    ("sym7", "Symphony No. 7", "—", "1905", "E minor; five movements with two Nachtmusiken."),
+    ("sym8", "Symphony No. 8", "—", "1906", "E-flat; Veni creator and Faust Part II."),
+]
+
+DEBUSSY = [
+    ("apres_midi", "Prélude à l'après-midi d'un faune", "—", "1894", "Orchestral prelude after Mallarmé."),
+    ("la_mer", "La mer", "—", "1905", "Three symphonic sketches."),
+    ("nocturnes", "Nocturnes", "—", "1899", "Nuages, Fêtes, Sirènes; female chorus in III."),
+    ("pelleas", "Pelléas et Mélisande", "—", "1902", "Opera after Maeterlinck."),
+    ("preludes", "Préludes, Books I & II", "—", "1910 / 1913", "Twenty-four piano preludes."),
+    ("images", "Images (piano)", "—", "1905 / 1907", "Two books of piano Images."),
+    ("string_quartet", "String Quartet", "—", "1893", "G minor, Op. 10."),
+    ("childrens_corner", "Children's Corner", "—", "1908", "Six piano pieces dedicated to Chou-Chou."),
+    ("suite_bergamasque", "Suite bergamasque", "—", "1905", "Piano suite; includes Clair de lune."),
+    ("jeux", "Jeux", "—", "1913", "Poème dansé for Diaghilev."),
+    ("sonata_flute_viola_harp", "Sonata for flute, viola and harp", "—", "1915", "Late chamber sonata."),
+    ("etudes", "Études", "—", "1915", "Twelve piano studies in two books."),
+]
+
+
 COMPOSERS = [
     ("bach", "Johann Sebastian Bach", "1685–1750", BACH),
     ("beethoven", "Ludwig van Beethoven", "1770–1827", BEETHOVEN),
@@ -593,6 +911,11 @@ COMPOSERS = [
     ("schubert", "Franz Schubert", "1797–1828", SCHUBERT),
     ("handel", "George Frideric Handel", "1685–1759", HANDEL),
     ("chopin", "Frédéric Chopin", "1810–1849", CHOPIN),
+    ("tchaikovsky", "Pyotr Ilyich Tchaikovsky", "1840–1893", TCHAIKOVSKY),
+    ("wagner", "Richard Wagner", "1813–1883", WAGNER),
+    ("verdi", "Giuseppe Verdi", "1813–1901", VERDI),
+    ("mahler", "Gustav Mahler", "1860–1911", MAHLER),
+    ("debussy", "Claude Debussy", "1862–1918", DEBUSSY),
 ]
 
 
