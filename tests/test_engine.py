@@ -129,6 +129,31 @@ class TestRegression(unittest.TestCase):
         self.assertAlmostEqual(nel["interpretation"], 2.90, places=2)
         self.assertFalse(nel["reference"], "one award is not three independent benchmark signals")
 
+    def test_album_award_is_one_shared_benchmark_signal(self):
+        """ADR-001: three copies of a three-work Grammy still count as one signal."""
+        covers = ("shostakovich/sym5", "shostakovich/sym8", "shostakovich/sym9")
+        stmts = [
+            eng.Statement(
+                source="Grammy — Best Orchestral Performance, 59th",
+                cls=eng.Cls.AWARD, axis="interpretation", score=2.90,
+                text="Album award for Symphonies 5, 8 and 9.",
+                prov=eng.Prov.CITED, covers_works=covers,
+            )
+            for _ in range(3)
+        ]
+        # High S and conf so only the signal count decides.
+        self.assertFalse(eng.is_reference(2.90, 0.80, stmts))
+        # Three independent single-work awards would clear the bar.
+        independent = [
+            eng.Statement(
+                source=f"Award {i}", cls=eng.Cls.AWARD, axis="interpretation",
+                score=2.90, text="single-work award", prov=eng.Prov.CITED,
+                covers_works=(f"work/{i}",),
+            )
+            for i in range(3)
+        ]
+        self.assertTrue(eng.is_reference(2.90, 0.80, independent))
+
     def test_every_sound_statement_is_attached_to_an_edition(self):
         for rec in eng.catalogue():
             for s in rec.statements:
