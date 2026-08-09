@@ -155,8 +155,12 @@
   .chip.mid{color:var(--ink-soft)}
   .chip.bad{color:var(--oxblood)}
   .chip.none{color:var(--ink-soft);border-style:dashed}
-  .prov{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.06em;color:var(--ink-soft)}
+  .prov{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:500;letter-spacing:.06em;color:var(--ink-soft)}
   .prov.draft{color:var(--oxblood)}
+  a.cite{color:var(--verdigris);font-weight:500;text-decoration:none;border-bottom:1px solid var(--verdigris)}
+  a.cite:hover,a.cite:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
+  .cite-loc{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;color:var(--ink);
+    word-break:break-word}
 
   .ev-label{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-soft);margin-bottom:.35rem}
@@ -353,8 +357,9 @@ function influence(r){
     const shade=45+55*((s.score-DOMAIN[0])/(DOMAIN[1]-DOMAIN[0]));
     const style=s.conflict?`flex:0 0 ${pct}%`
       :`flex:0 0 ${pct}%;background:color-mix(in srgb, var(--verdigris) ${Math.round(shade)}%, #8FA9A2)`;
+    const cite=s.locator?`, ${s.locator}`:"";
     return `<div class="seg${s.conflict?" flag":""}" style="${style}"
-      title="${esc(s.source)} — ${esc(s.class)}, ${esc(s.provenance)}, score ${s.score.toFixed(2)}, weight ${s.weight.toFixed(2)}">
+      title="${esc(s.source)} — ${esc(s.class)}, ${esc(s.provenance)}, score ${s.score.toFixed(2)}, weight ${s.weight.toFixed(2)}${esc(cite)}">
       ${pct>14?s.weight.toFixed(2):""}</div>`;
   }).join("");
 }
@@ -376,16 +381,38 @@ function reception(r){
       <span class="txt">${esc(p.note)}</span></div>`).join("")}</details>`;
 }
 
+function citationCell(s){
+  const loc=s.locator;
+  if(!loc) return `<span class="prov draft">no locator</span>`;
+  if(/^https?:\/\//i.test(loc))
+    return `<a class="cite" href="${esc(loc)}" target="_blank" rel="noopener noreferrer">open source</a>
+      <br><span class="prov">${esc(loc.replace(/^https?:\/\//i,"").split("/")[0])}</span>`;
+  return `<span class="cite-loc">${esc(loc)}</span>`;
+}
+
+function sourceLabel(s){
+  const loc=s.locator;
+  if(loc && /^https?:\/\//i.test(loc))
+    return `<a class="cite" href="${esc(loc)}" target="_blank" rel="noopener noreferrer">${esc(s.source)}</a>`;
+  return esc(s.source);
+}
+
 function sources(r){
-  return `<details><summary>Sources behind the interpretation score (${r.sources.length})</summary>
-    <table><thead><tr><th>Source</th><th>Provenance</th><th>Score</th><th>Weight</th><th>Interest</th></tr></thead>
+  const cited=r.sources.filter(s=>s.locator).length;
+  return `<details open>
+    <summary>Sources behind the interpretation score (${r.sources.length}${cited?` · ${cited} with locator`:""})</summary>
+    <table><thead><tr><th>Source</th><th>Citation</th><th>Provenance</th><th>Score</th><th>Weight</th><th>Interest</th></tr></thead>
     <tbody>${r.sources.map(s=>`<tr>
-      <td>${esc(s.source)}<br><span class="prov">${esc(s.class)}</span></td>
+      <td>${sourceLabel(s)}<br><span class="prov">${esc(s.class)}</span></td>
+      <td>${citationCell(s)}</td>
       <td><span class="prov${s.provenance==="draft"?" draft":""}">${esc(s.provenance)}</span></td>
       <td class="num">${s.score.toFixed(2)}</td>
       <td class="num">${s.weight.toFixed(2)}</td>
       <td class="num">${s.conflict?'<span class="prov draft">down-weighted</span>':"—"}</td>
-    </tr>`).join("")}</tbody></table></details>`;
+    </tr>`).join("")}</tbody></table>
+    <p class="prov" style="margin-top:.7rem">A locator (URL, issue, or page) is what makes a claim <b>cited</b>.
+      Named sources without one stay <b>attributed</b> — they are not linked because no receipt is on file.</p>
+  </details>`;
 }
 
 function signed(r){
@@ -445,6 +472,7 @@ document.getElementById("works").innerHTML = CATALOGUE.works.map((w,i)=>{
       <p><span class="swatch sw-solid"></span><b>Influence</b> — bar widths are each source's share of the verdict. Darker means it rated the recording higher.</p>
       <p><span class="swatch sw-hatch"></span><b>Hatched</b> — the source sells the recording, so its weight is cut and it takes up almost no width.</p>
       <p><b>Sound is scored per edition</b>, not per recording. A great performance in a bad transfer is a bad purchase.</p>
+      <p><b>Citation</b> — a source links only when a locator is on file (URL, issue, or page). No locator means attributed, not linked.</p>
     </div>`:""}
     ${w.recordings.map(entry).join("")}
   </section>`;

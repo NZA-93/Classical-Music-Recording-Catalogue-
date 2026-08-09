@@ -54,6 +54,18 @@ class TestWeighting(unittest.TestCase):
         self.assertTrue(self.stmt(prov=eng.Prov.ATTRIBUTED).is_strong())
         self.assertFalse(self.stmt(prov=eng.Prov.CITED, conflict=True).is_strong())
 
+    def test_derive_prov_from_evidence_not_claims(self):
+        self.assertEqual(eng.derive_prov("Gramophone", "https://example.org/x"), eng.Prov.CITED)
+        self.assertEqual(eng.derive_prov("Gramophone", "issue 1247, p. 84"), eng.Prov.CITED)
+        self.assertEqual(eng.derive_prov("Gramophone", None), eng.Prov.ATTRIBUTED)
+        self.assertEqual(eng.derive_prov("", None), eng.Prov.DRAFT)
+
+    def test_aggregate_passes_locator_through(self):
+        s = self.stmt(prov=eng.Prov.CITED,
+                      locator="https://example.org/award")
+        _, _, contrib = eng.aggregate([s])
+        self.assertEqual(contrib[0]["locator"], "https://example.org/award")
+
 
 class TestScoring(unittest.TestCase):
     def test_star_thresholds(self):
@@ -128,6 +140,11 @@ class TestRegression(unittest.TestCase):
         nel = {r["id"]: r for r in (eng.run(x) for x in eng.load_from_data())}["shostakovich_sym5_nelsons"]
         self.assertAlmostEqual(nel["interpretation"], 2.90, places=2)
         self.assertFalse(nel["reference"], "one award is not three independent benchmark signals")
+
+    def test_cited_statement_keeps_its_locator_url(self):
+        nel = {r["id"]: r for r in (eng.run(x) for x in eng.load_from_data())}["shostakovich_sym5_nelsons"]
+        locs = [s.get("locator") for s in nel["sources"]]
+        self.assertTrue(any(isinstance(u, str) and u.startswith("https://") for u in locs))
 
     def test_every_sound_statement_is_attached_to_an_edition(self):
         for rec in eng.catalogue():

@@ -87,6 +87,7 @@ class Statement:
     year: Optional[int] = None
     conflict: bool = False
     edition: Optional[str] = None   # sound statements attach to one edition
+    locator: Optional[str] = None   # URL, issue, or page — evidence, never a claim
 
     def weight(self) -> float:
         w = BASE_WEIGHT[self.cls] * PROV_FACTOR[self.prov]
@@ -169,8 +170,18 @@ def aggregate(stmts: list[Statement]) -> tuple[float, float, list[dict]]:
         "source": s.source, "class": s.cls.value, "provenance": s.prov.value,
         "score": round(s.score, 2), "weight": s.weight(), "conflict": s.conflict,
         "text": s.text,
+        "locator": s.locator,
     } for s in stmts]
     return S, conf, contrib
+
+
+def derive_prov(source: str, locator: Optional[str]) -> Prov:
+    """Provenance is derived from evidence (AGENTS §8), never from a claim."""
+    if locator:
+        return Prov.CITED
+    if source:
+        return Prov.ATTRIBUTED
+    return Prov.DRAFT
 
 
 def stars(S: float) -> int:
@@ -626,15 +637,17 @@ def load_from_data(root: str = "data") -> List[Recording]:
                 score = _score_from(st)
                 if score is None:
                     continue          # prose awaits a human; it does not guess
+                locator = st.get("locator") or None
                 stmts.append(Statement(
                     source=st["source"],
                     cls=CLS_BY_NAME.get(st.get("class", "independent_critic"), Cls.CRITIC),
                     axis=st["axis"],
                     score=score,
                     text=st.get("characterisation", ""),
-                    prov=Prov(st.get("provenance", "draft")),
+                    prov=derive_prov(st["source"], locator),
                     conflict=bool(st.get("conflict", False)),
                     edition=st.get("edition"),
+                    locator=locator,
                 ))
             out.append(Recording(
                 id=rec["id"], work_id=doc["work_id"],
