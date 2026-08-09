@@ -15,11 +15,15 @@ site: score      ## render docs/ (the published site). No network.
 	python3 site/build_site.py
 	python3 site/build_gallery.py
 
+# CONTACT / HARVEST_CONTACT: publishable address for the MusicBrainz User-Agent.
+# Placeholder for local/agent runs: harvest@example.invalid
+CONTACT ?= $(or $(HARVEST_CONTACT),harvest@example.invalid)
+
 harvest:         ## agent round. Network. Writes proposals/, never the catalogue.
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --budget 300
 
 plan:            ## count what a harvest round would cost, without making requests
-	python3 agents/harvest.py data/seed.json --dry-run --budget 300
+	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --dry-run --budget 300
 
 clean:
 	rm -rf docs/index.html docs/entries.html build/catalogue.json .cache
