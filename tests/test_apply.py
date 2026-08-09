@@ -94,7 +94,8 @@ class ApplyIdentity(unittest.TestCase):
         props = [{
             "target": "bach/brandenburg/1",
             "kind": "identity",
-            "payload": {"mbid": "other-mbid"},
+            "payload": {"mbid": "other-mbid", "mb_title": "Brandenburg Concertos",
+                        "auto_accept_eligible": True},
             "source": "MusicBrainz", "provenance": "cited",
         }]
         new, _, log = ap.apply_proposals(
@@ -103,6 +104,43 @@ class ApplyIdentity(unittest.TestCase):
         self.assertEqual(cand["mbid"], "other-mbid")
         self.assertIs(cand["verified"], False)
         self.assertTrue(any(e["action"] == "force_overwrite" for e in log))
+
+    def test_wrong_work_never_applies_even_with_force(self):
+        seed = deepcopy(SEED_MIN)
+        props = [{
+            "target": "bach/brandenburg/0",
+            "kind": "identity",
+            "payload": {
+                "mbid": "piano-mbid",
+                "mb_title": "Piano Concertos",
+                "match_score": 100,
+                "auto_accept_eligible": True,
+                "review_flags": [],
+            },
+            "source": "MusicBrainz", "provenance": "cited",
+        }]
+        new, _, log = ap.apply_proposals(
+            props, seed, force=True, reason="please apply anyway")
+        cand = ap.find_candidate(new, "bach/brandenburg/0")
+        self.assertIsNone(cand.get("mbid"))
+        self.assertTrue(any(e["action"] == "refused_wrong_work" for e in log))
+
+    def test_ineligible_requires_force(self):
+        seed = deepcopy(SEED_MIN)
+        props = [{
+            "target": "bach/brandenburg/0",
+            "kind": "identity",
+            "payload": {
+                "mbid": "low-conf",
+                "mb_title": "Brandenburg Concertos",
+                "auto_accept_eligible": False,
+                "review_flags": ["confidence 40 < 80"],
+            },
+            "source": "MusicBrainz", "provenance": "cited",
+        }]
+        new, _, log = ap.apply_proposals(props, seed)
+        self.assertIsNone(ap.find_candidate(new, "bach/brandenburg/0").get("mbid"))
+        self.assertTrue(any(e["action"] == "refused_ineligible" for e in log))
 
 
 class ApplyEditions(unittest.TestCase):

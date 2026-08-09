@@ -1,0 +1,63 @@
+# Manual / scheduled harvest. Opens a PR with proposals; never writes the catalogue.
+name: Agent harvest
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Cost the round without contacting MusicBrainz
+        type: boolean
+        default: true
+      budget:
+        description: Request budget
+        type: number
+        default: 300
+  schedule:
+    - cron: "0 9 * * 1"   # Mondays 09:00 UTC
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Contact required
+        env:
+          CONTACT: ${{ vars.HARVEST_CONTACT }}
+        run: |
+          if [ -z "$CONTACT" ]; then
+            echo "Set repository variable HARVEST_CONTACT (publishable email)."
+            exit 1
+          fi
+          echo "CONTACT=$CONTACT" >> "$GITHUB_ENV"
+      - name: Harvest
+        run: |
+          ARGS="data/seed.json --contact $CONTACT --budget ${{ inputs.budget || 300 }}"
+          if [ "${{ inputs.dry_run || true }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          python3 agents/harvest.py $ARGS
+      - name: Open pull request
+        if: ${{ inputs.dry_run != true }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -d proposals ] || [ -z "$(ls proposals/proposals-*.json 2>/dev/null)" ]; then
+            echo "No proposals written; nothing to open."
+            exit 0
+          fi
+          STAMP=$(date -u +%Y%m%d)
+          BRANCH="harvest/$STAMP"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add proposals/
+          git commit -m "Harvest $STAMP" || exit 0
+          git push -u origin "$BRANCH"
+          BODY=$(test -f proposals/PR_BODY.md && cat proposals/PR_BODY.md || echo "Harvest proposals for review.")
+          gh pr create --title "Harvest $STAMP" --body "$BODY" || true

@@ -1,5 +1,10 @@
 # Identity review
 
+## Work-identity guard (harvest/1.2)
+
+- **Pinnock / The English Concert on Brandenburg is correct.** "The English Concert" is the ensemble name, not a work title.
+- Identity proposals whose MusicBrainz title is a different work (e.g. Piano Concertos under Brandenburg) carry a `wrong work:` flag and **cannot be applied**, even with `--force`.
+
 69 identity proposals · 43 flagged
 
 | Target | Seed | MusicBrainz | Score | Eligible | Flags |

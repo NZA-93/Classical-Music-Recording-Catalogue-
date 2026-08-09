@@ -129,6 +129,31 @@ class TestRegression(unittest.TestCase):
         self.assertAlmostEqual(nel["interpretation"], 2.90, places=2)
         self.assertFalse(nel["reference"], "one award is not three independent benchmark signals")
 
+    def test_album_award_is_one_shared_benchmark_signal(self):
+        """ADR-001: three copies of a three-work Grammy still count as one signal."""
+        covers = ("shostakovich/sym5", "shostakovich/sym8", "shostakovich/sym9")
+        stmts = [
+            eng.Statement(
+                source="Grammy — Best Orchestral Performance, 59th",
+                cls=eng.Cls.AWARD, axis="interpretation", score=2.90,
+                text="Album award for Symphonies 5, 8 and 9.",
+                prov=eng.Prov.CITED, covers_works=covers,
+            )
+            for _ in range(3)
+        ]
+        # High S and conf so only the signal count decides.
+        self.assertFalse(eng.is_reference(2.90, 0.80, stmts))
+        # Three independent single-work awards would clear the bar.
+        independent = [
+            eng.Statement(
+                source=f"Award {i}", cls=eng.Cls.AWARD, axis="interpretation",
+                score=2.90, text="single-work award", prov=eng.Prov.CITED,
+                covers_works=(f"work/{i}",),
+            )
+            for i in range(3)
+        ]
+        self.assertTrue(eng.is_reference(2.90, 0.80, independent))
+
     def test_every_sound_statement_is_attached_to_an_edition(self):
         for rec in eng.catalogue():
             for s in rec.statements:
@@ -339,6 +364,34 @@ class TestSeedIntegrity(unittest.TestCase):
             for c in w["candidates"]:
                 self.assertFalse(c["verified"])
                 self.assertIsNone(c["mbid"])
+
+
+class TestDataSourceTextGuard(unittest.TestCase):
+    """S1-05: planting pasted prose in data/ must fail validation."""
+
+    def test_clean_tree_passes(self):
+        self.assertEqual(val.scan_data_tree(ROOT / "data"), [])
+
+    def test_long_characterisation_fails(self):
+        import tempfile
+        paste = "word " * 80  # well over 240 characters
+        doc = [{"recording": "x", "characterisation": paste, "axis": "interpretation"}]
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "planted.json"
+            p.write_text(json.dumps(doc), encoding="utf-8")
+            # scan_data_file on the planted file
+            errs = val.scan_data_file(p)
+        self.assertTrue(any("characterisation" in e and "characters" in e for e in errs))
+
+    def test_quoted_run_in_characterisation_fails(self):
+        text = 'He wrote "the finest of all the many recordings made in that decade ever"'
+        doc = [{"characterisation": text}]
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "quoted.json"
+            p.write_text(json.dumps(doc), encoding="utf-8")
+            errs = val.scan_data_file(p)
+        self.assertTrue(any("quoted" in e.lower() for e in errs))
 
 
 if __name__ == "__main__":

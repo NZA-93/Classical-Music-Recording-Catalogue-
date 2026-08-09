@@ -87,6 +87,9 @@ class Statement:
     year: Optional[int] = None
     conflict: bool = False
     edition: Optional[str] = None   # sound statements attach to one edition
+    # ADR-001: album awards name every work they cover. Shared across rows so
+    # a three-symphony Grammy cannot mint three independent Référence signals.
+    covers_works: Optional[tuple] = None
 
     def weight(self) -> float:
         w = BASE_WEIGHT[self.cls] * PROV_FACTOR[self.prov]
@@ -101,6 +104,15 @@ class Statement:
         return (BASE_WEIGHT[self.cls] >= 0.80
                 and self.prov is not Prov.DRAFT
                 and not self.conflict)
+
+    def signal_key(self) -> tuple:
+        """Identity of a benchmark signal. Album awards collapse on
+        (source, frozenset(covers_works)) so duplicates count once (ADR-001)."""
+        if self.covers_works and len(self.covers_works) > 1:
+            return ("album_award", self.source, frozenset(self.covers_works))
+        if self.covers_works:
+            return ("award", self.source, frozenset(self.covers_works))
+        return ("stmt", self.source, self.text[:80])
 
 
 @dataclass
@@ -182,15 +194,27 @@ BENCHMARK_WORDS = ("reference", "benchmark", "indispensable", "unsurpassed",
 
 
 def is_reference(S: float, conf: float, stmts: list[Statement]) -> bool:
-    """Unchanged from v1: interpretation only. Sound never buys a Référence."""
+    """Interpretation only. Sound never buys a Référence.
+
+    ADR-001: an album award covering n works is one shared benchmark signal,
+    not one per work. Signals are deduped by Statement.signal_key() so a
+    thrice-ingested three-symphony Grammy still counts as one.
+    """
     if S < 2.70 or conf < 0.55:
         return False
-    signals = sum(
-        1 for s in stmts
-        if s.axis == "interpretation" and s.is_strong()
-        and any(w in s.text.lower() for w in BENCHMARK_WORDS)
-    )
-    return signals >= 3
+    keys = set()
+    for s in stmts:
+        if s.axis != "interpretation" or not s.is_strong():
+            continue
+        # Major awards count as a benchmark signal without needing the word
+        # "reference" in a one-line characterisation; other classes still need
+        # explicit benchmark language.
+        is_award = s.cls is Cls.AWARD
+        has_words = any(w in s.text.lower() for w in BENCHMARK_WORDS)
+        if not (is_award or has_words):
+            continue
+        keys.add(s.signal_key())
+    return len(keys) >= 3
 
 
 TRANSFER_VERDICT = (
@@ -626,6 +650,7 @@ def load_from_data(root: str = "data") -> List[Recording]:
                 score = _score_from(st)
                 if score is None:
                     continue          # prose awaits a human; it does not guess
+                covers = st.get("covers_works")
                 stmts.append(Statement(
                     source=st["source"],
                     cls=CLS_BY_NAME.get(st.get("class", "independent_critic"), Cls.CRITIC),
@@ -635,6 +660,7 @@ def load_from_data(root: str = "data") -> List[Recording]:
                     prov=Prov(st.get("provenance", "draft")),
                     conflict=bool(st.get("conflict", False)),
                     edition=st.get("edition"),
+                    covers_works=tuple(covers) if covers else None,
                 ))
             out.append(Recording(
                 id=rec["id"], work_id=doc["work_id"],
