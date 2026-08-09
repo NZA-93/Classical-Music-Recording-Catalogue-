@@ -150,6 +150,46 @@ class TestIdentityConfidence(unittest.TestCase):
         self.assertFalse(har.work_title_compatible(
             "Brandenburg Concertos", "The English Concert Plays Bach"))
 
+    def test_art_of_fugue_matches_itself(self):
+        """Identical titles must not false-positive as wrong-work."""
+        self.assertTrue(har.work_title_compatible(
+            "The Art of Fugue", "The Art of Fugue"))
+        self.assertTrue(har.work_title_compatible(
+            "The Art of Fugue", "The Art of the Fugue"))
+
+    def test_don_giovanni_is_not_don_carlo(self):
+        self.assertFalse(har.work_title_compatible(
+            "Don Giovanni", "Don Carlo"))
+        self.assertTrue(har.work_title_compatible(
+            "Don Giovanni", "Don Giovanni"))
+
+    def test_matthew_passion_matches_matthaus(self):
+        self.assertTrue(har.work_title_compatible(
+            "St Matthew Passion", "Matthäus-Passion"))
+        self.assertFalse(har.work_title_compatible(
+            "St John Passion", "Matthäus-Passion"))
+        self.assertFalse(har.work_title_compatible(
+            "St John Passion", "St. Matthew Passion"))
+
+    def test_mass_key_conflict(self):
+        self.assertFalse(har.work_title_compatible(
+            "Mass in C minor", "Mass in B minor"))
+
+    def test_creation_matches_die_schopfung(self):
+        self.assertTrue(har.work_title_compatible(
+            "The Creation", "Die Schöpfung"))
+        self.assertTrue(har.work_title_compatible(
+            "The Seasons", "Die Jahreszeiten"))
+
+    def test_etudes_match_op_numbered_album(self):
+        self.assertTrue(har.work_title_compatible(
+            "Études", "Études op. 10 & op. 25"))
+
+    def test_symphonien_matches_symphonies_with_shared_numbers(self):
+        self.assertTrue(har.work_title_compatible(
+            "Symphonies Nos. 39, 40, 41",
+            'Symphonien Nos. 40 & 41 "Jupiter"'))
+
 
 class TestCoverProposals(unittest.TestCase):
     def test_hit_uses_caa_json_not_binary_front(self):
