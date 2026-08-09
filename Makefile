@@ -19,6 +19,7 @@ site: score      ## render docs/ (the published site). No network.
 	cp docs/entries.html entries.html
 	cp docs/index.html index.html
 	cp docs/gallery.html gallery.html
+	rm -rf composers && cp -R docs/composers composers
 
 harvest:         ## agent round. Network. Writes proposals/, never the catalogue.
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --budget 300
@@ -27,7 +28,7 @@ plan:            ## count what a harvest round would cost, without making reques
 	python3 agents/harvest.py data/seed.json --dry-run --budget 300
 
 clean:
-	rm -rf docs/index.html docs/entries.html build/catalogue.json .cache
+	rm -rf docs/index.html docs/entries.html docs/composers composers build/catalogue.json .cache
 
 validate:        ## check contributions/ against the project's own rules
 	python3 agents/validate.py

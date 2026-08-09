@@ -520,10 +520,11 @@ const seenComposer=new Set();
 for(const w of CATALOGUE.works){
   const wid=workDomId(w);
   const surname=(w.composer||"").split(" ").pop();
+  const composerSlug=(w.id.includes("/")?w.id.split("/")[0]:w.id.split("_")[0]);
   if(!seenComposer.has(w.composer)){
     seenComposer.add(w.composer);
     FIND_INDEX.push({kind:"composer",label:w.composer,sub:`${w.dates||""}`.trim(),
-      href:"#"+wid,keys:`${w.composer} ${surname}`.toLowerCase()});
+      href:`composers/${composerSlug}.html`,keys:`${w.composer} ${surname}`.toLowerCase()});
   }
   FIND_INDEX.push({kind:"work",label:w.title,sub:`${w.composer} · ${w.cat}`,
     href:"#"+wid,keys:`${w.title} ${w.cat} ${w.composer} ${surname}`.toLowerCase()});
