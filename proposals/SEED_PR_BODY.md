@@ -30,6 +30,6 @@ Each new work has ≥4 well-known candidates (performers / label / year only).
 
 ## Base
 
-Branched from `cursor/catalogue-loop-500-5458`.
+Rebased onto `main` after #18 (catalogue loop densify) merged.
 
 **Forbidden work not done:** no harvest, no `data/statements/`, no review text, no cover binaries.
