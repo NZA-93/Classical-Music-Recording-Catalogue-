@@ -5,8 +5,13 @@
   "already_seeded": [
     "bach",
     "beethoven",
+    "brahms",
+    "chopin",
+    "handel",
+    "haydn",
     "mozart",
     "puccini",
+    "schubert",
     "shostakovich"
   ],
   "queue": [
@@ -14,7 +19,7 @@
       "id": "brahms",
       "name": "Johannes Brahms",
       "dates": "1833–1897",
-      "status": "in_progress",
+      "status": "seeded",
       "week": "2026-08-09",
       "core_works_hint": [
         "Symphony No. 1",
@@ -35,7 +40,7 @@
       "id": "haydn",
       "name": "Joseph Haydn",
       "dates": "1732–1809",
-      "status": "in_progress",
+      "status": "seeded",
       "week": "2026-08-09",
       "core_works_hint": [
         "Symphony No. 104, London",
@@ -56,7 +61,7 @@
       "id": "schubert",
       "name": "Franz Schubert",
       "dates": "1797–1828",
-      "status": "in_progress",
+      "status": "seeded",
       "week": "2026-08-09",
       "core_works_hint": [
         "Symphony No. 8, Unfinished",
@@ -77,7 +82,7 @@
       "id": "handel",
       "name": "George Frideric Handel",
       "dates": "1685–1759",
-      "status": "in_progress",
+      "status": "seeded",
       "week": "2026-08-09",
       "core_works_hint": [
         "Messiah",
@@ -98,7 +103,7 @@
       "id": "chopin",
       "name": "Frédéric Chopin",
       "dates": "1810–1849",
-      "status": "in_progress",
+      "status": "seeded",
       "week": "2026-08-09",
       "core_works_hint": [
         "Ballades",
@@ -119,7 +124,7 @@
       "id": "tchaikovsky",
       "name": "Pyotr Ilyich Tchaikovsky",
       "dates": "1840–1893",
-      "status": "queued",
+      "status": "next",
       "week": null,
       "core_works_hint": [
         "Symphony No. 6, Pathétique",
@@ -140,7 +145,7 @@
       "id": "wagner",
       "name": "Richard Wagner",
       "dates": "1813–1883",
-      "status": "queued",
+      "status": "next",
       "week": null,
       "core_works_hint": [
         "Tristan und Isolde",
@@ -161,7 +166,7 @@
       "id": "verdi",
       "name": "Giuseppe Verdi",
       "dates": "1813–1901",
-      "status": "queued",
+      "status": "next",
       "week": null,
       "core_works_hint": [
         "La traviata",
@@ -182,7 +187,7 @@
       "id": "mahler",
       "name": "Gustav Mahler",
       "dates": "1860–1911",
-      "status": "queued",
+      "status": "next",
       "week": null,
       "core_works_hint": [
         "Symphony No. 1",
@@ -203,7 +208,7 @@
       "id": "debussy",
       "name": "Claude Debussy",
       "dates": "1862–1918",
-      "status": "queued",
+      "status": "next",
       "week": null,
       "core_works_hint": [
         "Prélude à l'après-midi d'un faune",

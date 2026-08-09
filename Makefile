@@ -1,6 +1,6 @@
 # Critical Discography — build targets. Python 3.11+, no third-party packages.
 
-.PHONY: all seed score site harvest test validate plan clean queue queue-week expand-brief
+.PHONY: all seed score site harvest test validate plan clean queue queue-week expand-brief targets loop
 
 all: seed score site
 
@@ -44,6 +44,11 @@ queue-week:      ## next five composers from proposals/composer-queue.json
 
 expand-brief:    ## write proposals/WEEK_BRIEF.md for Cursor agent launch
 	python3 agents/weekly_expand.py --write
+
+targets:         ## 10 composers · 100 works · 500 recordings floor (exit 1 if short)
+	python3 agents/catalogue_loop.py
+
+loop: targets expand-brief ## status + next week brief; keep iterating until targets exit 0
 
 test:            ## run the test suite
 	python3 -m unittest discover -s tests -q

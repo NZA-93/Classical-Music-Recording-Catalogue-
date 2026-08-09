@@ -412,6 +412,20 @@ into `data/statements/`. Stretch target: 10 sources.
 Merge or re-implement `apply.py` / `review.py` from prior `cursor/s1-*` branches
 so proposals become seed/recording facts without touching statements.
 
+### S3-05 · Catalogue floor 10 · 100 · 500 `[A]`
+**Done when:** `make targets` exits 0 (≥10 composers, ≥100 works, ≥500
+candidate recordings). Densify via `engine/seed_candidates_dense.py`; facts
+only. Then Role B harvest in budgeted rounds until identity coverage rises;
+humans ratify; never apply `wrong work:` rows.
+
+---
+
+# Ongoing loop (after the floor)
+
+Raise the ceiling in `docs/automation/CATALOGUE_TARGETS.md` and keep the same
+Roles A→D cycle. Citation ratio and signed entries remain the editorial
+bottleneck — densifying candidates does not invent assessments.
+
 ## Risk register
 
 | Risk | Watch for | Response |

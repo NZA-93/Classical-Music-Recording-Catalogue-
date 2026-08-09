@@ -61,9 +61,19 @@ See [`WEEKLY_CADENCE.md`](WEEKLY_CADENCE.md). Each week:
 4. **Citation agent** emits citation tasks / award proposals for ≥5 named sources per assessed entry over time.
 5. Humans ratify; composer rollup updates on `make site`.
 
+## Catalogue floor (10 · 100 · 500)
+
+See [`CATALOGUE_TARGETS.md`](CATALOGUE_TARGETS.md). Drive with:
+
+```bash
+make targets             # exit 0 only when floors met
+make loop                # targets + next week brief
+```
+
 ## Makefile entry points
 
 ```bash
+make targets             # 10 composers · 100 works · 500 candidates
 make queue-week          # print next 5 composers + agent brief
 make expand-brief        # write proposals/WEEK_BRIEF.md for Cursor agents
 make score && make site  # includes composers[] rollup in catalogue.json

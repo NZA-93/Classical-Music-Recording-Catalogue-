@@ -117,6 +117,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "bach/brandenburg/4",
+          "soloists": "",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Archiv",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/brandenburg/5",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -131,7 +153,63 @@
       "year": "c. 1725–39",
       "note": "French overture style; the Air of No. 3 and the B minor flute suite.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "bach/suites/0",
+          "soloists": "",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/suites/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/suites/2",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1994",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/suites/3",
+          "soloists": "",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Archiv",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/suites/4",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -144,7 +222,63 @@
       "year": "c. 1730",
       "note": "Including the Double Concerto, a repertory staple in every style.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "bach/violin_concertos/0",
+          "soloists": "Itzhak Perlman",
+          "director": "Daniel Barenboim",
+          "ensemble": "English Chamber Orchestra",
+          "label": "EMI",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/violin_concertos/1",
+          "soloists": "Nathan Milstein",
+          "director": "",
+          "ensemble": "New Philharmonia",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/violin_concertos/2",
+          "soloists": "Gidon Kremer",
+          "director": "",
+          "ensemble": "Chamber Orchestra of Europe",
+          "label": "Deutsche Grammophon",
+          "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/violin_concertos/3",
+          "soloists": "Yehudi Menuhin",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1951",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/violin_concertos/4",
+          "soloists": "Rachel Podger",
+          "director": "",
+          "ensemble": "Brecon Baroque",
+          "label": "Channel Classics",
+          "year": "2009",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -190,6 +324,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "bach/cello_suites/3",
+          "soloists": "Yo-Yo Ma",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/cello_suites/4",
+          "soloists": "Mstislav Rostropovich",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1991",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -223,6 +379,28 @@
           "ensemble": "",
           "label": "Channel Classics",
           "year": "1999",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/sonatas_partitas/2",
+          "soloists": "Henryk Szeryng",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/sonatas_partitas/3",
+          "soloists": "Arthur Grumiaux",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -273,6 +451,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "bach/goldberg/3",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "2000",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/goldberg/4",
+          "soloists": "András Schiff",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1982",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -287,7 +487,63 @@
       "year": "1722 / 1742",
       "note": "Forty-eight preludes and fugues.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "bach/wtc/0",
+          "soloists": "Glenn Gould",
+          "director": "",
+          "ensemble": "",
+          "label": "Columbia",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/wtc/1",
+          "soloists": "Glenn Gould",
+          "director": "",
+          "ensemble": "",
+          "label": "CBS",
+          "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/wtc/2",
+          "soloists": "Wanda Landowska",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1940s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/wtc/3",
+          "soloists": "András Schiff",
+          "director": "",
+          "ensemble": "",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/wtc/4",
+          "soloists": "Angela Hewitt",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -319,6 +575,28 @@
           "ensemble": "Concentus Musicus Wien",
           "label": "Teldec",
           "year": "1968",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/mass_b_minor/2",
+          "soloists": "",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Archiv",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/mass_b_minor/3",
+          "soloists": "",
+          "director": "Philippe Herreweghe",
+          "ensemble": "Collegium Vocale Gent",
+          "label": "Harmonia Mundi",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -358,6 +636,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "bach/matthew/2",
+          "soloists": "",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "EMI",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/matthew/3",
+          "soloists": "",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Archiv",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -372,7 +672,63 @@
       "year": "1724",
       "note": "Sharper and more dramatic than the Matthew; several authorial versions.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "bach/john/0",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1961",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/john/1",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1986",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/john/2",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/john/3",
+          "soloists": "",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Archiv",
+          "year": "1964",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/john/4",
+          "soloists": "",
+          "director": "Philippe Herreweghe",
+          "ensemble": "Collegium Vocale Gent",
+          "label": "Harmonia Mundi",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -385,7 +741,63 @@
       "year": "c. 1740–50",
       "note": "Instrumentation unspecified, which makes every recording an argument.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "bach/art_of_fugue/0",
+          "soloists": "Glenn Gould",
+          "director": "",
+          "ensemble": "",
+          "label": "CBS",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/art_of_fugue/1",
+          "soloists": "Tatiana Nikolayeva",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/art_of_fugue/2",
+          "soloists": "Davitt Moroney",
+          "director": "",
+          "ensemble": "",
+          "label": "Harmonia Mundi",
+          "year": "2000",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/art_of_fugue/3",
+          "soloists": "Emerson String Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "2003",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/art_of_fugue/4",
+          "soloists": "Gustav Leonhardt",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Harmonia Mundi",
+          "year": "1969",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -398,7 +810,63 @@
       "year": "c. 1738",
       "note": "Mostly arrangements; the founding documents of the keyboard concerto.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "bach/harpsichord_concertos/0",
+          "soloists": "Trevor Pinnock",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/harpsichord_concertos/1",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/harpsichord_concertos/2",
+          "soloists": "Gustav Leonhardt",
+          "director": "Gustav Leonhardt",
+          "ensemble": "Leonhardt Consort",
+          "label": "Deutsche Harmonia Mundi",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/harpsichord_concertos/3",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Sony",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "bach/harpsichord_concertos/4",
+          "soloists": "András Schiff",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -430,6 +898,28 @@
           "ensemble": "Orchestre Révolutionnaire et Romantique",
           "label": "Archiv",
           "year": "1993",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym3/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym3/3",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1964",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -469,6 +959,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym5/2",
+          "soloists": "",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1952",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym5/3",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -483,7 +995,63 @@
       "year": "1808",
       "note": "Where a conductor's idea of nature becomes audible.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "beethoven/sym6/0",
+          "soloists": "",
+          "director": "Carlos Kleiber",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym6/1",
+          "soloists": "",
+          "director": "Bruno Walter",
+          "ensemble": "Columbia Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym6/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym6/3",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym6/4",
+          "soloists": "",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "EMI",
+          "year": "1954",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -504,6 +1072,39 @@
           "ensemble": "Wiener Philharmoniker",
           "label": "Deutsche Grammophon",
           "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym7/1",
+          "soloists": "",
+          "director": "Arturo Toscanini",
+          "ensemble": "NBC Symphony Orchestra",
+          "label": "RCA",
+          "year": "1930s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym7/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym7/3",
+          "soloists": "",
+          "director": "Bruno Walter",
+          "ensemble": "Columbia Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1950s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -554,6 +1155,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym9/3",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1985",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/sym9/4",
+          "soloists": "",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "2000",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -568,7 +1191,63 @@
       "year": "1806",
       "note": "The slow movement's dialogue between piano and strings.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "beethoven/pc4/0",
+          "soloists": "Wilhelm Kempff",
+          "director": "Ferdinand Leitner",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc4/1",
+          "soloists": "Maurizio Pollini",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1979",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc4/2",
+          "soloists": "Emil Gilels",
+          "director": "George Szell",
+          "ensemble": "Cleveland Orchestra",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc4/3",
+          "soloists": "Martha Argerich",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc4/4",
+          "soloists": "Claudio Arrau",
+          "director": "Colin Davis",
+          "ensemble": "Boston Symphony",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -600,6 +1279,28 @@
           "ensemble": "Wiener Philharmoniker",
           "label": "Deutsche Grammophon",
           "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc5/2",
+          "soloists": "Emil Gilels",
+          "director": "George Szell",
+          "ensemble": "Cleveland Orchestra",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/pc5/3",
+          "soloists": "Daniel Barenboim",
+          "director": "Otto Klemperer",
+          "ensemble": "New Philharmonia",
+          "label": "EMI",
+          "year": "1967",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -639,6 +1340,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "beethoven/violin_concerto/2",
+          "soloists": "David Oistrakh",
+          "director": "Franz Konwitschny",
+          "ensemble": "Staatskapelle Dresden",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/violin_concerto/3",
+          "soloists": "Anne-Sophie Mutter",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -675,6 +1398,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "beethoven/late_quartets/2",
+          "soloists": "Alban Berg Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/late_quartets/3",
+          "soloists": "Vienna Philharmonic Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -689,7 +1434,63 @@
       "year": "1818",
       "note": "The fugue's tempo marking is still argued over.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "beethoven/hammerklavier/0",
+          "soloists": "Wilhelm Kempff",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/hammerklavier/1",
+          "soloists": "Sviatoslav Richter",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/hammerklavier/2",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1975",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/hammerklavier/3",
+          "soloists": "Alfred Brendel",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/hammerklavier/4",
+          "soloists": "Igor Levit",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "2019",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -710,6 +1511,39 @@
           "ensemble": "New Philharmonia",
           "label": "EMI",
           "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/missa_solemnis/1",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/missa_solemnis/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1966",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/missa_solemnis/3",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -735,6 +1569,39 @@
           "ensemble": "Philharmonia",
           "label": "EMI",
           "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/fidelio/1",
+          "soloists": "Christine Schäfer, Jonas Kaufmann",
+          "director": "Claudio Abbado",
+          "ensemble": "Chamber Orchestra of Europe",
+          "label": "Deutsche Grammophon",
+          "year": "2010",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/fidelio/2",
+          "soloists": "Lucia Popp, Plácido Domingo",
+          "director": "Leonard Bernstein",
+          "ensemble": "Vienna State Opera",
+          "label": "Deutsche Grammophon",
+          "year": "1979",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "beethoven/fidelio/3",
+          "soloists": "",
+          "director": "Ferdinand Leitner",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -770,6 +1637,28 @@
           "director": "Nikolaus Harnoncourt",
           "ensemble": "Concentgebouw",
           "label": "Teldec",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/late_symphonies/2",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "Scottish Chamber Orchestra",
+          "label": "Telarc",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/late_symphonies/3",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
           "year": "1980s",
           "verified": false,
           "mbid": null,
@@ -810,6 +1699,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "mozart/pc20/2",
+          "soloists": "Friedrich Gulda",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc20/3",
+          "soloists": "Mitsuko Uchida",
+          "director": "Jeffrey Tate",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Philips",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -824,7 +1735,63 @@
       "year": "1786",
       "note": "The F sharp minor Adagio.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "mozart/pc23/0",
+          "soloists": "Friedrich Gulda",
+          "director": "Claudio Abbado",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc23/1",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Sony",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc23/2",
+          "soloists": "Mitsuko Uchida",
+          "director": "",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Philips",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc23/3",
+          "soloists": "Vladimir Ashkenazy",
+          "director": "",
+          "ensemble": "Philharmonia",
+          "label": "Decca",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc23/4",
+          "soloists": "Daniel Barenboim",
+          "director": "",
+          "ensemble": "English Chamber Orchestra",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -837,7 +1804,63 @@
       "year": "1791",
       "note": "Late, spare, and often played too gently.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "mozart/pc27/0",
+          "soloists": "Vladimir Horowitz",
+          "director": "",
+          "ensemble": "",
+          "label": "RCA",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc27/1",
+          "soloists": "Mitsuko Uchida",
+          "director": "",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Philips",
+          "year": "1981",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc27/2",
+          "soloists": "Friedrich Gulda",
+          "director": "",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Orfeo",
+          "year": "1989",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc27/3",
+          "soloists": "Alfred Brendel",
+          "director": "",
+          "ensemble": "Scottish Chamber Orchestra",
+          "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/pc27/4",
+          "soloists": "Ingrid Haebler",
+          "director": "",
+          "ensemble": "Salzburg Mozarteum Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -868,6 +1891,28 @@
           "director": "Christopher Hogwood",
           "ensemble": "Academy of Ancient Music",
           "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/clarinet_concerto/2",
+          "soloists": "Sabine Meyer",
+          "director": "Claudio Abbado",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/clarinet_concerto/3",
+          "soloists": "Richard Stoltzman",
+          "director": "Raymond Leppard",
+          "ensemble": "English Chamber Orchestra",
+          "label": "RCA",
           "year": "1980s",
           "verified": false,
           "mbid": null,
@@ -908,6 +1953,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "mozart/requiem/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/requiem/3",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -941,6 +2008,28 @@
           "ensemble": "Philharmonia",
           "label": "EMI",
           "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/figaro/2",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Deutsche Oper Berlin",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/figaro/3",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -980,6 +2069,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "mozart/don_giovanni/2",
+          "soloists": "",
+          "director": "Dimitri Mitropoulos",
+          "ensemble": "Metropolitan Opera",
+          "label": "Sony",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/don_giovanni/3",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "Royal Opera House",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1002,6 +2113,39 @@
           "ensemble": "Philharmonia",
           "label": "EMI",
           "year": "1962",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/cosi/1",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/cosi/2",
+          "soloists": "",
+          "director": "Neville Marriner",
+          "ensemble": "Academy of St Martin in the Fields",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/cosi/3",
+          "soloists": "",
+          "director": "Riccardo Muti",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "EMI",
+          "year": "1980s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1041,6 +2185,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "mozart/zauberflote/2",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "Staatskapelle Dresden",
+          "label": "Philips",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/zauberflote/3",
+          "soloists": "",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1055,7 +2221,63 @@
       "year": "1783",
       "note": "Unfinished; several performing completions.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "mozart/mass_c_minor/0",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "English Baroque Soloists",
+          "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/mass_c_minor/1",
+          "soloists": "",
+          "director": "Neville Marriner",
+          "ensemble": "Academy of St Martin in the Fields",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/mass_c_minor/2",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Wiener Symphoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/mass_c_minor/3",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/mass_c_minor/4",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1068,7 +2290,63 @@
       "year": "1787",
       "note": "Two violas; the G minor is the darkest chamber music he wrote.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "mozart/string_quintets/0",
+          "soloists": "Quintetto Boccherini",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/string_quintets/1",
+          "soloists": "",
+          "director": "Neville Marriner",
+          "ensemble": "Academy of St Martin in the Fields",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/string_quintets/2",
+          "soloists": "Grumiaux Trio and colleagues",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/string_quintets/3",
+          "soloists": "L'Archibudelli",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "mozart/string_quintets/4",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1089,6 +2367,39 @@
           "ensemble": "Teatro alla Scala",
           "label": "EMI",
           "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/manon_lescaut/1",
+          "soloists": "Mirella Freni, José Carreras",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/manon_lescaut/2",
+          "soloists": "Renata Scotto, Plácido Domingo",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/manon_lescaut/3",
+          "soloists": "",
+          "director": "Riccardo Muti",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1980s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1125,6 +2436,28 @@
           "ensemble": "Berliner Philharmoniker",
           "label": "Decca",
           "year": "1972",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/boheme/2",
+          "soloists": "",
+          "director": "Tullio Serafin",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/boheme/3",
+          "soloists": "Renata Tebaldi, Carlo Bergonzi",
+          "director": "Tullio Serafin",
+          "ensemble": "La Scala",
+          "label": "Decca",
+          "year": "1959",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1175,6 +2508,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "puccini/tosca/3",
+          "soloists": "Renata Tebaldi, Carlo Bergonzi",
+          "director": "Victor de Sabata",
+          "ensemble": "La Scala",
+          "label": "Decca",
+          "year": "1959",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/tosca/4",
+          "soloists": "Angela Gheorghiu, Roberto Alagna",
+          "director": "Antonio Pappano",
+          "ensemble": "Royal Opera House",
+          "label": "EMI",
+          "year": "2000",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1211,6 +2566,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "puccini/butterfly/2",
+          "soloists": "Maria Callas, Giuseppe Di Stefano",
+          "director": "Tullio Serafin",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1955",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/butterfly/3",
+          "soloists": "Angela Gheorghiu, Roberto Alagna",
+          "director": "Antonio Pappano",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1236,6 +2613,39 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "puccini/fanciulla/1",
+          "soloists": "Renata Tebaldi, Mario Del Monaco",
+          "director": "Tullio Serafin",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/fanciulla/2",
+          "soloists": "Plácido Domingo, Carol Neblett",
+          "director": "Zubin Mehta",
+          "ensemble": "Los Angeles Philharmonic",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/fanciulla/3",
+          "soloists": "",
+          "director": "Lorin Maazel",
+          "ensemble": "Metropolitan Opera",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1250,7 +2660,63 @@
       "year": "1917",
       "note": "Operetta inheritance; the least settled discography.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "puccini/rondine/0",
+          "soloists": "Mirella Freni, José Carreras",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/rondine/1",
+          "soloists": "Angela Gheorghiu, Roberto Alagna",
+          "director": "Antonio Pappano",
+          "ensemble": "London Symphony Orchestra",
+          "label": "EMI",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/rondine/2",
+          "soloists": "",
+          "director": "Alberto Zedda",
+          "ensemble": "Orchestra Sinfonica di Torino",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/rondine/3",
+          "soloists": "",
+          "director": "Daniele Gatti",
+          "ensemble": "Orchestra dell'Accademia Nazionale di Santa Cecilia",
+          "label": "Decca",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/rondine/4",
+          "soloists": "",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "RAI Symphony Orchestra",
+          "label": "RAI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1263,7 +2729,63 @@
       "year": "1918",
       "note": "Three one-act operas, rarely recorded as the whole Puccini intended.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "puccini/trittico/0",
+          "soloists": "Renata Scotto, Plácido Domingo",
+          "director": "Lorin Maazel",
+          "ensemble": "Metropolitan Opera",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/trittico/1",
+          "soloists": "",
+          "director": "Antonio Pappano",
+          "ensemble": "Orchestra dell'Accademia Nazionale di Santa Cecilia",
+          "label": "EMI",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/trittico/2",
+          "soloists": "",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/trittico/3",
+          "soloists": "",
+          "director": "Alberto Erede",
+          "ensemble": "Orchestra Sinfonica di Torino",
+          "label": "Decca",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/trittico/4",
+          "soloists": "",
+          "director": "Daniele Gatti",
+          "ensemble": "Orchestra Sinfonica di Milano",
+          "label": "Decca",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1298,6 +2820,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "puccini/turandot/2",
+          "soloists": "Maria Callas, Giuseppe Di Stefano",
+          "director": "Tullio Serafin",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/turandot/3",
+          "soloists": "",
+          "director": "Erich Leinsdorf",
+          "ensemble": "Metropolitan Opera",
+          "label": "RCA",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1312,7 +2856,63 @@
       "year": "1884",
       "note": "First opera; documentary interest.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "puccini/villi/0",
+          "soloists": "",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "RAI Symphony Orchestra",
+          "label": "RAI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/villi/1",
+          "soloists": "",
+          "director": "Alberto Erede",
+          "ensemble": "Orchestra Sinfonica di Torino",
+          "label": "Decca",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/villi/2",
+          "soloists": "",
+          "director": "Daniele Gatti",
+          "ensemble": "Orchestra dell'Accademia Nazionale di Santa Cecilia",
+          "label": "Decca",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/villi/3",
+          "soloists": "",
+          "director": "Antonio Pappano",
+          "ensemble": "Orchestra dell'Accademia Nazionale di Santa Cecilia",
+          "label": "EMI",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/villi/4",
+          "soloists": "",
+          "director": "Alberto Zedda",
+          "ensemble": "Orchestra Sinfonica di Torino",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1325,7 +2925,63 @@
       "year": "1889",
       "note": "The failure, revised repeatedly.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "puccini/edgar/0",
+          "soloists": "Montserrat Caballé, Plácido Domingo",
+          "director": "James Levine",
+          "ensemble": "Metropolitan Opera",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/edgar/1",
+          "soloists": "",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "RAI Symphony Orchestra",
+          "label": "RAI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/edgar/2",
+          "soloists": "",
+          "director": "Alberto Erede",
+          "ensemble": "Orchestra Sinfonica di Torino",
+          "label": "Decca",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/edgar/3",
+          "soloists": "",
+          "director": "Daniele Gatti",
+          "ensemble": "Orchestra dell'Accademia Nazionale di Santa Cecilia",
+          "label": "Decca",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/edgar/4",
+          "soloists": "",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "La Scala",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1338,7 +2994,63 @@
       "year": "1880",
       "note": "Student work already recognisably him.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "puccini/messa_gloria/0",
+          "soloists": "",
+          "director": "Riccardo Muti",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/messa_gloria/1",
+          "soloists": "",
+          "director": "Antonio Pappano",
+          "ensemble": "Orchestra dell'Accademia Nazionale di Santa Cecilia",
+          "label": "EMI",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/messa_gloria/2",
+          "soloists": "",
+          "director": "Daniele Gatti",
+          "ensemble": "Orchestra Sinfonica di Milano",
+          "label": "Decca",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/messa_gloria/3",
+          "soloists": "",
+          "director": "Alberto Erede",
+          "ensemble": "Orchestra Sinfonica di Torino",
+          "label": "Decca",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "puccini/messa_gloria/4",
+          "soloists": "",
+          "director": "Gianandrea Gavazzeni",
+          "ensemble": "RAI Symphony Orchestra",
+          "label": "RAI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1351,7 +3063,63 @@
       "year": "1925",
       "note": "A conservatory graduation piece that went round the world within three years.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym1/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym1/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym1/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym1/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym1/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2009",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1364,7 +3132,63 @@
       "year": "1936",
       "note": "Withdrawn in rehearsal after the Pravda attack; unheard until 1961.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym4/0",
+          "soloists": "",
+          "director": "Kirill Kondrashin",
+          "ensemble": "Moscow Philharmonic",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym4/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym4/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym4/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym4/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2011",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1468,7 +3292,63 @@
       "year": "1939",
       "note": "A vast Largo followed by two fast movements; the proportions unsettle conductors.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym6/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym6/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "National Symphony Orchestra",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym6/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym6/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym6/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2010",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1489,6 +3369,39 @@
           "ensemble": "Chicago Symphony Orchestra",
           "label": "Deutsche Grammophon",
           "year": "1988",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym7/1",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym7/2",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "National Symphony Orchestra",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym7/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1528,6 +3441,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym8/2",
+          "soloists": "",
+          "director": "Kirill Kondrashin",
+          "ensemble": "Moscow Philharmonic",
+          "label": "Melodiya",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym8/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1542,7 +3477,63 @@
       "year": "1945",
       "note": "The victory symphony that refused to be one.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym9/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym9/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym9/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym9/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym9/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2010",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1588,6 +3579,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym10/3",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym10/4",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1602,7 +3615,63 @@
       "year": "1957",
       "note": "Cinematic and continuous; read after 1956 as being about Hungary.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym11/0",
+          "soloists": "",
+          "director": "Yevgeny Mravinsky",
+          "ensemble": "Leningrad Philharmonic Orchestra",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym11/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym11/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym11/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym11/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2010",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1626,6 +3695,39 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym13/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym13/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym13/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1640,7 +3742,63 @@
       "year": "1969",
       "note": "Eleven poems on death for two voices and chamber orchestra.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym14/0",
+          "soloists": "",
+          "director": "Kirill Kondrashin",
+          "ensemble": "Moscow Philharmonic",
+          "label": "Melodiya",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym14/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym14/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym14/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym14/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2012",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1653,7 +3811,63 @@
       "year": "1971",
       "note": "The last, quoting Rossini and Wagner and explaining neither.",
       "status": "awaiting sources",
-      "candidates": [],
+      "candidates": [
+        {
+          "id": "shostakovich/sym15/0",
+          "soloists": "",
+          "director": "Kirill Kondrashin",
+          "ensemble": "Moscow Philharmonic",
+          "label": "Melodiya",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym15/1",
+          "soloists": "",
+          "director": "Mstislav Rostropovich",
+          "ensemble": "London Symphony Orchestra",
+          "label": "LSO Live",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym15/2",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Decca",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym15/3",
+          "soloists": "",
+          "director": "Andris Nelsons",
+          "ensemble": "Boston Symphony Orchestra",
+          "label": "Deutsche Grammophon",
+          "year": "2018",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "shostakovich/sym15/4",
+          "soloists": "",
+          "director": "Vasily Petrenko",
+          "ensemble": "Royal Liverpool Philharmonic",
+          "label": "Naxos",
+          "year": "2012",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        }
+      ],
       "assessed": []
     },
     {
@@ -1699,6 +3913,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "brahms/sym1/3",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/sym1/4",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1732,6 +3968,28 @@
           "ensemble": "Philharmonia",
           "label": "EMI",
           "year": "1957",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/sym4/2",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/sym4/3",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1771,6 +4029,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "brahms/pc1/2",
+          "soloists": "Leonard Bernstein",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/pc1/3",
+          "soloists": "Krystian Zimerman",
+          "director": "Leonard Bernstein",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1804,6 +4084,28 @@
           "ensemble": "Chicago Symphony Orchestra",
           "label": "RCA",
           "year": "1960",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/pc2/2",
+          "soloists": "Leonard Bernstein",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/pc2/3",
+          "soloists": "Daniel Barenboim",
+          "director": "Sir Simon Rattle",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "2000s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1843,6 +4145,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "brahms/violin_concerto/2",
+          "soloists": "Anne-Sophie Mutter",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/violin_concerto/3",
+          "soloists": "David Oistrakh",
+          "director": "Kirill Kondrashin",
+          "ensemble": "Moscow Philharmonic",
+          "label": "Melodiya",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1876,6 +4200,28 @@
           "ensemble": "Orchestre Révolutionnaire et Romantique",
           "label": "Philips",
           "year": "1990",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/german_requiem/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/german_requiem/3",
+          "soloists": "",
+          "director": "Wilhelm Furtwängler",
+          "ensemble": "Wiener Philharmoniker",
+          "label": "EMI",
+          "year": "1950s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1915,6 +4261,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "brahms/clarinet_quintet/2",
+          "soloists": "Karl Leister; Berlin Philharmonic Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/clarinet_quintet/3",
+          "soloists": "Sabine Meyer; Vienna Philharmonic Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "EMI",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -1948,6 +4316,28 @@
           "ensemble": "",
           "label": "EMI",
           "year": "1983",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/piano_quintet/2",
+          "soloists": "Leonard Bernstein; Vienna Philharmonic Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/piano_quintet/3",
+          "soloists": "Murray Perahia; Guarneri Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -1987,6 +4377,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "brahms/haydn_variations/2",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/haydn_variations/3",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2009,6 +4421,39 @@
           "ensemble": "",
           "label": "Deutsche Grammophon",
           "year": "1974",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/liebeslieder/1",
+          "soloists": "",
+          "director": "Wolfgang Sawallisch",
+          "ensemble": "Bavarian Radio Symphony Orchestra",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/liebeslieder/2",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Monteverdi Choir",
+          "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/liebeslieder/3",
+          "soloists": "",
+          "director": "Bernard Haitink",
+          "ensemble": "Concertgebouw Orchestra",
+          "label": "Philips",
+          "year": "1970s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2048,6 +4493,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "brahms/academic_festival/2",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/academic_festival/3",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2070,6 +4537,39 @@
           "ensemble": "Wiener Philharmoniker",
           "label": "Deutsche Grammophon",
           "year": "1980",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/tragic_overture/1",
+          "soloists": "",
+          "director": "Otto Klemperer",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/tragic_overture/2",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "brahms/tragic_overture/3",
+          "soloists": "",
+          "director": "Leonard Bernstein",
+          "ensemble": "New York Philharmonic",
+          "label": "Columbia",
+          "year": "1960s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2105,6 +4605,28 @@
           "director": "Nikolaus Harnoncourt",
           "ensemble": "Concentus Musicus Wien",
           "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym104/2",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "Philharmonia Hungarica",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym104/3",
+          "soloists": "",
+          "director": "Adam Fischer",
+          "ensemble": "Austro-Hungarian Haydn Orchestra",
+          "label": "Nimbus",
           "year": "1990s",
           "verified": false,
           "mbid": null,
@@ -2145,6 +4667,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "haydn/sym94/2",
+          "soloists": "",
+          "director": "Antal Doráti",
+          "ensemble": "Philharmonia Hungarica",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym94/3",
+          "soloists": "",
+          "director": "Adam Fischer",
+          "ensemble": "Austro-Hungarian Haydn Orchestra",
+          "label": "Nimbus",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2178,6 +4722,28 @@
           "ensemble": "English Baroque Soloists",
           "label": "Archiv",
           "year": "1996",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/creation/2",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "Royal Opera House Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/creation/3",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2217,6 +4783,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "haydn/op76/2",
+          "soloists": "Esterházy Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/op76/3",
+          "soloists": "Tafelmusik Baroque Orchestra",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2253,6 +4841,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "haydn/trumpet_concerto/2",
+          "soloists": "Timofei Dokschitzer",
+          "director": "Karl Richter",
+          "ensemble": "Münchener Bach-Orchester",
+          "label": "Archiv",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/trumpet_concerto/3",
+          "soloists": "Håkan Hardenberger",
+          "director": "Colin Davis",
+          "ensemble": "London Symphony Orchestra",
+          "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2285,6 +4895,28 @@
           "director": "Frans Brüggen",
           "ensemble": "Orchestra of the 18th Century",
           "label": "Philips",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/cello_concerto1/2",
+          "soloists": "Mstislav Rostropovich",
+          "director": "Colin Davis",
+          "ensemble": "English Chamber Orchestra",
+          "label": "EMI",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/cello_concerto1/3",
+          "soloists": "Yo-Yo Ma",
+          "director": "José Luis García",
+          "ensemble": "English Chamber Orchestra",
+          "label": "CBS",
           "year": "1980s",
           "verified": false,
           "mbid": null,
@@ -2325,6 +4957,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "haydn/seasons/2",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "Royal Opera House Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/seasons/3",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2357,6 +5011,28 @@
           "director": "Trevor Pinnock",
           "ensemble": "The English Concert",
           "label": "Archiv",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/nelson_mass/2",
+          "soloists": "",
+          "director": "Colin Davis",
+          "ensemble": "Bavarian Radio Symphony Orchestra",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/nelson_mass/3",
+          "soloists": "",
+          "director": "Christopher Hogwood",
+          "ensemble": "Academy of Ancient Music",
+          "label": "L'Oiseau-Lyre",
           "year": "1980s",
           "verified": false,
           "mbid": null,
@@ -2397,6 +5073,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "haydn/piano_sonatas/2",
+          "soloists": "Paul Badura-Skoda",
+          "director": "",
+          "ensemble": "",
+          "label": "Archiv",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/piano_sonatas/3",
+          "soloists": "John McCabe",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2430,6 +5128,28 @@
           "ensemble": "Concentus Musicus Wien",
           "label": "Teldec",
           "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym44/2",
+          "soloists": "",
+          "director": "Adam Fischer",
+          "ensemble": "Austro-Hungarian Haydn Orchestra",
+          "label": "Nimbus",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/sym44/3",
+          "soloists": "",
+          "director": "Thomas Beecham",
+          "ensemble": "Royal Philharmonic",
+          "label": "EMI",
+          "year": "1950s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2469,6 +5189,17 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "haydn/sym45/2",
+          "soloists": "",
+          "director": "Adam Fischer",
+          "ensemble": "Austro-Hungarian Haydn Orchestra",
+          "label": "Nimbus",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2502,6 +5233,28 @@
           "ensemble": "",
           "label": "Hänssler",
           "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/seven_last_words/2",
+          "soloists": "",
+          "director": "Orchestra of the 18th Century",
+          "ensemble": "Frans Brüggen",
+          "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "haydn/seven_last_words/3",
+          "soloists": "",
+          "director": "Berlin Philharmonic",
+          "ensemble": "Herbert von Karajan",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2541,6 +5294,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/sym8/2",
+          "soloists": "",
+          "director": "Bruno Walter",
+          "ensemble": "Columbia Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sym8/3",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2574,6 +5349,28 @@
           "ensemble": "Chicago Symphony Orchestra",
           "label": "Deutsche Grammophon",
           "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sym9/2",
+          "soloists": "",
+          "director": "Bruno Walter",
+          "ensemble": "Columbia Symphony Orchestra",
+          "label": "Columbia",
+          "year": "1950s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sym9/3",
+          "soloists": "",
+          "director": "Herbert von Karajan",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2613,6 +5410,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/winterreise/2",
+          "soloists": "Ian Bostridge; Julius Drake, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/winterreise/3",
+          "soloists": "Matthias Goerne; Christoph Eschenbach, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2646,6 +5465,28 @@
           "ensemble": "",
           "label": "Deutsche Grammophon",
           "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/schone_mullerin/2",
+          "soloists": "Ian Bostridge; Julius Drake, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/schone_mullerin/3",
+          "soloists": "Hermann Prey; Karl Engel, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2685,6 +5526,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/string_quintet/2",
+          "soloists": "Vienna Philharmonic Quartet; Heinrich Schiff, cello",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/string_quintet/3",
+          "soloists": "Yo-Yo Ma; Emerson String Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2718,6 +5581,28 @@
           "ensemble": "",
           "label": "Philips",
           "year": "1965",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/death_maiden/2",
+          "soloists": "Vienna Philharmonic Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/death_maiden/3",
+          "soloists": "Emerson String Quartet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2768,6 +5653,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/sonata_d960/3",
+          "soloists": "Daniel Barenboim",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/sonata_d960/4",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2804,6 +5711,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/trout/2",
+          "soloists": "Daniel Barenboim; members of the Vienna Octet",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/trout/3",
+          "soloists": "Murray Perahia; members of the Vienna Octet",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2836,6 +5765,28 @@
           "director": "John Eliot Gardiner",
           "ensemble": "English Baroque Soloists",
           "label": "Philips",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/mass_e_flat/2",
+          "soloists": "",
+          "director": "Wolfgang Sawallisch",
+          "ensemble": "Bavarian Radio Symphony Orchestra",
+          "label": "EMI",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/mass_e_flat/3",
+          "soloists": "",
+          "director": "Philippe Herreweghe",
+          "ensemble": "Collegium Vocale Gent",
+          "label": "Harmonia Mundi",
           "year": "1990s",
           "verified": false,
           "mbid": null,
@@ -2876,6 +5827,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/impromptus/2",
+          "soloists": "Imogen Cooper",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/impromptus/3",
+          "soloists": "Paul Badura-Skoda",
+          "director": "",
+          "ensemble": "",
+          "label": "Archiv",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2912,6 +5885,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "schubert/schwanengesang/2",
+          "soloists": "Ian Bostridge; Julius Drake, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Hyperion",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/schwanengesang/3",
+          "soloists": "Matthias Goerne; Christoph Eschenbach, piano",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -2945,6 +5940,28 @@
           "ensemble": "Chamber Orchestra of Europe",
           "label": "Deutsche Grammophon",
           "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/rosamunde/2",
+          "soloists": "",
+          "director": "Karl Böhm",
+          "ensemble": "Berliner Philharmoniker",
+          "label": "Deutsche Grammophon",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "schubert/rosamunde/3",
+          "soloists": "",
+          "director": "John Eliot Gardiner",
+          "ensemble": "Orchestre Révolutionnaire et Romantique",
+          "label": "Archiv",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -2995,6 +6012,17 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/messiah/3",
+          "soloists": "",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3026,6 +6054,28 @@
           "soloists": "",
           "director": "Neville Marriner",
           "ensemble": "Academy of St Martin in the Fields",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/water_music/2",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/water_music/3",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "English Chamber Orchestra",
           "label": "Decca",
           "year": "1970s",
           "verified": false,
@@ -3067,6 +6117,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/fireworks/2",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/fireworks/3",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3103,6 +6175,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/giulio_cesare/2",
+          "soloists": "Anne Sofie von Otter",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/giulio_cesare/3",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3135,6 +6229,28 @@
           "director": "Alan Curtis",
           "ensemble": "Il Complesso Barocco",
           "label": "Deutsche Harmonia Mundi",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/alcina/2",
+          "soloists": "Joyce DiDonato",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/alcina/3",
+          "soloists": "",
+          "director": "René Jacobs",
+          "ensemble": "Akademie für Alte Musik Berlin",
+          "label": "Harmonia Mundi",
           "year": "2000s",
           "verified": false,
           "mbid": null,
@@ -3175,6 +6291,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/op6/2",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/op6/3",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3208,6 +6346,28 @@
           "ensemble": "Academy of Ancient Music",
           "label": "Decca",
           "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/organ_concertos/2",
+          "soloists": "Simon Standage",
+          "director": "Trevor Pinnock",
+          "ensemble": "The English Concert",
+          "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/organ_concertos/3",
+          "soloists": "Richard Egarr",
+          "director": "Richard Egarr",
+          "ensemble": "Academy of Ancient Music",
+          "label": "Harmonia Mundi",
+          "year": "2000s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -3247,6 +6407,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/israel_in_egypt/2",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/israel_in_egypt/3",
+          "soloists": "",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3280,6 +6462,28 @@
           "ensemble": "English Chamber Orchestra",
           "label": "Deutsche Grammophon",
           "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/solomon/2",
+          "soloists": "",
+          "director": "Charles Mackerras",
+          "ensemble": "English Chamber Orchestra",
+          "label": "Decca",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/solomon/3",
+          "soloists": "",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -3319,6 +6523,17 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/agrippina/2",
+          "soloists": "Joyce DiDonato",
+          "director": "Maxim Emelyanychev",
+          "ensemble": "Il Pomo d'Oro",
+          "label": "Erato",
+          "year": "2020",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3355,6 +6570,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "handel/rodelinda/2",
+          "soloists": "Joyce DiDonato",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
+          "year": "2000s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/rodelinda/3",
+          "soloists": "",
+          "director": "Nikolaus Harnoncourt",
+          "ensemble": "Concentus Musicus Wien",
+          "label": "Teldec",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3387,6 +6624,28 @@
           "director": "Marc Minkowski",
           "ensemble": "Les Musiciens du Louvre",
           "label": "Archiv",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/dixit_dominus/2",
+          "soloists": "",
+          "director": "Andrew Parrott",
+          "ensemble": "Taverner Choir and Players",
+          "label": "EMI",
+          "year": "1990",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "handel/dixit_dominus/3",
+          "soloists": "",
+          "director": "William Christie",
+          "ensemble": "Les Arts Florissants",
+          "label": "Erato",
           "year": "1990s",
           "verified": false,
           "mbid": null,
@@ -3427,6 +6686,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/ballades/2",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1978",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/ballades/3",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3460,6 +6741,28 @@
           "ensemble": "",
           "label": "Sony",
           "year": "2002",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/etudes/2",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/etudes/3",
+          "soloists": "Vladimir Ashkenazy",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -3499,6 +6802,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/preludes/2",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/preludes/3",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3532,6 +6857,28 @@
           "ensemble": "",
           "label": "Deutsche Grammophon",
           "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/sonata2/2",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1984",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/sonata2/3",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -3571,6 +6918,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/sonata3/2",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/sonata3/3",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3607,6 +6976,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/pc1/2",
+          "soloists": "Martha Argerich",
+          "director": "Charles Dutoit",
+          "ensemble": "Orchestre Symphonique de Montréal",
+          "label": "EMI",
+          "year": "1999",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/pc1/3",
+          "soloists": "Maurizio Pollini",
+          "director": "Paul Kletzki",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3639,6 +7030,28 @@
           "director": "Charles Dutoit",
           "ensemble": "Orchestre Symphonique de Montréal",
           "label": "EMI",
+          "year": "1999",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/pc2/2",
+          "soloists": "Maurizio Pollini",
+          "director": "Paul Kletzki",
+          "ensemble": "Philharmonia",
+          "label": "EMI",
+          "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/pc2/3",
+          "soloists": "Krystian Zimerman",
+          "director": "Stanisław Skrowaczewski",
+          "ensemble": "Polish Festival Orchestra",
+          "label": "Deutsche Grammophon",
           "year": "1999",
           "verified": false,
           "mbid": null,
@@ -3679,6 +7092,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/nocturnes/2",
+          "soloists": "Maria João Pires",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/nocturnes/3",
+          "soloists": "Maurizio Pollini",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3712,6 +7147,28 @@
           "ensemble": "",
           "label": "Deutsche Grammophon",
           "year": "1976",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/polonaises/2",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/polonaises/3",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -3751,6 +7208,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/mazurkas/2",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/mazurkas/3",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3784,6 +7263,28 @@
           "ensemble": "",
           "label": "various",
           "year": "1960s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/scherzi/2",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/scherzi/3",
+          "soloists": "Murray Perahia",
+          "director": "",
+          "ensemble": "",
+          "label": "Sony",
+          "year": "1990s",
           "verified": false,
           "mbid": null,
           "status": "candidate"
@@ -3823,6 +7324,28 @@
           "verified": false,
           "mbid": null,
           "status": "candidate"
+        },
+        {
+          "id": "chopin/impromptus/2",
+          "soloists": "Claudio Arrau",
+          "director": "",
+          "ensemble": "",
+          "label": "Philips",
+          "year": "1970s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
+        },
+        {
+          "id": "chopin/impromptus/3",
+          "soloists": "Martha Argerich",
+          "director": "",
+          "ensemble": "",
+          "label": "Deutsche Grammophon",
+          "year": "1980s",
+          "verified": false,
+          "mbid": null,
+          "status": "candidate"
         }
       ],
       "assessed": []
@@ -3830,6 +7353,6 @@
   ],
   "totals": {
     "works": 119,
-    "candidates": 193
+    "candidates": 511
   }
 }

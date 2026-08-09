@@ -470,6 +470,28 @@ CANDIDATES = {
     ],
 }
 
+
+def _merged_candidates():
+    out = {k: list(v) for k, v in CANDIDATES.items()}
+    try:
+        from seed_candidates_dense import EXTRA_CANDIDATES
+    except ImportError:
+        import importlib.util
+        import pathlib
+        p = pathlib.Path(__file__).with_name("seed_candidates_dense.py")
+        spec = importlib.util.spec_from_file_location("seed_candidates_dense", p)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        EXTRA_CANDIDATES = mod.EXTRA_CANDIDATES
+    for k, rows in EXTRA_CANDIDATES.items():
+        seen = set(out.get(k, []))
+        for row in rows:
+            if row not in seen:
+                out.setdefault(k, []).append(row)
+                seen.add(row)
+    return out
+
+
 SHOSTAKOVICH = [
     ("sym1", "Symphony No. 1", "Op. 10", "1925", "A conservatory graduation piece that went round the world within three years."),
     ("sym4", "Symphony No. 4", "Op. 43", "1936", "Withdrawn in rehearsal after the Pravda attack; unheard until 1961."),
@@ -585,7 +607,7 @@ def build() -> dict:
                 "label": lab, "year": yr,
                 "verified": False, "mbid": None,
                 "status": "candidate",
-            } for i, (s, d, e, lab, yr) in enumerate(CANDIDATES.get(key, []))]
+            } for i, (s, d, e, lab, yr) in enumerate(_merged_candidates().get(key, []))]
             candidates += len(cands)
             works.append({
                 "id": key, "composer_id": cid, "composer": name, "composer_dates": dates,
