@@ -19,6 +19,7 @@ site: score      ## render docs/ (the published site). No network.
 	cp docs/entries.html entries.html
 	cp docs/index.html index.html
 	cp docs/gallery.html gallery.html
+	rm -rf composers && cp -R docs/composers composers
 
 # CONTACT / HARVEST_CONTACT: publishable address for the MusicBrainz User-Agent.
 # Placeholder for local/agent runs: harvest@example.invalid
@@ -31,7 +32,7 @@ plan:            ## count what a harvest round would cost, without making reques
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --dry-run --budget 300
 
 clean:
-	rm -rf docs/index.html docs/entries.html build/catalogue.json .cache
+	rm -rf docs/index.html docs/entries.html docs/composers composers build/catalogue.json .cache
 
 validate:        ## check contributions/ against the project's own rules
 	python3 agents/validate.py

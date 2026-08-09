@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Frideric Handel — Critical Discography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#E7EAE3;--paper:#FBFCF9;--ink:#191D1A;--ink-soft:#5B655D;--hair:#C7CDC2;
+--verdigris:#2F6B60;--oxblood:#7A1220}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;
+font-size:17px;font-weight:400;line-height:1.6;padding:0 clamp(1rem,3vw,2rem) 5rem}
+.wrap{max-width:64rem;margin:0 auto}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.masthead{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:baseline;
+padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--ink)}
+.masthead h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.15rem;margin-right:auto}
+.masthead h1 a{color:inherit;text-decoration:none}
+.masthead nav{display:flex;gap:1.1rem;font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+.masthead a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+.masthead nav a:hover,.masthead nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
+.find{width:100%;margin-top:.85rem;position:relative}
+.find input{
+  width:100%;font-family:"IBM Plex Mono",monospace;font-size:.8rem;font-weight:500;
+  padding:.55rem .7rem;border:1px solid var(--hair);background:var(--paper);color:var(--ink)}
+.find input:focus{outline:2px solid var(--verdigris);outline-offset:2px;border-color:var(--verdigris)}
+.find-panel{
+  display:none;position:absolute;left:0;right:0;top:calc(100% + 2px);z-index:8;
+  background:var(--paper);border:1px solid var(--ink);max-height:22rem;overflow:auto}
+.find-panel.open{display:block}
+.find-group{padding:.55rem .75rem .25rem;font-family:"IBM Plex Mono",monospace;font-size:.58rem;
+  font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border-top:1px solid var(--hair)}
+.find-group:first-child{border-top:0}
+.find-hit{display:block;padding:.55rem .75rem;color:inherit;text-decoration:none}
+.find-hit:hover,.find-hit:focus-visible{background:var(--ground)}
+.find-hit .lbl{font-weight:500}
+.find-hit .sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+  font-weight:500;color:var(--ink-soft);margin-top:.15rem}
+.find-empty{padding:.7rem .75rem;font-size:.9rem;color:var(--ink-soft)}
+.page-head{padding:1.6rem 0 1.1rem;border-bottom:1px solid var(--hair);margin-bottom:1.6rem}
+.page-head h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(1.6rem,4vw,2.2rem);
+  line-height:1.1;letter-spacing:-.01em}
+.page-head .meta{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:.45rem}
+.crumb{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:.7rem}
+.crumb a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+.crumb a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.az{display:flex;flex-wrap:wrap;gap:.35rem .55rem;margin:0 0 1.6rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:600}
+.az a{color:var(--ink);text-decoration:none;min-width:1.2rem;text-align:center}
+.az a:hover{color:var(--verdigris)}
+.az .dim{color:var(--hair);pointer-events:none}
+.letter{padding-top:1.4rem}
+.letter > h2{font-family:"IBM Plex Mono",monospace;font-size:.7rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  border-bottom:1px solid var(--hair);padding-bottom:.35rem;margin-bottom:.2rem}
+.dir-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6rem 1.2rem;
+  align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--hair);text-decoration:none;color:inherit}
+.dir-row:hover .name{color:var(--verdigris)}
+.dir-row .name{font-family:"Bodoni Moda",serif;font-size:1.25rem;font-weight:500}
+.dir-row .dates{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;color:var(--ink-soft)}
+.dir-row .stats{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-align:right}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
+letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+padding:.4rem .5rem .4rem 0;border-bottom:1px solid var(--ink)}
+td{padding:.55rem .5rem;border-bottom:1px solid var(--hair);vertical-align:top}
+td:first-child{padding-left:0}
+.w-title{font-family:"Bodoni Moda",serif;font-size:1.02rem}
+.w-cat{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;color:var(--ink-soft)}
+.w-note{color:var(--ink-soft);font-size:.85rem}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:.56rem;font-weight:500;letter-spacing:.08em;
+text-transform:uppercase;padding:.15rem .4rem;white-space:nowrap;border:1px solid currentColor}
+.c-done{color:var(--verdigris)}
+.c-cand{color:var(--ink-soft)}
+.c-none{color:var(--oxblood);border-style:dashed}
+a.entry{color:var(--verdigris);font-weight:500}
+.rec-list{list-style:none;margin:1.4rem 0 0;display:grid;gap:.7rem}
+.rec-list li{padding-left:.85rem;border-left:1px solid var(--verdigris)}
+.rec-list a{color:var(--ink);font-weight:500;text-decoration:none}
+.rec-list a:hover{color:var(--verdigris)}
+.rec-list .sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+  font-weight:500;color:var(--ink-soft);margin-top:.15rem}
+.modlabel{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);margin:2rem 0 .6rem}
+footer{margin-top:4rem;padding-top:1.2rem;border-top:1px solid var(--ink);font-size:.82rem;
+color:var(--ink-soft);max-width:44rem;display:grid;gap:.5rem}
+footer .mono{font-size:.68rem;letter-spacing:.04em}
+@media(max-width:680px){body{font-size:16px}.w-note{display:none}td,th{padding-right:.3rem}
+.dir-row{grid-template-columns:1fr}.dir-row .stats{text-align:left}}
+</style></head><body><div class="wrap">
+<header class="masthead">
+  <h1><a href="../index.html">Critical Discography</a></h1>
+  <nav>
+    <a href="../index.html" aria-current="page">Catalogue</a>
+    <a href="../entries.html">Entries</a>
+    <a href="../gallery.html">Gallery</a>
+  </nav>
+  <div class="find">
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+      placeholder="Find a composer, work or recording"
+      aria-label="Find a composer, work or recording" aria-controls="q-panel">
+    <div class="find-panel" id="q-panel" role="listbox" aria-label="Search results"></div>
+  </div>
+</header>
+
+<p class="crumb"><a href="../index.html">Catalogue</a> / Handel</p>
+<div class="page-head">
+  <h2>George Frideric Handel</h2>
+  <p class="meta">1685–1759 · 12 works · 0 with assessments</p>
+  
+</div>
+<table><thead><tr><th>Work</th><th>Why it is in the guide</th><th>State</th></tr></thead>
+<tbody><tr id="handel_messiah">
+      <td><span class="w-title">Messiah</span><br>
+        <span class="w-cat">HWV 56 · 1741</span></td>
+      <td class="w-note">Oratorio; Dublin premiere 1742.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_water_music">
+      <td><span class="w-title">Water Music</span><br>
+        <span class="w-cat">HWV 348–350 · 1717</span></td>
+      <td class="w-note">Suites for the Thames royal water party.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_fireworks">
+      <td><span class="w-title">Music for the Royal Fireworks</span><br>
+        <span class="w-cat">HWV 351 · 1749</span></td>
+      <td class="w-note">Outdoor wind-band original for Green Park.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_giulio_cesare">
+      <td><span class="w-title">Giulio Cesare</span><br>
+        <span class="w-cat">HWV 17 · 1724</span></td>
+      <td class="w-note">Opera seria for the Royal Academy.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_alcina">
+      <td><span class="w-title">Alcina</span><br>
+        <span class="w-cat">HWV 34 · 1735</span></td>
+      <td class="w-note">Magic-opera for Covent Garden.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_op6">
+      <td><span class="w-title">Concerti grossi, Op. 6</span><br>
+        <span class="w-cat">HWV 319–330 · 1739</span></td>
+      <td class="w-note">Twelve concerti after Corelli&#x27;s model.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_organ_concertos">
+      <td><span class="w-title">Organ Concertos</span><br>
+        <span class="w-cat">Opp. 4 &amp; 7 · 1730s</span></td>
+      <td class="w-note">Interval concertos for Handel at the organ.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_israel_in_egypt">
+      <td><span class="w-title">Israel in Egypt</span><br>
+        <span class="w-cat">HWV 54 · 1739</span></td>
+      <td class="w-note">Chorus-heavy Exodus oratorio.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_solomon">
+      <td><span class="w-title">Solomon</span><br>
+        <span class="w-cat">HWV 67 · 1748</span></td>
+      <td class="w-note">Oratorio; includes the Arrival of the Queen of Sheba.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_agrippina">
+      <td><span class="w-title">Agrippina</span><br>
+        <span class="w-cat">HWV 6 · 1709</span></td>
+      <td class="w-note">Venetian opera on imperial intrigue.</td>
+      <td><span class="chip c-cand">3 queued</span></td>
+    </tr><tr id="handel_rodelinda">
+      <td><span class="w-title">Rodelinda</span><br>
+        <span class="w-cat">HWV 19 · 1725</span></td>
+      <td class="w-note">Opera seria for Cuzzoni and Senesino.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr><tr id="handel_dixit_dominus">
+      <td><span class="w-title">Dixit Dominus</span><br>
+        <span class="w-cat">HWV 232 · 1707</span></td>
+      <td class="w-note">Psalm setting from the Italian years.</td>
+      <td><span class="chip c-cand">4 queued</span></td>
+    </tr></tbody></table>
+
+
+<footer>
+  <p>Cover images from the <a href="https://coverartarchive.org">Cover Art Archive</a> via
+  <a href="https://musicbrainz.org">MusicBrainz</a>. Catalogue data is CC0.
+  No advertising, no affiliate links.</p>
+  <p class="mono">SEED SCHEMA seed/1 · 10 COMPOSERS · 119 WORKS</p>
+</footer>
+</div>
+<script>
+const INDEX = [{"kind": "composer", "label": "Johann Sebastian Bach", "sub": "1685–1750 · 12 works", "href": "../composers/bach.html", "keys": "johann sebastian bach bach bach"}, {"kind": "work", "label": "Brandenburg Concertos", "sub": "Johann Sebastian Bach · BWV 1046–1051 · 2 assessed", "href": "../entries.html#bach_brandenburg", "keys": "brandenburg concertos bwv 1046–1051 johann sebastian bach bach"}, {"kind": "recording", "label": "Trevor Pinnock / The English Concert / Trevor Pinnock, harpsichord", "sub": "Johann Sebastian Bach · Brandenburg Concertos · Archiv, 1982", "href": "../entries.html#bach_brandenburg_pinnock", "keys": "trevor pinnock / the english concert / trevor pinnock, harpsichord archiv, 1982 brandenburg concertos johann sebastian bach trevor pinnock the english concert trevor pinnock, harpsichord"}, {"kind": "recording", "label": "Nikolaus Harnoncourt / Concentus Musicus Wien / Alice Harnoncourt, Jürg Schaeftlein, Walter Holy and principals", "sub": "Johann Sebastian Bach · Brandenburg Concertos · Teldec / Das Alte Werk, 1964", "href": "../entries.html#bach_brandenburg_harnoncourt", "keys": "nikolaus harnoncourt / concentus musicus wien / alice harnoncourt, jürg schaeftlein, walter holy and principals teldec / das alte werk, 1964 brandenburg concertos johann sebastian bach nikolaus harnoncourt concentus musicus wien alice harnoncourt, jürg schaeftlein, walter holy and principals"}, {"kind": "work", "label": "Orchestral Suites", "sub": "Johann Sebastian Bach · BWV 1066–1069 · 5 queued", "href": "../composers/bach.html#bach_suites", "keys": "orchestral suites bwv 1066–1069 johann sebastian bach bach"}, {"kind": "work", "label": "Violin Concertos", "sub": "Johann Sebastian Bach · BWV 1041–1043 · 5 queued", "href": "../composers/bach.html#bach_violin_concertos", "keys": "violin concertos bwv 1041–1043 johann sebastian bach bach"}, {"kind": "work", "label": "Cello Suites", "sub": "Johann Sebastian Bach · BWV 1007–1012 · 5 queued", "href": "../composers/bach.html#bach_cello_suites", "keys": "cello suites bwv 1007–1012 johann sebastian bach bach"}, {"kind": "work", "label": "Sonatas and Partitas for Solo Violin", "sub": "Johann Sebastian Bach · BWV 1001–1006 · 4 queued", "href": "../composers/bach.html#bach_sonatas_partitas", "keys": "sonatas and partitas for solo violin bwv 1001–1006 johann sebastian bach bach"}, {"kind": "work", "label": "Goldberg Variations", "sub": "Johann Sebastian Bach · BWV 988 · 5 queued", "href": "../composers/bach.html#bach_goldberg", "keys": "goldberg variations bwv 988 johann sebastian bach bach"}, {"kind": "work", "label": "The Well-Tempered Clavier, Books I & II", "sub": "Johann Sebastian Bach · BWV 846–893 · 5 queued", "href": "../composers/bach.html#bach_wtc", "keys": "the well-tempered clavier, books i & ii bwv 846–893 johann sebastian bach bach"}, {"kind": "work", "label": "Mass in B minor", "sub": "Johann Sebastian Bach · BWV 232 · 4 queued", "href": "../composers/bach.html#bach_mass_b_minor", "keys": "mass in b minor bwv 232 johann sebastian bach bach"}, {"kind": "work", "label": "St Matthew Passion", "sub": "Johann Sebastian Bach · BWV 244 · 4 queued", "href": "../composers/bach.html#bach_matthew", "keys": "st matthew passion bwv 244 johann sebastian bach bach"}, {"kind": "work", "label": "St John Passion", "sub": "Johann Sebastian Bach · BWV 245 · 5 queued", "href": "../composers/bach.html#bach_john", "keys": "st john passion bwv 245 johann sebastian bach bach"}, {"kind": "work", "label": "The Art of Fugue", "sub": "Johann Sebastian Bach · BWV 1080 · 5 queued", "href": "../composers/bach.html#bach_art_of_fugue", "keys": "the art of fugue bwv 1080 johann sebastian bach bach"}, {"kind": "work", "label": "Harpsichord Concertos", "sub": "Johann Sebastian Bach · BWV 1052–1058 · 5 queued", "href": "../composers/bach.html#bach_harpsichord_concertos", "keys": "harpsichord concertos bwv 1052–1058 johann sebastian bach bach"}, {"kind": "composer", "label": "Ludwig van Beethoven", "sub": "1770–1827 · 12 works", "href": "../composers/beethoven.html", "keys": "ludwig van beethoven beethoven beethoven"}, {"kind": "work", "label": "Symphony No. 3, Eroica", "sub": "Ludwig van Beethoven · Op. 55 · 4 queued", "href": "../composers/beethoven.html#beethoven_sym3", "keys": "symphony no. 3, eroica op. 55 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Symphony No. 5", "sub": "Ludwig van Beethoven · Op. 67 · 4 queued", "href": "../composers/beethoven.html#beethoven_sym5", "keys": "symphony no. 5 op. 67 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Symphony No. 6, Pastoral", "sub": "Ludwig van Beethoven · Op. 68 · 5 queued", "href": "../composers/beethoven.html#beethoven_sym6", "keys": "symphony no. 6, pastoral op. 68 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Symphony No. 7", "sub": "Ludwig van Beethoven · Op. 92 · 4 queued", "href": "../composers/beethoven.html#beethoven_sym7", "keys": "symphony no. 7 op. 92 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Symphony No. 9", "sub": "Ludwig van Beethoven · Op. 125 · 5 queued", "href": "../composers/beethoven.html#beethoven_sym9", "keys": "symphony no. 9 op. 125 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Piano Concerto No. 4", "sub": "Ludwig van Beethoven · Op. 58 · 5 queued", "href": "../composers/beethoven.html#beethoven_pc4", "keys": "piano concerto no. 4 op. 58 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Piano Concerto No. 5, Emperor", "sub": "Ludwig van Beethoven · Op. 73 · 4 queued", "href": "../composers/beethoven.html#beethoven_pc5", "keys": "piano concerto no. 5, emperor op. 73 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Violin Concerto", "sub": "Ludwig van Beethoven · Op. 61 · 4 queued", "href": "../composers/beethoven.html#beethoven_violin_concerto", "keys": "violin concerto op. 61 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Late String Quartets", "sub": "Ludwig van Beethoven · Opp. 127–135 · 4 queued", "href": "../composers/beethoven.html#beethoven_late_quartets", "keys": "late string quartets opp. 127–135 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Piano Sonata No. 29, Hammerklavier", "sub": "Ludwig van Beethoven · Op. 106 · 5 queued", "href": "../composers/beethoven.html#beethoven_hammerklavier", "keys": "piano sonata no. 29, hammerklavier op. 106 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Missa Solemnis", "sub": "Ludwig van Beethoven · Op. 123 · 4 queued", "href": "../composers/beethoven.html#beethoven_missa_solemnis", "keys": "missa solemnis op. 123 ludwig van beethoven beethoven"}, {"kind": "work", "label": "Fidelio", "sub": "Ludwig van Beethoven · Op. 72 · 4 queued", "href": "../composers/beethoven.html#beethoven_fidelio", "keys": "fidelio op. 72 ludwig van beethoven beethoven"}, {"kind": "composer", "label": "Johannes Brahms", "sub": "1833–1897 · 12 works", "href": "../composers/brahms.html", "keys": "johannes brahms brahms brahms"}, {"kind": "work", "label": "Symphony No. 1", "sub": "Johannes Brahms · Op. 68 · 5 queued", "href": "../composers/brahms.html#brahms_sym1", "keys": "symphony no. 1 op. 68 johannes brahms brahms"}, {"kind": "work", "label": "Symphony No. 4", "sub": "Johannes Brahms · Op. 98 · 4 queued", "href": "../composers/brahms.html#brahms_sym4", "keys": "symphony no. 4 op. 98 johannes brahms brahms"}, {"kind": "work", "label": "Piano Concerto No. 1", "sub": "Johannes Brahms · Op. 15 · 4 queued", "href": "../composers/brahms.html#brahms_pc1", "keys": "piano concerto no. 1 op. 15 johannes brahms brahms"}, {"kind": "work", "label": "Piano Concerto No. 2", "sub": "Johannes Brahms · Op. 83 · 4 queued", "href": "../composers/brahms.html#brahms_pc2", "keys": "piano concerto no. 2 op. 83 johannes brahms brahms"}, {"kind": "work", "label": "Violin Concerto", "sub": "Johannes Brahms · Op. 77 · 4 queued", "href": "../composers/brahms.html#brahms_violin_concerto", "keys": "violin concerto op. 77 johannes brahms brahms"}, {"kind": "work", "label": "Ein deutsches Requiem", "sub": "Johannes Brahms · Op. 45 · 4 queued", "href": "../composers/brahms.html#brahms_german_requiem", "keys": "ein deutsches requiem op. 45 johannes brahms brahms"}, {"kind": "work", "label": "Clarinet Quintet", "sub": "Johannes Brahms · Op. 115 · 4 queued", "href": "../composers/brahms.html#brahms_clarinet_quintet", "keys": "clarinet quintet op. 115 johannes brahms brahms"}, {"kind": "work", "label": "Piano Quintet", "sub": "Johannes Brahms · Op. 34 · 4 queued", "href": "../composers/brahms.html#brahms_piano_quintet", "keys": "piano quintet op. 34 johannes brahms brahms"}, {"kind": "work", "label": "Variations on a Theme by Haydn", "sub": "Johannes Brahms · Op. 56a · 4 queued", "href": "../composers/brahms.html#brahms_haydn_variations", "keys": "variations on a theme by haydn op. 56a johannes brahms brahms"}, {"kind": "work", "label": "Liebeslieder Waltzes", "sub": "Johannes Brahms · Op. 52 · 4 queued", "href": "../composers/brahms.html#brahms_liebeslieder", "keys": "liebeslieder waltzes op. 52 johannes brahms brahms"}, {"kind": "work", "label": "Academic Festival Overture", "sub": "Johannes Brahms · Op. 80 · 4 queued", "href": "../composers/brahms.html#brahms_academic_festival", "keys": "academic festival overture op. 80 johannes brahms brahms"}, {"kind": "work", "label": "Tragic Overture", "sub": "Johannes Brahms · Op. 81 · 4 queued", "href": "../composers/brahms.html#brahms_tragic_overture", "keys": "tragic overture op. 81 johannes brahms brahms"}, {"kind": "composer", "label": "Frédéric Chopin", "sub": "1810–1849 · 12 works", "href": "../composers/chopin.html", "keys": "frédéric chopin chopin chopin"}, {"kind": "work", "label": "Ballades Nos. 1–4", "sub": "Frédéric Chopin · Opp. 23, 38, 47, 52 · 4 queued", "href": "../composers/chopin.html#chopin_ballades", "keys": "ballades nos. 1–4 opp. 23, 38, 47, 52 frédéric chopin chopin"}, {"kind": "work", "label": "Études", "sub": "Frédéric Chopin · Opp. 10 & 25 · 4 queued", "href": "../composers/chopin.html#chopin_etudes", "keys": "études opp. 10 & 25 frédéric chopin chopin"}, {"kind": "work", "label": "Preludes", "sub": "Frédéric Chopin · Op. 28 · 4 queued", "href": "../composers/chopin.html#chopin_preludes", "keys": "preludes op. 28 frédéric chopin chopin"}, {"kind": "work", "label": "Piano Sonata No. 2", "sub": "Frédéric Chopin · Op. 35 · 4 queued", "href": "../composers/chopin.html#chopin_sonata2", "keys": "piano sonata no. 2 op. 35 frédéric chopin chopin"}, {"kind": "work", "label": "Piano Sonata No. 3", "sub": "Frédéric Chopin · Op. 58 · 4 queued", "href": "../composers/chopin.html#chopin_sonata3", "keys": "piano sonata no. 3 op. 58 frédéric chopin chopin"}, {"kind": "work", "label": "Piano Concerto No. 1", "sub": "Frédéric Chopin · Op. 11 · 4 queued", "href": "../composers/chopin.html#chopin_pc1", "keys": "piano concerto no. 1 op. 11 frédéric chopin chopin"}, {"kind": "work", "label": "Piano Concerto No. 2", "sub": "Frédéric Chopin · Op. 21 · 4 queued", "href": "../composers/chopin.html#chopin_pc2", "keys": "piano concerto no. 2 op. 21 frédéric chopin chopin"}, {"kind": "work", "label": "Nocturnes", "sub": "Frédéric Chopin · Opp. 9–62 · 4 queued", "href": "../composers/chopin.html#chopin_nocturnes", "keys": "nocturnes opp. 9–62 frédéric chopin chopin"}, {"kind": "work", "label": "Polonaises", "sub": "Frédéric Chopin · Opp. 26–53 · 4 queued", "href": "../composers/chopin.html#chopin_polonaises", "keys": "polonaises opp. 26–53 frédéric chopin chopin"}, {"kind": "work", "label": "Mazurkas (selection)", "sub": "Frédéric Chopin · Opp. 6–63 · 4 queued", "href": "../composers/chopin.html#chopin_mazurkas", "keys": "mazurkas (selection) opp. 6–63 frédéric chopin chopin"}, {"kind": "work", "label": "Scherzi Nos. 1–4", "sub": "Frédéric Chopin · Opp. 20, 31, 39, 54 · 4 queued", "href": "../composers/chopin.html#chopin_scherzi", "keys": "scherzi nos. 1–4 opp. 20, 31, 39, 54 frédéric chopin chopin"}, {"kind": "work", "label": "Impromptus / Fantaisie-Impromptu", "sub": "Frédéric Chopin · Opp. 29, 36, 51; Op. 66 · 4 queued", "href": "../composers/chopin.html#chopin_impromptus", "keys": "impromptus / fantaisie-impromptu opp. 29, 36, 51; op. 66 frédéric chopin chopin"}, {"kind": "composer", "label": "George Frideric Handel", "sub": "1685–1759 · 12 works", "href": "../composers/handel.html", "keys": "george frideric handel handel handel"}, {"kind": "work", "label": "Messiah", "sub": "George Frideric Handel · HWV 56 · 4 queued", "href": "../composers/handel.html#handel_messiah", "keys": "messiah hwv 56 george frideric handel handel"}, {"kind": "work", "label": "Water Music", "sub": "George Frideric Handel · HWV 348–350 · 4 queued", "href": "../composers/handel.html#handel_water_music", "keys": "water music hwv 348–350 george frideric handel handel"}, {"kind": "work", "label": "Music for the Royal Fireworks", "sub": "George Frideric Handel · HWV 351 · 4 queued", "href": "../composers/handel.html#handel_fireworks", "keys": "music for the royal fireworks hwv 351 george frideric handel handel"}, {"kind": "work", "label": "Giulio Cesare", "sub": "George Frideric Handel · HWV 17 · 4 queued", "href": "../composers/handel.html#handel_giulio_cesare", "keys": "giulio cesare hwv 17 george frideric handel handel"}, {"kind": "work", "label": "Alcina", "sub": "George Frideric Handel · HWV 34 · 4 queued", "href": "../composers/handel.html#handel_alcina", "keys": "alcina hwv 34 george frideric handel handel"}, {"kind": "work", "label": "Concerti grossi, Op. 6", "sub": "George Frideric Handel · HWV 319–330 · 4 queued", "href": "../composers/handel.html#handel_op6", "keys": "concerti grossi, op. 6 hwv 319–330 george frideric handel handel"}, {"kind": "work", "label": "Organ Concertos", "sub": "George Frideric Handel · Opp. 4 & 7 · 4 queued", "href": "../composers/handel.html#handel_organ_concertos", "keys": "organ concertos opp. 4 & 7 george frideric handel handel"}, {"kind": "work", "label": "Israel in Egypt", "sub": "George Frideric Handel · HWV 54 · 4 queued", "href": "../composers/handel.html#handel_israel_in_egypt", "keys": "israel in egypt hwv 54 george frideric handel handel"}, {"kind": "work", "label": "Solomon", "sub": "George Frideric Handel · HWV 67 · 4 queued", "href": "../composers/handel.html#handel_solomon", "keys": "solomon hwv 67 george frideric handel handel"}, {"kind": "work", "label": "Agrippina", "sub": "George Frideric Handel · HWV 6 · 3 queued", "href": "../composers/handel.html#handel_agrippina", "keys": "agrippina hwv 6 george frideric handel handel"}, {"kind": "work", "label": "Rodelinda", "sub": "George Frideric Handel · HWV 19 · 4 queued", "href": "../composers/handel.html#handel_rodelinda", "keys": "rodelinda hwv 19 george frideric handel handel"}, {"kind": "work", "label": "Dixit Dominus", "sub": "George Frideric Handel · HWV 232 · 4 queued", "href": "../composers/handel.html#handel_dixit_dominus", "keys": "dixit dominus hwv 232 george frideric handel handel"}, {"kind": "composer", "label": "Joseph Haydn", "sub": "1732–1809 · 12 works", "href": "../composers/haydn.html", "keys": "joseph haydn haydn haydn"}, {"kind": "work", "label": "Symphony No. 104, London", "sub": "Joseph Haydn · Hob. I:104 · 4 queued", "href": "../composers/haydn.html#haydn_sym104", "keys": "symphony no. 104, london hob. i:104 joseph haydn haydn"}, {"kind": "work", "label": "Symphony No. 94, Surprise", "sub": "Joseph Haydn · Hob. I:94 · 4 queued", "href": "../composers/haydn.html#haydn_sym94", "keys": "symphony no. 94, surprise hob. i:94 joseph haydn haydn"}, {"kind": "work", "label": "The Creation", "sub": "Joseph Haydn · Hob. XXI:2 · 4 queued", "href": "../composers/haydn.html#haydn_creation", "keys": "the creation hob. xxi:2 joseph haydn haydn"}, {"kind": "work", "label": "String Quartets, Op. 76", "sub": "Joseph Haydn · Hob. III:75–80 · 4 queued", "href": "../composers/haydn.html#haydn_op76", "keys": "string quartets, op. 76 hob. iii:75–80 joseph haydn haydn"}, {"kind": "work", "label": "Trumpet Concerto", "sub": "Joseph Haydn · Hob. VIIe:1 · 4 queued", "href": "../composers/haydn.html#haydn_trumpet_concerto", "keys": "trumpet concerto hob. viie:1 joseph haydn haydn"}, {"kind": "work", "label": "Cello Concerto No. 1", "sub": "Joseph Haydn · Hob. VIIb:1 · 4 queued", "href": "../composers/haydn.html#haydn_cello_concerto1", "keys": "cello concerto no. 1 hob. viib:1 joseph haydn haydn"}, {"kind": "work", "label": "The Seasons", "sub": "Joseph Haydn · Hob. XXI:3 · 4 queued", "href": "../composers/haydn.html#haydn_seasons", "keys": "the seasons hob. xxi:3 joseph haydn haydn"}, {"kind": "work", "label": "Missa in angustiis (Nelson Mass)", "sub": "Joseph Haydn · Hob. XXII:11 · 4 queued", "href": "../composers/haydn.html#haydn_nelson_mass", "keys": "missa in angustiis (nelson mass) hob. xxii:11 joseph haydn haydn"}, {"kind": "work", "label": "Piano Sonatas (selection)", "sub": "Joseph Haydn · Hob. XVI · 4 queued", "href": "../composers/haydn.html#haydn_piano_sonatas", "keys": "piano sonatas (selection) hob. xvi joseph haydn haydn"}, {"kind": "work", "label": "Symphony No. 44, Trauer", "sub": "Joseph Haydn · Hob. I:44 · 4 queued", "href": "../composers/haydn.html#haydn_sym44", "keys": "symphony no. 44, trauer hob. i:44 joseph haydn haydn"}, {"kind": "work", "label": "Symphony No. 45, Farewell", "sub": "Joseph Haydn · Hob. I:45 · 3 queued", "href": "../composers/haydn.html#haydn_sym45", "keys": "symphony no. 45, farewell hob. i:45 joseph haydn haydn"}, {"kind": "work", "label": "The Seven Last Words of Christ", "sub": "Joseph Haydn · Hob. XX/1A · 4 queued", "href": "../composers/haydn.html#haydn_seven_last_words", "keys": "the seven last words of christ hob. xx/1a joseph haydn haydn"}, {"kind": "composer", "label": "Wolfgang Amadeus Mozart", "sub": "1756–1791 · 12 works", "href": "../composers/mozart.html", "keys": "wolfgang amadeus mozart mozart mozart"}, {"kind": "work", "label": "Symphonies Nos. 39, 40, 41", "sub": "Wolfgang Amadeus Mozart · K. 543, 550, 551 · 4 queued", "href": "../composers/mozart.html#mozart_late_symphonies", "keys": "symphonies nos. 39, 40, 41 k. 543, 550, 551 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Piano Concerto No. 20", "sub": "Wolfgang Amadeus Mozart · K. 466 · 4 queued", "href": "../composers/mozart.html#mozart_pc20", "keys": "piano concerto no. 20 k. 466 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Piano Concerto No. 23", "sub": "Wolfgang Amadeus Mozart · K. 488 · 5 queued", "href": "../composers/mozart.html#mozart_pc23", "keys": "piano concerto no. 23 k. 488 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Piano Concerto No. 27", "sub": "Wolfgang Amadeus Mozart · K. 595 · 5 queued", "href": "../composers/mozart.html#mozart_pc27", "keys": "piano concerto no. 27 k. 595 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Clarinet Concerto", "sub": "Wolfgang Amadeus Mozart · K. 622 · 4 queued", "href": "../composers/mozart.html#mozart_clarinet_concerto", "keys": "clarinet concerto k. 622 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Requiem", "sub": "Wolfgang Amadeus Mozart · K. 626 · 4 queued", "href": "../composers/mozart.html#mozart_requiem", "keys": "requiem k. 626 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Le nozze di Figaro", "sub": "Wolfgang Amadeus Mozart · K. 492 · 4 queued", "href": "../composers/mozart.html#mozart_figaro", "keys": "le nozze di figaro k. 492 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Don Giovanni", "sub": "Wolfgang Amadeus Mozart · K. 527 · 4 queued", "href": "../composers/mozart.html#mozart_don_giovanni", "keys": "don giovanni k. 527 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Così fan tutte", "sub": "Wolfgang Amadeus Mozart · K. 588 · 4 queued", "href": "../composers/mozart.html#mozart_cosi", "keys": "così fan tutte k. 588 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Die Zauberflöte", "sub": "Wolfgang Amadeus Mozart · K. 620 · 4 queued", "href": "../composers/mozart.html#mozart_zauberflote", "keys": "die zauberflöte k. 620 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "Great Mass in C minor", "sub": "Wolfgang Amadeus Mozart · K. 427 · 5 queued", "href": "../composers/mozart.html#mozart_mass_c_minor", "keys": "great mass in c minor k. 427 wolfgang amadeus mozart mozart"}, {"kind": "work", "label": "String Quintets", "sub": "Wolfgang Amadeus Mozart · K. 515, 516 · 5 queued", "href": "../composers/mozart.html#mozart_string_quintets", "keys": "string quintets k. 515, 516 wolfgang amadeus mozart mozart"}, {"kind": "composer", "label": "Giacomo Puccini", "sub": "1858–1924 · 11 works", "href": "../composers/puccini.html", "keys": "giacomo puccini puccini puccini"}, {"kind": "work", "label": "Manon Lescaut", "sub": "Giacomo Puccini · — · 4 queued", "href": "../composers/puccini.html#puccini_manon_lescaut", "keys": "manon lescaut — giacomo puccini puccini"}, {"kind": "work", "label": "La Bohème", "sub": "Giacomo Puccini · — · 4 queued", "href": "../composers/puccini.html#puccini_boheme", "keys": "la bohème — giacomo puccini puccini"}, {"kind": "work", "label": "Tosca", "sub": "Giacomo Puccini · — · 2 assessed", "href": "../entries.html#puccini_tosca", "keys": "tosca — giacomo puccini puccini"}, {"kind": "recording", "label": "Victor de Sabata / Orchestra e Coro del Teatro alla Scala / Maria Callas, Giuseppe Di Stefano, Tito Gobbi", "sub": "Giacomo Puccini · Tosca · EMI / Columbia, 1953", "href": "../entries.html#puccini_tosca_desabata", "keys": "victor de sabata / orchestra e coro del teatro alla scala / maria callas, giuseppe di stefano, tito gobbi emi / columbia, 1953 tosca giacomo puccini victor de sabata orchestra e coro del teatro alla scala maria callas, giuseppe di stefano, tito gobbi"}, {"kind": "recording", "label": "Herbert von Karajan / Wiener Philharmoniker / Leontyne Price, Giuseppe Di Stefano, Giuseppe Taddei", "sub": "Giacomo Puccini · Tosca · Decca, 1962–63", "href": "../entries.html#puccini_tosca_karajan", "keys": "herbert von karajan / wiener philharmoniker / leontyne price, giuseppe di stefano, giuseppe taddei decca, 1962–63 tosca giacomo puccini herbert von karajan wiener philharmoniker leontyne price, giuseppe di stefano, giuseppe taddei"}, {"kind": "work", "label": "Madama Butterfly", "sub": "Giacomo Puccini · — · 4 queued", "href": "../composers/puccini.html#puccini_butterfly", "keys": "madama butterfly — giacomo puccini puccini"}, {"kind": "work", "label": "La fanciulla del West", "sub": "Giacomo Puccini · — · 4 queued", "href": "../composers/puccini.html#puccini_fanciulla", "keys": "la fanciulla del west — giacomo puccini puccini"}, {"kind": "work", "label": "La rondine", "sub": "Giacomo Puccini · — · 5 queued", "href": "../composers/puccini.html#puccini_rondine", "keys": "la rondine — giacomo puccini puccini"}, {"kind": "work", "label": "Il trittico", "sub": "Giacomo Puccini · — · 5 queued", "href": "../composers/puccini.html#puccini_trittico", "keys": "il trittico — giacomo puccini puccini"}, {"kind": "work", "label": "Turandot", "sub": "Giacomo Puccini · — · 4 queued", "href": "../composers/puccini.html#puccini_turandot", "keys": "turandot — giacomo puccini puccini"}, {"kind": "work", "label": "Le Villi", "sub": "Giacomo Puccini · — · 5 queued", "href": "../composers/puccini.html#puccini_villi", "keys": "le villi — giacomo puccini puccini"}, {"kind": "work", "label": "Edgar", "sub": "Giacomo Puccini · — · 5 queued", "href": "../composers/puccini.html#puccini_edgar", "keys": "edgar — giacomo puccini puccini"}, {"kind": "work", "label": "Messa di Gloria", "sub": "Giacomo Puccini · — · 5 queued", "href": "../composers/puccini.html#puccini_messa_gloria", "keys": "messa di gloria — giacomo puccini puccini"}, {"kind": "composer", "label": "Franz Schubert", "sub": "1797–1828 · 12 works", "href": "../composers/schubert.html", "keys": "franz schubert schubert schubert"}, {"kind": "work", "label": "Symphony No. 8, Unfinished", "sub": "Franz Schubert · D. 759 · 4 queued", "href": "../composers/schubert.html#schubert_sym8", "keys": "symphony no. 8, unfinished d. 759 franz schubert schubert"}, {"kind": "work", "label": "Symphony No. 9, Great", "sub": "Franz Schubert · D. 944 · 4 queued", "href": "../composers/schubert.html#schubert_sym9", "keys": "symphony no. 9, great d. 944 franz schubert schubert"}, {"kind": "work", "label": "Winterreise", "sub": "Franz Schubert · D. 911 · 4 queued", "href": "../composers/schubert.html#schubert_winterreise", "keys": "winterreise d. 911 franz schubert schubert"}, {"kind": "work", "label": "Die schöne Müllerin", "sub": "Franz Schubert · D. 795 · 4 queued", "href": "../composers/schubert.html#schubert_schone_mullerin", "keys": "die schöne müllerin d. 795 franz schubert schubert"}, {"kind": "work", "label": "String Quintet", "sub": "Franz Schubert · D. 956 · 4 queued", "href": "../composers/schubert.html#schubert_string_quintet", "keys": "string quintet d. 956 franz schubert schubert"}, {"kind": "work", "label": "String Quartet No. 14, Death and the Maiden", "sub": "Franz Schubert · D. 810 · 4 queued", "href": "../composers/schubert.html#schubert_death_maiden", "keys": "string quartet no. 14, death and the maiden d. 810 franz schubert schubert"}, {"kind": "work", "label": "Piano Sonata in B-flat", "sub": "Franz Schubert · D. 960 · 5 queued", "href": "../composers/schubert.html#schubert_sonata_d960", "keys": "piano sonata in b-flat d. 960 franz schubert schubert"}, {"kind": "work", "label": "Piano Quintet, Trout", "sub": "Franz Schubert · D. 667 · 4 queued", "href": "../composers/schubert.html#schubert_trout", "keys": "piano quintet, trout d. 667 franz schubert schubert"}, {"kind": "work", "label": "Mass in E-flat", "sub": "Franz Schubert · D. 950 · 4 queued", "href": "../composers/schubert.html#schubert_mass_e_flat", "keys": "mass in e-flat d. 950 franz schubert schubert"}, {"kind": "work", "label": "Impromptus", "sub": "Franz Schubert · D. 899 & D. 935 · 4 queued", "href": "../composers/schubert.html#schubert_impromptus", "keys": "impromptus d. 899 & d. 935 franz schubert schubert"}, {"kind": "work", "label": "Schwanengesang", "sub": "Franz Schubert · D. 957 · 4 queued", "href": "../composers/schubert.html#schubert_schwanengesang", "keys": "schwanengesang d. 957 franz schubert schubert"}, {"kind": "work", "label": "Rosamunde (incidental music)", "sub": "Franz Schubert · D. 797 · 4 queued", "href": "../composers/schubert.html#schubert_rosamunde", "keys": "rosamunde (incidental music) d. 797 franz schubert schubert"}, {"kind": "composer", "label": "Dmitri Shostakovich", "sub": "1906–1975 · 12 works", "href": "../composers/shostakovich.html", "keys": "dmitri shostakovich shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 1", "sub": "Dmitri Shostakovich · Op. 10 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym1", "keys": "symphony no. 1 op. 10 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 4", "sub": "Dmitri Shostakovich · Op. 43 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym4", "keys": "symphony no. 4 op. 43 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 5", "sub": "Dmitri Shostakovich · Op. 47 · 3 assessed", "href": "../entries.html#shostakovich_sym5", "keys": "symphony no. 5 op. 47 dmitri shostakovich shostakovich"}, {"kind": "recording", "label": "Andris Nelsons / Boston Symphony Orchestra", "sub": "Dmitri Shostakovich · Symphony No. 5 · Deutsche Grammophon, 2016", "href": "../entries.html#shostakovich_sym5_nelsons", "keys": "andris nelsons / boston symphony orchestra deutsche grammophon, 2016 symphony no. 5 dmitri shostakovich andris nelsons boston symphony orchestra "}, {"kind": "recording", "label": "Yevgeny Mravinsky / Leningrad Philharmonic Orchestra", "sub": "Dmitri Shostakovich · Symphony No. 5 · various, 1954–1978", "href": "../entries.html#shostakovich_sym5_mravinsky", "keys": "yevgeny mravinsky / leningrad philharmonic orchestra various, 1954–1978 symphony no. 5 dmitri shostakovich yevgeny mravinsky leningrad philharmonic orchestra "}, {"kind": "recording", "label": "Gianandrea Noseda / London Symphony Orchestra", "sub": "Dmitri Shostakovich · Symphony No. 5 · LSO Live, 2020", "href": "../entries.html#shostakovich_sym5_noseda", "keys": "gianandrea noseda / london symphony orchestra lso live, 2020 symphony no. 5 dmitri shostakovich gianandrea noseda london symphony orchestra "}, {"kind": "work", "label": "Symphony No. 6", "sub": "Dmitri Shostakovich · Op. 54 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym6", "keys": "symphony no. 6 op. 54 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 7, Leningrad", "sub": "Dmitri Shostakovich · Op. 60 · 4 queued", "href": "../composers/shostakovich.html#shostakovich_sym7", "keys": "symphony no. 7, leningrad op. 60 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 8", "sub": "Dmitri Shostakovich · Op. 65 · 4 queued", "href": "../composers/shostakovich.html#shostakovich_sym8", "keys": "symphony no. 8 op. 65 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 9", "sub": "Dmitri Shostakovich · Op. 70 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym9", "keys": "symphony no. 9 op. 70 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 10", "sub": "Dmitri Shostakovich · Op. 93 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym10", "keys": "symphony no. 10 op. 93 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 11, The Year 1905", "sub": "Dmitri Shostakovich · Op. 103 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym11", "keys": "symphony no. 11, the year 1905 op. 103 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 13, Babi Yar", "sub": "Dmitri Shostakovich · Op. 113 · 4 queued", "href": "../composers/shostakovich.html#shostakovich_sym13", "keys": "symphony no. 13, babi yar op. 113 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 14", "sub": "Dmitri Shostakovich · Op. 135 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym14", "keys": "symphony no. 14 op. 135 dmitri shostakovich shostakovich"}, {"kind": "work", "label": "Symphony No. 15", "sub": "Dmitri Shostakovich · Op. 141 · 5 queued", "href": "../composers/shostakovich.html#shostakovich_sym15", "keys": "symphony no. 15 op. 141 dmitri shostakovich shostakovich"}];
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const input = document.getElementById("q");
+const panel = document.getElementById("q-panel");
+const KIND_ORDER = {composer:0, work:1, recording:2};
+const KIND_LABEL = {composer:"Composers", work:"Works", recording:"Recordings"};
+function search(q){
+  q = q.trim().toLowerCase().replace(/\s+/g," ");
+  if(q.length < 2) return [];
+  const tokens = q.split(" ");
+  return INDEX.filter(item => tokens.every(t => item.keys.includes(t)))
+    .sort((a,b) => KIND_ORDER[a.kind]-KIND_ORDER[b.kind] || a.label.localeCompare(b.label))
+    .slice(0, 24);
+}
+function render(hits){
+  if(!input.value.trim()){ panel.classList.remove("open"); panel.innerHTML=""; return; }
+  if(!hits.length){
+    panel.classList.add("open");
+    panel.innerHTML = `<p class="find-empty">No composers, works or recordings match.</p>`;
+    return;
+  }
+  let html = "", kind = null;
+  for(const h of hits){
+    if(h.kind !== kind){
+      kind = h.kind;
+      html += `<p class="find-group">${KIND_LABEL[kind]}</p>`;
+    }
+    html += `<a class="find-hit" href="${esc(h.href)}"><span class="lbl">${esc(h.label)}</span>
+      <span class="sub">${esc(h.sub)}</span></a>`;
+  }
+  panel.classList.add("open");
+  panel.innerHTML = html;
+}
+input.addEventListener("input", () => render(search(input.value)));
+input.addEventListener("keydown", e => {
+  if(e.key === "Escape"){ panel.classList.remove("open"); input.blur(); }
+  if(e.key === "Enter"){
+    const first = panel.querySelector(".find-hit");
+    if(first){ e.preventDefault(); first.click(); }
+  }
+});
+document.addEventListener("click", e => {
+  if(!e.target.closest(".find")) panel.classList.remove("open");
+});
+</script>
+</body></html>
