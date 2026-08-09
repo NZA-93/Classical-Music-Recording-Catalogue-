@@ -1,0 +1,26 @@
+[
+  {
+    "award": "Grammy — Best Orchestral Performance",
+    "year": 2009,
+    "ceremony": "51st Annual Grammy Awards",
+    "album": "Shostakovich: Symphony No. 4",
+    "performers": "Chicago Symphony Orchestra, Bernard Haitink",
+    "label": "CSO Resound",
+    "covers_works": ["shostakovich/sym4"],
+    "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+    "corroboration": [],
+    "note": "No catalogue candidate for Haitink/CSO Sym. 4 yet; row kept so a later seed match can emit a proposal. Do not invent a recording id."
+  },
+  {
+    "award": "Grammy — Best Orchestral Performance",
+    "year": 1991,
+    "ceremony": "33rd Annual Grammy Awards",
+    "album": "Shostakovich: Symphonies Nos. 1 & 7",
+    "performers": "Chicago Symphony Orchestra, Leonard Bernstein",
+    "label": "Deutsche Grammophon",
+    "covers_works": ["shostakovich/sym1", "shostakovich/sym7"],
+    "locator": "https://en.wikipedia.org/wiki/Grammy_Award_for_Best_Orchestral_Performance",
+    "corroboration": [],
+    "note": "Album award (ADR-001). Seed has a 1988 Bernstein/CSO Sym. 7 candidate — year gap may flag ambiguous_risk; human must confirm identity before ingest."
+  }
+]
