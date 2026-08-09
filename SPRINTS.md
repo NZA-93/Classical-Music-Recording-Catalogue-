@@ -372,9 +372,45 @@ without a locator, and that no signed entry was machine-assisted. Tag
 
 ## Out of scope for both sprints
 
-Cover OCR and perceptual hashing · the interactive service · a sixth composer ·
+Cover OCR and perceptual hashing · the interactive service ·
 Discogs integration of any kind · rehosting images · **any scraping of a
 publication's site** · any change to the four regression scores.
+
+> **Amendment (automation track).** Adding composers beyond the original five is
+> no longer forbidden. Growth is paced at **five well-known composers per week**
+> via `proposals/composer-queue.json` and `docs/automation/`. Seed expansion
+> remains facts-only; assessments still require cited sources. Scraping
+> publication sites remains forbidden.
+
+---
+
+# Sprint 3 — Weekly expansion & origin-weighted composer rollup
+
+**Goal:** the catalogue grows by five composers each week, cover art resolves
+through the Cover Art Archive, and each assessed recording accumulates citations
+toward ≥5 independent sources. A composer-level figure exists only as a rollup
+of ratified statements weighted by review origin (class × provenance).
+
+**Orchestration:** [`docs/automation/README.md`](docs/automation/README.md).
+
+### S3-00 · Automation structure `[A]` · this track
+Docs, composer queue, `agents/weekly_expand.py`, `aggregate_composer()`, site
+display of rollups. **Done when:** `make expand-brief && make test && make site`.
+
+### S3-01 · Week batch seed `[A]`
+Role A implements the next five composers from the queue into
+`engine/seed_catalogue.py`. No scores.
+
+### S3-02 · Identity + covers for the new batch `[A]`
+Role B harvest → proposals only. CAA hotlinks; never rehost images.
+
+### S3-03 · Citation drive to ≥5 sources `[A→H]`
+Role C emits award/citation proposals for assessed recordings. Human ratifies
+into `data/statements/`. Stretch target: 10 sources.
+
+### S3-04 · Apply / review tooling land `[A]`
+Merge or re-implement `apply.py` / `review.py` from prior `cursor/s1-*` branches
+so proposals become seed/recording facts without touching statements.
 
 ## Risk register
 
