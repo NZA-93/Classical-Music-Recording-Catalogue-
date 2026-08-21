@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+"""Tests for agents/identity_board.py — honest omit, derived why-missed only."""
+
+from __future__ import annotations
+
+import pathlib
+import sys
+import tempfile
+import unittest
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "agents"))
+
+import identity_board as ib  # noqa: E402
+
+
+SEED_HARN = {
+    "id": "bach/brandenburg/1",
+    "work": "Johann Sebastian Bach — Brandenburg Concertos",
+    "work_title": "Brandenburg Concertos",
+    "catalogue": "BWV 1046–1051",
+    "director": "Nikolaus Harnoncourt",
+    "ensemble": "Concentus Musicus Wien",
+    "soloists": "",
+    "label": "Teldec",
+    "year": "1964",
+}
+
+PROP_HARN = {
+    "target": "bach/brandenburg/1",
+    "kind": "identity",
+    "payload": {
+        "mbid": "bfa92d8f-6b21-3b68-b584-9e130b1405b3",
+        "mb_title": "Brandenburgische Konzerte",
+        "mb_first_release": "1967",
+        "confidence": 56,
+        "review_flags": ["confidence 56 < 80"],
+    },
+}
+
+
+class TestWhyItMissed(unittest.TestCase):
+    def test_parses_confidence_flag(self):
+        reasons = ib.why_it_missed(SEED_HARN, PROP_HARN)
+        codes = {r["code"] for r in reasons}
+        self.assertIn("low_confidence", codes)
+        self.assertTrue(any("56" in r["detail"] for r in reasons))
+
+    def test_parses_date_off_flag(self):
+        prop = {
+            "payload": {
+                "mb_title": "Brandenburg Concertos",
+                "mb_first_release": "1985",
+                "review_flags": ["date off by 21 years (1964 vs 1985)"],
+            }
+        }
+        reasons = ib.why_it_missed(SEED_HARN, prop)
+        self.assertEqual(reasons[0]["code"], "date_mismatch")
+        self.assertIn("date off by 21", reasons[0]["detail"])
+
+    def test_parses_compilation_flag(self):
+        prop = {
+            "payload": {
+                "mb_title": "Messiah (Highlights)",
+                "mb_first_release": "1990",
+                "review_flags": ["compilation-like title: 'Messiah (Highlights)'"],
+            }
+        }
+        seed = {**SEED_HARN, "work_title": "Messiah", "year": "1990"}
+        reasons = ib.why_it_missed(seed, prop)
+        self.assertIn("compilation_or_box", {r["code"] for r in reasons})
+
+    def test_never_invents_when_no_mismatch(self):
+        prop = {
+            "payload": {
+                "mb_title": "Brandenburg Concertos",
+                "mb_first_release": "1964",
+                "review_flags": [],
+            }
+        }
+        reasons = ib.why_it_missed(SEED_HARN, prop)
+        self.assertEqual(len(reasons), 1)
+        self.assertEqual(reasons[0]["code"], "needs_human_review_bucket")
+
+
+class TestFieldPresence(unittest.TestCase):
+    def test_inventory_marks_five_critic_fields(self):
+        by_field = {r["field"]: r for r in ib.FIELD_INVENTORY}
+        self.assertEqual(by_field["fassung"]["status"], "absent")
+        self.assertEqual(by_field["completeness"]["status"], "absent")
+        self.assertEqual(by_field["session_year"]["status"], "absent")
+        self.assertEqual(by_field["live_studio"]["status"], "absent")
+        self.assertEqual(by_field["why_it_missed"]["status"], "derived")
+
+    def test_enrichment_does_not_synthesize_absents(self):
+        enrich = ib.enrichment_for_row(SEED_HARN, PROP_HARN, [SEED_HARN])
+        fp = enrich["field_presence"]
+        self.assertIsNone(fp["fassung"])
+        self.assertIsNone(fp["completeness"])
+        self.assertIsNone(fp["session_year"])
+        self.assertIsNone(fp["live_studio"])
+        self.assertIsNone(fp["release_mbid"])
+        self.assertEqual(fp["seed_year"], "1964")
+        self.assertEqual(fp["mb_first_release"], "1967")
+
+    def test_criteria_mark_absent_not_pass_for_fassung(self):
+        checks = {c["criterion"]: c for c in ib.criterion_status(SEED_HARN, PROP_HARN)}
+        self.assertEqual(checks["same_fassung"]["status"], "absent")
+        self.assertEqual(checks["same_completeness"]["status"], "absent")
+        self.assertEqual(checks["live_vs_studio"]["status"], "absent")
+        self.assertEqual(checks["session_year_field"]["status"], "absent")
+
+
+class TestRemakeSiblings(unittest.TestCase):
+    def test_finds_same_forces_different_year(self):
+        others = [
+            SEED_HARN,
+            {
+                "id": "bach/brandenburg/9",
+                "work_title": "Brandenburg Concertos",
+                "director": "Nikolaus Harnoncourt",
+                "ensemble": "Concentus Musicus Wien",
+                "year": "1987",
+                "label": "Teldec",
+            },
+            {
+                "id": "bach/brandenburg/8",
+                "work_title": "Brandenburg Concertos",
+                "director": "Trevor Pinnock",
+                "ensemble": "The English Concert",
+                "year": "1982",
+                "label": "Archiv",
+            },
+        ]
+        sibs = ib.remake_siblings(SEED_HARN, others, exclude_id="bach/brandenburg/1")
+        self.assertEqual(len(sibs), 1)
+        self.assertEqual(sibs[0]["id"], "bach/brandenburg/9")
+
+
+class TestGapsMarkdown(unittest.TestCase):
+    def test_writes_payload_gaps(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = pathlib.Path(td) / "PAYLOAD_GAPS.md"
+            ib.write_payload_gaps_markdown(str(path))
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("payload absent (blank)", text)
+            self.assertIn("`fassung`", text)
+            self.assertIn("`why_it_missed`", text)
+            self.assertIn("Never fill a blank with a guess", text)
+
+
+if __name__ == "__main__":
+    unittest.main()

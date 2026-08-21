@@ -5,6 +5,10 @@ Read-only UI over the harvest review queue + community comments.
 Owner decisions stay in proposals/review-decisions.json (git); community
 comments live in data/community/ and are labeled as non-editorial.
 
+Needs-review rows are identity-enriched (side-by-side seed vs MB, why-it-missed
+from actual mismatches only, remake siblings). Empty harvest fields stay blank —
+never invented. Citation tasks stay off identity rows.
+
 No runtime dependencies. No scores invented here.
 """
 
@@ -12,17 +16,23 @@ from __future__ import annotations
 
 import json
 import pathlib
+import sys
 from collections import defaultdict
 from html import escape
 from typing import Any
 
 ROOT = pathlib.Path(".")
+sys.path.insert(0, str(ROOT / "agents"))
+
+import identity_board as ib  # noqa: E402
+
 DOCS = ROOT / "docs" / "review"
 QUEUE = ROOT / "proposals" / "review-queue.json"
 DECISIONS = ROOT / "proposals" / "review-decisions.json"
 COMMUNITY = ROOT / "data" / "community" / "comments.json"
 SEED = ROOT / "data" / "seed.json"
 PROPOSALS = ROOT / "proposals" / "proposals-20260809.json"
+GAPS_MD = ROOT / "proposals" / "review" / "PAYLOAD_GAPS.md"
 OWNER = "NZA-93"
 REPO = "Classical-Music-Recording-Catalogue-"
 PAGES = f"https://{OWNER.lower()}.github.io/{REPO}/"
@@ -31,6 +41,12 @@ ISSUE_NEW = (
     f"?template=community-review-comment.yml"
 )
 
+PACK_LABEL = {
+    "accept_eligible": "ACCEPT_ELIGIBLE",
+    "needs_review": "NEEDS_REVIEW",
+    "reject_wrong_work": "REJECT_WRONG_WORK",
+}
+
 
 def load(path: pathlib.Path, default: Any) -> Any:
     if not path.exists():
@@ -38,20 +54,43 @@ def load(path: pathlib.Path, default: Any) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def index_seed(seed: dict) -> dict[str, dict]:
-    out = {}
-    for work in seed.get("works", []):
+def index_seed(seed: dict) -> tuple[dict[str, dict], list[dict], dict[str, int]]:
+    """Return (by_id, all_candidates, work_order) with honest field presence."""
+    out: dict[str, dict] = {}
+    all_cands: list[dict] = []
+    work_order: dict[str, int] = {}
+    for wi, work in enumerate(seed.get("works", [])):
+        wid = str(work.get("id") or "")
+        work_order[wid] = wi
+        title = work.get("title") or ""
+        composer = work.get("composer") or ""
+        catalogue = work.get("catalogue") or ""
+        display = f"{composer} — {title}" if composer and title else (title or composer)
         for cand in work.get("candidates", []):
-            out[cand["id"]] = {
-                "work": f'{work.get("composer")} — {work.get("title")}',
-                "director": cand.get("director"),
-                "ensemble": cand.get("ensemble"),
-                "soloists": cand.get("soloists"),
-                "label": cand.get("label"),
+            row = {
+                "id": cand.get("id"),
+                "work": display,
+                "work_title": title,
+                "composer": composer,
+                "catalogue": catalogue,
+                "work_id": wid,
+                "director": cand.get("director") or "",
+                "ensemble": cand.get("ensemble") or "",
+                "soloists": cand.get("soloists") or "",
+                "label": cand.get("label") or "",
                 "year": cand.get("year"),
                 "mbid": cand.get("mbid"),
+                # Honest absents — never invent:
+                "fassung": None,
+                "completeness": None,
+                "session_year": None,
+                "live_studio": None,
+                "venue": None,
+                "catno": None,
             }
-    return out
+            out[cand["id"]] = row
+            all_cands.append(row)
+    return out, all_cands, work_order
 
 
 def proposal_by_target(proposals: list) -> dict[str, dict]:
@@ -59,7 +98,7 @@ def proposal_by_target(proposals: list) -> dict[str, dict]:
     for prop in proposals:
         if prop.get("kind") != "identity":
             continue
-        out[prop["target"]] = prop.get("payload") or {}
+        out[prop["target"]] = prop
     return out
 
 
@@ -71,13 +110,26 @@ def decision_map(doc: dict) -> dict[str, dict]:
     return out
 
 
+def blank(label: str) -> str:
+    return (
+        f'<span class="blank" title="payload absent — honest omit">'
+        f'{escape(label)}: —</span>'
+    )
+
+
+def shown(label: str, value: Any) -> str:
+    if value is None or value == "":
+        return blank(label)
+    return f'<span class="shown"><span class="k">{escape(label)}</span> {escape(str(value))}</span>'
+
+
 CSS = """
 :root{--ground:#E7EAE3;--paper:#FBFCF9;--ink:#191D1A;--ink-soft:#5B655D;--hair:#C7CDC2;
 --verdigris:#2F6B60;--oxblood:#7A1220;--amber:#8A5A12}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--ground);color:var(--ink);font-family:"Newsreader",Georgia,serif;
 font-size:17px;line-height:1.55;padding:0 clamp(1rem,3vw,2rem) 4rem}
-.wrap{max-width:72rem;margin:0 auto}
+.wrap{max-width:78rem;margin:0 auto}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
 .masthead{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:baseline;
 padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--ink)}
@@ -87,7 +139,7 @@ padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--ink)}
 letter-spacing:.16em;text-transform:uppercase}
 .masthead a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
 .masthead a:hover,.masthead a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
-.hero{padding:2rem 0 1.4rem;max-width:44rem}
+.hero{padding:2rem 0 1.4rem;max-width:48rem}
 .hero h2{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(1.8rem,5vw,2.6rem);
 line-height:1.05;margin-bottom:.6rem}
 .hero p{color:var(--ink-soft)}
@@ -97,6 +149,7 @@ background:var(--paper);font-size:.92rem}
 text-transform:uppercase}
 .banner.community{border-color:var(--amber)}
 .banner.owner{border-color:var(--verdigris)}
+.banner.gaps{border-color:var(--ink-soft)}
 .tally{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.2rem}
 .tally div{font-family:"IBM Plex Mono",monospace}
 .tally b{display:block;font-family:"Bodoni Moda",serif;font-size:1.7rem;font-weight:400}
@@ -106,9 +159,10 @@ text-transform:uppercase}
 text-transform:uppercase;padding:.35rem .6rem;border:1px solid var(--hair);background:var(--paper);
 color:var(--ink);cursor:pointer}
 .filters button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
-.row{border-top:1px solid var(--hair);padding:1rem 0;display:grid;
-grid-template-columns:1fr;gap:.55rem}
-@media(min-width:820px){.row{grid-template-columns:1.1fr 1fr;gap:1.2rem}}
+.row{border-top:1px solid var(--hair);padding:1.15rem 0;display:grid;
+grid-template-columns:1fr;gap:.75rem}
+@media(min-width:900px){.row{grid-template-columns:1fr 1fr;gap:1.4rem}
+.row.identity-rich{grid-template-columns:1fr 1fr;}}
 .row h3{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.05rem}
 .meta{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.06em;
 color:var(--ink-soft);text-transform:uppercase}
@@ -120,7 +174,23 @@ margin-right:.35rem}
 .chip.reject{color:var(--oxblood)}
 .chip.defer{color:var(--amber)}
 .chip.wrong{color:var(--oxblood);border-style:dashed}
-.flags{color:var(--oxblood);font-size:.88rem}
+.chip.absent{color:var(--ink-soft);border-style:dashed}
+.chip.conflict{color:var(--oxblood)}
+.chip.pass{color:var(--verdigris)}
+.why{margin:.55rem 0;padding:.65rem .75rem;background:var(--paper);border-left:3px solid var(--oxblood)}
+.why h4{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.1em;
+text-transform:uppercase;color:var(--oxblood);margin-bottom:.35rem}
+.why li{margin:.25rem 0;font-size:.92rem;list-style:none}
+.why .fields{font-family:"IBM Plex Mono",monospace;font-size:.58rem;color:var(--ink-soft)}
+.criteria{margin:.45rem 0;font-size:.88rem}
+.criteria li{list-style:none;margin:.2rem 0}
+.pair{display:grid;gap:.35rem;font-size:.92rem}
+.pair .col-h{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.1em;
+text-transform:uppercase;color:var(--ink-soft);margin-bottom:.15rem}
+.blank{color:var(--ink-soft);font-style:italic}
+.shown .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.06em;
+text-transform:uppercase;color:var(--ink-soft);margin-right:.25rem}
+.siblings{margin-top:.4rem;font-size:.88rem;color:var(--ink-soft)}
 .comments{margin-top:.4rem;padding:.65rem .75rem;background:var(--paper);border-left:3px solid var(--amber)}
 .comments h4{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.1em;
 text-transform:uppercase;color:var(--amber);margin-bottom:.35rem}
@@ -128,8 +198,10 @@ text-transform:uppercase;color:var(--amber);margin-bottom:.35rem}
 .comments .who{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--ink-soft)}
 .actions a{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.08em;
 text-transform:uppercase;color:var(--verdigris);margin-right:1rem}
+.defer-hint{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.06em;
+text-transform:uppercase;color:var(--amber);margin-top:.35rem}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--ink);color:var(--ink-soft);
-font-size:.85rem;max-width:40rem}
+font-size:.85rem;max-width:44rem}
 """
 
 
@@ -140,10 +212,173 @@ def chip(decision: str, wrong: bool = False) -> str:
     return f'<span class="chip {escape(d)}">{escape(d)}</span>'
 
 
-def render_row(target: str, seed_row: dict, payload: dict, decision: dict,
-               comments: list[dict], bucket: str) -> str:
+def render_why(reasons: list[dict[str, str]]) -> str:
+    items = "".join(
+        f'<li>{escape(r["detail"])} '
+        f'<span class="fields">[{escape(r["fields"])}]</span></li>'
+        for r in reasons
+    )
+    return (
+        f'<div class="why"><h4>Why it missed auto-accept</h4><ul>{items}</ul></div>'
+    )
+
+
+def render_criteria(checks: list[dict[str, str]]) -> str:
+    items = "".join(
+        f'<li><span class="chip {escape(c["status"])}">{escape(c["status"])}</span> '
+        f'{escape(c["criterion"])} — {escape(c["note"])}</li>'
+        for c in checks
+    )
+    return f'<ul class="criteria">{items}</ul>'
+
+
+def render_siblings(siblings: list[dict[str, Any]]) -> str:
+    if not siblings:
+        return '<p class="siblings">Remake siblings: <span class="blank">none in seed</span></p>'
+    bits = "; ".join(
+        f'{escape(s["id"])} ({escape(str(s.get("year") or "—"))}, '
+        f'{escape(s.get("label") or "—")})'
+        for s in siblings
+    )
+    return f'<p class="siblings">Remake siblings (same forces, different year): {bits}</p>'
+
+
+def render_comments(comments: list[dict]) -> str:
+    if not comments:
+        return ""
+    items = "".join(
+        f'<li><span class="who">{escape(c.get("author") or "?")} · '
+        f'community</span><br>{escape(c.get("body") or "")}</li>'
+        for c in comments
+    )
+    return (
+        f'<div class="comments"><h4>Community notes '
+        f'(not editorial)</h4><ul>{items}</ul></div>'
+    )
+
+
+def has_absent_required(checks: list[dict[str, str]]) -> bool:
+    critical = {
+        "same_fassung",
+        "same_completeness",
+        "session_year_field",
+        "same_session_year",
+        "live_vs_studio",
+    }
+    return any(c["criterion"] in critical and c["status"] == "absent" for c in checks)
+
+
+def render_identity_rich(
+    target: str,
+    seed_row: dict,
+    proposal: dict,
+    decision: dict,
+    comments: list[dict],
+    bucket: str,
+    enrich: dict[str, Any],
+) -> str:
+    payload = proposal.get("payload") or {}
     flags = list(payload.get("review_flags") or [])
-    wrong = any(f.startswith("wrong work:") for f in flags)
+    wrong = any(str(f).startswith("wrong work:") for f in flags)
+    mb_url = payload.get("mb_url") or (
+        f"https://musicbrainz.org/release-group/{payload['mbid']}"
+        if payload.get("mbid") else ""
+    )
+    pack = PACK_LABEL.get(bucket, bucket)
+    conf = payload.get("confidence", payload.get("match_score"))
+
+    seed_col = f"""
+    <div class="pair">
+      <p class="col-h">Seed</p>
+      {shown("work", seed_row.get("work_title") or seed_row.get("work"))}
+      {shown("catalogue", seed_row.get("catalogue"))}
+      {blank("Fassung")}
+      {blank("completeness")}
+      {shown("conductor", seed_row.get("director"))}
+      {shown("orchestra", seed_row.get("ensemble"))}
+      {shown("soloists", seed_row.get("soloists"))}
+      {blank("soloist roles")}
+      {blank("session year")}
+      {shown("seed year (not session)", seed_row.get("year"))}
+      {blank("venue")}
+      {blank("live/studio")}
+      {shown("label", seed_row.get("label"))}
+      {blank("catno")}
+    </div>
+    """
+
+    rg = payload.get("mbid")
+    mb_col = f"""
+    <div class="pair">
+      <p class="col-h">MusicBrainz (harvest)</p>
+      {shown("mb_title", payload.get("mb_title"))}
+      {blank("catalogue")}
+      {blank("Fassung")}
+      {blank("completeness")}
+      {blank("conductor / artist-credit")}
+      {blank("orchestra")}
+      {blank("soloists / roles")}
+      {blank("session year")}
+      {shown("first release (not session)", payload.get("mb_first_release"))}
+      {blank("venue")}
+      {blank("live/studio")}
+      {blank("label")}
+      {blank("catno")}
+      {blank("barcode")}
+      {shown("release-group MBID", rg)}
+      {blank("release MBID")}
+      {shown("confidence", conf)}
+    </div>
+    """
+
+    issue = f"{ISSUE_NEW}&title={escape(target)}&target={escape(target)}"
+    mb_link = (
+        f'<a href="{escape(mb_url)}" rel="noopener">Open release-group</a>'
+        if mb_url else ""
+    )
+    defer = ""
+    if has_absent_required(enrich["criteria"]) and not wrong:
+        defer = (
+            '<p class="defer-hint">Absent required-looking fields — '
+            "defer is the honest default (not auto-written)</p>"
+        )
+
+    return f"""
+<article class="row identity-rich" data-bucket="{escape(bucket)}"
+  data-decision="{escape(decision.get('decision') or 'pending')}">
+  <div>
+    <p class="meta">{escape(target)} · pack {escape(pack)}</p>
+    <h3>{escape(seed_row.get("work") or target)}</h3>
+    {chip(decision.get("decision") or "pending", wrong=wrong)}
+    <span class="meta">{escape(bucket.replace("_", " "))}</span>
+    {render_why(enrich["why_missed"])}
+    {render_criteria(enrich["criteria"])}
+    {defer}
+    {render_siblings(enrich["remake_siblings"])}
+    {render_comments(comments)}
+  </div>
+  <div>
+    {seed_col}
+    {mb_col}
+    <p class="actions">{mb_link}
+      <a href="{issue}">Add community comment</a>
+    </p>
+  </div>
+</article>
+"""
+
+
+def render_simple_row(
+    target: str,
+    seed_row: dict,
+    payload: dict,
+    decision: dict,
+    comments: list[dict],
+    bucket: str,
+) -> str:
+    """Compact row for accept-eligible / wrong-work (not the 244 enrichment)."""
+    flags = list(payload.get("review_flags") or [])
+    wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
         if payload.get("mbid") else ""
@@ -159,37 +394,25 @@ def render_row(target: str, seed_row: dict, payload: dict, decision: dict,
     )
     flag_html = ""
     if flags:
-        flag_html = '<p class="flags">' + "<br>".join(
+        flag_html = '<p class="flags" style="color:var(--oxblood);font-size:.88rem">' + "<br>".join(
             escape(f) for f in flags
         ) + "</p>"
-    chtml = ""
-    if comments:
-        items = "".join(
-            f'<li><span class="who">{escape(c.get("author") or "?")} · '
-            f'community</span><br>{escape(c.get("body") or "")}</li>'
-            for c in comments
-        )
-        chtml = (
-            f'<div class="comments"><h4>Community notes '
-            f'(not editorial)</h4><ul>{items}</ul></div>'
-        )
-    issue = (
-        f"{ISSUE_NEW}&title={escape(target)}&target={escape(target)}"
-    )
+    issue = f"{ISSUE_NEW}&title={escape(target)}&target={escape(target)}"
     mb_link = (
         f'<a href="{escape(mb_url)}" rel="noopener">MusicBrainz</a>'
         if mb_url else ""
     )
+    pack = PACK_LABEL.get(bucket, bucket)
     return f"""
 <article class="row" data-bucket="{escape(bucket)}" data-decision="{escape(decision.get('decision') or 'pending')}">
   <div>
-    <p class="meta">{escape(target)}</p>
+    <p class="meta">{escape(target)} · pack {escape(pack)}</p>
     <h3>{escape(seed_row.get('work') or target)}</h3>
     <p>{escape(seed_line)}</p>
     {chip(decision.get('decision') or 'pending', wrong=wrong)}
     <span class="meta">{escape(bucket.replace('_', ' '))}</span>
     {flag_html}
-    {chtml}
+    {render_comments(comments)}
   </div>
   <div>
     <p class="meta">MusicBrainz match</p>
@@ -202,6 +425,27 @@ def render_row(target: str, seed_row: dict, payload: dict, decision: dict,
 """
 
 
+def sort_needs_review(
+    targets: list[str],
+    by_seed: dict[str, dict],
+    by_prop: dict[str, dict],
+    all_cands: list[dict],
+    work_order: dict[str, int],
+) -> list[tuple[str, dict]]:
+    """why-missed first, then work prominence (seed order)."""
+    scored: list[tuple[tuple, str, dict]] = []
+    for t in targets:
+        seed_row = by_seed.get(t) or {"id": t, "work": t, "work_title": t}
+        prop = by_prop.get(t) or {"target": t, "payload": {}}
+        enrich = ib.enrichment_for_row(seed_row, prop, all_cands)
+        wid = seed_row.get("work_id") or ""
+        prominence = work_order.get(str(wid), 10_000)
+        key = (enrich["why_missed_sort"][0], enrich["why_missed_sort"][1], prominence, t)
+        scored.append((key, t, enrich))
+    scored.sort(key=lambda x: x[0])
+    return [(t, e) for _, t, e in scored]
+
+
 def main() -> None:
     queue = load(QUEUE, {})
     decisions = decision_map(load(DECISIONS, {}))
@@ -211,7 +455,7 @@ def main() -> None:
     if not isinstance(proposals, list):
         proposals = []
 
-    by_seed = index_seed(seed)
+    by_seed, all_cands, work_order = index_seed(seed)
     by_prop = proposal_by_target(proposals)
     by_comments: dict[str, list] = defaultdict(list)
     for c in community.get("comments") or []:
@@ -221,27 +465,53 @@ def main() -> None:
     buckets = queue.get("buckets") or {}
     counts = queue.get("counts") or {}
 
-    # Prefer queue bucket membership; fall back to all identity proposals.
+    # Sort needs-review; keep other buckets in queue order.
+    needs_sorted = sort_needs_review(
+        list(buckets.get("needs_review") or []),
+        by_seed, by_prop, all_cands, work_order,
+    )
+    enrich_by_target = {t: e for t, e in needs_sorted}
+
     ordered: list[tuple[str, str]] = []
-    for name in ("accept_eligible", "needs_review", "reject_wrong_work"):
-        for t in buckets.get(name) or []:
-            ordered.append((t, name))
+    for t in buckets.get("accept_eligible") or []:
+        ordered.append((t, "accept_eligible"))
+    for t, _ in needs_sorted:
+        ordered.append((t, "needs_review"))
+    for t in buckets.get("reject_wrong_work") or []:
+        ordered.append((t, "reject_wrong_work"))
     if not ordered:
         for t in by_prop:
             ordered.append((t, "needs_review"))
 
     rows_html = []
     for target, bucket in ordered:
-        seed_row = by_seed.get(target) or {"work": target}
-        payload = by_prop.get(target) or {}
-        rows_html.append(
-            render_row(
-                target, seed_row, payload,
-                decisions.get(target) or {},
-                by_comments.get(target) or [],
-                bucket,
+        seed_row = by_seed.get(target) or {"work": target, "work_title": target, "id": target}
+        prop = by_prop.get(target) or {"target": target, "payload": {}}
+        payload = prop.get("payload") or {}
+        if bucket == "needs_review":
+            enrich = enrich_by_target.get(target) or ib.enrichment_for_row(
+                seed_row, prop, all_cands
             )
-        )
+            rows_html.append(
+                render_identity_rich(
+                    target, seed_row, prop,
+                    decisions.get(target) or {},
+                    by_comments.get(target) or [],
+                    bucket,
+                    enrich,
+                )
+            )
+        else:
+            rows_html.append(
+                render_simple_row(
+                    target, seed_row, payload,
+                    decisions.get(target) or {},
+                    by_comments.get(target) or [],
+                    bucket,
+                )
+            )
+
+    ib.write_payload_gaps_markdown(str(GAPS_MD))
 
     tally = "".join(
         f"<div><b>{counts.get(k, 0)}</b><span>{label}</span></div>"
@@ -274,16 +544,18 @@ def main() -> None:
 
 <div class="hero">
   <h2>Human review board</h2>
-  <p>Queued identity matches and citation tasks for the seed. Community notes
-  help authoring; they stay on a separate layer from the owner’s editorial voice.</p>
+  <p>Queued identity matches for the seed. Needs-review rows show seed vs harvest
+  side by side; empty fields stay blank. Community notes help authoring; they stay
+  on a separate layer from the owner’s editorial voice. Citation tasks are listed
+  in the tally only — not on identity rows.</p>
   <div class="tally">{tally}</div>
 </div>
 
 <div class="banner owner">
   <strong>Owner only ({escape(OWNER)})</strong><br>
-  Accept / reject decisions live in <span class="mono">proposals/review-decisions.json</span>.
-  Apply them with your GitHub login via
-  <span class="mono">make review-apply</span> or the
+  Accept / reject / defer decisions live in <span class="mono">proposals/review-decisions.json</span>.
+  Fill <span class="mono">by</span> + <span class="mono">date</span> on each accept.
+  Apply with <span class="mono">make review-apply</span> or the
   <a href="https://github.com/{OWNER}/{REPO}/actions/workflows/review-apply.yml">Review apply</a>
   workflow (repository owner actor required). Agents never write scores or
   <span class="mono">data/statements/</span>.
@@ -296,6 +568,15 @@ def main() -> None:
   Comments render here with an amber label and are stored under
   <span class="mono">data/community/</span> — never merged into
   <span class="mono">data/editorial/</span> or assessment statements.
+</div>
+
+<div class="banner gaps">
+  <strong>Honest omit</strong><br>
+  Fassung, completeness, session year, live/studio, venue, MB label/catno/barcode,
+  and release MBID are blank when absent from seed/harvest — never guessed.
+  Field-by-field inventory:
+  <a href="../../proposals/review/PAYLOAD_GAPS.md"><span class="mono">PAYLOAD_GAPS.md</span></a>.
+  Absent required-looking fields make defer the honest human default (not auto-written).
 </div>
 
 <div class="filters" role="group" aria-label="Filter queue">
@@ -311,7 +592,7 @@ def main() -> None:
 
 <footer>
   <p>Public board: {escape(PAGES)}review/</p>
-  <p class="mono">Community ≠ editorial · Wrong-work never applies · No scraped review prose</p>
+  <p class="mono">Community ≠ editorial · Wrong-work never applies · No invented musicology · Citation tasks off identity rows</p>
 </footer>
 </div>
 <script>
@@ -329,12 +610,15 @@ buttons.forEach(btn=>btn.addEventListener('click',()=>{{
 """
     DOCS.mkdir(parents=True, exist_ok=True)
     (DOCS / "index.html").write_text(body, encoding="utf-8")
-    # Legacy Pages root mirror
     root_review = ROOT / "review"
     root_review.mkdir(parents=True, exist_ok=True)
     (root_review / "index.html").write_text(body, encoding="utf-8")
-    print(f"docs/review/index.html · {len(ordered)} identity rows · "
-          f"{sum(len(v) for v in by_comments.values())} community comments")
+    print(
+        f"docs/review/index.html · {len(ordered)} identity rows · "
+        f"{counts.get('needs_review', 0)} needs-review enriched · "
+        f"{sum(len(v) for v in by_comments.values())} community comments · "
+        f"gaps → {GAPS_MD}"
+    )
 
 
 if __name__ == "__main__":
