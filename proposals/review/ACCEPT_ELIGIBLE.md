@@ -2,7 +2,7 @@
 
 High-confidence MusicBrainz matches with no review flags. Still require a human `accept` in `review-decisions.json` before `apply.py` — the machine does not write mbids alone.
 
-**Count:** 103
+**Count:** 96
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -21,7 +21,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `puccini/boheme/1` | Herbert von Karajan; Decca, 1972 | La bohème (1973) | 100 |  | [open](https://musicbrainz.org/release-group/4297f49e-0d9c-3fe5-8c07-6cb7a5c356e8) |
 | pending | `puccini/butterfly/1` | Herbert von Karajan; Decca, 1974 | Madama Butterfly (1974) | 100 |  | [open](https://musicbrainz.org/release-group/ee87d8a4-1c6d-391a-a09d-f4b8e2095b7a) |
 | pending | `puccini/turandot/1` | Zubin Mehta; Decca, 1972 | Turandot (1973) | 89 |  | [open](https://musicbrainz.org/release-group/aeb969c5-83e7-4160-9981-33991d54b991) |
-| pending | `bach/brandenburg/0` | Trevor Pinnock; Archiv, 1982 | Brandenburg Concertos nos. 4-6 (1983-10-17) | 100 |  | [open](https://musicbrainz.org/release-group/32c16638-b053-385c-b7b1-6d287cbabb83) |
 | pending | `bach/sonatas_partitas/1` | Rachel Podger; Channel Classics, 1999 | Complete Sonatas & Partitas for Solo Violin (2002) | 100 |  | [open](https://musicbrainz.org/release-group/cf6c3764-9bb9-33b8-add9-1123270dd56e) |
 | pending | `bach/goldberg/1` | Glenn Gould; CBS, 1981 | The Goldberg Variations (1982) | 100 |  | [open](https://musicbrainz.org/release-group/7c8f2d45-d764-347a-9ab9-0aa771a3447d) |
 | pending | `bach/mass_b_minor/0` | John Eliot Gardiner; Archiv, 1985 | Mass in B minor (1984-12-09) | 100 |  | [open](https://musicbrainz.org/release-group/9ff5f872-d22b-3dc7-a50e-dcba22248a51) |
@@ -37,7 +36,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `brahms/sym1/0` | Herbert von Karajan; Deutsche Grammophon, 1963 | Symphonie Nr. 1 (1964) | 91 |  | [open](https://musicbrainz.org/release-group/03e6e64f-91c0-4a03-94ef-fa49423334f0) |
 | pending | `brahms/violin_concerto/1` | Fritz Reiner; RCA, 1955 | Violin Concerto (1958) | 100 |  | [open](https://musicbrainz.org/release-group/b6842d1c-349e-4d22-8063-4dbb252bf408) |
 | pending | `schubert/sym9/0` | Josef Krips; Decca, 1958 | Great C Major Symphony (1958-11) | 100 |  | [open](https://musicbrainz.org/release-group/baf9cba8-0ece-46ad-8310-18f2946c3531) |
-| pending | `bach/cello_suites/3` | Yo-Yo Ma; Sony, 1983 | The Unaccompanied Cello Suites no. 1 & no. 2 (1984) | 93 |  | [open](https://musicbrainz.org/release-group/4c21037d-f7f7-44d4-937d-ccb2bff41519) |
 | pending | `bach/goldberg/3` | Murray Perahia; Deutsche Grammophon, 2000 | Goldberg Variations (2000-09-01) | 100 |  | [open](https://musicbrainz.org/release-group/50b9063a-f8be-3bdc-994d-767eea756bee) |
 | pending | `beethoven/pc5/2` | George Szell; EMI, 1960s | Piano Concerto no. 5 (1961-08-21) | 97 |  | [open](https://musicbrainz.org/release-group/040dfd1d-36d3-404f-9f9a-4e99acca2b70) |
 | pending | `beethoven/violin_concerto/3` | Herbert von Karajan; Deutsche Grammophon, 1980s | Violin Concerto (1980) | 98 |  | [open](https://musicbrainz.org/release-group/ad8e4775-2059-3281-b7ae-86dd56e21895) |
@@ -74,14 +72,11 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `shostakovich/sym9/4` | Vasily Petrenko; Naxos, 2010 | Symphonies nos. 5 & 9 (2009-10) | 100 |  | [open](https://musicbrainz.org/release-group/dbdaeac8-3623-4c90-9f40-744e712d488c) |
 | pending | `shostakovich/sym15/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 1, 14 & 15 / Chamber Symphony in C minor (2021-06-25) | 100 |  | [open](https://musicbrainz.org/release-group/8de1fb1f-6d75-4d72-990a-92482126733e) |
 | pending | `brahms/sym4/0` | Carlos Kleiber; Deutsche Grammophon, 1980 | Symphonie No. 4 (1981) | 100 |  | [open](https://musicbrainz.org/release-group/931519fd-71ae-3da2-95e4-f6279d0b609f) |
-| pending | `brahms/liebeslieder/1` | Wolfgang Sawallisch; EMI, 1980s | “Tales from the Vienna Woods” and Other Favourite Waltzes (None) | 100 |  | [open](https://musicbrainz.org/release-group/20b3ba54-035a-32ac-95a3-ca5b9e9dc7ed) |
 | pending | `haydn/sym104/1` | Nikolaus Harnoncourt; Teldec, 1990s | Symphony No. 103 “Drum Roll” / Symphony no. 104 “London” (1992) | 100 |  | [open](https://musicbrainz.org/release-group/32de988e-385d-4a45-8c7b-a65cf53383fb) |
 | pending | `haydn/sym104/3` | Adam Fischer; Nimbus, 1990s | Symphony no. 99 in E-flat / Symphony no. 104 in D "London" (1990) | 100 |  | [open](https://musicbrainz.org/release-group/c63cb298-bb7c-46e6-8014-21fa5df8a0a4) |
 | pending | `haydn/sym94/0` | Thomas Beecham; EMI, 1950s | Symphonies No. 94 in G "Surprise" / No. 96 in D "Miracle" / No. 102 in B-flat (None) | 100 |  | [open](https://musicbrainz.org/release-group/ae3e9978-c939-4725-b731-b78623520c8e) |
 | pending | `haydn/creation/1` | John Eliot Gardiner; Archiv, 1996 | Die Schöpfung (1997-01-03) | 100 |  | [open](https://musicbrainz.org/release-group/c250cfe8-7b08-3d0b-88d0-2f3c11b260db) |
 | pending | `haydn/trumpet_concerto/1` | Raymond Leppard; CBS, 1982 | Trumpet Concertos (1983) | 100 |  | [open](https://musicbrainz.org/release-group/a2c5e257-c60c-323e-a145-853c7ec73bae) |
-| pending | `haydn/trumpet_concerto/2` | Karl Richter; Archiv, 1960s | Organ Concertos, Vol. 3: Nos. 9, 10, 11, 12 (1960) | 100 |  | [open](https://musicbrainz.org/release-group/cadcefd0-ebb3-44c2-b62f-e531d15b5c82) |
-| pending | `haydn/trumpet_concerto/3` | Colin Davis; Philips, 1990s | “Emperor” Concerto (1990) | 94 |  | [open](https://musicbrainz.org/release-group/d014c46d-ef64-3d01-b70b-a83d5de501f4) |
 | pending | `haydn/seasons/1` | John Eliot Gardiner; Archiv, 1992 | Die Jahreszeiten (1992-03-02) | 100 |  | [open](https://musicbrainz.org/release-group/e9722897-20c6-40cf-b0d8-f7f8085689ae) |
 | pending | `schubert/sym8/2` | Bruno Walter; Columbia, 1950s | Schubert: Symphony No. 8 in B Minor, D. 759 “Unfinished” (Remastered) (1948-01-01) | 88 |  | [open](https://musicbrainz.org/release-group/7752e8a4-f19d-465a-9c38-fcb2f1871231) |
 | pending | `schubert/sym9/1` | Carlo Maria Giulini; Deutsche Grammophon, 1976 | Symphonie nr. 9 (1977) | 94 |  | [open](https://musicbrainz.org/release-group/a9b8a9e1-23a5-44d4-aaf2-2dc51906cc4c) |
@@ -91,8 +86,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `handel/fireworks/0` | Trevor Pinnock; Archiv, 1984 | Music for the Royal Fireworks / Concerti a due cori (1985-05-17) | 87 |  | [open](https://musicbrainz.org/release-group/f84755d5-e35d-3b1a-98e5-8007be93bc6c) |
 | pending | `handel/giulio_cesare/1` | René Jacobs; Harmonia Mundi, 1991 | Giulio Cesare (1991-11-01) | 100 |  | [open](https://musicbrainz.org/release-group/9cec19bd-145e-33a3-907d-6523c8a34078) |
 | pending | `handel/alcina/2` | William Christie; Erato, 2000s | Alcina (2000-01-01) | 100 |  | [open](https://musicbrainz.org/release-group/aeb163bf-06aa-3e82-890f-d023ab9b2744) |
-| pending | `handel/op6/0` | Trevor Pinnock; Archiv, 1982 | Concerti grossi, op. 6 nos. 9-12 (1982) | 88 |  | [open](https://musicbrainz.org/release-group/37d5ff7d-a0a8-3c45-a9c8-6765fe1ae0bc) |
-| pending | `handel/organ_concertos/1` | Christopher Hogwood; Decca, 1980s | Christmas Concertos (1983) | 100 |  | [open](https://musicbrainz.org/release-group/cb1794f9-62dd-376b-ae5c-69fc432417bf) |
 | pending | `handel/organ_concertos/2` | Trevor Pinnock; Archiv, 1990s | 5 Organ Concertos (1991-09-12) | 98 |  | [open](https://musicbrainz.org/release-group/b3588f3b-3c87-38f1-bb5c-880a70a9ae9a) |
 | pending | `handel/rodelinda/0` | Richard Bonynge; Decca, 1985 | Rodelinda (None) | 100 |  | [open](https://musicbrainz.org/release-group/cda3c053-9f94-4340-9f9a-65282e62856b) |
 | pending | `handel/dixit_dominus/2` | Andrew Parrott; EMI, 1990 | Handel: Dixit Dominus, J. S. Bach: Magnificat (1993) | 100 |  | [open](https://musicbrainz.org/release-group/3e13a84b-9f34-453f-9d02-c3cb652cefa9) |

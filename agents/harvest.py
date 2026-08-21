@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.3"
+VERSION = "harvest/1.4"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -92,6 +92,7 @@ WORK_GENERIC = {
     "fantasy", "fantasia", "fantaisie", "impromptu", "impromptus",
     "etude", "etudes", "étude", "études",
     "nocturne", "nocturnes", "ballade", "ballades",
+    "waltz", "waltzes", "walzer", "valse", "valses",
     "passion", "passions",  # St Matthew / St John — evangelist token decides
     "complete", "works", "album", "selection", "volume", "vol",
     # Too common to identify a work ("Music for the Royal Fireworks" ≠ Rosamunde).
@@ -356,6 +357,12 @@ INSTRUMENT_FAMILIES = (
     frozenset({"violin", "violino", "geige"}),
     frozenset({"cello", "violoncello", "violoncelle"}),
     frozenset({"clarinet", "klarinette"}),
+    frozenset({"trumpet"}),
+    frozenset({"organ"}),
+    frozenset({"horn"}),
+    frozenset({"flute", "flote"}),
+    frozenset({"oboe"}),
+    frozenset({"viola"}),
 )
 
 
@@ -368,7 +375,7 @@ def _family(tokens: set[str], families: tuple[frozenset, ...]) -> Optional[froze
 
 def extract_work_numbers(title: str) -> set[str]:
     """Symphony No. 5 / Symphonie Nr. 5 / nos. 5 & 9 → {'5'} / {'5','9'}."""
-    t = (title or "").lower()
+    t = (title or "").lower().replace("–", "-").replace("—", "-")
     nums = set(re.findall(r"\b(?:nos?|nr|n)\.?\s*(\d{1,3})\b", t))
     # "Nos. 39, 40, 41" / "nos. 5 / 8 / 9"
     for chunk in re.findall(r"\b(?:nos?|nr|n)\.?\s*([\d\s,/&and\-]+)", t):
@@ -380,6 +387,14 @@ def extract_work_numbers(title: str) -> set[str]:
         r"klavierkonzert|violinkonzert)\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{1,3})\b",
         t,
     ))
+    # Inclusive short ranges: nos. 4-6 → {4,5,6}. Cap so catalogue spans
+    # (1046-1051) are not treated as work numbers.
+    for a, b in re.findall(
+        r"\b(?:nos?|nr|n)\.?\s*(\d{1,3})\s*-\s*(\d{1,3})\b", t
+    ):
+        lo, hi = int(a), int(b)
+        if 0 < hi - lo <= 20:
+            nums |= {str(n) for n in range(lo, hi + 1)}
     return nums
 
 
@@ -395,10 +410,22 @@ _CATALOGUE_RANGE_RE = re.compile(
     re.IGNORECASE,
 )
 _COLLECTION_PLURAL_RE = re.compile(
-    r"\b(suites|sonatas|sonaten|partitas|concertos|quartets|quintets|"
-    r"trios|etudes|études|preludes|préludes)\b",
+    r"\b(suites|suiten|sonatas|sonaten|partitas|concertos|concerti|"
+    r"konzerte|quartets|quintets|"
+    r"trios|etudes|études|preludes|préludes|waltzes|walzer)\b",
     re.IGNORECASE,
 )
+
+# Adjectives/fillers that appear in MB titles without naming a different work.
+_MB_NAME_FILLER = frozenset({
+    "unaccompanied", "favourite", "favorite", "other", "solo",
+    "sechs", "six", "pour", "fur", "für", "great", "new", "original",
+    "complete", "digital", "remastered", "highlights", "excerpts",
+    "volume", "vol", "integral", "integrale", "suiten", "album",
+    "selection", "works", "recorded", "edition", "version",
+    "live", "studio", "collection", "anthology", "sampler",
+    "best", "remaster", "digital",
+})
 
 
 def extract_catalogue_ids(*texts: str) -> set[str]:
@@ -429,6 +456,62 @@ def _catalogue_conflict(seed_catalogue: str, mb_title: str) -> bool:
     seed_ids = extract_catalogue_ids(seed_catalogue)
     mb_ids = extract_catalogue_ids(mb_title)
     return bool(seed_ids and mb_ids and seed_ids.isdisjoint(mb_ids))
+
+
+def _catalogue_range_span(catalogue: str) -> Optional[int]:
+    """BWV 1046–1051 → 6. None when the catalogue is not a range."""
+    t = (catalogue or "").replace("–", "-").replace("—", "-")
+    m = _CATALOGUE_RANGE_RE.search(t)
+    if not m:
+        return None
+    a, b = int(m.group(2)), int(m.group(3))
+    if b > a:
+        return b - a + 1
+    return None
+
+
+def collection_subset_incomplete(
+    seed_title: str, mb_title: str, catalogue: str = "",
+) -> Optional[str]:
+    """Flag when MB names a numbered subset of an unnumbered seed collection.
+
+    Brandenburg Concertos (BWV 1046–1051) vs nos. 4–6, Cello Suites vs
+    no. 1 & no. 2. Same work, not complete — needs-review, not accept.
+    """
+    if not (seed_title or "").strip() or not (mb_title or "").strip():
+        return None
+    if not _COLLECTION_PLURAL_RE.search(seed_title or ""):
+        return None
+    seed_nums = extract_work_numbers(seed_title)
+    if seed_nums:
+        return None
+    mb_nums = extract_work_numbers(mb_title)
+    if not mb_nums:
+        return None
+    span = _catalogue_range_span(catalogue)
+    if span is not None and len(mb_nums) >= span:
+        return None
+    shown = ", ".join(sorted(mb_nums, key=lambda x: int(x)))
+    return f"incomplete: MB title names a subset ({shown}) of seed collection"
+
+
+def _mb_names_other_work(seed_title: str, mb_title: str) -> bool:
+    """True when MB carries a work name the seed does not share.
+
+    Catches Emperor / Christmas / Vienna Woods on a generic Concerto/Waltzes
+    seed. Numbered and catalogue matches return earlier and never reach this.
+    """
+    mb_named = distinctive_work_tokens(mb_title) - _MB_NAME_FILLER
+    if not mb_named:
+        return False
+    seed_named = distinctive_work_tokens(seed_title) - _MB_NAME_FILLER
+    seed_all = _title_tokens(seed_title)
+    for m in mb_named:
+        if any(_token_overlap(m, s) for s in seed_named):
+            return False
+        if any(_token_overlap(m, s) for s in seed_all):
+            return False
+    return True
 
 
 def _foreign_composer_prefix(mb_title: str, composer: str = "",
@@ -515,6 +598,8 @@ def work_title_compatible(seed_title: str, mb_title: str,
 
     seed_inst = _family(seed_tokens, INSTRUMENT_FAMILIES)
     mb_inst = _family(mb_tokens, INSTRUMENT_FAMILIES)
+    if seed_inst and mb_inst and seed_inst is not mb_inst:
+        return False
 
     def numbered_form_match() -> bool:
         if not (seed_form and mb_form and seed_form is mb_form and seed_nums):
@@ -558,23 +643,28 @@ def work_title_compatible(seed_title: str, mb_title: str,
         if frag in (mb_title or ""):
             return True
 
-    # Seed named a specific work (Rosamunde, St John, Tosca) that is absent
-    # from the MB title — do not fall through to generic form matches.
+    # Seed named a specific work (Rosamunde, St John, Tosca, Liebeslieder)
+    # that is absent from the MB title — do not fall through to generic form.
     if dist and not dist_hit:
         return False
     if _keys_conflict(seed_title, mb_title):
         return False
+    # MB named a different work (Emperor, Christmas, Vienna Woods) while the
+    # seed only offered a generic form/instrument.
+    if _mb_names_other_work(seed_title, mb_title):
+        return False
 
-    # 4) Instrument + plural collection without number:
-    #    Cello Suites ↔ Suites pour violoncelle.
-    #    Singular keyed sonatas (D. 960 vs Hammerklavier) do not qualify.
+    # 4) Instrument + collection without a seed number.
+    #    Cello Suites ↔ Suites pour violoncelle
+    #    Trumpet Concerto ↔ Trumpet Concertos
+    #    Singular keyed sonatas (D. 960 vs Hammerklavier) do not qualify
+    #    unless the MB side is also a collection of the same instrument.
     if seed_form and mb_form and seed_form is mb_form and seed_inst and mb_inst:
-        if (
-            seed_inst is mb_inst
-            and not seed_nums
-            and _COLLECTION_PLURAL_RE.search(seed_title or "")
-        ):
-            return True
+        if seed_inst is mb_inst and not seed_nums:
+            seed_plural = bool(_COLLECTION_PLURAL_RE.search(seed_title or ""))
+            mb_plural = bool(_COLLECTION_PLURAL_RE.search(mb_title or ""))
+            if seed_plural or mb_plural:
+                return True
 
     # 5) Unnumbered unique forms with no leftover distinctive seed token
     #    and no instrument (Requiem ↔ Requiem in D minor). Bare "Concerto"
@@ -611,6 +701,9 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
     if work and mb_title:
         seed_title = work.get("title") or ""
         catalogue = work.get("catalogue") or ""
+        inc = collection_subset_incomplete(seed_title, mb_title, catalogue)
+        if inc:
+            flags.append(inc)
         composer = work.get("composer") or ""
         personnel = " ".join(
             x for x in (rec.get("director"), rec.get("ensemble"), rec.get("soloists"))

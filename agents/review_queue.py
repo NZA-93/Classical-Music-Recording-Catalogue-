@@ -79,6 +79,12 @@ def _is_wrong_work(flags: list[str]) -> bool:
 
 
 def bucket_identity(items: list[dict]) -> dict[str, list[dict]]:
+    """Assign each identity row to one pack.
+
+    Wrong-work flags always win, including when a stale harvest payload still
+    has auto_accept_eligible true. Incomplete / date / confidence flags go to
+    needs-review, never accept-eligible.
+    """
     accept_eligible: list[dict] = []
     needs_review: list[dict] = []
     reject_wrong: list[dict] = []
@@ -91,16 +97,17 @@ def bucket_identity(items: list[dict]) -> dict[str, list[dict]]:
         if mb.get("auto_accept_eligible") and not flags:
             accept_eligible.append(row)
             continue
-        # Eligible flag true but still has soft flags → needs review
-        if mb.get("auto_accept_eligible") and flags:
-            needs_review.append(row)
-            continue
         needs_review.append(row)
     return {
         "accept_eligible": accept_eligible,
         "needs_review": needs_review,
         "reject_wrong_work": reject_wrong,
     }
+
+
+def live_identity_buckets(proposals: list[dict], seed: dict) -> dict[str, list[dict]]:
+    """Recompute membership from the current matcher. Do not trust queue JSON."""
+    return bucket_identity(rv.rows(proposals, seed))
 
 
 def citation_rows(proposals: list[dict]) -> list[dict]:

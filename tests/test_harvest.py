@@ -221,6 +221,79 @@ class TestIdentityConfidence(unittest.TestCase):
             "Music for the Royal Fireworks / Orchestral Works",
             "D. 797", composer="Franz Schubert"))
 
+    def test_liebeslieder_is_not_vienna_woods_waltzes(self):
+        self.assertFalse(har.work_title_compatible(
+            "Liebeslieder Waltzes",
+            '"Tales from the Vienna Woods" and Other Favourite Waltzes',
+            "Op. 52", composer="Johannes Brahms"))
+
+    def test_haydn_trumpet_is_not_organ_concertos(self):
+        self.assertFalse(har.work_title_compatible(
+            "Trumpet Concerto",
+            "Organ Concertos, Vol. 3: Nos. 9, 10, 11, 12",
+            "Hob. VIIe:1", composer="Joseph Haydn"))
+
+    def test_haydn_trumpet_is_not_emperor_concerto(self):
+        self.assertFalse(har.work_title_compatible(
+            "Trumpet Concerto",
+            '"Emperor" Concerto',
+            "Hob. VIIe:1", composer="Joseph Haydn"))
+
+    def test_handel_organ_concertos_are_not_christmas_concertos(self):
+        self.assertFalse(har.work_title_compatible(
+            "Organ Concertos",
+            "Christmas Concertos",
+            "Opp. 4 & 7", composer="George Frideric Handel"))
+
+    def test_trumpet_concerto_still_matches_trumpet_concertos(self):
+        self.assertTrue(har.work_title_compatible(
+            "Trumpet Concerto", "Trumpet Concertos",
+            "Hob. VIIe:1", composer="Joseph Haydn"))
+
+    def test_organ_concertos_still_match_organ_concertos(self):
+        self.assertTrue(har.work_title_compatible(
+            "Organ Concertos", "5 Organ Concertos",
+            "Opp. 4 & 7", composer="George Frideric Handel"))
+
+    def test_emperor_nickname_still_matches_beethoven_pc5(self):
+        self.assertTrue(har.work_title_compatible(
+            "Piano Concerto No. 5, Emperor",
+            '"Emperor" Concerto',
+            "Op. 73", composer="Ludwig van Beethoven"))
+
+    def test_brandenburg_subset_is_compatible_but_incomplete(self):
+        self.assertTrue(har.work_title_compatible(
+            "Brandenburg Concertos",
+            "Brandenburg Concertos nos. 4-6",
+            "BWV 1046–1051"))
+        flag = har.collection_subset_incomplete(
+            "Brandenburg Concertos",
+            "Brandenburg Concertos nos. 4-6",
+            "BWV 1046–1051",
+        )
+        self.assertIsNotNone(flag)
+        self.assertTrue(flag.startswith("incomplete:"))
+
+    def test_cello_suites_subset_is_incomplete_not_wrong_work(self):
+        self.assertTrue(har.work_title_compatible(
+            "Cello Suites",
+            "The Unaccompanied Cello Suites no. 1 & no. 2",
+            "BWV 1007–1012"))
+        flag = har.collection_subset_incomplete(
+            "Cello Suites",
+            "The Unaccompanied Cello Suites no. 1 & no. 2",
+            "BWV 1007–1012",
+        )
+        self.assertIsNotNone(flag)
+        self.assertTrue(flag.startswith("incomplete:"))
+
+    def test_fournier_complete_cello_suites_not_incomplete(self):
+        self.assertIsNone(har.collection_subset_incomplete(
+            "Cello Suites",
+            "Sechs Suiten für Violoncello solo, BWV 1007–1012",
+            "BWV 1007–1012",
+        ))
+
     def test_english_concert_in_title_is_not_live(self):
         facts = har.identity_facts_from_mb(title="Brandenburg Concertos")
         self.assertNotIn("live_studio", facts)

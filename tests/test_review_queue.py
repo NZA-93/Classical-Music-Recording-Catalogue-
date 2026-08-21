@@ -176,10 +176,44 @@ class TestLiveQueue(unittest.TestCase):
             "brahms/pc2/1",
             "schubert/sonata_d960/2",
             "schubert/rosamunde/3",
+            "brahms/liebeslieder/1",
+            "haydn/trumpet_concerto/2",
+            "haydn/trumpet_concerto/3",
+            "handel/organ_concertos/1",
         ):
             with self.subTest(target=target):
                 self.assertNotIn(target, acc)
                 self.assertIn(target, wrong)
+
+    def test_completeness_leftovers_not_accept_eligible(self):
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        b = rq.live_identity_buckets(props, seed)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        needs = {r["target"] for r in b["needs_review"]}
+        for target in ("bach/brandenburg/0", "bach/cello_suites/3"):
+            with self.subTest(target=target):
+                self.assertNotIn(target, acc)
+                self.assertIn(target, needs)
+        self.assertIn("bach/cello_suites/1", acc)
+
+    def test_reject_chip_cannot_stay_accept_eligible(self):
+        """Live wrong-work flags beat a stale auto_accept_eligible payload."""
+        items = [{
+            "target": "haydn/trumpet_concerto/2",
+            "flags": [
+                "wrong work: MusicBrainz 'Organ Concertos' does not match "
+                "seed 'Trumpet Concerto'"
+            ],
+            "mb": {"auto_accept_eligible": True, "match_score": 100},
+            "seed": {},
+        }]
+        b = rq.bucket_identity(items)
+        self.assertEqual(b["accept_eligible"], [])
+        self.assertEqual(b["reject_wrong_work"][0]["target"],
+                         "haydn/trumpet_concerto/2")
 
     def test_preserves_prior_accept(self):
         buckets = {
