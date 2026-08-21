@@ -2,7 +2,7 @@
 
 Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open the MusicBrainz URL before accepting. Never accept a wrong-work match.
 
-**Count:** 196
+**Count:** 197
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -37,6 +37,7 @@ Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open t
 | pending | `beethoven/sym7/0` | Carlos Kleiber; Deutsche Grammophon, 1976 | Symphonie Nr. 7 (1976) | 74 | confidence 74 < 80 | [open](https://musicbrainz.org/release-group/a38ae9a7-69cc-4eb0-b76e-1409ee5a2f8d) |
 | pending | `beethoven/sym9/2` | John Eliot Gardiner; Archiv, 1992 | Symphonies no. 8 & 9 (1993) | 63 | confidence 63 < 80 | [open](https://musicbrainz.org/release-group/94f6e952-c8ae-4e40-a4a1-e3db3252fe82) |
 | pending | `beethoven/pc5/1` | Karl Böhm; Deutsche Grammophon, 1978 | Klavierkonzert no. 5 Es-Dur op. 73 (1979) | 55 | confidence 55 < 80 | [open](https://musicbrainz.org/release-group/94c47790-a11c-4617-a38e-e60acb326328) |
+| pending | `beethoven/violin_concerto/1` | Carlo Maria Giulini; EMI, 1980 | Violin Concerto (1981) | 100 | unsigned composer: MB title 'Violin Concerto' does not name Ludwig van Beethoven or catalogue | [open](https://musicbrainz.org/release-group/ed260324-eed1-32b8-8cd1-b07f62fa2a73) |
 | pending | `beethoven/late_quartets/0` | Busch Quartet; EMI, 1930s | Beethoven: The Late String Quartets (vol.2) (1993) | 82 | date off by 63 years (1930 vs 1993) | [open](https://musicbrainz.org/release-group/4b9b2f01-ecc1-466c-91d9-10a79ee3faa5) |
 | pending | `beethoven/late_quartets/1` | Quartetto Italiano; Philips, 1967–75 | The Late String Quartets (1989) | 100 | date off by 22 years (1967 vs 1989) | [open](https://musicbrainz.org/release-group/d6543510-6710-47cc-b8b6-d73de98a27b1) |
 | pending | `mozart/late_symphonies/0` | Karl Böhm; Deutsche Grammophon, 1960s | Symphonies Nos. 39, 40 & 41 (1999) | 100 | date off by 39 years (1960 vs 1999) | [open](https://musicbrainz.org/release-group/d1f5ef96-37c8-3c5c-896c-9abca2ad100a) |
@@ -151,7 +152,7 @@ Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open t
 | pending | `brahms/sym4/3` | John Eliot Gardiner; Archiv, 1990s | Symphonies nos. 3 & 4 (1995-07-03) | 34 | confidence 34 < 80; date off by 5 years (1990 vs 1995) | [open](https://musicbrainz.org/release-group/5e46b46f-6da6-4e87-9c56-c4a698d267f9) |
 | pending | `brahms/pc1/2` | Leonard Bernstein; Columbia, 1960s | Klavierkonzerte = Piano Concertos Nos. 1 & 2 • Violinkonzert = Violin Concerto • Doppelkonzert = Double Concerto (1990) | 86 | date off by 30 years (1960 vs 1990) | [open](https://musicbrainz.org/release-group/bcd6efc9-139e-4131-8d29-e3576e37f801) |
 | pending | `brahms/pc1/3` | Leonard Bernstein; Deutsche Grammophon, 1980s | Klavierkonzerte = Piano Concertos Nos. 1 & 2 • Violinkonzert = Violin Concerto • Doppelkonzert = Double Concerto (1990) | 86 | date off by 10 years (1980 vs 1990) | [open](https://musicbrainz.org/release-group/bcd6efc9-139e-4131-8d29-e3576e37f801) |
-| pending | `brahms/violin_concerto/3` | Kirill Kondrashin; Melodiya, 1960s | Violin Concerto (1980-05) | 100 | date off by 20 years (1960 vs 1980) | [open](https://musicbrainz.org/release-group/1ef3b63c-1f55-3f2c-ae93-ae4b61c80b1a) |
+| pending | `brahms/violin_concerto/3` | Kirill Kondrashin; Melodiya, 1960s | Violin Concerto (1980-05) | 100 | date off by 20 years (1960 vs 1980); unsigned composer: MB title 'Violin Concerto' does not name Johannes Brahms or catalogue | [open](https://musicbrainz.org/release-group/1ef3b63c-1f55-3f2c-ae93-ae4b61c80b1a) |
 | pending | `brahms/german_requiem/2` | Herbert von Karajan; Deutsche Grammophon, 1960s | Ein deutsches Requiem / Haydn-Variationen (1980) | 74 | confidence 74 < 80; date off by 20 years (1960 vs 1980) | [open](https://musicbrainz.org/release-group/d8495ae5-d7d4-4034-b4a1-774c9be56ede) |
 | pending | `brahms/haydn_variations/2` | Otto Klemperer; EMI, 1950s | The Klemperer Legacy: Haydn: Symphony 98 & Tchkaikovsky: Symphony 5 (1999) | 62 | confidence 62 < 80; date off by 49 years (1950 vs 1999) | [open](https://musicbrainz.org/release-group/4efb870f-5de0-4f6d-85bf-a57ec1d8e908) |
 | pending | `brahms/haydn_variations/3` | Herbert von Karajan; Deutsche Grammophon, 1960s | Symphony No. 1, Op. 68 / Haydn Variations (1989-03-02) | 37 | confidence 37 < 80; date off by 29 years (1960 vs 1989) | [open](https://musicbrainz.org/release-group/8a731622-6daf-499c-8cd8-043fea092406) |

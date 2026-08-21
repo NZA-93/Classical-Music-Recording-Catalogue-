@@ -19,7 +19,7 @@ import pathlib
 import sys
 from collections import defaultdict
 from html import escape
-from typing import Any
+from typing import Any, Optional
 
 ROOT = pathlib.Path(".")
 sys.path.insert(0, str(ROOT / "agents"))
@@ -81,6 +81,7 @@ def index_seed(seed: dict) -> tuple[dict[str, dict], list[dict], dict[str, int]]
                 "work": display,
                 "work_title": title,
                 "composer": composer,
+                "composer_id": work.get("composer_id") or "",
                 "catalogue": catalogue,
                 "work_id": wid,
                 "director": cand.get("director") or "",
@@ -295,12 +296,14 @@ def render_identity_rich(
     comments: list[dict],
     bucket: str,
     enrich: dict[str, Any],
+    works: Optional[list] = None,
 ) -> str:
     payload = proposal.get("payload") or {}
     work = {
         "title": seed_row.get("work_title") or "",
         "catalogue": seed_row.get("catalogue") or "",
         "composer": seed_row.get("composer") or "",
+        "composer_id": seed_row.get("composer_id") or "",
     }
     rec = {
         "director": seed_row.get("director"),
@@ -308,7 +311,9 @@ def render_identity_rich(
         "soloists": seed_row.get("soloists"),
         "year": seed_row.get("year"),
     }
-    flags, _eligible = refresh_identity_eligibility(payload, rec, work)
+    flags, _eligible = refresh_identity_eligibility(
+        payload, rec, work, works=works,
+    )
     wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
@@ -391,12 +396,14 @@ def render_simple_row(
     decision: dict,
     comments: list[dict],
     bucket: str,
+    works: Optional[list] = None,
 ) -> str:
     """Compact row for accept-eligible / wrong-work (not the 244 enrichment)."""
     work = {
         "title": seed_row.get("work_title") or "",
         "catalogue": seed_row.get("catalogue") or "",
         "composer": seed_row.get("composer") or "",
+        "composer_id": seed_row.get("composer_id") or "",
     }
     rec = {
         "director": seed_row.get("director"),
@@ -404,7 +411,9 @@ def render_simple_row(
         "soloists": seed_row.get("soloists"),
         "year": seed_row.get("year"),
     }
-    flags, _eligible = refresh_identity_eligibility(payload, rec, work)
+    flags, _eligible = refresh_identity_eligibility(
+        payload, rec, work, works=works,
+    )
     wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
@@ -534,6 +543,7 @@ def main() -> None:
         for t in by_prop:
             ordered.append((t, "needs_review"))
 
+    seed_works = seed.get("works") or []
     rows_html = []
     for target, bucket in ordered:
         seed_row = by_seed.get(target) or {"work": target, "work_title": target, "id": target}
@@ -550,6 +560,7 @@ def main() -> None:
                     by_comments.get(target) or [],
                     bucket,
                     enrich,
+                    works=seed_works,
                 )
             )
         else:
@@ -559,6 +570,7 @@ def main() -> None:
                     decisions.get(target) or {},
                     by_comments.get(target) or [],
                     bucket,
+                    works=seed_works,
                 )
             )
 

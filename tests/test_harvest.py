@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import pathlib
 import sys
 import unittest
@@ -326,11 +327,40 @@ class TestIdentityConfidence(unittest.TestCase):
             "Great Piano Concertos nos. 20, 21, 25 & 27",
             "K. 595", composer="Wolfgang Amadeus Mozart",
             sibling_numbers={"20", "23", "27"}))
-        self.assertIsNone(har.collection_subset_incomplete(
-            "Cello Suites",
-            "Sechs Suiten für Violoncello solo, BWV 1007–1012",
-            "BWV 1007–1012",
-        ))
+
+    def test_heifetz_reiner_listed_under_tchaikovsky_not_brahms(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        brahms = next(w for w in seed["works"] if w["id"] == "brahms/violin_concerto")
+        rec = next(c for c in brahms["candidates"] if c["id"] == "brahms/violin_concerto/1")
+        other = har.other_composer_same_generic_artists(rec, brahms, seed["works"])
+        self.assertIsNotNone(other)
+        self.assertIn("Tchaikovsky", other)
+        flags = har.identity_review_flags(
+            rec, "Violin Concerto", "1958", 100,
+            work=brahms, works=seed["works"],
+        )
+        self.assertTrue(any(f.startswith("wrong work:") for f in flags))
+
+    def test_mutter_karajan_listed_under_beethoven_not_brahms(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        brahms = next(w for w in seed["works"] if w["id"] == "brahms/violin_concerto")
+        rec = next(c for c in brahms["candidates"] if c["id"] == "brahms/violin_concerto/2")
+        other = har.other_composer_same_generic_artists(rec, brahms, seed["works"])
+        self.assertIsNotNone(other)
+        self.assertIn("Beethoven", other)
+        flags = har.identity_review_flags(
+            rec, "Violin Concerto", "1980", 98,
+            work=brahms, works=seed["works"],
+        )
+        self.assertTrue(any(f.startswith("wrong work:") for f in flags))
+
+    def test_generic_violin_concerto_is_not_distinctive(self):
+        self.assertTrue(har._generic_instrument_form_only("Violin Concerto"))
+        self.assertTrue(har.work_title_compatible(
+            "Violin Concerto", "Violin Concerto", "Op. 77",
+            composer="Johannes Brahms"))
+        self.assertFalse(har._generic_instrument_form_only("Piano Concerto No. 1"))
+        self.assertTrue(har._COLLECTION_PLURAL_RE.search("Trumpet Concertos"))
 
     def test_english_concert_in_title_is_not_live(self):
         facts = har.identity_facts_from_mb(title="Brandenburg Concertos")

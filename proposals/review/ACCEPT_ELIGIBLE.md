@@ -2,7 +2,7 @@
 
 High-confidence MusicBrainz matches with no review flags. Still require a human `accept` in `review-decisions.json` before `apply.py` — the machine does not write mbids alone.
 
-**Count:** 95
+**Count:** 92
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -26,7 +26,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `bach/mass_b_minor/0` | John Eliot Gardiner; Archiv, 1985 | Mass in B minor (1984-12-09) | 100 |  | [open](https://musicbrainz.org/release-group/9ff5f872-d22b-3dc7-a50e-dcba22248a51) |
 | pending | `bach/matthew/1` | John Eliot Gardiner; Archiv, 1988 | St. Matthew Passion (1989-09-15) | 100 |  | [open](https://musicbrainz.org/release-group/2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1) |
 | pending | `beethoven/sym3/1` | John Eliot Gardiner; Archiv, 1993 | Symphony no. 3 "Eroica" (None) | 100 |  | [open](https://musicbrainz.org/release-group/51168602-2dcc-41e4-955a-250250030fb5) |
-| pending | `beethoven/violin_concerto/1` | Carlo Maria Giulini; EMI, 1980 | Violin Concerto (1981) | 100 |  | [open](https://musicbrainz.org/release-group/ed260324-eed1-32b8-8cd1-b07f62fa2a73) |
 | pending | `shostakovich/sym5/4` | Mstislav Rostropovich; Teldec, 1993 | Cello Concerto no. 2 / Symphony no. 5 (1993) | 100 |  | [open](https://musicbrainz.org/release-group/49fa3b76-5086-4107-bccd-6c70e58ade2a) |
 | pending | `shostakovich/sym5/5` | Vasily Petrenko; Naxos, 2009 | Symphonies nos. 5 & 9 (2009-10) | 100 |  | [open](https://musicbrainz.org/release-group/dbdaeac8-3623-4c90-9f40-744e712d488c) |
 | pending | `shostakovich/sym7/0` | Leonard Bernstein; Deutsche Grammophon, 1988 | Symphony no. 1 / Symphony no. 7 “Leningrad” (1989-09) | 86 |  | [open](https://musicbrainz.org/release-group/b02346ae-f6fc-3218-aea3-7dbc923c5dcc) |
@@ -34,7 +33,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `bach/art_of_fugue/0` | Glenn Gould; CBS, 1962 | The Art of the Fugue (1962) | 84 |  | [open](https://musicbrainz.org/release-group/ed5b7b9a-e03c-49cd-85f4-93fa05a3a8af) |
 | pending | `beethoven/missa_solemnis/2` | Herbert von Karajan; Deutsche Grammophon, 1966 | Missa Solemnis (1966) | 97 |  | [open](https://musicbrainz.org/release-group/cd5944b1-8fb6-49a9-b7ad-f713552123aa) |
 | pending | `brahms/sym1/0` | Herbert von Karajan; Deutsche Grammophon, 1963 | Symphonie Nr. 1 (1964) | 91 |  | [open](https://musicbrainz.org/release-group/03e6e64f-91c0-4a03-94ef-fa49423334f0) |
-| pending | `brahms/violin_concerto/1` | Fritz Reiner; RCA, 1955 | Violin Concerto (1958) | 100 |  | [open](https://musicbrainz.org/release-group/b6842d1c-349e-4d22-8063-4dbb252bf408) |
 | pending | `schubert/sym9/0` | Josef Krips; Decca, 1958 | Great C Major Symphony (1958-11) | 100 |  | [open](https://musicbrainz.org/release-group/baf9cba8-0ece-46ad-8310-18f2946c3531) |
 | pending | `bach/goldberg/3` | Murray Perahia; Deutsche Grammophon, 2000 | Goldberg Variations (2000-09-01) | 100 |  | [open](https://musicbrainz.org/release-group/50b9063a-f8be-3bdc-994d-767eea756bee) |
 | pending | `beethoven/pc5/2` | George Szell; EMI, 1960s | Piano Concerto no. 5 (1961-08-21) | 97 |  | [open](https://musicbrainz.org/release-group/040dfd1d-36d3-404f-9f9a-4e99acca2b70) |
@@ -96,7 +94,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `chopin/polonaises/1` | Maurizio Pollini; Deutsche Grammophon, 1976 | Polonaises (1976) | 100 |  | [open](https://musicbrainz.org/release-group/03f3a56d-4943-3283-bbbf-7da4bb96d32b) |
 | pending | `shostakovich/sym14/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 1, 14 & 15 / Chamber Symphony in C minor (2021-06-25) | 100 |  | [open](https://musicbrainz.org/release-group/8de1fb1f-6d75-4d72-990a-92482126733e) |
 | pending | `shostakovich/sym15/0` | Kirill Kondrashin; Melodiya, 1970s | Symphonies 9 & 15 (None) | 100 |  | [open](https://musicbrainz.org/release-group/71c8fe85-554b-48ab-85d8-0aa1289af4c7) |
-| pending | `brahms/violin_concerto/2` | Herbert von Karajan; Deutsche Grammophon, 1980s | Violin Concerto (1980) | 98 |  | [open](https://musicbrainz.org/release-group/ad8e4775-2059-3281-b7ae-86dd56e21895) |
 | pending | `brahms/german_requiem/1` | John Eliot Gardiner; Philips, 1990 | Ein deutsches Requiem (1991-04-16) | 100 |  | [open](https://musicbrainz.org/release-group/09885a84-3d8b-3c34-aa04-c7edf0430039) |
 | pending | `handel/solomon/0` | John Eliot Gardiner; Philips, 1984 | Solomon (1985) | 100 |  | [open](https://musicbrainz.org/release-group/ebbc843f-bd3c-459a-968d-578fa6011267) |
 | pending | `handel/agrippina/2` | Maxim Emelyanychev; Erato, 2020 | Agrippina (2020-01-31) | 100 |  | [open](https://musicbrainz.org/release-group/38712263-fb38-463c-b6ff-68418dca5f7b) |

@@ -181,6 +181,8 @@ class TestLiveQueue(unittest.TestCase):
             "haydn/trumpet_concerto/3",
             "handel/organ_concertos/1",
             "chopin/pc2/1",
+            "brahms/violin_concerto/1",
+            "brahms/violin_concerto/2",
         ):
             with self.subTest(target=target):
                 self.assertNotIn(target, acc)
@@ -199,6 +201,9 @@ class TestLiveQueue(unittest.TestCase):
                 self.assertNotIn(target, acc)
                 self.assertIn(target, needs)
         self.assertIn("bach/cello_suites/1", acc)
+        # Generic "Violin Concerto" does not name the composer — not distinctive.
+        self.assertNotIn("beethoven/violin_concerto/1", acc)
+        self.assertIn("beethoven/violin_concerto/1", needs)
 
     def test_real_couplings_stay_accept_eligible(self):
         props = json.loads(
@@ -214,9 +219,25 @@ class TestLiveQueue(unittest.TestCase):
             "mozart/pc23/2",
             "mozart/pc27/1",
             "mozart/pc27/2",
+            "haydn/trumpet_concerto/1",
+            "bach/violin_concertos/4",
+            "shostakovich/sym5/4",
+            "shostakovich/sym5/5",
         ):
             with self.subTest(target=target):
                 self.assertIn(target, acc)
+
+    def test_beethoven_mutter_stays_when_brahms_duplicate_shares_mbid(self):
+        """Same RG as brahms/violin_concerto/2 — that disc is Beethoven."""
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        b = rq.live_identity_buckets(props, seed)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        wrong = {r["target"] for r in b["reject_wrong_work"]}
+        self.assertNotIn("beethoven/violin_concerto/3", wrong)
+        self.assertIn("beethoven/violin_concerto/3", acc)
 
     def test_reject_chip_cannot_stay_accept_eligible(self):
         """Live wrong-work flags beat a stale auto_accept_eligible payload."""

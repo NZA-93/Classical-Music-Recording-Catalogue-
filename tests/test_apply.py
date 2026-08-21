@@ -149,6 +149,57 @@ class ApplyIdentity(unittest.TestCase):
         self.assertIsNone(cand.get("mbid"))
         self.assertTrue(any(e["action"] == "refused_wrong_work" for e in log))
 
+    def test_generic_title_other_composer_never_applies(self):
+        seed = {
+            "schema": "seed/1",
+            "works": [
+                {
+                    "id": "brahms/violin_concerto",
+                    "composer_id": "brahms",
+                    "composer": "Johannes Brahms",
+                    "title": "Violin Concerto",
+                    "catalogue": "Op. 77",
+                    "candidates": [{
+                        "id": "brahms/violin_concerto/1",
+                        "soloists": "Jascha Heifetz",
+                        "director": "Fritz Reiner",
+                        "label": "RCA", "year": "1955",
+                        "verified": False, "mbid": None,
+                    }],
+                },
+                {
+                    "id": "tchaikovsky/violin_concerto",
+                    "composer_id": "tchaikovsky",
+                    "composer": "Pyotr Ilyich Tchaikovsky",
+                    "title": "Violin Concerto",
+                    "catalogue": "Op. 35",
+                    "candidates": [{
+                        "id": "tchaikovsky/violin_concerto/0",
+                        "soloists": "Jascha Heifetz",
+                        "director": "Fritz Reiner",
+                        "label": "RCA", "year": "1957",
+                        "verified": False, "mbid": None,
+                    }],
+                },
+            ],
+        }
+        props = [{
+            "target": "brahms/violin_concerto/1",
+            "kind": "identity",
+            "payload": {
+                "mbid": "tchaik-rg",
+                "mb_title": "Violin Concerto",
+                "match_score": 100,
+                "auto_accept_eligible": True,
+            },
+            "source": "MusicBrainz", "provenance": "cited",
+        }]
+        new, _, log = ap.apply_proposals(
+            props, seed, force=True, reason="please apply anyway")
+        self.assertIsNone(
+            ap.find_candidate(new, "brahms/violin_concerto/1").get("mbid"))
+        self.assertTrue(any(e["action"] == "refused_wrong_work" for e in log))
+
     def test_ineligible_requires_force(self):
         seed = deepcopy(SEED_MIN)
         props = [{

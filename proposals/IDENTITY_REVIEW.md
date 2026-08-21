@@ -1,6 +1,6 @@
 # Identity review
 
-392 identity proposals · 297 flagged
+392 identity proposals · 300 flagged
 
 | Target | Seed | MusicBrainz | Match | Eligible | Flags |
 |---|---|---|---|---|---|
@@ -57,7 +57,7 @@
 | `beethoven/sym7/0` | Carlos Kleiber; Deutsche Grammophon, 1976 | Symphonie Nr. 7 (1976) | 74 | no | confidence 74 < 80 |
 | `beethoven/sym9/2` | John Eliot Gardiner; Archiv, 1992 | Symphonies no. 8 & 9 (1993) | 63 | no | confidence 63 < 80 |
 | `beethoven/pc5/1` | Karl Böhm; Deutsche Grammophon, 1978 | Klavierkonzert no. 5 Es-Dur op. 73 (1979) | 55 | no | confidence 55 < 80 |
-| `beethoven/violin_concerto/1` | Carlo Maria Giulini; EMI, 1980 | Violin Concerto (1981) | 100 | yes |  |
+| `beethoven/violin_concerto/1` | Carlo Maria Giulini; EMI, 1980 | Violin Concerto (1981) | 100 | no | unsigned composer: MB title 'Violin Concerto' does not name Ludwig van Beethoven or catalogue |
 | `beethoven/late_quartets/0` | Busch Quartet; EMI, 1930s | Beethoven: The Late String Quartets (vol.2) (1993) | 82 | no | date off by 63 years (1930 vs 1993) |
 | `beethoven/late_quartets/1` | Quartetto Italiano; Philips, 1967–75 | The Late String Quartets (1989) | 100 | no | date off by 22 years (1967 vs 1989) |
 | `mozart/late_symphonies/0` | Karl Böhm; Deutsche Grammophon, 1960s | Symphonies Nos. 39, 40 & 41 (1999) | 100 | no | date off by 39 years (1960 vs 1999) |
@@ -93,7 +93,7 @@
 | `brahms/sym4/1` | Otto Klemperer; EMI, 1957 | Symphony no. 3 & 4 (1999-08-20) | 80 | no | date off by 42 years (1957 vs 1999) |
 | `brahms/pc1/1` | George Szell; Decca, 1962 | Piano Concertos No. 1, No. 2 (1972) | 100 | no | date off by 10 years (1962 vs 1972) |
 | `brahms/pc2/1` | Erich Leinsdorf; RCA, 1960 | Prokofiev - Piano Concertos No. 1 & 2 (None) | 100 | no | wrong work: MusicBrainz 'Prokofiev - Piano Concertos No. 1 & 2' does not match seed 'Piano Concerto No. 2' |
-| `brahms/violin_concerto/1` | Fritz Reiner; RCA, 1955 | Violin Concerto (1958) | 100 | yes |  |
+| `brahms/violin_concerto/1` | Fritz Reiner; RCA, 1955 | Violin Concerto (1958) | 100 | no | wrong work: MusicBrainz 'Violin Concerto' matches artists already listed under Pyotr Ilyich Tchaikovsky — 'Violin Concerto' is not distinctive across composers |
 | `brahms/clarinet_quintet/0` | Reginald Kell; Busch Quartet; EMI, 1937 | Horn Trio & Clarinet Quintet (1990) | 100 | no | date off by 53 years (1937 vs 1990); wrong work: MusicBrainz 'Horn Trio & Clarinet Quintet' does not match seed 'Clarinet Quintet' |
 | `haydn/cello_concerto1/0` | Daniel Barenboim; EMI, 1967 | Sonaten Für Violoncello Und Klavier Nr. 1 Und Nr. 2 (1968) | 67 | no | confidence 67 < 80; wrong work: MusicBrainz 'Sonaten Für Violoncello Und Klavier Nr. 1 Und Nr. 2' does not match seed 'Cello Concerto No. 1' |
 | `haydn/nelson_mass/0` | David Willcocks; EMI, 1962 | Haydn: Nelson Mass / Vivaldi: Gloria (1988) | 88 | no | date off by 26 years (1962 vs 1988) |
@@ -264,7 +264,7 @@
 | `brahms/pc1/2` | Leonard Bernstein; Columbia, 1960s | Klavierkonzerte = Piano Concertos Nos. 1 & 2 • Violinkonzert = Violin Concerto • Doppelkonzert = Double Concerto (1990) | 86 | no | date off by 30 years (1960 vs 1990) |
 | `brahms/pc1/3` | Leonard Bernstein; Deutsche Grammophon, 1980s | Klavierkonzerte = Piano Concertos Nos. 1 & 2 • Violinkonzert = Violin Concerto • Doppelkonzert = Double Concerto (1990) | 86 | no | date off by 10 years (1980 vs 1990) |
 | `brahms/pc2/3` | Sir Simon Rattle; Deutsche Grammophon, 2000s | The Asia Tour, Vol. 2 (2018-05-18) | 100 | no | date off by 18 years (2000 vs 2018); wrong work: MusicBrainz 'The Asia Tour, Vol. 2' does not match seed 'Piano Concerto No. 2' |
-| `brahms/violin_concerto/3` | Kirill Kondrashin; Melodiya, 1960s | Violin Concerto (1980-05) | 100 | no | date off by 20 years (1960 vs 1980) |
+| `brahms/violin_concerto/3` | Kirill Kondrashin; Melodiya, 1960s | Violin Concerto (1980-05) | 100 | no | date off by 20 years (1960 vs 1980); unsigned composer: MB title 'Violin Concerto' does not name Johannes Brahms or catalogue |
 | `brahms/german_requiem/2` | Herbert von Karajan; Deutsche Grammophon, 1960s | Ein deutsches Requiem / Haydn-Variationen (1980) | 74 | no | confidence 74 < 80; date off by 20 years (1960 vs 1980) |
 | `brahms/piano_quintet/1` | Sviatoslav Richter; Borodin Quartet; EMI, 1983 | FRANCK: Piano Quintet / LISZT: Pensées des morts · Andante lagrimoso · Ave Maria (1991) | 69 | no | confidence 69 < 80; date off by 8 years (1983 vs 1991); wrong work: MusicBrainz 'FRANCK: Piano Quintet / LISZT: Pensées des morts · Andante lagrimoso · Ave Maria' does not match seed 'Piano Quintet' |
 | `brahms/haydn_variations/2` | Otto Klemperer; EMI, 1950s | The Klemperer Legacy: Haydn: Symphony 98 & Tchkaikovsky: Symphony 5 (1999) | 62 | no | confidence 62 < 80; date off by 49 years (1950 vs 1999) |
@@ -359,7 +359,7 @@
 | `shostakovich/sym14/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 1, 14 & 15 / Chamber Symphony in C minor (2021-06-25) | 100 | yes |  |
 | `shostakovich/sym15/0` | Kirill Kondrashin; Melodiya, 1970s | Symphonies 9 & 15 (None) | 100 | yes |  |
 | `brahms/pc2/2` | Leonard Bernstein; Columbia, 1960s | Piano Concerto no. 2 / Rhapsody on a Theme of Paganini (1964) | 100 | no | date off by 4 years (1960 vs 1964) |
-| `brahms/violin_concerto/2` | Herbert von Karajan; Deutsche Grammophon, 1980s | Violin Concerto (1980) | 98 | yes |  |
+| `brahms/violin_concerto/2` | Herbert von Karajan; Deutsche Grammophon, 1980s | Violin Concerto (1980) | 98 | no | wrong work: MusicBrainz 'Violin Concerto' matches artists already listed under Ludwig van Beethoven — 'Violin Concerto' is not distinctive across composers |
 | `brahms/german_requiem/1` | John Eliot Gardiner; Philips, 1990 | Ein deutsches Requiem (1991-04-16) | 100 | yes |  |
 | `brahms/german_requiem/3` | Wilhelm Furtwängler; EMI, 1950s | Ein deutsches Requiem / Symphony no. 1 (2002) | 100 | no | date off by 52 years (1950 vs 2002) |
 | `brahms/haydn_variations/1` | Bernard Haitink; Philips, 1970s | Symphony no. 4 in E minor / Haydn Variations (1992-04) | 33 | no | confidence 33 < 80; date off by 22 years (1970 vs 1992) |

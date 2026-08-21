@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.5"
+VERSION = "harvest/1.6"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -748,10 +748,104 @@ def work_title_compatible(seed_title: str, mb_title: str,
     return False
 
 
+def _folded_person(name: str) -> str:
+    return " ".join(
+        _fold_token(p) for p in re.split(r"[\s,]+", name or "") if p
+    )
+
+
+def _generic_instrument_form_only(title: str) -> bool:
+    """True for 'Violin Concerto' — form+instrument, no work name, no number."""
+    if extract_work_numbers(title):
+        return False
+    if distinctive_work_tokens(title):
+        return False
+    tokens = _title_tokens(title)
+    return bool(
+        _family(tokens, FORM_FAMILIES) and _family(tokens, INSTRUMENT_FAMILIES)
+    )
+
+
+def _mb_names_seed_composer(mb_title: str, composer: str) -> bool:
+    surnames = {
+        _fold_token(p) for p in re.split(r"\s+", composer or "") if len(p) >= 4
+    }
+    mb_toks = {_fold_token(t) for t in _title_tokens(mb_title)}
+    return bool(surnames & mb_toks)
+
+
+def composer_seed_index(composer_id: str, works: Optional[list] = None) -> int:
+    """First appearance of composer_id in the seed. Missing composers sort last."""
+    if not composer_id:
+        return 10 ** 9
+    for i, other in enumerate(works or []):
+        if (other.get("composer_id") or "") == composer_id:
+            return i
+    return 10 ** 9
+
+
+def other_composer_same_generic_artists(
+    rec: dict, work: dict, works: Optional[list] = None,
+) -> Optional[str]:
+    """Another composer in the seed lists the same director+soloists on the
+    same generic instrument+form work (Brahms VC vs Tchaikovsky Heifetz/Reiner,
+    Brahms VC vs Beethoven Mutter/Karajan).
+    """
+    if not rec or not work or not works:
+        return None
+    seed_title = work.get("title") or ""
+    if not _generic_instrument_form_only(seed_title):
+        return None
+    director = _folded_person(rec.get("director") or "")
+    soloists = _folded_person(rec.get("soloists") or "")
+    if not director or not soloists:
+        return None
+    my_cid = work.get("composer_id") or ""
+    my_composer = work.get("composer") or ""
+    seed_form = _family(_title_tokens(seed_title), FORM_FAMILIES)
+    seed_inst = _family(_title_tokens(seed_title), INSTRUMENT_FAMILIES)
+    for other in works:
+        oid = other.get("composer_id") or ""
+        oname = other.get("composer") or ""
+        if my_cid and oid:
+            if oid == my_cid:
+                continue
+        elif oname == my_composer:
+            continue
+        ot = other.get("title") or ""
+        if not _generic_instrument_form_only(ot):
+            continue
+        otok = _title_tokens(ot)
+        if _family(otok, FORM_FAMILIES) is not seed_form:
+            continue
+        if _family(otok, INSTRUMENT_FAMILIES) is not seed_inst:
+            continue
+        for cand in other.get("candidates") or []:
+            if (
+                _folded_person(cand.get("director") or "") == director
+                and _folded_person(cand.get("soloists") or "") == soloists
+            ):
+                return oname or oid
+    return None
+
+
+def is_cross_composer_generic_flag(flag: str) -> bool:
+    """Wrong-work flags that mean a generic title hid another composer's work."""
+    s = str(flag)
+    if not s.startswith("wrong work:"):
+        return False
+    return (
+        "already listed under" in s
+        or "proposed for more than one composer" in s
+        or "not distinctive across composers" in s
+    )
+
+
 def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[str],
                           confidence: Optional[int],
                           work: Optional[dict] = None,
-                          sibling_numbers: Optional[set[str]] = None) -> list[str]:
+                          sibling_numbers: Optional[set[str]] = None,
+                          works: Optional[list] = None) -> list[str]:
     """Flags that block auto-accept. Humans still review clean matches too.
 
     A wrong-work flag is fatal for apply.py — it cannot be force-overridden.
@@ -789,12 +883,35 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
                 f"wrong work: MusicBrainz {mb_title!r} does not match seed "
                 f"{seed_title!r}"
             )
+        else:
+            other = other_composer_same_generic_artists(rec, work, works)
+            if other:
+                flags.append(
+                    f"wrong work: MusicBrainz {mb_title!r} matches artists "
+                    f"already listed under {other} — {seed_title!r} is not "
+                    f"distinctive across composers"
+                )
+            elif (
+                _generic_instrument_form_only(seed_title)
+                and _generic_instrument_form_only(mb_title)
+                and not _COLLECTION_PLURAL_RE.search(mb_title or "")
+                and not _mb_names_seed_composer(mb_title, composer)
+                and not (
+                    extract_catalogue_ids(catalogue)
+                    & extract_catalogue_ids(mb_title)
+                )
+            ):
+                flags.append(
+                    f"unsigned composer: MB title {mb_title!r} does not name "
+                    f"{composer} or catalogue"
+                )
     return flags
 
 
 def refresh_identity_eligibility(
     payload: dict, rec: Optional[dict] = None, work: Optional[dict] = None,
     sibling_numbers: Optional[set[str]] = None,
+    works: Optional[list] = None,
 ) -> tuple[list[str], bool]:
     """Recompute flags against the current matcher.
 
@@ -820,6 +937,7 @@ def refresh_identity_eligibility(
         confidence,
         work=work,
         sibling_numbers=sibling_numbers,
+        works=works,
     )
     eligible = (
         confidence is not None
@@ -955,7 +1073,8 @@ def identity_facts_from_mb(
     return out
 
 
-def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
+def adapter_identity(rec: dict, work: dict, http: Http,
+                     works: Optional[list] = None) -> list[Proposal]:
     """Resolve a candidate to a MusicBrainz release-group. CC0 data.
 
     Emits confidence and review flags. Matches below IDENTITY_MIN_CONFIDENCE
@@ -998,7 +1117,9 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
         confidence = int(confidence)
     mb_title = best.get("title") or ""
     mb_first = best.get("first-release-date")
-    flags = identity_review_flags(rec, mb_title, mb_first, confidence, work=work)
+    flags = identity_review_flags(
+        rec, mb_title, mb_first, confidence, work=work, works=works,
+    )
     eligible = confidence is not None and confidence >= IDENTITY_MIN_CONFIDENCE and not flags
 
     alternatives = []
@@ -1422,7 +1543,12 @@ def main() -> int:
                     raise BudgetExhausted()
                 continue
             print(f"  [{stage}] {rec['id']}")
-            got = ADAPTERS[stage](rec, work, http)
+            if stage == "identity":
+                got = adapter_identity(
+                    rec, work, http, works=seed.get("works") or [],
+                )
+            else:
+                got = ADAPTERS[stage](rec, work, http)
             # Transient transport failures must not advance the cursor into a
             # week-long backoff — retry next run (or later in this budget).
             if not got and http.last_status == "error":

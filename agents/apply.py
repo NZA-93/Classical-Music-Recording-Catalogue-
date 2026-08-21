@@ -150,7 +150,8 @@ def load_decisions(path: pathlib.Path) -> dict[tuple[str, str], dict]:
 def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
                    log: list, work: Optional[dict] = None,
                    human_ratified: bool = False,
-                   works: Optional[list] = None) -> bool:
+                   works: Optional[list] = None,
+                   mbid_composers: Optional[dict[str, set[str]]] = None) -> bool:
     mbid = payload.get("mbid")
     if not mbid:
         log.append({"action": "skip", "kind": "identity", "id": cand["id"],
@@ -163,6 +164,8 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
     if work and mb_title:
         try:
             from harvest import (  # noqa: WPS433
+                composer_seed_index,
+                other_composer_same_generic_artists,
                 sibling_work_numbers, work_title_compatible,
             )
         except ImportError:
@@ -183,6 +186,32 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
                 )
                 if flag not in flags:
                     flags.append(flag)
+            else:
+                other = other_composer_same_generic_artists(
+                    cand, work, works or [],
+                )
+                if other:
+                    holders = (mbid_composers or {}).get(str(mbid) or "") or set()
+                    my_cid = work.get("composer_id") or ""
+                    contested = len(holders) >= 2
+                    first = (
+                        min(holders, key=lambda c: composer_seed_index(c, works))
+                        if contested else ""
+                    )
+                    # Shared RG: the seed-order-first composer is the listing
+                    # that actually includes the seeded work (Beethoven /3).
+                    # Unique MBID + same artists under another composer is the
+                    # leak (Brahms /1 → Tchaikovsky).
+                    if contested and my_cid == first:
+                        other = None
+                if other:
+                    flag = (
+                        f"wrong work: MusicBrainz {mb_title!r} matches artists "
+                        f"already listed under {other} — "
+                        f"{work.get('title')!r} is not distinctive across composers"
+                    )
+                    if flag not in flags:
+                        flags.append(flag)
 
     wrong = [f for f in flags if f.startswith(WRONG_WORK_PREFIX)]
     if wrong:
@@ -423,6 +452,16 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
     use_decisions = decisions is not None or require_decisions
     decisions = decisions or {}
 
+    mbid_composers: dict[str, set[str]] = {}
+    for prop in proposals:
+        if prop.get("kind") != "identity":
+            continue
+        mid = (prop.get("payload") or {}).get("mbid")
+        work_row = find_work(seed, prop.get("target") or "")
+        cid = (work_row or {}).get("composer_id") or ""
+        if mid and cid:
+            mbid_composers.setdefault(str(mid), set()).add(str(cid))
+
     for prop in proposals:
         kind = prop.get("kind")
         if kind not in KINDS:
@@ -458,6 +497,7 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
                 cand, payload, force, reason, log, work=work,
                 human_ratified=human_ratified,
                 works=seed.get("works") or [],
+                mbid_composers=mbid_composers,
             ) or changed
         elif kind == "editions":
             changed = apply_editions(cand, payload, seed, force, reason, log,
