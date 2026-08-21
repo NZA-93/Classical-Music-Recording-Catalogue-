@@ -362,6 +362,43 @@ class TestIdentityConfidence(unittest.TestCase):
         self.assertFalse(har._generic_instrument_form_only("Piano Concerto No. 1"))
         self.assertTrue(har._COLLECTION_PLURAL_RE.search("Trumpet Concertos"))
 
+    def test_generic_symphony_number_is_not_distinctive(self):
+        self.assertTrue(har._generic_across_composers("Symphony No. 6"))
+        self.assertTrue(har._generic_across_composers("Symphony no. 6"))
+        self.assertFalse(har._generic_across_composers(
+            "Symphony No. 6, Pathétique"))
+        self.assertFalse(har._generic_across_composers(
+            "Symphony No. 6, Pastoral"))
+        self.assertFalse(har._generic_instrument_form_only("Symphony No. 6"))
+
+    def test_mravinsky_listed_under_tchaikovsky_not_shostakovich_6(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        shost = next(w for w in seed["works"] if w["id"] == "shostakovich/sym6")
+        rec = next(c for c in shost["candidates"] if c["id"] == "shostakovich/sym6/0")
+        other = har.other_composer_same_generic_artists(rec, shost, seed["works"])
+        self.assertIsNotNone(other)
+        self.assertIn("Tchaikovsky", other)
+        flags = har.identity_review_flags(
+            rec, "Symphony no. 6", "1961", 100,
+            work=shost, works=seed["works"],
+        )
+        self.assertTrue(any(f.startswith("wrong work:") for f in flags))
+
+    def test_same_conductor_symphony_9_is_not_automatically_wrong_work(self):
+        """Abbado recorded Beethoven 9 and Mahler 9; both titles are generic."""
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        bee = next(w for w in seed["works"] if w["id"] == "beethoven/sym9")
+        rec = next(c for c in bee["candidates"] if c["id"] == "beethoven/sym9/4")
+        self.assertIsNone(
+            har.other_composer_same_generic_artists(rec, bee, seed["works"]))
+
+    def test_chopin_pc1_coupling_is_not_tchaikovsky_collision(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        chopin = next(w for w in seed["works"] if w["id"] == "chopin/pc1")
+        rec = next(c for c in chopin["candidates"] if c["id"] == "chopin/pc1/2")
+        self.assertIsNone(
+            har.other_composer_same_generic_artists(rec, chopin, seed["works"]))
+
     def test_english_concert_in_title_is_not_live(self):
         facts = har.identity_facts_from_mb(title="Brandenburg Concertos")
         self.assertNotIn("live_studio", facts)

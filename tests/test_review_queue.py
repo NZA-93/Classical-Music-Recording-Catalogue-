@@ -183,6 +183,7 @@ class TestLiveQueue(unittest.TestCase):
             "chopin/pc2/1",
             "brahms/violin_concerto/1",
             "brahms/violin_concerto/2",
+            "shostakovich/sym6/0",
         ):
             with self.subTest(target=target):
                 self.assertNotIn(target, acc)
@@ -223,6 +224,7 @@ class TestLiveQueue(unittest.TestCase):
             "bach/violin_concertos/4",
             "shostakovich/sym5/4",
             "shostakovich/sym5/5",
+            "shostakovich/sym6/3",
         ):
             with self.subTest(target=target):
                 self.assertIn(target, acc)
@@ -238,6 +240,7 @@ class TestLiveQueue(unittest.TestCase):
         wrong = {r["target"] for r in b["reject_wrong_work"]}
         self.assertNotIn("beethoven/violin_concerto/3", wrong)
         self.assertIn("beethoven/violin_concerto/3", acc)
+        self.assertIn("beethoven/sym9/4", acc)
 
     def test_reject_chip_cannot_stay_accept_eligible(self):
         """Live wrong-work flags beat a stale auto_accept_eligible payload."""

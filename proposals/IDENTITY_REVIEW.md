@@ -1,6 +1,6 @@
 # Identity review
 
-392 identity proposals · 300 flagged
+392 identity proposals · 301 flagged
 
 | Target | Seed | MusicBrainz | Match | Eligible | Flags |
 |---|---|---|---|---|---|
@@ -15,7 +15,7 @@
 | `beethoven/sym5/0` | Carlos Kleiber; Deutsche Grammophon, 1974 | Symphonie Nr. 5 (1975) | 100 | yes |  |
 | `beethoven/sym5/1` | Wilhelm Furtwängler; EMI, 1954 | Symphony n. 4 op. 60 / Symphony n. 5 op. 67 / “Coriolan”, Overture (1994) | 71 | no | confidence 71 < 80; date off by 40 years (1954 vs 1994) |
 | `beethoven/sym9/0` | Wilhelm Furtwängler; EMI, 1951 | Sinfonie Nr.7 (Nr. 9) C-dur op. posth. (1958-12) | 71 | no | confidence 71 < 80; date off by 7 years (1951 vs 1958) |
-| `beethoven/sym9/1` | Herbert von Karajan; Deutsche Grammophon, 1962 | Symphonie No. 9 (1986) | 100 | no | date off by 24 years (1962 vs 1986) |
+| `beethoven/sym9/1` | Herbert von Karajan; Deutsche Grammophon, 1962 | Symphonie No. 9 (1986) | 100 | no | date off by 24 years (1962 vs 1986); wrong work: MusicBrainz 'Symphonie No. 9' matches artists already listed under Franz Schubert — 'Symphony No. 9' is not distinctive across composers |
 | `beethoven/violin_concerto/0` | Charles Munch; RCA, 1955 | Violin Concertos (1998-05-19) | 83 | no | date off by 43 years (1955 vs 1998) |
 | `beethoven/missa_solemnis/0` | Otto Klemperer; EMI, 1965 | Missa solemnis (1966-07) | 100 | yes |  |
 | `beethoven/fidelio/0` | Otto Klemperer; EMI, 1962 | Fidelio (1989) | 94 | no | date off by 27 years (1962 vs 1989) |
@@ -245,8 +245,8 @@
 | `puccini/trittico/1` | Antonio Pappano; EMI, 2000s | Il trittico: Il tabarro / Suor Angelica / Gianni Schicchi (1999) | 100 | yes |  |
 | `puccini/messa_gloria/0` | Riccardo Muti; EMI, 1980s | Gloria / Magnificat (1987) | 100 | no | date off by 7 years (1980 vs 1987) |
 | `shostakovich/sym1/1` | Mstislav Rostropovich; LSO Live, 2000s | Symphonies nos. 1 & 9 (1994) | 94 | no | date off by 6 years (2000 vs 1994) |
-| `shostakovich/sym6/0` | Yevgeny Mravinsky; Melodiya, 1960s | Symphony no. 6 (1961) | 100 | yes |  |
-| `shostakovich/sym6/2` | Bernard Haitink; Decca, 1980s | Symphony no. 14 / 6 Poems of Marina Tsvetaeva (1986) | 57 | no | confidence 57 < 80; date off by 6 years (1980 vs 1986) |
+| `shostakovich/sym6/0` | Yevgeny Mravinsky; Melodiya, 1960s | Symphony no. 6 (1961) | 100 | no | wrong work: MusicBrainz 'Symphony no. 6' matches artists already listed under Pyotr Ilyich Tchaikovsky — 'Symphony No. 6' is not distinctive across composers |
+| `shostakovich/sym6/2` | Bernard Haitink; Decca, 1980s | Symphony no. 14 / 6 Poems of Marina Tsvetaeva (1986) | 57 | no | confidence 57 < 80; date off by 6 years (1980 vs 1986); wrong work: MusicBrainz 'Symphony no. 14 / 6 Poems of Marina Tsvetaeva' matches artists already listed under Pyotr Ilyich Tchaikovsky — 'Symphony No. 6' is not distinctive across composers |
 | `shostakovich/sym6/4` | Vasily Petrenko; Naxos, 2010 | Symphonies 3, 4 and 6 (2017) | 100 | no | date off by 7 years (2010 vs 2017) |
 | `shostakovich/sym7/1` | Yevgeny Mravinsky; Melodiya, 1960s | Sibelius: Symphony no. 3, op. 52 / The Swan of Tuonela, op. 22 no. 3 / Symphony no. 7, op. 105 / Debussy: Nocturnes: Nuages-Fêtes (2016) | 98 | no | date off by 56 years (1960 vs 2016); wrong work: MusicBrainz 'Sibelius: Symphony no. 3, op. 52 / The Swan of Tuonela, op. 22 no. 3 / Symphony no. 7, op. 105 / Debussy: Nocturnes: Nuages-Fêtes' does not match seed 'Symphony No. 7, Leningrad' |
 | `shostakovich/sym7/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphony no. 7 in C major "Leningrad" (2012) | 100 | no | date off by 6 years (2018 vs 2012) |

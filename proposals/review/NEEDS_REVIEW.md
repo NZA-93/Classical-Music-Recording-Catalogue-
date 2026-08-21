@@ -2,7 +2,7 @@
 
 Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open the MusicBrainz URL before accepting. Never accept a wrong-work match.
 
-**Count:** 197
+**Count:** 195
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -12,7 +12,6 @@ Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open t
 | pending | `beethoven/sym3/0` | Otto Klemperer; EMI, 1959 | Symphony no. 3 in E-flat "Eroica" / Grosse Fuge in B-flat (1985) | 82 | date off by 26 years (1959 vs 1985) | [open](https://musicbrainz.org/release-group/c7378351-8f92-49e5-a95b-1c50e02cac9c) |
 | pending | `beethoven/sym5/1` | Wilhelm Furtwängler; EMI, 1954 | Symphony n. 4 op. 60 / Symphony n. 5 op. 67 / “Coriolan”, Overture (1994) | 71 | confidence 71 < 80; date off by 40 years (1954 vs 1994) | [open](https://musicbrainz.org/release-group/c70ccf61-d87d-4991-a9ff-a423b07f9076) |
 | pending | `beethoven/sym9/0` | Wilhelm Furtwängler; EMI, 1951 | Sinfonie Nr.7 (Nr. 9) C-dur op. posth. (1958-12) | 71 | confidence 71 < 80; date off by 7 years (1951 vs 1958) | [open](https://musicbrainz.org/release-group/c37f6ceb-d1d8-4c2c-bdbe-1a9ac74a58d0) |
-| pending | `beethoven/sym9/1` | Herbert von Karajan; Deutsche Grammophon, 1962 | Symphonie No. 9 (1986) | 100 | date off by 24 years (1962 vs 1986) | [open](https://musicbrainz.org/release-group/97e41bfe-105b-45a9-95b1-5321210d5f8b) |
 | pending | `beethoven/violin_concerto/0` | Charles Munch; RCA, 1955 | Violin Concertos (1998-05-19) | 83 | date off by 43 years (1955 vs 1998) | [open](https://musicbrainz.org/release-group/df63cc4e-fe0a-3b20-b925-32efaaf35db7) |
 | pending | `beethoven/fidelio/0` | Otto Klemperer; EMI, 1962 | Fidelio (1989) | 94 | date off by 27 years (1962 vs 1989) | [open](https://musicbrainz.org/release-group/75c52db5-d9d8-4f26-8059-7b4e6a17dbfa) |
 | pending | `mozart/pc20/0` | Igor Markevitch; Philips, 1960 | Piano Concertos Nos. 20 & 24 (2001) | 100 | date off by 41 years (1960 vs 2001) | [open](https://musicbrainz.org/release-group/e55b69cf-ee0b-345b-a957-c7e110f35c2d) |
@@ -141,7 +140,6 @@ Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open t
 | pending | `mozart/figaro/2` | Karl Böhm; Deutsche Grammophon, 1960s | Le nozze di Figaro (1968) | 90 | date off by 8 years (1960 vs 1968) | [open](https://musicbrainz.org/release-group/1d4f5909-72fb-4044-8077-2403141d3162) |
 | pending | `puccini/messa_gloria/0` | Riccardo Muti; EMI, 1980s | Gloria / Magnificat (1987) | 100 | date off by 7 years (1980 vs 1987) | [open](https://musicbrainz.org/release-group/755ce220-b39f-31f8-8bcf-d65683d7059c) |
 | pending | `shostakovich/sym1/1` | Mstislav Rostropovich; LSO Live, 2000s | Symphonies nos. 1 & 9 (1994) | 94 | date off by 6 years (2000 vs 1994) | [open](https://musicbrainz.org/release-group/444d7baf-63db-4a06-bf18-a4e4db425711) |
-| pending | `shostakovich/sym6/2` | Bernard Haitink; Decca, 1980s | Symphony no. 14 / 6 Poems of Marina Tsvetaeva (1986) | 57 | confidence 57 < 80; date off by 6 years (1980 vs 1986) | [open](https://musicbrainz.org/release-group/1214180c-7f20-45d3-98e9-f5539fdb7091) |
 | pending | `shostakovich/sym6/4` | Vasily Petrenko; Naxos, 2010 | Symphonies 3, 4 and 6 (2017) | 100 | date off by 7 years (2010 vs 2017) | [open](https://musicbrainz.org/release-group/5abfa112-ab06-4c47-8182-89774e32e95d) |
 | pending | `shostakovich/sym7/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphony no. 7 in C major "Leningrad" (2012) | 100 | date off by 6 years (2018 vs 2012) | [open](https://musicbrainz.org/release-group/012f45f8-9331-455c-81a5-af497d408505) |
 | pending | `shostakovich/sym9/2` | Bernard Haitink; Decca, 1980s | Symphonies nos. 1 & 9 (1985) | 78 | confidence 78 < 80; date off by 5 years (1980 vs 1985) | [open](https://musicbrainz.org/release-group/7d58aadd-be60-3267-9282-7400c2bb9f48) |

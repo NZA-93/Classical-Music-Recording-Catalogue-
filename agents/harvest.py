@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.6"
+VERSION = "harvest/1.7"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -754,16 +754,43 @@ def _folded_person(name: str) -> str:
     )
 
 
+def _generic_across_composers(title: str) -> bool:
+    """True when the title is only form / instrument / number — not a unique work.
+
+    'Violin Concerto', 'Symphony No. 6', 'Piano Concerto No. 1'.
+    Not 'Symphony No. 6, Pathétique' or 'Brandenburg Concertos'.
+    """
+    if distinctive_work_tokens(title):
+        return False
+    return _family(_title_tokens(title), FORM_FAMILIES) is not None
+
+
 def _generic_instrument_form_only(title: str) -> bool:
     """True for 'Violin Concerto' — form+instrument, no work name, no number."""
     if extract_work_numbers(title):
         return False
-    if distinctive_work_tokens(title):
+    if not _generic_across_composers(title):
         return False
-    tokens = _title_tokens(title)
-    return bool(
-        _family(tokens, FORM_FAMILIES) and _family(tokens, INSTRUMENT_FAMILIES)
-    )
+    return _family(_title_tokens(title), INSTRUMENT_FAMILIES) is not None
+
+
+def _same_performance_artists(a: dict, b: dict) -> bool:
+    """Director+soloists when named; otherwise director+ensemble (no soloists)."""
+    da = _folded_person(a.get("director") or "")
+    db = _folded_person(b.get("director") or "")
+    sa = _folded_person(a.get("soloists") or "")
+    sb = _folded_person(b.get("soloists") or "")
+    ea = _folded_person(a.get("ensemble") or "")
+    eb = _folded_person(b.get("ensemble") or "")
+    if sa or sb:
+        if not sa or not sb or sa != sb:
+            return False
+        if da and db and da != db:
+            return False
+        return True
+    if da and db:
+        return da == db and bool(ea) and ea == eb
+    return bool(ea) and ea == eb
 
 
 def _mb_names_seed_composer(mb_title: str, composer: str) -> bool:
@@ -787,23 +814,26 @@ def composer_seed_index(composer_id: str, works: Optional[list] = None) -> int:
 def other_composer_same_generic_artists(
     rec: dict, work: dict, works: Optional[list] = None,
 ) -> Optional[str]:
-    """Another composer in the seed lists the same director+soloists on the
-    same generic instrument+form work (Brahms VC vs Tchaikovsky Heifetz/Reiner,
-    Brahms VC vs Beethoven Mutter/Karajan).
+    """Another composer in the seed lists the same artists on the same
+    generic form work (Brahms VC vs Tchaikovsky Heifetz/Reiner; Shostakovich
+    Symphony No. 6 vs Tchaikovsky Pathétique Mravinsky).
+
+    Numbered forms (Symphony No. 9) are recorded by the same conductor for
+    many composers; only treat those as a leak when the other listing carries
+    a distinctive work name the seed lacks (Pathétique, Pastoral, Eroica).
     """
     if not rec or not work or not works:
         return None
     seed_title = work.get("title") or ""
-    if not _generic_instrument_form_only(seed_title):
-        return None
-    director = _folded_person(rec.get("director") or "")
-    soloists = _folded_person(rec.get("soloists") or "")
-    if not director or not soloists:
+    if not _generic_across_composers(seed_title):
         return None
     my_cid = work.get("composer_id") or ""
     my_composer = work.get("composer") or ""
-    seed_form = _family(_title_tokens(seed_title), FORM_FAMILIES)
-    seed_inst = _family(_title_tokens(seed_title), INSTRUMENT_FAMILIES)
+    seed_tok = _title_tokens(seed_title)
+    seed_form = _family(seed_tok, FORM_FAMILIES)
+    seed_inst = _family(seed_tok, INSTRUMENT_FAMILIES)
+    seed_nums = extract_work_numbers(seed_title)
+    seed_dist = distinctive_work_tokens(seed_title)
     for other in works:
         oid = other.get("composer_id") or ""
         oname = other.get("composer") or ""
@@ -813,18 +843,35 @@ def other_composer_same_generic_artists(
         elif oname == my_composer:
             continue
         ot = other.get("title") or ""
-        if not _generic_instrument_form_only(ot):
-            continue
         otok = _title_tokens(ot)
         if _family(otok, FORM_FAMILIES) is not seed_form:
             continue
-        if _family(otok, INSTRUMENT_FAMILIES) is not seed_inst:
+        oinst = _family(otok, INSTRUMENT_FAMILIES)
+        if seed_inst and oinst and seed_inst is not oinst:
+            continue
+        if seed_inst and not oinst:
+            continue
+        if _keys_conflict(seed_title, ot):
+            continue
+        other_nums = extract_work_numbers(ot)
+        if seed_nums:
+            if not (seed_nums & other_nums):
+                continue
+            other_dist = distinctive_work_tokens(ot)
+            extra = False
+            for o in other_dist:
+                if any(_token_overlap(o, s) for s in seed_dist):
+                    continue
+                if any(_token_overlap(o, s) for s in seed_tok):
+                    continue
+                extra = True
+                break
+            if not extra:
+                continue
+        elif other_nums:
             continue
         for cand in other.get("candidates") or []:
-            if (
-                _folded_person(cand.get("director") or "") == director
-                and _folded_person(cand.get("soloists") or "") == soloists
-            ):
+            if _same_performance_artists(rec, cand):
                 return oname or oid
     return None
 

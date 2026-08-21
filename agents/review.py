@@ -138,8 +138,8 @@ def _flag_shared_mbid_across_composers(
         seed_t = row.get("work_title") or ""
         mb_t = (row.get("mb") or {}).get("title") or ""
         if not (
-            har._generic_instrument_form_only(seed_t)
-            and har._generic_instrument_form_only(mb_t)
+            har._generic_across_composers(seed_t)
+            and har._generic_across_composers(mb_t)
         ):
             continue
         keep = min(holders, key=lambda c: har.composer_seed_index(c, works))

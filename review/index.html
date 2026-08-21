@@ -104,7 +104,7 @@ font-size:.85rem;max-width:44rem}
   side by side; empty fields stay blank. Community notes help authoring; they stay
   on a separate layer from the owner’s editorial voice. Citation tasks are listed
   in the tally only — not on identity rows.</p>
-  <div class="tally"><div><b>92</b><span>accept-eligible</span></div><div><b>197</b><span>needs review</span></div><div><b>103</b><span>wrong work</span></div><div><b>510</b><span>citation tasks</span></div><div><b>359</b><span>unharvested</span></div></div>
+  <div class="tally"><div><b>91</b><span>accept-eligible</span></div><div><b>195</b><span>needs review</span></div><div><b>106</b><span>wrong work</span></div><div><b>510</b><span>citation tasks</span></div><div><b>359</b><span>unharvested</span></div></div>
 </div>
 
 <div class="banner owner">
@@ -1408,27 +1408,6 @@ font-size:.85rem;max-width:44rem}
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=puccini/trittico/1&target=puccini/trittico/1">Add community comment</a>
-    </p>
-  </div>
-</article>
-
-<article class="row" data-bucket="accept_eligible" data-decision="pending">
-  <div>
-    <p class="meta">shostakovich/sym6/0 · pack ACCEPT_ELIGIBLE</p>
-    <h3>Dmitri Shostakovich — Symphony No. 6</h3>
-    <p>Yevgeny Mravinsky / Leningrad Philharmonic Orchestra · Melodiya, 1960s</p>
-    <span class="chip pending">pending</span>
-    <span class="meta">accept eligible</span>
-    
-    
-  </div>
-  <div>
-    <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
-    <p>Symphony no. 6 · first 1961 · match 100</p>
-    <p class="actions"><a href="https://musicbrainz.org/release-group/e37cbb1f-86e3-43ae-b5a1-13566225e47b" rel="noopener">MusicBrainz</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=shostakovich/sym6/0&target=shostakovich/sym6/0">Add community comment</a>
     </p>
   </div>
 </article>
@@ -3930,56 +3909,6 @@ font-size:.85rem;max-width:44rem}
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=beethoven/sym9/0&target=beethoven/sym9/0">Add community comment</a>
-    </p>
-  </div>
-</article>
-
-<article class="row identity-rich" data-bucket="needs_review"
-  data-decision="pending">
-  <div>
-    <p class="meta">beethoven/sym9/1 · pack NEEDS_REVIEW</p>
-    <h3>Ludwig van Beethoven — Symphony No. 9</h3>
-    <span class="chip pending">pending</span>
-    <span class="meta">needs review</span>
-    <div class="why"><h4>Why it missed auto-accept</h4><ul><li>date off by 24 years (1962 vs 1986) <span class="fields">[seed.year,payload.mb_first_release,review_flags]</span></li></ul></div>
-    <ul class="criteria"><li><span class="chip pass">pass</span> same_work — seed work matches MB title (language/ordinal variants allowed)</li><li><span class="chip absent">absent</span> same_principal_artists — seed forces shown; MB artist-credit not in harvest payload — cannot verify match</li><li><span class="chip conflict">conflict</span> release_year_proxy — seed year 1962 ≠ MB first-release 1986 (release-year proxies, not session)</li><li><span class="chip absent">absent</span> not_excerpt_or_sampler — no excerpt/sampler field in payload — cannot confirm</li><li><span class="chip absent">absent</span> mbid_is_this_performance — release-group MBID present; release MBID and artist-credit absent — human must open MB</li></ul>
-    <p class="siblings">Remake siblings: <span class="blank">none in seed</span></p>
-    
-  </div>
-  <div>
-    
-    <div class="pair">
-      <p class="col-h">Seed</p>
-      <span class="shown"><span class="k">work</span> Symphony No. 9</span>
-      <span class="shown"><span class="k">catalogue</span> Op. 125</span>
-      
-      
-      <span class="shown"><span class="k">conductor</span> Herbert von Karajan</span>
-      <span class="shown"><span class="k">orchestra</span> Berliner Philharmoniker</span>
-      <span class="blank" title="payload absent — honest omit">soloists: —</span>
-      
-      <span class="shown"><span class="k">seed year (release proxy, not session)</span> 1962</span>
-      
-      <span class="shown"><span class="k">label</span> Deutsche Grammophon</span>
-    </div>
-    
-    
-    <div class="pair">
-      <p class="col-h">MusicBrainz (harvest)</p>
-      <span class="shown"><span class="k">mb_title</span> Symphonie No. 9</span>
-      
-      
-      
-      <span class="shown"><span class="k">first release (release proxy, not session)</span> 1986</span>
-      
-      <span class="shown"><span class="k">release-group MBID</span> 97e41bfe-105b-45a9-95b1-5321210d5f8b</span>
-      <span class="shown"><span class="k">match confidence (not a verdict)</span> 100</span>
-    </div>
-    
-    <p class="actions"><a href="https://musicbrainz.org/release-group/97e41bfe-105b-45a9-95b1-5321210d5f8b" rel="noopener">Open release-group</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=beethoven/sym9/1&target=beethoven/sym9/1">Add community comment</a>
     </p>
   </div>
 </article>
@@ -7080,56 +7009,6 @@ font-size:.85rem;max-width:44rem}
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=shostakovich/sym5/3&target=shostakovich/sym5/3">Add community comment</a>
-    </p>
-  </div>
-</article>
-
-<article class="row identity-rich" data-bucket="needs_review"
-  data-decision="pending">
-  <div>
-    <p class="meta">shostakovich/sym6/2 · pack NEEDS_REVIEW</p>
-    <h3>Dmitri Shostakovich — Symphony No. 6</h3>
-    <span class="chip pending">pending</span>
-    <span class="meta">needs review</span>
-    <div class="why"><h4>Why it missed auto-accept</h4><ul><li>confidence 57 &lt; 80 <span class="fields">[payload.confidence,review_flags]</span></li><li>date off by 6 years (1980 vs 1986) <span class="fields">[seed.year,payload.mb_first_release,review_flags]</span></li></ul></div>
-    <ul class="criteria"><li><span class="chip pass">pass</span> same_work — seed work matches MB title (language/ordinal variants allowed)</li><li><span class="chip absent">absent</span> same_principal_artists — seed forces shown; MB artist-credit not in harvest payload — cannot verify match</li><li><span class="chip conflict">conflict</span> release_year_proxy — seed year 1980 ≠ MB first-release 1986 (release-year proxies, not session)</li><li><span class="chip absent">absent</span> not_excerpt_or_sampler — no excerpt/sampler field in payload — cannot confirm</li><li><span class="chip absent">absent</span> mbid_is_this_performance — release-group MBID present; release MBID and artist-credit absent — human must open MB</li><li><span class="chip conflict">conflict</span> confidence_threshold — low_confidence flag set</li></ul>
-    <p class="siblings">Remake siblings: <span class="blank">none in seed</span></p>
-    
-  </div>
-  <div>
-    
-    <div class="pair">
-      <p class="col-h">Seed</p>
-      <span class="shown"><span class="k">work</span> Symphony No. 6</span>
-      <span class="shown"><span class="k">catalogue</span> Op. 54</span>
-      
-      
-      <span class="shown"><span class="k">conductor</span> Bernard Haitink</span>
-      <span class="shown"><span class="k">orchestra</span> Concertgebouw Orchestra</span>
-      <span class="blank" title="payload absent — honest omit">soloists: —</span>
-      
-      <span class="shown"><span class="k">seed year (release proxy, not session)</span> 1980s</span>
-      
-      <span class="shown"><span class="k">label</span> Decca</span>
-    </div>
-    
-    
-    <div class="pair">
-      <p class="col-h">MusicBrainz (harvest)</p>
-      <span class="shown"><span class="k">mb_title</span> Symphony no. 14 / 6 Poems of Marina Tsvetaeva</span>
-      
-      
-      
-      <span class="shown"><span class="k">first release (release proxy, not session)</span> 1986</span>
-      
-      <span class="shown"><span class="k">release-group MBID</span> 1214180c-7f20-45d3-98e9-f5539fdb7091</span>
-      <span class="shown"><span class="k">match confidence (not a verdict)</span> 57</span>
-    </div>
-    
-    <p class="actions"><a href="https://musicbrainz.org/release-group/1214180c-7f20-45d3-98e9-f5539fdb7091" rel="noopener">Open release-group</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=shostakovich/sym6/2&target=shostakovich/sym6/2">Add community comment</a>
     </p>
   </div>
 </article>
@@ -11936,6 +11815,27 @@ font-size:.85rem;max-width:44rem}
 
 <article class="row" data-bucket="reject_wrong_work" data-decision="pending">
   <div>
+    <p class="meta">beethoven/sym9/1 · pack REJECT_WRONG_WORK</p>
+    <h3>Ludwig van Beethoven — Symphony No. 9</h3>
+    <p>Herbert von Karajan / Berliner Philharmoniker · Deutsche Grammophon, 1962</p>
+    <span class="chip wrong">wrong work</span>
+    <span class="meta">reject wrong work</span>
+    <p class="flags" style="color:var(--oxblood);font-size:.88rem">date off by 24 years (1962 vs 1986)<br>wrong work: MusicBrainz &#x27;Symphonie No. 9&#x27; matches artists already listed under Franz Schubert — &#x27;Symphony No. 9&#x27; is not distinctive across composers</p>
+    
+  </div>
+  <div>
+    <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
+    <p>Symphonie No. 9 · first 1986 · match 100</p>
+    <p class="actions"><a href="https://musicbrainz.org/release-group/97e41bfe-105b-45a9-95b1-5321210d5f8b" rel="noopener">MusicBrainz</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=beethoven/sym9/1&target=beethoven/sym9/1">Add community comment</a>
+    </p>
+  </div>
+</article>
+
+<article class="row" data-bucket="reject_wrong_work" data-decision="pending">
+  <div>
     <p class="meta">mozart/clarinet_concerto/0 · pack REJECT_WRONG_WORK</p>
     <h3>Wolfgang Amadeus Mozart — Clarinet Concerto</h3>
     <p>Thomas Beecham / Royal Philharmonic · EMI, 1959</p>
@@ -12896,6 +12796,48 @@ font-size:.85rem;max-width:44rem}
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
       <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=mozart/mass_c_minor/4&target=mozart/mass_c_minor/4">Add community comment</a>
+    </p>
+  </div>
+</article>
+
+<article class="row" data-bucket="reject_wrong_work" data-decision="pending">
+  <div>
+    <p class="meta">shostakovich/sym6/0 · pack REJECT_WRONG_WORK</p>
+    <h3>Dmitri Shostakovich — Symphony No. 6</h3>
+    <p>Yevgeny Mravinsky / Leningrad Philharmonic Orchestra · Melodiya, 1960s</p>
+    <span class="chip wrong">wrong work</span>
+    <span class="meta">reject wrong work</span>
+    <p class="flags" style="color:var(--oxblood);font-size:.88rem">wrong work: MusicBrainz &#x27;Symphony no. 6&#x27; matches artists already listed under Pyotr Ilyich Tchaikovsky — &#x27;Symphony No. 6&#x27; is not distinctive across composers</p>
+    
+  </div>
+  <div>
+    <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
+    <p>Symphony no. 6 · first 1961 · match 100</p>
+    <p class="actions"><a href="https://musicbrainz.org/release-group/e37cbb1f-86e3-43ae-b5a1-13566225e47b" rel="noopener">MusicBrainz</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=shostakovich/sym6/0&target=shostakovich/sym6/0">Add community comment</a>
+    </p>
+  </div>
+</article>
+
+<article class="row" data-bucket="reject_wrong_work" data-decision="pending">
+  <div>
+    <p class="meta">shostakovich/sym6/2 · pack REJECT_WRONG_WORK</p>
+    <h3>Dmitri Shostakovich — Symphony No. 6</h3>
+    <p>Bernard Haitink / Concertgebouw Orchestra · Decca, 1980s</p>
+    <span class="chip wrong">wrong work</span>
+    <span class="meta">reject wrong work</span>
+    <p class="flags" style="color:var(--oxblood);font-size:.88rem">confidence 57 &lt; 80<br>date off by 6 years (1980 vs 1986)<br>wrong work: MusicBrainz &#x27;Symphony no. 14 / 6 Poems of Marina Tsvetaeva&#x27; matches artists already listed under Pyotr Ilyich Tchaikovsky — &#x27;Symphony No. 6&#x27; is not distinctive across composers</p>
+    
+  </div>
+  <div>
+    <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
+    <p>Symphony no. 14 / 6 Poems of Marina Tsvetaeva · first 1986 · match 57</p>
+    <p class="actions"><a href="https://musicbrainz.org/release-group/1214180c-7f20-45d3-98e9-f5539fdb7091" rel="noopener">MusicBrainz</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=shostakovich/sym6/2&target=shostakovich/sym6/2">Add community comment</a>
     </p>
   </div>
 </article>

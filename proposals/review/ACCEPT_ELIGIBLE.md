@@ -2,7 +2,7 @@
 
 High-confidence MusicBrainz matches with no review flags. Still require a human `accept` in `review-decisions.json` before `apply.py` — the machine does not write mbids alone.
 
-**Count:** 92
+**Count:** 91
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -66,7 +66,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `mozart/mass_c_minor/0` | John Eliot Gardiner; Archiv, 1990s | Great Mass in C minor (1987) | 100 |  | [open](https://musicbrainz.org/release-group/19be0088-a13f-4202-8629-ccf2fe35f9fb) |
 | pending | `puccini/fanciulla/2` | Zubin Mehta; Deutsche Grammophon, 1980s | La fanciulla del West (1978) | 100 |  | [open](https://musicbrainz.org/release-group/4813a10a-0891-4606-8ada-874cdace6149) |
 | pending | `puccini/trittico/1` | Antonio Pappano; EMI, 2000s | Il trittico: Il tabarro / Suor Angelica / Gianni Schicchi (1999) | 100 |  | [open](https://musicbrainz.org/release-group/3bfc6745-ed51-3f06-b026-e08b1653f75b) |
-| pending | `shostakovich/sym6/0` | Yevgeny Mravinsky; Melodiya, 1960s | Symphony no. 6 (1961) | 100 |  | [open](https://musicbrainz.org/release-group/e37cbb1f-86e3-43ae-b5a1-13566225e47b) |
 | pending | `shostakovich/sym9/4` | Vasily Petrenko; Naxos, 2010 | Symphonies nos. 5 & 9 (2009-10) | 100 |  | [open](https://musicbrainz.org/release-group/dbdaeac8-3623-4c90-9f40-744e712d488c) |
 | pending | `shostakovich/sym15/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 1, 14 & 15 / Chamber Symphony in C minor (2021-06-25) | 100 |  | [open](https://musicbrainz.org/release-group/8de1fb1f-6d75-4d72-990a-92482126733e) |
 | pending | `brahms/sym4/0` | Carlos Kleiber; Deutsche Grammophon, 1980 | Symphonie No. 4 (1981) | 100 |  | [open](https://musicbrainz.org/release-group/931519fd-71ae-3da2-95e4-f6279d0b609f) |
