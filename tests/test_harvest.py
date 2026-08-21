@@ -287,7 +287,45 @@ class TestIdentityConfidence(unittest.TestCase):
         self.assertIsNotNone(flag)
         self.assertTrue(flag.startswith("incomplete:"))
 
-    def test_fournier_complete_cello_suites_not_incomplete(self):
+    def test_chopin_pc2_is_not_concertos_2_and_3(self):
+        self.assertEqual(
+            har.extract_work_numbers("Piano Concertos 2 & 3"), {"2", "3"})
+        self.assertFalse(har.work_title_compatible(
+            "Piano Concerto No. 2",
+            "Piano Concertos 2 & 3",
+            "Op. 21", composer="Frédéric Chopin",
+            sibling_numbers={"1", "2"}))
+
+    def test_chopin_pc_coupling_1_and_2_stays(self):
+        self.assertTrue(har.work_title_compatible(
+            "Piano Concerto No. 1",
+            "Piano Concertos nos. 1 & 2",
+            "Op. 11", composer="Frédéric Chopin",
+            sibling_numbers={"1", "2"}))
+        self.assertTrue(har.work_title_compatible(
+            "Piano Concerto No. 2",
+            "Piano Concertos No. 1 & 2",
+            "Op. 21", composer="Frédéric Chopin",
+            sibling_numbers={"1", "2"}))
+
+    def test_chopin_sonatas_2_and_3_stay(self):
+        self.assertTrue(har.work_title_compatible(
+            "Piano Sonata No. 2",
+            "Piano Sonatas nos. 2 & 3",
+            "Op. 35", composer="Frédéric Chopin",
+            sibling_numbers={"2", "3"}))
+
+    def test_mozart_pc_coupling_stays(self):
+        self.assertTrue(har.work_title_compatible(
+            "Piano Concerto No. 23",
+            "Piano Concertos no. 19, K. 459 and no. 23, K. 488",
+            "K. 488", composer="Wolfgang Amadeus Mozart",
+            sibling_numbers={"20", "23", "27"}))
+        self.assertTrue(har.work_title_compatible(
+            "Piano Concerto No. 27",
+            "Great Piano Concertos nos. 20, 21, 25 & 27",
+            "K. 595", composer="Wolfgang Amadeus Mozart",
+            sibling_numbers={"20", "23", "27"}))
         self.assertIsNone(har.collection_subset_incomplete(
             "Cello Suites",
             "Sechs Suiten für Violoncello solo, BWV 1007–1012",

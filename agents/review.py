@@ -51,18 +51,22 @@ def _confidence(payload: dict) -> Optional[int]:
     return None
 
 
-def flags_for(cand: dict, payload: dict, work: Optional[dict] = None) -> list[str]:
+def flags_for(cand: dict, payload: dict, work: Optional[dict] = None,
+              sibling_numbers: Optional[set] = None) -> list[str]:
     """Union harvest flags with a fresh work-title check.
 
     Stale proposals may have empty review_flags and auto_accept_eligible true
     for wrong-work matches (St John → St Matthew, Brahms PC2 → Prokofiev, …).
     """
-    flags, _eligible = har.refresh_identity_eligibility(payload, cand, work)
+    flags, _eligible = har.refresh_identity_eligibility(
+        payload, cand, work, sibling_numbers=sibling_numbers,
+    )
     return flags
 
 
 def rows(proposals: list[dict], seed: dict) -> list[dict]:
     idx = index_candidates(seed)
+    works = seed.get("works") or []
     out = []
     for prop in proposals:
         if prop.get("kind") != "identity":
@@ -78,8 +82,11 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
                 "payload": payload,
             })
             continue
-        flags = flags_for(cand, payload, work)
-        _flags, eligible = har.refresh_identity_eligibility(payload, cand, work)
+        sibs = har.sibling_work_numbers(work, works)
+        flags = flags_for(cand, payload, work, sibling_numbers=sibs)
+        _flags, eligible = har.refresh_identity_eligibility(
+            payload, cand, work, sibling_numbers=sibs,
+        )
         out.append({
             "target": target,
             "missing": False,

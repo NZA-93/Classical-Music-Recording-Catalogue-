@@ -180,6 +180,7 @@ class TestLiveQueue(unittest.TestCase):
             "haydn/trumpet_concerto/2",
             "haydn/trumpet_concerto/3",
             "handel/organ_concertos/1",
+            "chopin/pc2/1",
         ):
             with self.subTest(target=target):
                 self.assertNotIn(target, acc)
@@ -198,6 +199,24 @@ class TestLiveQueue(unittest.TestCase):
                 self.assertNotIn(target, acc)
                 self.assertIn(target, needs)
         self.assertIn("bach/cello_suites/1", acc)
+
+    def test_real_couplings_stay_accept_eligible(self):
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        b = rq.live_identity_buckets(props, seed)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        for target in (
+            "chopin/pc1/2",
+            "chopin/pc2/3",
+            "chopin/sonata2/1",
+            "mozart/pc23/2",
+            "mozart/pc27/1",
+            "mozart/pc27/2",
+        ):
+            with self.subTest(target=target):
+                self.assertIn(target, acc)
 
     def test_reject_chip_cannot_stay_accept_eligible(self):
         """Live wrong-work flags beat a stale auto_accept_eligible payload."""

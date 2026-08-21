@@ -149,7 +149,8 @@ def load_decisions(path: pathlib.Path) -> dict[tuple[str, str], dict]:
 
 def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
                    log: list, work: Optional[dict] = None,
-                   human_ratified: bool = False) -> bool:
+                   human_ratified: bool = False,
+                   works: Optional[list] = None) -> bool:
     mbid = payload.get("mbid")
     if not mbid:
         log.append({"action": "skip", "kind": "identity", "id": cand["id"],
@@ -161,13 +162,20 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
     mb_title = payload.get("mb_title") or ""
     if work and mb_title:
         try:
-            from harvest import work_title_compatible  # noqa: WPS433
+            from harvest import (  # noqa: WPS433
+                sibling_work_numbers, work_title_compatible,
+            )
         except ImportError:
             work_title_compatible = None  # type: ignore
+            sibling_work_numbers = None  # type: ignore
         if work_title_compatible is not None:
+            sibs = None
+            if sibling_work_numbers is not None:
+                sibs = sibling_work_numbers(work, works or [])
             if not work_title_compatible(
                 work.get("title") or "", mb_title, work.get("catalogue") or "",
                 composer=work.get("composer") or "",
+                sibling_numbers=sibs,
             ):
                 flag = (
                     f"wrong work: MusicBrainz {mb_title!r} does not match seed "
@@ -449,6 +457,7 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
             changed = apply_identity(
                 cand, payload, force, reason, log, work=work,
                 human_ratified=human_ratified,
+                works=seed.get("works") or [],
             ) or changed
         elif kind == "editions":
             changed = apply_editions(cand, payload, seed, force, reason, log,

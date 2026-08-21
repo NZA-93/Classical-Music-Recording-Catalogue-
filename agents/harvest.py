@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.4"
+VERSION = "harvest/1.5"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -380,13 +380,22 @@ def extract_work_numbers(title: str) -> set[str]:
     # "Nos. 39, 40, 41" / "nos. 5 / 8 / 9"
     for chunk in re.findall(r"\b(?:nos?|nr|n)\.?\s*([\d\s,/&and\-]+)", t):
         nums |= set(re.findall(r"\d{1,3}", chunk))
-    nums |= set(re.findall(
-        r"\b(?:symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
+    _form = (
+        r"(?:symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
         r"sinfonia|concerto|concertos|"
-        r"konzert|sonata|sonate|quartet|quartett|quintet|suite|suites|"
-        r"klavierkonzert|violinkonzert)\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{1,3})\b",
+        r"konzert|sonata|sonatas|sonate|quartet|quartett|quintet|suite|suites|"
+        r"klavierkonzert|violinkonzert)"
+    )
+    nums |= set(re.findall(
+        rf"\b{_form}\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{{1,3}})\b",
         t,
     ))
+    # "Piano Concertos 2 & 3" / "Sonatas nos. 2 & 3" — the rest of the list.
+    for chunk in re.findall(
+        rf"\b{_form}\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?([\d\s,/&and\-]+)",
+        t,
+    ):
+        nums |= set(re.findall(r"\d{1,3}", chunk))
     # Inclusive short ranges: nos. 4-6 → {4,5,6}. Cap so catalogue spans
     # (1046-1051) are not treated as work numbers.
     for a, b in re.findall(
@@ -544,10 +553,67 @@ def _foreign_composer_prefix(mb_title: str, composer: str = "",
     return True
 
 
+def sibling_work_numbers(work: dict, works: Optional[list] = None) -> set[str]:
+    """Work numbers of the same composer + form + instrument in the seed.
+
+    Chopin piano concertos → {1, 2}. Used to reject MB titles that name a
+    number past that cycle (Concertos 2 & 3) without touching real couplings
+    (Mozart 19+23, Chopin sonatas 2+3, Chopin concertos 1+2).
+    """
+    if not work or not works:
+        return set()
+    title = work.get("title") or ""
+    tokens = _title_tokens(title)
+    form = _family(tokens, FORM_FAMILIES)
+    inst = _family(tokens, INSTRUMENT_FAMILIES)
+    if form is None:
+        return set()
+    composer = work.get("composer") or ""
+    composer_id = work.get("composer_id") or ""
+    nums: set[str] = set()
+    for other in works:
+        if composer_id and other.get("composer_id"):
+            if other.get("composer_id") != composer_id:
+                continue
+        elif composer and other.get("composer") != composer:
+            continue
+        ot = other.get("title") or ""
+        otok = _title_tokens(ot)
+        if _family(otok, FORM_FAMILIES) is not form:
+            continue
+        oinst = _family(otok, INSTRUMENT_FAMILIES)
+        if inst and oinst and inst is not oinst:
+            continue
+        nums |= extract_work_numbers(ot)
+    return nums
+
+
+def _mb_number_past_composer_cycle(
+    mb_title: str, sibling_numbers: Optional[set[str]],
+) -> bool:
+    """True when MB names a work number above this composer's known cycle."""
+    if not sibling_numbers:
+        return False
+    try:
+        ceiling = max(int(n) for n in sibling_numbers)
+    except ValueError:
+        return False
+    if ceiling <= 0:
+        return False
+    for n in extract_work_numbers(mb_title):
+        try:
+            if int(n) > ceiling:
+                return True
+        except ValueError:
+            continue
+    return False
+
+
 def work_title_compatible(seed_title: str, mb_title: str,
                           catalogue: str = "",
                           composer: str = "",
-                          personnel: str = "") -> bool:
+                          personnel: str = "",
+                          sibling_numbers: Optional[set[str]] = None) -> bool:
     """True only when the MusicBrainz release-group is the same *work*.
 
     Sharing a generic form word ("Concertos") alone is never enough — that is
@@ -618,6 +684,8 @@ def work_title_compatible(seed_title: str, mb_title: str,
     #    "Symphony No. 5" ↔ "Symphonie Nr. 5" / "Symphonies nos. 5 & 9"
     #    but not ↔ "The 5 Piano Concertos" (form family differs).
     if numbered_form_match():
+        if _mb_number_past_composer_cycle(mb_title, sibling_numbers):
+            return False
         return True
 
     # 3) Mass in B minor ↔ Messe in h-Moll (German note names).
@@ -633,6 +701,8 @@ def work_title_compatible(seed_title: str, mb_title: str,
         dist and seed_form and mb_form and seed_form is mb_form
         and seed_nums and (seed_nums & mb_nums)
     ):
+        if _mb_number_past_composer_cycle(mb_title, sibling_numbers):
+            return False
         if seed_inst and mb_inst and seed_inst is mb_inst:
             return True
         if not seed_inst and not mb_inst:
@@ -680,7 +750,8 @@ def work_title_compatible(seed_title: str, mb_title: str,
 
 def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[str],
                           confidence: Optional[int],
-                          work: Optional[dict] = None) -> list[str]:
+                          work: Optional[dict] = None,
+                          sibling_numbers: Optional[set[str]] = None) -> list[str]:
     """Flags that block auto-accept. Humans still review clean matches too.
 
     A wrong-work flag is fatal for apply.py — it cannot be force-overridden.
@@ -712,6 +783,7 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
         if not work_title_compatible(
             seed_title, mb_title, catalogue,
             composer=composer, personnel=personnel,
+            sibling_numbers=sibling_numbers,
         ):
             flags.append(
                 f"wrong work: MusicBrainz {mb_title!r} does not match seed "
@@ -722,6 +794,7 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
 
 def refresh_identity_eligibility(
     payload: dict, rec: Optional[dict] = None, work: Optional[dict] = None,
+    sibling_numbers: Optional[set[str]] = None,
 ) -> tuple[list[str], bool]:
     """Recompute flags against the current matcher.
 
@@ -746,6 +819,7 @@ def refresh_identity_eligibility(
         payload.get("mb_first_release"),
         confidence,
         work=work,
+        sibling_numbers=sibling_numbers,
     )
     eligible = (
         confidence is not None

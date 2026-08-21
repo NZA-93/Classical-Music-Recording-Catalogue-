@@ -1,6 +1,6 @@
 # Identity review
 
-392 identity proposals · 296 flagged
+392 identity proposals · 297 flagged
 
 | Target | Seed | MusicBrainz | Match | Eligible | Flags |
 |---|---|---|---|---|---|
@@ -46,7 +46,7 @@
 | `shostakovich/sym10/0` | Herbert von Karajan; Deutsche Grammophon, 1966 | Symphonie No. 10 (1990-05-02) | 100 | no | date off by 24 years (1966 vs 1990) |
 | `shostakovich/sym13/0` | Kirill Kondrashin; Melodiya, 1967 | Symphony No. 13, Op. 113 "Babi Yar" (2017-11-22) | 100 | no | date off by 50 years (1967 vs 2017) |
 | `bach/brandenburg/0` | Trevor Pinnock; Archiv, 1982 | Brandenburg Concertos nos. 4-6 (1983-10-17) | 100 | no | incomplete: MB title names a subset (4, 5, 6) of seed collection |
-| `bach/brandenburg/2` | Claudio Abbado; Deutsche Grammophon, 2007 | Brandenburg Concertos 1-6 (2011-01-26) | 100 | no | date off by 4 years (2007 vs 2011); incomplete: MB title names a subset (1) of seed collection |
+| `bach/brandenburg/2` | Claudio Abbado; Deutsche Grammophon, 2007 | Brandenburg Concertos 1-6 (2011-01-26) | 100 | no | date off by 4 years (2007 vs 2011); incomplete: MB title names a subset (1, 6) of seed collection |
 | `bach/cello_suites/0` | Pablo Casals; EMI, 1936–39 | Suites pour violoncelle seul N° 5 en do mineur / N° 6 en ré majeur (1957-07) | 38 | no | confidence 38 < 80; date off by 21 years (1936 vs 1957); wrong work: MusicBrainz 'Suites pour violoncelle seul N° 5 en do mineur / N° 6 en ré majeur' does not match seed 'Cello Suites' |
 | `bach/cello_suites/2` | Anner Bylsma; Sony Vivarte, 1992 | Suites for Violoncello Solo, BWV 1007-1012 (1992-01-31) | 52 | no | confidence 52 < 80 |
 | `bach/sonatas_partitas/1` | Rachel Podger; Channel Classics, 1999 | Complete Sonatas & Partitas for Solo Violin (2002) | 100 | yes |  |
@@ -72,7 +72,7 @@
 | `shostakovich/sym7/0` | Leonard Bernstein; Deutsche Grammophon, 1988 | Symphony no. 1 / Symphony no. 7 “Leningrad” (1989-09) | 86 | yes |  |
 | `shostakovich/sym8/0` | Yevgeny Mravinsky; Praga, 1982 | Shostakovich: Symphony no. 8, op. 65 / Scriabin: Le Poème de l'extase, op. 54 (2015-05-05) | 100 | no | date off by 33 years (1982 vs 2015) |
 | `shostakovich/sym8/1` | Andris Nelsons; Deutsche Grammophon, 2016 | Under Stalin’s Shadow: Symphonies nos. 5 / 8 / 9 (2016-05-27) | 100 | yes |  |
-| `bach/brandenburg/3` | Benjamin Britten; Decca, 1968 | Brandenburg Concertos 1-6 (1995-02-06) | 97 | no | date off by 27 years (1968 vs 1995); incomplete: MB title names a subset (1) of seed collection |
+| `bach/brandenburg/3` | Benjamin Britten; Decca, 1968 | Brandenburg Concertos 1-6 (1995-02-06) | 97 | no | date off by 27 years (1968 vs 1995); incomplete: MB title names a subset (1, 6) of seed collection |
 | `bach/violin_concertos/3` | Wilhelm Furtwängler; EMI, 1951 | Violin Concertos (1984) | 100 | no | date off by 33 years (1951 vs 1984) |
 | `bach/wtc/0` | Glenn Gould; Columbia, 1955 | Glenn Gould Plays Bach: The Well-Tempered Clavier Books I & II (1993) | 100 | no | date off by 38 years (1955 vs 1993) |
 | `bach/mass_b_minor/2` | Karl Richter; Archiv, 1969 | Messe in h‐moll (1961) | 59 | no | confidence 59 < 80; date off by 8 years (1969 vs 1961) |
@@ -106,8 +106,8 @@
 | `chopin/pc2/0` | Stanisław Skrowaczewski; RCA, 1958 | Brahms: Piano Concerto no. 2 / Variations on a Theme by Paganini, Book 2 / Liszt: Hungarian Rhapsody no. 12 / Beethoven: Sonata, op. 14 no. 1 (1994) | 100 | no | date off by 36 years (1958 vs 1994); wrong work: MusicBrainz 'Brahms: Piano Concerto no. 2 / Variations on a Theme by Paganini, Book 2 / Liszt: Hungarian Rhapsody no. 12 / Beethoven: Sonata, op. 14 no. 1' does not match seed 'Piano Concerto No. 2' |
 | `bach/brandenburg/4` | Karl Richter; Archiv, 1960s | Brandenburg Concertos nos. 1 - 6 / Concertos, BWV 1055 & 1060 (1989-09-08) | 100 | no | date off by 29 years (1960 vs 1989); wrong work: MusicBrainz 'Brandenburg Concertos nos. 1 - 6 / Concertos, BWV 1055 & 1060' does not match seed 'Brandenburg Concertos' |
 | `bach/brandenburg/5` | John Eliot Gardiner; Archiv, 1990s | Brandenburg Concertos (2009-10-13) | 100 | no | date off by 19 years (1990 vs 2009) |
-| `bach/suites/0` | Trevor Pinnock; Archiv, 1980s | 6 Brandenburg Concertos / 4 Orchestral Suites (1988-07-01) | 100 | no | date off by 8 years (1980 vs 1988); wrong work: MusicBrainz '6 Brandenburg Concertos / 4 Orchestral Suites' does not match seed 'Orchestral Suites' |
-| `bach/suites/1` | Nikolaus Harnoncourt; Teldec, 1960s | Orchestral Suites 3 & 4 (1985) | 87 | no | date off by 25 years (1960 vs 1985); incomplete: MB title names a subset (3) of seed collection |
+| `bach/suites/0` | Trevor Pinnock; Archiv, 1980s | 6 Brandenburg Concertos / 4 Orchestral Suites (1988-07-01) | 100 | no | date off by 8 years (1980 vs 1988); incomplete: MB title names a subset (4) of seed collection; wrong work: MusicBrainz '6 Brandenburg Concertos / 4 Orchestral Suites' does not match seed 'Orchestral Suites' |
+| `bach/suites/1` | Nikolaus Harnoncourt; Teldec, 1960s | Orchestral Suites 3 & 4 (1985) | 87 | no | date off by 25 years (1960 vs 1985); incomplete: MB title names a subset (3, 4) of seed collection |
 | `bach/suites/3` | Karl Richter; Archiv, 1960s | Suites for Orchestra no. 2, no. 3 / Brandenburg Concerto no. 5 (2006-11-08) | 37 | no | confidence 37 < 80; date off by 46 years (1960 vs 2006); incomplete: MB title names a subset (2, 3, 5) of seed collection; wrong work: MusicBrainz 'Suites for Orchestra no. 2, no. 3 / Brandenburg Concerto no. 5' does not match seed 'Orchestral Suites' |
 | `bach/violin_concertos/0` | Daniel Barenboim; EMI, 1978 | Violin Concertos (1972) | 96 | no | date off by 6 years (1978 vs 1972) |
 | `bach/violin_concertos/2` | Gidon Kremer; Deutsche Grammophon, 1988 | Violin Concertos nos. 1 & 2 / Double Concerto (1985) | 59 | no | confidence 59 < 80; incomplete: MB title names a subset (1, 2) of seed collection; wrong work: MusicBrainz 'Violin Concertos nos. 1 & 2 / Double Concerto' does not match seed 'Violin Concertos' |
@@ -216,13 +216,13 @@
 | `bach/suites/4` | Christopher Hogwood; L'Oiseau-Lyre, 1980s | The Orchestral Suites (1988) | 100 | no | date off by 8 years (1980 vs 1988) |
 | `bach/violin_concertos/1` | Nathan Milstein; EMI, 1970s | Violin Concertos (complete) (1964-05) | 87 | no | date off by 6 years (1970 vs 1964) |
 | `bach/violin_concertos/4` | Rachel Podger; Channel Classics, 2009 | Violin Concertos (2010-10-04) | 100 | yes |  |
-| `bach/cello_suites/4` | Mstislav Rostropovich; EMI, 1991 | Cello Suites 1 & 2 / Cello Sonata (1989) | 74 | no | confidence 74 < 80; incomplete: MB title names a subset (1) of seed collection; wrong work: MusicBrainz 'Cello Suites 1 & 2 / Cello Sonata' does not match seed 'Cello Suites' |
+| `bach/cello_suites/4` | Mstislav Rostropovich; EMI, 1991 | Cello Suites 1 & 2 / Cello Sonata (1989) | 74 | no | confidence 74 < 80; incomplete: MB title names a subset (1, 2) of seed collection; wrong work: MusicBrainz 'Cello Suites 1 & 2 / Cello Sonata' does not match seed 'Cello Suites' |
 | `bach/sonatas_partitas/2` | Henryk Szeryng; Philips, 1960s | Sonatas and Partitas for Solo Violin (1955) | 100 | no | date off by 5 years (1960 vs 1955) |
 | `bach/mass_b_minor/3` | Philippe Herreweghe; Harmonia Mundi, 1990s | Messe in H-Moll (1989) | 66 | no | confidence 66 < 80 |
 | `bach/john/1` | John Eliot Gardiner; Archiv, 1986 | St. John Passion (1986-11-11) | 100 | yes |  |
 | `bach/art_of_fugue/1` | Tatiana Nikolayeva; Hyperion, 1980s | 24 Preludes and Fugues, op. 87 (1991-03-01) | 34 | no | confidence 34 < 80; date off by 11 years (1980 vs 1991); wrong work: MusicBrainz '24 Preludes and Fugues, op. 87' does not match seed 'The Art of Fugue' |
 | `bach/art_of_fugue/3` | Emerson String Quartet; Deutsche Grammophon, 2003 | The Art of Fugue (2003-08-01) | 100 | yes |  |
-| `bach/harpsichord_concertos/1` | Nikolaus Harnoncourt; Teldec, 1960s | Violin Concertos 2 & 3 (1984) | 84 | no | date off by 24 years (1960 vs 1984); incomplete: MB title names a subset (2) of seed collection; wrong work: MusicBrainz 'Violin Concertos 2 & 3' does not match seed 'Harpsichord Concertos' |
+| `bach/harpsichord_concertos/1` | Nikolaus Harnoncourt; Teldec, 1960s | Violin Concertos 2 & 3 (1984) | 84 | no | date off by 24 years (1960 vs 1984); incomplete: MB title names a subset (2, 3) of seed collection; wrong work: MusicBrainz 'Violin Concertos 2 & 3' does not match seed 'Harpsichord Concertos' |
 | `bach/harpsichord_concertos/3` | Murray Perahia; Sony, 1980s | Horn Concertos (1984) | 88 | no | date off by 4 years (1980 vs 1984); wrong work: MusicBrainz 'Horn Concertos' does not match seed 'Harpsichord Concertos' |
 | `beethoven/sym7/2` | Herbert von Karajan; Deutsche Grammophon, 1960s | Symphony no. 7 (1962) | 100 | yes |  |
 | `beethoven/sym9/4` | Claudio Abbado; Deutsche Grammophon, 2000 | Symphony no. 9 (2000-01-01) | 100 | yes |  |
@@ -259,7 +259,7 @@
 | `brahms/sym1/3` | Leonard Bernstein; Columbia, 1960s | Symphony No. 1 / Serenade No. 2 (1992) | 100 | no | date off by 32 years (1960 vs 1992) |
 | `brahms/sym1/4` | John Eliot Gardiner; Archiv, 1990s | Symphonies Nos. 1 ("Spring") & 4 / Konzertstück for 4 horns (2003-09-01) | 72 | no | confidence 72 < 80; date off by 13 years (1990 vs 2003) |
 | `brahms/sym4/0` | Carlos Kleiber; Deutsche Grammophon, 1980 | Symphonie No. 4 (1981) | 100 | yes |  |
-| `brahms/sym4/2` | Leonard Bernstein; Columbia, 1960s | Symphonies nos. 4, 5 (1986) | 89 | no | date off by 26 years (1960 vs 1986) |
+| `brahms/sym4/2` | Leonard Bernstein; Columbia, 1960s | Symphonies nos. 4, 5 (1986) | 89 | no | date off by 26 years (1960 vs 1986); wrong work: MusicBrainz 'Symphonies nos. 4, 5' does not match seed 'Symphony No. 4' |
 | `brahms/sym4/3` | John Eliot Gardiner; Archiv, 1990s | Symphonies nos. 3 & 4 (1995-07-03) | 34 | no | confidence 34 < 80; date off by 5 years (1990 vs 1995) |
 | `brahms/pc1/2` | Leonard Bernstein; Columbia, 1960s | Klavierkonzerte = Piano Concertos Nos. 1 & 2 • Violinkonzert = Violin Concerto • Doppelkonzert = Double Concerto (1990) | 86 | no | date off by 30 years (1960 vs 1990) |
 | `brahms/pc1/3` | Leonard Bernstein; Deutsche Grammophon, 1980s | Klavierkonzerte = Piano Concertos Nos. 1 & 2 • Violinkonzert = Violin Concerto • Doppelkonzert = Double Concerto (1990) | 86 | no | date off by 10 years (1980 vs 1990) |
@@ -349,7 +349,7 @@
 | `chopin/pc1/0` | Carlo Maria Giulini; Deutsche Grammophon, 1979 | Piano Concertos Nos. 1 & 2 (1986-04-01) | 93 | no | date off by 7 years (1979 vs 1986) |
 | `chopin/pc1/2` | Charles Dutoit; EMI, 1999 | Piano Concertos nos. 1 & 2 (1999-03-01) | 89 | yes |  |
 | `chopin/pc1/3` | Paul Kletzki; EMI, 1960s | Beethoven Symphonies Nos. 1 & 8 (1968) | 100 | no | date off by 8 years (1960 vs 1968); wrong work: MusicBrainz 'Beethoven Symphonies Nos. 1 & 8' does not match seed 'Piano Concerto No. 1' |
-| `chopin/pc2/1` | Charles Dutoit; EMI, 1999 | Piano Concertos 2 & 3 (1996-02-19) | 86 | yes |  |
+| `chopin/pc2/1` | Charles Dutoit; EMI, 1999 | Piano Concertos 2 & 3 (1996-02-19) | 86 | no | wrong work: MusicBrainz 'Piano Concertos 2 & 3' does not match seed 'Piano Concerto No. 2' |
 | `chopin/pc2/2` | Paul Kletzki; EMI, 1960s | Symphonies Nos. 2 & 8 (1992) | 100 | no | date off by 32 years (1960 vs 1992); wrong work: MusicBrainz 'Symphonies Nos. 2 & 8' does not match seed 'Piano Concerto No. 2' |
 | `chopin/pc2/3` | Stanisław Skrowaczewski; Deutsche Grammophon, 1999 | Piano Concertos No. 1 & 2 (2001) | 90 | yes |  |
 | `chopin/nocturnes/1` | Claudio Arrau; Philips, 1978 | The Nocturnes (1978) | 100 | yes |  |

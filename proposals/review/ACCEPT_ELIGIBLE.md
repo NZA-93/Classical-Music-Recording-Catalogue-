@@ -2,7 +2,7 @@
 
 High-confidence MusicBrainz matches with no review flags. Still require a human `accept` in `review-decisions.json` before `apply.py` — the machine does not write mbids alone.
 
-**Count:** 96
+**Count:** 95
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -91,7 +91,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `handel/dixit_dominus/2` | Andrew Parrott; EMI, 1990 | Handel: Dixit Dominus, J. S. Bach: Magnificat (1993) | 100 |  | [open](https://musicbrainz.org/release-group/3e13a84b-9f34-453f-9d02-c3cb652cefa9) |
 | pending | `chopin/sonata2/1` | Maurizio Pollini; Deutsche Grammophon, 1984 | Piano Sonatas nos. 2 & 3 (1985) | 95 |  | [open](https://musicbrainz.org/release-group/38e40466-1955-36f1-b98e-d4b93e2ec2e9) |
 | pending | `chopin/pc1/2` | Charles Dutoit; EMI, 1999 | Piano Concertos nos. 1 & 2 (1999-03-01) | 89 |  | [open](https://musicbrainz.org/release-group/aea34480-6492-32ad-80f0-c868748f9c09) |
-| pending | `chopin/pc2/1` | Charles Dutoit; EMI, 1999 | Piano Concertos 2 & 3 (1996-02-19) | 86 |  | [open](https://musicbrainz.org/release-group/69c65d4b-0727-4db8-90e5-546059aba67e) |
 | pending | `chopin/pc2/3` | Stanisław Skrowaczewski; Deutsche Grammophon, 1999 | Piano Concertos No. 1 & 2 (2001) | 90 |  | [open](https://musicbrainz.org/release-group/40d5ca25-b386-466d-a553-4e45d8702c6b) |
 | pending | `chopin/nocturnes/1` | Claudio Arrau; Philips, 1978 | The Nocturnes (1978) | 100 |  | [open](https://musicbrainz.org/release-group/41913b56-9e75-32ec-88c0-27f704a35e74) |
 | pending | `chopin/polonaises/1` | Maurizio Pollini; Deutsche Grammophon, 1976 | Polonaises (1976) | 100 |  | [open](https://musicbrainz.org/release-group/03f3a56d-4943-3283-bbbf-7da4bb96d32b) |
