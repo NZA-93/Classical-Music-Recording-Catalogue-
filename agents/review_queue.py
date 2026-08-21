@@ -146,7 +146,7 @@ def render_identity_md(title: str, blurb: str, items: list[dict]) -> str:
         "",
         f"**Count:** {len(items)}",
         "",
-        "| Decision | Target | Seed | MusicBrainz | Score | Flags | MB URL |",
+        "| Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |",
         "|---|---|---|---|---|---|---|",
     ]
     for row in items:

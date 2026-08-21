@@ -14,6 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "agents"))
 
 import apply as ap  # noqa: E402
+import review as rv  # noqa: E402
 import review_queue as rq  # noqa: E402
 
 
@@ -55,6 +56,35 @@ class TestBuckets(unittest.TestCase):
         }]
         b = rq.bucket_identity(items)
         self.assertEqual(len(b["accept_eligible"]), 1)
+
+    def test_stale_eligible_wrong_work_is_rejected(self):
+        seed = {
+            "works": [{
+                "id": "bach/john",
+                "composer": "Johann Sebastian Bach",
+                "title": "St John Passion",
+                "catalogue": "BWV 245",
+                "candidates": [{
+                    "id": "bach/john/0", "director": "Otto Klemperer",
+                    "label": "EMI", "year": "1961",
+                }],
+            }]
+        }
+        props = [{
+            "target": "bach/john/0", "kind": "identity",
+            "payload": {
+                "mbid": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e",
+                "mb_title": "St. Matthew Passion",
+                "mb_first_release": "1962",
+                "match_score": 100,
+                "auto_accept_eligible": True,
+                "review_flags": [],
+            },
+        }]
+        items = rv.rows(props, seed)
+        b = rq.bucket_identity(items)
+        self.assertEqual(b["accept_eligible"], [])
+        self.assertEqual(b["reject_wrong_work"][0]["target"], "bach/john/0")
 
 
 class TestDecisionsApply(unittest.TestCase):
@@ -131,7 +161,26 @@ class TestDecisionsApply(unittest.TestCase):
         self.assertTrue(any(e["action"] == "refused_wrong_work" for e in log))
 
 
-class TestDecisionsTemplate(unittest.TestCase):
+class TestLiveQueue(unittest.TestCase):
+    def test_four_leaks_not_accept_eligible(self):
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        items = rv.rows(props, seed)
+        b = rq.bucket_identity(items)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        wrong = {r["target"] for r in b["reject_wrong_work"]}
+        for target in (
+            "bach/john/0",
+            "brahms/pc2/1",
+            "schubert/sonata_d960/2",
+            "schubert/rosamunde/3",
+        ):
+            with self.subTest(target=target):
+                self.assertNotIn(target, acc)
+                self.assertIn(target, wrong)
+
     def test_preserves_prior_accept(self):
         buckets = {
             "reject_wrong_work": [],

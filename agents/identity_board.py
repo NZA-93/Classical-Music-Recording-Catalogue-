@@ -9,6 +9,13 @@ from __future__ import annotations
 
 from typing import Any
 
+# harvest.py is stdlib-only; imported for work-title compatibility and
+# payload-fact extraction (no extra MusicBrainz requests).
+from harvest import (  # noqa: E402
+    identity_facts_from_mb,
+    work_title_compatible,
+)
+
 # Fields the critic requires on every needs-review row. Values are either
 # shown from payload or listed as payload-absent — never synthesized.
 REQUIRED_IDENTITY_FIELDS = (
@@ -36,15 +43,15 @@ FIELD_INVENTORY: list[dict[str, str]] = [
     },
     {
         "field": "fassung",
-        "status": "absent",
-        "source": "neither seed nor proposal.payload",
-        "board": "blank — payload-absent",
+        "status": "present",
+        "source": "proposal.payload.fassung when a version token exists in MB title/disambiguation (1887/Prague version/Nowak/Haas/Süssmayr/original version). Omitted when the WS/2 hit has no token",
+        "board": "shown when present; omitted when absent (not repeated as boilerplate)",
     },
     {
         "field": "completeness",
-        "status": "absent",
-        "source": "neither seed nor proposal.payload",
-        "board": "blank — payload-absent",
+        "status": "present",
+        "source": "proposal.payload.completeness when title/disambiguation contains highlights/excerpts/complete. Omitted otherwise",
+        "board": "shown when present; omitted when absent",
     },
     {
         "field": "conductor",
@@ -66,9 +73,9 @@ FIELD_INVENTORY: list[dict[str, str]] = [
     },
     {
         "field": "session_year",
-        "status": "absent",
-        "source": "neither seed nor proposal has session_year",
-        "board": "blank — seed.year and mb_first_release shown as release-year proxies only",
+        "status": "present",
+        "source": "proposal.payload.session_year only from an explicit recording/session year token in title/disambiguation. Never copied from first-release-date",
+        "board": "shown when present; omitted when absent. seed.year / mb_first_release stay labelled as release-year proxies",
     },
     {
         "field": "seed_year",
@@ -90,9 +97,9 @@ FIELD_INVENTORY: list[dict[str, str]] = [
     },
     {
         "field": "live_studio",
-        "status": "absent",
-        "source": "neither seed nor proposal.payload",
-        "board": "blank — payload-absent",
+        "status": "present",
+        "source": "proposal.payload.live_studio when MB secondary-types include Live or title/disambiguation contains live/in concert/studio. Omitted otherwise",
+        "board": "shown when present; omitted when absent",
     },
     {
         "field": "seed_label",
@@ -145,8 +152,8 @@ FIELD_INVENTORY: list[dict[str, str]] = [
     {
         "field": "remake_siblings",
         "status": "derived",
-        "source": "other seed candidates with same forces, different year",
-        "board": "shown when present",
+        "source": "other seed candidates with the same work_id (or composer+catalogue), different year",
+        "board": "shown when present — never matched on a shared nickname across composers",
     },
     {
         "field": "community_notes",
@@ -161,6 +168,34 @@ FIELD_INVENTORY: list[dict[str, str]] = [
         "board": "shown",
     },
 ]
+
+
+def payload_identity_facts(payload: dict[str, Any]) -> dict[str, Any]:
+    """Facts stored on the harvest payload, or re-read from title tokens.
+
+    Old proposal files only stored mb_title; extracting from that title is
+    still reading the WS/2 hit, not inventing. Keys stay absent when no token
+    is present. first-release-date is never treated as session_year.
+    """
+    extracted = identity_facts_from_mb(
+        title=str(payload.get("mb_title") or ""),
+        disambiguation=str(payload.get("mb_disambiguation") or ""),
+        secondary_types=list(payload.get("mb_secondary_types") or []),
+    )
+    out: dict[str, Any] = {}
+    for key in ("fassung", "completeness", "session_year", "live_studio"):
+        if payload.get(key):
+            out[key] = payload[key]
+        elif extracted.get(key):
+            out[key] = extracted[key]
+        else:
+            out[key] = None
+    for key in ("mb_disambiguation", "mb_secondary_types"):
+        if payload.get(key):
+            out[key] = payload[key]
+        elif extracted.get(key):
+            out[key] = extracted[key]
+    return out
 
 
 def _norm(s: Any) -> str:
@@ -233,22 +268,27 @@ def why_it_missed(seed: dict[str, Any], proposal: dict[str, Any]) -> list[dict[s
 
     # Prefer bare work title for comparison; fall back to composer — title.
     seed_title_raw = seed.get("work_title") or seed.get("work") or ""
-    seed_title = _norm(seed_title_raw)
-    mb_title = _norm(payload.get("mb_title"))
-    if seed_title and mb_title and seed_title != mb_title:
-        if seed_title not in mb_title and mb_title not in seed_title:
+    mb_title_raw = payload.get("mb_title") or ""
+    if seed_title_raw and mb_title_raw:
+        personnel = " ".join(
+            x for x in (seed.get("director"), seed.get("ensemble"), seed.get("soloists"))
+            if x
+        )
+        compatible = work_title_compatible(
+            seed.get("work_title") or seed_title_raw,
+            str(mb_title_raw),
+            seed.get("catalogue") or "",
+            composer=seed.get("composer") or "",
+            personnel=personnel,
+        )
+        if not compatible:
             add(
                 "title_string_differs",
-                f"Seed work {seed_title_raw!r} vs MB title {payload.get('mb_title')!r}.",
+                f"Seed work {seed_title_raw!r} vs MB title {mb_title_raw!r}.",
                 "seed.work,payload.mb_title",
             )
-        else:
-            add(
-                "title_string_partial",
-                f"Seed work {seed_title_raw!r} only partially overlaps MB title "
-                f"{payload.get('mb_title')!r}.",
-                "seed.work,payload.mb_title",
-            )
+        # Compatible language/ordinal variants (Symphony No. 7 ↔ Symphonie Nr. 7)
+        # are not a work conflict. Do not flag them.
 
     if not reasons:
         add(
@@ -266,7 +306,15 @@ def remake_siblings(
     *,
     exclude_id: str | None = None,
 ) -> list[dict[str, Any]]:
-    """Other seed rows with same principal forces and different year."""
+    """Other seed rows of the *same work* with different year.
+
+    Same work means the same seed work_id, or the same composer+catalogue when
+    ids are missing. A shared nickname ("Fifth", "Symphony No. 5") across
+    composers is not a remake.
+    """
+    work_id = str(seed.get("work_id") or "")
+    composer = _norm(seed.get("composer"))
+    catalogue = _norm(seed.get("catalogue"))
     director = _norm(seed.get("director"))
     ensemble = _norm(seed.get("ensemble"))
     work = _norm(seed.get("work_title") or seed.get("work"))
@@ -278,8 +326,21 @@ def remake_siblings(
         cid = str(cand.get("id") or "")
         if exclude_id and cid == exclude_id:
             continue
-        cand_work = _norm(cand.get("work_title") or cand.get("work"))
-        if cand_work != work:
+        cand_wid = str(cand.get("work_id") or "")
+        if work_id and cand_wid:
+            if cand_wid != work_id:
+                continue
+        elif composer and _norm(cand.get("composer")):
+            if _norm(cand.get("composer")) != composer:
+                continue
+            cand_cat = _norm(cand.get("catalogue"))
+            if catalogue and cand_cat and cand_cat != catalogue:
+                continue
+            if not catalogue or not cand_cat:
+                cand_work = _norm(cand.get("work_title") or cand.get("work"))
+                if cand_work != work:
+                    continue
+        else:
             continue
         if director and _norm(cand.get("director")) != director:
             continue
@@ -325,27 +386,56 @@ def criterion_status(seed: dict[str, Any], proposal: dict[str, Any]) -> list[dic
 
     st = _norm(seed.get("work_title") or seed.get("work"))
     mt = _norm(payload.get("mb_title"))
+    personnel = " ".join(
+        x for x in (seed.get("director"), seed.get("ensemble"), seed.get("soloists"))
+        if x
+    )
+    compatible = False
+    if seed.get("work_title") or seed.get("work"):
+        compatible = work_title_compatible(
+            seed.get("work_title") or seed.get("work") or "",
+            payload.get("mb_title") or "",
+            seed.get("catalogue") or "",
+            composer=seed.get("composer") or "",
+            personnel=personnel,
+        )
     if not st or not mt:
         checks.append(row("same_work", "absent", "work title missing on seed or MB payload"))
-    elif st == mt or st in mt or mt in st:
-        checks.append(row("same_work", "pass", "seed work overlaps MB title string"))
+    elif compatible:
+        checks.append(row("same_work", "pass", "seed work matches MB title (language/ordinal variants allowed)"))
     else:
         checks.append(row("same_work", "conflict", "seed work vs MB title string diverge"))
 
-    checks.append(
-        row(
-            "same_fassung",
-            "absent",
-            "Fassung not in seed or harvest payload — blank; defer is honest default",
-        )
-    )
-    checks.append(
-        row(
-            "same_completeness",
-            "absent",
-            "completeness not in seed or harvest payload — blank; defer is honest default",
-        )
-    )
+    facts = payload_identity_facts(payload)
+    seed_fassung = seed.get("fassung")
+    mb_fassung = facts.get("fassung")
+    if seed_fassung or mb_fassung:
+        if seed_fassung and mb_fassung and _norm(seed_fassung) == _norm(mb_fassung):
+            checks.append(row("same_fassung", "pass", f"Fassung {mb_fassung}"))
+        elif seed_fassung and mb_fassung:
+            checks.append(row("same_fassung", "conflict",
+                              f"seed {seed_fassung!r} vs MB {mb_fassung!r}"))
+        else:
+            checks.append(row(
+                "same_fassung", "absent",
+                f"Fassung on MB only: {mb_fassung}" if mb_fassung
+                else f"Fassung on seed only: {seed_fassung}",
+            ))
+
+    seed_comp = seed.get("completeness")
+    mb_comp = facts.get("completeness")
+    if seed_comp or mb_comp:
+        if seed_comp and mb_comp and _norm(seed_comp) == _norm(mb_comp):
+            checks.append(row("same_completeness", "pass", f"completeness {mb_comp}"))
+        elif seed_comp and mb_comp:
+            checks.append(row("same_completeness", "conflict",
+                              f"seed {seed_comp!r} vs MB {mb_comp!r}"))
+        else:
+            checks.append(row(
+                "same_completeness", "absent",
+                f"completeness on MB only: {mb_comp}" if mb_comp
+                else f"completeness on seed only: {seed_comp}",
+            ))
 
     if seed.get("director") or seed.get("ensemble") or seed.get("soloists"):
         checks.append(
@@ -362,23 +452,20 @@ def criterion_status(seed: dict[str, Any], proposal: dict[str, Any]) -> list[dic
 
     seed_year = _year_int(seed.get("year"))
     mb_year = _year_int(payload.get("mb_first_release"))
-    if seed_year is None and mb_year is None:
+    session = facts.get("session_year") or seed.get("session_year")
+    if session:
+        checks.append(row("session_year_field", "pass", f"session year {session}"))
+    if seed_year is None and mb_year is None and not session:
         checks.append(row("same_session_year", "absent", "no year on seed or MB payload"))
     else:
-        checks.append(
-            row(
-                "session_year_field",
-                "absent",
-                "session_year not in payload; seed.year / mb_first_release are release-year proxies only",
-            )
-        )
         if seed_year is not None and mb_year is not None:
             if seed_year == mb_year:
                 checks.append(
                     row(
                         "release_year_proxy",
                         "pass",
-                        f"seed year {seed_year} equals MB first-release {mb_year}",
+                        f"seed year {seed_year} equals MB first-release {mb_year} "
+                        f"(release-year proxy, not session)",
                     )
                 )
             else:
@@ -386,7 +473,8 @@ def criterion_status(seed: dict[str, Any], proposal: dict[str, Any]) -> list[dic
                     row(
                         "release_year_proxy",
                         "conflict",
-                        f"seed year {seed_year} ≠ MB first-release {mb_year}",
+                        f"seed year {seed_year} ≠ MB first-release {mb_year} "
+                        f"(release-year proxies, not session)",
                     )
                 )
 
@@ -402,13 +490,9 @@ def criterion_status(seed: dict[str, Any], proposal: dict[str, Any]) -> list[dic
                 "no excerpt/sampler field in payload — cannot confirm",
             )
         )
-    checks.append(
-        row(
-            "live_vs_studio",
-            "absent",
-            "live/studio not in seed or harvest payload — blank; defer is honest default",
-        )
-    )
+    live = facts.get("live_studio") or seed.get("live_studio")
+    if live:
+        checks.append(row("live_vs_studio", "pass", f"live/studio token: {live}"))
 
     mbid = str(payload.get("mbid") or "").strip()
     if not mbid:
@@ -465,16 +549,17 @@ def enrichment_for_row(
     payload = proposal.get("payload") or {}
     reasons = why_it_missed(seed, proposal)
     siblings = remake_siblings(seed, all_candidates, exclude_id=str(seed.get("id") or ""))
+    facts = payload_identity_facts(payload)
     return {
         "why_missed": reasons,
         "why_missed_sort": why_missed_sort_key(reasons),
         "criteria": criterion_status(seed, proposal),
         "remake_siblings": siblings,
         "field_presence": {
-            "fassung": None,
-            "completeness": None,
-            "session_year": None,
-            "live_studio": None,
+            "fassung": facts.get("fassung"),
+            "completeness": facts.get("completeness"),
+            "session_year": facts.get("session_year"),
+            "live_studio": facts.get("live_studio"),
             "venue": None,
             "seed_year": seed.get("year"),
             "mb_first_release": payload.get("mb_first_release"),

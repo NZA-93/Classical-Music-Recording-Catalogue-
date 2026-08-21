@@ -30,14 +30,15 @@ SEED = {
 
 
 class TestReviewFlags(unittest.TestCase):
-    def test_low_score_flagged(self):
+    def test_low_confidence_flagged(self):
         props = [{
             "target": "bach/brandenburg/0", "kind": "identity",
             "payload": {"mbid": "x", "mb_title": "Brandenburg Concertos",
                         "mb_first_release": "1982", "match_score": 40},
         }]
         items = rv.rows(props, SEED)
-        self.assertTrue(any("match_score" in f for f in items[0]["flags"]))
+        self.assertTrue(any("confidence" in f for f in items[0]["flags"]))
+        self.assertFalse(items[0]["mb"]["auto_accept_eligible"])
 
     def test_date_off_flagged(self):
         props = [{
@@ -66,21 +67,31 @@ class TestReviewFlags(unittest.TestCase):
         items = rv.rows(props, SEED)
         self.assertEqual(items[0]["flags"], [])
 
-    def test_embedded_review_flags_preferred(self):
+    def test_wrong_work_not_eligible_even_if_harvest_said_so(self):
+        """Stale auto_accept_eligible must not keep St John → St Matthew eligible."""
         props = [{
             "target": "bach/brandenburg/0", "kind": "identity",
             "payload": {
-                "mbid": "x", "mb_title": "Brandenburg Concertos",
-                "mb_first_release": "1982", "confidence": 40,
-                "review_flags": ["confidence 40 < 80"],
-                "auto_accept_eligible": False,
+                "mbid": "x", "mb_title": "St. Matthew Passion",
+                "mb_first_release": "1962", "match_score": 100,
+                "auto_accept_eligible": True, "review_flags": [],
             },
         }]
-        items = rv.rows(props, SEED)
-        self.assertEqual(items[0]["flags"], ["confidence 40 < 80"])
+        seed = {
+            "works": [{
+                "id": "bach/john", "composer": "Johann Sebastian Bach",
+                "title": "St John Passion", "catalogue": "BWV 245",
+                "candidates": [{
+                    "id": "bach/brandenburg/0", "director": "Otto Klemperer",
+                    "label": "EMI", "year": "1961",
+                }],
+            }]
+        }
+        items = rv.rows(props, seed)
+        self.assertTrue(any(f.startswith("wrong work:") for f in items[0]["flags"]))
         self.assertFalse(items[0]["mb"]["auto_accept_eligible"])
 
-    def test_markdown_table(self):
+    def test_markdown_says_match_not_score(self):
         props = [{
             "target": "bach/brandenburg/0", "kind": "identity",
             "payload": {"mbid": "x", "mb_title": "Brandenburg Concertos",
@@ -89,6 +100,8 @@ class TestReviewFlags(unittest.TestCase):
         }]
         md = rv.render_markdown(rv.rows(props, SEED))
         self.assertIn("| Target |", md)
+        self.assertIn("| Match |", md)
+        self.assertNotIn("| Score |", md)
         self.assertIn("bach/brandenburg/0", md)
 
 

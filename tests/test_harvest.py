@@ -190,6 +190,99 @@ class TestIdentityConfidence(unittest.TestCase):
             "Symphonies Nos. 39, 40, 41",
             'Symphonien Nos. 40 & 41 "Jupiter"'))
 
+    def test_symphony_no_vs_symphonie_nr_is_compatible(self):
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 7", "Symphonie Nr. 7"))
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 7", "Sinfonie Nr. 7"))
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 5", "Symphonie Nr. 5"))
+
+    def test_st_john_is_not_st_matthew(self):
+        self.assertFalse(har.work_title_compatible(
+            "St John Passion", "St. Matthew Passion",
+            "BWV 245", composer="Johann Sebastian Bach"))
+
+    def test_brahms_pc2_is_not_prokofiev(self):
+        self.assertFalse(har.work_title_compatible(
+            "Piano Concerto No. 2",
+            "Prokofiev - Piano Concertos No. 1 & 2",
+            "Op. 83", composer="Johannes Brahms"))
+
+    def test_schubert_d960_is_not_hammerklavier(self):
+        self.assertFalse(har.work_title_compatible(
+            "Piano Sonata in B-flat",
+            'Piano Sonatas No. 28 in A major, Op. 101 & No. 29 in B flat major, Op. 106 "Hammerklavier"',
+            "D. 960", composer="Franz Schubert"))
+
+    def test_rosamunde_is_not_fireworks(self):
+        self.assertFalse(har.work_title_compatible(
+            "Rosamunde (incidental music)",
+            "Music for the Royal Fireworks / Orchestral Works",
+            "D. 797", composer="Franz Schubert"))
+
+    def test_english_concert_in_title_is_not_live(self):
+        facts = har.identity_facts_from_mb(title="Brandenburg Concertos")
+        self.assertNotIn("live_studio", facts)
+        self.assertNotIn("fassung", facts)
+        self.assertNotIn("session_year", facts)
+
+    def test_identity_facts_from_tokens_only(self):
+        live = har.identity_facts_from_mb(
+            title="Puccini: La Bohème live (Live)",
+            secondary_types=["Live"],
+        )
+        self.assertEqual(live["live_studio"], "live")
+        self.assertEqual(live["mb_secondary_types"], ["Live"])
+        highlights = har.identity_facts_from_mb(title="The Magic Flute: Highlights")
+        self.assertEqual(highlights["completeness"], "highlights")
+        fassung = har.identity_facts_from_mb(title="Don Giovanni (Prague version)")
+        self.assertRegex(fassung["fassung"], r"Prague")
+        session = har.identity_facts_from_mb(
+            title="The Goldberg Variations",
+            disambiguation="1955 recording",
+        )
+        self.assertEqual(session["session_year"], "1955")
+        # first-release-date is not a session year and is not read here
+        none = har.identity_facts_from_mb(
+            {"title": "Tosca", "first-release-date": "1953"},
+        )
+        self.assertNotIn("session_year", none)
+
+    def test_identity_payload_omits_absent_facts(self):
+        http = FakeHttp({
+            "release-group": self._groups(
+                ("mb-1", "Brandenburg Concertos", "1982-01-01", 98),
+            ),
+        })
+        p = har.adapter_identity(REC, WORK, http)[0].payload
+        self.assertNotIn("fassung", p)
+        self.assertNotIn("completeness", p)
+        self.assertNotIn("session_year", p)
+        self.assertNotIn("live_studio", p)
+        self.assertNotIn("release_mbid", p)
+
+    def test_identity_payload_stores_tokens_from_search_hit(self):
+        http = FakeHttp({
+            "release-group": {"release-groups": [{
+                "id": "mb-live",
+                "title": "Tosca (Live)",
+                "first-release-date": "1965",
+                "score": 90,
+                "disambiguation": "1964 recording",
+                "secondary-types": ["Live"],
+            }]},
+        })
+        rec = {**REC, "id": "puccini/tosca/9", "director": "X", "year": "1964"}
+        work = {"composer": "Giacomo Puccini", "title": "Tosca", "catalogue": ""}
+        p = har.adapter_identity(rec, work, http)[0].payload
+        self.assertEqual(p["live_studio"], "live")
+        self.assertEqual(p["session_year"], "1964")
+        self.assertEqual(p["mb_disambiguation"], "1964 recording")
+        self.assertEqual(p["mb_first_release"], "1965")
+        self.assertEqual(p["session_year"], "1964")
+        self.assertNotEqual(p["session_year"], p["mb_first_release"][:4])
+
 
 class TestCoverProposals(unittest.TestCase):
     def test_hit_uses_caa_json_not_binary_front(self):
