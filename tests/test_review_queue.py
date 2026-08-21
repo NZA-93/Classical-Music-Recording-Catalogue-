@@ -184,6 +184,8 @@ class TestLiveQueue(unittest.TestCase):
             "brahms/violin_concerto/1",
             "brahms/violin_concerto/2",
             "shostakovich/sym6/0",
+            "shostakovich/sym1/4",
+            "shostakovich/sym6/4",
         ):
             with self.subTest(target=target):
                 self.assertNotIn(target, acc)
@@ -225,6 +227,9 @@ class TestLiveQueue(unittest.TestCase):
             "shostakovich/sym5/4",
             "shostakovich/sym5/5",
             "shostakovich/sym6/3",
+            "shostakovich/sym9/4",
+            "shostakovich/sym11/4",
+            "haydn/sym104/1",
         ):
             with self.subTest(target=target):
                 self.assertIn(target, acc)

@@ -2,7 +2,7 @@
 
 High-confidence MusicBrainz matches with no review flags. Still require a human `accept` in `review-decisions.json` before `apply.py` — the machine does not write mbids alone.
 
-**Count:** 91
+**Count:** 90
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -47,7 +47,6 @@ High-confidence MusicBrainz matches with no review flags. Still require a human 
 | pending | `puccini/fanciulla/3` | Lorin Maazel; Sony, 1990s | La fanciulla del West (1992-03-24) | 100 |  | [open](https://musicbrainz.org/release-group/ae237266-dd80-3774-8b43-a3c9d4e67233) |
 | pending | `puccini/trittico/0` | Lorin Maazel; Sony, 1990s | Il trittico: Il tabarro / Suor Angelica / Gianni Schicchi (1987-11-09) | 100 |  | [open](https://musicbrainz.org/release-group/37156c65-0215-35df-ba2a-dd97b3c29a57) |
 | pending | `shostakovich/sym1/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 1, 14 & 15 / Chamber Symphony in C minor (2021-06-25) | 100 |  | [open](https://musicbrainz.org/release-group/8de1fb1f-6d75-4d72-990a-92482126733e) |
-| pending | `shostakovich/sym1/4` | Vasily Petrenko; Naxos, 2009 | Symphonies 1, 2 and 5 (2006-06) | 98 |  | [open](https://musicbrainz.org/release-group/b21c8f14-7600-40cb-9145-d446981ce7f6) |
 | pending | `shostakovich/sym4/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 4 & 11 “The Year 1905” (2018-07-06) | 100 |  | [open](https://musicbrainz.org/release-group/aeffe707-165e-416d-aacf-07e3477bf1d8) |
 | pending | `shostakovich/sym6/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Under Stalin’s Shadow: Symphonies nos. 6 & 7 / Incidental Music to “King Lear” (2019-02-22) | 100 |  | [open](https://musicbrainz.org/release-group/f2ac40e2-c631-4981-a566-7e84ba012432) |
 | pending | `shostakovich/sym11/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 4 & 11 “The Year 1905” (2018-07-06) | 100 |  | [open](https://musicbrainz.org/release-group/aeffe707-165e-416d-aacf-07e3477bf1d8) |

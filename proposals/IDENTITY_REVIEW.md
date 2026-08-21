@@ -1,6 +1,6 @@
 # Identity review
 
-392 identity proposals · 301 flagged
+392 identity proposals · 302 flagged
 
 | Target | Seed | MusicBrainz | Match | Eligible | Flags |
 |---|---|---|---|---|---|
@@ -174,7 +174,7 @@
 | `shostakovich/sym1/0` | Yevgeny Mravinsky; Melodiya, 1950s | Symphonies Nos 1 & 6, 'Pastoral' (1992-02-01) | 100 | no | date off by 42 years (1950 vs 1992) |
 | `shostakovich/sym1/2` | Bernard Haitink; Decca, 1980s | Symphonies nos. 1 & 9 (1985) | 100 | no | date off by 5 years (1980 vs 1985) |
 | `shostakovich/sym1/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphonies nos. 1, 14 & 15 / Chamber Symphony in C minor (2021-06-25) | 100 | yes |  |
-| `shostakovich/sym1/4` | Vasily Petrenko; Naxos, 2009 | Symphonies 1, 2 and 5 (2006-06) | 98 | yes |  |
+| `shostakovich/sym1/4` | Vasily Petrenko; Naxos, 2009 | Symphonies 1, 2 and 5 (2006-06) | 98 | no | wrong work: MusicBrainz 'Symphonies 1, 2 and 5' does not match seed 'Symphony No. 1' |
 | `shostakovich/sym4/0` | Kirill Kondrashin; Melodiya, 1960s | Symphonies 1, 3, 4, 5, 6, 7, 9 (2004) | 100 | no | date off by 44 years (1960 vs 2004) |
 | `shostakovich/sym4/1` | Mstislav Rostropovich; LSO Live, 2000s | Symphonies Nos. 3 & 4 (2003) | 75 | no | confidence 75 < 80 |
 | `shostakovich/sym4/2` | Bernard Haitink; Decca, 1980s | Symphony no. 4 (1967) | 100 | no | date off by 13 years (1980 vs 1967) |
@@ -247,7 +247,7 @@
 | `shostakovich/sym1/1` | Mstislav Rostropovich; LSO Live, 2000s | Symphonies nos. 1 & 9 (1994) | 94 | no | date off by 6 years (2000 vs 1994) |
 | `shostakovich/sym6/0` | Yevgeny Mravinsky; Melodiya, 1960s | Symphony no. 6 (1961) | 100 | no | wrong work: MusicBrainz 'Symphony no. 6' matches artists already listed under Pyotr Ilyich Tchaikovsky — 'Symphony No. 6' is not distinctive across composers |
 | `shostakovich/sym6/2` | Bernard Haitink; Decca, 1980s | Symphony no. 14 / 6 Poems of Marina Tsvetaeva (1986) | 57 | no | confidence 57 < 80; date off by 6 years (1980 vs 1986); wrong work: MusicBrainz 'Symphony no. 14 / 6 Poems of Marina Tsvetaeva' matches artists already listed under Pyotr Ilyich Tchaikovsky — 'Symphony No. 6' is not distinctive across composers |
-| `shostakovich/sym6/4` | Vasily Petrenko; Naxos, 2010 | Symphonies 3, 4 and 6 (2017) | 100 | no | date off by 7 years (2010 vs 2017) |
+| `shostakovich/sym6/4` | Vasily Petrenko; Naxos, 2010 | Symphonies 3, 4 and 6 (2017) | 100 | no | date off by 7 years (2010 vs 2017); wrong work: MusicBrainz 'Symphonies 3, 4 and 6' does not match seed 'Symphony No. 6' |
 | `shostakovich/sym7/1` | Yevgeny Mravinsky; Melodiya, 1960s | Sibelius: Symphony no. 3, op. 52 / The Swan of Tuonela, op. 22 no. 3 / Symphony no. 7, op. 105 / Debussy: Nocturnes: Nuages-Fêtes (2016) | 98 | no | date off by 56 years (1960 vs 2016); wrong work: MusicBrainz 'Sibelius: Symphony no. 3, op. 52 / The Swan of Tuonela, op. 22 no. 3 / Symphony no. 7, op. 105 / Debussy: Nocturnes: Nuages-Fêtes' does not match seed 'Symphony No. 7, Leningrad' |
 | `shostakovich/sym7/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphony no. 7 in C major "Leningrad" (2012) | 100 | no | date off by 6 years (2018 vs 2012) |
 | `shostakovich/sym9/2` | Bernard Haitink; Decca, 1980s | Symphonies nos. 1 & 9 (1985) | 78 | no | confidence 78 < 80; date off by 5 years (1980 vs 1985) |

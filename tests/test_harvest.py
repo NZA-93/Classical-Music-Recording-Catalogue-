@@ -328,6 +328,105 @@ class TestIdentityConfidence(unittest.TestCase):
             "K. 595", composer="Wolfgang Amadeus Mozart",
             sibling_numbers={"20", "23", "27"}))
 
+    def test_shostakovich_sym1_is_not_tchaikovsky_1_2_and_5(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "shostakovich/sym1")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertIn("1", sibs)
+        self.assertNotIn("2", sibs)
+        self.assertFalse(har.work_title_compatible(
+            "Symphony No. 1",
+            "Symphonies 1, 2 and 5",
+            "Op. 10", composer="Dmitri Shostakovich",
+            sibling_numbers=sibs))
+        rec = next(c for c in work["candidates"] if c["id"] == "shostakovich/sym1/4")
+        flags = har.identity_review_flags(
+            rec, "Symphonies 1, 2 and 5", "2006-06", 98,
+            work=work, sibling_numbers=sibs, works=seed["works"],
+        )
+        self.assertTrue(any(f.startswith("wrong work:") for f in flags))
+
+    def test_shostakovich_petrenko_5_and_9_stays(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "shostakovich/sym5")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 5",
+            "Symphonies nos. 5 & 9",
+            "Op. 47", composer="Dmitri Shostakovich",
+            sibling_numbers=sibs))
+
+    def test_shostakovich_cello_concerto_coupling_does_not_fill_sym_gap(self):
+        """Rostropovich: Cello Concerto no. 2 / Symphony no. 5 is Shostakovich."""
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "shostakovich/sym5")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        form = har._family(har._title_tokens("Symphony No. 5"), har.FORM_FAMILIES)
+        self.assertEqual(
+            har.extract_work_numbers_for_form(
+                "Cello Concerto no. 2 / Symphony no. 5", form),
+            {"5"},
+        )
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 5",
+            "Cello Concerto no. 2 / Symphony no. 5",
+            "Op. 47", composer="Dmitri Shostakovich",
+            sibling_numbers=sibs))
+
+    def test_shostakovich_cycle_box_with_seed_gap_stays(self):
+        """Kondrashin Melodiya box names Symphony 3, which the seed omits."""
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "shostakovich/sym4")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 4",
+            "Symphonies 1, 3, 4, 5, 6, 7, 9",
+            "Op. 43", composer="Dmitri Shostakovich",
+            sibling_numbers=sibs))
+
+    def test_shostakovich_sym6_is_not_tchaikovsky_3_4_and_6(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "shostakovich/sym6")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertFalse(har.work_title_compatible(
+            "Symphony No. 6",
+            "Symphonies 3, 4 and 6",
+            "Op. 54", composer="Dmitri Shostakovich",
+            sibling_numbers=sibs))
+
+    def test_shostakovich_adjacent_pair_with_seed_gap_stays(self):
+        """Rostropovich LSO Live 3 & 4 is Shostakovich; seed simply omits 3."""
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "shostakovich/sym4")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertTrue(har.work_title_compatible(
+            "Symphony No. 4",
+            "Symphonies Nos. 3 & 4",
+            "Op. 43", composer="Dmitri Shostakovich",
+            sibling_numbers=sibs))
+
+    def test_beethoven_7_and_8_stays(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "beethoven/sym7")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertTrue(har.work_title_compatible(
+            work["title"],
+            "Symphonies 7 and 8",
+            work.get("catalogue") or "",
+            composer=work.get("composer") or "",
+            sibling_numbers=sibs))
+
+    def test_haydn_london_coupling_stays_despite_missing_103(self):
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        work = next(w for w in seed["works"] if w["id"] == "haydn/sym104")
+        sibs = har.sibling_work_numbers(work, seed["works"])
+        self.assertTrue(har.work_title_compatible(
+            work["title"],
+            "Symphony No. 103 “Drum Roll” / Symphony no. 104 “London”",
+            work.get("catalogue") or "",
+            composer=work.get("composer") or "",
+            sibling_numbers=sibs))
+
     def test_heifetz_reiner_listed_under_tchaikovsky_not_brahms(self):
         seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
         brahms = next(w for w in seed["works"] if w["id"] == "brahms/violin_concerto")

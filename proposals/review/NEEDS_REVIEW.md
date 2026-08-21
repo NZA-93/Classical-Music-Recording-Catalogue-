@@ -2,7 +2,7 @@
 
 Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open the MusicBrainz URL before accepting. Never accept a wrong-work match.
 
-**Count:** 195
+**Count:** 194
 
 | Decision | Target | Seed | MusicBrainz | Match | Flags | MB URL |
 |---|---|---|---|---|---|---|
@@ -140,7 +140,6 @@ Flagged rows (date drift, low confidence, compilation-like titles, etc.). Open t
 | pending | `mozart/figaro/2` | Karl Böhm; Deutsche Grammophon, 1960s | Le nozze di Figaro (1968) | 90 | date off by 8 years (1960 vs 1968) | [open](https://musicbrainz.org/release-group/1d4f5909-72fb-4044-8077-2403141d3162) |
 | pending | `puccini/messa_gloria/0` | Riccardo Muti; EMI, 1980s | Gloria / Magnificat (1987) | 100 | date off by 7 years (1980 vs 1987) | [open](https://musicbrainz.org/release-group/755ce220-b39f-31f8-8bcf-d65683d7059c) |
 | pending | `shostakovich/sym1/1` | Mstislav Rostropovich; LSO Live, 2000s | Symphonies nos. 1 & 9 (1994) | 94 | date off by 6 years (2000 vs 1994) | [open](https://musicbrainz.org/release-group/444d7baf-63db-4a06-bf18-a4e4db425711) |
-| pending | `shostakovich/sym6/4` | Vasily Petrenko; Naxos, 2010 | Symphonies 3, 4 and 6 (2017) | 100 | date off by 7 years (2010 vs 2017) | [open](https://musicbrainz.org/release-group/5abfa112-ab06-4c47-8182-89774e32e95d) |
 | pending | `shostakovich/sym7/3` | Andris Nelsons; Deutsche Grammophon, 2018 | Symphony no. 7 in C major "Leningrad" (2012) | 100 | date off by 6 years (2018 vs 2012) | [open](https://musicbrainz.org/release-group/012f45f8-9331-455c-81a5-af497d408505) |
 | pending | `shostakovich/sym9/2` | Bernard Haitink; Decca, 1980s | Symphonies nos. 1 & 9 (1985) | 78 | confidence 78 < 80; date off by 5 years (1980 vs 1985) | [open](https://musicbrainz.org/release-group/7d58aadd-be60-3267-9282-7400c2bb9f48) |
 | pending | `shostakovich/sym15/2` | Bernard Haitink; Decca, 1980s | Symphony no. 15, op. 141 / From Jewish Folk Poetry, op. 79 (1993-07-05) | 100 | date off by 13 years (1980 vs 1993) | [open](https://musicbrainz.org/release-group/8096dc66-0987-3e56-ab7a-d4d4342f99d6) |

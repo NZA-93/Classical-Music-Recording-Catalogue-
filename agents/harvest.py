@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.7"
+VERSION = "harvest/1.8"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -373,6 +373,15 @@ def _family(tokens: set[str], families: tuple[frozenset, ...]) -> Optional[froze
     return None
 
 
+# Form words that carry a following work-number list in MB titles.
+_FORM_NUMBER_WORD = (
+    r"symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
+    r"sinfonia|concerto|concertos|concerti|konzert|konzerte|"
+    r"sonata|sonatas|sonate|sonaten|quartet|quartets|quartett|"
+    r"quintet|suite|suites|klavierkonzert|violinkonzert"
+)
+
+
 def extract_work_numbers(title: str) -> set[str]:
     """Symphony No. 5 / Symphonie Nr. 5 / nos. 5 & 9 → {'5'} / {'5','9'}."""
     t = (title or "").lower().replace("–", "-").replace("—", "-")
@@ -380,19 +389,13 @@ def extract_work_numbers(title: str) -> set[str]:
     # "Nos. 39, 40, 41" / "nos. 5 / 8 / 9"
     for chunk in re.findall(r"\b(?:nos?|nr|n)\.?\s*([\d\s,/&and\-]+)", t):
         nums |= set(re.findall(r"\d{1,3}", chunk))
-    _form = (
-        r"(?:symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
-        r"sinfonia|concerto|concertos|"
-        r"konzert|sonata|sonatas|sonate|quartet|quartett|quintet|suite|suites|"
-        r"klavierkonzert|violinkonzert)"
-    )
     nums |= set(re.findall(
-        rf"\b{_form}\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{{1,3}})\b",
+        rf"\b(?:{_FORM_NUMBER_WORD})\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{{1,3}})\b",
         t,
     ))
     # "Piano Concertos 2 & 3" / "Sonatas nos. 2 & 3" — the rest of the list.
     for chunk in re.findall(
-        rf"\b{_form}\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?([\d\s,/&and\-]+)",
+        rf"\b(?:{_FORM_NUMBER_WORD})\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?([\d\s,/&and\-]+)",
         t,
     ):
         nums |= set(re.findall(r"\d{1,3}", chunk))
@@ -404,6 +407,35 @@ def extract_work_numbers(title: str) -> set[str]:
         lo, hi = int(a), int(b)
         if 0 < hi - lo <= 20:
             nums |= {str(n) for n in range(lo, hi + 1)}
+    return nums
+
+
+def extract_work_numbers_for_form(
+    title: str, form_family: Optional[frozenset] = None,
+) -> set[str]:
+    """Work numbers attached to one form family.
+
+    Mixed-form couplings (Cello Concerto no. 2 / Symphony no. 5) only
+    contribute the matching form's numbers, so a symphony seed is not
+    treated as naming Symphony No. 2.
+    """
+    if form_family is None:
+        return extract_work_numbers(title)
+    t = (title or "").lower().replace("–", "-").replace("—", "-")
+    nums: set[str] = set()
+    for m in re.finditer(
+        rf"\b({_FORM_NUMBER_WORD})\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?([\d\s,/&and\-]+)",
+        t,
+    ):
+        word = m.group(1)
+        if _family({word}, FORM_FAMILIES) is not form_family:
+            continue
+        chunk = m.group(2)
+        nums |= set(re.findall(r"\d{1,3}", chunk))
+        for a, b in re.findall(r"(\d{1,3})\s*-\s*(\d{1,3})", chunk):
+            lo, hi = int(a), int(b)
+            if 0 < hi - lo <= 20:
+                nums |= {str(n) for n in range(lo, hi + 1)}
     return nums
 
 
@@ -609,6 +641,69 @@ def _mb_number_past_composer_cycle(
     return False
 
 
+def _mb_collection_fills_seed_gap(
+    seed_title: str,
+    mb_title: str,
+    catalogue: str = "",
+    composer: str = "",
+    sibling_numbers: Optional[set[str]] = None,
+) -> bool:
+    """True when a generic numbered collection names a hole in this cycle.
+
+    Shostakovich's seed has symphonies 1, 4–11, 13–15 — no 2. 'Symphonies
+    1, 2 and 5' is Tchaikovsky (Petrenko/Onyx), not a Shostakovich coupling.
+    Petrenko 5 & 9 names only numbers that are in the cycle and stays.
+    Mixed-form couplings (Cello Concerto no. 2 / Symphony no. 5) stay:
+    the extra 2 is a concerto number, not a missing symphony.
+    Cycle boxes that name five or more numbers of this form stay even if
+    they fill a seed hole (Kondrashin 1, 3–7, 9 includes Symphony No. 4).
+    Adjacent pairs that include the seeded work (3 & 4, 7 & 8) stay:
+    those are couplings, not Tchaikovsky-style three-number collections.
+    Sparse cycles (Mozart PC 20/23/27, Haydn 44/94/104) are not treated as
+    holes; catalogue or a work name still saves those couplings.
+    """
+    if not sibling_numbers:
+        return False
+    seed_form = _family(_title_tokens(seed_title), FORM_FAMILIES)
+    mb_nums = extract_work_numbers_for_form(mb_title, seed_form)
+    # Three- or four-number collections. Adjacent pairs (3 & 4, 7 & 8)
+    # that include the seeded work are couplings, not another composer.
+    # A seven-symphony Kondrashin box is a cycle, not a leak.
+    if not 3 <= len(mb_nums) <= 4:
+        return False
+    extra = mb_nums - {str(n) for n in sibling_numbers}
+    if not extra:
+        return False
+    try:
+        known = sorted(int(n) for n in sibling_numbers)
+    except ValueError:
+        return False
+    if len(known) < 2:
+        return False
+    lo, hi = known[0], known[-1]
+    span = hi - lo + 1
+    if span <= 0 or len(known) / span < 0.5:
+        return False
+    in_gap = False
+    for n in extra:
+        try:
+            v = int(n)
+        except ValueError:
+            continue
+        if lo < v < hi and str(v) not in sibling_numbers:
+            in_gap = True
+            break
+    if not in_gap:
+        return False
+    if extract_catalogue_ids(catalogue) & extract_catalogue_ids(mb_title):
+        return False
+    if _mb_names_seed_composer(mb_title, composer):
+        return False
+    if distinctive_work_tokens(mb_title) - _MB_NAME_FILLER:
+        return False
+    return True
+
+
 def work_title_compatible(seed_title: str, mb_title: str,
                           catalogue: str = "",
                           composer: str = "",
@@ -686,6 +781,10 @@ def work_title_compatible(seed_title: str, mb_title: str,
     if numbered_form_match():
         if _mb_number_past_composer_cycle(mb_title, sibling_numbers):
             return False
+        if _mb_collection_fills_seed_gap(
+            seed_title, mb_title, catalogue, composer, sibling_numbers,
+        ):
+            return False
         return True
 
     # 3) Mass in B minor ↔ Messe in h-Moll (German note names).
@@ -702,6 +801,10 @@ def work_title_compatible(seed_title: str, mb_title: str,
         and seed_nums and (seed_nums & mb_nums)
     ):
         if _mb_number_past_composer_cycle(mb_title, sibling_numbers):
+            return False
+        if _mb_collection_fills_seed_gap(
+            seed_title, mb_title, catalogue, composer, sibling_numbers,
+        ):
             return False
         if seed_inst and mb_inst and seed_inst is mb_inst:
             return True
