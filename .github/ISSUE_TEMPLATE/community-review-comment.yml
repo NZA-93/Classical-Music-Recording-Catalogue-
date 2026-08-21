@@ -1,0 +1,49 @@
+name: Community review comment
+description: Add a public note on a queued identity/citation row (not editorial).
+title: "community-review: "
+labels: ["community-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping. This comment is **community layer only** — it will
+        not become a catalogue score, star, Référence flag, or signed editorial
+        entry. The owner (`NZA-93`) alone accepts identity decisions.
+
+  - type: input
+    id: target
+    attributes:
+      label: Target id
+      description: Candidate or work id from the review board (e.g. bach/brandenburg/0).
+      placeholder: bach/brandenburg/0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - identity_review
+        - citation_hint
+        - general
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Comment
+      description: Discographic tip or identity caveat. Max ~500 characters. No scores.
+      placeholder: The 1982 Archiv RG is the one seeded; avoid the later box set.
+    validations:
+      required: true
+
+  - type: input
+    id: github_login
+    attributes:
+      label: Your GitHub login
+      description: Stored as github:<login> on the community layer.
+      placeholder: your-login
+    validations:
+      required: true

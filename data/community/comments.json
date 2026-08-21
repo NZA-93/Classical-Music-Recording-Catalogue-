@@ -1,0 +1,6 @@
+{
+  "schema": "community-comments/1",
+  "layer": "community",
+  "note": "Public comments supporting review/authoring. Never mixed into data/editorial/ or data/statements/.",
+  "comments": []
+}

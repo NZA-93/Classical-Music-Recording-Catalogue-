@@ -9,6 +9,7 @@ and data/recordings/. Never touches data/statements/ or data/editorial/.
     python3 agents/apply.py --proposals proposals/proposals-YYYYMMDD.json
     python3 agents/apply.py --proposals PATH --only identity,editions
     python3 agents/apply.py --proposals PATH --force "reason for overwriting verified"
+    python3 agents/apply.py --proposals PATH --decisions proposals/review-decisions.json --dry-run
 """
 
 from __future__ import annotations
@@ -123,8 +124,24 @@ def guard_verified(obj: dict, field: str, new_value: Any,
     return True
 
 
+def load_decisions(path: pathlib.Path) -> dict[tuple[str, str], dict]:
+    """Map (target, kind) → decision row from review-decisions.json."""
+    data = load_json(path)
+    if not isinstance(data, dict) or not isinstance(data.get("decisions"), list):
+        raise ValueError("decisions file must be an object with a decisions array")
+    out: dict[tuple[str, str], dict] = {}
+    for row in data["decisions"]:
+        target = row.get("target")
+        kind = row.get("kind") or "identity"
+        if not target:
+            continue
+        out[(target, kind)] = row
+    return out
+
+
 def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
-                   log: list, work: Optional[dict] = None) -> bool:
+                   log: list, work: Optional[dict] = None,
+                   human_ratified: bool = False) -> bool:
     mbid = payload.get("mbid")
     if not mbid:
         log.append({"action": "skip", "kind": "identity", "id": cand["id"],
@@ -163,15 +180,19 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
         })
         return False
 
-    if payload.get("auto_accept_eligible") is False and not force:
+    # Human accept in review-decisions.json ratifies an otherwise ineligible
+    # match. Wrong-work remains unforceable above.
+    if (payload.get("auto_accept_eligible") is False
+            and not force and not human_ratified):
         log.append({
             "action": "refused_ineligible",
             "kind": "identity",
             "id": cand["id"],
             "mbid": mbid,
             "flags": flags,
-            "note": "auto_accept_eligible is false; pass --force with a reason "
-                    "only after human review (wrong-work still blocked)",
+            "note": "auto_accept_eligible is false; accept in "
+                    "review-decisions.json or pass --force with a reason "
+                    "(wrong-work still blocked)",
         })
         return False
 
@@ -368,13 +389,22 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
                     only: Optional[set[str]] = None,
                     dry_run: bool = False,
                     force: bool = False,
-                    reason: str = "") -> tuple[dict, dict, list]:
-    """Return (new_seed, recordings_cache, log)."""
+                    reason: str = "",
+                    decisions: Optional[dict[tuple[str, str], dict]] = None,
+                    require_decisions: bool = False) -> tuple[dict, dict, list]:
+    """Return (new_seed, recordings_cache, log).
+
+    When ``decisions`` is provided (or ``require_decisions``), only proposals
+    whose decision is ``accept`` are applied. A human ``accept`` ratifies
+    identity rows that are not auto_accept_eligible; wrong-work still refuses.
+    """
     seed = deepcopy(seed)
     only = only or KINDS
     log: list = []
     recordings_cache: dict = {}
     changed = False
+    use_decisions = decisions is not None or require_decisions
+    decisions = decisions or {}
 
     for prop in proposals:
         kind = prop.get("kind")
@@ -383,6 +413,23 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
         if kind not in only:
             continue
         target = prop.get("target")
+        human_ratified = False
+        if use_decisions:
+            row = decisions.get((target or "", kind))
+            decision = (row or {}).get("decision")
+            if decision != "accept":
+                log.append({
+                    "action": "skipped_decision",
+                    "kind": kind,
+                    "target": target,
+                    "decision": decision or "missing",
+                    "note": "not accepted in review-decisions.json",
+                })
+                continue
+            human_ratified = True
+            if not reason and row:
+                who = row.get("by") or "human"
+                reason = f"review-decisions accept by {who}"
         cand = find_candidate(seed, target) if target else None
         if cand is None:
             log.append({"action": "missing_target", "kind": kind, "target": target})
@@ -391,7 +438,8 @@ def apply_proposals(proposals: list[dict], seed: dict, *,
         if kind == "identity":
             work = find_work(seed, target)
             changed = apply_identity(
-                cand, payload, force, reason, log, work=work
+                cand, payload, force, reason, log, work=work,
+                human_ratified=human_ratified,
             ) or changed
         elif kind == "editions":
             changed = apply_editions(cand, payload, seed, force, reason, log,
@@ -412,6 +460,8 @@ def main(argv: Optional[list[str]] = None) -> int:
                     help="Comma list: identity,editions,cover")
     ap.add_argument("--force", metavar="REASON", default="",
                     help="Allow overwriting verified:true fields; reason is logged")
+    ap.add_argument("--decisions", type=pathlib.Path, default=None,
+                    help="review-decisions.json — apply only decision=accept rows")
     args = ap.parse_args(argv)
 
     if not args.proposals.exists():
@@ -428,11 +478,24 @@ def main(argv: Optional[list[str]] = None) -> int:
         print("proposals file must be a JSON array", file=sys.stderr)
         return 2
 
+    decisions = None
+    if args.decisions is not None:
+        if not args.decisions.exists():
+            print(f"decisions file not found: {args.decisions}", file=sys.stderr)
+            return 2
+        try:
+            decisions = load_decisions(args.decisions)
+        except ValueError as exc:
+            print(str(exc), file=sys.stderr)
+            return 2
+
     seed = load_json(SEED_PATH)
     force = bool(args.force)
     new_seed, recordings_cache, log = apply_proposals(
         proposals, seed, only=only, dry_run=args.dry_run,
         force=force, reason=args.force,
+        decisions=decisions,
+        require_decisions=args.decisions is not None,
     )
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
@@ -440,6 +503,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     report = {
         "schema": "applied/1",
         "source": str(args.proposals),
+        "decisions": str(args.decisions) if args.decisions else None,
         "dry_run": args.dry_run,
         "force_reason": args.force or None,
         "created": datetime.now(timezone.utc).isoformat(),
@@ -447,7 +511,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         "changes": sum(1 for e in log if e.get("action") not in
                        ("noop", "skip", "skipped_verified", "missing_target",
                         "force_refused", "refused_wrong_work",
-                        "refused_ineligible")),
+                        "refused_ineligible", "skipped_decision")),
     }
 
     print(f"{len(log)} log entries · {report['changes']} changes"

@@ -1,0 +1,79 @@
+# Owner-only: apply accepted identity decisions from review-decisions.json.
+# Community cannot run this with effect — job is gated on repository_owner.
+name: Review apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry-run only (no seed writes)"
+        type: boolean
+        default: true
+      only:
+        description: "Kinds to apply"
+        type: string
+        default: "identity"
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    # Personal login of the repository owner only.
+    if: github.actor == github.repository_owner
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Refresh review queue
+        run: python3 agents/review_queue.py --no-init
+      - name: Apply decisions
+        env:
+          DRY: ${{ inputs.dry_run }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          set -euo pipefail
+          PROPOSALS=proposals/proposals-20260809.json
+          DECISIONS=proposals/review-decisions.json
+          test -f "$PROPOSALS"
+          test -f "$DECISIONS"
+          if [ "$DRY" = "true" ]; then
+            python3 agents/apply.py --proposals "$PROPOSALS" \
+              --decisions "$DECISIONS" --only "$ONLY" --dry-run
+          else
+            python3 agents/apply.py --proposals "$PROPOSALS" \
+              --decisions "$DECISIONS" --only "$ONLY"
+          fi
+      - name: Rebuild site
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          python3 -m unittest discover -s tests -q
+          python3 agents/validate.py
+          python3 agents/community_comments.py validate
+          make site
+      - name: Commit apply result
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          git config user.name "catalogue-review-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/seed.json data/recordings proposals/applied-*.json \
+            docs/ index.html entries.html gallery.html composers/ review/ \
+            build/catalogue.json || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Apply owner-accepted identity decisions from review queue"
+            git push
+          fi
+
+  refuse-non-owner:
+    runs-on: ubuntu-latest
+    if: github.actor != github.repository_owner
+    steps:
+      - name: Refuse
+        run: |
+          echo "Review apply is restricted to the repository owner"
+          echo "Actor: ${{ github.actor }} · Owner: ${{ github.repository_owner }}"
+          exit 1

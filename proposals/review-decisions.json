@@ -1,0 +1,3143 @@
+{
+  "schema": "review-decisions/1",
+  "proposals": "proposals/proposals-20260809.json",
+  "updated": "2026-08-09T20:17:08.859722+00:00",
+  "decisions": [
+    {
+      "target": "bach/art_of_fugue/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/art_of_fugue/4",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/art_of_fugue/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/harpsichord_concertos/4",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/late_symphonies/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/string_quintets/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym6/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym7/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym14/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym14/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/creation/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/etudes/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/art_of_fugue/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/art_of_fugue/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/harpsichord_concertos/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/harpsichord_concertos/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc2/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/tragic_overture/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/creation/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/trumpet_concerto/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/trumpet_concerto/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/cello_concerto1/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/cello_concerto1/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/seasons/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/piano_sonatas/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym8/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/impromptus/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/organ_concertos/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/dixit_dominus/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/ballades/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/etudes/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc1/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc2/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/nocturnes/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/nocturnes/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/academic_festival/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/nelson_mass/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/etudes/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/etudes/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/nocturnes/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/nocturnes/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/mazurkas/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/impromptus/0",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/impromptus/1",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/impromptus/2",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/impromptus/3",
+      "kind": "identity",
+      "decision": "reject",
+      "note": "wrong work: pre-rejected by review_queue",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/cello_suites/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/sonatas_partitas/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/goldberg/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/matthew/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym5/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/missa_solemnis/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/requiem/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/figaro/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/zauberflote/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/zauberflote/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/manon_lescaut/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/boheme/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/boheme/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/butterfly/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/turandot/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/brandenburg/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/sonatas_partitas/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/goldberg/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/mass_b_minor/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/matthew/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym3/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/violin_concerto/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/5",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym7/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym8/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/john/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/missa_solemnis/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym1/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc2/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/violin_concerto/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym9/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/cello_suites/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/goldberg/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc5/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/violin_concerto/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/violin_concerto/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/fidelio/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc23/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc27/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/cosi/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/zauberflote/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/manon_lescaut/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/tosca/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/fanciulla/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/trittico/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym1/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym1/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym4/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym6/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym11/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym11/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/german_requiem/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/violin_concertos/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/john/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym7/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym9/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/hammerklavier/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/missa_solemnis/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/fidelio/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc27/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/mass_c_minor/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/fanciulla/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/trittico/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym6/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym9/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym15/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym4/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/liebeslieder/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym104/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym104/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym94/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/trumpet_concerto/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym8/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym9/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sonata_d960/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sonata_d960/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/mass_e_flat/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/impromptus/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/rosamunde/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/messiah/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/water_music/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/fireworks/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/giulio_cesare/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/alcina/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/op6/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/organ_concertos/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/rodelinda/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/dixit_dominus/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/preludes/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata2/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc1/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc2/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc2/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/polonaises/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym14/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym15/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/violin_concerto/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/german_requiem/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/rosamunde/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/solomon/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/agrippina/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/brandenburg/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/goldberg/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/mass_b_minor/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym3/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym5/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym9/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym9/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/violin_concerto/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/fidelio/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc20/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/clarinet_concerto/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/figaro/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/don_giovanni/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/don_giovanni/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/cosi/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/tosca/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/tosca/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/tosca/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/butterfly/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/fanciulla/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/turandot/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym10/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym13/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/brandenburg/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/cello_suites/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/cello_suites/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym7/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym9/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc5/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/late_quartets/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/late_quartets/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/late_symphonies/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/late_symphonies/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc20/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/clarinet_concerto/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/requiem/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym5/6",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym8/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/brandenburg/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/violin_concertos/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/wtc/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/mass_b_minor/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/matthew/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/matthew/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/john/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym3/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym5/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym6/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc5/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/boheme/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/tosca/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym4/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc1/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/clarinet_quintet/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/cello_concerto1/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/nelson_mass/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/trout/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/messiah/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/alcina/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata2/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc1/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc2/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/brandenburg/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/brandenburg/5",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/suites/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/suites/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/suites/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/violin_concertos/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/violin_concertos/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/sonatas_partitas/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/goldberg/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/wtc/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/wtc/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/john/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/harpsichord_concertos/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/harpsichord_concertos/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym6/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym6/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym6/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym7/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym7/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym9/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc4/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc4/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc4/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/late_quartets/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/hammerklavier/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/hammerklavier/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/hammerklavier/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/missa_solemnis/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc20/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc23/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc23/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc23/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc23/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/clarinet_concerto/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/requiem/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/figaro/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/don_giovanni/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/don_giovanni/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/cosi/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/cosi/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/zauberflote/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/mass_c_minor/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/mass_c_minor/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/string_quintets/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/manon_lescaut/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/boheme/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/butterfly/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/turandot/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/messa_gloria/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym1/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym1/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym4/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym4/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym4/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym4/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym8/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym9/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym9/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym10/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym11/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym11/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym13/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/wtc/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/john/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym3/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/sym5/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/butterfly/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/turandot/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym1/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc1/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc2/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/violin_concerto/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/haydn_variations/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/death_maiden/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/messiah/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/fireworks/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata3/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/suites/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/suites/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/violin_concertos/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/cello_suites/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/sonatas_partitas/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "bach/mass_b_minor/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc4/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/pc4/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "beethoven/hammerklavier/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/late_symphonies/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/pc27/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/clarinet_concerto/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/requiem/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/figaro/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/mass_c_minor/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "mozart/mass_c_minor/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "puccini/messa_gloria/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym1/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym6/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym6/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym7/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym7/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym9/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym10/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "shostakovich/sym15/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym1/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym1/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym1/4",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym4/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/sym4/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc1/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc1/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/violin_concerto/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/german_requiem/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/piano_quintet/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/haydn_variations/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/haydn_variations/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/academic_festival/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/academic_festival/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/tragic_overture/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym104/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym104/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym94/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym94/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/creation/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/op76/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/trumpet_concerto/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/seasons/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/nelson_mass/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/sym45/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym9/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/death_maiden/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sonata_d960/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/mass_e_flat/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/mass_e_flat/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/mass_e_flat/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/rosamunde/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/messiah/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/water_music/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/water_music/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/water_music/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/fireworks/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/alcina/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/op6/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/op6/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/op6/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/organ_concertos/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/organ_concertos/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/agrippina/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/rodelinda/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/dixit_dominus/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/dixit_dominus/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/preludes/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata2/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata3/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata3/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata3/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/pc1/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/polonaises/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/pc2/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/german_requiem/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/haydn_variations/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/academic_festival/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/tragic_overture/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "brahms/tragic_overture/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/op76/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/seasons/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "haydn/nelson_mass/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym8/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym8/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sym9/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sonata_d960/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/rosamunde/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/israel_in_egypt/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/israel_in_egypt/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "handel/agrippina/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/preludes/1",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/preludes/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/sonata2/2",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "chopin/polonaises/0",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    },
+    {
+      "target": "schubert/sonata_d960/3",
+      "kind": "identity",
+      "decision": "pending",
+      "note": "",
+      "by": "",
+      "date": ""
+    }
+  ]
+}

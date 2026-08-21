@@ -209,6 +209,7 @@ def shell(title: str, body: str, index_json: list, *, depth: int = 0,
         "catalogue": f'{prefix}index.html',
         "entries": f'{prefix}entries.html',
         "gallery": f'{prefix}gallery.html',
+        "review": f'{prefix}review/index.html',
     }
     def link(key, label):
         cur = ' aria-current="page"' if current == key else ""
@@ -228,6 +229,7 @@ def shell(title: str, body: str, index_json: list, *, depth: int = 0,
     {link("catalogue", "Catalogue")}
     {link("entries", "Entries")}
     {link("gallery", "Gallery")}
+    {link("review", "Review")}
   </nav>
   <div class="find">
     <input id="q" type="search" autocomplete="off" spellcheck="false"
