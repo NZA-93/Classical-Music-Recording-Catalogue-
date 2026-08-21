@@ -84,13 +84,14 @@ class TestWhyItMissed(unittest.TestCase):
 
 
 class TestFieldPresence(unittest.TestCase):
-    def test_inventory_marks_five_critic_fields(self):
+    def test_inventory_lists_critic_fields_as_payload_when_present(self):
         by_field = {r["field"]: r for r in ib.FIELD_INVENTORY}
-        self.assertEqual(by_field["fassung"]["status"], "absent")
-        self.assertEqual(by_field["completeness"]["status"], "absent")
-        self.assertEqual(by_field["session_year"]["status"], "absent")
-        self.assertEqual(by_field["live_studio"]["status"], "absent")
+        self.assertEqual(by_field["fassung"]["status"], "present")
+        self.assertEqual(by_field["completeness"]["status"], "present")
+        self.assertEqual(by_field["session_year"]["status"], "present")
+        self.assertEqual(by_field["live_studio"]["status"], "present")
         self.assertEqual(by_field["why_it_missed"]["status"], "derived")
+        self.assertIn("work_id", by_field["remake_siblings"]["source"])
 
     def test_enrichment_does_not_synthesize_absents(self):
         enrich = ib.enrichment_for_row(SEED_HARN, PROP_HARN, [SEED_HARN])
@@ -103,21 +104,71 @@ class TestFieldPresence(unittest.TestCase):
         self.assertEqual(fp["seed_year"], "1964")
         self.assertEqual(fp["mb_first_release"], "1967")
 
-    def test_criteria_mark_absent_not_pass_for_fassung(self):
+    def test_criteria_omit_absent_fassung_boilerplate(self):
         checks = {c["criterion"]: c for c in ib.criterion_status(SEED_HARN, PROP_HARN)}
-        self.assertEqual(checks["same_fassung"]["status"], "absent")
-        self.assertEqual(checks["same_completeness"]["status"], "absent")
-        self.assertEqual(checks["live_vs_studio"]["status"], "absent")
-        self.assertEqual(checks["session_year_field"]["status"], "absent")
+        self.assertNotIn("same_fassung", checks)
+        self.assertNotIn("same_completeness", checks)
+        self.assertNotIn("live_vs_studio", checks)
+        self.assertNotIn("session_year_field", checks)
+
+    def test_populated_fields_come_from_payload_tokens(self):
+        seed = {**SEED_HARN, "work_title": "Don Giovanni"}
+        prop = {
+            "payload": {
+                "mb_title": "Don Giovanni (Prague version)",
+                "mb_disambiguation": "1955 recording",
+                "mb_secondary_types": ["Live"],
+                "mb_first_release": "1956",
+            }
+        }
+        fp = ib.enrichment_for_row(seed, prop, [seed])["field_presence"]
+        self.assertRegex(fp["fassung"] or "", r"Prague")
+        self.assertEqual(fp["session_year"], "1955")
+        self.assertIn("live", (fp["live_studio"] or "").lower())
+        self.assertNotEqual(fp["session_year"], "1956")
+
+    def test_highlights_completeness_from_title(self):
+        prop = {"payload": {"mb_title": "Messiah (Highlights)", "mb_first_release": "1990"}}
+        fp = ib.enrichment_for_row(SEED_HARN, prop, [SEED_HARN])["field_presence"]
+        self.assertEqual(fp["completeness"], "highlights")
+
+    def test_omitted_when_ws2_has_no_token(self):
+        prop = {"payload": {"mb_title": "Brandenburg Concertos", "mb_first_release": "1982"}}
+        fp = ib.enrichment_for_row(SEED_HARN, prop, [SEED_HARN])["field_presence"]
+        self.assertIsNone(fp["fassung"])
+        self.assertIsNone(fp["completeness"])
+        self.assertIsNone(fp["session_year"])
+        self.assertIsNone(fp["live_studio"])
+
+    def test_language_variant_is_not_work_conflict(self):
+        seed = {
+            **SEED_HARN,
+            "work_title": "Symphony No. 7",
+            "composer": "Ludwig van Beethoven",
+            "year": "1976",
+        }
+        prop = {
+            "payload": {
+                "mb_title": "Symphonie Nr. 7",
+                "mb_first_release": "1976",
+                "review_flags": [],
+            }
+        }
+        codes = {r["code"] for r in ib.why_it_missed(seed, prop)}
+        self.assertNotIn("title_string_differs", codes)
+        checks = {c["criterion"]: c for c in ib.criterion_status(seed, prop)}
+        self.assertEqual(checks["same_work"]["status"], "pass")
 
 
 class TestRemakeSiblings(unittest.TestCase):
     def test_finds_same_forces_different_year(self):
         others = [
-            SEED_HARN,
+            {**SEED_HARN, "work_id": "bach/brandenburg"},
             {
                 "id": "bach/brandenburg/9",
+                "work_id": "bach/brandenburg",
                 "work_title": "Brandenburg Concertos",
+                "composer": "Johann Sebastian Bach",
                 "director": "Nikolaus Harnoncourt",
                 "ensemble": "Concentus Musicus Wien",
                 "year": "1987",
@@ -125,6 +176,7 @@ class TestRemakeSiblings(unittest.TestCase):
             },
             {
                 "id": "bach/brandenburg/8",
+                "work_id": "bach/brandenburg",
                 "work_title": "Brandenburg Concertos",
                 "director": "Trevor Pinnock",
                 "ensemble": "The English Concert",
@@ -132,9 +184,49 @@ class TestRemakeSiblings(unittest.TestCase):
                 "label": "Archiv",
             },
         ]
-        sibs = ib.remake_siblings(SEED_HARN, others, exclude_id="bach/brandenburg/1")
+        sibs = ib.remake_siblings(
+            {**SEED_HARN, "work_id": "bach/brandenburg"},
+            others, exclude_id="bach/brandenburg/1",
+        )
         self.assertEqual(len(sibs), 1)
         self.assertEqual(sibs[0]["id"], "bach/brandenburg/9")
+
+    def test_does_not_cross_composers_on_fifth(self):
+        beethoven = {
+            "id": "beethoven/sym5/0",
+            "work_id": "beethoven/sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Ludwig van Beethoven",
+            "catalogue": "Op. 67",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1962",
+            "label": "DG",
+        }
+        tchaikovsky = {
+            "id": "tchaikovsky/sym5/0",
+            "work_id": "tchaikovsky/sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Pyotr Ilyich Tchaikovsky",
+            "catalogue": "Op. 64",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1975",
+            "label": "DG",
+        }
+        mahler = {
+            "id": "mahler/sym5/0",
+            "work_id": "mahler/sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Gustav Mahler",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1973",
+            "label": "DG",
+        }
+        sibs = ib.remake_siblings(beethoven, [beethoven, tchaikovsky, mahler],
+                                  exclude_id="beethoven/sym5/0")
+        self.assertEqual(sibs, [])
 
 
 class TestGapsMarkdown(unittest.TestCase):
@@ -147,6 +239,46 @@ class TestGapsMarkdown(unittest.TestCase):
             self.assertIn("`fassung`", text)
             self.assertIn("`why_it_missed`", text)
             self.assertIn("Never fill a blank with a guess", text)
+
+
+class TestBoardCopy(unittest.TestCase):
+    def test_match_confidence_not_labelled_score(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "build_review_under_test", ROOT / "site" / "build_review.py",
+        )
+        br = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(br)
+        html = br.render_simple_row(
+            "bach/goldberg/0",
+            {"work": "Goldberg Variations", "director": "Glenn Gould",
+             "ensemble": "", "label": "Columbia", "year": "1955",
+             "work_title": "Goldberg Variations",
+             "composer": "Johann Sebastian Bach"},
+            {"mb_title": "The Goldberg Variations", "mb_first_release": "1956",
+             "match_score": 100, "mbid": "x"},
+            {},
+            [],
+            "accept_eligible",
+        )
+        self.assertIn("match 100", html)
+        self.assertNotIn("score 100", html)
+        self.assertNotIn("★", html)
+        self.assertIn("confidence, not a verdict", html)
+        self.assertIn("Owner: decisions file", html)
+        self.assertIn("Owner: Review apply", html)
+        rich = br.render_identity_rich(
+            "bach/brandenburg/1",
+            SEED_HARN,
+            PROP_HARN,
+            {},
+            [],
+            "needs_review",
+            ib.enrichment_for_row(SEED_HARN, PROP_HARN, [SEED_HARN]),
+        )
+        self.assertIn("match confidence (not a verdict)", rich)
+        self.assertNotIn("Fassung not in seed or harvest payload", rich)
+        self.assertIn(".find", br.CSS)
 
 
 if __name__ == "__main__":

@@ -25,6 +25,7 @@ ROOT = pathlib.Path(".")
 sys.path.insert(0, str(ROOT / "agents"))
 
 import identity_board as ib  # noqa: E402
+from harvest import refresh_identity_eligibility  # noqa: E402
 
 DOCS = ROOT / "docs" / "review"
 QUEUE = ROOT / "proposals" / "review-queue.json"
@@ -39,6 +40,12 @@ PAGES = f"https://{OWNER.lower()}.github.io/{REPO}/"
 ISSUE_NEW = (
     f"https://github.com/{OWNER}/{REPO}/issues/new"
     f"?template=community-review-comment.yml"
+)
+DECISIONS_URL = (
+    f"https://github.com/{OWNER}/{REPO}/blob/main/proposals/review-decisions.json"
+)
+APPLY_URL = (
+    f"https://github.com/{OWNER}/{REPO}/actions/workflows/review-apply.yml"
 )
 
 PACK_LABEL = {
@@ -80,11 +87,12 @@ def index_seed(seed: dict) -> tuple[dict[str, dict], list[dict], dict[str, int]]
                 "label": cand.get("label") or "",
                 "year": cand.get("year"),
                 "mbid": cand.get("mbid"),
-                # Honest absents — never invent:
-                "fassung": None,
-                "completeness": None,
-                "session_year": None,
-                "live_studio": None,
+                # Honest absents — never invent. Board omits these unless harvest
+                # payload actually carries a token.
+                "fassung": cand.get("fassung"),
+                "completeness": cand.get("completeness"),
+                "session_year": cand.get("session_year"),
+                "live_studio": cand.get("live_studio"),
                 "venue": None,
                 "catno": None,
             }
@@ -123,6 +131,13 @@ def shown(label: str, value: Any) -> str:
     return f'<span class="shown"><span class="k">{escape(label)}</span> {escape(str(value))}</span>'
 
 
+def shown_if(label: str, value: Any) -> str:
+    """Present fields only. Absent critic fields stay off the row (not boilerplate)."""
+    if value is None or value == "":
+        return ""
+    return shown(label, value)
+
+
 CSS = """
 :root{--ground:#E7EAE3;--paper:#FBFCF9;--ink:#191D1A;--ink-soft:#5B655D;--hair:#C7CDC2;
 --verdigris:#2F6B60;--oxblood:#7A1220;--amber:#8A5A12}
@@ -159,6 +174,9 @@ text-transform:uppercase}
 text-transform:uppercase;padding:.35rem .6rem;border:1px solid var(--hair);background:var(--paper);
 color:var(--ink);cursor:pointer}
 .filters button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.find{flex:1 1 14rem;min-width:12rem}
+.find input{width:100%;font-family:"IBM Plex Mono",monospace;font-size:.72rem;
+padding:.35rem .6rem;border:1px solid var(--hair);background:var(--paper);color:var(--ink)}
 .row{border-top:1px solid var(--hair);padding:1.15rem 0;display:grid;
 grid-template-columns:1fr;gap:.75rem}
 @media(min-width:900px){.row{grid-template-columns:1fr 1fr;gap:1.4rem}
@@ -257,15 +275,6 @@ def render_comments(comments: list[dict]) -> str:
     )
 
 
-def has_absent_required(checks: list[dict[str, str]]) -> bool:
-    critical = {
-        "same_fassung",
-        "same_completeness",
-        "session_year_field",
-        "same_session_year",
-        "live_vs_studio",
-    }
-    return any(c["criterion"] in critical and c["status"] == "absent" for c in checks)
 
 
 def render_identity_rich(
@@ -287,23 +296,21 @@ def render_identity_rich(
     pack = PACK_LABEL.get(bucket, bucket)
     conf = payload.get("confidence", payload.get("match_score"))
 
+    fp = enrich.get("field_presence") or {}
     seed_col = f"""
     <div class="pair">
       <p class="col-h">Seed</p>
       {shown("work", seed_row.get("work_title") or seed_row.get("work"))}
       {shown("catalogue", seed_row.get("catalogue"))}
-      {blank("Fassung")}
-      {blank("completeness")}
+      {shown_if("Fassung", seed_row.get("fassung"))}
+      {shown_if("completeness", seed_row.get("completeness"))}
       {shown("conductor", seed_row.get("director"))}
       {shown("orchestra", seed_row.get("ensemble"))}
       {shown("soloists", seed_row.get("soloists"))}
-      {blank("soloist roles")}
-      {blank("session year")}
-      {shown("seed year (not session)", seed_row.get("year"))}
-      {blank("venue")}
-      {blank("live/studio")}
+      {shown_if("session year", seed_row.get("session_year"))}
+      {shown("seed year (release proxy, not session)", seed_row.get("year"))}
+      {shown_if("live/studio", seed_row.get("live_studio"))}
       {shown("label", seed_row.get("label"))}
-      {blank("catno")}
     </div>
     """
 
@@ -312,36 +319,23 @@ def render_identity_rich(
     <div class="pair">
       <p class="col-h">MusicBrainz (harvest)</p>
       {shown("mb_title", payload.get("mb_title"))}
-      {blank("catalogue")}
-      {blank("Fassung")}
-      {blank("completeness")}
-      {blank("conductor / artist-credit")}
-      {blank("orchestra")}
-      {blank("soloists / roles")}
-      {blank("session year")}
-      {shown("first release (not session)", payload.get("mb_first_release"))}
-      {blank("venue")}
-      {blank("live/studio")}
-      {blank("label")}
-      {blank("catno")}
-      {blank("barcode")}
+      {shown_if("Fassung", fp.get("fassung"))}
+      {shown_if("completeness", fp.get("completeness"))}
+      {shown_if("session year", fp.get("session_year"))}
+      {shown("first release (release proxy, not session)", payload.get("mb_first_release"))}
+      {shown_if("live/studio", fp.get("live_studio"))}
       {shown("release-group MBID", rg)}
-      {blank("release MBID")}
-      {shown("confidence", conf)}
+      {shown("match confidence (not a verdict)", conf)}
     </div>
     """
 
+    decisions_url = DECISIONS_URL
+    apply_url = APPLY_URL
     issue = f"{ISSUE_NEW}&title={escape(target)}&target={escape(target)}"
     mb_link = (
         f'<a href="{escape(mb_url)}" rel="noopener">Open release-group</a>'
         if mb_url else ""
     )
-    defer = ""
-    if has_absent_required(enrich["criteria"]) and not wrong:
-        defer = (
-            '<p class="defer-hint">Absent required-looking fields — '
-            "defer is the honest default (not auto-written)</p>"
-        )
 
     return f"""
 <article class="row identity-rich" data-bucket="{escape(bucket)}"
@@ -353,7 +347,6 @@ def render_identity_rich(
     <span class="meta">{escape(bucket.replace("_", " "))}</span>
     {render_why(enrich["why_missed"])}
     {render_criteria(enrich["criteria"])}
-    {defer}
     {render_siblings(enrich["remake_siblings"])}
     {render_comments(comments)}
   </div>
@@ -361,6 +354,8 @@ def render_identity_rich(
     {seed_col}
     {mb_col}
     <p class="actions">{mb_link}
+      <a href="{escape(decisions_url)}">Owner: decisions file</a>
+      <a href="{escape(apply_url)}">Owner: Review apply</a>
       <a href="{issue}">Add community comment</a>
     </p>
   </div>
@@ -377,7 +372,18 @@ def render_simple_row(
     bucket: str,
 ) -> str:
     """Compact row for accept-eligible / wrong-work (not the 244 enrichment)."""
-    flags = list(payload.get("review_flags") or [])
+    work = {
+        "title": seed_row.get("work_title") or "",
+        "catalogue": seed_row.get("catalogue") or "",
+        "composer": seed_row.get("composer") or "",
+    }
+    rec = {
+        "director": seed_row.get("director"),
+        "ensemble": seed_row.get("ensemble"),
+        "soloists": seed_row.get("soloists"),
+        "year": seed_row.get("year"),
+    }
+    flags, _eligible = refresh_identity_eligibility(payload, rec, work)
     wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
@@ -388,9 +394,10 @@ def render_simple_row(
         f"{seed_row.get('ensemble') or '—'} · "
         f"{seed_row.get('label')}, {seed_row.get('year')}"
     )
+    conf = payload.get("confidence", payload.get("match_score"))
     mb_line = (
         f"{payload.get('mb_title') or '—'} · first {payload.get('mb_first_release') or '—'} · "
-        f"score {payload.get('match_score') if payload.get('match_score') is not None else '—'}"
+        f"match {conf if conf is not None else '—'}"
     )
     flag_html = ""
     if flags:
@@ -402,6 +409,8 @@ def render_simple_row(
         f'<a href="{escape(mb_url)}" rel="noopener">MusicBrainz</a>'
         if mb_url else ""
     )
+    decisions_url = DECISIONS_URL
+    apply_url = APPLY_URL
     pack = PACK_LABEL.get(bucket, bucket)
     return f"""
 <article class="row" data-bucket="{escape(bucket)}" data-decision="{escape(decision.get('decision') or 'pending')}">
@@ -415,9 +424,11 @@ def render_simple_row(
     {render_comments(comments)}
   </div>
   <div>
-    <p class="meta">MusicBrainz match</p>
+    <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
     <p>{escape(mb_line)}</p>
     <p class="actions">{mb_link}
+      <a href="{escape(decisions_url)}">Owner: decisions file</a>
+      <a href="{escape(apply_url)}">Owner: Review apply</a>
       <a href="{issue}">Add community comment</a>
     </p>
   </div>
@@ -553,11 +564,14 @@ def main() -> None:
 
 <div class="banner owner">
   <strong>Owner only ({escape(OWNER)})</strong><br>
-  Accept / reject / defer decisions live in <span class="mono">proposals/review-decisions.json</span>.
-  Fill <span class="mono">by</span> + <span class="mono">date</span> on each accept.
-  Apply with <span class="mono">make review-apply</span> or the
-  <a href="https://github.com/{OWNER}/{REPO}/actions/workflows/review-apply.yml">Review apply</a>
-  workflow (repository owner actor required). Agents never write scores or
+  There are no public accept / reject / defer buttons on this page — community
+  cannot apply MBIDs. The owner records decisions in
+  <a href="{DECISIONS_URL}"><span class="mono">proposals/review-decisions.json</span></a>
+  (fill <span class="mono">by</span> + <span class="mono">date</span> on each accept),
+  then runs <span class="mono">make review-apply</span> or the
+  <a href="{APPLY_URL}">Review apply</a>
+  workflow (repository owner actor required). Identity apply writes the
+  release-group MBID only. Agents never write scores or
   <span class="mono">data/statements/</span>.
 </div>
 
@@ -572,11 +586,13 @@ def main() -> None:
 
 <div class="banner gaps">
   <strong>Honest omit</strong><br>
-  Fassung, completeness, session year, live/studio, venue, MB label/catno/barcode,
-  and release MBID are blank when absent from seed/harvest — never guessed.
-  Field-by-field inventory:
+  Fassung, completeness, session year and live/studio appear on a row only when
+  MusicBrainz actually supplied a token. They are not repeated as empty
+  “absent Fassung” paragraphs. seed.year and MB first-release stay labelled as
+  <em>release-year proxies</em>, never as session year. Match figures are
+  MusicBrainz search confidence, not critical verdicts and never stars.
+  Inventory:
   <a href="../../proposals/review/PAYLOAD_GAPS.md"><span class="mono">PAYLOAD_GAPS.md</span></a>.
-  Absent required-looking fields make defer the honest human default (not auto-written).
 </div>
 
 <div class="filters" role="group" aria-label="Filter queue">
@@ -584,6 +600,9 @@ def main() -> None:
   <button type="button" data-filter="accept_eligible" aria-pressed="false">Accept-eligible</button>
   <button type="button" data-filter="needs_review" aria-pressed="false">Needs review</button>
   <button type="button" data-filter="reject_wrong_work" aria-pressed="false">Wrong work</button>
+  <label class="find">Find
+    <input id="find" type="search" placeholder="Kleiber, Beethoven 5, bach/john…">
+  </label>
 </div>
 
 <section id="queue">
@@ -598,13 +617,21 @@ def main() -> None:
 <script>
 const buttons=[...document.querySelectorAll('.filters button')];
 const rows=[...document.querySelectorAll('.row')];
+const find=document.getElementById('find');
+function applyFilters(){{
+  const f=buttons.find(b=>b.getAttribute('aria-pressed')==='true')?.dataset.filter || 'all';
+  const q=(find?.value || '').trim().toLowerCase();
+  rows.forEach(r=>{{
+    const bucketOk = (f==='all' || r.dataset.bucket===f);
+    const textOk = !q || r.textContent.toLowerCase().includes(q);
+    r.style.display = (bucketOk && textOk) ? '' : 'none';
+  }});
+}}
 buttons.forEach(btn=>btn.addEventListener('click',()=>{{
   buttons.forEach(b=>b.setAttribute('aria-pressed', b===btn ? 'true':'false'));
-  const f=btn.dataset.filter;
-  rows.forEach(r=>{{
-    r.style.display = (f==='all' || r.dataset.bucket===f) ? '' : 'none';
-  }});
+  applyFilters();
 }}));
+if(find) find.addEventListener('input', applyFilters);
 </script>
 </body></html>
 """

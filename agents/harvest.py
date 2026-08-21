@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.2"
+VERSION = "harvest/1.3"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -94,6 +94,8 @@ WORK_GENERIC = {
     "nocturne", "nocturnes", "ballade", "ballades",
     "passion", "passions",  # St Matthew / St John — evangelist token decides
     "complete", "works", "album", "selection", "volume", "vol",
+    # Too common to identify a work ("Music for the Royal Fireworks" ≠ Rosamunde).
+    "music", "incidental", "orchestral", "royal",
 }
 
 STALE = {"identity": timedelta(days=365), "editions": timedelta(days=90),
@@ -248,16 +250,35 @@ WEAK_DISTINCTIVE = frozenset({
     "don", "st", "saint", "ste", "lord", "sir", "von", "van", "de", "di", "du",
 })
 
+# Key-quality words are not work names ("flat" must not equate D. 960 with Op. 106).
+KEY_WORDS = frozenset({
+    "major", "minor", "dur", "moll", "flat", "sharp", "diesis", "bemol",
+    "bemolle", "sostenido",
+})
+
+# Instruments are forces, not work identity ("piano" must not equate Brahms with
+# Prokofiev, or Schubert D. 960 with the Hammerklavier).
+INSTRUMENT_WORDS = frozenset({
+    "piano", "klavier", "pianoforte", "violin", "violino", "geige",
+    "cello", "violoncello", "violoncelle", "viola", "flute", "flote",
+    "oboe", "horn", "trumpet", "organ", "clarinet", "klarinette",
+    "soprano", "tenor", "bass", "choir", "chorus", "orchestra",
+})
+
 
 def distinctive_work_tokens(title: str) -> set[str]:
     """Name-bearing tokens (e.g. brandenburg), not bare form words (concertos).
 
     Length floor is 3 so short stems like "art" (Art of Fugue) count; bare
-    form words stay excluded via WORK_GENERIC.
+    form words, key words and instrument names stay excluded.
     """
     return {
         w for w in _title_tokens(title)
-        if w not in WORK_GENERIC and w not in WEAK_DISTINCTIVE and len(w) >= 3
+        if w not in WORK_GENERIC
+        and w not in WEAK_DISTINCTIVE
+        and w not in KEY_WORDS
+        and w not in INSTRUMENT_WORDS
+        and len(w) >= 3
     }
 
 
@@ -286,6 +307,12 @@ def _extract_keys(title: str) -> set[str]:
         n = "b" if note == "h" else note
         m = "minor" if mode in ("minor", "moll") else "major"
         keys.add(f"{n}-{m}")
+    # "Piano Sonata in B-flat" names a key even without major/minor.
+    for note, acc in re.findall(r"\b([a-gh])\s*[-\s]?(flat|sharp|#|b)\b", t):
+        if acc in ("flat", "b"):
+            keys.add(f"{'b' if note == 'h' else note}-flat")
+        else:
+            keys.add(f"{'b' if note == 'h' else note}-sharp")
     return keys
 
 
@@ -342,21 +369,102 @@ def _family(tokens: set[str], families: tuple[frozenset, ...]) -> Optional[froze
 def extract_work_numbers(title: str) -> set[str]:
     """Symphony No. 5 / Symphonie Nr. 5 / nos. 5 & 9 → {'5'} / {'5','9'}."""
     t = (title or "").lower()
-    nums = set(re.findall(r"\b(?:nos?|nr)\.?\s*(\d{1,3})\b", t))
+    nums = set(re.findall(r"\b(?:nos?|nr|n)\.?\s*(\d{1,3})\b", t))
     # "Nos. 39, 40, 41" / "nos. 5 / 8 / 9"
-    for chunk in re.findall(r"\b(?:nos?|nr)\.?\s*([\d\s,/&and\-]+)", t):
+    for chunk in re.findall(r"\b(?:nos?|nr|n)\.?\s*([\d\s,/&and\-]+)", t):
         nums |= set(re.findall(r"\d{1,3}", chunk))
     nums |= set(re.findall(
-        r"\b(?:symphony|symphonies|symphonie|sinfonie|concerto|concertos|"
+        r"\b(?:symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
+        r"sinfonia|concerto|concertos|"
         r"konzert|sonata|sonate|quartet|quartett|quintet|suite|suites|"
-        r"klavierkonzert|violinkonzert)\s+(?:nos?\.?\s*|nr\.?\s*)?(\d{1,3})\b",
+        r"klavierkonzert|violinkonzert)\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{1,3})\b",
         t,
     ))
     return nums
 
 
+_TITLE_COMPOSER_PREFIX = re.compile(
+    r"^([A-ZÀ-Ý][A-Za-zÀ-ÿ'’.\-]{2,})\s*[:–—-]\s+"
+)
+_CATALOGUE_ID_RE = re.compile(
+    r"\b(bwv|op(?:p)?|woo|hob|kv|wwv|k|d)\s*\.?\s*(\d{1,4})\b",
+    re.IGNORECASE,
+)
+_CATALOGUE_RANGE_RE = re.compile(
+    r"\b(bwv|op(?:p)?|woo|hob|kv|wwv)\s*\.?\s*(\d{1,4})\s*[–\-]\s*(\d{1,4})\b",
+    re.IGNORECASE,
+)
+_COLLECTION_PLURAL_RE = re.compile(
+    r"\b(suites|sonatas|sonaten|partitas|concertos|quartets|quintets|"
+    r"trios|etudes|études|preludes|préludes)\b",
+    re.IGNORECASE,
+)
+
+
+def extract_catalogue_ids(*texts: str) -> set[str]:
+    """BWV 245 / Op. 83 / D. 960 → {'bwv:245', 'op:83', 'd:960'}."""
+    ids: set[str] = set()
+    for text in texts:
+        if not text:
+            continue
+        t = text.replace("–", "-").replace("—", "-")
+        for m in _CATALOGUE_RANGE_RE.finditer(t):
+            prefix = m.group(1).lower()
+            if prefix.startswith("op"):
+                prefix = "op"
+            for num in (m.group(2), m.group(3)):
+                ids.add(f"{prefix}:{num.lstrip('0') or '0'}")
+        for m in _CATALOGUE_ID_RE.finditer(t):
+            prefix = m.group(1).lower()
+            if prefix.startswith("op"):
+                prefix = "op"
+            elif prefix == "kv":
+                prefix = "k"
+            ids.add(f"{prefix}:{m.group(2).lstrip('0') or '0'}")
+    return ids
+
+
+def _catalogue_conflict(seed_catalogue: str, mb_title: str) -> bool:
+    """True when both sides name catalogue ids and they do not overlap."""
+    seed_ids = extract_catalogue_ids(seed_catalogue)
+    mb_ids = extract_catalogue_ids(mb_title)
+    return bool(seed_ids and mb_ids and seed_ids.isdisjoint(mb_ids))
+
+
+def _foreign_composer_prefix(mb_title: str, composer: str = "",
+                             personnel: str = "") -> bool:
+    """'Prokofiev - Piano Concertos' is not Brahms. One-word title prefixes only.
+
+    Multi-word prefixes (Glenn Gould, Herbert von Karajan) are treated as
+    personnel, not composers. A prefix that matches the seed composer or the
+    candidate's director/ensemble/soloists is allowed.
+    """
+    m = _TITLE_COMPOSER_PREFIX.match((mb_title or "").strip())
+    if not m:
+        return False
+    prefix = _fold_token(m.group(1))
+    if not prefix or prefix in WORK_GENERIC or prefix in WORK_STOPWORDS:
+        return False
+    if prefix in INSTRUMENT_WORDS or prefix in KEY_WORDS:
+        return False
+    if _family({prefix}, FORM_FAMILIES) is not None:
+        return False
+    seed_surnames = {_fold_token(p) for p in re.split(r"\s+", composer or "") if p}
+    if prefix in seed_surnames:
+        return False
+    pers = {
+        _fold_token(p) for p in re.split(r"[\s,;/]+", personnel or "")
+        if len(p) >= 3
+    }
+    if prefix in pers:
+        return False
+    return True
+
+
 def work_title_compatible(seed_title: str, mb_title: str,
-                          catalogue: str = "") -> bool:
+                          catalogue: str = "",
+                          composer: str = "",
+                          personnel: str = "") -> bool:
     """True only when the MusicBrainz release-group is the same *work*.
 
     Sharing a generic form word ("Concertos") alone is never enough — that is
@@ -367,6 +475,11 @@ def work_title_compatible(seed_title: str, mb_title: str,
     """
     if not (seed_title or "").strip() or not (mb_title or "").strip():
         return False
+    if _foreign_composer_prefix(mb_title, composer, personnel):
+        return False
+    if _catalogue_conflict(catalogue, mb_title):
+        return False
+
     seed_tokens = _title_tokens(seed_title)
     mb_tokens = _title_tokens(mb_title)
 
@@ -386,12 +499,14 @@ def work_title_compatible(seed_title: str, mb_title: str,
         return True
 
     # 1) Distinctive work name: Brandenburg, Tosca, Giovanni, Emperor…
-    #    "don"/"st" are weak and excluded, so Don Giovanni ↛ Don Carlo.
+    #    Instruments and key words are not distinctive, so Piano ↛ Hammerklavier
+    #    and "music" ↛ Royal Fireworks.
     dist = distinctive_work_tokens(seed_title)
-    if dist and any(_token_overlap(d, m) for d in dist for m in mb_tokens):
-        # Key conflict still blocks (Mass in C minor ↛ Mass in B minor).
-        if not _keys_conflict(seed_title, mb_title):
-            return True
+    dist_hit = bool(
+        dist and any(_token_overlap(d, m) for d in dist for m in mb_tokens)
+    )
+    if dist_hit and not _keys_conflict(seed_title, mb_title):
+        return True
 
     seed_form = _family(seed_tokens, FORM_FAMILIES)
     mb_form = _family(mb_tokens, FORM_FAMILIES)
@@ -401,19 +516,24 @@ def work_title_compatible(seed_title: str, mb_title: str,
     seed_inst = _family(seed_tokens, INSTRUMENT_FAMILIES)
     mb_inst = _family(mb_tokens, INSTRUMENT_FAMILIES)
 
+    def numbered_form_match() -> bool:
+        if not (seed_form and mb_form and seed_form is mb_form and seed_nums):
+            return False
+        if not (seed_nums & mb_nums):
+            return False
+        if seed_inst and mb_inst and seed_inst is not mb_inst:
+            return False
+        if seed_inst and not mb_inst:
+            return False
+        if _keys_conflict(seed_title, mb_title):
+            return False
+        return True
+
     # 2) Numbered form works: same form family + shared work number.
     #    "Symphony No. 5" ↔ "Symphonie Nr. 5" / "Symphonies nos. 5 & 9"
     #    but not ↔ "The 5 Piano Concertos" (form family differs).
-    if seed_form and mb_form and seed_form is mb_form and seed_nums:
-        if seed_nums & mb_nums:
-            if seed_inst and mb_inst and seed_inst is not mb_inst:
-                return False
-            if seed_inst and not mb_inst:
-                # Seed says Violin Concerto No. 1; MB says only Concerto No. 1.
-                return False
-            if _keys_conflict(seed_title, mb_title):
-                return False
-            return True
+    if numbered_form_match():
+        return True
 
     # 3) Mass in B minor ↔ Messe in h-Moll (German note names).
     if seed_form and mb_form and seed_form is mb_form:
@@ -421,17 +541,6 @@ def work_title_compatible(seed_title: str, mb_title: str,
             {"h", "moll"} <= seed_tokens and {"b", "minor"} <= mb_tokens
         ):
             return True
-
-    # 4) Instrument + form without number: Cello Suites ↔ Suites pour violoncelle.
-    if seed_form and mb_form and seed_form is mb_form and seed_inst and mb_inst:
-        if seed_inst is mb_inst and not seed_nums:
-            return True
-
-    # 5) Unnumbered unique forms with no leftover distinctive seed token
-    #    (Requiem ↔ Requiem in D minor). Bare "Concerto" never reaches here
-    #    when the seed also names an instrument (that token is distinctive).
-    if seed_form and mb_form and seed_form is mb_form and not seed_nums and not dist:
-        return True
 
     # 6) Numbered seed with nickname distinctive (Emperor) — allow if number +
     #    form + instrument agree even when the nickname is absent on MB.
@@ -448,6 +557,34 @@ def work_title_compatible(seed_title: str, mb_title: str,
     for frag in re.findall(r"\d{3,4}", catalogue or ""):
         if frag in (mb_title or ""):
             return True
+
+    # Seed named a specific work (Rosamunde, St John, Tosca) that is absent
+    # from the MB title — do not fall through to generic form matches.
+    if dist and not dist_hit:
+        return False
+    if _keys_conflict(seed_title, mb_title):
+        return False
+
+    # 4) Instrument + plural collection without number:
+    #    Cello Suites ↔ Suites pour violoncelle.
+    #    Singular keyed sonatas (D. 960 vs Hammerklavier) do not qualify.
+    if seed_form and mb_form and seed_form is mb_form and seed_inst and mb_inst:
+        if (
+            seed_inst is mb_inst
+            and not seed_nums
+            and _COLLECTION_PLURAL_RE.search(seed_title or "")
+        ):
+            return True
+
+    # 5) Unnumbered unique forms with no leftover distinctive seed token
+    #    and no instrument (Requiem ↔ Requiem in D minor). Bare "Concerto"
+    #    / "Sonata" never reaches here when the seed names an instrument.
+    if (
+        seed_form and mb_form and seed_form is mb_form
+        and not seed_nums and not dist and not seed_inst
+    ):
+        return True
+
     return False
 
 
@@ -460,7 +597,7 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
     """
     flags: list[str] = []
     if confidence is None:
-        flags.append("missing MusicBrainz confidence score")
+        flags.append("missing MusicBrainz confidence")
     elif confidence < IDENTITY_MIN_CONFIDENCE:
         flags.append(f"confidence {confidence} < {IDENTITY_MIN_CONFIDENCE}")
     want = str(rec.get("year") or "")[:4]
@@ -474,12 +611,181 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
     if work and mb_title:
         seed_title = work.get("title") or ""
         catalogue = work.get("catalogue") or ""
-        if not work_title_compatible(seed_title, mb_title, catalogue):
+        composer = work.get("composer") or ""
+        personnel = " ".join(
+            x for x in (rec.get("director"), rec.get("ensemble"), rec.get("soloists"))
+            if x
+        )
+        if not work_title_compatible(
+            seed_title, mb_title, catalogue,
+            composer=composer, personnel=personnel,
+        ):
             flags.append(
                 f"wrong work: MusicBrainz {mb_title!r} does not match seed "
                 f"{seed_title!r}"
             )
     return flags
+
+
+def refresh_identity_eligibility(
+    payload: dict, rec: Optional[dict] = None, work: Optional[dict] = None,
+) -> tuple[list[str], bool]:
+    """Recompute flags against the current matcher.
+
+    Stale harvest files may have empty review_flags and auto_accept_eligible
+    true for matches that are now wrong-work. Queue/board must not trust that.
+    """
+    rec = rec or {}
+    confidence = payload.get("confidence")
+    if confidence is None and payload.get("match_score") is not None:
+        try:
+            confidence = int(payload["match_score"])
+        except (TypeError, ValueError):
+            confidence = None
+    elif confidence is not None:
+        try:
+            confidence = int(confidence)
+        except (TypeError, ValueError):
+            confidence = None
+    flags = identity_review_flags(
+        rec,
+        payload.get("mb_title") or "",
+        payload.get("mb_first_release"),
+        confidence,
+        work=work,
+    )
+    eligible = (
+        confidence is not None
+        and confidence >= IDENTITY_MIN_CONFIDENCE
+        and not flags
+    )
+    return flags, eligible
+
+
+# ------------------------------------------------------------------ identity facts
+# Copied from the WS/2 search hit when a token is actually present.
+# first-release-date is NEVER session year. Nested release ids are NEVER
+# the identity MBID (identity is a release-group).
+
+FASSUNG_PATTERNS = (
+    re.compile(r"\b(original\s+version|original\s+fassung|urfassung)\b", re.I),
+    re.compile(
+        r"\b((?:prague|prag|vienna|wiener|wien)\s+(?:version|fassung|edition))\b",
+        re.I,
+    ),
+    re.compile(r"\b((?:nowak|haas)\s+(?:edition|fassung|version))\b", re.I),
+    re.compile(r"\(\s*((?:nowak|haas)(?:\s+edition)?)\s*\)", re.I),
+    re.compile(
+        r"\b((?:s[uü]ssmayr|suessmayr)(?:\s*/\s*\w+)?(?:\s+\d{4})?\s+completion)\b",
+        re.I,
+    ),
+    re.compile(r"\(\s*(s[uü]ssmayr|suessmayr)\s*\)", re.I),
+    re.compile(
+        r"\b((?:1887|1890)\s+(?:version|fassung|revision|edition))\b", re.I,
+    ),
+    re.compile(r"\(\s*(1887|1890)\s*\)"),
+)
+COMPLETENESS_HIGHLIGHTS_RE = re.compile(
+    r"\b(highlights?|excerpts?|scenes\s+from)\b", re.I,
+)
+COMPLETENESS_COMPLETE_RE = re.compile(
+    r"\b(complete|int[eé]grale|integral)\b", re.I,
+)
+LIVE_TOKEN_RE = re.compile(
+    r"\b(live|in\s+concert|concert\s+recording|"
+    r"public\s+(?:performance|recording))\b",
+    re.I,
+)
+STUDIO_TOKEN_RE = re.compile(
+    r"\b(studio(?:\s+(?:recording|cast))?)\b", re.I,
+)
+SESSION_YEAR_PATTERNS = (
+    re.compile(r"\b(1[89]\d{2}|20\d{2})\s+recordings?\b", re.I),
+    re.compile(r"\brecorded(?:\s+in)?\s+(1[89]\d{2}|20\d{2})\b", re.I),
+    re.compile(r"\b(1[89]\d{2}|20\d{2})\s+sessions?\b", re.I),
+)
+
+
+def _unique_token_list(hits: list[str]) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for h in hits:
+        key = " ".join(h.split()).lower()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append(" ".join(h.split()))
+    return out
+
+
+def identity_facts_from_mb(
+    group: Optional[dict] = None, *,
+    title: str = "",
+    disambiguation: str = "",
+    secondary_types: Optional[list] = None,
+) -> dict:
+    """Pull Fassung / completeness / session year / live-studio iff present.
+
+    Reads only fields the harvest search already receives (title,
+    disambiguation, secondary-types). Omits a key when the WS/2 hit lacks
+    the token. Does not copy first-release-date into session_year. Does not
+    mint a release MBID.
+    """
+    group = group or {}
+    title = title or (group.get("title") or "")
+    disamb = disambiguation if disambiguation else (group.get("disambiguation") or "")
+    types = (
+        list(secondary_types) if secondary_types is not None
+        else list(group.get("secondary-types") or [])
+    )
+    blob = " ".join(x for x in (title, disamb) if x)
+    out: dict = {}
+    if disamb:
+        out["mb_disambiguation"] = disamb
+    if types:
+        out["mb_secondary_types"] = types
+    if group.get("primary-type"):
+        out["mb_primary_type"] = group["primary-type"]
+
+    fassung_hits: list[str] = []
+    for pat in FASSUNG_PATTERNS:
+        for m in pat.finditer(blob):
+            tok = m.group(1) if m.lastindex else m.group(0)
+            if tok:
+                fassung_hits.append(tok)
+    fassung_hits = _unique_token_list(fassung_hits)
+    if fassung_hits:
+        out["fassung"] = "; ".join(fassung_hits)
+
+    completeness: list[str] = []
+    if COMPLETENESS_HIGHLIGHTS_RE.search(blob):
+        completeness.append("highlights")
+    if COMPLETENESS_COMPLETE_RE.search(blob):
+        completeness.append("complete")
+    if completeness:
+        out["completeness"] = "; ".join(completeness)
+
+    live_bits: list[str] = []
+    type_fold = {str(t).strip().lower() for t in types}
+    if "live" in type_fold or LIVE_TOKEN_RE.search(blob):
+        live_bits.append("live")
+    if STUDIO_TOKEN_RE.search(blob):
+        live_bits.append("studio")
+    if live_bits:
+        out["live_studio"] = "; ".join(live_bits)
+
+    years: list[str] = []
+    seen_years: set[str] = set()
+    for pat in SESSION_YEAR_PATTERNS:
+        for m in pat.finditer(blob):
+            year = m.group(1)
+            if year and year not in seen_years:
+                seen_years.add(year)
+                years.append(year)
+    if len(years) == 1:
+        out["session_year"] = years[0]
+    # Multiple recording years in one title are ambiguous — omit.
+    return out
 
 
 def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
@@ -509,7 +815,12 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
         title = g.get("title") or ""
         # Prefer release-groups that actually name the seeded work.
         wrong = 0 if work_title_compatible(
-            work.get("title") or "", title, work.get("catalogue") or ""
+            work.get("title") or "", title, work.get("catalogue") or "",
+            composer=work.get("composer") or "",
+            personnel=" ".join(
+                x for x in (rec.get("director"), rec.get("ensemble"), rec.get("soloists"))
+                if x
+            ),
         ) else 1
         return (wrong, near, -g.get("score", 0))
 
@@ -525,20 +836,25 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
 
     alternatives = []
     for g in ranked[1:]:
-        alternatives.append({
+        alt = {
             "mbid": g["id"],
             "mb_title": g.get("title"),
             "mb_first_release": g.get("first-release-date"),
             "confidence": g.get("score"),
             "mb_url": f"https://musicbrainz.org/release-group/{g['id']}",
-        })
+        }
+        alt_facts = identity_facts_from_mb(g)
+        for key in ("fassung", "completeness", "session_year", "live_studio"):
+            if key in alt_facts:
+                alt[key] = alt_facts[key]
+        alternatives.append(alt)
 
-    return [Proposal(rec["id"], "identity", {
+    payload = {
         "mbid": best["id"],
         "mb_title": mb_title,
         "mb_first_release": mb_first,
-        "match_score": confidence,          # alias kept for agents/review.py
-        "confidence": confidence,
+        "match_score": confidence,          # MusicBrainz search confidence 0–100
+        "confidence": confidence,           # preferred name; not a critical verdict
         "auto_accept_eligible": eligible,
         "needs_human_review": True,         # identity always merges via human PR
         "uncertain": not eligible,
@@ -554,7 +870,11 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
             "year": rec.get("year"),
         },
         "alternatives": alternatives,
-    }, "MusicBrainz", "cited")]
+    }
+    # Honest omit: only store Fassung / completeness / session / live-studio
+    # when the WS/2 search hit actually contains the token.
+    payload.update(identity_facts_from_mb(best))
+    return [Proposal(rec["id"], "identity", payload, "MusicBrainz", "cited")]
 
 
 def adapter_editions(rec: dict, work: dict, http: Http) -> list[Proposal]:

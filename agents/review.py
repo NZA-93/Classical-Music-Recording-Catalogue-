@@ -21,6 +21,8 @@ from typing import Any, Optional
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SEED = ROOT / "data" / "seed.json"
+sys.path.insert(0, str(ROOT / "agents"))
+import harvest as har  # noqa: E402
 
 COMPILATION_RE = re.compile(
     r"\b(best of|collection|anthology|sampler|highlights)\b",
@@ -49,25 +51,13 @@ def _confidence(payload: dict) -> Optional[int]:
     return None
 
 
-def flags_for(cand: dict, payload: dict) -> list[str]:
-    # Prefer flags already computed by harvest/1.1+
-    embedded = payload.get("review_flags")
-    if isinstance(embedded, list) and embedded:
-        return list(embedded)
+def flags_for(cand: dict, payload: dict, work: Optional[dict] = None) -> list[str]:
+    """Union harvest flags with a fresh work-title check.
 
-    flags = []
-    score = _confidence(payload)
-    if score is not None and score < IDENTITY_MIN_CONFIDENCE:
-        flags.append(f"match_score {score} < {IDENTITY_MIN_CONFIDENCE}")
-    want = str(cand.get("year") or "")[:4]
-    got = str(payload.get("mb_first_release") or "")[:4]
-    if want.isdigit() and got.isdigit():
-        delta = abs(int(want) - int(got))
-        if delta > 3:
-            flags.append(f"date off by {delta} years ({want} vs {got})")
-    title = payload.get("mb_title") or ""
-    if COMPILATION_RE.search(title):
-        flags.append(f"compilation-like title: {title!r}")
+    Stale proposals may have empty review_flags and auto_accept_eligible true
+    for wrong-work matches (St John → St Matthew, Brahms PC2 → Prokofiev, …).
+    """
+    flags, _eligible = har.refresh_identity_eligibility(payload, cand, work)
     return flags
 
 
@@ -88,6 +78,8 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
                 "payload": payload,
             })
             continue
+        flags = flags_for(cand, payload, work)
+        _flags, eligible = har.refresh_identity_eligibility(payload, cand, work)
         out.append({
             "target": target,
             "missing": False,
@@ -104,10 +96,10 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
                 "title": payload.get("mb_title"),
                 "first_release": payload.get("mb_first_release"),
                 "match_score": _confidence(payload),
-                "auto_accept_eligible": payload.get("auto_accept_eligible"),
+                "auto_accept_eligible": eligible,
                 "mb_url": payload.get("mb_url"),
             },
-            "flags": flags_for(cand, payload),
+            "flags": flags,
         })
     return out
 
@@ -131,7 +123,7 @@ def render_text(items: list[dict]) -> str:
         )
         lines.append(
             f"   mb:    {m.get('title')!r} · first {m.get('first_release')} · "
-            f"score {m.get('match_score')} · {m.get('mbid')}"
+            f"match {m.get('match_score')} · {m.get('mbid')}"
         )
         if m.get("auto_accept_eligible") is False:
             lines.append("   auto_accept_eligible: no")
@@ -148,7 +140,7 @@ def render_markdown(items: list[dict]) -> str:
         f"{len(items)} identity proposals · "
         f"{sum(1 for i in items if i.get('flags'))} flagged",
         "",
-        "| Target | Seed | MusicBrainz | Score | Eligible | Flags |",
+        "| Target | Seed | MusicBrainz | Match | Eligible | Flags |",
         "|---|---|---|---|---|---|",
     ]
     for row in items:

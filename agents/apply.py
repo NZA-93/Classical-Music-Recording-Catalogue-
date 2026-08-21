@@ -37,6 +37,14 @@ KINDS = {"identity", "editions", "cover"}
 # (e.g. MusicBrainz "Piano Concertos" under a Brandenburg Concertos candidate.)
 WRONG_WORK_PREFIX = "wrong work:"
 
+# Facts identity apply may copy onto the seed candidate. The MBID written is
+# always the release-group id from payload["mbid"] — never a release MBID.
+IDENTITY_COPY_FIELDS = (
+    "mb_title", "mb_first_release", "match_score",
+    "fassung", "completeness", "session_year", "live_studio",
+    "mb_disambiguation", "mb_secondary_types",
+)
+
 
 def load_json(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -158,7 +166,8 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
             work_title_compatible = None  # type: ignore
         if work_title_compatible is not None:
             if not work_title_compatible(
-                work.get("title") or "", mb_title, work.get("catalogue") or ""
+                work.get("title") or "", mb_title, work.get("catalogue") or "",
+                composer=work.get("composer") or "",
             ):
                 flag = (
                     f"wrong work: MusicBrainz {mb_title!r} does not match seed "
@@ -199,8 +208,8 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
     changed = False
     if cand.get("mbid") == mbid and cand.get("verified") is False:
         # Already applied; still refresh match metadata if missing.
-        for k in ("mb_title", "mb_first_release", "match_score"):
-            if k in payload and cand.get(k) != payload[k]:
+        for k in IDENTITY_COPY_FIELDS:
+            if k in payload and payload[k] not in (None, "", []) and cand.get(k) != payload[k]:
                 cand[k] = payload[k]
                 changed = True
         if not changed:
@@ -217,8 +226,8 @@ def apply_identity(cand: dict, payload: dict, force: bool, reason: str,
     if cand.get("verified") is not False:
         cand["verified"] = False
         changed = True
-    for k in ("mb_title", "mb_first_release", "match_score"):
-        if k in payload and cand.get(k) != payload[k]:
+    for k in IDENTITY_COPY_FIELDS:
+        if k in payload and payload[k] not in (None, "", []) and cand.get(k) != payload[k]:
             cand[k] = payload[k]
             changed = True
     if changed:

@@ -63,6 +63,30 @@ class ApplyIdentity(unittest.TestCase):
         self.assertEqual(cand["match_score"], 98)
         self.assertTrue(any(e["action"] == "identity" for e in log))
 
+    def test_identity_writes_release_group_mbid_only(self):
+        seed = deepcopy(SEED_MIN)
+        rg = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+        rel = "ffffffff-1111-2222-3333-444444444444"
+        props = [{
+            "target": "bach/brandenburg/0",
+            "kind": "identity",
+            "payload": {
+                "mbid": rg,
+                "release_mbid": rel,
+                "mb_title": "Brandenburg Concertos",
+                "match_score": 99,
+                "fassung": "Prague version",
+            },
+            "source": "MusicBrainz", "provenance": "cited",
+        }]
+        new, _, log = ap.apply_proposals(props, seed)
+        cand = ap.find_candidate(new, "bach/brandenburg/0")
+        self.assertEqual(cand["mbid"], rg)
+        self.assertNotEqual(cand["mbid"], rel)
+        self.assertNotIn("release_mbid", cand)
+        self.assertEqual(cand.get("fassung"), "Prague version")
+        self.assertTrue(any(e["action"] == "identity" for e in log))
+
     def test_idempotent(self):
         seed = deepcopy(SEED_MIN)
         props = [{
