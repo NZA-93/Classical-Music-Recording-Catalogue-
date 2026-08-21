@@ -36,6 +36,11 @@ make site                  # rebuild catalogue + review board
 Or, signed into GitHub as **NZA-93**, run Actions → **Review apply**
 (`.github/workflows/review-apply.yml`). Non-owner actors are refused.
 
+`make review-apply` on a local clone is **not** login-gated (trusted-owner
+tooling). The hard remote gate is the Action (`github.actor == repository_owner`)
+plus `CODEOWNERS` on `review-decisions.json`. Do not run apply on a shared
+machine as someone else.
+
 Wrong-work rows are pre-rejected and remain unforceable in `apply.py`.
 
 ## Community path
