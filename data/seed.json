@@ -251,7 +251,7 @@
       "catalogue": "BWV 1041–1043",
       "year": "c. 1730",
       "note": "Including the Double Concerto, a repertory staple in every style.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/violin_concertos/0",
@@ -309,7 +309,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/violin_concertos/4"]
     },
     {
       "id": "bach/cello_suites",
@@ -320,7 +320,7 @@
       "catalogue": "BWV 1007–1012",
       "year": "c. 1720",
       "note": "Solo cello as complete polyphony; the most re-recorded solo cycle.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/cello_suites/0",
@@ -378,7 +378,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/cello_suites/1"]
     },
     {
       "id": "bach/sonatas_partitas",
@@ -447,7 +447,7 @@
       "catalogue": "BWV 988",
       "year": "1741",
       "note": "Thirty variations over a bass; the piano-versus-harpsichord argument.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/goldberg/0",
@@ -505,7 +505,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/3"]
     },
     {
       "id": "bach/wtc",
