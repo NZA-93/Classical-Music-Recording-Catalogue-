@@ -280,6 +280,53 @@ class TestBoardCopy(unittest.TestCase):
         self.assertNotIn("Fassung not in seed or harvest payload", rich)
         self.assertIn(".find", br.CSS)
 
+    def test_accept_eligible_chip_never_shows_stale_reject(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "build_review_under_test", ROOT / "site" / "build_review.py",
+        )
+        br = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(br)
+        html = br.render_simple_row(
+            "haydn/creation/1",
+            {"work": "The Creation", "director": "John Eliot Gardiner",
+             "ensemble": "English Baroque Soloists", "label": "Archiv",
+             "year": "1996", "work_title": "The Creation",
+             "composer": "Joseph Haydn", "catalogue": "Hob. XXI:2"},
+            {"mb_title": "Die Schöpfung", "mb_first_release": "1997-01-03",
+             "match_score": 100, "mbid": "x", "auto_accept_eligible": True},
+            {"decision": "reject", "note": "wrong work: pre-rejected by review_queue"},
+            [],
+            "accept_eligible",
+        )
+        self.assertIn('data-bucket="accept_eligible"', html)
+        self.assertIn("chip pending", html)
+        self.assertNotIn("chip reject", html)
+        self.assertNotIn("chip wrong", html)
+
+    def test_wrong_work_chip_on_reject_bucket(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "build_review_under_test", ROOT / "site" / "build_review.py",
+        )
+        br = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(br)
+        html = br.render_simple_row(
+            "haydn/trumpet_concerto/2",
+            {"work": "Trumpet Concerto", "director": "Karl Richter",
+             "ensemble": "Münchener Bach-Orchester", "label": "Archiv",
+             "year": "1960s", "work_title": "Trumpet Concerto",
+             "composer": "Joseph Haydn", "catalogue": "Hob. VIIe:1"},
+            {"mb_title": "Organ Concertos, Vol. 3: Nos. 9, 10, 11, 12",
+             "mb_first_release": "1960", "match_score": 100, "mbid": "x"},
+            {"decision": "reject"},
+            [],
+            "reject_wrong_work",
+        )
+        self.assertIn('data-bucket="reject_wrong_work"', html)
+        self.assertIn("chip wrong", html)
+        self.assertIn("wrong work", html)
+
 
 if __name__ == "__main__":
     unittest.main()

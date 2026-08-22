@@ -45,7 +45,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.3"
+VERSION = "harvest/1.8"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -92,6 +92,7 @@ WORK_GENERIC = {
     "fantasy", "fantasia", "fantaisie", "impromptu", "impromptus",
     "etude", "etudes", "étude", "études",
     "nocturne", "nocturnes", "ballade", "ballades",
+    "waltz", "waltzes", "walzer", "valse", "valses",
     "passion", "passions",  # St Matthew / St John — evangelist token decides
     "complete", "works", "album", "selection", "volume", "vol",
     # Too common to identify a work ("Music for the Royal Fireworks" ≠ Rosamunde).
@@ -356,6 +357,12 @@ INSTRUMENT_FAMILIES = (
     frozenset({"violin", "violino", "geige"}),
     frozenset({"cello", "violoncello", "violoncelle"}),
     frozenset({"clarinet", "klarinette"}),
+    frozenset({"trumpet"}),
+    frozenset({"organ"}),
+    frozenset({"horn"}),
+    frozenset({"flute", "flote"}),
+    frozenset({"oboe"}),
+    frozenset({"viola"}),
 )
 
 
@@ -366,20 +373,69 @@ def _family(tokens: set[str], families: tuple[frozenset, ...]) -> Optional[froze
     return None
 
 
+# Form words that carry a following work-number list in MB titles.
+_FORM_NUMBER_WORD = (
+    r"symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
+    r"sinfonia|concerto|concertos|concerti|konzert|konzerte|"
+    r"sonata|sonatas|sonate|sonaten|quartet|quartets|quartett|"
+    r"quintet|suite|suites|klavierkonzert|violinkonzert"
+)
+
+
 def extract_work_numbers(title: str) -> set[str]:
     """Symphony No. 5 / Symphonie Nr. 5 / nos. 5 & 9 → {'5'} / {'5','9'}."""
-    t = (title or "").lower()
+    t = (title or "").lower().replace("–", "-").replace("—", "-")
     nums = set(re.findall(r"\b(?:nos?|nr|n)\.?\s*(\d{1,3})\b", t))
     # "Nos. 39, 40, 41" / "nos. 5 / 8 / 9"
     for chunk in re.findall(r"\b(?:nos?|nr|n)\.?\s*([\d\s,/&and\-]+)", t):
         nums |= set(re.findall(r"\d{1,3}", chunk))
     nums |= set(re.findall(
-        r"\b(?:symphony|symphonies|symphonie|symphonien|sinfonie|sinfonien|"
-        r"sinfonia|concerto|concertos|"
-        r"konzert|sonata|sonate|quartet|quartett|quintet|suite|suites|"
-        r"klavierkonzert|violinkonzert)\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{1,3})\b",
+        rf"\b(?:{_FORM_NUMBER_WORD})\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?(\d{{1,3}})\b",
         t,
     ))
+    # "Piano Concertos 2 & 3" / "Sonatas nos. 2 & 3" — the rest of the list.
+    for chunk in re.findall(
+        rf"\b(?:{_FORM_NUMBER_WORD})\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?([\d\s,/&and\-]+)",
+        t,
+    ):
+        nums |= set(re.findall(r"\d{1,3}", chunk))
+    # Inclusive short ranges: nos. 4-6 → {4,5,6}. Cap so catalogue spans
+    # (1046-1051) are not treated as work numbers.
+    for a, b in re.findall(
+        r"\b(?:nos?|nr|n)\.?\s*(\d{1,3})\s*-\s*(\d{1,3})\b", t
+    ):
+        lo, hi = int(a), int(b)
+        if 0 < hi - lo <= 20:
+            nums |= {str(n) for n in range(lo, hi + 1)}
+    return nums
+
+
+def extract_work_numbers_for_form(
+    title: str, form_family: Optional[frozenset] = None,
+) -> set[str]:
+    """Work numbers attached to one form family.
+
+    Mixed-form couplings (Cello Concerto no. 2 / Symphony no. 5) only
+    contribute the matching form's numbers, so a symphony seed is not
+    treated as naming Symphony No. 2.
+    """
+    if form_family is None:
+        return extract_work_numbers(title)
+    t = (title or "").lower().replace("–", "-").replace("—", "-")
+    nums: set[str] = set()
+    for m in re.finditer(
+        rf"\b({_FORM_NUMBER_WORD})\s+(?:nos?\.?\s*|nr\.?\s*|n\.?\s*)?([\d\s,/&and\-]+)",
+        t,
+    ):
+        word = m.group(1)
+        if _family({word}, FORM_FAMILIES) is not form_family:
+            continue
+        chunk = m.group(2)
+        nums |= set(re.findall(r"\d{1,3}", chunk))
+        for a, b in re.findall(r"(\d{1,3})\s*-\s*(\d{1,3})", chunk):
+            lo, hi = int(a), int(b)
+            if 0 < hi - lo <= 20:
+                nums |= {str(n) for n in range(lo, hi + 1)}
     return nums
 
 
@@ -395,10 +451,22 @@ _CATALOGUE_RANGE_RE = re.compile(
     re.IGNORECASE,
 )
 _COLLECTION_PLURAL_RE = re.compile(
-    r"\b(suites|sonatas|sonaten|partitas|concertos|quartets|quintets|"
-    r"trios|etudes|études|preludes|préludes)\b",
+    r"\b(suites|suiten|sonatas|sonaten|partitas|concertos|concerti|"
+    r"konzerte|quartets|quintets|"
+    r"trios|etudes|études|preludes|préludes|waltzes|walzer)\b",
     re.IGNORECASE,
 )
+
+# Adjectives/fillers that appear in MB titles without naming a different work.
+_MB_NAME_FILLER = frozenset({
+    "unaccompanied", "favourite", "favorite", "other", "solo",
+    "sechs", "six", "pour", "fur", "für", "great", "new", "original",
+    "complete", "digital", "remastered", "highlights", "excerpts",
+    "volume", "vol", "integral", "integrale", "suiten", "album",
+    "selection", "works", "recorded", "edition", "version",
+    "live", "studio", "collection", "anthology", "sampler",
+    "best", "remaster", "digital",
+})
 
 
 def extract_catalogue_ids(*texts: str) -> set[str]:
@@ -431,6 +499,62 @@ def _catalogue_conflict(seed_catalogue: str, mb_title: str) -> bool:
     return bool(seed_ids and mb_ids and seed_ids.isdisjoint(mb_ids))
 
 
+def _catalogue_range_span(catalogue: str) -> Optional[int]:
+    """BWV 1046–1051 → 6. None when the catalogue is not a range."""
+    t = (catalogue or "").replace("–", "-").replace("—", "-")
+    m = _CATALOGUE_RANGE_RE.search(t)
+    if not m:
+        return None
+    a, b = int(m.group(2)), int(m.group(3))
+    if b > a:
+        return b - a + 1
+    return None
+
+
+def collection_subset_incomplete(
+    seed_title: str, mb_title: str, catalogue: str = "",
+) -> Optional[str]:
+    """Flag when MB names a numbered subset of an unnumbered seed collection.
+
+    Brandenburg Concertos (BWV 1046–1051) vs nos. 4–6, Cello Suites vs
+    no. 1 & no. 2. Same work, not complete — needs-review, not accept.
+    """
+    if not (seed_title or "").strip() or not (mb_title or "").strip():
+        return None
+    if not _COLLECTION_PLURAL_RE.search(seed_title or ""):
+        return None
+    seed_nums = extract_work_numbers(seed_title)
+    if seed_nums:
+        return None
+    mb_nums = extract_work_numbers(mb_title)
+    if not mb_nums:
+        return None
+    span = _catalogue_range_span(catalogue)
+    if span is not None and len(mb_nums) >= span:
+        return None
+    shown = ", ".join(sorted(mb_nums, key=lambda x: int(x)))
+    return f"incomplete: MB title names a subset ({shown}) of seed collection"
+
+
+def _mb_names_other_work(seed_title: str, mb_title: str) -> bool:
+    """True when MB carries a work name the seed does not share.
+
+    Catches Emperor / Christmas / Vienna Woods on a generic Concerto/Waltzes
+    seed. Numbered and catalogue matches return earlier and never reach this.
+    """
+    mb_named = distinctive_work_tokens(mb_title) - _MB_NAME_FILLER
+    if not mb_named:
+        return False
+    seed_named = distinctive_work_tokens(seed_title) - _MB_NAME_FILLER
+    seed_all = _title_tokens(seed_title)
+    for m in mb_named:
+        if any(_token_overlap(m, s) for s in seed_named):
+            return False
+        if any(_token_overlap(m, s) for s in seed_all):
+            return False
+    return True
+
+
 def _foreign_composer_prefix(mb_title: str, composer: str = "",
                              personnel: str = "") -> bool:
     """'Prokofiev - Piano Concertos' is not Brahms. One-word title prefixes only.
@@ -461,10 +585,130 @@ def _foreign_composer_prefix(mb_title: str, composer: str = "",
     return True
 
 
+def sibling_work_numbers(work: dict, works: Optional[list] = None) -> set[str]:
+    """Work numbers of the same composer + form + instrument in the seed.
+
+    Chopin piano concertos → {1, 2}. Used to reject MB titles that name a
+    number past that cycle (Concertos 2 & 3) without touching real couplings
+    (Mozart 19+23, Chopin sonatas 2+3, Chopin concertos 1+2).
+    """
+    if not work or not works:
+        return set()
+    title = work.get("title") or ""
+    tokens = _title_tokens(title)
+    form = _family(tokens, FORM_FAMILIES)
+    inst = _family(tokens, INSTRUMENT_FAMILIES)
+    if form is None:
+        return set()
+    composer = work.get("composer") or ""
+    composer_id = work.get("composer_id") or ""
+    nums: set[str] = set()
+    for other in works:
+        if composer_id and other.get("composer_id"):
+            if other.get("composer_id") != composer_id:
+                continue
+        elif composer and other.get("composer") != composer:
+            continue
+        ot = other.get("title") or ""
+        otok = _title_tokens(ot)
+        if _family(otok, FORM_FAMILIES) is not form:
+            continue
+        oinst = _family(otok, INSTRUMENT_FAMILIES)
+        if inst and oinst and inst is not oinst:
+            continue
+        nums |= extract_work_numbers(ot)
+    return nums
+
+
+def _mb_number_past_composer_cycle(
+    mb_title: str, sibling_numbers: Optional[set[str]],
+) -> bool:
+    """True when MB names a work number above this composer's known cycle."""
+    if not sibling_numbers:
+        return False
+    try:
+        ceiling = max(int(n) for n in sibling_numbers)
+    except ValueError:
+        return False
+    if ceiling <= 0:
+        return False
+    for n in extract_work_numbers(mb_title):
+        try:
+            if int(n) > ceiling:
+                return True
+        except ValueError:
+            continue
+    return False
+
+
+def _mb_collection_fills_seed_gap(
+    seed_title: str,
+    mb_title: str,
+    catalogue: str = "",
+    composer: str = "",
+    sibling_numbers: Optional[set[str]] = None,
+) -> bool:
+    """True when a generic numbered collection names a hole in this cycle.
+
+    Shostakovich's seed has symphonies 1, 4–11, 13–15 — no 2. 'Symphonies
+    1, 2 and 5' is Tchaikovsky (Petrenko/Onyx), not a Shostakovich coupling.
+    Petrenko 5 & 9 names only numbers that are in the cycle and stays.
+    Mixed-form couplings (Cello Concerto no. 2 / Symphony no. 5) stay:
+    the extra 2 is a concerto number, not a missing symphony.
+    Cycle boxes that name five or more numbers of this form stay even if
+    they fill a seed hole (Kondrashin 1, 3–7, 9 includes Symphony No. 4).
+    Adjacent pairs that include the seeded work (3 & 4, 7 & 8) stay:
+    those are couplings, not Tchaikovsky-style three-number collections.
+    Sparse cycles (Mozart PC 20/23/27, Haydn 44/94/104) are not treated as
+    holes; catalogue or a work name still saves those couplings.
+    """
+    if not sibling_numbers:
+        return False
+    seed_form = _family(_title_tokens(seed_title), FORM_FAMILIES)
+    mb_nums = extract_work_numbers_for_form(mb_title, seed_form)
+    # Three- or four-number collections. Adjacent pairs (3 & 4, 7 & 8)
+    # that include the seeded work are couplings, not another composer.
+    # A seven-symphony Kondrashin box is a cycle, not a leak.
+    if not 3 <= len(mb_nums) <= 4:
+        return False
+    extra = mb_nums - {str(n) for n in sibling_numbers}
+    if not extra:
+        return False
+    try:
+        known = sorted(int(n) for n in sibling_numbers)
+    except ValueError:
+        return False
+    if len(known) < 2:
+        return False
+    lo, hi = known[0], known[-1]
+    span = hi - lo + 1
+    if span <= 0 or len(known) / span < 0.5:
+        return False
+    in_gap = False
+    for n in extra:
+        try:
+            v = int(n)
+        except ValueError:
+            continue
+        if lo < v < hi and str(v) not in sibling_numbers:
+            in_gap = True
+            break
+    if not in_gap:
+        return False
+    if extract_catalogue_ids(catalogue) & extract_catalogue_ids(mb_title):
+        return False
+    if _mb_names_seed_composer(mb_title, composer):
+        return False
+    if distinctive_work_tokens(mb_title) - _MB_NAME_FILLER:
+        return False
+    return True
+
+
 def work_title_compatible(seed_title: str, mb_title: str,
                           catalogue: str = "",
                           composer: str = "",
-                          personnel: str = "") -> bool:
+                          personnel: str = "",
+                          sibling_numbers: Optional[set[str]] = None) -> bool:
     """True only when the MusicBrainz release-group is the same *work*.
 
     Sharing a generic form word ("Concertos") alone is never enough — that is
@@ -515,6 +759,8 @@ def work_title_compatible(seed_title: str, mb_title: str,
 
     seed_inst = _family(seed_tokens, INSTRUMENT_FAMILIES)
     mb_inst = _family(mb_tokens, INSTRUMENT_FAMILIES)
+    if seed_inst and mb_inst and seed_inst is not mb_inst:
+        return False
 
     def numbered_form_match() -> bool:
         if not (seed_form and mb_form and seed_form is mb_form and seed_nums):
@@ -533,6 +779,12 @@ def work_title_compatible(seed_title: str, mb_title: str,
     #    "Symphony No. 5" ↔ "Symphonie Nr. 5" / "Symphonies nos. 5 & 9"
     #    but not ↔ "The 5 Piano Concertos" (form family differs).
     if numbered_form_match():
+        if _mb_number_past_composer_cycle(mb_title, sibling_numbers):
+            return False
+        if _mb_collection_fills_seed_gap(
+            seed_title, mb_title, catalogue, composer, sibling_numbers,
+        ):
+            return False
         return True
 
     # 3) Mass in B minor ↔ Messe in h-Moll (German note names).
@@ -548,6 +800,12 @@ def work_title_compatible(seed_title: str, mb_title: str,
         dist and seed_form and mb_form and seed_form is mb_form
         and seed_nums and (seed_nums & mb_nums)
     ):
+        if _mb_number_past_composer_cycle(mb_title, sibling_numbers):
+            return False
+        if _mb_collection_fills_seed_gap(
+            seed_title, mb_title, catalogue, composer, sibling_numbers,
+        ):
+            return False
         if seed_inst and mb_inst and seed_inst is mb_inst:
             return True
         if not seed_inst and not mb_inst:
@@ -558,23 +816,28 @@ def work_title_compatible(seed_title: str, mb_title: str,
         if frag in (mb_title or ""):
             return True
 
-    # Seed named a specific work (Rosamunde, St John, Tosca) that is absent
-    # from the MB title — do not fall through to generic form matches.
+    # Seed named a specific work (Rosamunde, St John, Tosca, Liebeslieder)
+    # that is absent from the MB title — do not fall through to generic form.
     if dist and not dist_hit:
         return False
     if _keys_conflict(seed_title, mb_title):
         return False
+    # MB named a different work (Emperor, Christmas, Vienna Woods) while the
+    # seed only offered a generic form/instrument.
+    if _mb_names_other_work(seed_title, mb_title):
+        return False
 
-    # 4) Instrument + plural collection without number:
-    #    Cello Suites ↔ Suites pour violoncelle.
-    #    Singular keyed sonatas (D. 960 vs Hammerklavier) do not qualify.
+    # 4) Instrument + collection without a seed number.
+    #    Cello Suites ↔ Suites pour violoncelle
+    #    Trumpet Concerto ↔ Trumpet Concertos
+    #    Singular keyed sonatas (D. 960 vs Hammerklavier) do not qualify
+    #    unless the MB side is also a collection of the same instrument.
     if seed_form and mb_form and seed_form is mb_form and seed_inst and mb_inst:
-        if (
-            seed_inst is mb_inst
-            and not seed_nums
-            and _COLLECTION_PLURAL_RE.search(seed_title or "")
-        ):
-            return True
+        if seed_inst is mb_inst and not seed_nums:
+            seed_plural = bool(_COLLECTION_PLURAL_RE.search(seed_title or ""))
+            mb_plural = bool(_COLLECTION_PLURAL_RE.search(mb_title or ""))
+            if seed_plural or mb_plural:
+                return True
 
     # 5) Unnumbered unique forms with no leftover distinctive seed token
     #    and no instrument (Requiem ↔ Requiem in D minor). Bare "Concerto"
@@ -588,9 +851,151 @@ def work_title_compatible(seed_title: str, mb_title: str,
     return False
 
 
+def _folded_person(name: str) -> str:
+    return " ".join(
+        _fold_token(p) for p in re.split(r"[\s,]+", name or "") if p
+    )
+
+
+def _generic_across_composers(title: str) -> bool:
+    """True when the title is only form / instrument / number — not a unique work.
+
+    'Violin Concerto', 'Symphony No. 6', 'Piano Concerto No. 1'.
+    Not 'Symphony No. 6, Pathétique' or 'Brandenburg Concertos'.
+    """
+    if distinctive_work_tokens(title):
+        return False
+    return _family(_title_tokens(title), FORM_FAMILIES) is not None
+
+
+def _generic_instrument_form_only(title: str) -> bool:
+    """True for 'Violin Concerto' — form+instrument, no work name, no number."""
+    if extract_work_numbers(title):
+        return False
+    if not _generic_across_composers(title):
+        return False
+    return _family(_title_tokens(title), INSTRUMENT_FAMILIES) is not None
+
+
+def _same_performance_artists(a: dict, b: dict) -> bool:
+    """Director+soloists when named; otherwise director+ensemble (no soloists)."""
+    da = _folded_person(a.get("director") or "")
+    db = _folded_person(b.get("director") or "")
+    sa = _folded_person(a.get("soloists") or "")
+    sb = _folded_person(b.get("soloists") or "")
+    ea = _folded_person(a.get("ensemble") or "")
+    eb = _folded_person(b.get("ensemble") or "")
+    if sa or sb:
+        if not sa or not sb or sa != sb:
+            return False
+        if da and db and da != db:
+            return False
+        return True
+    if da and db:
+        return da == db and bool(ea) and ea == eb
+    return bool(ea) and ea == eb
+
+
+def _mb_names_seed_composer(mb_title: str, composer: str) -> bool:
+    surnames = {
+        _fold_token(p) for p in re.split(r"\s+", composer or "") if len(p) >= 4
+    }
+    mb_toks = {_fold_token(t) for t in _title_tokens(mb_title)}
+    return bool(surnames & mb_toks)
+
+
+def composer_seed_index(composer_id: str, works: Optional[list] = None) -> int:
+    """First appearance of composer_id in the seed. Missing composers sort last."""
+    if not composer_id:
+        return 10 ** 9
+    for i, other in enumerate(works or []):
+        if (other.get("composer_id") or "") == composer_id:
+            return i
+    return 10 ** 9
+
+
+def other_composer_same_generic_artists(
+    rec: dict, work: dict, works: Optional[list] = None,
+) -> Optional[str]:
+    """Another composer in the seed lists the same artists on the same
+    generic form work (Brahms VC vs Tchaikovsky Heifetz/Reiner; Shostakovich
+    Symphony No. 6 vs Tchaikovsky Pathétique Mravinsky).
+
+    Numbered forms (Symphony No. 9) are recorded by the same conductor for
+    many composers; only treat those as a leak when the other listing carries
+    a distinctive work name the seed lacks (Pathétique, Pastoral, Eroica).
+    """
+    if not rec or not work or not works:
+        return None
+    seed_title = work.get("title") or ""
+    if not _generic_across_composers(seed_title):
+        return None
+    my_cid = work.get("composer_id") or ""
+    my_composer = work.get("composer") or ""
+    seed_tok = _title_tokens(seed_title)
+    seed_form = _family(seed_tok, FORM_FAMILIES)
+    seed_inst = _family(seed_tok, INSTRUMENT_FAMILIES)
+    seed_nums = extract_work_numbers(seed_title)
+    seed_dist = distinctive_work_tokens(seed_title)
+    for other in works:
+        oid = other.get("composer_id") or ""
+        oname = other.get("composer") or ""
+        if my_cid and oid:
+            if oid == my_cid:
+                continue
+        elif oname == my_composer:
+            continue
+        ot = other.get("title") or ""
+        otok = _title_tokens(ot)
+        if _family(otok, FORM_FAMILIES) is not seed_form:
+            continue
+        oinst = _family(otok, INSTRUMENT_FAMILIES)
+        if seed_inst and oinst and seed_inst is not oinst:
+            continue
+        if seed_inst and not oinst:
+            continue
+        if _keys_conflict(seed_title, ot):
+            continue
+        other_nums = extract_work_numbers(ot)
+        if seed_nums:
+            if not (seed_nums & other_nums):
+                continue
+            other_dist = distinctive_work_tokens(ot)
+            extra = False
+            for o in other_dist:
+                if any(_token_overlap(o, s) for s in seed_dist):
+                    continue
+                if any(_token_overlap(o, s) for s in seed_tok):
+                    continue
+                extra = True
+                break
+            if not extra:
+                continue
+        elif other_nums:
+            continue
+        for cand in other.get("candidates") or []:
+            if _same_performance_artists(rec, cand):
+                return oname or oid
+    return None
+
+
+def is_cross_composer_generic_flag(flag: str) -> bool:
+    """Wrong-work flags that mean a generic title hid another composer's work."""
+    s = str(flag)
+    if not s.startswith("wrong work:"):
+        return False
+    return (
+        "already listed under" in s
+        or "proposed for more than one composer" in s
+        or "not distinctive across composers" in s
+    )
+
+
 def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[str],
                           confidence: Optional[int],
-                          work: Optional[dict] = None) -> list[str]:
+                          work: Optional[dict] = None,
+                          sibling_numbers: Optional[set[str]] = None,
+                          works: Optional[list] = None) -> list[str]:
     """Flags that block auto-accept. Humans still review clean matches too.
 
     A wrong-work flag is fatal for apply.py — it cannot be force-overridden.
@@ -611,6 +1016,9 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
     if work and mb_title:
         seed_title = work.get("title") or ""
         catalogue = work.get("catalogue") or ""
+        inc = collection_subset_incomplete(seed_title, mb_title, catalogue)
+        if inc:
+            flags.append(inc)
         composer = work.get("composer") or ""
         personnel = " ".join(
             x for x in (rec.get("director"), rec.get("ensemble"), rec.get("soloists"))
@@ -619,16 +1027,41 @@ def identity_review_flags(rec: dict, mb_title: str, mb_first_release: Optional[s
         if not work_title_compatible(
             seed_title, mb_title, catalogue,
             composer=composer, personnel=personnel,
+            sibling_numbers=sibling_numbers,
         ):
             flags.append(
                 f"wrong work: MusicBrainz {mb_title!r} does not match seed "
                 f"{seed_title!r}"
             )
+        else:
+            other = other_composer_same_generic_artists(rec, work, works)
+            if other:
+                flags.append(
+                    f"wrong work: MusicBrainz {mb_title!r} matches artists "
+                    f"already listed under {other} — {seed_title!r} is not "
+                    f"distinctive across composers"
+                )
+            elif (
+                _generic_instrument_form_only(seed_title)
+                and _generic_instrument_form_only(mb_title)
+                and not _COLLECTION_PLURAL_RE.search(mb_title or "")
+                and not _mb_names_seed_composer(mb_title, composer)
+                and not (
+                    extract_catalogue_ids(catalogue)
+                    & extract_catalogue_ids(mb_title)
+                )
+            ):
+                flags.append(
+                    f"unsigned composer: MB title {mb_title!r} does not name "
+                    f"{composer} or catalogue"
+                )
     return flags
 
 
 def refresh_identity_eligibility(
     payload: dict, rec: Optional[dict] = None, work: Optional[dict] = None,
+    sibling_numbers: Optional[set[str]] = None,
+    works: Optional[list] = None,
 ) -> tuple[list[str], bool]:
     """Recompute flags against the current matcher.
 
@@ -653,6 +1086,8 @@ def refresh_identity_eligibility(
         payload.get("mb_first_release"),
         confidence,
         work=work,
+        sibling_numbers=sibling_numbers,
+        works=works,
     )
     eligible = (
         confidence is not None
@@ -788,7 +1223,8 @@ def identity_facts_from_mb(
     return out
 
 
-def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
+def adapter_identity(rec: dict, work: dict, http: Http,
+                     works: Optional[list] = None) -> list[Proposal]:
     """Resolve a candidate to a MusicBrainz release-group. CC0 data.
 
     Emits confidence and review flags. Matches below IDENTITY_MIN_CONFIDENCE
@@ -831,7 +1267,9 @@ def adapter_identity(rec: dict, work: dict, http: Http) -> list[Proposal]:
         confidence = int(confidence)
     mb_title = best.get("title") or ""
     mb_first = best.get("first-release-date")
-    flags = identity_review_flags(rec, mb_title, mb_first, confidence, work=work)
+    flags = identity_review_flags(
+        rec, mb_title, mb_first, confidence, work=work, works=works,
+    )
     eligible = confidence is not None and confidence >= IDENTITY_MIN_CONFIDENCE and not flags
 
     alternatives = []
@@ -1255,7 +1693,12 @@ def main() -> int:
                     raise BudgetExhausted()
                 continue
             print(f"  [{stage}] {rec['id']}")
-            got = ADAPTERS[stage](rec, work, http)
+            if stage == "identity":
+                got = adapter_identity(
+                    rec, work, http, works=seed.get("works") or [],
+                )
+            else:
+                got = ADAPTERS[stage](rec, work, http)
             # Transient transport failures must not advance the cursor into a
             # week-long backoff — retry next run (or later in this budget).
             if not got and http.last_status == "error":

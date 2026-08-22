@@ -176,10 +176,92 @@ class TestLiveQueue(unittest.TestCase):
             "brahms/pc2/1",
             "schubert/sonata_d960/2",
             "schubert/rosamunde/3",
+            "brahms/liebeslieder/1",
+            "haydn/trumpet_concerto/2",
+            "haydn/trumpet_concerto/3",
+            "handel/organ_concertos/1",
+            "chopin/pc2/1",
+            "brahms/violin_concerto/1",
+            "brahms/violin_concerto/2",
+            "shostakovich/sym6/0",
+            "shostakovich/sym1/4",
+            "shostakovich/sym6/4",
         ):
             with self.subTest(target=target):
                 self.assertNotIn(target, acc)
                 self.assertIn(target, wrong)
+
+    def test_completeness_leftovers_not_accept_eligible(self):
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        b = rq.live_identity_buckets(props, seed)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        needs = {r["target"] for r in b["needs_review"]}
+        for target in ("bach/brandenburg/0", "bach/cello_suites/3"):
+            with self.subTest(target=target):
+                self.assertNotIn(target, acc)
+                self.assertIn(target, needs)
+        self.assertIn("bach/cello_suites/1", acc)
+        # Generic "Violin Concerto" does not name the composer — not distinctive.
+        self.assertNotIn("beethoven/violin_concerto/1", acc)
+        self.assertIn("beethoven/violin_concerto/1", needs)
+
+    def test_real_couplings_stay_accept_eligible(self):
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        b = rq.live_identity_buckets(props, seed)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        for target in (
+            "chopin/pc1/2",
+            "chopin/pc2/3",
+            "chopin/sonata2/1",
+            "mozart/pc23/2",
+            "mozart/pc27/1",
+            "mozart/pc27/2",
+            "haydn/trumpet_concerto/1",
+            "bach/violin_concertos/4",
+            "shostakovich/sym5/4",
+            "shostakovich/sym5/5",
+            "shostakovich/sym6/3",
+            "shostakovich/sym9/4",
+            "shostakovich/sym11/4",
+            "haydn/sym104/1",
+        ):
+            with self.subTest(target=target):
+                self.assertIn(target, acc)
+
+    def test_beethoven_mutter_stays_when_brahms_duplicate_shares_mbid(self):
+        """Same RG as brahms/violin_concerto/2 — that disc is Beethoven."""
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        b = rq.live_identity_buckets(props, seed)
+        acc = {r["target"] for r in b["accept_eligible"]}
+        wrong = {r["target"] for r in b["reject_wrong_work"]}
+        self.assertNotIn("beethoven/violin_concerto/3", wrong)
+        self.assertIn("beethoven/violin_concerto/3", acc)
+        self.assertIn("beethoven/sym9/4", acc)
+
+    def test_reject_chip_cannot_stay_accept_eligible(self):
+        """Live wrong-work flags beat a stale auto_accept_eligible payload."""
+        items = [{
+            "target": "haydn/trumpet_concerto/2",
+            "flags": [
+                "wrong work: MusicBrainz 'Organ Concertos' does not match "
+                "seed 'Trumpet Concerto'"
+            ],
+            "mb": {"auto_accept_eligible": True, "match_score": 100},
+            "seed": {},
+        }]
+        b = rq.bucket_identity(items)
+        self.assertEqual(b["accept_eligible"], [])
+        self.assertEqual(b["reject_wrong_work"][0]["target"],
+                         "haydn/trumpet_concerto/2")
 
     def test_preserves_prior_accept(self):
         buckets = {

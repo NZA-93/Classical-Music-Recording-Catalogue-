@@ -51,18 +51,23 @@ def _confidence(payload: dict) -> Optional[int]:
     return None
 
 
-def flags_for(cand: dict, payload: dict, work: Optional[dict] = None) -> list[str]:
+def flags_for(cand: dict, payload: dict, work: Optional[dict] = None,
+              sibling_numbers: Optional[set] = None,
+              works: Optional[list] = None) -> list[str]:
     """Union harvest flags with a fresh work-title check.
 
     Stale proposals may have empty review_flags and auto_accept_eligible true
     for wrong-work matches (St John → St Matthew, Brahms PC2 → Prokofiev, …).
     """
-    flags, _eligible = har.refresh_identity_eligibility(payload, cand, work)
+    flags, _eligible = har.refresh_identity_eligibility(
+        payload, cand, work, sibling_numbers=sibling_numbers, works=works,
+    )
     return flags
 
 
 def rows(proposals: list[dict], seed: dict) -> list[dict]:
     idx = index_candidates(seed)
+    works = seed.get("works") or []
     out = []
     for prop in proposals:
         if prop.get("kind") != "identity":
@@ -78,12 +83,17 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
                 "payload": payload,
             })
             continue
-        flags = flags_for(cand, payload, work)
-        _flags, eligible = har.refresh_identity_eligibility(payload, cand, work)
+        sibs = har.sibling_work_numbers(work, works)
+        flags = flags_for(cand, payload, work, sibling_numbers=sibs, works=works)
+        _flags, eligible = har.refresh_identity_eligibility(
+            payload, cand, work, sibling_numbers=sibs, works=works,
+        )
         out.append({
             "target": target,
             "missing": False,
             "work": f'{work.get("composer")} — {work.get("title")}',
+            "composer_id": work.get("composer_id"),
+            "work_title": work.get("title"),
             "seed": {
                 "director": cand.get("director"),
                 "ensemble": cand.get("ensemble"),
@@ -101,7 +111,57 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
             },
             "flags": flags,
         })
-    return out
+    return _flag_shared_mbid_across_composers(out, works)
+
+
+def _flag_shared_mbid_across_composers(
+    rows: list[dict], works: Optional[list] = None,
+) -> list[dict]:
+    """Same generic-title release-group under two composers.
+
+    The seed-order-first composer keeps the RG (Beethoven /3 is the Mutter
+    disc). Later composers are wrong-work (Brahms /2). Unique-MBID collisions
+    (Brahms /1 → Tchaikovsky Heifetz/Reiner) stay wrong-work from the matcher.
+    """
+    from collections import defaultdict
+    by_mbid: dict[str, set[str]] = defaultdict(set)
+    for row in rows:
+        mid = (row.get("mb") or {}).get("mbid")
+        cid = row.get("composer_id") or ""
+        if mid and cid:
+            by_mbid[str(mid)].add(str(cid))
+    for row in rows:
+        mid = (row.get("mb") or {}).get("mbid")
+        holders = by_mbid.get(str(mid) or "") or set()
+        if not mid or len(holders) < 2:
+            continue
+        seed_t = row.get("work_title") or ""
+        mb_t = (row.get("mb") or {}).get("title") or ""
+        if not (
+            har._generic_across_composers(seed_t)
+            and har._generic_across_composers(mb_t)
+        ):
+            continue
+        keep = min(holders, key=lambda c: har.composer_seed_index(c, works))
+        cid = row.get("composer_id") or ""
+        flags = list(row.get("flags") or [])
+        if cid == keep:
+            kept = [f for f in flags if not har.is_cross_composer_generic_flag(f)]
+            if kept != flags:
+                row["flags"] = kept
+            if row.get("mb") is not None and not kept:
+                row["mb"]["auto_accept_eligible"] = True
+            continue
+        flag = (
+            f"wrong work: MusicBrainz {mb_t!r} is proposed for more than "
+            f"one composer"
+        )
+        if not any(str(f).startswith("wrong work:") for f in flags):
+            flags.append(flag)
+            row["flags"] = flags
+        if row.get("mb"):
+            row["mb"]["auto_accept_eligible"] = False
+    return rows
 
 
 def render_text(items: list[dict]) -> str:

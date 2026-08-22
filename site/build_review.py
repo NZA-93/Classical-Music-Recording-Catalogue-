@@ -19,13 +19,15 @@ import pathlib
 import sys
 from collections import defaultdict
 from html import escape
-from typing import Any
+from typing import Any, Optional
 
 ROOT = pathlib.Path(".")
 sys.path.insert(0, str(ROOT / "agents"))
 
 import identity_board as ib  # noqa: E402
 from harvest import refresh_identity_eligibility  # noqa: E402
+import review as rv  # noqa: E402
+import review_queue as rq  # noqa: E402
 
 DOCS = ROOT / "docs" / "review"
 QUEUE = ROOT / "proposals" / "review-queue.json"
@@ -79,6 +81,7 @@ def index_seed(seed: dict) -> tuple[dict[str, dict], list[dict], dict[str, int]]
                 "work": display,
                 "work_title": title,
                 "composer": composer,
+                "composer_id": work.get("composer_id") or "",
                 "catalogue": catalogue,
                 "work_id": wid,
                 "director": cand.get("director") or "",
@@ -223,10 +226,18 @@ font-size:.85rem;max-width:44rem}
 """
 
 
-def chip(decision: str, wrong: bool = False) -> str:
-    if wrong:
+def chip(decision: str, wrong: bool = False, bucket: str = "") -> str:
+    """Chip must agree with bucket membership.
+
+    Wrong-work is always the wrong-work chip. Accept-eligible never shows a
+    stale template `reject` — that chip/count disagreement is how wrong-work
+    rows sat in the 103 while displaying REJECT.
+    """
+    if wrong or bucket == "reject_wrong_work":
         return '<span class="chip wrong">wrong work</span>'
     d = decision or "pending"
+    if bucket == "accept_eligible" and d == "reject":
+        d = "pending"
     return f'<span class="chip {escape(d)}">{escape(d)}</span>'
 
 
@@ -285,9 +296,24 @@ def render_identity_rich(
     comments: list[dict],
     bucket: str,
     enrich: dict[str, Any],
+    works: Optional[list] = None,
 ) -> str:
     payload = proposal.get("payload") or {}
-    flags = list(payload.get("review_flags") or [])
+    work = {
+        "title": seed_row.get("work_title") or "",
+        "catalogue": seed_row.get("catalogue") or "",
+        "composer": seed_row.get("composer") or "",
+        "composer_id": seed_row.get("composer_id") or "",
+    }
+    rec = {
+        "director": seed_row.get("director"),
+        "ensemble": seed_row.get("ensemble"),
+        "soloists": seed_row.get("soloists"),
+        "year": seed_row.get("year"),
+    }
+    flags, _eligible = refresh_identity_eligibility(
+        payload, rec, work, works=works,
+    )
     wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
@@ -343,7 +369,7 @@ def render_identity_rich(
   <div>
     <p class="meta">{escape(target)} · pack {escape(pack)}</p>
     <h3>{escape(seed_row.get("work") or target)}</h3>
-    {chip(decision.get("decision") or "pending", wrong=wrong)}
+    {chip(decision.get("decision") or "pending", wrong=wrong, bucket=bucket)}
     <span class="meta">{escape(bucket.replace("_", " "))}</span>
     {render_why(enrich["why_missed"])}
     {render_criteria(enrich["criteria"])}
@@ -370,12 +396,14 @@ def render_simple_row(
     decision: dict,
     comments: list[dict],
     bucket: str,
+    works: Optional[list] = None,
 ) -> str:
     """Compact row for accept-eligible / wrong-work (not the 244 enrichment)."""
     work = {
         "title": seed_row.get("work_title") or "",
         "catalogue": seed_row.get("catalogue") or "",
         "composer": seed_row.get("composer") or "",
+        "composer_id": seed_row.get("composer_id") or "",
     }
     rec = {
         "director": seed_row.get("director"),
@@ -383,7 +411,9 @@ def render_simple_row(
         "soloists": seed_row.get("soloists"),
         "year": seed_row.get("year"),
     }
-    flags, _eligible = refresh_identity_eligibility(payload, rec, work)
+    flags, _eligible = refresh_identity_eligibility(
+        payload, rec, work, works=works,
+    )
     wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
@@ -418,7 +448,7 @@ def render_simple_row(
     <p class="meta">{escape(target)} · pack {escape(pack)}</p>
     <h3>{escape(seed_row.get('work') or target)}</h3>
     <p>{escape(seed_line)}</p>
-    {chip(decision.get('decision') or 'pending', wrong=wrong)}
+    {chip(decision.get('decision') or 'pending', wrong=wrong, bucket=bucket)}
     <span class="meta">{escape(bucket.replace('_', ' '))}</span>
     {flag_html}
     {render_comments(comments)}
@@ -474,7 +504,26 @@ def main() -> None:
             by_comments[c["target"]].append(c)
 
     buckets = queue.get("buckets") or {}
-    counts = queue.get("counts") or {}
+    counts = dict(queue.get("counts") or {})
+
+    # Recompute identity membership from the live matcher. Stale
+    # review-queue.json auto_accept_eligible lists must not keep a reject /
+    # wrong-work chip inside the accept-eligible tally.
+    if proposals:
+        live = rq.live_identity_buckets(proposals, seed)
+        buckets = {
+            "accept_eligible": [r["target"] for r in live["accept_eligible"]],
+            "needs_review": [r["target"] for r in live["needs_review"]],
+            "reject_wrong_work": [r["target"] for r in live["reject_wrong_work"]],
+        }
+        counts["accept_eligible"] = len(buckets["accept_eligible"])
+        counts["needs_review"] = len(buckets["needs_review"])
+        counts["reject_wrong_work"] = len(buckets["reject_wrong_work"])
+        counts["identity_total"] = (
+            counts["accept_eligible"]
+            + counts["needs_review"]
+            + counts["reject_wrong_work"]
+        )
 
     # Sort needs-review; keep other buckets in queue order.
     needs_sorted = sort_needs_review(
@@ -494,6 +543,7 @@ def main() -> None:
         for t in by_prop:
             ordered.append((t, "needs_review"))
 
+    seed_works = seed.get("works") or []
     rows_html = []
     for target, bucket in ordered:
         seed_row = by_seed.get(target) or {"work": target, "work_title": target, "id": target}
@@ -510,6 +560,7 @@ def main() -> None:
                     by_comments.get(target) or [],
                     bucket,
                     enrich,
+                    works=seed_works,
                 )
             )
         else:
@@ -519,6 +570,7 @@ def main() -> None:
                     decisions.get(target) or {},
                     by_comments.get(target) or [],
                     bucket,
+                    works=seed_works,
                 )
             )
 
