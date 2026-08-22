@@ -229,16 +229,31 @@ font-size:.85rem;max-width:44rem}
 def chip(decision: str, wrong: bool = False, bucket: str = "") -> str:
     """Chip must agree with bucket membership.
 
-    Wrong-work is always the wrong-work chip. Accept-eligible never shows a
-    stale template `reject` — that chip/count disagreement is how wrong-work
-    rows sat in the 103 while displaying REJECT.
+    Wrong-work chips belong only on reject_wrong_work rows. Accept-eligible
+    never shows a stale template `reject`, a leftover sibling-collision flag,
+    or a review-decision written for another seed — that chip/count
+    disagreement is how beethoven/violin_concerto/3 sat in accept-eligible
+    while displaying a Brahms wrong-work chip.
     """
-    if wrong or bucket == "reject_wrong_work":
+    if bucket == "reject_wrong_work":
         return '<span class="chip wrong">wrong work</span>'
     d = decision or "pending"
     if bucket == "accept_eligible" and d == "reject":
         d = "pending"
     return f'<span class="chip {escape(d)}">{escape(d)}</span>'
+
+
+def flags_for_bucket(flags: list[str], bucket: str) -> list[str]:
+    """Accept-eligible rows must not read as wrong-work.
+
+    The live matcher may keep the seed-order-first composer on a shared
+    release-group (Beethoven /3) while rejecting the later collision
+    (Brahms /2). Independently recomputed flags, or a stale note about
+    another seed id, must not leak onto the accept card.
+    """
+    if bucket != "accept_eligible":
+        return list(flags)
+    return [f for f in flags if not str(f).startswith("wrong work:")]
 
 
 def render_why(reasons: list[dict[str, str]]) -> str:
@@ -299,22 +314,6 @@ def render_identity_rich(
     works: Optional[list] = None,
 ) -> str:
     payload = proposal.get("payload") or {}
-    work = {
-        "title": seed_row.get("work_title") or "",
-        "catalogue": seed_row.get("catalogue") or "",
-        "composer": seed_row.get("composer") or "",
-        "composer_id": seed_row.get("composer_id") or "",
-    }
-    rec = {
-        "director": seed_row.get("director"),
-        "ensemble": seed_row.get("ensemble"),
-        "soloists": seed_row.get("soloists"),
-        "year": seed_row.get("year"),
-    }
-    flags, _eligible = refresh_identity_eligibility(
-        payload, rec, work, works=works,
-    )
-    wrong = any(str(f).startswith("wrong work:") for f in flags)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
         if payload.get("mbid") else ""
@@ -369,7 +368,7 @@ def render_identity_rich(
   <div>
     <p class="meta">{escape(target)} · pack {escape(pack)}</p>
     <h3>{escape(seed_row.get("work") or target)}</h3>
-    {chip(decision.get("decision") or "pending", wrong=wrong, bucket=bucket)}
+    {chip(decision.get("decision") or "pending", bucket=bucket)}
     <span class="meta">{escape(bucket.replace("_", " "))}</span>
     {render_why(enrich["why_missed"])}
     {render_criteria(enrich["criteria"])}
@@ -414,7 +413,7 @@ def render_simple_row(
     flags, _eligible = refresh_identity_eligibility(
         payload, rec, work, works=works,
     )
-    wrong = any(str(f).startswith("wrong work:") for f in flags)
+    flags = flags_for_bucket(flags, bucket)
     mb_url = payload.get("mb_url") or (
         f"https://musicbrainz.org/release-group/{payload['mbid']}"
         if payload.get("mbid") else ""
@@ -448,7 +447,7 @@ def render_simple_row(
     <p class="meta">{escape(target)} · pack {escape(pack)}</p>
     <h3>{escape(seed_row.get('work') or target)}</h3>
     <p>{escape(seed_line)}</p>
-    {chip(decision.get('decision') or 'pending', wrong=wrong, bucket=bucket)}
+    {chip(decision.get('decision') or 'pending', bucket=bucket)}
     <span class="meta">{escape(bucket.replace('_', ' '))}</span>
     {flag_html}
     {render_comments(comments)}
