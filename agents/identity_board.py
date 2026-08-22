@@ -152,7 +152,7 @@ FIELD_INVENTORY: list[dict[str, str]] = [
     {
         "field": "remake_siblings",
         "status": "derived",
-        "source": "other seed candidates with the same work_id (or composer+catalogue), different year",
+        "source": "composer checked first, then same work_id (or composer+catalogue), different year",
         "board": "shown when present — never matched on a shared nickname across composers",
     },
     {
@@ -300,6 +300,29 @@ def why_it_missed(seed: dict[str, Any], proposal: dict[str, Any]) -> list[dict[s
     return reasons
 
 
+def _composer_id_from_work_id(work_id: str) -> str:
+    wid = str(work_id or "")
+    if "/" in wid:
+        return wid.split("/", 1)[0]
+    return wid.split("_", 1)[0] if wid else ""
+
+
+def same_composer(a: dict[str, Any], b: dict[str, Any]) -> bool:
+    """Composer identity, checked before any work_id or title token.
+
+    Named composers win. Ids (explicit or from a work_id prefix) are next.
+    A shared nickname without a composer is not enough.
+    """
+    an, bn = _norm(a.get("composer")), _norm(b.get("composer"))
+    if an and bn:
+        return an == bn
+    aid = _norm(a.get("composer_id")) or _composer_id_from_work_id(str(a.get("work_id") or ""))
+    bid = _norm(b.get("composer_id")) or _composer_id_from_work_id(str(b.get("work_id") or ""))
+    if aid and bid:
+        return aid == bid
+    return False
+
+
 def remake_siblings(
     seed: dict[str, Any],
     all_candidates: list[dict[str, Any]],
@@ -308,9 +331,10 @@ def remake_siblings(
 ) -> list[dict[str, Any]]:
     """Other seed rows of the *same work* with different year.
 
-    Same work means the same seed work_id, or the same composer+catalogue when
-    ids are missing. A shared nickname ("Fifth", "Symphony No. 5") across
-    composers is not a remake.
+    Composer is checked first. Same work then means the same seed work_id, or
+    the same composer+catalogue when ids are missing. A shared nickname
+    ("Fifth", "Symphony No. 5") across composers is not a remake, even if
+    the work_id strings collide.
     """
     work_id = str(seed.get("work_id") or "")
     composer = _norm(seed.get("composer"))
@@ -321,22 +345,21 @@ def remake_siblings(
     year = _year_int(seed.get("year"))
     if not director and not ensemble:
         return []
+    if not (composer or seed.get("composer_id") or work_id):
+        return []
     out: list[dict[str, Any]] = []
     for cand in all_candidates:
         cid = str(cand.get("id") or "")
         if exclude_id and cid == exclude_id:
             continue
-        cand_composer = _norm(cand.get("composer"))
-        # Composer is identity, not a loose token. A shared nickname
-        # ("Symphony No. 5") or a colliding work_id must not pair rows
-        # across composers.
-        if composer and cand_composer and cand_composer != composer:
+        # Composer first — a shared nickname or colliding work_id is not a remake.
+        if not same_composer(seed, cand):
             continue
         cand_wid = str(cand.get("work_id") or "")
         if work_id and cand_wid:
             if cand_wid != work_id:
                 continue
-        elif composer and cand_composer:
+        else:
             cand_cat = _norm(cand.get("catalogue"))
             if catalogue and cand_cat and cand_cat != catalogue:
                 continue
@@ -344,8 +367,6 @@ def remake_siblings(
                 cand_work = _norm(cand.get("work_title") or cand.get("work"))
                 if cand_work != work:
                     continue
-        else:
-            continue
         if director and _norm(cand.get("director")) != director:
             continue
         if ensemble and _norm(cand.get("ensemble")) != ensemble:

@@ -92,6 +92,7 @@ class TestFieldPresence(unittest.TestCase):
         self.assertEqual(by_field["live_studio"]["status"], "present")
         self.assertEqual(by_field["why_it_missed"]["status"], "derived")
         self.assertIn("work_id", by_field["remake_siblings"]["source"])
+        self.assertIn("composer checked first", by_field["remake_siblings"]["source"])
 
     def test_enrichment_does_not_synthesize_absents(self):
         enrich = ib.enrichment_for_row(SEED_HARN, PROP_HARN, [SEED_HARN])
@@ -275,6 +276,45 @@ class TestRemakeSiblings(unittest.TestCase):
         }
         sibs = ib.remake_siblings(
             beethoven, [beethoven, tchaikovsky], exclude_id="beethoven/sym5/0"
+        )
+        self.assertEqual(sibs, [])
+
+    def test_composer_is_checked_before_colliding_work_id(self):
+        beethoven = {
+            "id": "beethoven/sym5/0",
+            "work_id": "sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Ludwig van Beethoven",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1962",
+            "label": "DG",
+        }
+        shostakovich = {
+            "id": "shostakovich/sym5/0",
+            "work_id": "sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Dmitri Shostakovich",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1967",
+            "label": "DG",
+        }
+        tosca = {
+            "id": "puccini/tosca/0",
+            "work_id": "sym5",
+            "work_title": "Tosca",
+            "composer": "Giacomo Puccini",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1963",
+            "label": "Decca",
+        }
+        self.assertFalse(ib.same_composer(beethoven, shostakovich))
+        self.assertFalse(ib.same_composer(beethoven, tosca))
+        sibs = ib.remake_siblings(
+            beethoven, [beethoven, shostakovich, tosca],
+            exclude_id="beethoven/sym5/0",
         )
         self.assertEqual(sibs, [])
 

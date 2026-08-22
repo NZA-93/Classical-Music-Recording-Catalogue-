@@ -284,7 +284,10 @@ def render_siblings(siblings: list[dict[str, Any]]) -> str:
         f'{escape(s.get("label") or "—")})'
         for s in siblings
     )
-    return f'<p class="siblings">Remake siblings (same forces, different year): {bits}</p>'
+    return (
+        f'<p class="siblings">Remake siblings '
+        f'(same composer, same forces, different year): {bits}</p>'
+    )
 
 
 def render_comments(comments: list[dict]) -> str:
