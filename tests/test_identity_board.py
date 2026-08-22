@@ -370,6 +370,99 @@ class TestBoardCopy(unittest.TestCase):
         self.assertIn("chip wrong", html)
         self.assertIn("wrong work", html)
 
+    def test_accept_eligible_ignores_stale_wrong_flag_from_sibling(self):
+        """Chip follows the live bucket, not a leftover Brahms-collision flag."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "build_review_under_test", ROOT / "site" / "build_review.py",
+        )
+        br = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(br)
+        self.assertIn(
+            "chip pending",
+            br.chip("reject", wrong=True, bucket="accept_eligible"),
+        )
+        self.assertNotIn(
+            "chip wrong",
+            br.chip("reject", wrong=True, bucket="accept_eligible"),
+        )
+        self.assertEqual(
+            br.flags_for_bucket(
+                ["wrong work: MusicBrainz 'Violin Concerto' matches artists "
+                 "already listed under Johannes Brahms"],
+                "accept_eligible",
+            ),
+            [],
+        )
+        self.assertTrue(
+            br.flags_for_bucket(
+                ["wrong work: MusicBrainz 'Violin Concerto' is proposed for "
+                 "more than one composer"],
+                "reject_wrong_work",
+            )
+        )
+
+
+class TestSharedReleaseGroupBoard(unittest.TestCase):
+    """Mutter/Karajan Beethoven VC owns the disc; Brahms /2 is the collision."""
+
+    TARGET_BEETHOVEN = "beethoven/violin_concerto/3"
+    TARGET_BRAHMS = "brahms/violin_concerto/2"
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        import json
+        sys.path.insert(0, str(ROOT / "agents"))
+        import review_queue as rq  # noqa: E402
+        spec = importlib.util.spec_from_file_location(
+            "build_review_shared_rg", ROOT / "site" / "build_review.py",
+        )
+        cls.br = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.br)
+        cls.seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        cls.props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        cls.live = rq.live_identity_buckets(cls.props, cls.seed)
+        cls.by_seed, _, _ = cls.br.index_seed(cls.seed)
+        cls.by_prop = cls.br.proposal_by_target(cls.props)
+
+    def _row(self, target: str, bucket: str) -> str:
+        return self.br.render_simple_row(
+            target,
+            self.by_seed[target],
+            (self.by_prop[target].get("payload") or {}),
+            {},
+            [],
+            bucket,
+            works=self.seed.get("works") or [],
+        )
+
+    def test_beethoven_mutter_is_accept_eligible_without_wrong_work_chip(self):
+        acc = {r["target"] for r in self.live["accept_eligible"]}
+        wrong = {r["target"] for r in self.live["reject_wrong_work"]}
+        self.assertIn(self.TARGET_BEETHOVEN, acc)
+        self.assertNotIn(self.TARGET_BEETHOVEN, wrong)
+        html = self._row(self.TARGET_BEETHOVEN, "accept_eligible")
+        self.assertIn('data-bucket="accept_eligible"', html)
+        self.assertIn("chip pending", html)
+        self.assertNotIn("chip wrong", html)
+        self.assertNotIn("chip reject", html)
+        self.assertNotIn("wrong work", html.lower())
+        self.assertNotIn("Johannes Brahms", html)
+
+    def test_brahms_collision_stays_reject_wrong_work(self):
+        acc = {r["target"] for r in self.live["accept_eligible"]}
+        wrong = {r["target"] for r in self.live["reject_wrong_work"]}
+        self.assertIn(self.TARGET_BRAHMS, wrong)
+        self.assertNotIn(self.TARGET_BRAHMS, acc)
+        html = self._row(self.TARGET_BRAHMS, "reject_wrong_work")
+        self.assertIn('data-bucket="reject_wrong_work"', html)
+        self.assertIn("chip wrong", html)
+        self.assertIn("wrong work", html.lower())
+        self.assertIn("Ludwig van Beethoven", html)
+
 
 if __name__ == "__main__":
     unittest.main()
