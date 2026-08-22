@@ -61,7 +61,8 @@ def _catalogue() -> dict:
     return json.loads((ROOT / "build/catalogue.json").read_text(encoding="utf-8"))
 
 
-def _work(cat: dict, fragment: str) -> dict:
+def _find_work(cat: dict, fragment: str) -> dict:
+    """Look up a live catalogue work. Not a fixture constructor — do not name this _work."""
     for work in cat["works"]:
         if fragment in work["id"] or fragment in (work.get("title") or ""):
             return work
@@ -115,7 +116,7 @@ class TestWorkHrefs(unittest.TestCase):
 class TestSealCatalogue(unittest.TestCase):
     def test_one_work_only_and_barcodes_do_not_leak(self):
         cat = _catalogue()
-        bach = _work(cat, "brandenburg")
+        bach = _find_work(cat, "brandenburg")
         sealed = rnd.seal_catalogue(cat, bach)
         self.assertEqual([w["id"] for w in sealed["works"]], [bach["id"]])
         self.assertEqual(sealed["works"][0]["composer_id"], "bach")
@@ -136,7 +137,7 @@ class TestSealCatalogue(unittest.TestCase):
 class TestSealedWorkPageHtml(unittest.TestCase):
     def test_brandenburg_page_is_not_fed_symphony_no_5(self):
         cat = _catalogue()
-        html = _html_for(_work(cat, "brandenburg"), cat)
+        html = _html_for(_find_work(cat, "brandenburg"), cat)
         self.assertIn("Brandenburg Concertos", html)
         self.assertIn("Trevor Pinnock", html)
         low = html.lower()
@@ -148,7 +149,7 @@ class TestSealedWorkPageHtml(unittest.TestCase):
 
     def test_symphony_5_page_is_not_fed_brandenburg(self):
         cat = _catalogue()
-        html = _html_for(_work(cat, "sym5"), cat)
+        html = _html_for(_find_work(cat, "sym5"), cat)
         self.assertIn("Symphony No. 5", html)
         self.assertNotIn("Brandenburg Concertos", html)
         self.assertNotIn("Tosca", html)
@@ -156,13 +157,13 @@ class TestSealedWorkPageHtml(unittest.TestCase):
 
     def test_work_page_has_no_global_related_feed(self):
         cat = _catalogue()
-        html = _html_for(_work(cat, "brandenburg"), cat).lower()
+        html = _html_for(_find_work(cat, "brandenburg"), cat).lower()
         for phrase in FEED_PHRASES:
             self.assertNotIn(phrase, html, phrase)
 
     def test_work_page_find_hint_does_not_name_another_work(self):
         cat = _catalogue()
-        html = _html_for(_work(cat, "brandenburg"), cat)
+        html = _html_for(_find_work(cat, "brandenburg"), cat)
         self.assertIn("Find on this page", html)
         self.assertNotIn("try pinnock, tosca", html.lower())
 
@@ -252,7 +253,11 @@ class TestGalleryAndReviewHaveNoGlobalRelated(unittest.TestCase):
         for phrase in FEED_PHRASES:
             self.assertNotIn(phrase, low, phrase)
         # Remake siblings stay same-composer; they are not a related-work feed.
-        self.assertIn("Remake siblings (same composer, same forces, different year)", src)
+        # Collapse whitespace so a wrapped f-string still matches.
+        collapsed = " ".join(src.split())
+        self.assertIn("Remake siblings", collapsed)
+        self.assertIn("same composer", collapsed)
+        self.assertIn("same forces, different year", collapsed)
 
     def test_live_seed_siblings_never_cross_composers(self):
         ib = _load("identity_board_under_test", "agents/identity_board.py")
@@ -493,7 +498,7 @@ class TestOnThisDiscCardOnly(unittest.TestCase):
 
     def test_live_brandenburg_page_has_card_hook_and_no_foreign_feed(self):
         cat = disc.attach_on_this_disc(_catalogue())
-        bach = _work(cat, "brandenburg")
+        bach = _find_work(cat, "brandenburg")
         html = _html_for(bach, cat)
         low = html.lower()
         self.assertIn("function onthisdisc(r)", low)
