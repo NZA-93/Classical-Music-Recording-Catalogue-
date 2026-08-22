@@ -108,6 +108,14 @@ def rows(proposals: list[dict], seed: dict) -> list[dict]:
                 "match_score": _confidence(payload),
                 "auto_accept_eligible": eligible,
                 "mb_url": payload.get("mb_url"),
+                **{
+                    k: v for k, v in (
+                        ("session_year", payload.get("session_year")),
+                        ("live_studio", payload.get("live_studio")),
+                        ("fassung", payload.get("fassung")),
+                        ("completeness", payload.get("completeness")),
+                    ) if v
+                },
             },
             "flags": flags,
         })

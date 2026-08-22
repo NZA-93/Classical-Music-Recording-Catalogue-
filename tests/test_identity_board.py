@@ -278,7 +278,50 @@ class TestBoardCopy(unittest.TestCase):
         )
         self.assertIn("match confidence (not a verdict)", rich)
         self.assertNotIn("Fassung not in seed or harvest payload", rich)
+        self.assertNotIn('<span class="k">session year</span>', rich)
+        self.assertNotIn('<span class="k">live/studio</span>', rich)
         self.assertIn(".find", br.CSS)
+
+    def test_session_year_and_live_shown_when_payload_has_tokens(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "build_review_under_test", ROOT / "site" / "build_review.py",
+        )
+        br = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(br)
+        prop = {
+            "target": "puccini/tosca/9",
+            "payload": {
+                "mbid": "mb-live",
+                "mb_title": "Tosca (Live)",
+                "mb_first_release": "1965",
+                "confidence": 90,
+                "session_year": "1964",
+                "live_studio": "live",
+                "mb_disambiguation": "1964 recording",
+                "mb_secondary_types": ["Live"],
+            },
+        }
+        seed = {
+            "id": "puccini/tosca/9",
+            "work": "Giacomo Puccini — Tosca",
+            "work_title": "Tosca",
+            "director": "X",
+            "ensemble": "Y",
+            "soloists": "",
+            "label": "EMI",
+            "year": "1964",
+        }
+        rich = br.render_identity_rich(
+            "puccini/tosca/9", seed, prop, {}, [], "needs_review",
+            ib.enrichment_for_row(seed, prop, [seed]),
+        )
+        self.assertIn('<span class="k">session year</span>', rich)
+        self.assertIn("1964", rich)
+        self.assertIn('<span class="k">live/studio</span>', rich)
+        self.assertIn("live", rich)
+        # first-release stays labelled as a release proxy, not session year
+        self.assertIn("release proxy, not session", rich)
 
     def test_accept_eligible_chip_never_shows_stale_reject(self):
         import importlib.util

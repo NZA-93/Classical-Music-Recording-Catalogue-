@@ -1,6 +1,6 @@
 # Critical Discography — build targets. Python 3.11+, no third-party packages.
 
-.PHONY: all seed score site harvest test validate plan clean queue queue-week expand-brief targets loop \
+.PHONY: all seed score site harvest harvest-identity-facts test validate plan clean queue queue-week expand-brief targets loop \
 	review-queue review-board review-apply-dry review-apply
 
 all: seed score site
@@ -46,6 +46,12 @@ CONTACT ?= $(or $(HARVEST_CONTACT),harvest@example.invalid)
 
 harvest:         ## agent round. Network. Writes proposals/, never the catalogue.
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --budget 300
+
+# Lookup existing identity MBIDs for session year / live-studio. Never searches.
+# Never matches unmatched seeds. Budget stays 300 (resume for the remainder).
+harvest-identity-facts:
+	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --budget 300 \
+		--enrich-identity --proposals $(PROPOSALS)
 
 plan:            ## count what a harvest round would cost, without making requests
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --dry-run --budget 300

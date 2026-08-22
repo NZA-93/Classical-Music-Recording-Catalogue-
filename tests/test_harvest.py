@@ -33,9 +33,14 @@ class FakeHttp:
     def get(self, url: str):
         self.urls.append(url)
         self.spent += 1
+        self.last_status = "ok"
         for prefix, body in self.responses.items():
             if prefix in url:
+                if body is None:
+                    self.last_status = "empty"
+                    return None
                 return body
+        self.last_status = "empty"
         return None
 
 
@@ -559,6 +564,189 @@ class TestIdentityConfidence(unittest.TestCase):
         self.assertEqual(p["mb_first_release"], "1965")
         self.assertEqual(p["session_year"], "1964")
         self.assertNotEqual(p["session_year"], p["mb_first_release"][:4])
+
+
+class TestIdentityFactEnrich(unittest.TestCase):
+    """Lookup existing MBIDs; never search; never swap unmatched seeds."""
+
+    def test_merge_facts_from_lookup_not_first_release_date(self):
+        payload = {
+            "mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+            "mb_title": "The Goldberg Variations",
+            "mb_first_release": "1956-03-01",
+            "confidence": 100,
+            "match_score": 100,
+            "auto_accept_eligible": True,
+            "review_flags": [],
+        }
+        group = {
+            "id": payload["mbid"],
+            "title": "The Goldberg Variations",
+            "disambiguation": "1955 recording",
+            "first-release-date": "1956-03-01",
+            "primary-type": "Album",
+            "secondary-types": [],
+        }
+        locked_mbid = payload["mbid"]
+        har.merge_identity_facts(payload, group)
+        self.assertEqual(payload["session_year"], "1955")
+        self.assertNotEqual(payload["session_year"], payload["mb_first_release"][:4])
+        self.assertEqual(payload["mbid"], locked_mbid)
+        self.assertTrue(payload["auto_accept_eligible"])
+        self.assertEqual(payload["review_flags"], [])
+        self.assertNotIn("live_studio", payload)
+        self.assertNotIn("release_mbid", payload)
+        self.assertEqual(payload["mb_disambiguation"], "1955 recording")
+
+    def test_live_from_secondary_type_not_from_ensemble_name(self):
+        payload = {
+            "mbid": "rg-live",
+            "mb_title": "Tosca",
+            "mb_first_release": "1965",
+            "confidence": 90,
+            "auto_accept_eligible": False,
+            "review_flags": ["date off by 1 years (1964 vs 1965)"],
+        }
+        har.merge_identity_facts(payload, {
+            "title": "Tosca",
+            "disambiguation": "",
+            "secondary-types": ["Live"],
+            "primary-type": "Album",
+            "first-release-date": "1965",
+        })
+        self.assertEqual(payload["live_studio"], "live")
+        self.assertNotIn("session_year", payload)
+        self.assertEqual(payload["review_flags"][0][:8], "date off")
+
+        concert = {
+            "mbid": "rg-ec",
+            "mb_title": "Brandenburg Concertos",
+            "confidence": 100,
+            "auto_accept_eligible": True,
+        }
+        har.merge_identity_facts(concert, {
+            "title": "Brandenburg Concertos",
+            "primary-type": "Album",
+            "secondary-types": [],
+        })
+        self.assertNotIn("live_studio", concert)
+        self.assertNotIn("session_year", concert)
+
+    def test_enrich_looks_up_mbid_does_not_search_or_add_rows(self):
+        proposals = [
+            {
+                "target": "bach/goldberg/0", "kind": "identity",
+                "payload": {
+                    "mbid": "mb-gould",
+                    "mb_title": "The Goldberg Variations",
+                    "mb_first_release": "1956-03-01",
+                    "confidence": 100,
+                    "auto_accept_eligible": True,
+                    "review_flags": [],
+                },
+                "source": "MusicBrainz", "provenance": "cited",
+            },
+            {
+                "target": "puccini/tosca/0", "kind": "citation_task",
+                "payload": {}, "source": "harvest", "provenance": "draft",
+            },
+        ]
+        http = FakeHttp({
+            "release-group/mb-gould": {
+                "id": "mb-gould",
+                "title": "The Goldberg Variations",
+                "disambiguation": "1955 recording",
+                "first-release-date": "1956-03-01",
+                "primary-type": "Album",
+                "secondary-types": [],
+            },
+        })
+        http.last_status = "ok"
+        out, stats = har.enrich_identity_proposals(proposals, http, dry=False)
+        idents = [p for p in out if p["kind"] == "identity"]
+        self.assertEqual(len(idents), 1)
+        self.assertEqual(idents[0]["target"], "bach/goldberg/0")
+        self.assertEqual(idents[0]["payload"]["session_year"], "1955")
+        self.assertEqual(idents[0]["payload"]["mbid"], "mb-gould")
+        self.assertTrue(idents[0]["payload"]["auto_accept_eligible"])
+        self.assertEqual(stats["looked_up"], 1)
+        self.assertTrue(any("release-group/mb-gould" in u for u in http.urls))
+        self.assertFalse(any("release-group/?" in u or "query=" in u for u in http.urls))
+        # Unmatched seed is not invented as a new identity row.
+        self.assertEqual(
+            [p["target"] for p in out if p["kind"] == "identity"],
+            ["bach/goldberg/0"],
+        )
+
+    def test_enrich_skips_already_looked_up_and_caches_shared_mbid(self):
+        shared = "mb-shared"
+        proposals = [
+            {
+                "target": "a/0", "kind": "identity",
+                "payload": {
+                    "mbid": shared, "mb_title": "Symphonies nos. 5 & 9",
+                    "mb_first_release": "2009", "confidence": 100,
+                    "auto_accept_eligible": True, "mb_primary_type": "Album",
+                    "session_year": "2008",
+                },
+            },
+            {
+                "target": "b/0", "kind": "identity",
+                "payload": {
+                    "mbid": "mb-new", "mb_title": "Tosca (Live)",
+                    "mb_first_release": "1965", "confidence": 90,
+                    "auto_accept_eligible": False,
+                },
+            },
+            {
+                "target": "c/0", "kind": "identity",
+                "payload": {
+                    "mbid": "mb-new", "mb_title": "Tosca (Live)",
+                    "mb_first_release": "1965", "confidence": 90,
+                    "auto_accept_eligible": False,
+                },
+            },
+        ]
+        http = FakeHttp({
+            "release-group/mb-new": {
+                "title": "Tosca (Live)",
+                "primary-type": "Album",
+                "secondary-types": ["Live"],
+            },
+        })
+        http.last_status = "ok"
+        har.enrich_identity_proposals(proposals, http, dry=False)
+        self.assertEqual(http.spent, 1)
+        self.assertEqual(proposals[0]["payload"]["session_year"], "2008")
+        self.assertEqual(proposals[1]["payload"]["live_studio"], "live")
+        self.assertEqual(proposals[2]["payload"]["live_studio"], "live")
+
+    def test_signed_accept_eligible_count_on_current_proposals(self):
+        """#25 signed set: 90 / 194 / 108. Enrich must not grow it via swaps."""
+        import review as rv
+        import review_queue as rq
+        seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
+        props = json.loads(
+            (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
+        )
+        buckets = rq.bucket_identity(rv.rows(props, seed))
+        self.assertEqual(len(buckets["accept_eligible"]), 90)
+        self.assertEqual(len(buckets["needs_review"]), 194)
+        self.assertEqual(len(buckets["reject_wrong_work"]), 108)
+        targets_a = {r["target"] for r in buckets["accept_eligible"]}
+        targets_w = {r["target"] for r in buckets["reject_wrong_work"]}
+        self.assertNotIn("shostakovich/sym1/4", targets_a)
+        self.assertIn("shostakovich/sym1/4", targets_w)
+        self.assertNotIn("bach/brandenburg/5", targets_a)
+        idents = [p for p in props if p.get("kind") == "identity"]
+        self.assertEqual(len(idents), 392)
+        # Gardiner Archiv/1990s Brandenburg is not accept-eligible and must
+        # not be replaced by a different disc during fact enrich.
+        gardiner = next(p for p in idents if p["target"] == "bach/brandenburg/5")
+        self.assertEqual(
+            gardiner["payload"]["mbid"],
+            "7c701643-df97-40dd-919f-d51a052836d2",
+        )
 
 
 class TestCoverProposals(unittest.TestCase):
