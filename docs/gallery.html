@@ -293,8 +293,8 @@ function render(i){
       <th>Sound</th><th>Verdict</th></tr></thead><tbody>${eds}</tbody></table>`;
 
   const e = r.engineering, miss = '<span>not established</span>';
-  const others = FLAT.filter((o,j)=>j!==i && (o.engineering.producer===e.producer ||
-                   o._w.id===w.id)).slice(0,4);
+  /* D: no producer-across-works rail. Empty is preferred until a feed
+     can be scoped to this work. */
   document.getElementById("aside").innerHTML = `
     <div class="panel">
       <h3>Made by</h3>
@@ -309,14 +309,7 @@ function render(i){
       <div class="meterline"><span class="meter"><i style="width:${r.sound_best!=null?(((r.sound_best-1.5)/1.5)*100).toFixed(0):0}%"></i></span>
         ${r.sound_best!=null?r.sound_best.toFixed(2):"—"}</div>
       <p class="lbl" style="margin-top:.7rem">${r.sound_best!=null?esc(r.sound_best_edition):"no edition assessed"}</p>
-    </div>
-    <div class="panel">
-      <h3>Follow the thread</h3>
-      <div class="also">${others.map(o=>`<a href="#" data-i="${FLAT.indexOf(o)}">${esc(o.director||o.soloists.split(",")[0])}</a>`).join("")}</div>
     </div>`;
-  document.querySelectorAll(".also a").forEach(a=>a.addEventListener("click",ev=>{
-    ev.preventDefault(); render(+a.dataset.i); window.scrollTo({top:0,behavior:"smooth"});
-  }));
 }
 
 document.getElementById("rail").addEventListener("click", e=>{

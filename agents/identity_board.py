@@ -326,13 +326,17 @@ def remake_siblings(
         cid = str(cand.get("id") or "")
         if exclude_id and cid == exclude_id:
             continue
+        cand_composer = _norm(cand.get("composer"))
+        # Composer is identity, not a loose token. A shared nickname
+        # ("Symphony No. 5") or a colliding work_id must not pair rows
+        # across composers.
+        if composer and cand_composer and cand_composer != composer:
+            continue
         cand_wid = str(cand.get("work_id") or "")
         if work_id and cand_wid:
             if cand_wid != work_id:
                 continue
-        elif composer and _norm(cand.get("composer")):
-            if _norm(cand.get("composer")) != composer:
-                continue
+        elif composer and cand_composer:
             cand_cat = _norm(cand.get("catalogue"))
             if catalogue and cand_cat and cand_cat != catalogue:
                 continue

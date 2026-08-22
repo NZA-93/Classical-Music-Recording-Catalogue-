@@ -228,6 +228,56 @@ class TestRemakeSiblings(unittest.TestCase):
                                   exclude_id="beethoven/sym5/0")
         self.assertEqual(sibs, [])
 
+    def test_does_not_cross_composers_on_title_token_without_work_ids(self):
+        beethoven = {
+            "id": "beethoven/sym5/0",
+            "work_title": "Symphony No. 5",
+            "composer": "Ludwig van Beethoven",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1962",
+            "label": "DG",
+        }
+        tchaikovsky = {
+            "id": "tchaikovsky/sym5/0",
+            "work_title": "Symphony No. 5",
+            "composer": "Pyotr Ilyich Tchaikovsky",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1975",
+            "label": "DG",
+        }
+        sibs = ib.remake_siblings(
+            beethoven, [beethoven, tchaikovsky], exclude_id="beethoven/sym5/0"
+        )
+        self.assertEqual(sibs, [])
+
+    def test_colliding_work_id_still_does_not_cross_composers(self):
+        beethoven = {
+            "id": "beethoven/sym5/0",
+            "work_id": "sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Ludwig van Beethoven",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1962",
+            "label": "DG",
+        }
+        tchaikovsky = {
+            "id": "tchaikovsky/sym5/0",
+            "work_id": "sym5",
+            "work_title": "Symphony No. 5",
+            "composer": "Pyotr Ilyich Tchaikovsky",
+            "director": "Herbert von Karajan",
+            "ensemble": "Berliner Philharmoniker",
+            "year": "1975",
+            "label": "DG",
+        }
+        sibs = ib.remake_siblings(
+            beethoven, [beethoven, tchaikovsky], exclude_id="beethoven/sym5/0"
+        )
+        self.assertEqual(sibs, [])
+
 
 class TestGapsMarkdown(unittest.TestCase):
     def test_writes_payload_gaps(self):

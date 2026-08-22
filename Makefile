@@ -22,6 +22,7 @@ site: score      ## render docs/ (the published site). No network.
 	cp docs/index.html index.html
 	cp docs/gallery.html gallery.html
 	rm -rf composers && cp -R docs/composers composers
+	rm -rf works && cp -R docs/works works
 
 PROPOSALS ?= proposals/proposals-20260809.json
 DECISIONS ?= proposals/review-decisions.json
@@ -57,7 +58,7 @@ plan:            ## count what a harvest round would cost, without making reques
 	python3 agents/harvest.py data/seed.json --contact $(CONTACT) --dry-run --budget 300
 
 clean:
-	rm -rf docs/index.html docs/entries.html docs/composers composers build/catalogue.json .cache
+	rm -rf docs/index.html docs/entries.html docs/composers docs/works composers works build/catalogue.json .cache
 
 validate:        ## check contributions/ against the project's own rules
 	python3 agents/validate.py
