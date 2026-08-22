@@ -389,7 +389,7 @@
       "catalogue": "BWV 1001–1006",
       "year": "1720",
       "note": "The Chaconne of the D minor Partita.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/sonatas_partitas/0",
@@ -436,7 +436,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/sonatas_partitas/0", "bach/sonatas_partitas/1"]
     },
     {
       "id": "bach/goldberg",
@@ -585,7 +585,7 @@
       "catalogue": "BWV 232",
       "year": "1749",
       "note": "Assembled late from a lifetime's work; the choral-forces question.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/mass_b_minor/0",
@@ -632,7 +632,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/mass_b_minor/0"]
     },
     {
       "id": "bach/matthew",
@@ -643,7 +643,7 @@
       "catalogue": "BWV 244",
       "year": "1727",
       "note": "Double choir and orchestra; the largest question of scale in Bach.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/matthew/0",
@@ -690,7 +690,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/matthew/0", "bach/matthew/1"]
     },
     {
       "id": "bach/john",
@@ -701,7 +701,7 @@
       "catalogue": "BWV 245",
       "year": "1724",
       "note": "Sharper and more dramatic than the Matthew; several authorial versions.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/john/0",
@@ -759,7 +759,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/john/1"]
     },
     {
       "id": "bach/art_of_fugue",
@@ -770,7 +770,7 @@
       "catalogue": "BWV 1080",
       "year": "c. 1740–50",
       "note": "Instrumentation unspecified, which makes every recording an argument.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/art_of_fugue/0",
@@ -828,7 +828,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/art_of_fugue/0", "bach/art_of_fugue/3"]
     },
     {
       "id": "bach/harpsichord_concertos",
