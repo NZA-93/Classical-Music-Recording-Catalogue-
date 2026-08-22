@@ -35,6 +35,7 @@ import argparse
 import json
 import pathlib
 import re
+import socket
 import time
 import unicodedata
 import urllib.error
@@ -133,6 +134,7 @@ class Http:
         # multi-day backoff after a 503/timeout.
         self.last_status: str = "ok"
         CACHE.mkdir(exist_ok=True)
+        _prefer_ipv4()
 
     def allowed(self, url: str) -> bool:
         if url.startswith(self.APIS):
@@ -173,7 +175,7 @@ class Http:
         req = urllib.request.Request(url, headers={"User-Agent": self.ua, "Accept": "application/json"})
         self.spent += 1
         try:
-            with urllib.request.urlopen(req, timeout=20) as r:
+            with urllib.request.urlopen(req, timeout=10) as r:
                 body = r.read()
                 if "json" in r.headers.get("Content-Type", ""):
                     self.last_status = "ok"
@@ -184,17 +186,40 @@ class Http:
             if e.code == 404:
                 self.last_status = "empty"
                 return None
-            print(f"    HTTP {e.code} {url}")
+            print(f"    HTTP {e.code} {url}", flush=True)
             self.last_status = "error"
+            # MusicBrainz 503: back off before the next polite slot.
+            if e.code in (429, 503):
+                retry = e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait = min(float(retry), 8.0) if retry else 5.0
+                except (TypeError, ValueError):
+                    wait = 2.0
+                time.sleep(wait)
             return None
         except Exception as e:
-            print(f"    {type(e).__name__} {url}")
+            print(f"    {type(e).__name__} {url}", flush=True)
             self.last_status = "error"
             return None
 
 
 class BudgetExhausted(Exception):
     """Stop cleanly and resume next run. The queue keeps its cursor."""
+
+
+def _prefer_ipv4() -> None:
+    """MusicBrainz lookups hang on broken IPv6 in some environments."""
+    if getattr(socket, "_cd_ipv4_first", False):
+        return
+    orig = socket.getaddrinfo
+
+    def wrapped(host, port, family=0, type=0, proto=0, flags=0):
+        infos = orig(host, port, family, type, proto, flags)
+        v4 = [i for i in infos if i[0] == socket.AF_INET]
+        return v4 or infos
+
+    socket.getaddrinfo = wrapped  # type: ignore[assignment]
+    socket._cd_ipv4_first = True  # type: ignore[attr-defined]
 
 
 # ------------------------------------------------------------------ proposals
@@ -1139,6 +1164,12 @@ SESSION_YEAR_PATTERNS = (
     re.compile(r"\brecorded(?:\s+in)?\s+(1[89]\d{2}|20\d{2})\b", re.I),
     re.compile(r"\b(1[89]\d{2}|20\d{2})\s+sessions?\b", re.I),
 )
+# "1976-1981 recordings" names a span, not one session year.
+SESSION_YEAR_RANGE_RE = re.compile(
+    r"\b(1[89]\d{2}|20\d{2})\s*[–\-]\s*(1[89]\d{2}|20\d{2})\s+"
+    r"(?:recordings?|sessions?)\b",
+    re.I,
+)
 
 
 def _unique_token_list(hits: list[str]) -> list[str]:
@@ -1211,15 +1242,16 @@ def identity_facts_from_mb(
 
     years: list[str] = []
     seen_years: set[str] = set()
-    for pat in SESSION_YEAR_PATTERNS:
-        for m in pat.finditer(blob):
-            year = m.group(1)
-            if year and year not in seen_years:
-                seen_years.add(year)
-                years.append(year)
+    if not SESSION_YEAR_RANGE_RE.search(blob):
+        for pat in SESSION_YEAR_PATTERNS:
+            for m in pat.finditer(blob):
+                year = m.group(1)
+                if year and year not in seen_years:
+                    seen_years.add(year)
+                    years.append(year)
     if len(years) == 1:
         out["session_year"] = years[0]
-    # Multiple recording years in one title are ambiguous — omit.
+    # Multiple recording years, or a year-range token, are ambiguous — omit.
     return out
 
 
@@ -1272,11 +1304,23 @@ def merge_identity_facts(payload: dict, group: Optional[dict] = None) -> dict:
         secondary_types=types,
     )
     if group is None:
-        # Title-only pass: fill gaps from tokens already on the file.
-        # Do not pop lookup-derived keys (mb_primary_type, session_year, …).
-        for k in IDENTITY_FACT_KEYS:
-            if k in facts and not payload.get(k):
-                payload[k] = facts[k]
+        has_lookup_text = bool(
+            payload.get("mb_disambiguation") or payload.get("mb_secondary_types")
+        )
+        if has_lookup_text:
+            # Re-apply omit rules to lookup-backed fields (e.g. drop a
+            # year-range that was previously stored as a single session year).
+            for k in IDENTITY_FACT_KEYS:
+                if k in ("mb_disambiguation", "mb_secondary_types", "mb_primary_type"):
+                    continue
+                if k in facts:
+                    payload[k] = facts[k]
+                else:
+                    payload.pop(k, None)
+        else:
+            for k in IDENTITY_FACT_KEYS:
+                if k in facts and not payload.get(k):
+                    payload[k] = facts[k]
     else:
         for k in IDENTITY_FACT_KEYS:
             if k in facts:
@@ -1353,7 +1397,7 @@ def enrich_identity_proposals(
     idents.sort(key=lambda p: str(p.get("target") or ""))
 
     try:
-        for prop in idents:
+        for i, prop in enumerate(idents, 1):
             payload = prop.get("payload") or {}
             merge_identity_facts(payload)  # title tokens already on the file
             stats["title_only"] += 1
@@ -1373,6 +1417,10 @@ def enrich_identity_proposals(
             if mbid in cache:
                 stats["cached"] += 1
             group = lookup_release_group(http, str(mbid), cache)
+            if i == 1 or i % 25 == 0:
+                print(f"  [identity-facts] {i}/{len(idents)}  "
+                      f"spent {http.spent}/{getattr(http, 'budget', '?')}  "
+                      f"looked_up {stats['looked_up']}", flush=True)
             if group is None and http.last_status == "error":
                 stats["errors"] += 1
                 continue

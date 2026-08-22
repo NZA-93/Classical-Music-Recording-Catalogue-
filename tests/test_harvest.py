@@ -531,6 +531,14 @@ class TestIdentityConfidence(unittest.TestCase):
         )
         self.assertNotIn("session_year", none)
 
+    def test_session_year_range_is_omitted(self):
+        facts = har.identity_facts_from_mb(
+            title="The London Symphonies",
+            disambiguation="1976-1981 recordings",
+        )
+        self.assertNotIn("session_year", facts)
+        self.assertEqual(facts["mb_disambiguation"], "1976-1981 recordings")
+
     def test_identity_payload_omits_absent_facts(self):
         http = FakeHttp({
             "release-group": self._groups(
@@ -723,6 +731,7 @@ class TestIdentityFactEnrich(unittest.TestCase):
 
     def test_signed_accept_eligible_count_on_current_proposals(self):
         """#25 signed set: 90 / 194 / 108. Enrich must not grow it via swaps."""
+        sys.path.insert(0, str(ROOT / "agents"))
         import review as rv
         import review_queue as rq
         seed = json.loads((ROOT / "data" / "seed.json").read_text(encoding="utf-8"))
