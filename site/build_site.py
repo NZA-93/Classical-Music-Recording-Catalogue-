@@ -11,8 +11,12 @@ from __future__ import annotations
 import json
 import pathlib
 import shutil
+import sys
 from collections import defaultdict
 from html import escape
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from work_href import ALIAS, work_anchor, work_page_href  # noqa: E402
 
 ROOT = pathlib.Path(".")
 DOCS = ROOT / "docs"
@@ -25,8 +29,6 @@ except FileNotFoundError:
     assessed = {"works": []}
 
 done: dict[str, list] = defaultdict(list)
-ALIAS = {"bach_brandenburg": "bach/brandenburg", "puccini_tosca": "puccini/tosca"}
-REV_ALIAS = {v: k for k, v in ALIAS.items()}
 for w in assessed.get("works", []):
     for r in w["recordings"]:
         done[ALIAS.get(w["id"], w["id"])].append(r)
@@ -55,13 +57,8 @@ def letter_of(name: str) -> str:
     return ch if ch.isalpha() else "#"
 
 
-def work_anchor(work_id: str) -> str:
-    return REV_ALIAS.get(work_id, work_id.replace("/", "_"))
-
-
-def entries_href(work_id: str, *, depth: int = 0) -> str:
-    prefix = "../" * depth
-    return f"{prefix}entries.html#{work_anchor(work_id)}"
+def entries_href(work_id: str, *, depth: int = 0, recording_id: str | None = None) -> str:
+    return work_page_href(work_id, depth=depth, recording_id=recording_id)
 
 
 SHARED_CSS = """
@@ -299,7 +296,7 @@ def build_index(*, depth: int = 0) -> list:
         for w in works:
             d = done.get(w["id"], [])
             if d:
-                href = f"{prefix}entries.html#{work_anchor(w['id'])}"
+                href = work_page_href(w["id"], depth=depth)
                 state = f"{len(d)} assessed"
             else:
                 href = f"{prefix}composers/{cid}.html#{work_anchor(w['id'])}"
@@ -321,7 +318,7 @@ def build_index(*, depth: int = 0) -> list:
                     "kind": "recording",
                     "label": who or r["id"],
                     "sub": f"{name} · {w['title']} · {r.get('published', '')}",
-                    "href": f"{prefix}entries.html#{r['id']}",
+                    "href": work_page_href(w["id"], depth=depth, recording_id=r["id"]),
                     "keys": (
                         f"{who} {r.get('published','')} {w['title']} {name} "
                         f"{r.get('director','')} {r.get('ensemble','')} {r.get('soloists','')}"
@@ -389,7 +386,7 @@ for (cid, name, dates), works in composers:
                 x for x in (r.get("director"), r.get("ensemble")) if x
             ) or r["id"]
             rec_items.append(
-                f'<li><a href="../entries.html#{escape(r["id"])}">{escape(who)}</a>'
+                f'<li><a href="{escape(work_page_href(w["id"], depth=1, recording_id=r["id"]))}">{escape(who)}</a>'
                 f'<span class="sub">{escape(w["title"])} · {escape(r.get("published") or "")}</span></li>'
             )
     assessed_block = ""
