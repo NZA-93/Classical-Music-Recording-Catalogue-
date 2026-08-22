@@ -166,6 +166,13 @@ def render_identity_md(title: str, blurb: str, items: list[dict]) -> str:
         seed = f"{s.get('director') or s.get('soloists') or '—'}; " \
                f"{s.get('label')}, {s.get('year')}"
         mb = f"{m.get('title')} ({m.get('first_release')})"
+        extras = []
+        if m.get("session_year"):
+            extras.append(f"session {m['session_year']}")
+        if m.get("live_studio"):
+            extras.append(str(m["live_studio"]))
+        if extras:
+            mb = f"{mb}; {'; '.join(extras)}"
         flags = "; ".join(row["flags"]) if row["flags"] else ""
         url = m.get("mb_url") or ""
         link = f"[open]({url})" if url else "—"

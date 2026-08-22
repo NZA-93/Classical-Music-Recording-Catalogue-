@@ -35,6 +35,7 @@ import argparse
 import json
 import pathlib
 import re
+import socket
 import time
 import unicodedata
 import urllib.error
@@ -45,7 +46,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Iterable, Optional
 
-VERSION = "harvest/1.8"
+VERSION = "harvest/1.9"
 CACHE = pathlib.Path(".cache")
 OUT = pathlib.Path("proposals")
 
@@ -133,6 +134,7 @@ class Http:
         # multi-day backoff after a 503/timeout.
         self.last_status: str = "ok"
         CACHE.mkdir(exist_ok=True)
+        _prefer_ipv4()
 
     def allowed(self, url: str) -> bool:
         if url.startswith(self.APIS):
@@ -173,7 +175,7 @@ class Http:
         req = urllib.request.Request(url, headers={"User-Agent": self.ua, "Accept": "application/json"})
         self.spent += 1
         try:
-            with urllib.request.urlopen(req, timeout=20) as r:
+            with urllib.request.urlopen(req, timeout=10) as r:
                 body = r.read()
                 if "json" in r.headers.get("Content-Type", ""):
                     self.last_status = "ok"
@@ -184,17 +186,40 @@ class Http:
             if e.code == 404:
                 self.last_status = "empty"
                 return None
-            print(f"    HTTP {e.code} {url}")
+            print(f"    HTTP {e.code} {url}", flush=True)
             self.last_status = "error"
+            # MusicBrainz 503: back off before the next polite slot.
+            if e.code in (429, 503):
+                retry = e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait = min(float(retry), 8.0) if retry else 5.0
+                except (TypeError, ValueError):
+                    wait = 2.0
+                time.sleep(wait)
             return None
         except Exception as e:
-            print(f"    {type(e).__name__} {url}")
+            print(f"    {type(e).__name__} {url}", flush=True)
             self.last_status = "error"
             return None
 
 
 class BudgetExhausted(Exception):
     """Stop cleanly and resume next run. The queue keeps its cursor."""
+
+
+def _prefer_ipv4() -> None:
+    """MusicBrainz lookups hang on broken IPv6 in some environments."""
+    if getattr(socket, "_cd_ipv4_first", False):
+        return
+    orig = socket.getaddrinfo
+
+    def wrapped(host, port, family=0, type=0, proto=0, flags=0):
+        infos = orig(host, port, family, type, proto, flags)
+        v4 = [i for i in infos if i[0] == socket.AF_INET]
+        return v4 or infos
+
+    socket.getaddrinfo = wrapped  # type: ignore[assignment]
+    socket._cd_ipv4_first = True  # type: ignore[attr-defined]
 
 
 # ------------------------------------------------------------------ proposals
@@ -1139,6 +1164,12 @@ SESSION_YEAR_PATTERNS = (
     re.compile(r"\brecorded(?:\s+in)?\s+(1[89]\d{2}|20\d{2})\b", re.I),
     re.compile(r"\b(1[89]\d{2}|20\d{2})\s+sessions?\b", re.I),
 )
+# "1976-1981 recordings" names a span, not one session year.
+SESSION_YEAR_RANGE_RE = re.compile(
+    r"\b(1[89]\d{2}|20\d{2})\s*[–\-]\s*(1[89]\d{2}|20\d{2})\s+"
+    r"(?:recordings?|sessions?)\b",
+    re.I,
+)
 
 
 def _unique_token_list(hits: list[str]) -> list[str]:
@@ -1211,16 +1242,266 @@ def identity_facts_from_mb(
 
     years: list[str] = []
     seen_years: set[str] = set()
-    for pat in SESSION_YEAR_PATTERNS:
-        for m in pat.finditer(blob):
-            year = m.group(1)
-            if year and year not in seen_years:
-                seen_years.add(year)
-                years.append(year)
+    if not SESSION_YEAR_RANGE_RE.search(blob):
+        for pat in SESSION_YEAR_PATTERNS:
+            for m in pat.finditer(blob):
+                year = m.group(1)
+                if year and year not in seen_years:
+                    seen_years.add(year)
+                    years.append(year)
     if len(years) == 1:
         out["session_year"] = years[0]
-    # Multiple recording years in one title are ambiguous — omit.
+    # Multiple recording years, or a year-range token, are ambiguous — omit.
     return out
+
+
+# Fact keys copied from a WS/2 release-group lookup. Identity match keys
+# (mbid, title, confidence, flags, eligibility) stay frozen.
+IDENTITY_FACT_KEYS = (
+    "fassung", "completeness", "session_year", "live_studio",
+    "mb_disambiguation", "mb_secondary_types", "mb_primary_type",
+)
+IDENTITY_LOCK_KEYS = (
+    "mbid", "mb_title", "mb_first_release", "match_score", "confidence",
+    "auto_accept_eligible", "needs_human_review", "uncertain",
+    "review_flags", "mb_url", "query", "seed", "alternatives",
+)
+DEFAULT_PROPOSALS = pathlib.Path("proposals") / "proposals-20260809.json"
+
+
+def payload_needs_fact_lookup(payload: dict) -> bool:
+    """True until a release-group lookup has stored its primary-type.
+
+    Old harvest files never stored mb_primary_type. Title-only tokens
+    (fassung/completeness) must not skip the lookup — session year and
+    Live secondary-types live in disambiguation / secondary-types.
+    """
+    return not bool(payload.get("mb_primary_type"))
+
+
+def merge_identity_facts(payload: dict, group: Optional[dict] = None) -> dict:
+    """Write Fassung / completeness / session year / live-studio iff present.
+
+    Does not change mbid, mb_title, confidence, flags, or eligibility.
+    Does not copy first-release-date. Does not mint a release MBID.
+    """
+    locked = {k: payload.get(k) for k in IDENTITY_LOCK_KEYS if k in payload}
+    title = ""
+    disamb = ""
+    types: Optional[list] = None
+    if group:
+        title = group.get("title") or payload.get("mb_title") or ""
+        disamb = group.get("disambiguation") or ""
+        types = list(group.get("secondary-types") or [])
+    else:
+        title = payload.get("mb_title") or ""
+        disamb = payload.get("mb_disambiguation") or ""
+        types = list(payload.get("mb_secondary_types") or [])
+    facts = identity_facts_from_mb(
+        group or {},
+        title=title,
+        disambiguation=disamb,
+        secondary_types=types,
+    )
+    if group is None:
+        has_lookup_text = bool(
+            payload.get("mb_disambiguation") or payload.get("mb_secondary_types")
+        )
+        if has_lookup_text:
+            # Re-apply omit rules to lookup-backed fields (e.g. drop a
+            # year-range that was previously stored as a single session year).
+            for k in IDENTITY_FACT_KEYS:
+                if k in ("mb_disambiguation", "mb_secondary_types", "mb_primary_type"):
+                    continue
+                if k in facts:
+                    payload[k] = facts[k]
+                else:
+                    payload.pop(k, None)
+        else:
+            for k in IDENTITY_FACT_KEYS:
+                if k in facts and not payload.get(k):
+                    payload[k] = facts[k]
+    else:
+        for k in IDENTITY_FACT_KEYS:
+            if k in facts:
+                payload[k] = facts[k]
+            else:
+                payload.pop(k, None)
+    for k, v in locked.items():
+        payload[k] = v
+    payload.pop("release_mbid", None)
+    return payload
+
+
+def lookup_release_group(http: Http, mbid: str, cache: dict) -> Optional[dict]:
+    """GET one release-group by MBID. Cache hits and confirmed empties, not errors."""
+    if not mbid:
+        return None
+    if mbid in cache:
+        return cache[mbid]
+    url = f"https://musicbrainz.org/ws/2/release-group/{mbid}?fmt=json"
+    data = http.get(url)
+    if http.last_status == "error":
+        return None
+    cache[mbid] = data  # dict or None (404 / empty)
+    return data
+
+
+def identity_fact_counts(proposals: list[dict]) -> dict[str, int]:
+    """How many identity rows carry each honest-omit fact."""
+    idents = [p for p in proposals if p.get("kind") == "identity"]
+    n = len(idents)
+    counts = {
+        "identity": n,
+        "session_year": 0,
+        "live_studio": 0,
+        "fassung": 0,
+        "completeness": 0,
+        "looked_up": 0,
+    }
+    for prop in idents:
+        payload = prop.get("payload") or {}
+        if payload.get("mb_primary_type"):
+            counts["looked_up"] += 1
+        for key in ("session_year", "live_studio", "fassung", "completeness"):
+            if payload.get(key):
+                counts[key] += 1
+    counts["session_year_blank"] = n - counts["session_year"]
+    counts["live_studio_blank"] = n - counts["live_studio"]
+    return counts
+
+
+def enrich_identity_proposals(
+    proposals: list[dict],
+    http: Http,
+    *,
+    dry: bool = False,
+) -> tuple[list[dict], dict[str, int]]:
+    """Fill session year / live-studio from lookup of *existing* identity MBIDs.
+
+    Never searches. Never adds a proposal for an unmatched seed. Never
+    changes which release-group a row already carries.
+    """
+    stats = {
+        "identity": 0,
+        "looked_up": 0,
+        "cached": 0,
+        "title_only": 0,
+        "errors": 0,
+        "planned_lookups": 0,
+    }
+    cache: dict[str, Optional[dict]] = {}
+    idents = [p for p in proposals if p.get("kind") == "identity"]
+    stats["identity"] = len(idents)
+    # Stable order so a budget-capped resume always continues from the same place.
+    idents.sort(key=lambda p: str(p.get("target") or ""))
+
+    try:
+        for i, prop in enumerate(idents, 1):
+            payload = prop.get("payload") or {}
+            merge_identity_facts(payload)  # title tokens already on the file
+            stats["title_only"] += 1
+            mbid = payload.get("mbid")
+            if not mbid or not payload_needs_fact_lookup(payload):
+                continue
+            stats["planned_lookups"] += 1
+            if dry:
+                if mbid in cache:
+                    stats["cached"] += 1
+                else:
+                    cache[str(mbid)] = None
+                    http.spent += 1
+                    if http.spent >= http.budget:
+                        raise BudgetExhausted()
+                continue
+            if mbid in cache:
+                stats["cached"] += 1
+            group = lookup_release_group(http, str(mbid), cache)
+            if i == 1 or i % 25 == 0:
+                print(f"  [identity-facts] {i}/{len(idents)}  "
+                      f"spent {http.spent}/{getattr(http, 'budget', '?')}  "
+                      f"looked_up {stats['looked_up']}", flush=True)
+            if group is None and http.last_status == "error":
+                stats["errors"] += 1
+                continue
+            if group:
+                merge_identity_facts(payload, group)
+                stats["looked_up"] += 1
+            # 404 / empty: title-only facts stand. Do not invent a primary-type.
+            # Alternatives: facts only when this run already looked the RG up.
+            for alt in payload.get("alternatives") or []:
+                amid = alt.get("mbid")
+                if amid and amid in cache and cache[amid]:
+                    alt_facts = identity_facts_from_mb(cache[amid])
+                    for key in ("fassung", "completeness", "session_year",
+                                "live_studio"):
+                        if key in alt_facts:
+                            alt[key] = alt_facts[key]
+                        else:
+                            alt.pop(key, None)
+    except BudgetExhausted:
+        print("  budget reached — stopping cleanly, already-looked-up facts kept")
+
+    return proposals, stats
+
+
+def write_facts_pr_body(
+    path: pathlib.Path, *,
+    stamp: str, version: str, contact: str, budget: int, spent: int,
+    stats: dict[str, int], counts: dict[str, int], dry: bool,
+    proposals_path: str, unmatched: int,
+) -> None:
+    title = f"# Harvest {stamp} · identity facts" + (
+        " · DRY RUN (plan only)" if dry else ""
+    )
+    body = [
+        title, "",
+        f"`{version}` · contact `{contact}` · budget **{budget}** · "
+        f"{'planned ' if dry else ''}**{spent}** requests",
+        "",
+        "Lookup of **existing** identity release-group MBIDs for session year "
+        "and live/studio. **No identity search.** Unmatched seeds stay unmatched. "
+        "first-release-date is never copied as session year. Identity apply still "
+        "writes the release-group MBID only.",
+        "",
+        f"- Proposals file: `{proposals_path}`",
+        f"- Identity rows: **{counts.get('identity', 0)}**",
+        f"- Lookups this run: **{stats.get('looked_up', 0)}** "
+        f"(cached **{stats.get('cached', 0)}**, errors **{stats.get('errors', 0)}**)",
+        f"- Unmatched seeds left unmatched: **{unmatched}**",
+        "",
+        "## Facts present vs blank (honest omit)",
+        "",
+        "| Field | Present | Blank |",
+        "|---|---:|---:|",
+        f"| session_year | {counts.get('session_year', 0)} | "
+        f"{counts.get('session_year_blank', 0)} |",
+        f"| live_studio | {counts.get('live_studio', 0)} | "
+        f"{counts.get('live_studio_blank', 0)} |",
+        f"| fassung | {counts.get('fassung', 0)} | "
+        f"{counts.get('identity', 0) - counts.get('fassung', 0)} |",
+        f"| completeness | {counts.get('completeness', 0)} | "
+        f"{counts.get('identity', 0) - counts.get('completeness', 0)} |",
+        "",
+        "Blank is honest: MusicBrainz had no disambiguation / secondary-type / "
+        "recording-year token. Do not fill from seed.year or first-release-date.",
+        "",
+        "## Locks honoured",
+        "",
+        "- Signed accept-eligible set is not bulk-applied; "
+        "`review-decisions.json` accepts are not written",
+        "- No new identity proposal for a seed that had none "
+        "(Gardiner Archiv/1990s Brandenburg is not swapped to another disc)",
+        "- Wrong-work matcher unchanged; composer-mismatched generic titles "
+        "stay `reject_wrong_work`",
+        "- Stdlib only; budget not raised above 300 per run",
+        "",
+        "## Stop",
+        "",
+        "Do not merge. Human identity review gate. Do not treat accept-eligible "
+        "as a bulk apply.",
+    ]
+    path.write_text("\n".join(body) + "\n", "utf-8")
 
 
 def adapter_identity(rec: dict, work: dict, http: Http,
@@ -1662,6 +1943,15 @@ def main() -> int:
     ap.add_argument("--only", default="",
                     help="comma-separated stages to run (default: all). "
                          "Example: --only identity,cover")
+    ap.add_argument(
+        "--enrich-identity", action="store_true",
+        help="Lookup existing identity MBIDs for session year / live-studio. "
+             "Does not search. Does not match unmatched seeds.",
+    )
+    ap.add_argument(
+        "--proposals", type=pathlib.Path, default=None,
+        help="Proposals file to enrich (default: proposals/proposals-20260809.json)",
+    )
     args = ap.parse_args()
 
     only = {s.strip() for s in args.only.split(",") if s.strip()}
@@ -1675,6 +1965,70 @@ def main() -> int:
     http = Http(args.contact, args.budget, dry=args.dry_run)
     proposals: list[Proposal] = []
     planned: dict[str, int] = {}
+
+    if args.enrich_identity:
+        prop_path = args.proposals or DEFAULT_PROPOSALS
+        if not prop_path.exists():
+            ap.error(f"proposals file not found: {prop_path}")
+        raw = json.loads(prop_path.read_text("utf-8"))
+        if not isinstance(raw, list):
+            ap.error("proposals file must be a JSON array")
+        before_n = sum(1 for p in raw if p.get("kind") == "identity")
+        before_targets = {
+            p.get("target") for p in raw if p.get("kind") == "identity"
+        }
+        n_works, n_cands, _ = _seed_counts(seed)
+        print(f"{VERSION} · enrich-identity · {n_works} works · {n_cands} candidates · "
+              f"budget {args.budget} requests"
+              + (" · DRY RUN" if args.dry_run else ""))
+        try:
+            raw, stats = enrich_identity_proposals(raw, http, dry=args.dry_run)
+        except BudgetExhausted:
+            stats = {"identity": before_n, "looked_up": 0, "cached": 0,
+                     "title_only": 0, "errors": 0, "planned_lookups": 0}
+            print("  budget reached before any lookup")
+        after_n = sum(1 for p in raw if p.get("kind") == "identity")
+        after_targets = {
+            p.get("target") for p in raw if p.get("kind") == "identity"
+        }
+        if after_n != before_n or after_targets != before_targets:
+            raise SystemExit(
+                "enrich-identity must not add or drop identity rows "
+                f"({before_n} → {after_n})"
+            )
+        counts = identity_fact_counts(raw)
+        have_ids = {
+            p.get("target") for p in raw if p.get("kind") == "identity"
+        }
+        unmatched = sum(
+            1 for w in seed.get("works", [])
+            for c in (w.get("candidates") or [])
+            if c.get("id") not in have_ids and not c.get("mbid")
+        )
+        OUT.mkdir(exist_ok=True)
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
+        if not args.dry_run:
+            prop_path.write_text(
+                json.dumps(raw, indent=2, ensure_ascii=False) + "\n", "utf-8",
+            )
+        write_facts_pr_body(
+            OUT / "PR_BODY.md",
+            stamp=stamp, version=VERSION, contact=args.contact,
+            budget=args.budget, spent=http.spent, stats=stats,
+            counts=counts, dry=args.dry_run,
+            proposals_path=str(prop_path), unmatched=unmatched,
+        )
+        print(f"\n{http.spent} requests · identity {counts['identity']} · "
+              f"session_year {counts['session_year']}/{counts['identity']} · "
+              f"live_studio {counts['live_studio']}/{counts['identity']}")
+        print(f"  looked_up {stats.get('looked_up', 0)} · "
+              f"cached {stats.get('cached', 0)} · "
+              f"unmatched left unmatched {unmatched}")
+        if args.dry_run:
+            print(f"wrote {OUT}/PR_BODY.md (plan only — proposals untouched)")
+        else:
+            print(f"wrote {prop_path} and {OUT}/PR_BODY.md")
+        return 0
 
     n_works, n_cands, _ = _seed_counts(seed)
     print(f"{VERSION} · {n_works} works · {n_cands} candidates · "

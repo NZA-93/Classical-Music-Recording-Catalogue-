@@ -429,6 +429,20 @@ def render_simple_row(
         f"{payload.get('mb_title') or '—'} · first {payload.get('mb_first_release') or '—'} · "
         f"match {conf if conf is not None else '—'}"
     )
+    facts = ib.payload_identity_facts(payload)
+    fact_bits = []
+    for label, key in (
+        ("session year", "session_year"),
+        ("live/studio", "live_studio"),
+        ("Fassung", "fassung"),
+        ("completeness", "completeness"),
+    ):
+        html_bit = shown_if(label, facts.get(key))
+        if html_bit:
+            fact_bits.append(html_bit)
+    facts_html = (
+        f'<p class="facts">{" ".join(fact_bits)}</p>' if fact_bits else ""
+    )
     flag_html = ""
     if flags:
         flag_html = '<p class="flags" style="color:var(--oxblood);font-size:.88rem">' + "<br>".join(
@@ -456,6 +470,7 @@ def render_simple_row(
   <div>
     <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
     <p>{escape(mb_line)}</p>
+    {facts_html}
     <p class="actions">{mb_link}
       <a href="{escape(decisions_url)}">Owner: decisions file</a>
       <a href="{escape(apply_url)}">Owner: Review apply</a>
@@ -576,6 +591,20 @@ def main() -> None:
 
     ib.write_payload_gaps_markdown(str(GAPS_MD))
 
+    fact_sess = fact_live = 0
+    n_ident = 0
+    for prop in by_prop.values():
+        n_ident += 1
+        fp = ib.payload_identity_facts(prop.get("payload") or {})
+        if fp.get("session_year"):
+            fact_sess += 1
+        if fp.get("live_studio"):
+            fact_live += 1
+    counts["session_year"] = fact_sess
+    counts["live_studio"] = fact_live
+    counts["session_year_blank"] = max(n_ident - fact_sess, 0)
+    counts["live_studio_blank"] = max(n_ident - fact_live, 0)
+
     tally = "".join(
         f"<div><b>{counts.get(k, 0)}</b><span>{label}</span></div>"
         for k, label in (
@@ -584,6 +613,8 @@ def main() -> None:
             ("reject_wrong_work", "wrong work"),
             ("citation_tasks", "citation tasks"),
             ("without_identity_proposal", "unharvested"),
+            ("session_year", "session year"),
+            ("live_studio", "live/studio"),
         )
     )
 
@@ -641,7 +672,10 @@ def main() -> None:
   Fassung, completeness, session year and live/studio appear on a row only when
   MusicBrainz actually supplied a token. They are not repeated as empty
   “absent Fassung” paragraphs. seed.year and MB first-release stay labelled as
-  <em>release-year proxies</em>, never as session year. Match figures are
+  <em>release-year proxies</em>, never as session year. This harvest:
+  <span class="mono">{fact_sess} session year / {max(n_ident - fact_sess, 0)} blank</span>
+  · <span class="mono">{fact_live} live/studio / {max(n_ident - fact_live, 0)} blank</span>.
+  Match figures are
   MusicBrainz search confidence, not critical verdicts and never stars.
   Inventory:
   <a href="../../proposals/review/PAYLOAD_GAPS.md"><span class="mono">PAYLOAD_GAPS.md</span></a>.

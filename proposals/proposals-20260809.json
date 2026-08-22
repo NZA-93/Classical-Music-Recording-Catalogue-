@@ -53,7 +53,8 @@
           "confidence": 34,
           "mb_url": "https://musicbrainz.org/release-group/6cc13c97-a1b7-3cb9-81ee-14686b2f2bc9"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -111,7 +112,10 @@
           "confidence": 97,
           "mb_url": "https://musicbrainz.org/release-group/1fb3852a-c275-3fb4-b8c2-ee3432533c00"
         }
-      ]
+      ],
+      "session_year": "1960",
+      "mb_disambiguation": "1960 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -169,7 +173,11 @@
           "confidence": 39,
           "mb_url": "https://musicbrainz.org/release-group/a691e196-c081-3e53-9ab6-3ad0b7daa095"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -227,7 +235,10 @@
           "confidence": 73,
           "mb_url": "https://musicbrainz.org/release-group/59d64418-1d67-4eb4-8103-61b9334c18ac"
         }
-      ]
+      ],
+      "session_year": "1955",
+      "mb_disambiguation": "1955 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -288,7 +299,8 @@
           "confidence": 92,
           "mb_url": "https://musicbrainz.org/release-group/ae7a6246-9240-46c2-9fa8-69215a1af3b0"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -342,7 +354,8 @@
           "confidence": 26,
           "mb_url": "https://musicbrainz.org/release-group/6d60f3cf-ae6f-4d58-88b8-373829374417"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -379,7 +392,8 @@
           "confidence": 18,
           "mb_url": "https://musicbrainz.org/release-group/6375660f-b65f-4dae-bb3f-88b173c896a3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -439,7 +453,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/1df631d4-5a90-4a3c-a992-8f62af9d10c5"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -476,7 +494,8 @@
           "confidence": 77,
           "mb_url": "https://musicbrainz.org/release-group/1c71037d-a648-3093-ba2e-f3c0f00e520a"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -537,7 +556,13 @@
           "confidence": 70,
           "mb_url": "https://musicbrainz.org/release-group/632a2805-67c3-4f6e-abbf-0ab462cfb824"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Compilation",
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -598,7 +623,8 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/c29be5a2-6b11-4f8c-9336-106b01c3afb7"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -658,7 +684,9 @@
           "confidence": 72,
           "mb_url": "https://musicbrainz.org/release-group/c9d0597f-5c1e-4471-ad55-8a8f40411c1d"
         }
-      ]
+      ],
+      "mb_disambiguation": "1976-09 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -718,7 +746,8 @@
           "confidence": 58,
           "mb_url": "https://musicbrainz.org/release-group/681487e5-834a-438f-9562-d60621cfdef5"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -747,7 +776,8 @@
         "label": "EMI",
         "year": "1965"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -793,7 +823,10 @@
           "confidence": 59,
           "mb_url": "https://musicbrainz.org/release-group/90507dca-5c19-49d8-b30e-69ccd0a664ef"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1962 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -824,7 +857,8 @@
         "label": "Philips",
         "year": "1960"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -884,7 +918,11 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/11f32dc7-b88d-4b0e-866c-6ca079c0af23"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -942,7 +980,8 @@
           "confidence": 60,
           "mb_url": "https://musicbrainz.org/release-group/7770d143-6f8d-4ab6-8b38-a91b89e9395b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -995,7 +1034,10 @@
           "confidence": 20,
           "mb_url": "https://musicbrainz.org/release-group/b5824892-f0f4-4d32-85c6-7c432b356e8b"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1955 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1032,7 +1074,10 @@
           "confidence": 20,
           "mb_url": "https://musicbrainz.org/release-group/9faf78f2-c5b0-4dae-b08e-f695f6f6c43c"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1959 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1085,7 +1130,10 @@
           "confidence": 26,
           "mb_url": "https://musicbrainz.org/release-group/cd662363-659d-36f9-a6e6-f199be7c1b31"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1959 studio cast, Giulini",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1131,7 +1179,13 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/972c79af-1814-4dd6-b59d-d1271cf2ef16"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_disambiguation": "1954 live cast",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1191,7 +1245,10 @@
           "confidence": 58,
           "mb_url": "https://musicbrainz.org/release-group/2cc57934-5930-43ca-8e68-68cb9fd1b52e"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1962 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1242,7 +1299,10 @@
           "confidence": 45,
           "mb_url": "https://musicbrainz.org/release-group/35433044-42d1-433c-8a88-d991e46b5659"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1964 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1300,7 +1360,8 @@
           "confidence": 84,
           "mb_url": "https://musicbrainz.org/release-group/5ff4ba26-cab0-34a2-b853-9b15060298cd"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1329,7 +1390,10 @@
         "label": "EMI",
         "year": "1957"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1957 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1366,7 +1430,10 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/0491bd90-296f-4131-899e-795846c59c5e"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1956 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1417,7 +1484,10 @@
           "confidence": 69,
           "mb_url": "https://musicbrainz.org/release-group/f3e1e07f-51a3-4521-a4d6-811fcf9d3913"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1972 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1448,7 +1518,10 @@
         "label": "EMI",
         "year": "1953"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1953 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1487,7 +1560,10 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/ef9dadac-2a75-306c-9c28-002bf001bef3"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1979 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1518,7 +1594,10 @@
         "label": "EMI",
         "year": "1964"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1964 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1549,7 +1628,10 @@
         "label": "EMI",
         "year": "1966"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1966 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1586,7 +1668,10 @@
           "confidence": 94,
           "mb_url": "https://musicbrainz.org/release-group/76a43839-e0eb-3e6d-af06-d45c0a158663"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1974 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1617,7 +1702,10 @@
         "label": "Decca",
         "year": "1958"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1958 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1648,7 +1736,10 @@
         "label": "EMI",
         "year": "1965"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1965 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1692,7 +1783,10 @@
           "confidence": 90,
           "mb_url": "https://musicbrainz.org/release-group/6dcf65c2-99e1-4ae6-a761-8a0377a3e3a6"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1972 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1731,7 +1825,11 @@
           "confidence": 84,
           "mb_url": "https://musicbrainz.org/release-group/47c5188a-d7da-4498-a3a8-2f5e65f3e364"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1791,7 +1889,8 @@
           "confidence": 73,
           "mb_url": "https://musicbrainz.org/release-group/54d2f10b-3eb4-4592-964a-6be697a92619"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1852,7 +1951,11 @@
           "confidence": 68,
           "mb_url": "https://musicbrainz.org/release-group/43311bdb-721c-453a-a5cd-9d42974ea822"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1898,7 +2001,10 @@
           "confidence": 17,
           "mb_url": "https://musicbrainz.org/release-group/1e6304b7-9226-47b9-b512-8d27f8c61aca"
         }
-      ]
+      ],
+      "session_year": "1966",
+      "mb_disambiguation": "1966 recordings",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1929,7 +2035,12 @@
         "label": "Melodiya",
         "year": "1967"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -1987,7 +2098,8 @@
           "confidence": 82,
           "mb_url": "https://musicbrainz.org/release-group/e94f9c56-68d9-47c2-8400-3286dc25613c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2047,7 +2159,12 @@
           "confidence": 33,
           "mb_url": "https://musicbrainz.org/release-group/cd451543-bea6-3691-82f9-af17bd682e81"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2108,7 +2225,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/8aeaeb97-3187-31a5-9231-c0dca413a0d1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2168,7 +2286,10 @@
           "confidence": 82,
           "mb_url": "https://musicbrainz.org/release-group/019c38dc-e83f-4d87-a410-1f73b558d069"
         }
-      ]
+      ],
+      "session_year": "1992",
+      "mb_disambiguation": "1992 recordings",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2226,7 +2347,12 @@
           "confidence": 40,
           "mb_url": "https://musicbrainz.org/release-group/3cee2cb4-91d9-4386-8daa-4542fac85912"
         }
-      ]
+      ],
+      "completeness": "complete",
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2284,7 +2410,10 @@
           "confidence": 73,
           "mb_url": "https://musicbrainz.org/release-group/59d64418-1d67-4eb4-8103-61b9334c18ac"
         }
-      ]
+      ],
+      "session_year": "1981",
+      "mb_disambiguation": "1981 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2342,7 +2471,9 @@
           "confidence": 30,
           "mb_url": "https://musicbrainz.org/release-group/5ee06166-643d-4e63-9641-f8f8464daeb6"
         }
-      ]
+      ],
+      "mb_disambiguation": "with The English Baroque Soloists & The Monteverdi Choir",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2400,7 +2531,8 @@
           "confidence": 36,
           "mb_url": "https://musicbrainz.org/release-group/f04bd948-1bad-4d5e-9f7c-cd11b50d7c5f"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2429,7 +2561,8 @@
         "label": "Archiv",
         "year": "1993"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2475,7 +2608,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/1c71037d-a648-3093-ba2e-f3c0f00e520a"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2535,7 +2669,11 @@
           "confidence": 52,
           "mb_url": "https://musicbrainz.org/release-group/e28da7d4-1bb4-4235-9e15-b4fbc577e8a4"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2595,7 +2733,8 @@
           "confidence": 37,
           "mb_url": "https://musicbrainz.org/release-group/5f62813b-65a1-47e0-aa32-d7a2c2bdccca"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2653,7 +2792,8 @@
           "confidence": 47,
           "mb_url": "https://musicbrainz.org/release-group/ad9ed25c-118a-475b-8245-034c83203a1e"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2699,7 +2839,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/e5f46a3b-f220-4a14-b429-369d27a2e9d2"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2759,7 +2903,8 @@
           "confidence": 50,
           "mb_url": "https://musicbrainz.org/release-group/f4557ac9-b4eb-30c7-a4df-2b4ced19fef2"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2819,7 +2964,8 @@
           "confidence": 64,
           "mb_url": "https://musicbrainz.org/release-group/f66c336e-9f8c-4280-8ad0-9d2d368a18e7"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2872,7 +3018,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/0140f608-5005-43ad-a353-8a3061d2e38c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2932,7 +3079,8 @@
           "confidence": 96,
           "mb_url": "https://musicbrainz.org/release-group/72004cce-3cf9-467b-8f3a-9b5a219dbd96"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -2993,7 +3141,8 @@
           "confidence": 32,
           "mb_url": "https://musicbrainz.org/release-group/a2a51758-4c3d-47c9-be98-6e857cd2b8d1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3053,7 +3202,8 @@
           "confidence": 73,
           "mb_url": "https://musicbrainz.org/release-group/1274fec1-8bd9-3e66-af50-ddba3338722c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3113,7 +3263,8 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/9d12e230-6d55-499c-9303-2a1159f53afb"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3171,7 +3322,11 @@
           "confidence": 53,
           "mb_url": "https://musicbrainz.org/release-group/8bdd02bc-4a91-40e8-803d-b29b6a790089"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3208,7 +3363,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/b21c8f14-7600-40cb-9145-d446981ce7f6"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3254,7 +3410,12 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/a1f9f584-2238-4c62-8bb6-2a0794cd84b0"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3291,7 +3452,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/fa6dd93d-e019-40e1-8b31-90fe60c9a5b2"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3322,7 +3484,8 @@
         "label": "Praga",
         "year": "1982"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3359,7 +3522,12 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/bb295d94-92b9-4715-8735-bd97dcc4f322"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3419,7 +3587,11 @@
           "confidence": 31,
           "mb_url": "https://musicbrainz.org/release-group/0caa5cd7-b381-4d62-987d-a58c0be2cd16"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3458,7 +3630,8 @@
           "confidence": 30,
           "mb_url": "https://musicbrainz.org/release-group/c69e5b1c-f985-3789-b042-f7646b181dc0"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3518,7 +3691,8 @@
           "confidence": 48,
           "mb_url": "https://musicbrainz.org/release-group/b0f7317b-4edb-35ed-9ae7-606f16fb0947"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3572,7 +3746,8 @@
           "confidence": 12,
           "mb_url": "https://musicbrainz.org/release-group/4cd141a1-17b1-44cf-86b5-1e52caf226ee"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3618,7 +3793,12 @@
           "confidence": 56,
           "mb_url": "https://musicbrainz.org/release-group/bcc16f84-3c8a-443e-86b9-53cfc6936be5"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3679,7 +3859,10 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/f1b97d89-b6df-38f1-ae89-240984bb2d8d"
         }
-      ]
+      ],
+      "session_year": "1979",
+      "mb_disambiguation": "1979 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3716,7 +3899,8 @@
           "confidence": 50,
           "mb_url": "https://musicbrainz.org/release-group/6375660f-b65f-4dae-bb3f-88b173c896a3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3777,7 +3961,8 @@
           "confidence": 25,
           "mb_url": "https://musicbrainz.org/release-group/328adfaa-b33a-3b1e-b289-1b36113a08dd"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3837,7 +4022,9 @@
           "confidence": 67,
           "mb_url": "https://musicbrainz.org/release-group/edb68956-e0b1-4b3b-8bfd-ed1fad63a1c0"
         }
-      ]
+      ],
+      "mb_disambiguation": "organ",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3892,7 +4079,8 @@
           "confidence": 38,
           "mb_url": "https://musicbrainz.org/release-group/7bccf749-11cc-46b3-a4d4-1753c0d55b54"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -3952,7 +4140,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/e7fe3879-9421-38ea-a370-0466ddaaeb4d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4005,7 +4194,8 @@
           "confidence": 90,
           "mb_url": "https://musicbrainz.org/release-group/7b86a6d7-4603-4612-a9fd-67bcb02d47e8"
         }
-      ]
+      ],
+      "mb_primary_type": "Single"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4051,7 +4241,8 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/727ad475-7352-4ca3-a5eb-51beba2e625c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4090,7 +4281,12 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/006f4840-2161-4f09-b89f-412324a72ca0"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4148,7 +4344,8 @@
           "confidence": 60,
           "mb_url": "https://musicbrainz.org/release-group/9187f5fc-64c3-43a3-9008-4c0673fe594d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4187,7 +4384,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/cb357691-9b39-32ac-9ef3-01b224d0c4d4"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4218,7 +4416,10 @@
         "label": "Decca",
         "year": "1959"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1953 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4276,7 +4477,8 @@
           "confidence": 81,
           "mb_url": "https://musicbrainz.org/release-group/cd39d24f-b422-41a0-b3f1-b64bcbddd0c9"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4336,7 +4538,8 @@
           "confidence": 69,
           "mb_url": "https://musicbrainz.org/release-group/2811edc3-9001-4bc8-a4f0-03f1fc37078f"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4396,7 +4599,11 @@
           "confidence": 69,
           "mb_url": "https://musicbrainz.org/release-group/da7f056f-3c9c-40e5-985f-b4092eba75df"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4433,7 +4640,8 @@
           "confidence": 62,
           "mb_url": "https://musicbrainz.org/release-group/ab84b260-ab88-46ad-bcae-5f538662b4e2"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4491,7 +4699,8 @@
           "confidence": 34,
           "mb_url": "https://musicbrainz.org/release-group/14bbd9b3-9c5b-41c7-bec2-98546b81363b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4530,7 +4739,11 @@
           "confidence": 53,
           "mb_url": "https://musicbrainz.org/release-group/3e554e31-1887-377d-95c9-afe81b051728"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4590,7 +4803,8 @@
           "confidence": 68,
           "mb_url": "https://musicbrainz.org/release-group/45454440-7f4c-3131-b8ce-b6e3301de691"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4650,7 +4864,8 @@
           "confidence": 57,
           "mb_url": "https://musicbrainz.org/release-group/395e7fd8-997c-4e44-a396-d55782c421a5"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4708,7 +4923,8 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/26186f69-3902-4aff-a375-839bce1dc509"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4739,7 +4955,11 @@
         "label": "Decca",
         "year": "1957"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4793,7 +5013,9 @@
           "confidence": 95,
           "mb_url": "https://musicbrainz.org/release-group/e39cdfb4-4ffc-4eb3-b637-cef669fa495b"
         }
-      ]
+      ],
+      "completeness": "highlights",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4825,7 +5047,9 @@
         "label": "Decca",
         "year": "1962"
       },
-      "alternatives": []
+      "alternatives": [],
+      "completeness": "highlights",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4887,7 +5111,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/21578b2b-c85c-455d-842e-2109e4501344"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -4947,7 +5172,8 @@
           "confidence": 81,
           "mb_url": "https://musicbrainz.org/release-group/3c4cd277-d388-40c1-a537-66f1d5c35966"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5007,7 +5233,11 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/6b9ca7a4-0b87-4bba-93bb-e0c15b53cc86"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5067,7 +5297,11 @@
           "confidence": 47,
           "mb_url": "https://musicbrainz.org/release-group/495cdffb-579c-41a3-940a-99508d60200f"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5127,7 +5361,8 @@
           "confidence": 30,
           "mb_url": "https://musicbrainz.org/release-group/0c0219d3-4ce6-4be3-b6fb-8577b0f487a4"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5187,7 +5422,11 @@
           "confidence": 97,
           "mb_url": "https://musicbrainz.org/release-group/e94f9c56-68d9-47c2-8400-3286dc25613c"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5247,7 +5486,8 @@
           "confidence": 42,
           "mb_url": "https://musicbrainz.org/release-group/80fc19a4-57bf-3f8f-8346-c0c3e6a2afc7"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5287,7 +5527,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/a2d123cc-49d8-4c8e-8184-460bf633337b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5347,7 +5588,11 @@
           "confidence": 97,
           "mb_url": "https://musicbrainz.org/release-group/af892fcc-05c3-43c5-87ec-2513a257804f"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5407,7 +5652,8 @@
           "confidence": 41,
           "mb_url": "https://musicbrainz.org/release-group/c74dc621-0334-3927-a3c0-97a428f7883e"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5465,7 +5711,8 @@
           "confidence": 94,
           "mb_url": "https://musicbrainz.org/release-group/9e467994-942e-47db-8b77-6dfecc6a5755"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5526,7 +5773,8 @@
           "confidence": 92,
           "mb_url": "https://musicbrainz.org/release-group/4663601a-851a-410e-b33f-0cf07f20c37d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5584,7 +5832,8 @@
           "confidence": 29,
           "mb_url": "https://musicbrainz.org/release-group/ecfe7364-82ce-4cf1-82e6-3df4ee23ce04"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5644,7 +5893,10 @@
           "confidence": 28,
           "mb_url": "https://musicbrainz.org/release-group/19fa88bc-2982-4e94-9168-6683772e6672"
         }
-      ]
+      ],
+      "session_year": "1982",
+      "mb_disambiguation": "1982 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5675,7 +5927,8 @@
         "label": "RCA",
         "year": "1940s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5714,7 +5967,8 @@
           "confidence": 40,
           "mb_url": "https://musicbrainz.org/release-group/bcc54d88-627a-38e7-ba60-5ed069caa310"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5775,7 +6029,10 @@
           "confidence": 37,
           "mb_url": "https://musicbrainz.org/release-group/31ad2aa1-42c0-413b-b19c-8ec914e9f837"
         }
-      ]
+      ],
+      "session_year": "1984",
+      "mb_disambiguation": "1984 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5807,7 +6064,8 @@
         "label": "Harmonia Mundi",
         "year": "2000"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5868,7 +6126,8 @@
           "confidence": 40,
           "mb_url": "https://musicbrainz.org/release-group/5eabd13a-0eb7-4650-8b15-ea316a1a0963"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5928,7 +6187,8 @@
           "confidence": 25,
           "mb_url": "https://musicbrainz.org/release-group/085eb5cb-0f44-46e1-8f95-910609e6d0dc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -5989,7 +6249,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/64ec587c-5c0d-41e4-bdfc-31e7b1349041"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6049,7 +6313,8 @@
           "confidence": 67,
           "mb_url": "https://musicbrainz.org/release-group/1cba8a52-489a-4b6b-9112-1fdf48c9c424"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6109,7 +6374,8 @@
           "confidence": 51,
           "mb_url": "https://musicbrainz.org/release-group/cca9a6a9-88a6-4868-a7d4-323d78728762"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6140,7 +6406,8 @@
         "label": "Archiv",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6193,7 +6460,8 @@
           "confidence": 71,
           "mb_url": "https://musicbrainz.org/release-group/506fd89d-382e-4ba8-bda7-0e7da707e138"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6253,7 +6521,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/0e52ac6a-5f17-34cd-8909-559cc05324f5"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6314,7 +6586,8 @@
           "confidence": 45,
           "mb_url": "https://musicbrainz.org/release-group/db8e2e4e-0409-423d-87db-cd34bb23d9be"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6353,7 +6626,8 @@
           "confidence": 87,
           "mb_url": "https://musicbrainz.org/release-group/79561309-02b2-302e-b588-05f6142da8a5"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6413,7 +6687,8 @@
           "confidence": 70,
           "mb_url": "https://musicbrainz.org/release-group/abe35128-e909-4d9b-a5ae-836750512e99"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6474,7 +6749,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/2852c392-63ef-4032-b581-d7ad7009d5bc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6511,7 +6787,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/6928101a-833f-31ff-afa2-96c1ac3f8da9"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6569,7 +6846,12 @@
           "confidence": 44,
           "mb_url": "https://musicbrainz.org/release-group/a26024b7-d54a-4899-8e08-27411ce160ee"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6627,7 +6909,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/673c82e3-2478-402e-b450-31d9be5d0da3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6688,7 +6971,8 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/16926669-d622-3078-8883-81e9fded8df0"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6727,7 +7011,8 @@
           "confidence": 76,
           "mb_url": "https://musicbrainz.org/release-group/1c0c1ac3-4670-475c-9b12-b44687556d83"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6758,7 +7043,12 @@
         "label": "Philips",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6811,7 +7101,12 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/f24cb492-a4f0-43c0-956e-bfd8a7e86226"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6865,7 +7160,11 @@
           "confidence": 68,
           "mb_url": "https://musicbrainz.org/release-group/81dfb7e6-7c48-4217-95a2-cf61b39b773c"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6894,7 +7193,13 @@
         "label": "Deutsche Grammophon",
         "year": "2010"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_disambiguation": "2010 Lucerne cast, composite recordings",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6926,7 +7231,12 @@
         "label": "Deutsche Grammophon",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -6972,7 +7282,8 @@
           "confidence": 88,
           "mb_url": "https://musicbrainz.org/release-group/e3a66e99-142e-43ab-8912-b07b87d8d53d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7018,7 +7329,8 @@
           "confidence": 71,
           "mb_url": "https://musicbrainz.org/release-group/4cf93494-05a3-4f8f-9aa7-cfc4ea195a63"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7078,7 +7390,8 @@
           "confidence": 90,
           "mb_url": "https://musicbrainz.org/release-group/5e2e3cb5-c972-4a25-95a8-9ccc0bea093b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7136,7 +7449,8 @@
           "confidence": 90,
           "mb_url": "https://musicbrainz.org/release-group/5e2e3cb5-c972-4a25-95a8-9ccc0bea093b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7196,7 +7510,8 @@
           "confidence": 77,
           "mb_url": "https://musicbrainz.org/release-group/9ef35907-d81d-4ca6-b0c4-c96aa44a3927"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7256,7 +7571,8 @@
           "confidence": 90,
           "mb_url": "https://musicbrainz.org/release-group/5e2e3cb5-c972-4a25-95a8-9ccc0bea093b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7314,7 +7630,11 @@
           "confidence": 51,
           "mb_url": "https://musicbrainz.org/release-group/2ca6c6d2-a5b5-38b3-9aba-881675b193f2"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7374,7 +7694,11 @@
           "confidence": 56,
           "mb_url": "https://musicbrainz.org/release-group/c56a9329-c803-478e-9f30-1c8b7147df6a"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7405,7 +7729,8 @@
         "label": "L'Oiseau-Lyre",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7451,7 +7776,12 @@
           "confidence": 66,
           "mb_url": "https://musicbrainz.org/release-group/0356e0a1-5d75-4fdb-8f34-a8f11d84b5b2"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7482,7 +7812,13 @@
         "label": "Sony",
         "year": "1950s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_disambiguation": "1956 live cast",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7513,7 +7849,10 @@
         "label": "Philips",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1972 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7542,7 +7881,10 @@
         "label": "Deutsche Grammophon",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1988 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7573,7 +7915,10 @@
         "label": "Philips",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1988-89 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7604,7 +7949,9 @@
         "label": "EMI",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_disambiguation": "1982 Salzburg cast, composite recordings",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7664,7 +8011,8 @@
           "confidence": 54,
           "mb_url": "https://musicbrainz.org/release-group/8696f1d4-8db4-409e-a54d-68f977f05e38"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7693,7 +8041,8 @@
         "label": "Deutsche Grammophon",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7754,7 +8103,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/7eea51bc-ec2b-3d4e-8c25-8518fe1229cb"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7815,7 +8165,12 @@
           "confidence": 45,
           "mb_url": "https://musicbrainz.org/release-group/e21a2fbf-d490-4d43-b455-2b5f03e98532"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7855,7 +8210,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/59f9994b-e20f-490f-b3b3-023695b3e48c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7909,7 +8265,8 @@
           "confidence": 55,
           "mb_url": "https://musicbrainz.org/release-group/eeac609f-762f-3369-baa9-d07265415906"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7946,7 +8303,10 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/c40aa938-8659-4179-b98e-cd297f062066"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1992 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -7977,7 +8337,13 @@
         "label": "EMI",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_disambiguation": "1998 Milan cast, composite recordings",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8016,7 +8382,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/cb357691-9b39-32ac-9ef3-01b224d0c4d4"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8053,7 +8420,9 @@
           "confidence": 65,
           "mb_url": "https://musicbrainz.org/release-group/f42bcfea-00a8-3271-bd4f-e6ca5733b09b"
         }
-      ]
+      ],
+      "mb_disambiguation": "2000 film cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8084,7 +8453,10 @@
         "label": "EMI",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "2008 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8113,7 +8485,13 @@
         "label": "Sony",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_disambiguation": "1991 Milan cast",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8142,7 +8520,10 @@
         "label": "Sony",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1976/77 studio casts",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8173,7 +8554,8 @@
         "label": "RCA",
         "year": "1960s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8212,7 +8594,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/c6cf518e-c7f0-4566-8b90-119a17e28293"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8243,7 +8626,8 @@
         "label": "Melodiya",
         "year": "1950s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8303,7 +8687,8 @@
           "confidence": 75,
           "mb_url": "https://musicbrainz.org/release-group/7d2677b3-ea4f-433f-90bf-6d1c1475de94"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8347,7 +8732,12 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/4a44c873-5725-4043-8a0d-ed3d39997948"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8405,7 +8795,8 @@
           "confidence": 58,
           "mb_url": "https://musicbrainz.org/release-group/47895db9-4ab5-464d-a3db-479fa28a117d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8444,7 +8835,8 @@
           "confidence": 63,
           "mb_url": "https://musicbrainz.org/release-group/200f4bbd-4580-4311-8cf0-c3cf3145d4ca"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8504,7 +8896,8 @@
           "confidence": 71,
           "mb_url": "https://musicbrainz.org/release-group/91e4d18e-858e-44a7-9e43-15a0239fc84c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8564,7 +8957,8 @@
           "confidence": 36,
           "mb_url": "https://musicbrainz.org/release-group/498c72ac-76d7-46ca-91f1-65cacf85bbfd"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8593,7 +8987,12 @@
         "label": "Deutsche Grammophon",
         "year": "2018"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8646,7 +9045,8 @@
           "confidence": 39,
           "mb_url": "https://musicbrainz.org/release-group/34b8aede-4f42-468f-9f9d-464821dab143"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8706,7 +9106,8 @@
           "confidence": 33,
           "mb_url": "https://musicbrainz.org/release-group/91e4d18e-858e-44a7-9e43-15a0239fc84c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8743,7 +9144,12 @@
           "confidence": 89,
           "mb_url": "https://musicbrainz.org/release-group/d86d330c-f685-4e08-841e-13540501bd9d"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8774,7 +9180,8 @@
         "label": "Teldec",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8834,7 +9241,8 @@
           "confidence": 94,
           "mb_url": "https://musicbrainz.org/release-group/18f7b9b9-4eea-48fb-865d-112dd5b0fa9d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8865,7 +9273,8 @@
         "label": "LSO Live",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8902,9 +9311,11 @@
           "mb_title": "Under Stalin’s Shadow: Symphonies nos. 5 / 8 / 9",
           "mb_first_release": "2016-05-27",
           "confidence": 100,
-          "mb_url": "https://musicbrainz.org/release-group/b0adf68d-0f8c-4124-92b1-f52abf9da7d7"
+          "mb_url": "https://musicbrainz.org/release-group/b0adf68d-0f8c-4124-92b1-f52abf9da7d7",
+          "live_studio": "live"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8944,7 +9355,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/e1508831-511a-4766-8809-67d18b3a5e36"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -8975,7 +9387,8 @@
         "label": "Melodiya",
         "year": "1960s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9006,7 +9419,8 @@
         "label": "Decca",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9035,7 +9449,12 @@
         "label": "Deutsche Grammophon",
         "year": "2018"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9064,7 +9483,8 @@
         "label": "Naxos",
         "year": "2010"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9095,7 +9515,8 @@
         "label": "Decca",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9127,7 +9548,8 @@
         "label": "Melodiya",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9158,7 +9580,8 @@
         "label": "LSO Live",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -9678,7 +10101,8 @@
           "confidence": 48,
           "mb_url": "https://musicbrainz.org/release-group/b0f7317b-4edb-35ed-9ae7-606f16fb0947"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -10383,7 +10807,10 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/f1b97d89-b6df-38f1-ae89-240984bb2d8d"
         }
-      ]
+      ],
+      "session_year": "1979",
+      "mb_disambiguation": "1979 recording",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -10812,7 +11239,8 @@
           "confidence": 98,
           "mb_url": "https://musicbrainz.org/release-group/07e884b8-f5ce-3e61-9eaa-9d07bf6b8b06"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -11057,7 +11485,8 @@
           "confidence": 70,
           "mb_url": "https://musicbrainz.org/release-group/d904db4a-e9a2-3269-bb75-41ff1c305330"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -12928,7 +13357,10 @@
         "label": "EMI",
         "year": "1955"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "studio",
+      "mb_disambiguation": "1958 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -13152,7 +13584,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/e96b119f-8ef6-3f81-817a-ae6a2a3f3b36"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -13765,7 +14198,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/42c1b3ef-c6a1-4bf3-98d8-86bd861d0536"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -13910,7 +14344,8 @@
           "confidence": 60,
           "mb_url": "https://musicbrainz.org/release-group/f9d37b92-c075-4269-97e1-172796a83fae"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -14063,7 +14498,8 @@
           "confidence": 57,
           "mb_url": "https://musicbrainz.org/release-group/14c93892-a59e-4f68-8dc1-42771c178d24"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -14215,7 +14651,8 @@
           "confidence": 63,
           "mb_url": "https://musicbrainz.org/release-group/b5a7021e-1ec4-45f5-8a0a-7ae499e07391"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -14365,7 +14802,8 @@
           "confidence": 16,
           "mb_url": "https://musicbrainz.org/release-group/f0a900d0-5c2a-4d63-9eff-c77363272a08"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -14610,7 +15048,8 @@
           "confidence": 35,
           "mb_url": "https://musicbrainz.org/release-group/a39016df-083d-4c13-b0a1-b5943fccf065"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -14742,7 +15181,8 @@
           "confidence": 32,
           "mb_url": "https://musicbrainz.org/release-group/c48790e0-f9e3-33de-a878-a321b3e51c96"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -15517,7 +15957,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/a49b0d17-e3f4-4bba-b7d3-d666b8b33cf1"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -15761,7 +16205,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/55c20ba2-4892-36d6-aa31-11a823a20a48"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -15914,7 +16359,12 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/0d1dc15a-e236-44b8-89c7-a5de11407687"
         }
-      ]
+      ],
+      "fassung": "original version",
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -16066,7 +16516,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/47be814b-14b0-496d-a909-1b18f24546f2"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -16220,7 +16671,8 @@
           "confidence": 54,
           "mb_url": "https://musicbrainz.org/release-group/b0e1b9aa-bdb6-4580-8685-50d93cbfe0dc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -17016,7 +17468,8 @@
           "confidence": 58,
           "mb_url": "https://musicbrainz.org/release-group/4b257789-a027-437d-bd69-98b8120da6f1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -17168,7 +17621,11 @@
           "confidence": 41,
           "mb_url": "https://musicbrainz.org/release-group/b12d7c1c-f0ac-4e91-b27a-9a8d63cc60a9"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -17320,7 +17777,12 @@
           "confidence": 99,
           "mb_url": "https://musicbrainz.org/release-group/02a70954-33d3-4c18-a748-e6622dc90bc6"
         }
-      ]
+      ],
+      "completeness": "complete",
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -17449,7 +17911,8 @@
           "confidence": 31,
           "mb_url": "https://musicbrainz.org/release-group/2d44806a-1eea-410a-a615-07112c5a1393"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -17693,7 +18156,11 @@
           "confidence": 27,
           "mb_url": "https://musicbrainz.org/release-group/b2ea740b-5b18-4731-bfe0-dbaeebeef939"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -17845,7 +18312,10 @@
           "confidence": 32,
           "mb_url": "https://musicbrainz.org/release-group/e8768726-3a82-4660-a525-bcfcd98e42b3"
         }
-      ]
+      ],
+      "session_year": "1954",
+      "mb_disambiguation": "1954 recordings",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -18641,7 +19111,8 @@
           "confidence": 82,
           "mb_url": "https://musicbrainz.org/release-group/609e1a31-9769-4ef5-a17d-7856ca4c9b82"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -18791,7 +19262,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/f04bd948-1bad-4d5e-9f7c-cd11b50d7c5f"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -18945,7 +19417,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/27c8deec-c9f2-438d-b3eb-2c93cdea0464"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -19076,7 +19549,8 @@
           "confidence": 33,
           "mb_url": "https://musicbrainz.org/release-group/0294bedb-1059-3c43-8a9b-bb445857a25b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -19229,7 +19703,8 @@
           "confidence": 92,
           "mb_url": "https://musicbrainz.org/release-group/6cf6b9b1-dba8-4d55-beed-040e3dc3fdbb"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -19382,7 +19857,8 @@
           "confidence": 92,
           "mb_url": "https://musicbrainz.org/release-group/1944c834-923e-4d07-998e-cda36ffd8466"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -20176,7 +20652,8 @@
           "confidence": 46,
           "mb_url": "https://musicbrainz.org/release-group/18bc9c49-72f6-3c48-a738-e7b88fa0868b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -20418,7 +20895,8 @@
           "confidence": 42,
           "mb_url": "https://musicbrainz.org/release-group/1cb57526-4565-3c30-a160-d5b29ecd38dd"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -20570,7 +21048,11 @@
           "confidence": 80,
           "mb_url": "https://musicbrainz.org/release-group/fe0579fc-b5de-4405-808a-32bcb9e26f46"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -20722,7 +21204,11 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/fe0579fc-b5de-4405-808a-32bcb9e26f46"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -21689,7 +22175,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/cf5754b6-fa18-3c81-a01e-09803415cc43"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -21810,7 +22300,8 @@
         "label": "Sony",
         "year": "2019"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Single"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -21931,7 +22422,8 @@
         "label": "Archiv",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -22074,7 +22566,8 @@
           "confidence": 68,
           "mb_url": "https://musicbrainz.org/release-group/7764c3b0-e001-364c-a87f-ac9d223da07a"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -22311,7 +22804,8 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/3006e824-95e0-40cd-905d-48cec8dc9e30"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -23197,7 +23691,8 @@
           "confidence": 70,
           "mb_url": "https://musicbrainz.org/release-group/a8685ecc-f90b-3ab6-9136-8d062b181d94"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -23320,7 +23815,8 @@
         "label": "Philips",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -23564,7 +24060,8 @@
           "confidence": 36,
           "mb_url": "https://musicbrainz.org/release-group/0d1ceeb3-3398-32c7-8275-4f4bc5ece321"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -23716,7 +24213,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/460cdd2a-1bf2-460c-a9e8-40af72bdef15"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -23868,7 +24366,10 @@
           "confidence": 68,
           "mb_url": "https://musicbrainz.org/release-group/2cc57934-5930-43ca-8e68-68cb9fd1b52e"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1967 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -24662,7 +25163,8 @@
           "confidence": 39,
           "mb_url": "https://musicbrainz.org/release-group/5ee06166-643d-4e63-9641-f8f8464daeb6"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -24814,7 +25316,8 @@
           "confidence": 86,
           "mb_url": "https://musicbrainz.org/release-group/3b3b14d1-a862-4cd5-be69-333d782b868a"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -24953,7 +25456,8 @@
           "confidence": 27,
           "mb_url": "https://musicbrainz.org/release-group/8362ca3a-205e-4b3a-8d3a-cc3f05c9c6d8"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -26002,7 +26506,10 @@
           "confidence": 5,
           "mb_url": "https://musicbrainz.org/release-group/73bbf7a9-202e-4b33-8ff8-b4d9814e9e8b"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1978 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -26407,7 +26914,10 @@
           "confidence": 47,
           "mb_url": "https://musicbrainz.org/release-group/7f14b03e-1c6d-4bdd-87dc-552c9234cf64"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1997 studio casts",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -27458,7 +27968,8 @@
           "confidence": 86,
           "mb_url": "https://musicbrainz.org/release-group/05a5a4c8-603d-4653-9ede-f0d386b7296b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -27794,7 +28305,8 @@
           "confidence": 96,
           "mb_url": "https://musicbrainz.org/release-group/b2ea740b-5b18-4731-bfe0-dbaeebeef939"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -28864,7 +29376,8 @@
           "confidence": 25,
           "mb_url": "https://musicbrainz.org/release-group/1c38c3be-44ca-419b-ae26-a64ee391c952"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -29017,7 +29530,8 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/187d8dfb-fb66-4c9d-bdfa-dd798979a656"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -29148,7 +29662,8 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/5a73d909-f2b4-47ab-b81c-8e2db14972a8"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -29300,7 +29815,8 @@
           "confidence": 87,
           "mb_url": "https://musicbrainz.org/release-group/e1508831-511a-4766-8809-67d18b3a5e36"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -29423,7 +29939,8 @@
         "label": "Deutsche Grammophon",
         "year": "2018"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -30036,7 +30553,8 @@
           "confidence": 76,
           "mb_url": "https://musicbrainz.org/release-group/6ec922d2-34b7-40fd-86ab-24a3a73c64a9"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -30157,7 +30675,8 @@
         "label": "Naxos",
         "year": "2010"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -30372,7 +30891,8 @@
         "label": "LSO Live",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31231,7 +31751,8 @@
         "label": "Decca",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31260,7 +31781,12 @@
         "label": "Deutsche Grammophon",
         "year": "2018"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31320,7 +31846,8 @@
           "confidence": 30,
           "mb_url": "https://musicbrainz.org/release-group/eee91e48-cb02-422b-bc40-9855f4a5d3c1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31380,7 +31907,8 @@
           "confidence": 47,
           "mb_url": "https://musicbrainz.org/release-group/67c984df-363c-4aea-b8b6-a65116a8a8b3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31441,7 +31969,8 @@
           "confidence": 69,
           "mb_url": "https://musicbrainz.org/release-group/9f80e481-2221-3034-adce-096474e2b331"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31499,7 +32028,8 @@
           "confidence": 44,
           "mb_url": "https://musicbrainz.org/release-group/34a171e5-16fd-4c95-a17a-ee11cfce2184"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31559,7 +32089,8 @@
           "confidence": 38,
           "mb_url": "https://musicbrainz.org/release-group/6a4a2dbd-97f8-395a-ace0-f7f1c2b76678"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31620,7 +32151,8 @@
           "confidence": 31,
           "mb_url": "https://musicbrainz.org/release-group/f4795a81-b914-48a5-a1e9-8fbb07a6eb1d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31680,7 +32212,8 @@
           "confidence": 76,
           "mb_url": "https://musicbrainz.org/release-group/8e7489a0-b28a-4925-8608-e5e8ed90ee82"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31740,7 +32273,8 @@
           "confidence": 76,
           "mb_url": "https://musicbrainz.org/release-group/8e7489a0-b28a-4925-8608-e5e8ed90ee82"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31772,7 +32306,8 @@
         "label": "Deutsche Grammophon",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31832,7 +32367,8 @@
           "confidence": 41,
           "mb_url": "https://musicbrainz.org/release-group/9b02e2e5-16e7-4790-8902-e91493666d73"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31893,7 +32429,8 @@
           "confidence": 76,
           "mb_url": "https://musicbrainz.org/release-group/4e025747-10f5-4bfd-9a5d-b2618a66cd27"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31933,7 +32470,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/ada9085c-0610-45cc-a751-20687dacdca0"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -31994,7 +32532,8 @@
           "confidence": 77,
           "mb_url": "https://musicbrainz.org/release-group/a0b3bd2d-f4cb-400b-8abd-00060fd546bc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32055,7 +32594,8 @@
           "confidence": 34,
           "mb_url": "https://musicbrainz.org/release-group/88a1888a-55c0-41db-aea0-e68e23c322d4"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32084,7 +32624,11 @@
         "label": "EMI",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32144,7 +32688,11 @@
           "confidence": 34,
           "mb_url": "https://musicbrainz.org/release-group/699f4106-fc5f-4b93-99a7-f90bf3e4f594"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32204,7 +32752,8 @@
           "confidence": 34,
           "mb_url": "https://musicbrainz.org/release-group/14e03a87-f1f3-4e3e-b910-62c26aedabe8"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32236,7 +32785,12 @@
         "label": "Deutsche Grammophon",
         "year": "1980"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32296,7 +32850,8 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/fedb1aea-9fc9-48fa-8fc3-cf9856452f64"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32356,7 +32911,12 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/d54f6ad7-2435-421c-96cc-ad22f5b04605"
         }
-      ]
+      ],
+      "mb_disambiguation": "1976-1981 recordings",
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32385,7 +32945,8 @@
         "label": "Teldec",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32445,7 +33006,8 @@
           "confidence": 86,
           "mb_url": "https://musicbrainz.org/release-group/d3dae43c-b562-4ca9-bf05-2cb833fca302"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32503,7 +33065,8 @@
           "confidence": 41,
           "mb_url": "https://musicbrainz.org/release-group/bdaf9cdf-5671-3cf7-9efe-a1607364beab"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32532,7 +33095,8 @@
         "label": "EMI",
         "year": "1950s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32563,7 +33127,8 @@
         "label": "L'Oiseau-Lyre",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32602,7 +33167,8 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/383195fd-001c-40ea-b646-afcac477b520"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32633,7 +33199,8 @@
         "label": "Archiv",
         "year": "1996"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32664,7 +33231,12 @@
         "label": "Philips",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32703,7 +33275,8 @@
           "confidence": 45,
           "mb_url": "https://musicbrainz.org/release-group/18a131e6-561f-426c-9d13-d06f90d0efc3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32763,7 +33336,8 @@
           "confidence": 92,
           "mb_url": "https://musicbrainz.org/release-group/4f5ad891-e746-4bb1-96d4-0678cad032fb"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32821,7 +33395,8 @@
           "confidence": 52,
           "mb_url": "https://musicbrainz.org/release-group/0d1ceeb3-3398-32c7-8275-4f4bc5ece321"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32881,7 +33456,8 @@
           "confidence": 93,
           "mb_url": "https://musicbrainz.org/release-group/7530a5b3-dee9-4f50-9607-05bd67b73695"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32941,7 +33517,8 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/c2b29152-8283-49fa-8e25-8b45ee241d7e"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -32981,7 +33558,8 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/37e8edca-8eb4-3e9f-8cbb-b4acb9ee2222"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33041,7 +33619,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/7b21702d-a724-4ff0-8044-ba3394d51523"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33072,7 +33651,8 @@
         "label": "Archiv",
         "year": "1992"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33103,7 +33683,8 @@
         "label": "Teldec",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33163,7 +33744,8 @@
           "confidence": 77,
           "mb_url": "https://musicbrainz.org/release-group/fd2c6190-88d3-4ed0-9674-7df19129a139"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33195,7 +33777,11 @@
         "label": "Philips",
         "year": "1970s–80s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33234,7 +33820,8 @@
           "confidence": 88,
           "mb_url": "https://musicbrainz.org/release-group/dfb3aad6-0215-4c10-ac0d-7c19fab48db8"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33266,7 +33853,8 @@
         "label": "Deutsche Grammophon",
         "year": "1978"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33310,7 +33898,8 @@
           "confidence": 91,
           "mb_url": "https://musicbrainz.org/release-group/3d0570ad-1917-42b5-89d1-1e7e820593e3"
         }
-      ]
+      ],
+      "mb_primary_type": "EP"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33361,7 +33950,8 @@
           "confidence": 17,
           "mb_url": "https://musicbrainz.org/release-group/cd662363-659d-36f9-a6e6-f199be7c1b31"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33421,7 +34011,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/a6233567-a455-31ca-a296-100579087201"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33481,7 +34072,11 @@
           "confidence": 29,
           "mb_url": "https://musicbrainz.org/release-group/b6b24e5e-8cef-3fa4-8c69-09314cc3a124"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33527,7 +34122,13 @@
           "confidence": 42,
           "mb_url": "https://musicbrainz.org/release-group/b35e59b6-1992-3e47-a954-ccf3b9d3cc56"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Compilation",
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33571,7 +34172,11 @@
           "confidence": 89,
           "mb_url": "https://musicbrainz.org/release-group/cbfe1041-d9b5-44f3-817c-b43238becd17"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33622,7 +34227,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/e8a2817e-eaf1-4251-a989-2f9f2b82c27a"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33682,7 +34288,8 @@
           "confidence": 50,
           "mb_url": "https://musicbrainz.org/release-group/8f151bb1-1803-42f6-8840-d850ea0886bc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33735,7 +34342,8 @@
           "confidence": 55,
           "mb_url": "https://musicbrainz.org/release-group/e09b8b46-c534-3f66-9a28-15f7d65da80f"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33793,7 +34401,8 @@
           "confidence": 50,
           "mb_url": "https://musicbrainz.org/release-group/8f151bb1-1803-42f6-8840-d850ea0886bc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33853,7 +34462,8 @@
           "confidence": 21,
           "mb_url": "https://musicbrainz.org/release-group/705b34b2-8cc7-4e02-825e-9984f5eeaad6"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33915,7 +34525,9 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/915cf07e-7cb9-4a05-aad3-cc990347996e"
         }
-      ]
+      ],
+      "mb_disambiguation": "1970s recordings",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -33952,7 +34564,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/60c36b42-9597-30df-9fae-abf18a506da8"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34013,7 +34629,12 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/73b214dd-27f6-48de-9881-de13fbd6ee65"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34071,7 +34692,8 @@
           "confidence": 95,
           "mb_url": "https://musicbrainz.org/release-group/5f6b32ab-9502-498e-abc7-125880937526"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34100,7 +34722,8 @@
         "label": "Philips",
         "year": "1982"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34131,7 +34754,8 @@
         "label": "Erato",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34249,7 +34873,10 @@
           "confidence": 63,
           "mb_url": "https://musicbrainz.org/release-group/d961c061-8841-4302-986f-60057cc0a4aa"
         }
-      ]
+      ],
+      "session_year": "1971",
+      "mb_disambiguation": "1971 recordings",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34309,7 +34936,8 @@
           "confidence": 40,
           "mb_url": "https://musicbrainz.org/release-group/7eca1fdb-3354-4bf5-b900-816e4c629e91"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34369,7 +34997,11 @@
           "confidence": 67,
           "mb_url": "https://musicbrainz.org/release-group/825f6cd3-4ae5-46f3-a7e2-40dc89bd930c"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34427,7 +35059,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/b77984f3-7e9c-472f-bd2c-d952c90240d5"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34488,7 +35121,12 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/0d1dc15a-e236-44b8-89c7-a5de11407687"
         }
-      ]
+      ],
+      "fassung": "original version",
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34525,7 +35163,10 @@
           "confidence": 25,
           "mb_url": "https://musicbrainz.org/release-group/61eb0f4f-9577-3811-8653-0fd2edb20124"
         }
-      ]
+      ],
+      "live_studio": "studio",
+      "mb_disambiguation": "1991 studio cast",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34556,7 +35197,8 @@
         "label": "Deutsche Harmonia Mundi",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34593,7 +35235,12 @@
           "confidence": 86,
           "mb_url": "https://musicbrainz.org/release-group/324f4c64-557f-44c3-a2dd-94ee6a790800"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34651,7 +35298,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/dbc25010-c87f-3a44-9b32-aeed2ac6b8b1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34711,7 +35359,8 @@
           "confidence": 20,
           "mb_url": "https://musicbrainz.org/release-group/a2a51758-4c3d-47c9-be98-6e857cd2b8d1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34772,7 +35421,11 @@
           "confidence": 15,
           "mb_url": "https://musicbrainz.org/release-group/ecd51420-6632-4e41-9bc8-9372de869936"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34825,7 +35478,8 @@
           "confidence": 28,
           "mb_url": "https://musicbrainz.org/release-group/fdc77fb8-6372-3d43-9dc6-0a0743a5ba14"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34886,7 +35540,8 @@
           "confidence": 43,
           "mb_url": "https://musicbrainz.org/release-group/5eabd13a-0eb7-4650-8b15-ea316a1a0963"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -34946,7 +35601,8 @@
           "confidence": 89,
           "mb_url": "https://musicbrainz.org/release-group/49b9b7c8-f0ea-3d9f-842b-e4c86158f68c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35004,7 +35660,8 @@
           "confidence": 43,
           "mb_url": "https://musicbrainz.org/release-group/5eabd13a-0eb7-4650-8b15-ea316a1a0963"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35064,7 +35721,8 @@
           "confidence": 30,
           "mb_url": "https://musicbrainz.org/release-group/42e025bc-eb17-40dd-b57b-9c61f257861a"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35095,7 +35753,8 @@
         "label": "Harmonia Mundi",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35124,7 +35783,8 @@
         "label": "Decca",
         "year": "1985"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35155,7 +35815,8 @@
         "label": "Deutsche Harmonia Mundi",
         "year": "2000s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35225,7 +35886,8 @@
         "label": "Archiv",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35254,7 +35916,8 @@
         "label": "EMI",
         "year": "1990"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35286,7 +35949,8 @@
         "label": "Erato",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35318,7 +35982,9 @@
         "label": "Deutsche Grammophon",
         "year": "1987"
       },
-      "alternatives": []
+      "alternatives": [],
+      "completeness": "complete",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35379,7 +36045,8 @@
           "confidence": 92,
           "mb_url": "https://musicbrainz.org/release-group/ee64afb5-b575-4265-9f8d-47f0e9c3a12e"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35437,7 +36104,11 @@
           "confidence": 96,
           "mb_url": "https://musicbrainz.org/release-group/269e1edf-6ebc-4293-8ba7-5721dabe12aa"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35498,7 +36169,8 @@
           "confidence": 86,
           "mb_url": "https://musicbrainz.org/release-group/06d39147-59e3-4b1f-8e0a-e4c01d171341"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35556,7 +36228,8 @@
           "confidence": 54,
           "mb_url": "https://musicbrainz.org/release-group/2c29ec6e-fc9f-44c1-a932-f9bf21ef9f26"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35616,7 +36289,8 @@
           "confidence": 79,
           "mb_url": "https://musicbrainz.org/release-group/976891af-7eb7-4436-a897-097ea43cf8ac"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35678,7 +36352,11 @@
           "confidence": 69,
           "mb_url": "https://musicbrainz.org/release-group/df88f341-4a04-4030-bfb0-ce6387c73f1c"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35738,7 +36416,8 @@
           "confidence": 70,
           "mb_url": "https://musicbrainz.org/release-group/aae80cb2-acb9-4a82-9291-def30f2d6b94"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35799,7 +36478,11 @@
           "confidence": 60,
           "mb_url": "https://musicbrainz.org/release-group/cc7be5c0-e972-41be-9d2c-5aabc2f2a483"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35859,7 +36542,11 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/807b480e-6248-4025-8524-41b3cac3b478"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35917,7 +36604,8 @@
           "confidence": 95,
           "mb_url": "https://musicbrainz.org/release-group/ea4a5f6f-cef0-3647-837f-7dd37df4ee1b"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -35964,7 +36652,11 @@
           "confidence": 72,
           "mb_url": "https://musicbrainz.org/release-group/b42b4ce8-b4e8-4e09-98b0-362dc16d0298"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36022,7 +36714,8 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/b819f57a-08ac-47f6-be0f-b68096a7774f"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36062,7 +36755,8 @@
           "confidence": 74,
           "mb_url": "https://musicbrainz.org/release-group/6ac7b0d9-65d4-4f9f-a85a-6958b3660259"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36120,7 +36814,8 @@
           "confidence": 80,
           "mb_url": "https://musicbrainz.org/release-group/6b9ca7a4-0b87-4bba-93bb-e0c15b53cc86"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36180,7 +36875,8 @@
           "confidence": 73,
           "mb_url": "https://musicbrainz.org/release-group/456a42d5-704e-45e4-bf19-eae270f808f9"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36235,7 +36931,11 @@
           "confidence": 67,
           "mb_url": "https://musicbrainz.org/release-group/8126d444-0f54-44d2-9348-f71ba4a4061c"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36279,7 +36979,8 @@
           "confidence": 66,
           "mb_url": "https://musicbrainz.org/release-group/df406cfc-51db-4080-b4ae-526255bf7369"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -36310,7 +37011,11 @@
         "label": "Deutsche Grammophon",
         "year": "1980s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -44711,7 +45416,12 @@
         "label": "Deutsche Grammophon",
         "year": "2018"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -44832,7 +45542,8 @@
         "label": "Melodiya",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -45996,7 +46707,8 @@
           "confidence": 59,
           "mb_url": "https://musicbrainz.org/release-group/2f3cfe69-8771-3546-8e10-00f5e5703154"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -46146,7 +46858,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/673c82e3-2478-402e-b450-31d9be5d0da3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -46296,7 +47009,8 @@
           "confidence": 19,
           "mb_url": "https://musicbrainz.org/release-group/1274fec1-8bd9-3e66-af50-ddba3338722c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -46419,7 +47133,13 @@
         "label": "EMI",
         "year": "1950s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Compilation",
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -46848,7 +47568,8 @@
           "confidence": 36,
           "mb_url": "https://musicbrainz.org/release-group/7f65e088-b93c-4b83-ab24-3f7c4958e2ba"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -47368,7 +48089,8 @@
           "confidence": 28,
           "mb_url": "https://musicbrainz.org/release-group/bd74da15-44c6-44cb-a818-5644f3849ca2"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -47521,7 +48243,8 @@
           "confidence": 99,
           "mb_url": "https://musicbrainz.org/release-group/0a9341b7-ac03-4775-984a-2df890681dab"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -47673,7 +48396,8 @@
           "confidence": 42,
           "mb_url": "https://musicbrainz.org/release-group/b5a7021e-1ec4-45f5-8a0a-7ae499e07391"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -47825,7 +48549,12 @@
           "confidence": 56,
           "mb_url": "https://musicbrainz.org/release-group/fe18ecbf-1e07-38ba-894b-742208f755bf"
         }
-      ]
+      ],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -48968,7 +49697,11 @@
           "confidence": 96,
           "mb_url": "https://musicbrainz.org/release-group/1b477e8a-048d-4fcf-ab0f-90fcf2dc229f"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -49835,7 +50568,8 @@
           "confidence": 78,
           "mb_url": "https://musicbrainz.org/release-group/4b0f2ee2-cef5-4842-b066-3e51758e30a2"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -49966,7 +50700,8 @@
           "confidence": 17,
           "mb_url": "https://musicbrainz.org/release-group/2a39edf3-6909-45f5-8e94-eae3f4d14b14"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -50119,7 +50854,8 @@
           "confidence": 44,
           "mb_url": "https://musicbrainz.org/release-group/07212a95-41cc-402b-8f5e-8932a33d89ee"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -51446,7 +52182,8 @@
           "confidence": 88,
           "mb_url": "https://musicbrainz.org/release-group/041dae35-a963-4087-a2d6-e8136d856d65"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -51598,7 +52335,8 @@
           "confidence": 94,
           "mb_url": "https://musicbrainz.org/release-group/a6233567-a455-31ca-a296-100579087201"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -51751,7 +52489,11 @@
           "confidence": 97,
           "mb_url": "https://musicbrainz.org/release-group/0e52ac6a-5f17-34cd-8909-559cc05324f5"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -52916,7 +53658,8 @@
           "confidence": 64,
           "mb_url": "https://musicbrainz.org/release-group/38baacda-d3b8-4feb-ade1-4cde268cf05c"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -54158,7 +54901,8 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/52452fe4-c367-4e9f-9db7-7ea45006b2b1"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -54301,7 +55045,8 @@
           "confidence": 86,
           "mb_url": "https://musicbrainz.org/release-group/b4b1bad2-7792-4bd0-8869-b1a9a1a54486"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -56569,7 +57314,8 @@
           "confidence": 67,
           "mb_url": "https://musicbrainz.org/release-group/bc493836-696a-46c5-8007-e46122ebd287"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -56692,7 +57438,11 @@
         "label": "Decca",
         "year": "1970s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -56821,7 +57571,8 @@
           "confidence": 89,
           "mb_url": "https://musicbrainz.org/release-group/1ed4688c-4505-43b8-b1c8-360f59f9ab61"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -57045,7 +57796,9 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/3a77bbcd-b2c7-4522-a12e-511917767882"
         }
-      ]
+      ],
+      "completeness": "highlights",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -57166,7 +57919,12 @@
         "label": "Erato",
         "year": "2020"
       },
-      "alternatives": []
+      "alternatives": [],
+      "live_studio": "live",
+      "mb_secondary_types": [
+        "Live"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -58209,7 +58967,8 @@
         "label": "Sony",
         "year": "2002"
       },
-      "alternatives": []
+      "alternatives": [],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -58362,7 +59121,8 @@
           "confidence": 96,
           "mb_url": "https://musicbrainz.org/release-group/1c2d5bae-4e46-4fcc-bb7f-13e1800b890d"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -58514,7 +59274,8 @@
           "confidence": 85,
           "mb_url": "https://musicbrainz.org/release-group/0334964f-6b91-4ad9-8407-916b8c17d489"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -58637,7 +59398,9 @@
         "label": "Sony",
         "year": "1990s"
       },
-      "alternatives": []
+      "alternatives": [],
+      "completeness": "complete",
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -58789,7 +59552,8 @@
           "confidence": 72,
           "mb_url": "https://musicbrainz.org/release-group/5b6ad043-454e-4121-9a1e-74a530505d74"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -59770,7 +60534,8 @@
           "confidence": 83,
           "mb_url": "https://musicbrainz.org/release-group/8b616760-cb86-42ee-93b0-98b119c9c8dc"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -59909,7 +60674,8 @@
           "confidence": 57,
           "mb_url": "https://musicbrainz.org/release-group/6b162724-553e-4fe3-bcff-3685e8731b97"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -60062,7 +60828,8 @@
           "confidence": 69,
           "mb_url": "https://musicbrainz.org/release-group/6b1270dc-2f0e-481b-9ba4-f94e58b537af"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -60294,7 +61061,8 @@
           "confidence": 89,
           "mb_url": "https://musicbrainz.org/release-group/3353b91b-d6ad-4aff-836c-eb71ab55f084"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -60815,7 +61583,11 @@
           "confidence": 100,
           "mb_url": "https://musicbrainz.org/release-group/1ac2b421-050f-49b9-8ee7-5187e742073f"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -60875,7 +61647,11 @@
           "confidence": 95,
           "mb_url": "https://musicbrainz.org/release-group/60c36b42-9597-30df-9fae-abf18a506da8"
         }
-      ]
+      ],
+      "mb_secondary_types": [
+        "Compilation"
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -60936,7 +61712,8 @@
           "confidence": 89,
           "mb_url": "https://musicbrainz.org/release-group/54aff3d3-94c9-3ac9-9987-84c16bafa055"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -60997,7 +61774,8 @@
           "confidence": 81,
           "mb_url": "https://musicbrainz.org/release-group/0a5d6f3b-2555-4da6-adcb-e9d54a9adda3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
@@ -63726,7 +64504,8 @@
           "confidence": 77,
           "mb_url": "https://musicbrainz.org/release-group/f5cbe020-d413-4556-9e7c-a0ad965494a3"
         }
-      ]
+      ],
+      "mb_primary_type": "Album"
     },
     "source": "MusicBrainz",
     "provenance": "cited",
