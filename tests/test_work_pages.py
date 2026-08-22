@@ -153,6 +153,46 @@ class TestGalleryAndReviewHaveNoGlobalRelated(unittest.TestCase):
         # Remake siblings stay same-work; they are not a related-work feed.
         self.assertIn("Remake siblings (same forces, different year)", src)
 
+    def test_live_seed_siblings_never_cross_composers(self):
+        ib = _load("identity_board_under_test", "agents/identity_board.py")
+        seed = json.loads((ROOT / "data/seed.json").read_text(encoding="utf-8"))
+        by_id, all_cands, _ = _index_seed(seed)
+        for cand in all_cands:
+            composer = (cand.get("composer") or "").strip()
+            if not composer:
+                continue
+            sibs = ib.remake_siblings(cand, all_cands, exclude_id=str(cand.get("id") or ""))
+            for sib in sibs:
+                other = by_id.get(sib["id"]) or {}
+                other_composer = (other.get("composer") or "").strip()
+                self.assertEqual(
+                    other_composer, composer,
+                    f"{cand.get('id')} sibling {sib['id']} crossed composers",
+                )
+
+
+def _index_seed(seed: dict) -> tuple[dict, list, None]:
+    by_id: dict = {}
+    all_cands: list = []
+    for work in seed.get("works") or []:
+        display = f"{work.get('composer')} — {work.get('title')}"
+        for cand in work.get("candidates") or []:
+            row = {
+                "id": cand.get("id"),
+                "work": display,
+                "work_title": work.get("title") or "",
+                "composer": work.get("composer") or "",
+                "catalogue": work.get("catalogue") or "",
+                "work_id": work.get("id") or "",
+                "director": cand.get("director") or "",
+                "ensemble": cand.get("ensemble") or "",
+                "label": cand.get("label") or "",
+                "year": cand.get("year"),
+            }
+            by_id[row["id"]] = row
+            all_cands.append(row)
+    return by_id, all_cands, None
+
 
 if __name__ == "__main__":
     unittest.main()
