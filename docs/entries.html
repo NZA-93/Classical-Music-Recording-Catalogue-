@@ -28,10 +28,15 @@
   .masthead{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;
     padding:1.4rem 0 1.1rem;border-bottom:1px solid var(--ink)}
   .masthead h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.15rem;margin-right:auto}
+  .masthead h1 a{color:inherit;text-decoration:none;border-bottom:0}
   .masthead nav{display:flex;gap:1.1rem}
   .masthead a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
   .masthead a:hover,.masthead a:focus-visible,.masthead a[aria-current="page"]{
     color:var(--ink);border-bottom-color:var(--ink)}
+  .crumb{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-soft);margin:1.4rem 0 0}
+  .crumb a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+  .crumb a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 
   .doors{width:100%;display:grid;gap:.55rem;padding:.9rem 0 0}
   .find{position:relative}
@@ -248,7 +253,7 @@
 <div class="wrap">
 
   <header class="masthead">
-    <h1>Critical Discography</h1>
+    <h1><a href="index.html">Critical Discography</a></h1>
     <nav class="eyebrow">
       <a href="index.html">Catalogue</a>
       <a href="entries.html" aria-current="page">Entries</a>
@@ -259,8 +264,8 @@
         <p class="door-lbl">Find by name</p>
         <div class="find">
           <input id="q" type="search" autocomplete="off" spellcheck="false"
-            placeholder="Composer, work or recording — try pinnock, tosca"
-            aria-label="Find a composer, work or recording" aria-controls="q-panel">
+            placeholder="Composer, work or recording"
+            aria-label="Composer, work or recording" aria-controls="q-panel">
           <div class="find-panel" id="q-panel" role="listbox" aria-label="Search results"></div>
         </div>
       </div>
@@ -278,6 +283,7 @@
     </div>
   </header>
 
+  
   <main id="works"></main>
 
   <footer>
@@ -290,7 +296,7 @@
 
 <script>
 const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-08-22", "works": [], "barcode_index": {}};
-const WORK_INDEX = [{"id": "bach_brandenburg", "anchor": "bach_brandenburg", "title": "Brandenburg Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1046–1051 · 1721", "recordings": ["bach_brandenburg_pinnock", "bach_brandenburg_harnoncourt"]}, {"id": "shostakovich/sym5", "anchor": "shostakovich_sym5", "title": "Symphony No. 5", "composer": "Dmitri Shostakovich", "dates": "1906–1975", "cat": "Op. 47 · D minor · 1937", "recordings": ["shostakovich_sym5_nelsons", "shostakovich_sym5_mravinsky", "shostakovich_sym5_noseda"]}, {"id": "puccini_tosca", "anchor": "puccini_tosca", "title": "Tosca", "composer": "Giacomo Puccini", "dates": "1858–1924", "cat": "Teatro Costanzi, Rome · 14 January 1900", "recordings": ["puccini_tosca_desabata", "puccini_tosca_karajan"]}];
+const WORK_INDEX = [{"id": "bach_brandenburg", "anchor": "bach_brandenburg", "composer_id": "bach", "title": "Brandenburg Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1046–1051 · 1721", "recordings": ["bach_brandenburg_pinnock", "bach_brandenburg_harnoncourt"]}, {"id": "shostakovich/sym5", "anchor": "shostakovich_sym5", "composer_id": "shostakovich", "title": "Symphony No. 5", "composer": "Dmitri Shostakovich", "dates": "1906–1975", "cat": "Op. 47 · D minor · 1937", "recordings": ["shostakovich_sym5_nelsons", "shostakovich_sym5_mravinsky", "shostakovich_sym5_noseda"]}, {"id": "puccini_tosca", "anchor": "puccini_tosca", "composer_id": "puccini", "title": "Tosca", "composer": "Giacomo Puccini", "dates": "1858–1924", "cat": "Teatro Costanzi, Rome · 14 January 1900", "recordings": ["puccini_tosca_desabata", "puccini_tosca_karajan"]}];
 const BASE = "";
 
 const DOMAIN=[2.40,3.00], THRESHOLD=2.70;
@@ -498,9 +504,15 @@ function entry(r){
 
 const workDomId=w=>String(w.id).replace(/\//g,"_");
 
-/* D: work pages are sealed. Never render another work beside this one.
-   A leftover cross-work rail stays empty until it can be scoped here.
+/* A: work pages are sealed to one work (composer + catalogue / work_id).
+   Never render another work beside this one. Empty related is correct.
    Title fragments such as a shared number must not pull another composer in. */
+function composerSlug(w){
+  if(w.composer_id) return String(w.composer_id);
+  const id=String(w.id||"");
+  return id.includes("/")?id.split("/")[0]:id.split("_")[0];
+}
+
 (function redirectLegacyHash(){
   const raw=(location.hash||"").replace(/^#/,"");
   if(!raw || !WORK_INDEX.length) return;
@@ -563,11 +575,10 @@ const seenComposer=new Set();
 for(const w of pageWorks){
   const wid=workDomId(w);
   const surname=(w.composer||"").split(" ").pop();
-  const composerSlug=(w.id.includes("/")?w.id.split("/")[0]:w.id.split("_")[0]);
   if(!seenComposer.has(w.composer)){
     seenComposer.add(w.composer);
     FIND_INDEX.push({kind:"composer",label:w.composer,sub:`${w.dates||""}`.trim(),
-      href:`${BASE}composers/${composerSlug}.html`,keys:`${w.composer} ${surname}`.toLowerCase()});
+      href:`${BASE}composers/${composerSlug(w)}.html`,keys:`${w.composer} ${surname}`.toLowerCase()});
   }
   FIND_INDEX.push({kind:"work",label:w.title,sub:`${w.composer} · ${w.cat}`,
     href:"#"+wid,keys:`${w.title} ${w.cat} ${w.composer} ${surname}`.toLowerCase()});

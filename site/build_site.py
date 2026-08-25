@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""build_site.py — catalogue hub + one page per composer.
+"""build_site.py — catalogue hub + one composer hub per composer.
 
 Index is a professional directory (A–Z + find-as-you-type). Each composer
-gets composers/<id>.html with only that composer's works and assessed
-recordings. No per-composer links in the global masthead.
+gets composers/<id>.html listing only that composer's works, with assessed
+titles linking into sealed work pages. Navigation: catalogue → composer
+hub → sealed work page. No per-composer links in the global masthead.
 """
 
 from __future__ import annotations
@@ -128,6 +129,8 @@ padding:.4rem .5rem .4rem 0;border-bottom:1px solid var(--ink)}
 td{padding:.55rem .5rem;border-bottom:1px solid var(--hair);vertical-align:top}
 td:first-child{padding-left:0}
 .w-title{font-family:"Bodoni Moda",serif;font-size:1.02rem}
+a.w-title{color:inherit;text-decoration:none}
+a.w-title:hover,a.w-title:focus-visible{color:var(--verdigris)}
 .w-cat{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;color:var(--ink-soft)}
 .w-note{color:var(--ink-soft);font-size:.85rem}
 .chip{font-family:"IBM Plex Mono",monospace;font-size:.56rem;font-weight:500;letter-spacing:.08em;
@@ -153,6 +156,8 @@ footer .mono{font-size:.68rem;letter-spacing:.04em}
 
 FIND_JS = r"""
 const INDEX = __INDEX__;
+const SCOPE = __SCOPE__;
+const CATALOGUE_HREF = __CATALOGUE_HREF__;
 const esc = s => String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const input = document.getElementById("q");
 const panel = document.getElementById("q-panel");
@@ -170,7 +175,9 @@ function render(hits){
   if(!input.value.trim()){ panel.classList.remove("open"); panel.innerHTML=""; return; }
   if(!hits.length){
     panel.classList.add("open");
-    panel.innerHTML = `<p class="find-empty">No composers, works or recordings match.</p>`;
+    panel.innerHTML = SCOPE === "composer"
+      ? `<p class="find-empty">Nothing by this composer matches. Try the <a href="${esc(CATALOGUE_HREF)}">catalogue</a>.</p>`
+      : `<p class="find-empty">No composers, works or recordings match.</p>`;
     return;
   }
   let html = "", kind = null;
@@ -200,7 +207,7 @@ document.addEventListener("click", e => {
 
 
 def shell(title: str, body: str, index_json: list, *, depth: int = 0,
-          current: str = "catalogue") -> str:
+          current: str = "catalogue", scope: str = "catalogue") -> str:
     prefix = "../" * depth
     nav = {
         "catalogue": f'{prefix}index.html',
@@ -211,7 +218,17 @@ def shell(title: str, body: str, index_json: list, *, depth: int = 0,
     def link(key, label):
         cur = ' aria-current="page"' if current == key else ""
         return f'<a href="{nav[key]}"{cur}>{label}</a>'
-    js = FIND_JS.replace("__INDEX__", json.dumps(index_json, ensure_ascii=False))
+    find_placeholder = (
+        "Find a work or recording by this composer"
+        if scope == "composer"
+        else "Find a composer, work or recording"
+    )
+    js = (
+        FIND_JS
+        .replace("__INDEX__", json.dumps(index_json, ensure_ascii=False))
+        .replace("__SCOPE__", json.dumps(scope))
+        .replace("__CATALOGUE_HREF__", json.dumps(nav["catalogue"]))
+    )
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -230,8 +247,8 @@ def shell(title: str, body: str, index_json: list, *, depth: int = 0,
   </nav>
   <div class="find">
     <input id="q" type="search" autocomplete="off" spellcheck="false"
-      placeholder="Find a composer, work or recording"
-      aria-label="Find a composer, work or recording" aria-controls="q-panel">
+      placeholder="{escape(find_placeholder)}"
+      aria-label="{escape(find_placeholder)}" aria-controls="q-panel">
     <div class="find-panel" id="q-panel" role="listbox" aria-label="Search results"></div>
   </div>
 </header>
@@ -249,17 +266,22 @@ def shell(title: str, body: str, index_json: list, *, depth: int = 0,
 
 def work_row(w, *, depth: int = 0) -> str:
     d = done.get(w["id"], [])
+    title = escape(w["title"])
     if d:
+        href = escape(entries_href(w["id"], depth=depth))
+        title_cell = f'<a class="w-title" href="{href}">{title}</a>'
         chip = f'<span class="chip c-done">{len(d)} assessed</span>'
-        link = f' <a class="entry" href="{escape(entries_href(w["id"], depth=depth))}">read</a>'
+        link = f' <a class="entry" href="{href}">open work</a>'
     elif w["candidates"]:
+        title_cell = f'<span class="w-title">{title}</span>'
         chip = f'<span class="chip c-cand">{len(w["candidates"])} queued</span>'
         link = ""
     else:
+        title_cell = f'<span class="w-title">{title}</span>'
         chip = '<span class="chip c-none">no candidates</span>'
         link = ""
     return f"""<tr id="{escape(work_anchor(w['id']))}">
-      <td><span class="w-title">{escape(w['title'])}</span><br>
+      <td>{title_cell}<br>
         <span class="w-cat">{escape(w['catalogue'])} · {escape(w['year'])}</span></td>
       <td class="w-note">{escape(w['note'])}</td>
       <td>{chip}{link}</td>
@@ -282,10 +304,13 @@ def rollup_line(cid: str) -> str:
 
 
 # ---- global search index (paths from docs/ root) ----
-def build_index(*, depth: int = 0) -> list:
+def build_index(*, depth: int = 0, composer_id: str | None = None) -> list:
+    """Find index. Catalogue is global; a composer hub is that composer only."""
     prefix = "../" * depth
     out = []
     for (cid, name, dates), works in composers:
+        if composer_id and cid != composer_id:
+            continue
         out.append({
             "kind": "composer",
             "label": name,
@@ -365,18 +390,9 @@ index_body = f"""
 {''.join(letter_sections)}
 """
 
-DOCS.mkdir(exist_ok=True)
-if COMP_DIR.exists():
-    shutil.rmtree(COMP_DIR)
-COMP_DIR.mkdir(parents=True)
 
-(DOCS / "index.html").write_text(
-    shell("Catalogue", index_body, build_index(depth=0), depth=0, current="catalogue"),
-    "utf-8",
-)
-
-# ---- one page per composer ----
-for (cid, name, dates), works in composers:
+def composer_hub(cid: str, name: str, dates: str, works: list) -> str:
+    """One composer: that composer's works only, linking into sealed work pages."""
     dn = sum(1 for w in works if done.get(w["id"]))
     rows = "".join(work_row(w, depth=1) for w in works)
     rec_items = []
@@ -395,7 +411,6 @@ for (cid, name, dates), works in composers:
             '<p class="modlabel">Assessed recordings</p>'
             f'<ul class="rec-list">{"".join(rec_items)}</ul>'
         )
-
     body = f"""
 <p class="crumb"><a href="../index.html">Catalogue</a> / {escape(surname(name))}</p>
 <div class="page-head">
@@ -407,18 +422,57 @@ for (cid, name, dates), works in composers:
 <tbody>{rows}</tbody></table>
 {assessed_block}
 """
-    (COMP_DIR / f"{cid}.html").write_text(
-        shell(name, body, build_index(depth=1), depth=1, current="catalogue"),
+    return shell(
+        name,
+        body,
+        build_index(depth=1, composer_id=cid),
+        depth=1,
+        current="catalogue",
+        scope="composer",
+    )
+
+
+def composer_by_id(cid: str) -> tuple[str, str, str, list]:
+    for (id_, name, dates), works in composers:
+        if id_ == cid:
+            return id_, name, dates, works
+    raise KeyError(cid)
+
+
+def main() -> None:
+    DOCS.mkdir(exist_ok=True)
+    if COMP_DIR.exists():
+        shutil.rmtree(COMP_DIR)
+    COMP_DIR.mkdir(parents=True)
+
+    (DOCS / "index.html").write_text(
+        shell(
+            "Catalogue",
+            index_body,
+            build_index(depth=0),
+            depth=0,
+            current="catalogue",
+            scope="catalogue",
+        ),
         "utf-8",
     )
 
-# Mirror composers/ next to root index for legacy Pages (/)
-root_comp = ROOT / "composers"
-if root_comp.exists():
-    shutil.rmtree(root_comp)
-shutil.copytree(COMP_DIR, root_comp)
+    for (cid, name, dates), works in composers:
+        (COMP_DIR / f"{cid}.html").write_text(
+            composer_hub(cid, name, dates, works),
+            "utf-8",
+        )
 
-print(
-    f"docs/index.html · {n_composers} composer pages in docs/composers/ · "
-    f"{n_works} works · {n_done} assessed"
-)
+    root_comp = ROOT / "composers"
+    if root_comp.exists():
+        shutil.rmtree(root_comp)
+    shutil.copytree(COMP_DIR, root_comp)
+
+    print(
+        f"docs/index.html · {n_composers} composer pages in docs/composers/ · "
+        f"{n_works} works · {n_done} assessed"
+    )
+
+
+if __name__ == "__main__":
+    main()

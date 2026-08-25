@@ -1,8 +1,14 @@
-"""Sealed work pages: no global related / recommended / trending feed.
+"""Sealed work pages under a composer hub.
 
-D only. Empty related is correct. A Brandenburg page must not be fed
-Symphony No. 5 (or any other composer's work) via loose tokens or
-popularity. The review board must not grow a cross-work suggestion rail.
+A: a work page is one work (composer + catalogue / work_id). Empty related
+is correct. A Brandenburg page must not be fed Symphony No. 5, Tosca, or any
+other composer's work via loose tokens or popularity.
+
+B: the composer hub lists that composer's works and links into the sealed
+pages. Navigation is catalogue → composer hub → sealed work page.
+
+D (parent): no global related / recommended / trending feed. The review
+board must not grow a cross-work suggestion rail.
 """
 
 from __future__ import annotations
@@ -24,6 +30,7 @@ def _load(name: str, relpath: str):
 
 href = _load("work_href", "site/work_href.py")
 rnd = _load("render_site", "site/render.py")
+site = _load("build_site", "site/build_site.py")
 
 
 FEED_PHRASES = (
@@ -33,6 +40,15 @@ FEED_PHRASES = (
     "related works",
     "follow the thread",
     "popular now",
+)
+
+FOREIGN_ON_BRANDENBURG = (
+    "symphony no. 5",
+    "dmitri shostakovich",
+    "tosca",
+    "giacomo puccini",
+    "shostakovich/sym5",
+    "puccini_tosca",
 )
 
 
@@ -51,7 +67,12 @@ def _html_for(work: dict, cat: dict) -> str:
     tpl = (ROOT / "site/template.html").read_text(encoding="utf-8")
     title = f"{work['title']} — {work['composer']}"
     return rnd.apply_template(
-        tpl, rnd.seal_catalogue(cat, work), [], base="../", title=title
+        tpl,
+        rnd.seal_catalogue(cat, work),
+        [],
+        base="../",
+        title=title,
+        crumb=rnd.work_crumb(work, base="../"),
     )
 
 
@@ -60,6 +81,12 @@ class TestWorkHrefs(unittest.TestCase):
         self.assertEqual(href.work_anchor("bach_brandenburg"), "bach_brandenburg")
         self.assertEqual(href.work_anchor("shostakovich/sym5"), "shostakovich_sym5")
         self.assertEqual(href.work_anchor("puccini_tosca"), "puccini_tosca")
+
+    def test_composer_id_from_work_id_not_from_title(self):
+        self.assertEqual(href.composer_id_of("bach_brandenburg"), "bach")
+        self.assertEqual(href.composer_id_of("bach/brandenburg"), "bach")
+        self.assertEqual(href.composer_id_of("shostakovich/sym5"), "shostakovich")
+        self.assertEqual(href.composer_id_of("puccini_tosca"), "puccini")
 
     def test_page_href_is_sealed_work_file(self):
         self.assertEqual(
@@ -72,6 +99,10 @@ class TestWorkHrefs(unittest.TestCase):
             ),
             "../works/shostakovich_sym5.html#shostakovich_sym5_nelsons",
         )
+        self.assertEqual(
+            href.composer_page_href("bach", depth=1),
+            "../composers/bach.html",
+        )
 
 
 class TestSealCatalogue(unittest.TestCase):
@@ -80,6 +111,7 @@ class TestSealCatalogue(unittest.TestCase):
         bach = _work(cat, "brandenburg")
         sealed = rnd.seal_catalogue(cat, bach)
         self.assertEqual([w["id"] for w in sealed["works"]], [bach["id"]])
+        self.assertEqual(sealed["works"][0]["composer_id"], "bach")
         titles = {w["title"] for w in sealed["works"]}
         self.assertNotIn("Symphony No. 5", titles)
         self.assertNotIn("Tosca", titles)
@@ -100,13 +132,12 @@ class TestSealedWorkPageHtml(unittest.TestCase):
         html = _html_for(_work(cat, "brandenburg"), cat)
         self.assertIn("Brandenburg Concertos", html)
         self.assertIn("Trevor Pinnock", html)
-        self.assertNotIn("Symphony No. 5", html)
-        self.assertNotIn("Dmitri Shostakovich", html)
-        self.assertNotIn("Tosca", html)
-        self.assertNotIn("Giacomo Puccini", html)
-        self.assertNotIn("shostakovich/sym5", html)
-        self.assertNotIn("puccini_tosca", html)
+        low = html.lower()
+        for phrase in FOREIGN_ON_BRANDENBURG:
+            self.assertNotIn(phrase, low, phrase)
         self.assertIn("const WORK_INDEX = []", html)
+        self.assertIn("composers/bach.html", html)
+        self.assertIn("Catalogue", html)
 
     def test_symphony_5_page_is_not_fed_brandenburg(self):
         cat = _catalogue()
@@ -114,6 +145,7 @@ class TestSealedWorkPageHtml(unittest.TestCase):
         self.assertIn("Symphony No. 5", html)
         self.assertNotIn("Brandenburg Concertos", html)
         self.assertNotIn("Tosca", html)
+        self.assertIn("composers/shostakovich.html", html)
 
     def test_work_page_has_no_global_related_feed(self):
         cat = _catalogue()
@@ -121,12 +153,24 @@ class TestSealedWorkPageHtml(unittest.TestCase):
         for phrase in FEED_PHRASES:
             self.assertNotIn(phrase, html, phrase)
 
+    def test_work_page_find_hint_does_not_name_another_work(self):
+        cat = _catalogue()
+        html = _html_for(_work(cat, "brandenburg"), cat)
+        self.assertIn("Find on this page", html)
+        self.assertNotIn("try pinnock, tosca", html.lower())
+
     def test_entries_directory_does_not_dump_work_bodies(self):
         cat = _catalogue()
         tpl = (ROOT / "site/template.html").read_text(encoding="utf-8")
         index = [rnd.work_index_row(w) for w in cat["works"]]
         html = rnd.apply_template(
-            tpl, rnd.directory_catalogue(cat), index, base="", title="Entries"
+            tpl,
+            rnd.directory_catalogue(cat),
+            index,
+            base="",
+            title="Entries",
+            find_placeholder="Composer, work or recording",
+            entries_current=True,
         )
         self.assertIn('"works": []', html)
         self.assertNotIn("Trevor Pinnock, harpsichord", html)
@@ -134,6 +178,56 @@ class TestSealedWorkPageHtml(unittest.TestCase):
         self.assertIn('"anchor": "bach_brandenburg"', html)
         self.assertIn('"anchor": "shostakovich_sym5"', html)
         self.assertIn("works/${esc(w.anchor)}.html", html)
+        self.assertIn("composer_id", html)
+
+
+class TestComposerHub(unittest.TestCase):
+    def test_bach_hub_index_is_composer_strict(self):
+        idx = site.build_index(depth=1, composer_id="bach")
+        labels = {item["label"] for item in idx}
+        self.assertIn("Johann Sebastian Bach", labels)
+        self.assertIn("Brandenburg Concertos", labels)
+        self.assertNotIn("Tosca", labels)
+        self.assertNotIn("Symphony No. 5", labels)
+        self.assertNotIn("Dmitri Shostakovich", labels)
+        self.assertNotIn("Giacomo Puccini", labels)
+        blob = json.dumps(idx).lower()
+        self.assertNotIn("shostakovich", blob)
+        self.assertNotIn("puccini", blob)
+        self.assertNotIn("tosca", blob)
+        hrefs = " ".join(item["href"] for item in idx)
+        self.assertIn("bach_brandenburg.html", hrefs)
+        self.assertNotIn("shostakovich_sym5", hrefs)
+
+    def test_catalogue_index_still_lists_composers(self):
+        idx = site.build_index(depth=0)
+        kinds = {item["kind"] for item in idx}
+        self.assertIn("composer", kinds)
+        hrefs = {item["href"] for item in idx if item["kind"] == "composer"}
+        self.assertIn("composers/bach.html", hrefs)
+        self.assertIn("composers/shostakovich.html", hrefs)
+
+    def test_bach_hub_html_lists_works_and_links_sealed_page(self):
+        cid, name, dates, works = site.composer_by_id("bach")
+        html = site.composer_hub(cid, name, dates, works)
+        self.assertIn("Brandenburg Concertos", html)
+        self.assertIn("../works/bach_brandenburg.html", html)
+        self.assertIn("open work", html)
+        self.assertIn('href="../index.html"', html)
+        low = html.lower()
+        self.assertNotIn("dmitri shostakovich", low)
+        self.assertNotIn("tosca", low)
+        self.assertNotIn("symphony no. 5", low)
+        self.assertNotIn("giacomo puccini", low)
+        # Hub find is this composer only — no global token dump.
+        self.assertIn('const SCOPE = "composer"', html)
+
+    def test_bach_hub_does_not_list_foreign_works_in_the_table(self):
+        cid, name, dates, works = site.composer_by_id("bach")
+        titles = {w["title"] for w in works}
+        self.assertIn("Brandenburg Concertos", titles)
+        self.assertNotIn("Symphony No. 5", titles)
+        self.assertNotIn("Tosca", titles)
 
 
 class TestGalleryAndReviewHaveNoGlobalRelated(unittest.TestCase):

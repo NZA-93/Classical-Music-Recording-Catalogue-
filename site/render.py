@@ -10,7 +10,7 @@ import sys
 from html import escape
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from work_href import work_anchor  # noqa: E402
+from work_href import composer_id_of, work_anchor  # noqa: E402
 
 ROOT = pathlib.Path(".")
 DOCS = ROOT / "docs"
@@ -19,12 +19,16 @@ CATALOGUE_MARKER = "/*__CATALOGUE__*/{}"
 WORK_INDEX_MARKER = "/*__WORK_INDEX__*/[]"
 TITLE_MARKER = "{{TITLE}}"
 BASE_MARKER = "{{BASE}}"
+FIND_PLACEHOLDER_MARKER = "{{FIND_PLACEHOLDER}}"
+ENTRIES_CURRENT_MARKER = "{{ENTRIES_CURRENT}}"
+WORK_CRUMB_MARKER = "{{WORK_CRUMB}}"
 
 
 def work_index_row(work: dict) -> dict:
     return {
         "id": work["id"],
         "anchor": work_anchor(work["id"]),
+        "composer_id": composer_id_of(work["id"]),
         "title": work.get("title") or "",
         "composer": work.get("composer") or "",
         "dates": work.get("dates") or "",
@@ -50,7 +54,9 @@ def seal_catalogue(cat: dict, work: dict) -> dict:
             idx[bc] = hit
     drop = ("works", "barcode_index", "composers")
     out = {k: v for k, v in cat.items() if k not in drop}
-    out["works"] = [work]
+    sealed = dict(work)
+    sealed["composer_id"] = composer_id_of(work["id"])
+    out["works"] = [sealed]
     out["barcode_index"] = idx
     return out
 
@@ -64,17 +70,50 @@ def directory_catalogue(cat: dict) -> dict:
     return out
 
 
-def apply_template(tpl: str, cat_obj: dict, index: list, *, base: str, title: str) -> str:
+def work_crumb(work: dict, *, base: str) -> str:
+    """Catalogue → composer hub → this work. No sibling works."""
+    cid = composer_id_of(work["id"])
+    parts = str(work.get("composer") or "").split()
+    surname = parts[-1] if parts else cid
+    title = work.get("title") or work_anchor(work["id"])
+    return (
+        f'<p class="crumb"><a href="{escape(base)}index.html">Catalogue</a> / '
+        f'<a href="{escape(base)}composers/{escape(cid)}.html">{escape(surname)}</a> / '
+        f"{escape(title)}</p>"
+    )
+
+
+def apply_template(
+    tpl: str,
+    cat_obj: dict,
+    index: list,
+    *,
+    base: str,
+    title: str,
+    find_placeholder: str = "Find on this page",
+    entries_current: bool = False,
+    crumb: str = "",
+) -> str:
     if CATALOGUE_MARKER not in tpl:
         raise SystemExit("template is missing the catalogue marker")
     if WORK_INDEX_MARKER not in tpl:
         raise SystemExit("template is missing the work-index marker")
     if TITLE_MARKER not in tpl or BASE_MARKER not in tpl:
         raise SystemExit("template is missing {{TITLE}} / {{BASE}} markers")
+    if FIND_PLACEHOLDER_MARKER not in tpl:
+        raise SystemExit("template is missing the find-placeholder marker")
+    if WORK_CRUMB_MARKER not in tpl:
+        raise SystemExit("template is missing the work-crumb marker")
     html = tpl.replace(CATALOGUE_MARKER, json.dumps(cat_obj, ensure_ascii=False))
     html = html.replace(WORK_INDEX_MARKER, json.dumps(index, ensure_ascii=False))
     html = html.replace(TITLE_MARKER, escape(title))
     html = html.replace(BASE_MARKER, base)
+    html = html.replace(FIND_PLACEHOLDER_MARKER, escape(find_placeholder))
+    html = html.replace(
+        ENTRIES_CURRENT_MARKER,
+        ' aria-current="page"' if entries_current else "",
+    )
+    html = html.replace(WORK_CRUMB_MARKER, crumb)
     return html
 
 
@@ -106,6 +145,9 @@ def main() -> None:
             [],  # sealed: no cross-work directory, no related feed
             base="../",
             title=title,
+            find_placeholder="Find on this page",
+            entries_current=False,
+            crumb=work_crumb(work, base="../"),
         )
         write(docs_works / f"{anchor}.html", html)
 
@@ -115,6 +157,9 @@ def main() -> None:
         index,
         base="",
         title="Entries",
+        find_placeholder="Composer, work or recording",
+        entries_current=True,
+        crumb="",
     )
     write(DOCS / "entries.html", entries)
 
