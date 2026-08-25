@@ -26,7 +26,7 @@ For each field: **payload present** (shown on the board) or **payload absent** (
 | `release_group_mbid` | payload present (shown) | proposal.payload.mbid | shown + MusicBrainz link (this is a release-group id) |
 | `release_mbid` | payload absent (blank) | harvest stores release-group MBID only | blank — payload-absent |
 | `why_it_missed` | derived from present fields (shown) | review_flags + seed.year vs mb_first_release + title string compare | shown — only from actual mismatches; never invented |
-| `remake_siblings` | derived from present fields (shown) | other seed candidates with the same work_id (or composer+catalogue), different year | shown when present — never matched on a shared nickname across composers |
+| `remake_siblings` | derived from present fields (shown) | composer checked first, then same work_id (or composer+catalogue), different year | shown when present — never matched on a shared nickname across composers |
 | `community_notes` | payload present (shown) | data/community/comments.json | amber when present |
 | `pack_id` | payload present (shown) | review queue pack_id | shown |
 

@@ -4,6 +4,10 @@ A work page is sealed: one work (composer + catalogue / work_id), no global
 related / recommended / trending payload. Cross-composer nickname matches
 ("Symphony No. 5") are not a reason to put another work on the page.
 
+C: other works on the same disc live on the recording as `on_this_disc`,
+keyed by barcode or release MBID — never by title tokens. They are not a
+work-page feed.
+
 Navigation is catalogue → composer hub → sealed work page. Sibling works of
 the same composer live on the hub, not on the work page.
 """

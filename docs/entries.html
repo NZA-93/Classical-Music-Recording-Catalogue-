@@ -173,6 +173,14 @@
   .anchors .what{font-size:.92rem;color:var(--ink-soft)}
   .anchors .t{font-family:"IBM Plex Mono",monospace;font-size:.62rem;color:var(--ink-soft)}
 
+  /* C: couplings sit on the recording card, never as a work-page related rail. */
+  .on-disc{list-style:none;margin:0 0 1.6rem;max-width:38rem;display:grid;gap:.45rem}
+  .on-disc li{padding-left:.9rem;border-left:1px solid var(--hair)}
+  .on-disc a{color:inherit;text-decoration:none;font-family:"Bodoni Moda",serif;font-size:.95rem}
+  .on-disc a:hover,.on-disc a:focus-visible{color:var(--verdigris)}
+  .on-disc .sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+    font-weight:500;color:var(--ink-soft);margin-top:.12rem}
+
   table{width:100%;border-collapse:collapse;margin-top:.5rem;font-size:.82rem}
   th{text-align:left;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.58rem;
     letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
@@ -295,7 +303,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-08-22", "works": [], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-08-25", "works": [], "barcode_index": {}};
 const WORK_INDEX = [{"id": "bach_brandenburg", "anchor": "bach_brandenburg", "composer_id": "bach", "title": "Brandenburg Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1046–1051 · 1721", "recordings": ["bach_brandenburg_pinnock", "bach_brandenburg_harnoncourt"]}, {"id": "shostakovich/sym5", "anchor": "shostakovich_sym5", "composer_id": "shostakovich", "title": "Symphony No. 5", "composer": "Dmitri Shostakovich", "dates": "1906–1975", "cat": "Op. 47 · D minor · 1937", "recordings": ["shostakovich_sym5_nelsons", "shostakovich_sym5_mravinsky", "shostakovich_sym5_noseda"]}, {"id": "puccini_tosca", "anchor": "puccini_tosca", "composer_id": "puccini", "title": "Tosca", "composer": "Giacomo Puccini", "dates": "1858–1924", "cat": "Teatro Costanzi, Rome · 14 January 1900", "recordings": ["puccini_tosca_desabata", "puccini_tosca_karajan"]}];
 const BASE = "";
 
@@ -377,6 +385,22 @@ function anchors(list){
     <li><span class="where">${esc(a.where)}</span>
       <span class="what">${esc(a.listen_for)}</span>
       ${a.timing?`<span class="t">${esc(a.timing)}</span>`:""}</li>`).join("")}</ul>`;
+}
+
+function onThisDisc(r){
+  /* Card only. Empty means this release does not share a barcode or
+     release MBID with another assessed work — not a missing related feed. */
+  const items=r.on_this_disc||[];
+  if(!items.length) return "";
+  const lis=items.map(w=>{
+    const label=esc(w.title||w.work_id);
+    const sub=[w.composer,w.edition_label].filter(Boolean).map(esc).join(" · ");
+    const title=w.anchor
+      ?`<a href="${esc(BASE)}works/${esc(w.anchor)}.html">${label}</a>`
+      :`<span>${label}</span>`;
+    return `<li>${title}${sub?`<span class="sub">${sub}</span>`:""}</li>`;
+  }).join("");
+  return `<p class="modlabel">On this disc</p><ul class="on-disc">${lis}</ul>`;
 }
 
 function editions(r){
@@ -492,6 +516,7 @@ function entry(r){
       ${signed(r)}\n      ${credits(r.engineering)}
       ${anchors(r.anchors)}
       ${editions(r)}
+      ${onThisDisc(r)}
       ${un?"":`<p class="ev-label" style="margin-top:1.6rem">Influence — who the interpretation verdict rests on</p>
       <div class="influence">${influence(r)}</div>
       <p class="ev-label" style="margin-top:1.1rem">Agreement — where each source landed</p>
@@ -506,7 +531,8 @@ const workDomId=w=>String(w.id).replace(/\//g,"_");
 
 /* A: work pages are sealed to one work (composer + catalogue / work_id).
    Never render another work beside this one. Empty related is correct.
-   Title fragments such as a shared number must not pull another composer in. */
+   Title fragments such as a shared number must not pull another composer in.
+   C: On this disc is rendered inside entry() only — not as a work-level feed. */
 function composerSlug(w){
   if(w.composer_id) return String(w.composer_id);
   const id=String(w.id||"");
