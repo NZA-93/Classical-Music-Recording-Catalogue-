@@ -21,7 +21,7 @@ from work_href import composer_id_of, work_anchor  # noqa: E402
 
 # Works that may emit identity-only public pages this slice. Content is
 # always the work's assessed IDs; add a work id here to publish it.
-# Goldberg stays on ( /0 and /1 only — seed.assessed excludes /3 and /4 ).
+# Goldberg stays on ( /0, /1, /4 — seed.assessed excludes /3 Perahia ).
 FIRST_SLICE_WORKS = frozenset({
     "bach/goldberg",
     "bach/cello_suites",
