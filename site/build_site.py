@@ -399,6 +399,19 @@ index_body = f"""
 """
 
 
+def assessed_who(r: dict) -> str:
+    """Hub assessed-list name. Identity cards match identityLine (soloist first)."""
+    if r.get("card") == "identity":
+        who = " — ".join(
+            x for x in (r.get("soloists"), r.get("director"), r.get("ensemble")) if x
+        )
+    else:
+        who = " — ".join(
+            x for x in (r.get("director"), r.get("ensemble")) if x
+        ) or (r.get("soloists") or "")
+    return who or r["id"]
+
+
 def composer_hub(cid: str, name: str, dates: str, works: list) -> str:
     """One composer: that composer's works only, linking into sealed work pages."""
     dn = sum(1 for w in works if done.get(w["id"]))
@@ -406,9 +419,7 @@ def composer_hub(cid: str, name: str, dates: str, works: list) -> str:
     rec_items = []
     for w in works:
         for r in done.get(w["id"], []):
-            who = " — ".join(
-                x for x in (r.get("director"), r.get("ensemble")) if x
-            ) or (r.get("soloists") or r["id"])
+            who = assessed_who(r)
             rec_items.append(
                 f'<li><a href="{escape(work_page_href(w["id"], depth=1, recording_id=r["id"]))}">{escape(who)}</a>'
                 f'<span class="sub">{escape(w["title"])} · {escape(r.get("published") or "")}</span></li>'
