@@ -303,8 +303,8 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-08-25", "works": [], "barcode_index": {}};
-const WORK_INDEX = [{"id": "bach_brandenburg", "anchor": "bach_brandenburg", "composer_id": "bach", "title": "Brandenburg Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1046–1051 · 1721", "recordings": ["bach_brandenburg_pinnock", "bach_brandenburg_harnoncourt"]}, {"id": "shostakovich/sym5", "anchor": "shostakovich_sym5", "composer_id": "shostakovich", "title": "Symphony No. 5", "composer": "Dmitri Shostakovich", "dates": "1906–1975", "cat": "Op. 47 · D minor · 1937", "recordings": ["shostakovich_sym5_nelsons", "shostakovich_sym5_mravinsky", "shostakovich_sym5_noseda"]}, {"id": "puccini_tosca", "anchor": "puccini_tosca", "composer_id": "puccini", "title": "Tosca", "composer": "Giacomo Puccini", "dates": "1858–1924", "cat": "Teatro Costanzi, Rome · 14 January 1900", "recordings": ["puccini_tosca_desabata", "puccini_tosca_karajan"]}];
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-08-27", "works": [], "barcode_index": {}};
+const WORK_INDEX = [{"id": "bach_brandenburg", "anchor": "bach_brandenburg", "composer_id": "bach", "title": "Brandenburg Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1046–1051 · 1721", "recordings": ["bach_brandenburg_pinnock", "bach_brandenburg_harnoncourt"]}, {"id": "shostakovich/sym5", "anchor": "shostakovich_sym5", "composer_id": "shostakovich", "title": "Symphony No. 5", "composer": "Dmitri Shostakovich", "dates": "1906–1975", "cat": "Op. 47 · D minor · 1937", "recordings": ["shostakovich_sym5_nelsons", "shostakovich_sym5_mravinsky", "shostakovich_sym5_noseda"]}, {"id": "puccini_tosca", "anchor": "puccini_tosca", "composer_id": "puccini", "title": "Tosca", "composer": "Giacomo Puccini", "dates": "1858–1924", "cat": "Teatro Costanzi, Rome · 14 January 1900", "recordings": ["puccini_tosca_desabata", "puccini_tosca_karajan"]}, {"id": "bach/goldberg", "anchor": "bach_goldberg", "composer_id": "bach", "title": "Goldberg Variations", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 988 · 1741", "recordings": ["bach/goldberg/0", "bach/goldberg/1"]}];
 const BASE = "";
 
 const DOMAIN=[2.40,3.00], THRESHOLD=2.70;
@@ -505,7 +505,19 @@ function signed(r){
   </div>`;
 }
 
+function identityLine(r){
+  /* Performers and label as seeded. Scored furniture stays off this card. */
+  const who=[r.soloists,r.director,r.ensemble].filter(Boolean).map(esc).join(" — ");
+  return `<article class="entry identity" id="${esc(r.id)}">
+    ${plate(r)}
+    <div>
+      <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
+    </div>
+  </article>`;
+}
+
 function entry(r){
+  if(r.card==="identity") return identityLine(r);
   const un = r.interpretation===null;
   return `<article class="entry" id="${esc(r.id)}">
     ${plate(r)}
@@ -549,15 +561,29 @@ function composerSlug(w){
 })();
 
 function workSection(w){
-  const refs=w.recordings.filter(r=>r.reference).length;
-  const eds=w.recordings.reduce((a,r)=>a+r.editions.length,0);
+  const recs=w.recordings||[];
+  const identity=recs.length>0 && recs.every(r=>r.card==="identity");
+  if(identity){
+    return `<section class="work" id="${esc(workDomId(w))}">
+      <div class="work-head">
+        <p class="eyebrow">${esc(w.composer)} · ${esc(w.dates)}</p>
+        <h2>${esc(w.title)}</h2>
+        <p class="cat">${esc(w.cat)}</p>
+        ${w.standfirst?`<p class="standfirst">${esc(w.standfirst)}</p>`:""}
+        <p class="strip"><span>${recs.length} recordings</span></p>
+      </div>
+      ${recs.map(identityLine).join("")}
+    </section>`;
+  }
+  const refs=recs.filter(r=>r.reference).length;
+  const eds=recs.reduce((a,r)=>a+(r.editions||[]).length,0);
   return `<section class="work" id="${esc(workDomId(w))}">
     <div class="work-head">
       <p class="eyebrow">${esc(w.composer)} · ${esc(w.dates)}</p>
       <h2>${esc(w.title)}</h2>
       <p class="cat">${esc(w.cat)}</p>
       <p class="standfirst">${esc(w.standfirst)}</p>
-      <p class="strip"><span>${w.recordings.length} recordings</span>
+      <p class="strip"><span>${recs.length} recordings</span>
         <span>${eds} editions tracked</span><span>${refs} référence</span></p>
     </div>
     <div class="legend">
@@ -566,7 +592,7 @@ function workSection(w){
       <p><b>Sound is scored per edition</b>, not per recording. A great performance in a bad transfer is a bad purchase.</p>
       <p><b>Citation</b> — a source links only when a locator is on file (URL, issue, or page). No locator means attributed, not linked.</p>
     </div>
-    ${w.recordings.map(entry).join("")}
+    ${recs.map(entry).join("")}
   </section>`;
 }
 
