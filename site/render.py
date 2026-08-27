@@ -11,6 +11,7 @@ from html import escape
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from disc import attach_on_this_disc  # noqa: E402
+from identity import merge_identity_works  # noqa: E402
 from work_href import composer_id_of, work_anchor  # noqa: E402
 
 ROOT = pathlib.Path(".")
@@ -128,9 +129,13 @@ def main() -> None:
     tpl_path = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "site/template.html")
     cat_path = pathlib.Path(sys.argv[2] if len(sys.argv) > 2 else "build/catalogue.json")
     tpl = tpl_path.read_text(encoding="utf-8")
+    seed = json.loads((ROOT / "data/seed.json").read_text(encoding="utf-8"))
     # Couplings must be baked onto recordings before the page is sealed
     # to one work; a sealed payload cannot see another work's editions.
-    cat = attach_on_this_disc(json.loads(cat_path.read_text(encoding="utf-8")))
+    # Identity pages (first slice) are merged from seed.works[].assessed,
+    # not from the candidate queue and not from engine scores.
+    raw = json.loads(cat_path.read_text(encoding="utf-8"))
+    cat = attach_on_this_disc(merge_identity_works(raw, seed))
     works = list(cat.get("works") or [])
     index = [work_index_row(w) for w in works]
 

@@ -17,6 +17,7 @@ from collections import defaultdict
 from html import escape
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from identity import public_identity_works  # noqa: E402
 from work_href import ALIAS, work_anchor, work_page_href  # noqa: E402
 
 ROOT = pathlib.Path(".")
@@ -33,6 +34,13 @@ done: dict[str, list] = defaultdict(list)
 for w in assessed.get("works", []):
     for r in w["recordings"]:
         done[ALIAS.get(w["id"], w["id"])].append(r)
+
+# First-slice identity pages: hub chip and links come from assessed IDs,
+# not candidate/queue count. Engine-scored works already in `done` win.
+for w in public_identity_works(seed):
+    wid = w["id"]
+    if not done.get(wid):
+        done[wid] = list(w["recordings"])
 
 by_composer: dict[tuple, list] = defaultdict(list)
 for w in seed["works"]:
@@ -400,7 +408,7 @@ def composer_hub(cid: str, name: str, dates: str, works: list) -> str:
         for r in done.get(w["id"], []):
             who = " — ".join(
                 x for x in (r.get("director"), r.get("ensemble")) if x
-            ) or r["id"]
+            ) or (r.get("soloists") or r["id"])
             rec_items.append(
                 f'<li><a href="{escape(work_page_href(w["id"], depth=1, recording_id=r["id"]))}">{escape(who)}</a>'
                 f'<span class="sub">{escape(w["title"])} · {escape(r.get("published") or "")}</span></li>'
