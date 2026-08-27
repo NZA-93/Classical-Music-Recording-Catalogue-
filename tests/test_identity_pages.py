@@ -1,8 +1,9 @@
 """Identity-only public pages from seed.works[].assessed (signed Bach).
 
 Public cards are the critic-signed assessed IDs, not the harvest queue and
-not engine scores. goldberg/3 (Perahia) and goldberg/4 (Schiff) stay
-candidates and must not appear. Held Bach works stay off this slice.
+not engine scores. goldberg/3 (Perahia) stays a candidate and must not
+appear. goldberg/4 (Schiff, Decca 1982) is assessed. Held Bach works stay
+off this slice.
 """
 
 from __future__ import annotations
@@ -15,7 +16,7 @@ import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-# Public identity cards in seed-work order (Goldberg /0 /1 plus the remaining ten).
+# Public identity cards in seed-work order (Goldberg /0 /1 /4 plus the remaining ten).
 SIGNED_IDENTITY_IDS = (
     "bach/violin_concertos/4",
     "bach/cello_suites/1",
@@ -23,6 +24,7 @@ SIGNED_IDENTITY_IDS = (
     "bach/sonatas_partitas/1",
     "bach/goldberg/0",
     "bach/goldberg/1",
+    "bach/goldberg/4",
     "bach/mass_b_minor/0",
     "bach/matthew/0",
     "bach/matthew/1",
@@ -61,14 +63,13 @@ HELD_EMPTY = (
     "bach/harpsichord_concertos",
 )
 
-QUEUE_NAMES_GOLDBERG = ("Perahia", "Landowska", "Schiff")
+QUEUE_NAMES_GOLDBERG = ("Perahia", "Landowska")
 
 # Performer/label strings that live only on unassessed candidates of enabled
 # works. Must not leak onto sealed identity pages or the hub assessed list.
 QUEUE_ONLY = (
     "Perahia",
     "Landowska",
-    "Schiff",
     "Pablo Casals",
     "Anner Bylsma",
     "Yo-Yo Ma",
@@ -157,12 +158,22 @@ def _page(wid: str) -> str:
 
 
 class TestSeedAssessedUnchanged(unittest.TestCase):
-    def test_goldberg_assessed_is_exactly_zero_and_one(self):
+    def test_goldberg_assessed_is_exactly_zero_one_and_four(self):
         work = _work(_seed(), "bach/goldberg")
-        self.assertEqual(work["assessed"], ["bach/goldberg/0", "bach/goldberg/1"])
+        self.assertEqual(
+            work["assessed"],
+            ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/4"],
+        )
         ids = [c["id"] for c in work["candidates"]]
         self.assertIn("bach/goldberg/3", ids)
         self.assertIn("bach/goldberg/4", ids)
+        self.assertNotIn("bach/goldberg/3", work["assessed"])
+        four = next(c for c in work["candidates"] if c["id"] == "bach/goldberg/4")
+        self.assertEqual(four["soloists"], "András Schiff")
+        self.assertEqual(four["label"], "Decca")
+        self.assertEqual(four["year"], "1982")
+        three = next(c for c in work["candidates"] if c["id"] == "bach/goldberg/3")
+        self.assertEqual(three["soloists"], "Murray Perahia")
 
     def test_remaining_ten_are_already_the_seed_assessed_set(self):
         seed = _seed()
@@ -192,9 +203,9 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertEqual([r["id"] for r in recs], list(SIGNED_IDENTITY_IDS))
         blob = json.dumps(works)
         self.assertNotIn("bach/goldberg/3", blob)
-        self.assertNotIn("bach/goldberg/4", blob)
         self.assertNotIn("Perahia", blob)
-        self.assertNotIn("Schiff", blob)
+        self.assertIn("bach/goldberg/4", blob)
+        self.assertIn("Schiff", blob)
         for rec in recs:
             self.assertEqual(rec["card"], "identity")
             self.assertNotIn("stars", rec)
@@ -204,16 +215,21 @@ class TestIdentityFromAssessed(unittest.TestCase):
             self.assertEqual(rec["sources"], [])
             self.assertIsNone(rec["editorial"])
 
-    def test_goldberg_facts_stay_columbia_1955_and_cbs_1981(self):
+    def test_goldberg_facts_stay_goulds_and_schiff_1982(self):
         gold = next(
             w for w in ident.public_identity_works(_seed()) if w["id"] == "bach/goldberg"
         )
         recs = gold["recordings"]
-        self.assertEqual([r["id"] for r in recs], ["bach/goldberg/0", "bach/goldberg/1"])
+        self.assertEqual(
+            [r["id"] for r in recs],
+            ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/4"],
+        )
         self.assertEqual(recs[0]["soloists"], "Glenn Gould")
         self.assertEqual(recs[0]["published"], "Columbia, 1955")
         self.assertEqual(recs[1]["soloists"], "Glenn Gould")
         self.assertEqual(recs[1]["published"], "CBS, 1981")
+        self.assertEqual(recs[2]["soloists"], "András Schiff")
+        self.assertEqual(recs[2]["published"], "Decca, 1982")
 
     def test_remaining_ten_carry_seed_identity_facts(self):
         recs = {
@@ -287,23 +303,25 @@ class TestGoldbergPublicHtml(unittest.TestCase):
         self.assertIn("Glenn Gould", html)
         self.assertIn("Columbia, 1955", html)
         self.assertIn("CBS, 1981", html)
+        self.assertIn("András Schiff", html)
+        self.assertIn("Decca, 1982", html)
         self.assertIn("bach/goldberg/0", html)
         self.assertIn("bach/goldberg/1", html)
+        self.assertIn("bach/goldberg/4", html)
         self.assertNotIn("bach/goldberg/3", html)
         self.assertNotIn("bach/goldberg/2", html)
-        self.assertNotIn("bach/goldberg/4", html)
         for name in QUEUE_NAMES_GOLDBERG:
             self.assertNotIn(name, html, name)
         cat = _embedded_catalogue(html)
         self.assertEqual([w["id"] for w in cat["works"]], ["bach/goldberg"])
         rec_ids = [r["id"] for r in cat["works"][0]["recordings"]]
-        self.assertEqual(rec_ids, ["bach/goldberg/0", "bach/goldberg/1"])
+        self.assertEqual(rec_ids, ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/4"])
 
     def test_candidate_queue_is_not_dumped(self):
         html = _page("bach/goldberg")
         cat = _embedded_catalogue(html)
         recs = cat["works"][0]["recordings"]
-        self.assertEqual(len(recs), 2)
+        self.assertEqual(len(recs), 3)
         blob = json.dumps(cat)
         self.assertNotIn('"candidates"', blob)
         self.assertNotIn("queued", html.lower())
@@ -370,19 +388,24 @@ class TestRemainingSignedPages(unittest.TestCase):
             self.assertIn(rid, html)
             blob = json.dumps(cat)
             self.assertNotIn("bach/goldberg/3", blob)
-            self.assertNotIn("bach/goldberg/4", blob)
             self.assertNotIn('"candidates"', blob)
             self.assertNotIn("queued", html.lower())
+            if wid != "bach/goldberg":
+                self.assertNotIn("bach/goldberg/4", blob)
 
-    def test_goldberg_three_and_four_absent_from_every_identity_page(self):
+    def test_goldberg_three_absent_four_only_on_goldberg_page(self):
         for wid in IDENTITY_WORKS:
             html = _page(wid)
             self.assertNotIn("bach/goldberg/3", html, wid)
-            self.assertNotIn("bach/goldberg/4", html, wid)
             self.assertNotIn("Perahia", html, wid)
-            self.assertNotIn("Schiff", html, wid)
             cat = _embedded_catalogue(html)
             rec_ids = [r["id"] for w in cat["works"] for r in w["recordings"]]
+            if wid == "bach/goldberg":
+                self.assertIn("bach/goldberg/4", rec_ids)
+                self.assertIn("Schiff", html)
+            else:
+                self.assertNotIn("bach/goldberg/4", html, wid)
+                self.assertNotIn("Schiff", html, wid)
             for rec_id in rec_ids:
                 rec = next(
                     r for w in cat["works"] for r in w["recordings"] if r["id"] == rec_id
@@ -412,20 +435,38 @@ class TestRemainingSignedPages(unittest.TestCase):
 
 
 class TestHubChipFromAssessed(unittest.TestCase):
-    def test_goldberg_chip_is_two_assessed_not_five_queued(self):
+    def test_goldberg_chip_is_three_assessed_not_five_queued(self):
         cid, name, dates, works = site.composer_by_id("bach")
         html = site.composer_hub(cid, name, dates, works)
         row = _hub_row(html, "bach_goldberg")
-        self.assertIn("2 assessed", row)
+        self.assertIn("3 assessed", row)
         self.assertNotIn("queued", row)
         self.assertIn("../works/bach_goldberg.html", row)
         self.assertIn("open work", row)
         self.assertNotIn("Perahia", html)
         self.assertNotIn("bach/goldberg/3", html)
-        self.assertNotIn("bach/goldberg/4", html)
         self.assertIn("Glenn Gould", html)
         self.assertIn("Columbia, 1955", html)
         self.assertIn("CBS, 1981", html)
+        self.assertIn("András Schiff", html)
+        self.assertIn("Decca, 1982", html)
+
+    def test_hub_assessed_list_names_soloist_not_only_ensemble(self):
+        cid, name, dates, works = site.composer_by_id("bach")
+        html = site.composer_hub(cid, name, dates, works)
+        start = html.index('class="rec-list"')
+        rec_list = html[start:html.index("</ul>", start)]
+        self.assertIn("Rachel Podger", rec_list)
+        self.assertIn("Rachel Podger — Brecon Baroque", rec_list)
+        self.assertNotRegex(
+            rec_list,
+            r'bach_violin_concertos\.html#[^"]+">Brecon Baroque<',
+        )
+        self.assertIn("Pierre Fournier", rec_list)
+        self.assertIn("Nathan Milstein", rec_list)
+        self.assertIn("András Schiff", rec_list)
+        self.assertNotIn("Perahia", rec_list)
+        self.assertIn("Trevor Pinnock — The English Concert", rec_list)
 
     def test_enabled_works_chip_from_assessed_ids_not_queue(self):
         cid, name, dates, works = site.composer_by_id("bach")
@@ -459,7 +500,7 @@ class TestHubChipFromAssessed(unittest.TestCase):
     def test_search_index_uses_assessed_count(self):
         idx = site.build_index(depth=1, composer_id="bach")
         gold = next(item for item in idx if item["label"] == "Goldberg Variations")
-        self.assertIn("2 assessed", gold["sub"])
+        self.assertIn("3 assessed", gold["sub"])
         self.assertNotIn("queued", gold["sub"])
         self.assertIn("bach_goldberg.html", gold["href"])
         cello = next(item for item in idx if item["label"] == "Cello Suites")
@@ -470,8 +511,8 @@ class TestHubChipFromAssessed(unittest.TestCase):
         self.assertIn("Glenn Gould", joined)
         self.assertIn("Pierre Fournier", joined)
         self.assertIn("Rachel Podger", joined)
+        self.assertIn("Schiff", joined)
         self.assertNotIn("Perahia", joined)
-        self.assertNotIn("Schiff", joined)
 
     def test_hub_stays_bach_only(self):
         cid, name, dates, works = site.composer_by_id("bach")
