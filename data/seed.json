@@ -505,7 +505,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": ["bach/goldberg/0", "bach/goldberg/1"]
+      "assessed": ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/4"]
     },
     {
       "id": "bach/wtc",
