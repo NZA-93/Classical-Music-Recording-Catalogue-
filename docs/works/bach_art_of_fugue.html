@@ -303,7 +303,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-08-27", "works": [{"id": "bach/art_of_fugue", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "The Art of Fugue", "cat": "BWV 1080 · c. 1740–50", "standfirst": "Instrumentation unspecified, which makes every recording an argument.", "recordings": [{"id": "bach/art_of_fugue/0", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1962", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": null, "on_this_disc": []}, {"id": "bach/art_of_fugue/3", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Emerson String Quartet", "director": "", "ensemble": "", "published": "Deutsche Grammophon, 2003", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-05", "works": [{"id": "bach/art_of_fugue", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "The Art of Fugue", "cat": "BWV 1080 · c. 1740–50", "standfirst": "Instrumentation unspecified, which makes every recording an argument.", "recordings": [{"id": "bach/art_of_fugue/0", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1962", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": null, "divergence": null, "on_this_disc": []}, {"id": "bach/art_of_fugue/3", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Emerson String Quartet", "director": "", "ensemble": "", "published": "Deutsche Grammophon, 2003", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": null, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -491,7 +491,7 @@ function signed(r){
     weighted consensus of published sources; it is not a listening report.</div>`;
   const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
   const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
-  const div = r.divergence!==null && r.divergence!==0
+  const div = Number.isFinite(r.divergence) && r.divergence!==0
     ? `<p class="diverge">The weighted consensus gives ${r.stars} ★ here. The signed entry gives
        ${e.stars}. The disagreement is deliberate; the reasoning is above.</p>` : "";
   return `<div class="signed">
@@ -506,12 +506,14 @@ function signed(r){
 }
 
 function identityLine(r){
-  /* Performers and label as seeded. Scored furniture stays off this card. */
+  /* Performers and label as seeded. Aggregate furniture stays off this card.
+     A Critic-signed entry (ADR-002) renders when present. */
   const who=[r.soloists,r.director,r.ensemble].filter(Boolean).map(esc).join(" — ");
   return `<article class="entry identity" id="${esc(r.id)}">
     ${plate(r)}
     <div>
       <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
+      ${r.editorial?signed(r):""}
     </div>
   </article>`;
 }

@@ -57,6 +57,22 @@ IDENTITY_WORKS = (
     "bach/art_of_fugue",
 )
 
+SIGNED_GOLDBERG = (
+    "bach/goldberg/0",
+    "bach/goldberg/1",
+    "bach/goldberg/4",
+)
+
+
+def _assert_no_aggregate(test, rec, rid=""):
+    """Identity cards may carry a Critic entry; they may not carry engine scores."""
+    test.assertEqual(rec.get("card"), "identity", rid)
+    test.assertNotIn("stars", rec, rid)
+    test.assertNotIn("interpretation", rec, rid)
+    test.assertNotIn("reference", rec, rid)
+    test.assertNotIn("confidence", rec, rid)
+    test.assertEqual(rec.get("sources"), [], rid)
+
 HELD_EMPTY = (
     "bach/suites",
     "bach/wtc",
@@ -207,13 +223,12 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertIn("bach/goldberg/4", blob)
         self.assertIn("Schiff", blob)
         for rec in recs:
-            self.assertEqual(rec["card"], "identity")
-            self.assertNotIn("stars", rec)
-            self.assertNotIn("interpretation", rec)
-            self.assertNotIn("reference", rec)
-            self.assertNotIn("confidence", rec)
-            self.assertEqual(rec["sources"], [])
-            self.assertIsNone(rec["editorial"])
+            _assert_no_aggregate(self, rec, rec["id"])
+            if rec["id"] in SIGNED_GOLDBERG:
+                self.assertIsNotNone(rec["editorial"], rec["id"])
+                self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+            else:
+                self.assertIsNone(rec["editorial"], rec["id"])
 
     def test_goldberg_facts_stay_goulds_and_schiff_1982(self):
         gold = next(
@@ -331,16 +346,13 @@ class TestGoldbergPublicHtml(unittest.TestCase):
         html = _page("bach/goldberg")
         cat = _embedded_catalogue(html)
         for rec in cat["works"][0]["recordings"]:
-            self.assertEqual(rec.get("card"), "identity")
-            self.assertNotIn("stars", rec)
-            self.assertNotIn("interpretation", rec)
-            self.assertNotIn("reference", rec)
-            self.assertEqual(rec.get("sources"), [])
-            self.assertIsNone(rec.get("editorial"))
+            _assert_no_aggregate(self, rec, rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
         start = html.index("function identityLine(r)")
         scored = html.index("function entry(r)")
         identity_fn = html[start:scored]
         self.assertNotIn("scorebox", identity_fn)
+        self.assertIn("signed(", identity_fn)
         self.assertNotIn("Référence", identity_fn)
         self.assertNotIn("★", identity_fn)
         work_fn = html[html.index("function workSection(w)"):html.index("function renderWorkDirectory")]
@@ -349,10 +361,33 @@ class TestGoldbergPublicHtml(unittest.TestCase):
             _merged(),
             next(w for w in _merged()["works"] if w["id"] == "bach/goldberg"),
         )
-        payload = json.dumps(sealed)
-        self.assertNotIn('"stars"', payload)
-        self.assertNotIn('"interpretation"', payload)
-        self.assertNotIn('"reference"', payload)
+        for rec in sealed["works"][0]["recordings"]:
+            _assert_no_aggregate(self, rec, rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
+
+    def test_goldberg_signed_entries_are_on_the_cards(self):
+        html = _page("bach/goldberg")
+        cat = _embedded_catalogue(html)
+        recs = {r["id"]: r for r in cat["works"][0]["recordings"]}
+        zero = recs["bach/goldberg/0"]["editorial"]
+        one = recs["bach/goldberg/1"]["editorial"]
+        four = recs["bach/goldberg/4"]["editorial"]
+        self.assertEqual(zero["stars"], 3)
+        self.assertTrue(zero["reference"])
+        self.assertIn("Columbia Masterworks ML 5060", zero["text"])
+        self.assertEqual(zero["quotes"], [])
+        self.assertEqual(one["stars"], 3)
+        self.assertFalse(one["reference"])
+        self.assertIn("CBS Masterworks Digital IM 37779", one["text"])
+        self.assertEqual(four["stars"], 2)
+        self.assertFalse(four["reference"])
+        self.assertIn("Decca 417 116-2", four["text"])
+        self.assertNotIn("bach/goldberg/3", html)
+        self.assertNotIn("Perahia", html)
+        self.assertIn("function signed(r)", html)
+        self.assertIn("Number.isFinite(r.divergence)", html)
+        for rec in recs.values():
+            self.assertIsNone(rec.get("divergence"), rec["id"])
 
     def test_sealed_no_global_related_feed(self):
         html = _page("bach/goldberg")
@@ -379,12 +414,8 @@ class TestRemainingSignedPages(unittest.TestCase):
             ids = [r["id"] for r in recs]
             self.assertIn(rid, ids, rid)
             rec = next(r for r in recs if r["id"] == rid)
-            self.assertEqual(rec.get("card"), "identity", rid)
-            self.assertNotIn("stars", rec)
-            self.assertNotIn("interpretation", rec)
-            self.assertNotIn("reference", rec)
-            self.assertEqual(rec.get("sources"), [])
-            self.assertIsNone(rec.get("editorial"))
+            _assert_no_aggregate(self, rec, rid)
+            self.assertIsNone(rec.get("editorial"), rid)
             self.assertIn(rid, html)
             blob = json.dumps(cat)
             self.assertNotIn("bach/goldberg/3", blob)
@@ -410,9 +441,7 @@ class TestRemainingSignedPages(unittest.TestCase):
                 rec = next(
                     r for w in cat["works"] for r in w["recordings"] if r["id"] == rec_id
                 )
-                self.assertEqual(rec.get("card"), "identity")
-                self.assertNotIn("stars", rec)
-                self.assertNotIn("reference", rec)
+                _assert_no_aggregate(self, rec, rec_id)
 
     def test_queues_are_not_dumped_on_enabled_pages(self):
         for wid in IDENTITY_WORKS:
@@ -529,8 +558,9 @@ class TestTemplateIdentityPath(unittest.TestCase):
         entry = tpl.index("function entry(r)")
         work = tpl.index("function workSection(w)")
         identity = tpl[start:entry]
-        for token in ("scorebox", "signed(", "sources(", "Référence", "★"):
+        for token in ("scorebox", "sources(", "Référence", "★"):
             self.assertNotIn(token, identity, token)
+        self.assertIn("signed(", identity)
         self.assertIn('if(r.card==="identity") return identityLine(r)', tpl[entry:work])
         self.assertIn("recs.every(r=>r.card===\"identity\")", tpl[work:])
         self.assertIn("${recs.map(identityLine).join(\"\")}", tpl[work:])
