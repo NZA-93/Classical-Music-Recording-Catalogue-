@@ -1,0 +1,27 @@
+{
+  "work_id": "bach/matthew",
+  "entries": [
+    {
+      "recording": "bach/matthew/0",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-05",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": ["bach/matthew/1"],
+      "text": "Columbia / Angel / EMI — Abbey Road and Kingsway Hall, sessions spanning November 1960 to November 1961 (seed year 1961; first issue 1962); Philharmonia Orchestra and Chorus, Otto Klemperer — is the monumental modern-instrument studio Passion with Pears, Fischer-Dieskau, Schwarzkopf, Ludwig, Gedda, Berry. Opening chorus near twelve minutes; Grammy Best Choral Performance 1963; still kept in Great Recordings of the Century. Against Gardiner’s 1988 Archiv HIP set it is the opposite stance: opera-house cast, large chorus, contested tempo, not a period workshop. Some Evangelist recitatives were re-taken by Pears with continuo without Klemperer’s knowledge — a production fact about these tapes, not a second recording. Three stars: the assessed modern monument, not the Référence on this cut.",
+      "quotes": []
+    },
+    {
+      "recording": "bach/matthew/1",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-05",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": ["bach/matthew/0"],
+      "text": "Archiv 427 648-2 — April 1988, Snape Maltings; Monteverdi Choir and English Baroque Soloists; Naegler / Vette; street September 1989 — is Gardiner’s first complete Matthew Passion, not the 2016–17 SDG live remake and not the Archiv highlights disc. Gramophone’s October 1989 notice already heard theatrical sense and named Rolfe Johnson and Schmidt; the 1990 Gramophone Award for Baroque Vocal locked the set in the HIP studio canon. Against Klemperer’s Philharmonia epic it restores period instruments, tighter drama, and NBA/Bärenreiter 1972 as the scored face. Référence among the two assessed Matthews — keep Klemperer if you want the large modern cast; start here for the Archiv workshop that still defines the period side.",
+      "quotes": []
+    }
+  ]
+}

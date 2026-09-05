@@ -1,0 +1,16 @@
+{
+  "work_id": "bach/john",
+  "entries": [
+    {
+      "recording": "bach/john/1",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-05",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": [],
+      "text": "Archiv 419 324-2 — March 1986, All Saints, Tooting; Monteverdi Choir and English Baroque Soloists; Holschneider / Naegler; NBA Mendel — is Gardiner’s first St John Passion, issued the same year. Lionel Salter in Gramophone praised continuity of drama, Rolfe Johnson’s Evangelist, and clean balance while questioning some rapid pacing. Later live remakes (SDG-712 Königslutter 2003; Proms 2008; DG Sheldonian 2021) must not be swapped onto this seed; Classical Music later preferred 2003 among Gardiner’s three, while still calling 1986 the benchmark those remakes had to outgrow. Among assessed John Passion cards this Archiv studio set is the Référence — the period-instrument first document, not the preferred remake.",
+      "quotes": []
+    }
+  ]
+}

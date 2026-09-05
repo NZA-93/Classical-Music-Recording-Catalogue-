@@ -1,0 +1,27 @@
+{
+  "work_id": "bach/sonatas_partitas",
+  "entries": [
+    {
+      "recording": "bach/sonatas_partitas/0",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-05",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": ["bach/sonatas_partitas/1"],
+      "text": "Deutsche Grammophon — Conway Hall (and Brent/Wembley for BWV 1005–1006), February–September 1973 with April 1974 continuation; Mayer / Hiemann — is Milstein’s stereo remake of the complete BWV 1001–1006, not the 1954–56 Capitol mono cycle PCR 8370 and not a Chaconne excerpt. ClassicsToday has shelved the DG tapes as a reference recording beside Grumiaux; Lebrecht’s list carries the release group at no. 59; Gramophone remembered the original LP as well received. Against Podger’s Channel baroque-violin cycle it is the late modern-instrument statement: polished, dance-aware, manuscript-conscious by Milstein’s own account in The Strad. Three stars without Référence — the Référence on this work’s assessed shelf goes to the BaL first-choice HIP set.",
+      "quotes": []
+    },
+    {
+      "recording": "bach/sonatas_partitas/1",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-05",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": ["bach/sonatas_partitas/0"],
+      "text": "Channel Classics CCS 12198 / CCS 14498 (box CCSSEL2498) — Doopsgezinde Kerk, Deventer, December 1997 and April 1998 — is Podger’s complete gut-strung BWV 1001–1006, not the accompanied sonatas with Pinnock (CCS 14798) and not a single volume sold as the cycle. BBC Building a Library made it First Choice in May 2001 and again in October 2008; the Gramophone Classical Music Guide 2010 praised intonation, the cumulative Chaconne, and ornamentation against Huggett. Against Milstein’s DG stereo remake it is the other side of the same argument: implied polyphony heard on a baroque violin while the modern catalogue staples still owned the shop. Référence for the assessed complete solo cycle.",
+      "quotes": []
+    }
+  ]
+}
