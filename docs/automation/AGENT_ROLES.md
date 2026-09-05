@@ -1,7 +1,9 @@
 # Cursor agent roles
 
 Each role is a separate Cursor cloud agent on its own branch
-`cursor/<role>-<week>-5458`. One task per branch. Stop at every `[H]` gate.
+`cursor/<role>-<week>-5458`. One task per branch. Harvest / identity /
+citation roles stop at every `[H]` gate. **Critic editorial landings do not** —
+see [`CRITIC.md`](CRITIC.md).
 
 ---
 
@@ -88,9 +90,40 @@ where possible.
 
 ---
 
+## Role Critic — Classical Music Recording Critic `[C]`
+
+**Mission:** Author Dictionnaire-style signed entries in `data/editorial/` and
+land them on `main` so live Pages updates. First cut: the Bach assessed set on
+work pages.
+
+**May write:** `data/editorial/` (text, stars, Référence, ADR-003 quotes), and
+the site publish that follows a signed entry. May merge that PR or ask
+Developer to ship it.
+
+**Must not:** invent scores into `data/seed.json` or `data/statements/`;
+weaken the four regression recording scores; scrape publications; skip
+`docs/legal/DIAPASON_INGESTION.md`.
+
+**Done when:** the signed block is on the work page on `main` / Pages.
+Unsigned prose does not publish.
+
+**Prompt sketch:** follow [`LAUNCH_PROMPTS.md`](LAUNCH_PROMPTS.md) Agent Critic.
+
+---
+
+## Developer — ship Critic content
+
+**Mission:** Merge or push a ready Critic editorial PR to `main` so Pages
+updates. Do not invent or rewrite verdict prose. Do not use this path to land
+harvest guesses or statement scores.
+
+---
+
 ## Orchestrator (this agent / human)
 
 1. Run `make expand-brief`.  
 2. Launch Roles A–E as separate Cursor agents with the brief sections.  
 3. Do not start Role C harvest against a publication until terms/robots are clear.  
-4. Stop the loop when a PR needs human identity or statement ratification.
+4. Stop the harvest loop when a PR needs human identity or statement ratification.  
+5. Launch Critic for signed entries (Bach assessed set first). That work lands
+   on `main` without a human merge gate.

@@ -5,7 +5,9 @@
 
 ## 0. The line this programme does not cross
 
-Agents gather **identity, editions and citations**. They do not write verdicts.
+Harvest agents gather **identity, editions and citations**. They do not write
+verdicts into the seed or the aggregate. Signed editorial is the Critic path
+(`docs/automation/CRITIC.md`) and is out of scope for this harvest programme.
 
 A machine-written assessment with no locator is indistinguishable, three months later, from a real one — and the entire value of this guide is that the distinction stays visible. So the catalogue now contains 47 works and 58 candidate recordings and **not one seeded score**. Every work reads `awaiting sources`, which is the true state of it.
 

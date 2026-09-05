@@ -3,6 +3,8 @@
 Queued harvest proposals are reviewed on a public board. **Only the repository
 owner (`NZA-93`)** can accept identity decisions into the seed. Community
 comments help authoring but stay on a separate layer from editorial voice.
+Signed editorial is **not** this board: Critic authors and lands it
+([`CRITIC.md`](CRITIC.md)).
 
 ## Layers
 
@@ -10,7 +12,7 @@ comments help authoring but stay on a separate layer from editorial voice.
 |---|---|---|---|
 | Owner decisions | `proposals/review-decisions.json` | Owner (`CODEOWNERS`) | No — facts (mbid) only after apply |
 | Community notes | `data/community/comments.json` | Anyone via issue/PR | **Never** |
-| Signed editorial | `data/editorial/` | Owner only | Judgement (ADR-002) |
+| Signed editorial | `data/editorial/` | **Critic** (named editorial role) | Judgement (ADR-002). Lands on `main` / Pages; no human merge babysit. Developer may ship the Critic PR |
 | Statements | `data/statements/` | Human ratification only | Assessment facts |
 
 ## Online board
@@ -94,7 +96,8 @@ Wrong-work rows are pre-rejected and remain unforceable in `apply.py`.
 2. Workflow opens a PR into `data/community/` only.
 3. Owner merges the PR when the note is useful.
 4. Notes appear on the review board; they are **not** editorial and must not
-   be copied into `data/statements/` or signed entries by agents.
+   be copied into `data/statements/` or signed entries by harvest/seed agents.
+   Critic may read them as briefing; Critic still writes the entry.
 
 ## Makefile
 
@@ -110,7 +113,8 @@ Wrong-work rows are pre-rejected and remain unforceable in `apply.py`.
 - Invent interpretation / sound scores  
 - Invent musicological values for empty harvest fields (Fassung, completeness, session year, live/studio, …)  
 - Scrape review sites  
-- Let community write `data/editorial/` or `data/statements/`  
+- Let community write `data/editorial/` or `data/statements/`
+- Gate Critic signed-editorial landings on a human merge (see [`CRITIC.md`](CRITIC.md))  
 - Auto-apply without an `accept` decision from the owner  
 - Auto-write `defer` into decisions when fields are absent (absence is visible only)  
 - Put citation tasks on identity rows

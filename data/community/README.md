@@ -5,11 +5,13 @@ Public comments that help review identity matches and author the site.
 | Path | Role |
 |---|---|
 | `data/community/comments.json` | Community notes (`layer: community`) |
-| `data/editorial/` | **Owner-signed** editorial entries only |
+| `data/editorial/` | **Critic-signed** editorial entries only (named role; lands on main) |
 | `data/statements/` | **Human-ratified** assessment facts only |
 
 Community text is shown on the online review board (`docs/review/`) and must
-never be copied into statements, scores, or signed editorial prose by an agent.
+never be copied into statements, scores, or signed editorial prose by a
+harvest or seed agent. Critic writes the entry; community notes are briefing
+only.
 
 To add a comment:
 

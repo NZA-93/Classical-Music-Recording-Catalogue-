@@ -22,7 +22,8 @@ floor only when identity/citation catch up.
 3. Prefer canonically discussed recordings (not random discogs dumps).  
 4. Identity still goes through MusicBrainz harvest → human review; `wrong work:` never applies.  
 5. Covers = Cover Art Archive hotlinks only.  
-6. Assessments only via cited proposals after human ratification.
+6. Aggregate assessments only via cited proposals after human ratification.
+   Signed editorial is Critic’s path (`CRITIC.md`), not this seed loop.
 
 ## Loop (repeat until `make targets` exits 0)
 

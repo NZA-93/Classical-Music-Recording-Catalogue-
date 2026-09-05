@@ -17,6 +17,7 @@ arrive only through cited sources.
 | Fri | Community | Optional notes via **Community review comment** issues → `data/community/` PRs |
 | Fri | Human | Merge statement contributions (still owner-ratified); review citation ratio |
 | Fri | Role D | Site/rollup green on `main` via PR |
+| When a signed entry is ready | **Critic** (Developer may ship) | Land `data/editorial/` on `main` → Pages. No Friday human merge gate |
 
 ## Source-coverage target
 

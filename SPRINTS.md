@@ -9,9 +9,11 @@ Read `AGENTS.md` before executing anything here. It is binding and overrides
 this document wherever the two appear to conflict.
 
 **Conventions.** `[H]` human only · `[A]` agent may execute · `[A→H]` agent
-prepares, human decides. Every task states what "done" means and the command
-that proves it. One branch per task, in ID order. The loop stops at a `[H]` task
-and waits.
+prepares, human decides · `[C]` Critic authors and lands on `main`. Every task
+states what "done" means and the command that proves it. One branch per task,
+in ID order. The harvest loop stops at a `[H]` task and waits. **Critic
+editorial (`[C]`) does not wait for a human merge gate** — see
+[`docs/automation/CRITIC.md`](docs/automation/CRITIC.md).
 
 ---
 
@@ -79,12 +81,18 @@ Then in settings:
 - **Branches** → protect `main`: require a pull request, require the `validate`
   and `Build and publish` checks, **disallow self-approval**
 
-That last switch is what makes the loop safe. Test it by attempting a direct
-push to `main` and confirming refusal. Without it, `AGENTS.md` §3 is decoration.
+That last switch is what makes the **harvest** loop safe. Test it by attempting
+a direct push of harvest or statement work to `main` and confirming refusal.
+
+> **Amendment (Critic landing).** Branch protection and the "disallow
+> self-approval" rule remain for harvest, identity, seed and statements.
+> They do **not** gate Critic signed-editorial landings. Critic (or Developer
+> shipping Critic content) may merge those PRs or push that path to `main`
+> so Pages updates. See `docs/automation/CRITIC.md`.
 
 **Done when:** the site answers at
-`nza-93.github.io/Classical-Music-Recording-Catalogue-/` and a direct push to
-`main` is rejected.
+`nza-93.github.io/Classical-Music-Recording-Catalogue-/` and a direct harvest
+push to `main` is rejected.
 
 ---
 
@@ -288,30 +296,32 @@ Writing a signed entry currently means hand-editing JSON. Make it a command.
   competing recordings exist.
 - Validate on save through `validate_editorial()`.
 - **The brief contains no draft prose, no suggested rating and no sentence the
-  author might keep.** ADR-002. An agent assembles the ground; the author
-  arrives at a blank page with the facts already checked.
+  Critic might keep.** ADR-002. Roles A–E assemble the ground; Critic writes
+  the entry. Do not generate an entry "for the author to edit".
 
 **Done when:** the round trip from `make entry` to a rendered signed block costs
 under a minute of tool friction.
 
 ---
 
-### S2-04 · Write the first three entries `[H]`
-**Depends on:** S2-03 · **Effort:** three evenings, and the point of all of it
+### S2-04 · Write the first signed entries `[C]` · Critic lands to main
+**Depends on:** S2-03 · **First target:** Bach assessed set on work pages
 
-The queue's current ranking, computed rather than chosen:
+Nicolò’s mandate: Dictionnaire-style signed entries on work pages, **Bach
+assessed set first** (the critic-signed IDs already on public cards). The old
+queue ranking (Shostakovich 5, Tosca) still describes later need; it is not
+the first cut.
 
-1. **Shostakovich, Symphony No. 5** — 9.0. Nothing signed, confidence 0.25 off a
-   single award, seven versions competing. Your Noseda note is already sitting
-   there unscored, and the comparison it needs is Mravinsky's faster coda or
-   Nelsons' Boston polish.
-2. **Puccini, Tosca** — 8.5. Scores bunched at 2.955 and 2.848; the algorithm
-   cannot separate them and a listener can.
-3. Whatever the queue says once Sprint 1's awards have landed, which will not be
-   what it says today.
+**Do:** Critic authors signed entries in `data/editorial/` (author, date,
+revision, stars, comparative prose). Land on `main` / Pages — no human merge
+babysit. Developer may ship the Critic PR.
 
-**Done when:** three entries carry an author, a date, a revision and stars, and
-at least one disagrees with the aggregate.
+**Do not:** invent aggregate or statement scores; weaken the four regression
+anchors; have Roles A–E draft verdict prose. This sprint item does not ask a
+non-Critic agent to invent Bach review text.
+
+**Done when:** Bach assessed-set work pages carry Critic-signed entries (or
+the first of that set has landed), each with author, date, revision and stars.
 
 ---
 
@@ -364,9 +374,9 @@ tally.
 
 ### S2-09 · Sprint close `[H]`
 
-Review every statement that entered. Confirm no score originates from a model
-without a locator, and that no signed entry was machine-assisted. Tag
-`v0.3-voice`.
+Review every statement that entered. Confirm no aggregate score originates
+from a model without a locator, and that every signed entry was authored by
+the Critic role (not by a harvest or seed agent). Tag `v0.3-voice`.
 
 ---
 
@@ -423,19 +433,21 @@ humans ratify; never apply `wrong work:` rows.
 # Ongoing loop (after the floor)
 
 Raise the ceiling in `docs/automation/CATALOGUE_TARGETS.md` and keep the same
-Roles A→D cycle. Citation ratio and signed entries remain the editorial
-bottleneck — densifying candidates does not invent assessments.
+Roles A→D cycle. Citation ratio remains the aggregate bottleneck — densifying
+candidates does not invent assessments. Signed entries are Critic’s path
+(`[C]`, `docs/automation/CRITIC.md`) and land on `main` / Pages without a
+human merge gate.
 
 ## Risk register
 
 | Risk | Watch for | Response |
 |---|---|---|
-| Loop merges its own work | A pull request approved by the actor that opened it | Branch protection, S1-00. Verify it blocks |
+| Harvest loop merges its own work | A harvest/identity PR approved by the actor that opened it | Branch protection, S1-00. Does **not** apply to Critic editorial landings |
 | Identity errors propagate | Editions that do not fit the recording | Reject at S1-06; never auto-accept below 80 |
 | Score drift in S2-01 | Any regression failure | Stop. The loader is wrong, not the test |
 | Album awards over-counted | A three-work award reading as three signals | ADR-001, enforced by test in S1-03 |
 | Source text enters `data/` | Long characterisations, quoted runs | S1-05 CI guard |
-| An agent drafts a signed entry | Prose in `data/editorial/` with no author | `validate_editorial()`; unsigned does not publish |
+| An unauthorised agent drafts a signed entry | Prose in `data/editorial/` with no Critic author / unsigned | `validate_editorial()`; unsigned does not publish. Only Critic authors |
 | Trademark drift | "Diapason" migrating toward the product name | Nominative use only, never in branding |
 | Documented refusal | Asking for quotation before ratings | S1-07 order: the small ask first |
 

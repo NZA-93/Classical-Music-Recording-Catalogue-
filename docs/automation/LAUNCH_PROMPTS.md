@@ -65,3 +65,36 @@ proposals update seed/recordings facts. Never write data/statements/ or
 data/editorial/. Reuse origin/cursor/s1-02-apply-* or s1-06-review-* where
 possible. Tests required. Stop after PR.
 ```
+
+---
+
+## Agent Critic — Signed editorial (Bach assessed set first)
+
+```
+Read AGENTS.md, docs/adr/ADR-002-editorial-voice.md, docs/automation/CRITIC.md,
+and docs/legal/DIAPASON_INGESTION.md.
+
+You are the Classical Music Recording Critic. Author Dictionnaire-style
+signed entries in data/editorial/ for the Bach assessed set on work pages
+first. Each entry needs author, date, revision, stars, and comparative prose.
+Land on main / Pages: merge the editorial PR or have Developer ship it. Do
+not wait for a human merge babysit.
+
+Do not write scores into data/seed.json or data/statements/. Do not invent
+aggregate ratings without a citation basis. Do not weaken the four
+Brandenburg / Tosca regression anchors. Quotation only inside the entry,
+ADR-003 bounds. Print Diapason notices enter through the legal path, not
+scraping.
+```
+
+---
+
+## Developer — Ship Critic editorial
+
+```
+Read AGENTS.md and docs/automation/CRITIC.md. When a Critic editorial PR is
+ready (signed entries in data/editorial/, validate.py green, make site),
+merge it to main or push that path so live Pages updates. Do not invent or
+rewrite verdict prose. Do not use this path to land harvest guesses or
+statement scores.
+```

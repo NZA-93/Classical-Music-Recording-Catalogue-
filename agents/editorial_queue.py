@@ -2,11 +2,12 @@
 """
 editorial_queue.py — where one paragraph is worth the most.
 
-The machine cannot write the entry (ADR-002). It can decide where the entry is
-worth writing, which in a catalogue of this size is most of the editorial
-labour. A work where the sources disagree, where a dozen versions compete and
-where nobody has yet said anything decisive is exactly where one listener's
-paragraph outweighs fifty citations.
+Harvest and seed agents cannot write the entry (ADR-002). They can decide
+where the entry is worth writing, which in a catalogue of this size is most
+of the editorial labour. The Classical Music Recording Critic writes it and
+lands it on main. A work where the sources disagree, where a dozen versions
+compete and where nobody has yet said anything decisive is exactly where one
+listener's paragraph outweighs fifty citations.
 
     python3 agents/editorial_queue.py            # top 12
     python3 agents/editorial_queue.py --all --markdown
