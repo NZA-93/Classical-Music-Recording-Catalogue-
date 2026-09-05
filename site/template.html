@@ -506,12 +506,14 @@ function signed(r){
 }
 
 function identityLine(r){
-  /* Performers and label as seeded. Scored furniture stays off this card. */
+  /* Performers and label as seeded. Aggregate furniture stays off this card.
+     A Critic-signed entry (ADR-002) renders when present. */
   const who=[r.soloists,r.director,r.ensemble].filter(Boolean).map(esc).join(" — ");
   return `<article class="entry identity" id="${esc(r.id)}">
     ${plate(r)}
     <div>
       <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
+      ${r.editorial?signed(r):""}
     </div>
   </article>`;
 }
