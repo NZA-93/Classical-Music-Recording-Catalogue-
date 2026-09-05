@@ -385,6 +385,9 @@ class TestGoldbergPublicHtml(unittest.TestCase):
         self.assertNotIn("bach/goldberg/3", html)
         self.assertNotIn("Perahia", html)
         self.assertIn("function signed(r)", html)
+        self.assertIn("Number.isFinite(r.divergence)", html)
+        for rec in recs.values():
+            self.assertIsNone(rec.get("divergence"), rec["id"])
 
     def test_sealed_no_global_related_feed(self):
         html = _page("bach/goldberg")

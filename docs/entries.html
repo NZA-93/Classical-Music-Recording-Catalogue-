@@ -491,7 +491,7 @@ function signed(r){
     weighted consensus of published sources; it is not a listening report.</div>`;
   const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
   const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
-  const div = r.divergence!==null && r.divergence!==0
+  const div = Number.isFinite(r.divergence) && r.divergence!==0
     ? `<p class="diverge">The weighted consensus gives ${r.stars} ★ here. The signed entry gives
        ${e.stars}. The disagreement is deliberate; the reasoning is above.</p>` : "";
   return `<div class="signed">

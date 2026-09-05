@@ -82,6 +82,7 @@ def identity_recording(
         "reception": [],
         "sources": [],
         "editorial": editorial,
+        "divergence": None,  # no aggregate on an identity card
     }
 
 
