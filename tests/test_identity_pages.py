@@ -224,11 +224,8 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertIn("Schiff", blob)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            if rec["id"] in SIGNED_GOLDBERG:
-                self.assertIsNotNone(rec["editorial"], rec["id"])
-                self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
-            else:
-                self.assertIsNone(rec["editorial"], rec["id"])
+            self.assertIsNotNone(rec["editorial"], rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
 
     def test_goldberg_facts_stay_goulds_and_schiff_1982(self):
         gold = next(
@@ -415,7 +412,9 @@ class TestRemainingSignedPages(unittest.TestCase):
             self.assertIn(rid, ids, rid)
             rec = next(r for r in recs if r["id"] == rid)
             _assert_no_aggregate(self, rec, rid)
-            self.assertIsNone(rec.get("editorial"), rid)
+            self.assertIsNotNone(rec.get("editorial"), rid)
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+            self.assertEqual(rec["editorial"]["quotes"], [])
             self.assertIn(rid, html)
             blob = json.dumps(cat)
             self.assertNotIn("bach/goldberg/3", blob)
@@ -461,6 +460,33 @@ class TestRemainingSignedPages(unittest.TestCase):
         self.assertIn("Pierre Fournier", html)
         self.assertIn("Archiv, 1961", html)
         self.assertIn("const WORK_INDEX = []", html)
+
+    def test_remaining_signed_entries_are_on_the_cards(self):
+        expected = {
+            "bach/cello_suites/1": (3, True, "Archiv 14356–58"),
+            "bach/violin_concertos/4": (3, True, "Channel Classics CCS SA 30910"),
+            "bach/sonatas_partitas/0": (3, False, "Deutsche Grammophon — Conway Hall"),
+            "bach/sonatas_partitas/1": (3, True, "Channel Classics CCS 12198"),
+            "bach/matthew/0": (3, False, "Columbia / Angel / EMI"),
+            "bach/matthew/1": (3, True, "Archiv 427 648-2"),
+            "bach/john/1": (3, True, "Archiv 419 324-2"),
+            "bach/mass_b_minor/0": (3, True, "Archiv 415 514-2"),
+            "bach/art_of_fugue/0": (2, False, "Columbia Masterworks ML 5738"),
+            "bach/art_of_fugue/3": (3, True, "Deutsche Grammophon 474 495-2"),
+        }
+        for rid, (stars, reference, snippet) in expected.items():
+            wid = "/".join(rid.split("/")[:2])
+            html = _page(wid)
+            cat = _embedded_catalogue(html)
+            rec = next(r for r in cat["works"][0]["recordings"] if r["id"] == rid)
+            ed = rec["editorial"]
+            self.assertEqual(ed["stars"], stars, rid)
+            self.assertEqual(ed["reference"], reference, rid)
+            self.assertIn(snippet, ed["text"], rid)
+            self.assertEqual(ed["quotes"], [], rid)
+            self.assertEqual(ed["author"]["id"], "cmrc", rid)
+            self.assertIsNone(rec.get("divergence"), rid)
+            self.assertIn("function signed(r)", html)
 
 
 class TestHubChipFromAssessed(unittest.TestCase):
