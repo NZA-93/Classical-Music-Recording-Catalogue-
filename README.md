@@ -69,13 +69,17 @@ identity  →  editions  →  covers  →  citations
 ```
 
 Agents resolve recordings against MusicBrainz, pull editions and barcodes, check the
-Cover Art Archive, and emit citation *tasks*. **Agents never write a verdict.** A
-machine-written assessment with no locator is indistinguishable from a real one three
-months later, and that distinction is the only thing this guide has. Proposals arrive as
-pull requests; a human merges them.
+Cover Art Archive, and emit citation *tasks*. **Harvest, seed and citation agents never
+write a verdict into the seed or the aggregate.** A machine-written assessment with no
+locator is indistinguishable from a real one three months later, and that distinction is
+the only thing this guide has. Those proposals arrive as pull requests; a human merges
+them. Stages are gated on merged proposals, so the harvest pipeline cannot build on its
+own unreviewed guesses.
 
-Stages are gated on merged proposals, so the pipeline cannot build on its own unreviewed
-guesses.
+**Signed editorial is a different path.** The Classical Music Recording Critic authors
+Dictionnaire-style entries in `data/editorial/` and lands them on `main` so live Pages
+updates. There is no human merge babysit on that path. Developer may merge or push a
+Critic editorial PR. See [`docs/automation/CRITIC.md`](docs/automation/CRITIC.md).
 
 ## Contributing
 
@@ -105,6 +109,7 @@ make test
 - [docs/legal/DIAPASON_INGESTION.md](docs/legal/DIAPASON_INGESTION.md) — how print criticism enters lawfully
 - [docs/adr/ADR-003-quotation.md](docs/adr/ADR-003-quotation.md) — why this is not Wikipedia
 - [docs/adr/](docs/adr/) — architecture decisions, including the editorial voice
+- [docs/automation/CRITIC.md](docs/automation/CRITIC.md) — Critic signed-entry path to `main` / Pages
 - [SPRINTS.md](SPRINTS.md) — the next two weeks, task by task
 - [AGENTS.md](AGENTS.md) — rules for automated contributors
 - [HARVEST_STRATEGY.md](HARVEST_STRATEGY.md) — where assessments can lawfully come from, and the cover-art ladder

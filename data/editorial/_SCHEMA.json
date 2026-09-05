@@ -1,5 +1,5 @@
 {
-  "_comment": "Signed editorial entries. See docs/adr/ADR-002-editorial-voice.md. An entry without author, date and revision does not publish. No agent may draft, complete or suggest any part of `text`, `stars` or `reference`.",
+  "_comment": "Signed editorial entries. See docs/adr/ADR-002-editorial-voice.md and docs/automation/CRITIC.md. An entry without author, date and revision does not publish. Only the Classical Music Recording Critic (named editorial role) may author `text`, `stars` or `reference`. Other agents must not draft, complete or suggest those fields. Critic (or Developer shipping Critic content) lands the entry on main / Pages.",
   "work_id": "composer/work",
   "entries": [
     {

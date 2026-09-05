@@ -13,11 +13,13 @@ system working.
 
 ## 1. The one rule everything else serves
 
-**An agent never creates, edits or approves a critical judgement.**
+**An agent never invents a critical judgement into the seed, the statements,
+or the aggregate.**
 
 No score. No star. No Référence flag. No sound assessment. No commentary that
-evaluates a performance or a transfer. Not as a draft, not as a placeholder,
-not "to be replaced later", not even clearly marked as provisional.
+evaluates a performance or a transfer — not in `data/seed.json`, not in
+`data/statements/`, not as a draft, not as a placeholder, not "to be replaced
+later", not even clearly marked as provisional.
 
 The reason is not caution. A machine-written verdict with no source is
 indistinguishable from a sourced one three months later, and the only thing
@@ -25,17 +27,28 @@ this guide has that a streaming service does not is that the distinction stays
 visible. One convincing fabrication in the catalogue costs more than a year of
 correct work.
 
-If a task's definition of done includes "assess", "rate", "score" or "judge" a
-recording, the task is misdrafted. Stop and say so.
+If a harvest, seed, citation or apply task's definition of done includes
+"assess", "rate", "score" or "judge" a recording *into those layers*, the task
+is misdrafted. Stop and say so.
 
 **Amendment (ADR-002).** Judgement does legitimately exist in this guide, in
-exactly one place: the *signed editorial entry*, written by a named person and
-closed with their initials and a date. That is out of an agent's reach entirely.
-An agent may compute the editorial queue, assemble the brief, check facts inside
-a signed entry and publish it. An agent may **not** draft a sentence of the
-verdict, suggest a rating, complete a half-written entry, or generate an entry
-"for the author to edit". An entry an agent started is not signed by its author,
-whatever the byline says, and the byline is the entire point.
+exactly one place: the *signed editorial entry*, written in the named editorial
+voice and closed with initials and a date.
+
+**Amendment (Critic role).** That register is the job of the **Classical Music
+Recording Critic** — the named editorial role, including the Critic agent
+acting in that role. Critic may author the verdict (prose, stars, Référence)
+and **must land it on `main` and live Pages**. There is no human merge babysit
+on this path. The Developer role may merge or push a Critic editorial PR so it
+ships. An entry still does not publish without an author id, a date and a
+revision. See [`docs/automation/CRITIC.md`](docs/automation/CRITIC.md).
+
+Other agents (seed, harvest, identity, citation, apply, rollup) may compute
+the editorial queue, assemble the brief, check facts inside a signed entry
+and publish an already-signed one. They may **not** draft a sentence of the
+verdict, suggest a rating, complete a half-written entry, generate an entry
+"for the author to edit", or write stars / Référence into seed or statements.
+An unsigned entry is not a signed entry, whatever the byline says.
 
 ---
 
@@ -48,16 +61,28 @@ whatever the byline says, and the byline is the entire point.
   when a source is cited in the commit message
 - Add tests, fix failing tests, improve error messages
 - Open pull requests, and respond to review comments on them
+- **Critic:** write signed entries in `data/editorial/` and land them on `main`
+  so Pages updates
+- **Developer:** merge or push Critic editorial PRs so that content reaches
+  `main` and live Pages — without inventing or rewriting the verdict
 
 ## 3. What agents must never do
 
 - Write to `data/statements/` — the assessment layer is human-ratified
-- Edit scores, stars, `reference` flags or confidence values anywhere
-- Merge a pull request, approve one, or push directly to `main`
+- Invent scores, stars, `reference` flags or confidence values in the seed,
+  statements or aggregate, or invent any of those without a citation basis.
+  Critic may set stars and Référence on a signed entry in `data/editorial/`
+  only. The four Brandenburg / Tosca regression anchors must not move except
+  through a deliberate, reviewed algorithm-version bump
+- Merge a pull request, approve one, or push directly to `main` — **except**
+  Critic editorial landings and the Developer path that ships that Critic
+  content. Harvest proposals, identity applies, statement ingest and seed
+  expansion still wait for a human merge. This exception is not a licence to
+  land unsigned prose or invented aggregate scores
 - Add a runtime dependency. Standard library only, in every language used here
-- Store, paste or commit text copied from a review, sleeve note or article.
-  Quotation exists in exactly one place — a signed editorial entry, bounded by
-  ADR-003 — and an agent may not write, choose or place one
+- Store, paste or commit text copied from a review, sleeve note or article
+  except inside a Critic-signed editorial entry, bounded by ADR-003. Other
+  agents may not write, choose or place a quotation
 - Bypass a paywall, ignore `robots.txt`, or route requests through proxies
 - Perform automated collection against any publication's site without checking
   its terms, or OCR a copyrighted volume for paraphrase at scale. Print criticism
@@ -88,17 +113,21 @@ works. The loop's most valuable property is that `main` is always publishable.
    source for any factual change.
 4. Open a pull request using the template. Fill in the checklist honestly —
    an unchecked box with an explanation is worth more than a checked lie.
-5. **Stop.** Do not begin the next task while a review is pending, unless the
-   next task is genuinely independent.
+5. **Harvest / identity / citation / seed:** stop. Do not begin the next task
+   while a human review is pending, unless the next task is genuinely
+   independent. **Critic editorial:** do not wait for a human merge gate.
+   Land on `main` (Critic merges, or Developer ships the Critic PR) so live
+   Pages updates.
 
 ## 6. When to stop and ask
 
 Stop, do not guess, if:
 
-- A task seems to require judging musical or sonic quality
+- A task seems to require judging musical or sonic quality **and you are not
+  the Critic role writing a signed entry**
 - A source's terms are unclear, or `robots.txt` cannot be read
 - An identity match is ambiguous (a compilation, a sampler, a wrong decade)
-- A change would alter existing scores as a side effect
+- A change would alter existing **aggregate** scores as a side effect
 - A test fails in a way you do not understand
 - The task's acceptance criteria are ambiguous
 

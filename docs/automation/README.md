@@ -1,6 +1,7 @@
 # Agent automation — Critical Discography
 
-Coordinates Cursor agents for catalogue growth without inventing judgements.
+Coordinates Cursor agents for catalogue growth without inventing aggregate
+judgements. Signed editorial is Role Critic ([`CRITIC.md`](CRITIC.md)).
 Binding rules remain in [`AGENTS.md`](../../AGENTS.md). This directory only
 describes **who does what**, **in what order**, and **what each agent may write**.
 
@@ -12,11 +13,13 @@ describes **who does what**, **in what order**, and **what each agent may write*
 | Cover Art Archive existence + hotlink (never rehost) | Committing cover image binaries |
 | Award / rating **facts** with locators → proposals | Writing scores into `data/statements/` |
 | Own-words characterisation ≤240 chars + locator | Pasting review prose into `data/` |
-| Composer **rollup** from already-ratified statements | Drafting signed editorial `text` / stars / Référence |
+| Composer **rollup** from already-ratified statements | Roles A–E drafting signed editorial `text` / stars / Référence |
 | Seed expansion: works + candidates (facts only) | Inventing assessments where no source exists |
+| **Critic** signed entries in `data/editorial/`, landed on `main` | Inventing seed / statement / aggregate scores without a citation |
 
-Short quotations (ADR-003) belong only in a **human-signed** editorial entry.
-Agents may emit citation *tasks* and structured proposals; they never place quotes.
+Short quotations (ADR-003) belong only in a **Critic-signed** editorial entry.
+Harvest and citation agents may emit citation *tasks* and structured proposals;
+they never place quotes. Critic may place quotes inside the entry, bounded.
 
 ## How a composer score is produced
 
@@ -49,7 +52,8 @@ secondary (0.75). Promo / retail / reader sit far lower. Provenance multiplies:
 ## Roles (one Cursor agent each)
 
 See [`AGENT_ROLES.md`](AGENT_ROLES.md). Launch one cloud agent per role per
-week; do not ask a single agent to expand seed *and* invent assessments.
+week; do not ask a harvest or seed agent to invent assessments. Signed
+editorial is Role Critic — see [`CRITIC.md`](CRITIC.md).
 
 ## Weekly cadence
 
@@ -59,7 +63,9 @@ See [`WEEKLY_CADENCE.md`](WEEKLY_CADENCE.md). Each week:
 2. **Seed agent** adds works + candidate recordings (no scores).
 3. **Identity / covers agent** runs harvest → proposals (MB + CAA).
 4. **Citation agent** emits citation tasks / award proposals for ≥5 named sources per assessed entry over time.
-5. Humans ratify; composer rollup updates on `make site`.
+5. Humans ratify statements; composer rollup updates on `make site`.
+6. **Critic** authors signed entries (Bach assessed set first) and lands them
+   on `main` / Pages. Developer may ship that PR. No human merge babysit.
 
 ## Catalogue floor (10 · 100 · 500)
 
@@ -73,8 +79,10 @@ make loop                # targets + next week brief
 ## Human review (online)
 
 See [`HUMAN_REVIEW.md`](HUMAN_REVIEW.md). Public board after publish:
-`/review/` on GitHub Pages. Owner (`NZA-93`) alone applies decisions;
-community comments land in `data/community/` and never mix with editorial.
+`/review/` on GitHub Pages. Owner (`NZA-93`) alone applies **identity**
+decisions; community comments land in `data/community/` and never mix with
+editorial. Signed editorial is Critic’s path ([`CRITIC.md`](CRITIC.md)), not
+this board.
 
 ```bash
 make review-queue        # packs + review-decisions.json template

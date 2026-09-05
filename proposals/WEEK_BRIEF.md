@@ -109,4 +109,6 @@ Confirm `make score` writes `composers[]` rollups; show on index only when non-n
 
 - Confirm identity matches (no compilations / wrong decade).
 - Ratify every statement before it enters `data/statements/`.
-- ADR-003 quotes only inside signed editorial entries.
+- ADR-003 quotes only inside Critic-signed editorial entries.
+- Signed editorial is Critic’s path (`docs/automation/CRITIC.md`): land on
+  main / Pages; no human merge babysit. Developer may ship.

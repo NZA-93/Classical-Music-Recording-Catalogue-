@@ -38,8 +38,12 @@ Actions → Agent harvest → Run workflow          # tick "dry_run" the first t
 
 The dry run reports what a real round would cost — 58 requests for identity resolution —
 without contacting anyone. When you are satisfied, run it live. It opens a pull request
-titled `Harvest <date>` with a review checklist. Nothing enters the catalogue until you
-merge it.
+titled `Harvest <date>` with a review checklist. Nothing from **harvest** enters the
+catalogue until a human merges it.
+
+Signed editorial is the Critic path (`docs/automation/CRITIC.md`): Critic (or Developer
+shipping Critic content) lands `data/editorial/` on `main` so Pages updates. Do not
+wait for a harvest-style merge babysit on that register.
 
 ## What to check on the first live harvest
 

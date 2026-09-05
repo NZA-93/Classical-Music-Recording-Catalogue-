@@ -1,6 +1,10 @@
-# Owner-only paths: catalogue judgement and apply decisions.
-# Community comments under data/community/ are intentionally *not* listed
-# so others can open PRs without claiming editorial voice.
+# Catalogue judgement paths.
+# data/editorial/ — Critic (named editorial role) authors; Critic or
+# Developer may land to main / Pages. Community cannot claim this path.
+# data/statements/ — still human-ratified; harvest agents never write here.
+# AGENTS.md and docs/adr/ — binding rules; process amendments go through PR.
+# @NZA-93 names the editorial owner (Nicolò), not a third-party babysit
+# on Critic landings.
 
 /data/editorial/    @NZA-93
 /data/statements/   @NZA-93

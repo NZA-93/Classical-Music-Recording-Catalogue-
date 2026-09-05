@@ -64,7 +64,7 @@ validate:        ## check contributions/ against the project's own rules
 	python3 agents/validate.py
 	python3 agents/community_comments.py validate
 
-queue:           ## where a signed entry is worth the most
+queue:           ## rank where a signed entry is worth the most (Critic writes)
 	python3 agents/editorial_queue.py
 
 queue-week:      ## next five composers from proposals/composer-queue.json

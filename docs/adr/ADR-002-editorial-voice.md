@@ -1,6 +1,6 @@
 # ADR-002 — Two registers: the signed entry and the aggregate
 
-**Status:** accepted · **Date:** 26 July 2026 · **Supersedes:** nothing · **Amends:** AGENTS.md §1
+**Status:** accepted · **Date:** 26 July 2026 · **Amended:** 5 September 2026 (Critic role) · **Supersedes:** nothing · **Amends:** AGENTS.md §1
 
 ---
 
@@ -27,7 +27,7 @@ authored, either, without being permanently incomplete.
 
 | | Signed entry | Aggregate |
 |---|---|---|
-| Written by | A named person | The algorithm |
+| Written by | Critic (named editorial role) | The algorithm |
 | Covers | Where someone has listened | Everything with a source |
 | Carries | Its own stars, its own Référence | S, confidence, evidence spine |
 | Changes when | The author revises it | New citations arrive |
@@ -62,9 +62,10 @@ falls out of this architecture for free.
 
 ## What the algorithm does for the author
 
-This is where the vastness stops being a problem and starts being useful. The
-machine cannot write the entry, but it can decide **where the entry is worth
-writing**, which is most of the editorial labour in a project this size.
+This is where the vastness stops being a problem and starts being useful.
+Harvest and seed agents cannot write the entry, but they can decide **where
+the entry is worth writing**, which is most of the editorial labour in a
+project this size. The **Classical Music Recording Critic** writes it.
 
 The editorial queue ranks by need:
 
@@ -76,28 +77,52 @@ need = (no signed entry) × (low aggregate confidence)
 A work where the sources disagree, where a dozen versions compete and where
 nobody has yet said anything decisive is exactly where one paragraph from a
 listener is worth more than fifty citations. The algorithm finds those. The
-author writes them. Neither could do it alone.
+Critic writes them. Neither could do it alone.
 
 The machine also prepares the ground: facts verified, editions identified,
-credits cited, what other critics said and where. The author arrives at a brief,
+credits cited, what other critics said and where. The Critic arrives at a brief,
 not a blank page.
 
 ## What agents may and may not do here
 
-`AGENTS.md` §1 says an agent never creates a critical judgement. This ADR does
-not weaken that; it names the one place judgement legitimately lives and puts
-it out of reach.
+`AGENTS.md` §1 says an agent never invents a critical judgement into the seed,
+the statements, or the aggregate. This ADR does not weaken that; it names the
+one place judgement legitimately lives.
 
-**Agents may:** compute the queue, assemble the brief, check facts inside a
-signed entry, flag a claim that contradicts the catalogue, format and publish.
+**Critic (named editorial role, including the Critic agent) may:** author the
+verdict — prose, stars, Référence — inside a signed entry, and **land that
+entry on `main` and live Pages**. There is no human merge babysit on this
+path. Developer may merge or push the Critic PR so it ships. See
+[`docs/automation/CRITIC.md`](../automation/CRITIC.md).
 
-**Agents may not:** draft a sentence of the verdict, suggest a rating, complete
-a half-written entry, or generate an entry "for the author to edit". A signed
-entry that an agent started is not signed by the author, whatever the byline
-says, and the byline is the entire point.
+**Other agents may:** compute the queue, assemble the brief, check facts inside
+a signed entry, flag a claim that contradicts the catalogue, format and
+publish an already-signed entry.
+
+**Other agents may not:** draft a sentence of the verdict, suggest a rating,
+complete a half-written entry, or generate an entry "for the author to edit".
+A signed entry that a harvest or seed agent started is not signed by the
+Critic, whatever the byline says, and the byline is the entire point.
 
 An entry is valid only with an author id, a date and a revision number. Unsigned
 prose does not publish.
+
+## Amendment — Critic role (5 September 2026)
+
+The July 2026 text put the signed register "out of an agent's reach entirely".
+That line conflicted with the Classical Music Recording Critic agent, whose
+job *is* that register. The amendment is narrow:
+
+- Critic authors and lands Dictionnaire-style signed entries. First cut: the
+  Bach assessed set on work pages.
+- Developer may ship those landings to `main` / Pages.
+- Seed, harvest, identity, citation and apply agents still must not invent
+  verdicts into seed or aggregates.
+- The two registers stay unblended. Provenance stays derived. The four
+  Brandenburg / Tosca regression anchors stay fixed unless an algorithm
+  version is deliberately bumped. Standard library only. Diapason print
+  notices still enter through
+  [`docs/legal/DIAPASON_INGESTION.md`](../legal/DIAPASON_INGESTION.md).
 
 ## Consequences
 
@@ -112,7 +137,7 @@ interface carries that burden through typography, not footnotes. Editorial
 coverage will lag the catalogue permanently, and the design must present that
 honestly. And the author's reputation is now attached to the guide in a way it
 was not before — which is precisely what makes the entries worth reading, and
-precisely why they cannot be machine-assisted.
+precisely why they cannot be farmed out to harvest or seed agents.
 
 **Anchors are settled by this too.** "What to listen for" describes the score,
 not a performance, so it belongs to the work and may be maintained factually.

@@ -43,7 +43,7 @@ Reversing this order — cover matching first, because it looks like Vivino — 
 
 ---
 
-## 3. Filling it: agents propose, humans ratify
+## 3. Filling it: harvest proposes, humans ratify; Critic signs
 
 The wiki instinct is right, but an open catalogue of *opinions* degrades. What does not degrade is a catalogue of **claims with locators**. So the unit of contribution is not a review; it is a statement plus where it came from.
 
@@ -57,7 +57,9 @@ The algorithm already enforces this. Provenance is a weight multiplier:
 
 An uncited claim is therefore welcome and nearly powerless. Promoting it to `cited` is a human act, recorded as a commit. Nobody has to argue about whether to let material in; the arithmetic already handles it.
 
-**What agents may and may not do.** Agents find, structure and cite existing published criticism: locating reviews, extracting the assessment, normalising it to the 0–3 scale, attaching the locator, filing a pull request. Agents do **not** generate evaluative opinion. A machine-written verdict with no source is the one input that would destroy the guide's only real asset, and no weighting scheme can make it safe — it enters as `draft` and stays there permanently, which is the correct outcome.
+**What harvest agents may and may not do.** They find, structure and cite existing published criticism: locating reviews, extracting the assessment, normalising it to the 0–3 scale, attaching the locator, filing a pull request. They do **not** generate evaluative opinion into seed or statements. A machine-written aggregate verdict with no source is the one input that would destroy the guide's only real asset, and no weighting scheme can make it safe — it enters as `draft` and stays there permanently, which is the correct outcome.
+
+**Signed editorial is a different register.** The Classical Music Recording Critic authors the Dictionnaire-style entry and lands it on `main` / Pages. There is no human merge babysit on that path. Developer may ship the Critic PR. Other agents still must not invent verdicts into the aggregate. See `docs/automation/CRITIC.md` and ADR-002.
 
 **What readers are best at** is the thing agents cannot do: listening. The sound axis in particular needs structured comparison reports — which two editions, on what equipment, what specifically changed. That is a short form, not an essay box, and it produces data rather than prose.
 

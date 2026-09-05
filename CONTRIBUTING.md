@@ -51,9 +51,14 @@ stage width, compression, edits.
 ## What agents may do
 
 Find, structure and cite existing published criticism. Resolve identity, editions,
-barcodes and cover art from open sources. **Agents may not generate evaluative opinion.**
-An uncited machine verdict enters as `draft` and stays there permanently, which is the
-correct outcome.
+barcodes and cover art from open sources. **Harvest, seed and citation agents may not
+generate evaluative opinion** into seed or statements. An uncited machine verdict
+enters as `draft` and stays there permanently, which is the correct outcome.
+
+**Signed editorial is Critic’s job.** The Classical Music Recording Critic authors
+entries in `data/editorial/` and lands them on `main` / Pages. Developer may ship
+that PR. Other agents do not draft the verdict. See
+[docs/automation/CRITIC.md](docs/automation/CRITIC.md).
 
 ## Conflicts of interest
 
