@@ -39,7 +39,17 @@ TIERS = {"cited", "attributed", "draft"}
 # A characterisation is one sentence in the contributor's own words. Anything
 # much longer is either an essay or, more often, a paste.
 MAX_CHARACTERISATION = 240
-QUOTE_RUN = re.compile(r'["“”«»]\s*(?:\S+\s+){8,}')
+# A quoted run is 8+ words *inside* a pair of quote marks (or an unclosed
+# opening mark to end-of-string). The closing mark of a two-word epithet
+# such as “trained seal” must not treat the author's following sentence
+# as reproduced prose.
+_QUOTE_MARKS = re.compile(r'["“”«»]')
+
+
+def has_quoted_run(text: str) -> bool:
+    """True when a quoted span itself contains eight or more words (S1-05)."""
+    parts = _QUOTE_MARKS.split(text)
+    return any(len(part.split()) >= 8 for part in parts[1::2])
 
 
 def load(path: pathlib.Path, default):
@@ -144,7 +154,7 @@ def validate(c: dict, path: pathlib.Path, recs: set[str], eds: set[str]):
     if len(text) > MAX_CHARACTERISATION:
         e(f"characterisation is {len(text)} characters; the limit is "
           f"{MAX_CHARACTERISATION}. One sentence, in your own words.")
-    if QUOTE_RUN.search(text):
+    if has_quoted_run(text):
         e("looks like quoted review text. Store a locator and your own words, "
           "not the publication's.")
 
@@ -256,17 +266,17 @@ def scan_data_file(path: pathlib.Path) -> list[str]:
                     f"{rel}: `{key}` is {len(text)} characters; limit is "
                     f"{MAX_CHARACTERISATION} (S1-05 source-text guard)"
                 )
-            if QUOTE_RUN.search(text):
+            if has_quoted_run(text):
                 errs.append(
                     f"{rel}: `{key}` looks like quoted review text (S1-05)"
                 )
         elif key in LONG_OK_KEYS or key.endswith("_note"):
-            if QUOTE_RUN.search(text):
+            if has_quoted_run(text):
                 errs.append(
                     f"{rel}: `{key}` contains a quoted run that reads as "
                     f"reproduced prose (S1-05)"
                 )
-        elif len(text) > MAX_CHARACTERISATION and QUOTE_RUN.search(text):
+        elif len(text) > MAX_CHARACTERISATION and has_quoted_run(text):
             errs.append(
                 f"{rel}: long field `{key}` looks like pasted review prose (S1-05)"
             )

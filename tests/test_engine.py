@@ -411,6 +411,20 @@ class TestDataSourceTextGuard(unittest.TestCase):
             errs = val.scan_data_file(p)
         self.assertTrue(any("quoted" in e.lower() for e in errs))
 
+    def test_two_word_epithet_is_not_reproduced_prose(self):
+        """Closing quotes on a short epithet must not scan the rest of the sentence."""
+        text = (
+            'Contemporary press was hostile (Beckwith’s “trained seal” line '
+            'on glenngould.com); Volume II never came. Against the Emersons’ '
+            'complete 2003 quartet it is an incomplete instrumentation experiment.'
+        )
+        self.assertFalse(val.has_quoted_run(text))
+        self.assertTrue(
+            val.has_quoted_run(
+                'He wrote "the finest of all the many recordings made in that decade ever"'
+            )
+        )
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
