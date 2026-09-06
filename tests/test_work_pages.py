@@ -20,6 +20,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import pathlib
+import re
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -236,6 +237,39 @@ class TestComposerHub(unittest.TestCase):
         self.assertIn("Brandenburg Concertos", titles)
         self.assertNotIn("Symphony No. 5", titles)
         self.assertNotIn("Tosca", titles)
+
+    def test_index_assessed_count_matches_hub_assessed_discs(self):
+        """Index composer chip = hub assessed list = assessed recording IDs.
+
+        The live bug was Bach showing 9 on the catalogue (works that have
+        any assessment) while the hub listed 15 discs (2 Brandenburg engine
+        cards + 13 seed.assessed identity cards).
+        """
+        for (cid, name, dates), works in site.composers:
+            match = re.search(
+                rf'href="composers/{re.escape(cid)}\.html"[^>]*>.*?'
+                rf'<span class="stats">(\d+) works · (\d+) assessed</span>',
+                site.index_body,
+                re.S,
+            )
+            self.assertIsNotNone(match, cid)
+            index_n = int(match.group(2))
+
+            hub = site.composer_hub(cid, name, dates, works)
+            if 'class="rec-list"' in hub:
+                start = hub.index('class="rec-list"')
+                rec_list = hub[start : hub.index("</ul>", start)]
+                hub_n = rec_list.count("<li>")
+            else:
+                hub_n = 0
+
+            id_n = sum(len(site.done.get(w["id"], [])) for w in works)
+            self.assertEqual(index_n, hub_n, cid)
+            self.assertEqual(index_n, id_n, cid)
+
+        _, _, _, bach_works = site.composer_by_id("bach")
+        bach_n = sum(len(site.done.get(w["id"], [])) for w in bach_works)
+        self.assertEqual(bach_n, 15)
 
 
 class TestGalleryAndReviewHaveNoGlobalRelated(unittest.TestCase):
