@@ -57,6 +57,20 @@ n_composers = len(by_composer)
 n_done = sum(len(v) for v in done.values())
 
 
+def composer_assessed_discs(works: list) -> list[tuple[dict, dict]]:
+    """(work, recording) pairs the composer hub lists as assessed.
+
+    Source is `done`: engine-scored cards plus first-slice seed.assessed
+    identity cards. Not the number of works that have any assessment, and
+    not candidate/queue length.
+    """
+    pairs = []
+    for w in works:
+        for r in done.get(w["id"], []):
+            pairs.append((w, r))
+    return pairs
+
+
 def surname(name: str) -> str:
     return name.split()[-1]
 
@@ -377,7 +391,7 @@ letter_sections = []
 for code in active_letters:
     rows = []
     for (cid, name, dates), works in by_letter[code]:
-        dn = sum(1 for w in works if done.get(w["id"]))
+        dn = len(composer_assessed_discs(works))
         rows.append(
             f'<a class="dir-row" href="composers/{escape(cid)}.html">'
             f'<span><span class="name">{escape(name)}</span><br>'
@@ -417,13 +431,12 @@ def composer_hub(cid: str, name: str, dates: str, works: list) -> str:
     dn = sum(1 for w in works if done.get(w["id"]))
     rows = "".join(work_row(w, depth=1) for w in works)
     rec_items = []
-    for w in works:
-        for r in done.get(w["id"], []):
-            who = assessed_who(r)
-            rec_items.append(
-                f'<li><a href="{escape(work_page_href(w["id"], depth=1, recording_id=r["id"]))}">{escape(who)}</a>'
-                f'<span class="sub">{escape(w["title"])} · {escape(r.get("published") or "")}</span></li>'
-            )
+    for w, r in composer_assessed_discs(works):
+        who = assessed_who(r)
+        rec_items.append(
+            f'<li><a href="{escape(work_page_href(w["id"], depth=1, recording_id=r["id"]))}">{escape(who)}</a>'
+            f'<span class="sub">{escape(w["title"])} · {escape(r.get("published") or "")}</span></li>'
+        )
     assessed_block = ""
     if rec_items:
         assessed_block = (
