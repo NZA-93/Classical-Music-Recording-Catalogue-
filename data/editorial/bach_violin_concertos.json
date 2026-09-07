@@ -3,13 +3,16 @@
   "entries": [
     {
       "recording": "bach/violin_concertos/4",
-      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-05",
-      "revision": 1,
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-07",
+      "revision": 3,
       "stars": 3,
       "reference": true,
       "compared_with": [],
-      "text": "Channel Classics CCS SA 30910 — May 2010, St John the Evangelist, Upper Norwood; Rachel Podger with Brecon Baroque one-to-a-part; Jonathan Freeman-Attwood / C. Jared Sacks — carries BWV 1041, 1042, and reconstructions after BWV 1056 and 1055. Seed year 2009 is a year early of the sessions; BWV 1043 is not on this disc (it arrives on CCSSA34113). BBC Music called the one-to-a-part case invigorating; Presto made it Recording of the Week; BBC Radio 3 Building a Library (4 Nov 2023) named this disc the recommended recording of BWV 1041. Three stars and Référence among the assessed violin-concerto cards — for chamber HIP Bach on Channel, not for a phantom 1041–1043 triad.",
+      "text": "Podger and Brecon Baroque treat the violin concertos as chamber music — one to a part, directed from the violin. The ear hears lithe, polished playing and a sweet Andante in BWV 1041; the harpsichord-derived reconstructions fill a programme where only two solo concertos survive. This is chamber HIP Bach, not a phantom complete triad of 1041–1043. For that approach, this is the Référence.",
       "quotes": []
     }
   ]

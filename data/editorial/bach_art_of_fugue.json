@@ -3,24 +3,34 @@
   "entries": [
     {
       "recording": "bach/art_of_fugue/0",
-      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-05",
-      "revision": 1,
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-07",
+      "revision": 3,
       "stars": 2,
       "reference": false,
-      "compared_with": ["bach/art_of_fugue/3"],
-      "text": "Columbia Masterworks ML 5738 / MS 6338 (UK CBS BRG 72045) — January–February 1962, Casavant at All Saints’, Toronto, plus Theological College chapel, New York — is Gould’s only commercial organ recording: Contrapunctus I–IX as Volume I of a complete Art of Fugue that never appeared. Not piano, not the later CBC piano Contrapuncti, not Sony compilations that couple organ and piano leftovers. Contemporary press was hostile (Beckwith’s “trained seal” line on glenngould.com); Volume II never came. Against the Emersons’ complete 2003 quartet it is an incomplete instrumentation experiment, interesting as documentary Gould-on-organ, not a finished cycle. Two stars: keep it if you collect Gould’s oddities; do not shelve it as the Art of Fugue.",
+      "compared_with": [
+        "bach/art_of_fugue/3"
+      ],
+      "text": "Gould’s only commercial organ recording stops at Contrapunctus IX: Volume I of an Art of Fugue that never continued. The approach is pianist’s counterpoint transferred to the organ, not a finished cycle. Against the Emersons’ complete quartet it is an incomplete experiment — interesting as documentary Gould. Keep it for Gould’s oddities, not as the Art of Fugue.",
       "quotes": []
     },
     {
       "recording": "bach/art_of_fugue/3",
-      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-05",
-      "revision": 1,
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-07",
+      "revision": 3,
       "stars": 3,
       "reference": true,
-      "compared_with": ["bach/art_of_fugue/0"],
-      "text": "Deutsche Grammophon 474 495-2 — January–February 2003, American Academy of Arts and Letters; Emerson String Quartet; Da-Hong Seetoo — plays the printed cycle through unfinished Contrapunctus XIV and the deathbed chorale BWV 668a, with trios, seating reversal for the mirrors, and Rhodes’s tenor viola for some low writing. Not Juilliard/Sony, not Keller/ECM. ClassicsToday gave Artistic 9 / Sound 9; the Los Angeles Times four stars; Gramophone preferred Emerson’s clarity in places while still sometimes choosing Keller for dialogue. Against Gould’s unfinished 1962 organ Volume I this is a complete modern-quartet argument for open-score Bach heard as four strings. Référence on the assessed Art of Fugue shelf.",
+      "compared_with": [
+        "bach/art_of_fugue/0"
+      ],
+      "text": "The Emersons play the Art of Fugue as a modern string quartet: clear voice colouring, unfinished Contrapunctus XIV left mid-phrase, deathbed chorale at the close. Against Gould’s unfinished organ Volume I this is a complete argument for open-score Bach heard as four strings. Clarity without mixed-ensemble colour fights. Référence on this shelf.",
       "quotes": []
     }
   ]
