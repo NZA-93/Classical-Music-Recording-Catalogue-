@@ -306,7 +306,32 @@
           "year": "2009",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "4_preferred",
+              "label": "Channel Classics",
+              "year": "2010",
+              "format": "Hybrid SACD",
+              "mbid": "aedde372-197e-49bd-bc9f-4d036e592a27",
+              "verified": true,
+              "catno": "CCS SA 30910"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Rachel Podger",
+            "ensemble": "Brecon Baroque",
+            "label": "Channel Classics",
+            "year": 2010,
+            "published": "2010",
+            "venue": "St John the Evangelist, Upper Norwood, London",
+            "sessions": "May 2010",
+            "format": "Hybrid SACD",
+            "catno": "CCS SA 30910",
+            "producer": "Jonathan Freeman-Attwood",
+            "engineer": "C. Jared Sacks",
+            "contents_note": "BWV 1041, 1042, 1056R, 1055R — not BWV 1043"
+          }
         }
       ],
       "assessed": ["bach/violin_concertos/4"]
@@ -342,7 +367,31 @@
           "year": "1961",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Archiv Produktion",
+              "year": "1961",
+              "format": "3×LP / CD",
+              "mbid": "a772e3ad-7b6d-4900-995f-3ce253781f3a",
+              "verified": true,
+              "catno": "14356–14358 / later 449 711-2",
+              "release_group_mbid": "81d31b3e-99c0-3223-94e4-faaf4cedee89"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Pierre Fournier",
+            "label": "Archiv Produktion",
+            "year": 1961,
+            "published": "1961",
+            "venue": "Beethovensaal, Hannover",
+            "sessions": "December 1960 (suites 3 & 6 also tagged February 1961)",
+            "format": "3×LP / CD",
+            "catno": "14356–14358 / later 449 711-2",
+            "producer": "Karl-Heinz Schneider",
+            "engineer": "Heinz Wildhagen"
+          }
         },
         {
           "id": "bach/cello_suites/2",
@@ -400,7 +449,31 @@
           "year": "1973",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Deutsche Grammophon",
+              "year": "1975",
+              "format": "3×LP / 2×CD",
+              "mbid": "bb751c39-7d8b-480a-b1c6-120a53121ced",
+              "verified": true,
+              "catno": "2709 047 / 423 294-2 / 457 701-2",
+              "release_group_mbid": "1fbda302-ed20-339e-ad71-4cf455394ba3"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Nathan Milstein",
+            "label": "Deutsche Grammophon",
+            "year": 1973,
+            "published": "1975",
+            "venue": "Conway Hall, London (BWV 1005–1006 also Brent/Wembley)",
+            "sessions": "February–September 1973; April 1974 continuation for BWV 1005–1006",
+            "format": "3×LP / 2×CD",
+            "catno": "2709 047 / 423 294-2 / 457 701-2",
+            "producer": "Werner Mayer",
+            "engineer": "Klaus Hiemann"
+          }
         },
         {
           "id": "bach/sonatas_partitas/1",
@@ -411,7 +484,28 @@
           "year": "1999",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Channel Classics",
+              "year": "2002",
+              "format": "2×CD",
+              "mbid": "2446f743-99b2-49ed-8a11-779382e8066c",
+              "verified": true,
+              "catno": "CCS SEL 2498"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Rachel Podger",
+            "label": "Channel Classics",
+            "year": 1999,
+            "published": "1999",
+            "venue": "Doopsgezinde Kerk, Deventer",
+            "sessions": "December 1997; April 1998",
+            "format": "2×CD",
+            "catno": "CCS 12198 + CCS 14498 / CCSSEL2498"
+          }
         },
         {
           "id": "bach/sonatas_partitas/2",
@@ -458,7 +552,29 @@
           "year": "1955",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Columbia Masterworks",
+              "year": "1956",
+              "format": "LP (mono)",
+              "mbid": "2a7844fb-13b9-437a-8f68-c018c53f5f72",
+              "verified": true,
+              "catno": "ML 5060",
+              "release_group_mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Glenn Gould",
+            "label": "Columbia Masterworks",
+            "year": 1955,
+            "published": "1956",
+            "venue": "Columbia 30th Street Studio, New York",
+            "sessions": "June 1955",
+            "format": "LP (mono)",
+            "catno": "ML 5060"
+          }
         },
         {
           "id": "bach/goldberg/1",
@@ -469,7 +585,28 @@
           "year": "1981",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "CBS Masterworks",
+              "year": "1982",
+              "format": "LP / CD",
+              "mbid": "fed9286f-4145-4fe7-b130-36744a6bdd00",
+              "verified": true,
+              "catno": "IM 37779"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Glenn Gould",
+            "label": "CBS Masterworks",
+            "year": 1981,
+            "published": "1982",
+            "venue": "Columbia 30th Street Studio, New York",
+            "sessions": "April–May 1981",
+            "format": "LP / CD",
+            "catno": "IM 37779"
+          }
         },
         {
           "id": "bach/goldberg/2",
@@ -502,7 +639,31 @@
           "year": "1982",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "4_preferred",
+              "label": "Decca",
+              "year": "1983",
+              "format": "CD",
+              "mbid": "920fec1f-b49e-4019-bc03-e7756cb470ec",
+              "verified": true,
+              "catno": "417 116-2",
+              "release_group_mbid": "d51204a7-de33-333f-89d9-9ce844232277"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "András Schiff",
+            "label": "Decca",
+            "year": 1982,
+            "published": "1983",
+            "venue": "Kingsway Hall, London",
+            "sessions": "13–15 April 1982",
+            "format": "CD",
+            "catno": "417 116-2",
+            "producer": "Michael Haas",
+            "engineer": "Simon Eadon"
+          }
         }
       ],
       "assessed": ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/4"]
@@ -596,7 +757,29 @@
           "year": "1985",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Archiv Produktion",
+              "year": "1985",
+              "format": "2×CD",
+              "mbid": "1db1e98a-5b64-4630-98c7-bcb71c3dee96",
+              "verified": true,
+              "catno": "415 514-2"
+            }
+          ],
+          "fact_strip": {
+            "director": "John Eliot Gardiner",
+            "ensemble": "English Baroque Soloists; Monteverdi Choir",
+            "label": "Archiv Produktion",
+            "year": 1985,
+            "published": "1985",
+            "venue": "All Saints, Tooting, London",
+            "sessions": "February 1985",
+            "format": "2×CD",
+            "catno": "415 514-2"
+          }
         },
         {
           "id": "bach/mass_b_minor/1",
@@ -654,7 +837,29 @@
           "year": "1961",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Columbia / EMI",
+              "year": "1962",
+              "format": "5×LP / 3×CD",
+              "mbid": "4da77bb8-262f-4aa6-84f5-f574118b6b2b",
+              "verified": true,
+              "release_group_mbid": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e"
+            }
+          ],
+          "fact_strip": {
+            "director": "Otto Klemperer",
+            "ensemble": "Philharmonia Orchestra and Chorus",
+            "soloists": "Pears; Fischer-Dieskau; Schwarzkopf; Ludwig; Gedda; Berry",
+            "label": "Columbia / EMI",
+            "year": 1961,
+            "published": "1962",
+            "venue": "Abbey Road Studio No. 1 and Kingsway Hall, London",
+            "sessions": "November 1960 – November 1961",
+            "format": "5×LP / 3×CD"
+          }
         },
         {
           "id": "bach/matthew/1",
@@ -665,7 +870,32 @@
           "year": "1988",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Archiv Produktion",
+              "year": "1989",
+              "format": "3×CD",
+              "mbid": "51d08afb-0d81-4617-8c33-979806910ddf",
+              "verified": true,
+              "catno": "427 648-2",
+              "release_group_mbid": "2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1"
+            }
+          ],
+          "fact_strip": {
+            "director": "John Eliot Gardiner",
+            "ensemble": "English Baroque Soloists; Monteverdi Choir",
+            "label": "Archiv Produktion",
+            "year": 1988,
+            "published": "1989",
+            "venue": "Snape Maltings, Aldeburgh",
+            "sessions": "April 1988",
+            "format": "3×CD",
+            "catno": "427 648-2",
+            "producer": "Karl-August Naegler",
+            "engineer": "Ulrich Vette"
+          }
         },
         {
           "id": "bach/matthew/2",
@@ -723,7 +953,29 @@
           "year": "1986",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Archiv Produktion",
+              "year": "1986",
+              "format": "2×CD",
+              "mbid": "8e46b5f1-9f7b-4313-96c1-8e2b1423b51b",
+              "verified": true,
+              "catno": "419 324-2"
+            }
+          ],
+          "fact_strip": {
+            "director": "John Eliot Gardiner",
+            "ensemble": "English Baroque Soloists; Monteverdi Choir",
+            "label": "Archiv Produktion",
+            "year": 1986,
+            "published": "1986",
+            "venue": "All Saints, Tooting, London",
+            "sessions": "March 1986",
+            "format": "2×CD",
+            "catno": "419 324-2"
+          }
         },
         {
           "id": "bach/john/2",
@@ -781,7 +1033,29 @@
           "year": "1962",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Columbia Masterworks / CBS",
+              "year": "1962",
+              "format": "LP",
+              "mbid": "4f10bada-8a69-4562-8536-16e142671b75",
+              "verified": true,
+              "catno": "ML 5738 / MS 6338 / BRG 72045"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Glenn Gould (organ)",
+            "label": "Columbia Masterworks / CBS",
+            "year": 1962,
+            "published": "1962",
+            "venue": "All Saints’, Toronto; Theological College chapel, New York",
+            "sessions": "January–February 1962",
+            "format": "LP",
+            "catno": "ML 5738 / MS 6338 / BRG 72045",
+            "contents_note": "Contrapunctus I–IX only (Volume I; incomplete)"
+          }
         },
         {
           "id": "bach/art_of_fugue/1",
@@ -814,7 +1088,30 @@
           "year": "2003",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "3_preferred",
+              "label": "Deutsche Grammophon",
+              "year": "2003",
+              "format": "CD",
+              "mbid": "1d748095-0c33-4fd7-b925-9e50849f101d",
+              "verified": true,
+              "catno": "474 4952"
+            }
+          ],
+          "fact_strip": {
+            "ensemble": "Emerson String Quartet",
+            "label": "Deutsche Grammophon",
+            "year": 2003,
+            "published": "2003",
+            "venue": "American Academy of Arts and Letters, New York",
+            "sessions": "January–February 2003",
+            "format": "CD",
+            "catno": "474 495-2",
+            "producer": "Da-Hong Seetoo",
+            "engineer": "Da-Hong Seetoo"
+          }
         },
         {
           "id": "bach/art_of_fugue/4",

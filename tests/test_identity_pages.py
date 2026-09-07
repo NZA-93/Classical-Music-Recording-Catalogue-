@@ -587,9 +587,143 @@ class TestTemplateIdentityPath(unittest.TestCase):
         for token in ("scorebox", "sources(", "Référence", "★"):
             self.assertNotIn(token, identity, token)
         self.assertIn("signed(", identity)
+        self.assertIn("factStrip(", identity)
+        self.assertNotIn("editions(", identity)
+        self.assertNotIn("Editions and transfers", identity)
         self.assertIn('if(r.card==="identity") return identityLine(r)', tpl[entry:work])
         self.assertIn("recs.every(r=>r.card===\"identity\")", tpl[work:])
         self.assertIn("${recs.map(identityLine).join(\"\")}", tpl[work:])
+        signed = tpl[tpl.index("function signed(r)"):tpl.index("function factStrip(r)")]
+        refs_fn = tpl[tpl.index("function consultedRefs(e)"):tpl.index("function signed(r)")]
+        self.assertIn("consultedRefs(", signed)
+        self.assertIn(">References<", refs_fn)
+        self.assertIn("function consultedRefs(e)", tpl)
+        body_start = signed.index('class="body"')
+        refs_at = signed.index("consultedRefs(")
+        self.assertGreater(refs_at, body_start)
+
+
+class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
+    """Payload editions, consulted refs, and Brandenburg-lite facts on the 13 cards."""
+
+    EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
+    FORBIDDEN = "ddbe4e65"
+    GOULD_1955 = "2a7844fb-13b9-437a-8f68-c018c53f5f72"
+
+    def test_all_thirteen_carry_a_cover_mbid_and_fact_strip(self):
+        recs = {
+            r["id"]: r
+            for w in ident.public_identity_works(_seed())
+            for r in w["recordings"]
+        }
+        self.assertEqual(set(recs), set(SIGNED_IDENTITY_IDS))
+        for rid, rec in recs.items():
+            eds = rec.get("editions") or []
+            self.assertTrue(eds, rid)
+            self.assertTrue(any(e.get("mbid") for e in eds), rid)
+            for ed in eds:
+                self.assertNotIn("sound", ed, rid)
+                self.assertNotIn("verdict", ed, rid)
+                self.assertNotIn("transfer", ed, rid)
+            strip = rec.get("fact_strip") or {}
+            self.assertTrue(strip.get("label") or strip.get("venue") or strip.get("sessions"), rid)
+            self.assertNotIn("seed_year_note", strip, rid)
+            self.assertNotIn("cover_face", strip, rid)
+            ed = rec["editorial"]
+            consulted = ed.get("consulted") or []
+            self.assertGreaterEqual(len(consulted), 1, rid)
+            self.assertLessEqual(len(consulted), 8, rid)
+            for item in consulted:
+                self.assertTrue(item.get("title"), rid)
+                self.assertRegex(item.get("url") or "", r"^https?://")
+
+    def test_emerson_lock_uses_only_the_caa_200_release(self):
+        recs = {
+            r["id"]: r
+            for w in ident.public_identity_works(_seed())
+            for r in w["recordings"]
+        }
+        emerson = recs["bach/art_of_fugue/3"]
+        mbids = [e["mbid"] for e in emerson["editions"]]
+        self.assertEqual(mbids, [self.EMERSON_MBID])
+        blob = json.dumps(emerson)
+        self.assertNotIn(self.FORBIDDEN, blob)
+        for item in emerson["editorial"]["consulted"]:
+            url = item["url"]
+            if "musicbrainz.org/release/" in url:
+                self.assertIn(self.EMERSON_MBID, url)
+            self.assertNotIn(self.FORBIDDEN, url)
+
+    def test_pages_render_caa_covers_refs_and_fact_strip(self):
+        gold = _page("bach/goldberg")
+        self.assertIn(
+            f"coverartarchive.org/release/{self.GOULD_1955}/front-500",
+            gold,
+        )
+        self.assertIn(">References<", gold)
+        self.assertIn("Columbia Masterworks", gold)
+        self.assertIn("Columbia 30th Street Studio", gold)
+        self.assertIn("June 1955", gold)
+        identity_fn = gold[gold.index("function identityLine(r)"):gold.index("function entry(r)")]
+        self.assertNotIn("editions(", identity_fn)
+        self.assertNotIn("Editions and transfers", identity_fn)
+        self.assertNotIn(self.FORBIDDEN, gold)
+
+        aof = _page("bach/art_of_fugue")
+        self.assertIn(
+            f"coverartarchive.org/release/{self.EMERSON_MBID}/front-500",
+            aof,
+        )
+        self.assertIn(
+            f"https://musicbrainz.org/release/{self.EMERSON_MBID}",
+            aof,
+        )
+        self.assertIn("American Academy of Arts and Letters", aof)
+        self.assertIn("January–February 2003", aof)
+        self.assertNotIn(self.FORBIDDEN, aof)
+        identity_fn = aof[aof.index("function identityLine(r)"):aof.index("function entry(r)")]
+        self.assertNotIn("editions(", identity_fn)
+        # Verdict text is unchanged; refs sit outside the prose paragraph.
+        self.assertIn("The Emersons play the Art of Fugue as a modern string quartet", aof)
+        start = aof.index('class="body"')
+        end = aof.index('class="sig"', start)
+        self.assertNotIn(">References<", aof[start:end])
+
+    def test_signed_fields_other_than_consulted_are_untouched(self):
+        expected = {
+            "bach/goldberg/0": (3, True, 3, "The 1955 Goldberg is still the shock"),
+            "bach/goldberg/1": (3, False, 3, "Gould’s 1981 remake is a late architecture"),
+            "bach/goldberg/4": (2, False, 3, "Schiff’s first studio Goldberg"),
+            "bach/cello_suites/1": (3, True, 3, "Fournier’s Archiv studio cycle"),
+            "bach/violin_concertos/4": (3, True, 3, "Podger and Brecon Baroque"),
+            "bach/sonatas_partitas/0": (3, False, 3, "Milstein’s stereo remake"),
+            "bach/sonatas_partitas/1": (3, True, 3, "Podger’s complete gut-strung cycle"),
+            "bach/matthew/0": (3, False, 3, "Klemperer’s Philharmonia Matthew Passion"),
+            "bach/matthew/1": (3, True, 3, "Gardiner’s 1988 Archiv Matthew Passion"),
+            "bach/john/1": (3, True, 3, "Gardiner’s first St John Passion"),
+            "bach/mass_b_minor/0": (3, True, 3, "Gardiner’s first B-minor Mass"),
+            "bach/art_of_fugue/0": (2, False, 3, "Gould’s only commercial organ recording"),
+            "bach/art_of_fugue/3": (3, True, 3, "The Emersons play the Art of Fugue"),
+        }
+        recs = {
+            r["id"]: r
+            for w in ident.public_identity_works(_seed())
+            for r in w["recordings"]
+        }
+        for rid, (stars, reference, revision, snippet) in expected.items():
+            ed = recs[rid]["editorial"]
+            self.assertEqual(ed["stars"], stars, rid)
+            self.assertEqual(ed["reference"], reference, rid)
+            self.assertEqual(ed["revision"], revision, rid)
+            self.assertEqual(ed["date"], "2026-09-07", rid)
+            self.assertIn(snippet, ed["text"], rid)
+
+    def test_identity_editions_rejects_the_caa_404_emerson_mbid(self):
+        with self.assertRaises(ValueError):
+            ident.identity_editions({
+                "id": "bach/art_of_fugue/3",
+                "editions": [{"id": "bad", "mbid": "ddbe4e65-0000-0000-0000-000000000000"}],
+            })
 
 
 if __name__ == "__main__":

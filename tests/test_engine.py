@@ -299,6 +299,49 @@ class TestEditorialQuotation(unittest.TestCase):
             "locator": "p. 84", "source_length_words": 140}])
         self.assertEqual(errs, [])
 
+    def test_consulted_requires_title_and_http_url(self):
+        ok, _ = self.entry(consulted=[{
+            "title": "MusicBrainz release",
+            "url": "https://musicbrainz.org/release/1d748095-0c33-4fd7-b925-9e50849f101d",
+            "kind": "discography"}])
+        self.assertEqual(ok, [])
+        missing, _ = self.entry(consulted=[{"title": "x"}])
+        self.assertTrue(any("url" in e for e in missing))
+        bad_kind, _ = self.entry(consulted=[{
+            "title": "x", "url": "https://example.org", "kind": "essay"}])
+        self.assertTrue(any("kind" in e for e in bad_kind))
+
+    def test_emerson_consulted_rejects_the_caa_404_release(self):
+        errs, _ = val.validate_editorial(
+            {
+                "recording": "bach/art_of_fugue/3",
+                "author": {"id": "NZA"},
+                "date": "2026-07-26",
+                "revision": 1,
+                "text": "An entry.",
+                "consulted": [{
+                    "title": "wrong face",
+                    "url": "https://musicbrainz.org/release/ddbe4e65-aaaa-bbbb-cccc-ddddeeeeffff",
+                    "kind": "discography",
+                }],
+            },
+            pathlib.Path("e.json"),
+            {"bach/art_of_fugue/3"},
+        )
+        self.assertTrue(any("Emerson" in e for e in errs))
+
+    def test_emerson_seed_lock(self):
+        seed = {
+            "works": [{
+                "candidates": [{
+                    "id": "bach/art_of_fugue/3",
+                    "editions": [{"mbid": "ddbe4e65-aaaa-bbbb-cccc-ddddeeeeffff"}],
+                }],
+            }],
+        }
+        errs = val.validate_emerson_lock(seed)
+        self.assertTrue(any("forbidden" in e or "must be" in e for e in errs))
+
 
 class TestComposerRollup(unittest.TestCase):
     """Composer scores are origin-weighted rollups, never a new judgement layer."""

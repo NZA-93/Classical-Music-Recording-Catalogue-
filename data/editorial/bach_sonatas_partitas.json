@@ -10,7 +10,49 @@
       "reference": false,
       "compared_with": ["bach/sonatas_partitas/1"],
       "text": "Milstein’s stereo remake of the complete sonatas and partitas is late modern-instrument Bach: polished, dance-aware, closer to the manuscript than his earlier Capitol mono cycle. Against Podger’s baroque-violin set it is the other side of the argument — the great modern statement rather than gut and implied polyphony. Not the Référence on this shelf — that goes to the HIP first choice.",
-      "quotes": []
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Youngrok Lee — Nathan Milstein discography (Bach Sonatas & Partitas)",
+          "url": "http://trmsolutions.co.kr/music/Milstein/discography-milstein.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Sonaten & Partiten (Milstein / DG Originals 2×CD)",
+          "url": "https://musicbrainz.org/release/bb751c39-7d8b-480a-b1c6-120a53121ced",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — Sonatas and Partitas for Solo Violin (Milstein)",
+          "url": "https://musicbrainz.org/release-group/1fbda302-ed20-339e-ad71-4cf455394ba3",
+          "kind": "discography"
+        },
+        {
+          "title": "Discogs master — Nathan Milstein / J. S. Bach: Sonatas & Partitas",
+          "url": "https://www.discogs.com/master/581587-Nathan-Milstein-J-S-Bach-Sonatas-Partitas",
+          "kind": "discography"
+        },
+        {
+          "title": "Esoteric ESSG-90276/77 product note — Bach Sonatas and Partitas (Milstein)",
+          "url": "https://eu.teac-audio.com/en-GB/audio-hifi/vinyls-cd/sacd/compact-disc-/-super-audio-cd/sacd-werner-mayer-j.-s.-bach-sonatas-and-partitas-for-solo-violin/p/252503/pdf",
+          "kind": "reference"
+        },
+        {
+          "title": "Deutsche Grammophon — Bach Sonatas and Partitas / Milstein",
+          "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-sonatas-and-partitas-milstein-4028",
+          "kind": "label"
+        },
+        {
+          "title": "Gramophone — Bach Violin Sonatas and Partitas (comparative)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-violin-sonatas-and-partitas-0",
+          "kind": "review"
+        },
+        {
+          "title": "ClassicsToday — Bach Sonatas and Partitas (Fulkerson / Bridge)",
+          "url": "https://www.classicstoday.com/review/review-5594/",
+          "kind": "review"
+        }
+      ]
     },
     {
       "recording": "bach/sonatas_partitas/1",
@@ -21,7 +63,49 @@
       "reference": true,
       "compared_with": ["bach/sonatas_partitas/0"],
       "text": "Podger’s complete gut-strung cycle hears Bach’s counterpoint and implied polyphony on a baroque violin. Against Milstein’s DG remake it is the other stance: HIP clarity while modern staples still owned the shop. The Chaconne accumulates; ornamentation stays alive without fuss. Référence for the complete solo cycle on period violin.",
-      "quotes": []
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Rachel Podger instrumental discography, S-1",
+          "url": "https://bach-cantatas.com/NVP/Podger-R.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "BBC Radio 3 — Building a Library: Bach (archived index)",
+          "url": "https://www.bbc.co.uk/radio3/classical/bach48/library.shtml",
+          "kind": "review"
+        },
+        {
+          "title": "Presto Music — Bach Complete Partitas and Sonatas for Violin Solo (CCSSEL2498)",
+          "url": "https://www.prestomusic.com/classical/products/7939466--bach-complete-partitas-and-sonatas-for-violin-solo",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — Partitas & Sonatas for Violin Solo vol.1 (CCS12198)",
+          "url": "https://www.prestomusic.com/classical/products/7938594--partitas-sonatas-for-violin-solo-vol-1",
+          "kind": "discography"
+        },
+        {
+          "title": "AllMusic — Bach: Sonatas and Partitas, Vol. 1 (Podger)",
+          "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-1-mw0001824896",
+          "kind": "reference"
+        },
+        {
+          "title": "AllMusic — Bach: Sonatas and Partitas, Vol. 2 (Podger)",
+          "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-2-mw0001844170",
+          "kind": "reference"
+        },
+        {
+          "title": "Apple Music Classical — Bach: Sonatas and Partitas, Vol. 2",
+          "url": "https://classical.music.apple.com/dk/album/260285901",
+          "kind": "reference"
+        },
+        {
+          "title": "Flying Inkpot #79 — Ng Yeuk Fan on Podger CCS 12198",
+          "url": "https://www.flyinginkpot.com/1999/07/inkpot79-classical-music-reviews-j-s-bach-sonatas-partitas-for-solo-violin-podger-channel/",
+          "kind": "review"
+        }
+      ]
     }
   ]
 }
