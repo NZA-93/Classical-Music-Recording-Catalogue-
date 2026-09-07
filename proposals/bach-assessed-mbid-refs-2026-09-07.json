@@ -1,0 +1,956 @@
+{
+  "schema_proposal": {
+    "editorial_field": "consulted",
+    "description": "User-visible list of links consulted when writing the signed entry. Not ADR-003 quotes. Not aggregate sources.",
+    "item": {
+      "title": "string (required)",
+      "url": "https URL (required)",
+      "kind": "required enum: discography | review | label | reference | award"
+    },
+    "max": 8,
+    "prose_rule": "Never paste these into the verdict paragraph; Pages renders a References block under the signed text."
+  },
+  "fact_strip_fields": [
+    "soloists|director|ensemble",
+    "label",
+    "year",
+    "published",
+    "venue",
+    "sessions",
+    "format",
+    "catno",
+    "producer",
+    "engineer",
+    "contents_note (rare)"
+  ],
+  "edition_for_cover": {
+    "id": "short slug",
+    "label": "string",
+    "year": "string or int",
+    "catno": "string",
+    "format": "string",
+    "mbid": "MusicBrainz release UUID (CAA front)",
+    "verified": true
+  },
+  "recordings": [
+    {
+      "id": "bach/goldberg/0",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Glenn Gould",
+        "label": "Columbia Masterworks",
+        "year": 1955,
+        "published": "1956",
+        "venue": "Columbia 30th Street Studio, New York",
+        "sessions": "June 1955",
+        "format": "LP (mono)",
+        "catno": "ML 5060"
+      },
+      "edition": {
+        "id": "0_preferred",
+        "label": "Columbia Masterworks",
+        "year": "1956",
+        "catno": "ML 5060",
+        "format": "LP (mono)",
+        "mbid": "2a7844fb-13b9-437a-8f68-c018c53f5f72",
+        "release_group_mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)",
+          "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — The Goldberg Variations (1955 recording)",
+          "url": "https://musicbrainz.org/release-group/dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+          "kind": "discography"
+        },
+        {
+          "title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations",
+          "url": "https://www.discogs.com/master/261784",
+          "kind": "discography"
+        },
+        {
+          "title": "pianistdiscography.com — Columbia ML 5060",
+          "url": "https://www.pianistdiscography.com/discography/pianistLabel.php?cdnum=11524",
+          "kind": "discography"
+        },
+        {
+          "title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)",
+          "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/",
+          "kind": "reference"
+        },
+        {
+          "title": "Library of Congress — Tim Page essay PDF on Gould 1955 Goldbergs",
+          "url": "https://loc.gov/static/programs/national-recording-preservation-board/documents/GoldbergVar.pdf",
+          "kind": "reference"
+        },
+        {
+          "title": "LOC press — inaugural National Recording Registry",
+          "url": "https://loc.gov/today/pr/2003/03-014.html",
+          "kind": "reference"
+        },
+        {
+          "title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs",
+          "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "2a7844fb-13b9-437a-8f68-c018c53f5f72",
+      "mbid_release_group": "dcff25f1-702d-3b5e-b0da-d48172e6e62a",
+      "gaps": []
+    },
+    {
+      "id": "bach/goldberg/1",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Glenn Gould",
+        "label": "CBS Masterworks",
+        "year": 1981,
+        "published": "1982",
+        "venue": "Columbia 30th Street Studio, New York",
+        "sessions": "April–May 1981",
+        "format": "LP / CD",
+        "catno": "IM 37779"
+      },
+      "edition": {
+        "id": "1_preferred",
+        "label": "CBS Masterworks",
+        "year": "1982",
+        "catno": "IM 37779",
+        "format": "LP / CD",
+        "mbid": "fed9286f-4145-4fe7-b130-36744a6bdd00",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Discogs — Bach / Glenn Gould: The Goldberg Variations (CBS IM 37779)",
+          "url": "https://www.discogs.com/release/4579917-Bach-Glenn-Gould-The-Goldberg-Variations",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)",
+          "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00",
+          "kind": "discography"
+        },
+        {
+          "title": "Sony Classical / glenngould.com — Complete Unreleased 1981 Studio Sessions",
+          "url": "https://glenngould.com/the-goldberg-variations-the-complete-unreleased-1981-studio-sessions/",
+          "kind": "reference"
+        },
+        {
+          "title": "Sony Classical product — Complete 1981 Studio Sessions",
+          "url": "https://www.sonyclassical.com/releases/releases-details/glenn-gould-the-goldberg-variations-the-complete-1981-studio-sessions",
+          "kind": "reference"
+        },
+        {
+          "title": "Recording Academy — Glenn Gould Grammy awards",
+          "url": "https://www.grammy.com/artists/glenn-gould/3638/",
+          "kind": "award"
+        },
+        {
+          "title": "Grammy category page — Best Classical Album 1983",
+          "url": "https://www.grammy.com/awards/categories/classical-album/1983/",
+          "kind": "award"
+        },
+        {
+          "title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs",
+          "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm",
+          "kind": "review"
+        },
+        {
+          "title": "MusicWeb International — Jonathan Woolf on Sony SM3K 87703",
+          "url": "http://www.musicweb-international.com/classrev/2003/Feb03/Goldberg_Gould.htm",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "fed9286f-4145-4fe7-b130-36744a6bdd00",
+      "mbid_release_group": null,
+      "gaps": []
+    },
+    {
+      "id": "bach/goldberg/4",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "András Schiff",
+        "label": "Decca",
+        "year": 1982,
+        "published": "1983",
+        "venue": "Kingsway Hall, London",
+        "sessions": "13–15 April 1982",
+        "format": "CD",
+        "catno": "417 116-2",
+        "producer": "Michael Haas",
+        "engineer": "Simon Eadon"
+      },
+      "edition": {
+        "id": "4_preferred",
+        "label": "Decca",
+        "year": "1983",
+        "catno": "417 116-2",
+        "format": "CD",
+        "mbid": "920fec1f-b49e-4019-bc03-e7756cb470ec",
+        "release_group_mbid": "d51204a7-de33-333f-89d9-9ce844232277",
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — András Schiff K-3",
+          "url": "https://www.bach-cantatas.com/NVP/Schiff.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — BWV 988 played by Andras Schiff",
+          "url": "https://www.bach-cantatas.com/NVD/BWV988-Schiff.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — Bach Goldberg Variations Decca 4171162",
+          "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — Goldberg Variations (1982 recording)",
+          "url": "https://musicbrainz.org/release-group/d51204a7-de33-333f-89d9-9ce844232277",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Decca 417 116-2",
+          "url": "https://musicbrainz.org/release/920fec1f-b49e-4019-bc03-e7756cb470ec",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz — April-dated recording cluster (Haas/Eadon/Kingsway)",
+          "url": "https://musicbrainz.org/recording/c31a3621-6ba9-4ad5-ad59-86f326966928",
+          "kind": "discography"
+        },
+        {
+          "title": "Gramophone — Jed Distler on Schiff Complete Decca Recordings",
+          "url": "https://www.gramophone.co.uk/content/review/review-andras-schiffs-complete-decca-recordings",
+          "kind": "review"
+        },
+        {
+          "title": "Gramophone — Distler on Schiff ECM 2001 Goldberg",
+          "url": "https://www.gramophone.co.uk/reviews/bach-goldberg-variations-14",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "920fec1f-b49e-4019-bc03-e7756cb470ec",
+      "mbid_release_group": "d51204a7-de33-333f-89d9-9ce844232277",
+      "gaps": []
+    },
+    {
+      "id": "bach/cello_suites/1",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Pierre Fournier",
+        "label": "Archiv Produktion",
+        "year": 1961,
+        "published": "1961",
+        "venue": "Beethovensaal, Hannover",
+        "sessions": "December 1960 (suites 3 & 6 also tagged February 1961)",
+        "format": "3×LP / CD",
+        "catno": "14356–14358 / later 449 711-2",
+        "producer": "Karl-Heinz Schneider",
+        "engineer": "Heinz Wildhagen"
+      },
+      "edition": {
+        "id": "1_preferred",
+        "label": "Archiv Produktion",
+        "year": "1961",
+        "catno": "14356–14358 / later 449 711-2",
+        "format": "3×LP / CD",
+        "mbid": "a772e3ad-7b6d-4900-995f-3ce253781f3a",
+        "release_group_mbid": "81d31b3e-99c0-3223-94e4-faaf4cedee89",
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Pierre Fournier S-2",
+          "url": "https://www.bach-cantatas.com/NVP/Fournier-P.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Sechs Suiten (Archiv 3×LP)",
+          "url": "https://musicbrainz.org/release/a772e3ad-7b6d-4900-995f-3ce253781f3a",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — Sechs Suiten (1960 recording)",
+          "url": "https://musicbrainz.org/release-group/81d31b3e-99c0-3223-94e4-faaf4cedee89",
+          "kind": "discography"
+        },
+        {
+          "title": "Discogs master — Fournier Sechs Suiten BWV 1007–1012",
+          "url": "https://www.discogs.com/master/285354",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — Archiv 4497112 (Originals)",
+          "url": "https://www.prestomusic.com/classical/products/7924204--bach-j-s-cello-suites-nos-1-6-bwv1007-1012",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — Archiv 4776724",
+          "url": "https://www.prestomusic.com/classical/products/7958569--bach-j-s-cello-suites-nos-1-6-bwv1007-1012",
+          "kind": "discography"
+        },
+        {
+          "title": "Gramophone — Bach 6 Suites for Cello (Fournier)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-6-suites-for-cellobwv1007-1012",
+          "kind": "review"
+        },
+        {
+          "title": "bachcellosuites.co.uk — Pierre Fournier review",
+          "url": "https://bachcellosuites.co.uk/bach-cello-suites-home/list-of-reviews/pierre-fournier/",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "a772e3ad-7b6d-4900-995f-3ce253781f3a",
+      "mbid_release_group": "81d31b3e-99c0-3223-94e4-faaf4cedee89",
+      "gaps": []
+    },
+    {
+      "id": "bach/violin_concertos/4",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Rachel Podger",
+        "ensemble": "Brecon Baroque",
+        "label": "Channel Classics",
+        "year": 2010,
+        "published": "2010",
+        "seed_year_note": "seed year 2009 is one year early of sessions",
+        "venue": "St John the Evangelist, Upper Norwood, London",
+        "sessions": "May 2010",
+        "format": "Hybrid SACD",
+        "catno": "CCS SA 30910",
+        "producer": "Jonathan Freeman-Attwood",
+        "engineer": "C. Jared Sacks",
+        "contents_note": "BWV 1041, 1042, 1056R, 1055R — not BWV 1043"
+      },
+      "edition": {
+        "id": "4_preferred",
+        "label": "Channel Classics",
+        "year": "2010",
+        "catno": "CCS SA 30910",
+        "format": "Hybrid SACD",
+        "mbid": "aedde372-197e-49bd-bc9f-4d036e592a27",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Rachel Podger O-4",
+          "url": "https://www.bach-cantatas.com/NVP/Podger-R.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Channel Classics booklet PDF (via BCW)",
+          "url": "https://www.bach-cantatas.com/Pic-NonVocal-BIG/Podger-R-O04c[Channel-SACD-booklet",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Violin Concertos (CCS SA 30910)",
+          "url": "https://musicbrainz.org/release/aedde372-197e-49bd-bc9f-4d036e592a27",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — CCSSA30910",
+          "url": "https://www.prestomusic.com/classical/products/7988378--js-bach-violin-concertos",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto — Recording of the Week (Chris O’Reilly)",
+          "url": "https://www.prestomusic.com/classical/articles/189--recording-of-the-week-bachs-violin-concertos-from-rachel-podger-and-brecon-baroque",
+          "kind": "discography"
+        },
+        {
+          "title": "AllMusic — Bach: Violin Concertos (Podger / Brecon Baroque)",
+          "url": "https://www.allmusic.com/album/bach-violin-concertos-mw0002059032",
+          "kind": "reference"
+        },
+        {
+          "title": "BBC Music — review of Podger / Brecon Baroque Violin Concertos",
+          "url": "https://www.bbc.co.uk/music/reviews/gqj9/",
+          "kind": "review"
+        },
+        {
+          "title": "BBC Radio 3 Record Review — BaL BWV 1041 (4 Nov 2023)",
+          "url": "https://www.bbc.co.uk/programmes/m001ryw1",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "aedde372-197e-49bd-bc9f-4d036e592a27",
+      "mbid_release_group": null,
+      "gaps": []
+    },
+    {
+      "id": "bach/sonatas_partitas/0",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Nathan Milstein",
+        "label": "Deutsche Grammophon",
+        "year": 1973,
+        "published": "1975",
+        "venue": "Conway Hall, London (BWV 1005–1006 also Brent/Wembley)",
+        "sessions": "February–September 1973; April 1974 continuation for BWV 1005–1006",
+        "format": "3×LP / 2×CD",
+        "catno": "2709 047 / 423 294-2 / 457 701-2",
+        "producer": "Werner Mayer",
+        "engineer": "Klaus Hiemann"
+      },
+      "edition": {
+        "id": "0_preferred",
+        "label": "Deutsche Grammophon",
+        "year": "1975",
+        "catno": "2709 047 / 423 294-2 / 457 701-2",
+        "format": "3×LP / 2×CD",
+        "mbid": "bb751c39-7d8b-480a-b1c6-120a53121ced",
+        "release_group_mbid": "1fbda302-ed20-339e-ad71-4cf455394ba3",
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Youngrok Lee — Nathan Milstein discography (Bach Sonatas & Partitas)",
+          "url": "http://trmsolutions.co.kr/music/Milstein/discography-milstein.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Sonaten & Partiten (Milstein / DG Originals 2×CD)",
+          "url": "https://musicbrainz.org/release/bb751c39-7d8b-480a-b1c6-120a53121ced",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — Sonatas and Partitas for Solo Violin (Milstein)",
+          "url": "https://musicbrainz.org/release-group/1fbda302-ed20-339e-ad71-4cf455394ba3",
+          "kind": "discography"
+        },
+        {
+          "title": "Discogs master — Nathan Milstein / J. S. Bach: Sonatas & Partitas",
+          "url": "https://www.discogs.com/master/581587-Nathan-Milstein-J-S-Bach-Sonatas-Partitas",
+          "kind": "discography"
+        },
+        {
+          "title": "Esoteric ESSG-90276/77 product note — Bach Sonatas and Partitas (Milstein)",
+          "url": "https://eu.teac-audio.com/en-GB/audio-hifi/vinyls-cd/sacd/compact-disc-/-super-audio-cd/sacd-werner-mayer-j.-s.-bach-sonatas-and-partitas-for-solo-violin/p/252503/pdf",
+          "kind": "reference"
+        },
+        {
+          "title": "Deutsche Grammophon — Bach Sonatas and Partitas / Milstein",
+          "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-sonatas-and-partitas-milstein-4028",
+          "kind": "label"
+        },
+        {
+          "title": "Gramophone — Bach Violin Sonatas and Partitas (comparative)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-violin-sonatas-and-partitas-0",
+          "kind": "review"
+        },
+        {
+          "title": "ClassicsToday — Bach Sonatas and Partitas (Fulkerson / Bridge)",
+          "url": "https://www.classicstoday.com/review/review-5594/",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "bb751c39-7d8b-480a-b1c6-120a53121ced",
+      "mbid_release_group": "1fbda302-ed20-339e-ad71-4cf455394ba3",
+      "gaps": []
+    },
+    {
+      "id": "bach/sonatas_partitas/1",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Rachel Podger",
+        "label": "Channel Classics",
+        "year": 1999,
+        "published": "1999",
+        "venue": "Doopsgezinde Kerk, Deventer",
+        "sessions": "December 1997; April 1998",
+        "format": "2×CD",
+        "catno": "CCS 12198 + CCS 14498 / CCSSEL2498",
+        "cover_face": "CCS SEL 2498 complete box (cover); sessions 1997–98"
+      },
+      "edition": {
+        "id": "1_preferred",
+        "label": "Channel Classics",
+        "year": "2002",
+        "catno": "CCS SEL 2498",
+        "format": "2×CD",
+        "mbid": "2446f743-99b2-49ed-8a11-779382e8066c",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Rachel Podger instrumental discography, S-1",
+          "url": "https://bach-cantatas.com/NVP/Podger-R.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "BBC Radio 3 — Building a Library: Bach (archived index)",
+          "url": "https://www.bbc.co.uk/radio3/classical/bach48/library.shtml",
+          "kind": "review"
+        },
+        {
+          "title": "Presto Music — Bach Complete Partitas and Sonatas for Violin Solo (CCSSEL2498)",
+          "url": "https://www.prestomusic.com/classical/products/7939466--bach-complete-partitas-and-sonatas-for-violin-solo",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — Partitas & Sonatas for Violin Solo vol.1 (CCS12198)",
+          "url": "https://www.prestomusic.com/classical/products/7938594--partitas-sonatas-for-violin-solo-vol-1",
+          "kind": "discography"
+        },
+        {
+          "title": "AllMusic — Bach: Sonatas and Partitas, Vol. 1 (Podger)",
+          "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-1-mw0001824896",
+          "kind": "reference"
+        },
+        {
+          "title": "AllMusic — Bach: Sonatas and Partitas, Vol. 2 (Podger)",
+          "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-2-mw0001844170",
+          "kind": "reference"
+        },
+        {
+          "title": "Apple Music Classical — Bach: Sonatas and Partitas, Vol. 2",
+          "url": "https://classical.music.apple.com/dk/album/260285901",
+          "kind": "reference"
+        },
+        {
+          "title": "Flying Inkpot #79 — Ng Yeuk Fan on Podger CCS 12198",
+          "url": "https://www.flyinginkpot.com/1999/07/inkpot79-classical-music-reviews-j-s-bach-sonatas-partitas-for-solo-violin-podger-channel/",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "2446f743-99b2-49ed-8a11-779382e8066c",
+      "mbid_release_group": null,
+      "gaps": []
+    },
+    {
+      "id": "bach/matthew/0",
+      "status": "solid",
+      "fact_strip": {
+        "director": "Otto Klemperer",
+        "ensemble": "Philharmonia Orchestra and Chorus",
+        "soloists": "Pears; Fischer-Dieskau; Schwarzkopf; Ludwig; Gedda; Berry",
+        "label": "Columbia / EMI",
+        "year": 1961,
+        "published": "1962",
+        "venue": "Abbey Road Studio No. 1 and Kingsway Hall, London",
+        "sessions": "November 1960 – November 1961",
+        "format": "5×LP / 3×CD"
+      },
+      "edition": {
+        "id": "0_preferred",
+        "label": "Columbia / EMI",
+        "year": "1962",
+        "catno": null,
+        "format": "5×LP / 3×CD",
+        "mbid": "4da77bb8-262f-4aa6-84f5-f574118b6b2b",
+        "release_group_mbid": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e",
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Matthäus-Passion BWV 244 conducted by Otto Klemperer",
+          "url": "https://www.bach-cantatas.com/Vocal/BWV244-Klemperer.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Matthäus-Passion (Klemperer / Philharmonia, EMI ZDMC 7 63058 2)",
+          "url": "https://musicbrainz.org/release/4da77bb8-262f-4aa6-84f5-f574118b6b2b",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — St. Matthew Passion (Klemperer / Philharmonia)",
+          "url": "https://musicbrainz.org/release-group/be359f8c-1a2a-3a3d-be77-787acb6bdb5e",
+          "kind": "discography"
+        },
+        {
+          "title": "Discogs master 683476 — St. Matthew Passion (Klemperer / Philharmonia)",
+          "url": "https://www.discogs.com/master/683476",
+          "kind": "discography"
+        },
+        {
+          "title": "Classite — Performance Passio secundum Matthaeum (Klemperer 1960–61)",
+          "url": "https://classite.com/composition/Johann-Sebastian-Bach_Passio-secundum-Matthaeum-c94938/performance/20484",
+          "kind": "reference"
+        },
+        {
+          "title": "Recording Academy — Best Choral Performance, 5th Annual Grammy Awards (1963)",
+          "url": "https://www.grammy.com/awards/categories/best-choral-performance/1963/",
+          "kind": "award"
+        },
+        {
+          "title": "Grammy.com — Otto Klemperer artist awards",
+          "url": "https://www.grammy.com/artists/otto-klemperer/12117/",
+          "kind": "award"
+        },
+        {
+          "title": "MusicWeb International — Terry Barfoot on EMI CMS 5 67538 2",
+          "url": "https://www.musicweb-international.com/classrev/2001/Apr01/BachMatthew.htm",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "4da77bb8-262f-4aa6-84f5-f574118b6b2b",
+      "mbid_release_group": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e",
+      "gaps": []
+    },
+    {
+      "id": "bach/matthew/1",
+      "status": "solid",
+      "fact_strip": {
+        "director": "John Eliot Gardiner",
+        "ensemble": "English Baroque Soloists; Monteverdi Choir",
+        "label": "Archiv Produktion",
+        "year": 1988,
+        "published": "1989",
+        "venue": "Snape Maltings, Aldeburgh",
+        "sessions": "April 1988",
+        "format": "3×CD",
+        "catno": "427 648-2",
+        "producer": "Karl-August Naegler",
+        "engineer": "Ulrich Vette"
+      },
+      "edition": {
+        "id": "1_preferred",
+        "label": "Archiv Produktion",
+        "year": "1989",
+        "catno": "427 648-2",
+        "format": "3×CD",
+        "mbid": "51d08afb-0d81-4617-8c33-979806910ddf",
+        "release_group_mbid": "2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1",
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Matthäus-Passion BWV 244 conducted by John Eliot Gardiner",
+          "url": "https://bach-cantatas.com/Vocal/BWV244-Gardiner.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — Complete Recordings 1980–1989 (entry 25) / Gardiner Rec5",
+          "url": "https://www.bach-cantatas.com/Vocal/BWV244-Rec5.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — St. Matthew Passion (Gardiner / EBS / Monteverdi Choir)",
+          "url": "https://musicbrainz.org/release/51d08afb-0d81-4617-8c33-979806910ddf",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release group — St. Matthew Passion (Gardiner)",
+          "url": "https://musicbrainz.org/release-group/2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1",
+          "kind": "discography"
+        },
+        {
+          "title": "Deutsche Grammophon — J.S. BACH St. Matthew Passion / Gardiner",
+          "url": "https://www.deutschegrammophon.com/en/catalogue/products/j-s-bach-st-matthew-passion-gardiner-12271",
+          "kind": "label"
+        },
+        {
+          "title": "Presto Music — Bach St Matthew Passion, DG Archiv 4276482",
+          "url": "https://www.prestomusic.com/classical/products/7924616--bach-j-s-st-matthew-passion-bwv244",
+          "kind": "discography"
+        },
+        {
+          "title": "University of Notre Dame library — St. Matthew Passion = Archiv 427 648-2",
+          "url": "https://findit.library.nd.edu/Record/000851113/Description",
+          "kind": "reference"
+        },
+        {
+          "title": "Gramophone — Bach St Matthew Passion (Gardiner / Archiv)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "51d08afb-0d81-4617-8c33-979806910ddf",
+      "mbid_release_group": "2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1",
+      "gaps": []
+    },
+    {
+      "id": "bach/john/1",
+      "status": "solid",
+      "fact_strip": {
+        "director": "John Eliot Gardiner",
+        "ensemble": "English Baroque Soloists; Monteverdi Choir",
+        "label": "Archiv Produktion",
+        "year": 1986,
+        "published": "1986",
+        "venue": "All Saints, Tooting, London",
+        "sessions": "March 1986",
+        "format": "2×CD",
+        "catno": "419 324-2"
+      },
+      "edition": {
+        "id": "1_preferred",
+        "label": "Archiv Produktion",
+        "year": "1986",
+        "catno": "419 324-2",
+        "format": "2×CD",
+        "mbid": "8e46b5f1-9f7b-4313-96c1-8e2b1423b51b",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Johannes-Passion conducted by Gardiner",
+          "url": "https://www.bach-cantatas.com/Vocal/BWV245-Gardiner.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — Gardiner Rec5 V-3",
+          "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — St. John Passion (Gardiner / Archiv)",
+          "url": "https://musicbrainz.org/release/8e46b5f1-9f7b-4313-96c1-8e2b1423b51b",
+          "kind": "discography"
+        },
+        {
+          "title": "Deutsche Grammophon — Johannes-Passion Gardiner",
+          "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-johannes-passion-gardiner-2217",
+          "kind": "label"
+        },
+        {
+          "title": "musik-sammler.de — Johannes-Passion 2-CD 1986",
+          "url": "https://deploy.musik-sammler.de/release/johann-sebastian-bach-johannes-passion-2-cd-686061/",
+          "kind": "reference"
+        },
+        {
+          "title": "Gramophone — Bach St. John Passion (419 324-2AH2)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-st-john-passion-13",
+          "kind": "review"
+        },
+        {
+          "title": "Classical Music — JS Bach: St John Passion (Monteverdi Choir, 2021 DG)",
+          "url": "https://www.classical-music.com/reviews/choral-song/js-bach-st-john-passion-monteverdi-choir",
+          "kind": "review"
+        },
+        {
+          "title": "Gramophone — JS BACH St John Passion (Gardiner 2021)",
+          "url": "https://www.gramophone.co.uk/reviews/js-bach-st-john-passion-gardiner",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "8e46b5f1-9f7b-4313-96c1-8e2b1423b51b",
+      "mbid_release_group": null,
+      "gaps": []
+    },
+    {
+      "id": "bach/mass_b_minor/0",
+      "status": "solid",
+      "fact_strip": {
+        "director": "John Eliot Gardiner",
+        "ensemble": "English Baroque Soloists; Monteverdi Choir",
+        "label": "Archiv Produktion",
+        "year": 1985,
+        "published": "1985",
+        "venue": "All Saints, Tooting, London",
+        "sessions": "February 1985",
+        "format": "2×CD",
+        "catno": "415 514-2"
+      },
+      "edition": {
+        "id": "0_preferred",
+        "label": "Archiv Produktion",
+        "year": "1985",
+        "catno": "415 514-2",
+        "format": "2×CD",
+        "mbid": "1db1e98a-5b64-4630-98c7-bcb71c3dee96",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Mass in B minor conducted by Gardiner",
+          "url": "https://www.bach-cantatas.com/Vocal/BWV232-Gardiner.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — Gardiner Rec5 V-1",
+          "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Mass in B minor (Archiv 415 514-2)",
+          "url": "https://musicbrainz.org/release/1db1e98a-5b64-4630-98c7-bcb71c3dee96",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Mass in B minor (alternate 415 514-2 face)",
+          "url": "https://musicbrainz.org/release/69ef4c1d-dc37-4c3c-b6aa-37cc17d51681",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — DG Archiv 4155142",
+          "url": "https://www.prestomusic.com/classical/products/7924606--bach-j-s-mass-in-b-minor-bwv232",
+          "kind": "discography"
+        },
+        {
+          "title": "Deutsche Grammophon — Messe h-moll / Gardiner",
+          "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-messe-h-moll-gardiner-9773",
+          "kind": "label"
+        },
+        {
+          "title": "Discogs — Mass In B Minor (Gardiner / Archiv 1985)",
+          "url": "https://www.discogs.com/release/3972766-JS-Bach-John-Eliot-Gardiner-Mass-In-B-Minor-Messe-In-H-Moll-Messe-En-Si-Mineur",
+          "kind": "discography"
+        },
+        {
+          "title": "Gramophone — Gardiner returns to Bach’s B minor Mass",
+          "url": "https://www.gramophone.co.uk/content/features/sir-john-eliot-gardiner-returns-to-bachs-b-minor-mass",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "1db1e98a-5b64-4630-98c7-bcb71c3dee96",
+      "mbid_release_group": null,
+      "gaps": []
+    },
+    {
+      "id": "bach/art_of_fugue/0",
+      "status": "solid",
+      "fact_strip": {
+        "soloists": "Glenn Gould (organ)",
+        "label": "Columbia Masterworks / CBS",
+        "year": 1962,
+        "published": "1962",
+        "venue": "All Saints’, Toronto; Theological College chapel, New York",
+        "sessions": "January–February 1962",
+        "format": "LP",
+        "catno": "ML 5738 / MS 6338 / BRG 72045",
+        "contents_note": "Contrapunctus I–IX only (Volume I; incomplete)"
+      },
+      "edition": {
+        "id": "0_preferred",
+        "label": "Columbia Masterworks / CBS",
+        "year": "1962",
+        "catno": "ML 5738 / MS 6338 / BRG 72045",
+        "format": "LP",
+        "mbid": "4f10bada-8a69-4562-8536-16e142671b75",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "MusicBrainz release — The Art of the Fugue (Gould, Columbia Masterworks ML 5738)",
+          "url": "https://musicbrainz.org/release/4f10bada-8a69-4562-8536-16e142671b75",
+          "kind": "discography"
+        },
+        {
+          "title": "pianistdiscography.com — Columbia MS 6338",
+          "url": "https://pianistdiscography.com/discography/pianistLabel.php?cdnum=11631",
+          "kind": "discography"
+        },
+        {
+          "title": "pianistdiscography.com — CBS BRG 72045",
+          "url": "https://pianistdiscography.com/discography/pianistLabel.php?cdnum=11633",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — Glenn Gould K-6 / Art of Fugue excerpts",
+          "url": "https://www.bach-cantatas.com/NVP/Gould.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — BWV 1080 discography / comparative header",
+          "url": "https://bach-cantatas.com/NonVocal/AOF-Part1.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Discogs — Sony Classical SMK compilation (Art of the Fugue excerpts)",
+          "url": "https://www.discogs.com/release/1675438-Glenn-Gould-Bach-The-Art-Of-The-Fugue-BWV-1080-Excerpts-Die-Kunst-Der-Fuge-Prelude-Fugue-On-BACH-BWV",
+          "kind": "discography"
+        },
+        {
+          "title": "glenngould.com — Bach: The Art of the Fugue, BWV 1080 Volume I Fugues 1–9",
+          "url": "https://glenngould.com/music/bach-the-art-of-the-fugue-bwv-1080-volume-i-fugues-1-9/",
+          "kind": "reference"
+        },
+        {
+          "title": "MusicWeb International — Kirk McElhearn on Sony SMK 87759",
+          "url": "http://musicweb-international.com/classRev/2002/Nov02/bach_aof_gould.htm",
+          "kind": "review"
+        }
+      ],
+      "mbid_release": "4f10bada-8a69-4562-8536-16e142671b75",
+      "mbid_release_group": null,
+      "gaps": []
+    },
+    {
+      "id": "bach/art_of_fugue/3",
+      "status": "solid",
+      "fact_strip": {
+        "ensemble": "Emerson String Quartet",
+        "label": "Deutsche Grammophon",
+        "year": 2003,
+        "published": "2003",
+        "venue": "American Academy of Arts and Letters, New York",
+        "sessions": "January–February 2003",
+        "format": "CD",
+        "catno": "474 495-2",
+        "producer": "Da-Hong Seetoo",
+        "engineer": "Da-Hong Seetoo"
+      },
+      "edition": {
+        "id": "3_preferred",
+        "label": "Deutsche Grammophon",
+        "year": "2003",
+        "catno": "474 4952",
+        "format": "CD",
+        "mbid": "1d748095-0c33-4fd7-b925-9e50849f101d",
+        "release_group_mbid": null,
+        "verified": true
+      },
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — BWV 1080 Rec7 entry 183 (Emerson)",
+          "url": "https://bach-cantatas.com/NVD/BWV1080-Rec7.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Emerson Quartet official album page — Bach: The Art of Fugue, BWV 1080",
+          "url": "https://www.emersonquartet.com/album/bach-the-art-of-fugue-bwv-1080-2003",
+          "kind": "reference"
+        },
+        {
+          "title": "MusicBrainz release — The Art of Fugue (Emerson / DG 474 4952)",
+          "url": "https://musicbrainz.org/release/1d748095-0c33-4fd7-b925-9e50849f101d",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — Bach: The Art of Fugue, BWV1080 (DG 4744952)",
+          "url": "https://www.prestomusic.com/classical/products/7924530--bach-j-s-the-art-of-fugue-bwv1080",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — alternate DG face 4777252",
+          "url": "https://www.prestomusic.com/classical/products/8400168--bach-j-s-the-art-of-fugue-emerson-string-quartet",
+          "kind": "discography"
+        },
+        {
+          "title": "ClassicsToday — David Hurwitz on Emerson Art of Fugue",
+          "url": "https://www.classicstoday.com/review/review-9552/",
+          "kind": "review"
+        },
+        {
+          "title": "Gramophone — Bach (The) Art of Fugue (Emerson / DG)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-the-art-of-fugue-3",
+          "kind": "review"
+        },
+        {
+          "title": "Los Angeles Times — Richard S. Ginell, recordings round-up",
+          "url": "https://www.latimes.com/archives/la-xpm-2003-sep-14-ca-recordings14-story.html",
+          "kind": "reference"
+        }
+      ],
+      "mbid_release": "1d748095-0c33-4fd7-b925-9e50849f101d",
+      "mbid_release_group": null,
+      "gaps": [],
+      "edition_note": "MusicBrainz release 1d748095-0c33-4fd7-b925-9e50849f101d (cat 474 4952) — CAA front 200."
+    }
+  ]
+}

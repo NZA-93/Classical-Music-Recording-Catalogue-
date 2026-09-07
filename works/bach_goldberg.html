@@ -153,6 +153,14 @@
   .signed .sig span{font-family:"IBM Plex Mono",monospace;font-style:normal;
     font-size:.6rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:.5rem}
   .signed .verdict{border-bottom:0;padding-bottom:.4rem;margin-bottom:.9rem}
+  .signed .refs{margin-top:1.15rem;padding-top:.85rem;border-top:1px solid var(--hair)}
+  .signed .refs ul{list-style:none;display:grid;gap:.38rem;margin:0}
+  .signed .refs a{color:var(--verdigris);font-size:.88rem;font-weight:500;
+    text-decoration:none;border-bottom:1px solid var(--verdigris)}
+  .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
+  .signed .refs .kind{margin-left:.45rem}
+  .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
     color:var(--oxblood);border-left:2px solid var(--oxblood);padding-left:.6rem;margin:.9rem 0 0}
   .unsigned{max-width:42rem;margin-bottom:1.5rem;padding:.9rem 1rem;
@@ -303,7 +311,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/goldberg", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Goldberg Variations", "cat": "BWV 988 · 1741", "standfirst": "Thirty variations over a bass; the piano-versus-harpsichord argument.", "recordings": [{"id": "bach/goldberg/0", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "Columbia, 1955", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": ["bach/goldberg/1", "bach/goldberg/4"], "text": "The 1955 Goldberg is still the shock that made Bach’s variations a public event on the piano. No repeats, about thirty-eight minutes: lines cut with a clarity that was almost theatrical for its day. Beside Schiff’s long Decca survey it is another work — a debut document, not a cycle that unfolds. Beside Gould’s own 1981 remake it is the hotter, leaner object. Gould later disliked some of its tempi and the nocturnal Variation 25; that regret does not retire the disc. For a first piano Goldberg in the house, this remains the Référence: the performance that opened the door.", "quotes": []}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/1", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1981", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/4"], "text": "Gould’s 1981 remake is a late architecture — selected first-half repeats, about fifty-one minutes — built around canons and four-part writing rather than debut bravura. Beside the 1955 Référence it is the deeper second thought; beside Schiff’s Decca it remains Gould’s instrument and Gould’s edit, not a complete-repeats survey. Keep both Goulds if you can. If the shelf has room for only one late-studio piano Goldberg, this is the disc — without displacing 1955 as the landmark.", "quotes": []}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/4", "work": "bach/goldberg", "card": "identity", "soloists": "András Schiff", "director": "", "ensemble": "", "published": "Decca, 1982", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/4", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 2, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/1"], "text": "Schiff’s first studio Goldberg restores the duration and symmetry the mono debut refused. Near-complete repeats, about seventy-two minutes, thought in three large arcs; some repeats taken an octave up or down, a habit he later dropped. Against Gould 1955 it is another pianist’s complete-repeats world; against Gould 1981 it is warmer and less canonic in obsession. A serious piano alternative on the shelf, not a third Gould. Do not confuse it with the ECM Basel live remake of 2001.", "quotes": []}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/goldberg", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Goldberg Variations", "cat": "BWV 988 · 1741", "standfirst": "Thirty variations over a bass; the piano-versus-harpsichord argument.", "recordings": [{"id": "bach/goldberg/0", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "Columbia, 1955", "editions": [{"id": "0_preferred", "label": "Columbia Masterworks", "year": "1956", "catno": "ML 5060", "format": "LP (mono)", "mbid": "2a7844fb-13b9-437a-8f68-c018c53f5f72", "verified": true, "release_group_mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a"}], "fact_strip": {"soloists": "Glenn Gould", "label": "Columbia Masterworks", "year": 1955, "published": "1956", "venue": "Columbia 30th Street Studio, New York", "sessions": "June 1955", "format": "LP (mono)", "catno": "ML 5060"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": ["bach/goldberg/1", "bach/goldberg/4"], "text": "The 1955 Goldberg is still the shock that made Bach’s variations a public event on the piano. No repeats, about thirty-eight minutes: lines cut with a clarity that was almost theatrical for its day. Beside Schiff’s long Decca survey it is another work — a debut document, not a cycle that unfolds. Beside Gould’s own 1981 remake it is the hotter, leaner object. Gould later disliked some of its tempi and the nocturnal Variation 25; that regret does not retire the disc. For a first piano Goldberg in the house, this remains the Référence: the performance that opened the door.", "quotes": [], "consulted": [{"title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)", "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72", "kind": "discography"}, {"title": "MusicBrainz release group — The Goldberg Variations (1955 recording)", "url": "https://musicbrainz.org/release-group/dcff25f1-702d-3b5e-b0da-d48172e6e62a", "kind": "discography"}, {"title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations", "url": "https://www.discogs.com/master/261784", "kind": "discography"}, {"title": "pianistdiscography.com — Columbia ML 5060", "url": "https://www.pianistdiscography.com/discography/pianistLabel.php?cdnum=11524", "kind": "discography"}, {"title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)", "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/", "kind": "reference"}, {"title": "Library of Congress — Tim Page essay PDF on Gould 1955 Goldbergs", "url": "https://loc.gov/static/programs/national-recording-preservation-board/documents/GoldbergVar.pdf", "kind": "reference"}, {"title": "LOC press — inaugural National Recording Registry", "url": "https://loc.gov/today/pr/2003/03-014.html", "kind": "reference"}, {"title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs", "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm", "kind": "review"}]}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/1", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1981", "editions": [{"id": "1_preferred", "label": "CBS Masterworks", "year": "1982", "catno": "IM 37779", "format": "LP / CD", "mbid": "fed9286f-4145-4fe7-b130-36744a6bdd00", "verified": true}], "fact_strip": {"soloists": "Glenn Gould", "label": "CBS Masterworks", "year": 1981, "published": "1982", "venue": "Columbia 30th Street Studio, New York", "sessions": "April–May 1981", "format": "LP / CD", "catno": "IM 37779"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/4"], "text": "Gould’s 1981 remake is a late architecture — selected first-half repeats, about fifty-one minutes — built around canons and four-part writing rather than debut bravura. Beside the 1955 Référence it is the deeper second thought; beside Schiff’s Decca it remains Gould’s instrument and Gould’s edit, not a complete-repeats survey. Keep both Goulds if you can. If the shelf has room for only one late-studio piano Goldberg, this is the disc — without displacing 1955 as the landmark.", "quotes": [], "consulted": [{"title": "Discogs — Bach / Glenn Gould: The Goldberg Variations (CBS IM 37779)", "url": "https://www.discogs.com/release/4579917-Bach-Glenn-Gould-The-Goldberg-Variations", "kind": "discography"}, {"title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)", "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00", "kind": "discography"}, {"title": "Sony Classical / glenngould.com — Complete Unreleased 1981 Studio Sessions", "url": "https://glenngould.com/the-goldberg-variations-the-complete-unreleased-1981-studio-sessions/", "kind": "reference"}, {"title": "Sony Classical product — Complete 1981 Studio Sessions", "url": "https://www.sonyclassical.com/releases/releases-details/glenn-gould-the-goldberg-variations-the-complete-1981-studio-sessions", "kind": "reference"}, {"title": "Recording Academy — Glenn Gould Grammy awards", "url": "https://www.grammy.com/artists/glenn-gould/3638/", "kind": "award"}, {"title": "Grammy category page — Best Classical Album 1983", "url": "https://www.grammy.com/awards/categories/classical-album/1983/", "kind": "award"}, {"title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs", "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm", "kind": "review"}, {"title": "MusicWeb International — Jonathan Woolf on Sony SM3K 87703", "url": "http://www.musicweb-international.com/classrev/2003/Feb03/Goldberg_Gould.htm", "kind": "review"}]}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/4", "work": "bach/goldberg", "card": "identity", "soloists": "András Schiff", "director": "", "ensemble": "", "published": "Decca, 1982", "editions": [{"id": "4_preferred", "label": "Decca", "year": "1983", "catno": "417 116-2", "format": "CD", "mbid": "920fec1f-b49e-4019-bc03-e7756cb470ec", "verified": true, "release_group_mbid": "d51204a7-de33-333f-89d9-9ce844232277"}], "fact_strip": {"soloists": "András Schiff", "label": "Decca", "year": 1982, "published": "1983", "venue": "Kingsway Hall, London", "sessions": "13–15 April 1982", "format": "CD", "catno": "417 116-2", "producer": "Michael Haas", "engineer": "Simon Eadon"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/4", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 2, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/1"], "text": "Schiff’s first studio Goldberg restores the duration and symmetry the mono debut refused. Near-complete repeats, about seventy-two minutes, thought in three large arcs; some repeats taken an octave up or down, a habit he later dropped. Against Gould 1955 it is another pianist’s complete-repeats world; against Gould 1981 it is warmer and less canonic in obsession. A serious piano alternative on the shelf, not a third Gould. Do not confuse it with the ECM Basel live remake of 2001.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — András Schiff K-3", "url": "https://www.bach-cantatas.com/NVP/Schiff.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — BWV 988 played by Andras Schiff", "url": "https://www.bach-cantatas.com/NVD/BWV988-Schiff.htm", "kind": "discography"}, {"title": "Presto Music — Bach Goldberg Variations Decca 4171162", "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988", "kind": "discography"}, {"title": "MusicBrainz release group — Goldberg Variations (1982 recording)", "url": "https://musicbrainz.org/release-group/d51204a7-de33-333f-89d9-9ce844232277", "kind": "discography"}, {"title": "MusicBrainz release — Decca 417 116-2", "url": "https://musicbrainz.org/release/920fec1f-b49e-4019-bc03-e7756cb470ec", "kind": "discography"}, {"title": "MusicBrainz — April-dated recording cluster (Haas/Eadon/Kingsway)", "url": "https://musicbrainz.org/recording/c31a3621-6ba9-4ad5-ad59-86f326966928", "kind": "discography"}, {"title": "Gramophone — Jed Distler on Schiff Complete Decca Recordings", "url": "https://www.gramophone.co.uk/content/review/review-andras-schiffs-complete-decca-recordings", "kind": "review"}, {"title": "Gramophone — Distler on Schiff ECM 2001 Goldberg", "url": "https://www.gramophone.co.uk/reviews/bach-goldberg-variations-14", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -485,6 +493,21 @@ function sources(r){
   </details>`;
 }
 
+function consultedRefs(e){
+  /* Links sit under the signed prose. Never paste them into the verdict. */
+  const list=e&&e.consulted||[];
+  if(!list.length) return "";
+  const lis=list.map(c=>{
+    const title=esc(c.title||c.url||"");
+    const href=esc(c.url||"");
+    const kind=c.kind?` <span class="prov kind">${esc(c.kind)}</span>`:"";
+    return href
+      ?`<li><a href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>${kind}</li>`
+      :`<li>${title}${kind}</li>`;
+  }).join("");
+  return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -501,8 +524,33 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${consultedRefs(e)}
     ${div}
   </div>`;
+}
+
+function factStrip(r){
+  /* Brandenburg-lite: label / year / session / credits. Not an editions table. */
+  const f=r.fact_strip;
+  if(!f||typeof f!=="object") return "";
+  const rows=[];
+  const meta=[f.label, f.published?`published ${f.published}`:"", f.format, f.catno]
+    .filter(Boolean).map(esc);
+  if(meta.length) rows.push(`<span class="meta">${meta.join(" · ")}</span>`);
+  const cast=[f.soloists,f.director,f.ensemble].filter(v=>v&&v!==r.soloists&&v!==r.director&&v!==r.ensemble);
+  if(cast.length) rows.push(cast.map(esc).join(" — "));
+  if(f.venue||f.sessions){
+    const venue=f.venue?`<b>${esc(f.venue)}</b>`:"";
+    const sessions=f.sessions?esc(f.sessions):"";
+    rows.push(`${venue}${venue&&sessions?", ":""}${sessions}${sessions||venue?".":""}`);
+  }
+  const cred=[];
+  if(f.producer) cred.push(`Producer ${esc(f.producer)}`);
+  if(f.engineer) cred.push(`Engineer ${esc(f.engineer)}`);
+  if(cred.length) rows.push(`${cred.join(". ")}.`);
+  if(f.contents_note) rows.push(esc(f.contents_note));
+  if(!rows.length) return "";
+  return `<p class="credits fact-strip">${rows.join(" ")}</p>`;
 }
 
 function identityLine(r){
@@ -513,6 +561,7 @@ function identityLine(r){
     ${plate(r)}
     <div>
       <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
+      ${factStrip(r)}
       ${r.editorial?signed(r):""}
     </div>
   </article>`;

@@ -10,7 +10,49 @@
       "reference": true,
       "compared_with": [],
       "text": "Podger and Brecon Baroque treat the violin concertos as chamber music — one to a part, directed from the violin. The ear hears lithe, polished playing and a sweet Andante in BWV 1041; the harpsichord-derived reconstructions fill a programme where only two solo concertos survive. This is chamber HIP Bach, not a phantom complete triad of 1041–1043. For that approach, this is the Référence.",
-      "quotes": []
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Rachel Podger O-4",
+          "url": "https://www.bach-cantatas.com/NVP/Podger-R.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Channel Classics booklet PDF (via BCW)",
+          "url": "https://www.bach-cantatas.com/Pic-NonVocal-BIG/Podger-R-O04c[Channel-SACD-booklet",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — Violin Concertos (CCS SA 30910)",
+          "url": "https://musicbrainz.org/release/aedde372-197e-49bd-bc9f-4d036e592a27",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto Music — CCSSA30910",
+          "url": "https://www.prestomusic.com/classical/products/7988378--js-bach-violin-concertos",
+          "kind": "discography"
+        },
+        {
+          "title": "Presto — Recording of the Week (Chris O’Reilly)",
+          "url": "https://www.prestomusic.com/classical/articles/189--recording-of-the-week-bachs-violin-concertos-from-rachel-podger-and-brecon-baroque",
+          "kind": "discography"
+        },
+        {
+          "title": "AllMusic — Bach: Violin Concertos (Podger / Brecon Baroque)",
+          "url": "https://www.allmusic.com/album/bach-violin-concertos-mw0002059032",
+          "kind": "reference"
+        },
+        {
+          "title": "BBC Music — review of Podger / Brecon Baroque Violin Concertos",
+          "url": "https://www.bbc.co.uk/music/reviews/gqj9/",
+          "kind": "review"
+        },
+        {
+          "title": "BBC Radio 3 Record Review — BaL BWV 1041 (4 Nov 2023)",
+          "url": "https://www.bbc.co.uk/programmes/m001ryw1",
+          "kind": "review"
+        }
+      ]
     }
   ]
 }

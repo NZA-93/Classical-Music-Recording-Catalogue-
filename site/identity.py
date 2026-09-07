@@ -22,6 +22,50 @@ if str(_SITE) not in sys.path:
 
 from work_href import composer_id_of, work_anchor  # noqa: E402
 
+# Emerson Quartet Art of Fugue — only this MusicBrainz release (CAA front).
+EMERSON_ID = "bach/art_of_fugue/3"
+EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
+
+# Identity editions carry catalogue facts for the cover plate. Never copy
+# sound, verdict, or transfer — those are judgements, not identity.
+_EDITION_KEYS = (
+    "id", "label", "year", "catno", "format", "mbid",
+    "verified", "barcode", "release_group_mbid",
+)
+# Critic-internal notes stay off the public card.
+_FACT_STRIP_SKIP = frozenset({"seed_year_note", "cover_face"})
+
+
+def identity_editions(candidate: dict) -> list[dict]:
+    """Preferred release(s) already on the seed candidate, for CAA fronts."""
+    out = []
+    rid = candidate.get("id") or ""
+    for ed in candidate.get("editions") or []:
+        if not isinstance(ed, dict):
+            continue
+        item = {k: ed[k] for k in _EDITION_KEYS if ed.get(k) not in (None, "")}
+        mbid = str(item.get("mbid") or "")
+        if rid == EMERSON_ID and mbid and mbid != EMERSON_MBID:
+            raise ValueError(
+                f"{EMERSON_ID}: edition.mbid must be {EMERSON_MBID}"
+            )
+        if item.get("mbid") or item.get("id"):
+            out.append(item)
+    return out
+
+
+def identity_fact_strip(candidate: dict) -> dict | None:
+    """Brandenburg-lite facts from the seed. Empty keys are omitted."""
+    raw = candidate.get("fact_strip")
+    if not isinstance(raw, dict) or not raw:
+        return None
+    out = {
+        k: v for k, v in raw.items()
+        if k not in _FACT_STRIP_SKIP and v not in (None, "")
+    }
+    return out or None
+
+
 # Works that may emit identity-only public pages this slice. Content is
 # always the work's assessed IDs; add a work id here to publish it.
 # Goldberg stays on ( /0, /1, /4 — seed.assessed excludes /3 Perahia ).
@@ -77,7 +121,8 @@ def identity_recording(
         "director": candidate.get("director") or "",
         "ensemble": candidate.get("ensemble") or "",
         "published": published_line(candidate),
-        "editions": [],
+        "editions": identity_editions(candidate),
+        "fact_strip": identity_fact_strip(candidate),
         "anchors": [],
         "reception": [],
         "sources": [],

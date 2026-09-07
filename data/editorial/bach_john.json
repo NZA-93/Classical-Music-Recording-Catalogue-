@@ -10,7 +10,49 @@
       "reference": true,
       "compared_with": [],
       "text": "Gardiner’s first St John Passion already finds the period-instrument drama that later remakes would chase: mixed choir, sharp turba pacing, Rolfe Johnson’s Evangelist in a clean English lyric line. Some tempi push hard; the continuity of the Passion holds. Later live remakes exist and some prefer them — this remains the studio benchmark those readings had to outgrow. Référence for the HIP first document.",
-      "quotes": []
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Bach Cantatas Website — Johannes-Passion conducted by Gardiner",
+          "url": "https://www.bach-cantatas.com/Vocal/BWV245-Gardiner.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "Bach Cantatas Website — Gardiner Rec5 V-3",
+          "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm",
+          "kind": "discography"
+        },
+        {
+          "title": "MusicBrainz release — St. John Passion (Gardiner / Archiv)",
+          "url": "https://musicbrainz.org/release/8e46b5f1-9f7b-4313-96c1-8e2b1423b51b",
+          "kind": "discography"
+        },
+        {
+          "title": "Deutsche Grammophon — Johannes-Passion Gardiner",
+          "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-johannes-passion-gardiner-2217",
+          "kind": "label"
+        },
+        {
+          "title": "musik-sammler.de — Johannes-Passion 2-CD 1986",
+          "url": "https://deploy.musik-sammler.de/release/johann-sebastian-bach-johannes-passion-2-cd-686061/",
+          "kind": "reference"
+        },
+        {
+          "title": "Gramophone — Bach St. John Passion (419 324-2AH2)",
+          "url": "https://www.gramophone.co.uk/reviews/bach-st-john-passion-13",
+          "kind": "review"
+        },
+        {
+          "title": "Classical Music — JS Bach: St John Passion (Monteverdi Choir, 2021 DG)",
+          "url": "https://www.classical-music.com/reviews/choral-song/js-bach-st-john-passion-monteverdi-choir",
+          "kind": "review"
+        },
+        {
+          "title": "Gramophone — JS BACH St John Passion (Gardiner 2021)",
+          "url": "https://www.gramophone.co.uk/reviews/js-bach-st-john-passion-gardiner",
+          "kind": "review"
+        }
+      ]
     }
   ]
 }

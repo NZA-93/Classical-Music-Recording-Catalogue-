@@ -16,6 +16,14 @@
         "other_recording_id"
       ],
       "text": "The entry. Comparative by reflex — Diapason never assessed a recording in isolation, and neither should this. Say what it does that the alternatives do not, and be willing to prefer.",
+      "consulted": [
+        {
+          "_comment": "User-visible links consulted when writing the entry. Not ADR-003 quotes and not aggregate sources. Pages renders a References block under the signed prose, never inside the verdict paragraph. title, url and kind are required. kind is discography | review | label | reference | award. At most 8 items.",
+          "title": "Source title",
+          "url": "https://example.org/locator",
+          "kind": "discography"
+        }
+      ],
       "quotes": [
         {
           "_comment": "ADR-003. Max 2 per entry, 25 words each, 20% of the source notice. The entry must argue with the quote, not display it — that part is your responsibility, not the validator's.",

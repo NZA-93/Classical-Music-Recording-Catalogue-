@@ -299,6 +299,57 @@ class TestEditorialQuotation(unittest.TestCase):
             "locator": "p. 84", "source_length_words": 140}])
         self.assertEqual(errs, [])
 
+    def test_consulted_requires_title_url_and_kind(self):
+        ok, _ = self.entry(consulted=[{
+            "title": "MusicBrainz release",
+            "url": "https://musicbrainz.org/release/1d748095-0c33-4fd7-b925-9e50849f101d",
+            "kind": "discography"}])
+        self.assertEqual(ok, [])
+        missing, _ = self.entry(consulted=[{"title": "x"}])
+        self.assertTrue(any("url" in e for e in missing))
+        self.assertTrue(any("kind" in e for e in missing))
+        bad_kind, _ = self.entry(consulted=[{
+            "title": "x", "url": "https://example.org", "kind": "essay"}])
+        self.assertTrue(any("kind" in e for e in bad_kind))
+        too_many, _ = self.entry(consulted=[{
+            "title": "x", "url": "https://example.org/n", "kind": "review",
+        }] * 9)
+        self.assertTrue(any("limit is 8" in e for e in too_many))
+
+    def test_emerson_consulted_requires_the_locked_release(self):
+        other = "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee"
+        errs, _ = val.validate_editorial(
+            {
+                "recording": "bach/art_of_fugue/3",
+                "author": {"id": "NZA"},
+                "date": "2026-07-26",
+                "revision": 1,
+                "text": "An entry.",
+                "consulted": [{
+                    "title": "wrong face",
+                    "url": f"https://musicbrainz.org/release/{other}",
+                    "kind": "discography",
+                }],
+            },
+            pathlib.Path("e.json"),
+            {"bach/art_of_fugue/3"},
+        )
+        self.assertTrue(any("Emerson" in e for e in errs))
+
+    def test_emerson_seed_lock(self):
+        seed = {
+            "works": [{
+                "candidates": [{
+                    "id": "bach/art_of_fugue/3",
+                    "editions": [{
+                        "mbid": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+                    }],
+                }],
+            }],
+        }
+        errs = val.validate_emerson_lock(seed)
+        self.assertTrue(any("must be" in e for e in errs))
+
 
 class TestComposerRollup(unittest.TestCase):
     """Composer scores are origin-weighted rollups, never a new judgement layer."""
