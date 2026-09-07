@@ -371,14 +371,14 @@ class TestGoldbergPublicHtml(unittest.TestCase):
         four = recs["bach/goldberg/4"]["editorial"]
         self.assertEqual(zero["stars"], 3)
         self.assertTrue(zero["reference"])
-        self.assertIn("Columbia Masterworks ML 5060", zero["text"])
+        self.assertIn("The 1955 Goldberg is still the shock", zero["text"])
         self.assertEqual(zero["quotes"], [])
         self.assertEqual(one["stars"], 3)
         self.assertFalse(one["reference"])
-        self.assertIn("CBS Masterworks Digital IM 37779", one["text"])
+        self.assertIn("Gould’s 1981 remake is a late architecture", one["text"])
         self.assertEqual(four["stars"], 2)
         self.assertFalse(four["reference"])
-        self.assertIn("Decca 417 116-2", four["text"])
+        self.assertIn("Schiff’s first studio Goldberg restores the duration", four["text"])
         self.assertNotIn("bach/goldberg/3", html)
         self.assertNotIn("Perahia", html)
         self.assertIn("function signed(r)", html)
@@ -463,16 +463,16 @@ class TestRemainingSignedPages(unittest.TestCase):
 
     def test_remaining_signed_entries_are_on_the_cards(self):
         expected = {
-            "bach/cello_suites/1": (3, True, "Archiv 14356–58"),
-            "bach/violin_concertos/4": (3, True, "Channel Classics CCS SA 30910"),
-            "bach/sonatas_partitas/0": (3, False, "Deutsche Grammophon — Conway Hall"),
-            "bach/sonatas_partitas/1": (3, True, "Channel Classics CCS 12198"),
-            "bach/matthew/0": (3, False, "Columbia / Angel / EMI"),
-            "bach/matthew/1": (3, True, "Archiv 427 648-2"),
-            "bach/john/1": (3, True, "Archiv 419 324-2"),
-            "bach/mass_b_minor/0": (3, True, "Archiv 415 514-2"),
-            "bach/art_of_fugue/0": (2, False, "Columbia Masterworks ML 5738"),
-            "bach/art_of_fugue/3": (3, True, "Deutsche Grammophon 474 495-2"),
+            "bach/cello_suites/1": (3, True, "Fournier’s Archiv studio cycle remains the mid-century"),
+            "bach/violin_concertos/4": (3, True, "Podger and Brecon Baroque treat the violin concertos as chamber music"),
+            "bach/sonatas_partitas/0": (3, False, "Milstein’s stereo remake of the complete sonatas and partitas"),
+            "bach/sonatas_partitas/1": (3, True, "Podger’s complete gut-strung cycle"),
+            "bach/matthew/0": (3, False, "Klemperer’s Philharmonia Matthew Passion is the monumental modern"),
+            "bach/matthew/1": (3, True, "Gardiner’s 1988 Archiv Matthew Passion restored the work"),
+            "bach/john/1": (3, True, "Gardiner’s first St John Passion already finds the period-instrument drama"),
+            "bach/mass_b_minor/0": (3, True, "Gardiner’s first B-minor Mass is mid-1980s Archiv HIP"),
+            "bach/art_of_fugue/0": (2, False, "Gould’s only commercial organ recording stops at Contrapunctus IX"),
+            "bach/art_of_fugue/3": (3, True, "The Emersons play the Art of Fugue as a modern string quartet"),
         }
         for rid, (stars, reference, snippet) in expected.items():
             wid = "/".join(rid.split("/")[:2])
