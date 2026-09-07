@@ -607,7 +607,10 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
     """Payload editions, consulted refs, and Brandenburg-lite facts on the 13 cards."""
 
     EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
-    FORBIDDEN = "ddbe4e65"
+    OTHER_MBID = "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee"
+    CONSULTED_KINDS = {
+        "discography", "review", "label", "reference", "award",
+    }
     GOULD_1955 = "2a7844fb-13b9-437a-8f68-c018c53f5f72"
 
     def test_all_thirteen_carry_a_cover_mbid_and_fact_strip(self):
@@ -636,6 +639,7 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             for item in consulted:
                 self.assertTrue(item.get("title"), rid)
                 self.assertRegex(item.get("url") or "", r"^https?://")
+                self.assertIn(item.get("kind"), self.CONSULTED_KINDS, rid)
 
     def test_emerson_lock_uses_only_the_caa_200_release(self):
         recs = {
@@ -646,13 +650,15 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         emerson = recs["bach/art_of_fugue/3"]
         mbids = [e["mbid"] for e in emerson["editions"]]
         self.assertEqual(mbids, [self.EMERSON_MBID])
-        blob = json.dumps(emerson)
-        self.assertNotIn(self.FORBIDDEN, blob)
-        for item in emerson["editorial"]["consulted"]:
-            url = item["url"]
-            if "musicbrainz.org/release/" in url:
-                self.assertIn(self.EMERSON_MBID, url)
-            self.assertNotIn(self.FORBIDDEN, url)
+        mb_release = [
+            item["url"] for item in emerson["editorial"]["consulted"]
+            if "musicbrainz.org/release/" in item["url"]
+        ]
+        self.assertEqual(len(mb_release), 1)
+        self.assertEqual(
+            mb_release[0],
+            f"https://musicbrainz.org/release/{self.EMERSON_MBID}",
+        )
 
     def test_pages_render_caa_covers_refs_and_fact_strip(self):
         gold = _page("bach/goldberg")
@@ -667,7 +673,6 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         identity_fn = gold[gold.index("function identityLine(r)"):gold.index("function entry(r)")]
         self.assertNotIn("editions(", identity_fn)
         self.assertNotIn("Editions and transfers", identity_fn)
-        self.assertNotIn(self.FORBIDDEN, gold)
 
         aof = _page("bach/art_of_fugue")
         aof_cat = _embedded_catalogue(aof)
@@ -681,7 +686,6 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         )
         self.assertIn("American Academy of Arts and Letters", aof)
         self.assertIn("January–February 2003", aof)
-        self.assertNotIn(self.FORBIDDEN, aof)
         identity_fn = aof[aof.index("function identityLine(r)"):aof.index("function entry(r)")]
         self.assertNotIn("editions(", identity_fn)
         # Verdict text is unchanged; refs sit outside the prose paragraph.
@@ -719,11 +723,11 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             self.assertEqual(ed["date"], "2026-09-07", rid)
             self.assertIn(snippet, ed["text"], rid)
 
-    def test_identity_editions_rejects_the_caa_404_emerson_mbid(self):
+    def test_identity_editions_rejects_any_other_emerson_mbid(self):
         with self.assertRaises(ValueError):
             ident.identity_editions({
                 "id": "bach/art_of_fugue/3",
-                "editions": [{"id": "bad", "mbid": "ddbe4e65-0000-0000-0000-000000000000"}],
+                "editions": [{"id": "bad", "mbid": self.OTHER_MBID}],
             })
 
 

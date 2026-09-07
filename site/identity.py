@@ -22,11 +22,9 @@ if str(_SITE) not in sys.path:
 
 from work_href import composer_id_of, work_anchor  # noqa: E402
 
-# Emerson Quartet Art of Fugue — CAA front exists on this release only.
-# Sibling ddbe4e65-… is a 404; never hotlink it.
+# Emerson Quartet Art of Fugue — only this MusicBrainz release (CAA front).
 EMERSON_ID = "bach/art_of_fugue/3"
 EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
-EMERSON_FORBIDDEN = "ddbe4e65"
 
 # Identity editions carry catalogue facts for the cover plate. Never copy
 # sound, verdict, or transfer — those are judgements, not identity.
@@ -47,15 +45,10 @@ def identity_editions(candidate: dict) -> list[dict]:
             continue
         item = {k: ed[k] for k in _EDITION_KEYS if ed.get(k) not in (None, "")}
         mbid = str(item.get("mbid") or "")
-        if rid == EMERSON_ID:
-            if EMERSON_FORBIDDEN in mbid:
-                raise ValueError(
-                    f"{EMERSON_ID}: forbidden CAA-404 MBID {mbid}"
-                )
-            if mbid and mbid != EMERSON_MBID:
-                raise ValueError(
-                    f"{EMERSON_ID}: edition.mbid must be {EMERSON_MBID}"
-                )
+        if rid == EMERSON_ID and mbid and mbid != EMERSON_MBID:
+            raise ValueError(
+                f"{EMERSON_ID}: edition.mbid must be {EMERSON_MBID}"
+            )
         if item.get("mbid") or item.get("id"):
             out.append(item)
     return out

@@ -18,7 +18,7 @@
       "text": "The entry. Comparative by reflex — Diapason never assessed a recording in isolation, and neither should this. Say what it does that the alternatives do not, and be willing to prefer.",
       "consulted": [
         {
-          "_comment": "User-visible links consulted when writing the entry. Not ADR-003 quotes and not aggregate sources. Pages renders a References block under the signed prose, never inside the verdict paragraph. Max suggested 8.",
+          "_comment": "User-visible links consulted when writing the entry. Not ADR-003 quotes and not aggregate sources. Pages renders a References block under the signed prose, never inside the verdict paragraph. title, url and kind are required. kind is discography | review | label | reference | award. At most 8 items.",
           "title": "Source title",
           "url": "https://example.org/locator",
           "kind": "discography"

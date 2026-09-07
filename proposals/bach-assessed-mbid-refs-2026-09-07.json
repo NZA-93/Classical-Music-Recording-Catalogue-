@@ -5,9 +5,9 @@
     "item": {
       "title": "string (required)",
       "url": "https URL (required)",
-      "kind": "optional enum: discography | review | label | reference | award"
+      "kind": "required enum: discography | review | label | reference | award"
     },
-    "max_suggested": 8,
+    "max": 8,
     "prose_rule": "Never paste these into the verdict paragraph; Pages renders a References block under the signed text."
   },
   "fact_strip_fields": [
@@ -950,7 +950,7 @@
       "mbid_release": "1d748095-0c33-4fd7-b925-9e50849f101d",
       "mbid_release_group": null,
       "gaps": [],
-      "edition_note": "Prefer MB release 1d748095… (cat 474 4952) — CAA front 200; sibling ddbe4e65… (474 495-2) is CAA 404."
+      "edition_note": "MusicBrainz release 1d748095-0c33-4fd7-b925-9e50849f101d (cat 474 4952) — CAA front 200."
     }
   ]
 }

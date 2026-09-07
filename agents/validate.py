@@ -181,7 +181,6 @@ CONSULTED_KINDS = frozenset({"discography", "review", "label", "reference", "awa
 CONSULTED_MAX = 8
 EMERSON_ID = "bach/art_of_fugue/3"
 EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
-EMERSON_FORBIDDEN = "ddbe4e65"
 _URL_OK = re.compile(r"^https?://", re.I)
 
 
@@ -227,14 +226,14 @@ def validate_editorial(entry: dict, path: pathlib.Path, recs: set[str]):
     consulted = entry.get("consulted")
     if consulted is not None:
         if not isinstance(consulted, list):
-            e("`consulted` must be a list of {title, url}")
+            e("`consulted` must be a list of {title, url, kind}")
         else:
             if len(consulted) > CONSULTED_MAX:
-                w(f"{len(consulted)} consulted links; suggested maximum is {CONSULTED_MAX}")
+                e(f"{len(consulted)} consulted links; the limit is {CONSULTED_MAX}")
             for i, item in enumerate(consulted, 1):
                 where = f"consulted {i}"
                 if not isinstance(item, dict):
-                    e(f"{where}: must be an object with title and url")
+                    e(f"{where}: must be an object with title, url and kind")
                     continue
                 if not str(item.get("title") or "").strip():
                     e(f"{where}: missing `title`")
@@ -244,11 +243,10 @@ def validate_editorial(entry: dict, path: pathlib.Path, recs: set[str]):
                 elif not _URL_OK.match(url):
                     e(f"{where}: url must be http(s)")
                 kind = item.get("kind")
-                if kind is not None and kind not in CONSULTED_KINDS:
+                if not kind:
+                    e(f"{where}: missing `kind`")
+                elif kind not in CONSULTED_KINDS:
                     e(f"{where}: kind must be one of {sorted(CONSULTED_KINDS)}")
-                if (entry.get("recording") == EMERSON_ID
-                        and EMERSON_FORBIDDEN in url):
-                    e(f"{where}: Emerson lock — never use MBID {EMERSON_FORBIDDEN}…")
                 if (entry.get("recording") == EMERSON_ID
                         and "musicbrainz.org/release/" in url
                         and EMERSON_MBID not in url):
@@ -267,19 +265,10 @@ def validate_emerson_lock(seed: dict | None = None):
                 continue
             for ed in cand.get("editions") or []:
                 mbid = str((ed or {}).get("mbid") or "")
-                if EMERSON_FORBIDDEN in mbid:
-                    errs.append(
-                        f"seed: {EMERSON_ID} edition uses forbidden CAA-404 MBID"
-                    )
-                elif mbid and mbid != EMERSON_MBID:
+                if mbid and mbid != EMERSON_MBID:
                     errs.append(
                         f"seed: {EMERSON_ID} edition.mbid must be {EMERSON_MBID}"
                     )
-            blob = json.dumps(cand)
-            if EMERSON_FORBIDDEN in blob:
-                errs.append(
-                    f"seed: {EMERSON_ID} must not mention {EMERSON_FORBIDDEN}…"
-                )
     return errs
 
 
