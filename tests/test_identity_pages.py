@@ -656,10 +656,10 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
 
     def test_pages_render_caa_covers_refs_and_fact_strip(self):
         gold = _page("bach/goldberg")
-        self.assertIn(
-            f"coverartarchive.org/release/{self.GOULD_1955}/front-500",
-            gold,
-        )
+        cat = _embedded_catalogue(gold)
+        g0 = next(r for r in cat["works"][0]["recordings"] if r["id"] == "bach/goldberg/0")
+        self.assertEqual(g0["editions"][0]["mbid"], self.GOULD_1955)
+        self.assertIn("coverartarchive.org/release/${ed.mbid}/front-500", gold)
         self.assertIn(">References<", gold)
         self.assertIn("Columbia Masterworks", gold)
         self.assertIn("Columbia 30th Street Studio", gold)
@@ -670,10 +670,11 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         self.assertNotIn(self.FORBIDDEN, gold)
 
         aof = _page("bach/art_of_fugue")
-        self.assertIn(
-            f"coverartarchive.org/release/{self.EMERSON_MBID}/front-500",
-            aof,
+        aof_cat = _embedded_catalogue(aof)
+        emerson = next(
+            r for r in aof_cat["works"][0]["recordings"] if r["id"] == "bach/art_of_fugue/3"
         )
+        self.assertEqual(emerson["editions"][0]["mbid"], self.EMERSON_MBID)
         self.assertIn(
             f"https://musicbrainz.org/release/{self.EMERSON_MBID}",
             aof,

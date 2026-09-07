@@ -153,6 +153,14 @@
   .signed .sig span{font-family:"IBM Plex Mono",monospace;font-style:normal;
     font-size:.6rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:.5rem}
   .signed .verdict{border-bottom:0;padding-bottom:.4rem;margin-bottom:.9rem}
+  .signed .refs{margin-top:1.15rem;padding-top:.85rem;border-top:1px solid var(--hair)}
+  .signed .refs ul{list-style:none;display:grid;gap:.38rem;margin:0}
+  .signed .refs a{color:var(--verdigris);font-size:.88rem;font-weight:500;
+    text-decoration:none;border-bottom:1px solid var(--verdigris)}
+  .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
+  .signed .refs .kind{margin-left:.45rem}
+  .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
     color:var(--oxblood);border-left:2px solid var(--oxblood);padding-left:.6rem;margin:.9rem 0 0}
   .unsigned{max-width:42rem;margin-bottom:1.5rem;padding:.9rem 1rem;
@@ -485,6 +493,21 @@ function sources(r){
   </details>`;
 }
 
+function consultedRefs(e){
+  /* Links sit under the signed prose. Never paste them into the verdict. */
+  const list=e&&e.consulted||[];
+  if(!list.length) return "";
+  const lis=list.map(c=>{
+    const title=esc(c.title||c.url||"");
+    const href=esc(c.url||"");
+    const kind=c.kind?` <span class="prov kind">${esc(c.kind)}</span>`:"";
+    return href
+      ?`<li><a href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>${kind}</li>`
+      :`<li>${title}${kind}</li>`;
+  }).join("");
+  return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -501,8 +524,33 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${consultedRefs(e)}
     ${div}
   </div>`;
+}
+
+function factStrip(r){
+  /* Brandenburg-lite: label / year / session / credits. Not an editions table. */
+  const f=r.fact_strip;
+  if(!f||typeof f!=="object") return "";
+  const rows=[];
+  const meta=[f.label, f.published?`published ${f.published}`:"", f.format, f.catno]
+    .filter(Boolean).map(esc);
+  if(meta.length) rows.push(`<span class="meta">${meta.join(" · ")}</span>`);
+  const cast=[f.soloists,f.director,f.ensemble].filter(v=>v&&v!==r.soloists&&v!==r.director&&v!==r.ensemble);
+  if(cast.length) rows.push(cast.map(esc).join(" — "));
+  if(f.venue||f.sessions){
+    const venue=f.venue?`<b>${esc(f.venue)}</b>`:"";
+    const sessions=f.sessions?esc(f.sessions):"";
+    rows.push(`${venue}${venue&&sessions?", ":""}${sessions}${sessions||venue?".":""}`);
+  }
+  const cred=[];
+  if(f.producer) cred.push(`Producer ${esc(f.producer)}`);
+  if(f.engineer) cred.push(`Engineer ${esc(f.engineer)}`);
+  if(cred.length) rows.push(`${cred.join(". ")}.`);
+  if(f.contents_note) rows.push(esc(f.contents_note));
+  if(!rows.length) return "";
+  return `<p class="credits fact-strip">${rows.join(" ")}</p>`;
 }
 
 function identityLine(r){
@@ -513,6 +561,7 @@ function identityLine(r){
     ${plate(r)}
     <div>
       <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
+      ${factStrip(r)}
       ${r.editorial?signed(r):""}
     </div>
   </article>`;

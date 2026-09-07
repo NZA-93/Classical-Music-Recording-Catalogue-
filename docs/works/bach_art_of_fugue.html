@@ -153,6 +153,14 @@
   .signed .sig span{font-family:"IBM Plex Mono",monospace;font-style:normal;
     font-size:.6rem;color:var(--ink-soft);letter-spacing:.08em;margin-left:.5rem}
   .signed .verdict{border-bottom:0;padding-bottom:.4rem;margin-bottom:.9rem}
+  .signed .refs{margin-top:1.15rem;padding-top:.85rem;border-top:1px solid var(--hair)}
+  .signed .refs ul{list-style:none;display:grid;gap:.38rem;margin:0}
+  .signed .refs a{color:var(--verdigris);font-size:.88rem;font-weight:500;
+    text-decoration:none;border-bottom:1px solid var(--verdigris)}
+  .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
+  .signed .refs .kind{margin-left:.45rem}
+  .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
     color:var(--oxblood);border-left:2px solid var(--oxblood);padding-left:.6rem;margin:.9rem 0 0}
   .unsigned{max-width:42rem;margin-bottom:1.5rem;padding:.9rem 1rem;
@@ -303,7 +311,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/art_of_fugue", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "The Art of Fugue", "cat": "BWV 1080 · c. 1740–50", "standfirst": "Instrumentation unspecified, which makes every recording an argument.", "recordings": [{"id": "bach/art_of_fugue/0", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1962", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/art_of_fugue/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 2, "reference": false, "compared_with": ["bach/art_of_fugue/3"], "text": "Gould’s only commercial organ recording stops at Contrapunctus IX: Volume I of an Art of Fugue that never continued. The approach is pianist’s counterpoint transferred to the organ, not a finished cycle. Against the Emersons’ complete quartet it is an incomplete experiment — interesting as documentary Gould. Keep it for Gould’s oddities, not as the Art of Fugue.", "quotes": []}, "divergence": null, "on_this_disc": []}, {"id": "bach/art_of_fugue/3", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Emerson String Quartet", "director": "", "ensemble": "", "published": "Deutsche Grammophon, 2003", "editions": [], "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/art_of_fugue/3", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": ["bach/art_of_fugue/0"], "text": "The Emersons play the Art of Fugue as a modern string quartet: clear voice colouring, unfinished Contrapunctus XIV left mid-phrase, deathbed chorale at the close. Against Gould’s unfinished organ Volume I this is a complete argument for open-score Bach heard as four strings. Clarity without mixed-ensemble colour fights. Référence on this shelf.", "quotes": []}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/art_of_fugue", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "The Art of Fugue", "cat": "BWV 1080 · c. 1740–50", "standfirst": "Instrumentation unspecified, which makes every recording an argument.", "recordings": [{"id": "bach/art_of_fugue/0", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1962", "editions": [{"id": "0_preferred", "label": "Columbia Masterworks / CBS", "year": "1962", "catno": "ML 5738 / MS 6338 / BRG 72045", "format": "LP", "mbid": "4f10bada-8a69-4562-8536-16e142671b75", "verified": true}], "fact_strip": {"soloists": "Glenn Gould (organ)", "label": "Columbia Masterworks / CBS", "year": 1962, "published": "1962", "venue": "All Saints’, Toronto; Theological College chapel, New York", "sessions": "January–February 1962", "format": "LP", "catno": "ML 5738 / MS 6338 / BRG 72045", "contents_note": "Contrapunctus I–IX only (Volume I; incomplete)"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/art_of_fugue/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 2, "reference": false, "compared_with": ["bach/art_of_fugue/3"], "text": "Gould’s only commercial organ recording stops at Contrapunctus IX: Volume I of an Art of Fugue that never continued. The approach is pianist’s counterpoint transferred to the organ, not a finished cycle. Against the Emersons’ complete quartet it is an incomplete experiment — interesting as documentary Gould. Keep it for Gould’s oddities, not as the Art of Fugue.", "quotes": [], "consulted": [{"title": "MusicBrainz release — The Art of the Fugue (Gould, Columbia Masterworks ML 5738)", "url": "https://musicbrainz.org/release/4f10bada-8a69-4562-8536-16e142671b75", "kind": "discography"}, {"title": "pianistdiscography.com — Columbia MS 6338", "url": "https://pianistdiscography.com/discography/pianistLabel.php?cdnum=11631", "kind": "discography"}, {"title": "pianistdiscography.com — CBS BRG 72045", "url": "https://pianistdiscography.com/discography/pianistLabel.php?cdnum=11633", "kind": "discography"}, {"title": "Bach Cantatas Website — Glenn Gould K-6 / Art of Fugue excerpts", "url": "https://www.bach-cantatas.com/NVP/Gould.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — BWV 1080 discography / comparative header", "url": "https://bach-cantatas.com/NonVocal/AOF-Part1.htm", "kind": "discography"}, {"title": "Discogs — Sony Classical SMK compilation (Art of the Fugue excerpts)", "url": "https://www.discogs.com/release/1675438-Glenn-Gould-Bach-The-Art-Of-The-Fugue-BWV-1080-Excerpts-Die-Kunst-Der-Fuge-Prelude-Fugue-On-BACH-BWV", "kind": "discography"}, {"title": "glenngould.com — Bach: The Art of the Fugue, BWV 1080 Volume I Fugues 1–9", "url": "https://glenngould.com/music/bach-the-art-of-the-fugue-bwv-1080-volume-i-fugues-1-9/", "kind": "reference"}, {"title": "MusicWeb International — Kirk McElhearn on Sony SMK 87759", "url": "http://musicweb-international.com/classRev/2002/Nov02/bach_aof_gould.htm", "kind": "review"}]}, "divergence": null, "on_this_disc": []}, {"id": "bach/art_of_fugue/3", "work": "bach/art_of_fugue", "card": "identity", "soloists": "Emerson String Quartet", "director": "", "ensemble": "", "published": "Deutsche Grammophon, 2003", "editions": [{"id": "3_preferred", "label": "Deutsche Grammophon", "year": "2003", "catno": "474 4952", "format": "CD", "mbid": "1d748095-0c33-4fd7-b925-9e50849f101d", "verified": true}], "fact_strip": {"ensemble": "Emerson String Quartet", "label": "Deutsche Grammophon", "year": 2003, "published": "2003", "venue": "American Academy of Arts and Letters, New York", "sessions": "January–February 2003", "format": "CD", "catno": "474 495-2", "producer": "Da-Hong Seetoo", "engineer": "Da-Hong Seetoo"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/art_of_fugue/3", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": ["bach/art_of_fugue/0"], "text": "The Emersons play the Art of Fugue as a modern string quartet: clear voice colouring, unfinished Contrapunctus XIV left mid-phrase, deathbed chorale at the close. Against Gould’s unfinished organ Volume I this is a complete argument for open-score Bach heard as four strings. Clarity without mixed-ensemble colour fights. Référence on this shelf.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — BWV 1080 Rec7 entry 183 (Emerson)", "url": "https://bach-cantatas.com/NVD/BWV1080-Rec7.htm", "kind": "discography"}, {"title": "Emerson Quartet official album page — Bach: The Art of Fugue, BWV 1080", "url": "https://www.emersonquartet.com/album/bach-the-art-of-fugue-bwv-1080-2003", "kind": "reference"}, {"title": "MusicBrainz release — The Art of Fugue (Emerson / DG 474 4952)", "url": "https://musicbrainz.org/release/1d748095-0c33-4fd7-b925-9e50849f101d", "kind": "discography"}, {"title": "Presto Music — Bach: The Art of Fugue, BWV1080 (DG 4744952)", "url": "https://www.prestomusic.com/classical/products/7924530--bach-j-s-the-art-of-fugue-bwv1080", "kind": "discography"}, {"title": "Presto Music — alternate DG face 4777252", "url": "https://www.prestomusic.com/classical/products/8400168--bach-j-s-the-art-of-fugue-emerson-string-quartet", "kind": "discography"}, {"title": "ClassicsToday — David Hurwitz on Emerson Art of Fugue", "url": "https://www.classicstoday.com/review/review-9552/", "kind": "review"}, {"title": "Gramophone — Bach (The) Art of Fugue (Emerson / DG)", "url": "https://www.gramophone.co.uk/reviews/bach-the-art-of-fugue-3", "kind": "review"}, {"title": "Los Angeles Times — Richard S. Ginell, recordings round-up", "url": "https://www.latimes.com/archives/la-xpm-2003-sep-14-ca-recordings14-story.html", "kind": "reference"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -485,6 +493,21 @@ function sources(r){
   </details>`;
 }
 
+function consultedRefs(e){
+  /* Links sit under the signed prose. Never paste them into the verdict. */
+  const list=e&&e.consulted||[];
+  if(!list.length) return "";
+  const lis=list.map(c=>{
+    const title=esc(c.title||c.url||"");
+    const href=esc(c.url||"");
+    const kind=c.kind?` <span class="prov kind">${esc(c.kind)}</span>`:"";
+    return href
+      ?`<li><a href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>${kind}</li>`
+      :`<li>${title}${kind}</li>`;
+  }).join("");
+  return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -501,8 +524,33 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${consultedRefs(e)}
     ${div}
   </div>`;
+}
+
+function factStrip(r){
+  /* Brandenburg-lite: label / year / session / credits. Not an editions table. */
+  const f=r.fact_strip;
+  if(!f||typeof f!=="object") return "";
+  const rows=[];
+  const meta=[f.label, f.published?`published ${f.published}`:"", f.format, f.catno]
+    .filter(Boolean).map(esc);
+  if(meta.length) rows.push(`<span class="meta">${meta.join(" · ")}</span>`);
+  const cast=[f.soloists,f.director,f.ensemble].filter(v=>v&&v!==r.soloists&&v!==r.director&&v!==r.ensemble);
+  if(cast.length) rows.push(cast.map(esc).join(" — "));
+  if(f.venue||f.sessions){
+    const venue=f.venue?`<b>${esc(f.venue)}</b>`:"";
+    const sessions=f.sessions?esc(f.sessions):"";
+    rows.push(`${venue}${venue&&sessions?", ":""}${sessions}${sessions||venue?".":""}`);
+  }
+  const cred=[];
+  if(f.producer) cred.push(`Producer ${esc(f.producer)}`);
+  if(f.engineer) cred.push(`Engineer ${esc(f.engineer)}`);
+  if(cred.length) rows.push(`${cred.join(". ")}.`);
+  if(f.contents_note) rows.push(esc(f.contents_note));
+  if(!rows.length) return "";
+  return `<p class="credits fact-strip">${rows.join(" ")}</p>`;
 }
 
 function identityLine(r){
@@ -513,6 +561,7 @@ function identityLine(r){
     ${plate(r)}
     <div>
       <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
+      ${factStrip(r)}
       ${r.editorial?signed(r):""}
     </div>
   </article>`;
