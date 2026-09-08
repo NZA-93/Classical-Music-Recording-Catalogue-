@@ -37,6 +37,7 @@ href = _load("work_href", "site/work_href.py")
 rnd = _load("render_site", "site/render.py")
 site = _load("build_site", "site/build_site.py")
 disc = _load("disc_couplings", "site/disc.py")
+scout = _load("scout_work_pages", "site/scout.py")
 
 
 FEED_PHRASES = (
@@ -71,7 +72,7 @@ def _find_work(cat: dict, fragment: str) -> dict:
 
 
 def _html_for(work: dict, cat: dict) -> str:
-    cat = disc.attach_on_this_disc(cat)
+    cat = scout.attach_scout_pools(disc.attach_on_this_disc(cat))
     work = next(w for w in cat["works"] if w["id"] == work["id"])
     tpl = (ROOT / "site/template.html").read_text(encoding="utf-8")
     title = f"{work['title']} — {work['composer']}"

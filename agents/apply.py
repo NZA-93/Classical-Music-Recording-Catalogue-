@@ -3,7 +3,8 @@
 apply.py — merge accepted harvest proposals into seed and recordings data.
 
 Reads proposals/*.json written by harvest.py. Writes only to data/seed.json
-and data/recordings/. Never touches data/statements/ or data/editorial/.
+and data/recordings/. Never touches data/statements/, data/editorial/,
+or data/scout/.
 
     python3 agents/apply.py --proposals proposals/proposals-YYYYMMDD.json --dry-run
     python3 agents/apply.py --proposals proposals/proposals-YYYYMMDD.json
@@ -584,7 +585,11 @@ def main(argv: Optional[list[str]] = None) -> int:
         return 0
 
     # Hard fence: this tool writes seed + recordings (+ applied log) only.
-    forbidden = (ROOT / "data" / "statements", ROOT / "data" / "editorial")
+    forbidden = (
+        ROOT / "data" / "statements",
+        ROOT / "data" / "editorial",
+        ROOT / "data" / "scout",
+    )
     for path, doc in list(recordings_cache.items()) + [(SEED_PATH, new_seed)]:
         resolved = pathlib.Path(path).resolve()
         for fence in forbidden:

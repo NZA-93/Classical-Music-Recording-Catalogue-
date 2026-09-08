@@ -145,6 +145,7 @@ ident = _load("identity_pages", "site/identity.py")
 rnd = _load("render_identity", "site/render.py")
 site = _load("build_site_identity", "site/build_site.py")
 disc = _load("disc_identity", "site/disc.py")
+scout = _load("scout_identity", "site/scout.py")
 
 
 def _seed() -> dict:
@@ -170,7 +171,7 @@ def _hub_row(html: str, anchor: str) -> str:
 
 
 def _html_for(work: dict, cat: dict) -> str:
-    cat = disc.attach_on_this_disc(cat)
+    cat = scout.attach_scout_pools(disc.attach_on_this_disc(cat))
     work = next(w for w in cat["works"] if w["id"] == work["id"])
     tpl = (ROOT / "site/template.html").read_text(encoding="utf-8")
     title = f"{work['title']} — {work['composer']}"
@@ -507,13 +508,17 @@ class TestRemainingSignedPages(unittest.TestCase):
                 self.assertNotIn(name, html, f"{wid} leaked {name}")
             self.assertNotIn('"candidates"', json.dumps(_embedded_catalogue(html)))
             if wid == "bach/brandenburg":
+                cat = _embedded_catalogue(html)
+                rec_blob = json.dumps(cat["works"][0]["recordings"])
                 for name in BRANDENBURG_HOLD:
                     if name == "Avie":
                         continue
-                    self.assertNotIn(name, html, f"{wid} leaked hold {name}")
-                cat = _embedded_catalogue(html)
+                    self.assertNotIn(
+                        name, rec_blob, f"{wid} card leaked hold {name}",
+                    )
                 for rec in cat["works"][0]["recordings"]:
                     self.assertNotIn("Avie", rec.get("published") or "", rec["id"])
+                self.assertNotIn("scout", rec_blob)
             else:
                 for name in BRANDENBURG_ONLY:
                     self.assertNotIn(name, html, f"{wid} leaked {name}")
@@ -880,14 +885,15 @@ class TestBrandenburgPublicHtml(unittest.TestCase):
         self.assertIn("bach/brandenburg/0", html)
         self.assertIn("bach/brandenburg/1", html)
         self.assertIn("bach/brandenburg/4", html)
-        self.assertNotIn("bach/brandenburg/2", html)
-        self.assertNotIn("bach/brandenburg/3", html)
-        self.assertNotIn("bach/brandenburg/5", html)
         self.assertNotIn("bach_brandenburg_pinnock", html)
         cat = _embedded_catalogue(html)
         self.assertEqual([w["id"] for w in cat["works"]], ["bach/brandenburg"])
         recs = cat["works"][0]["recordings"]
         self.assertEqual([r["id"] for r in recs], list(BRANDENBURG_ASSESSED))
+        rec_ids = {r["id"] for r in recs}
+        self.assertNotIn("bach/brandenburg/2", rec_ids)
+        self.assertNotIn("bach/brandenburg/3", rec_ids)
+        self.assertNotIn("bach/brandenburg/5", rec_ids)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
             self.assertIsNotNone(rec.get("editorial"), rec["id"])

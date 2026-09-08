@@ -1,0 +1,17 @@
+{
+  "_comment": "ADR-004 scout candidate pool. Ranked shortlist for a Critic cut — never canon. Not a signed editorial entry (those live in data/editorial/). Forbidden on every candidate and on this document: stars, reference, matrix, text. Ordinal rank only; never a 0–3 aggregate. Status promoted-to-cut records an already-assessed cut; it does not promote. why_in / why_out: short; null when N/A; at least one required. Stance is a tag, not Dictionnaire prose.",
+  "work_id": "composer/work",
+  "schema": "ADR-004 scout pool",
+  "note": "Ordinal scout ranks only. Never stars/Référence/matrix.",
+  "candidates": [
+    {
+      "recording": "recording_id",
+      "rank": 1,
+      "stance": "short stance tag",
+      "status": "shortlist | held | promoted-to-cut | rejected",
+      "identity": "artists / label / year / MBID lock — the identity string",
+      "why_in": "short reason this belongs on the cut, or null",
+      "why_out": "short reason this is held or rejected, or null"
+    }
+  ]
+}

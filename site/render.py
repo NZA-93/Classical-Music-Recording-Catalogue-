@@ -12,6 +12,7 @@ from html import escape
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from disc import attach_on_this_disc  # noqa: E402
 from identity import merge_identity_works  # noqa: E402
+from scout import attach_scout_pools  # noqa: E402
 from work_href import composer_id_of, work_anchor  # noqa: E402
 
 ROOT = pathlib.Path(".")
@@ -135,7 +136,8 @@ def main() -> None:
     # Identity pages (first slice) are merged from seed.works[].assessed,
     # not from the candidate queue and not from engine scores.
     raw = json.loads(cat_path.read_text(encoding="utf-8"))
-    cat = attach_on_this_disc(merge_identity_works(raw, seed))
+    # Scout pools hang on the work (ADR-004). Never merged into editorial.
+    cat = attach_scout_pools(attach_on_this_disc(merge_identity_works(raw, seed)))
     works = list(cat.get("works") or [])
     index = [work_index_row(w) for w in works]
 

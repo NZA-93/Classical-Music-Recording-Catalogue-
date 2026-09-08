@@ -32,6 +32,7 @@ val = _load("validator_matrix", "agents/validate.py")
 ident = _load("identity_matrix", "site/identity.py")
 rnd = _load("render_matrix", "site/render.py")
 disc = _load("disc_matrix", "site/disc.py")
+scout = _load("scout_matrix", "site/scout.py")
 
 
 def _seed() -> dict:
@@ -48,7 +49,7 @@ def _fixture_entry() -> dict:
 
 
 def _html_for(work: dict, cat: dict) -> str:
-    cat = disc.attach_on_this_disc(cat)
+    cat = scout.attach_scout_pools(disc.attach_on_this_disc(cat))
     work = next(w for w in cat["works"] if w["id"] == work["id"])
     title = f"{work['title']} — {work['composer']}"
     return rnd.apply_template(

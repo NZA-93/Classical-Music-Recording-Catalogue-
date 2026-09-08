@@ -328,22 +328,25 @@ class ApplyNeverTouchesStatements(unittest.TestCase):
         self.assertNotIn("statement", ap.KINDS)
         self.assertNotIn("citation_task", ap.KINDS)
         self.assertNotIn("editorial", ap.KINDS)
+        self.assertNotIn("scout", ap.KINDS)
 
     def test_dry_run_leaves_seed_and_statements_untouched(self):
-        """CLI dry-run must not mutate seed, recordings, statements, or editorial."""
+        """CLI dry-run must not mutate seed, recordings, statements, editorial, or scout."""
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = pathlib.Path(tmp)
             root = tmp_path / "repo"
             for sub in ("agents", "data/statements", "data/editorial",
-                        "data/recordings", "proposals"):
+                        "data/scout", "data/recordings", "proposals"):
                 (root / sub).mkdir(parents=True)
             seed = deepcopy(SEED_MIN)
             seed_path = root / "data" / "seed.json"
             seed_path.write_text(json.dumps(seed), encoding="utf-8")
             stmt = root / "data" / "statements" / "marker.json"
             editorial = root / "data" / "editorial" / "marker.json"
+            scout_marker = root / "data" / "scout" / "marker.json"
             stmt.write_text('{"ok": true}\n', encoding="utf-8")
             editorial.write_text('{"ok": true}\n', encoding="utf-8")
+            scout_marker.write_text('{"ok": true}\n', encoding="utf-8")
             props_path = root / "proposals" / "p.json"
             props_path.write_text(json.dumps([{
                 "target": "bach/brandenburg/0", "kind": "identity",
@@ -366,6 +369,7 @@ class ApplyNeverTouchesStatements(unittest.TestCase):
             self.assertEqual(json.loads(seed_path.read_text(encoding="utf-8")), seed)
             self.assertEqual(stmt.read_text(encoding="utf-8"), '{"ok": true}\n')
             self.assertEqual(editorial.read_text(encoding="utf-8"), '{"ok": true}\n')
+            self.assertEqual(scout_marker.read_text(encoding="utf-8"), '{"ok": true}\n')
             # Applied report is reviewable even on dry-run.
             applied = list((root / "proposals").glob("applied-*.json"))
             self.assertEqual(len(applied), 1)

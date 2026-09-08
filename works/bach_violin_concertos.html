@@ -191,6 +191,14 @@
     display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
     letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.12rem}
   .signed .how-scored table{font-size:.82rem}
+  /* ADR-004 scout pool: work-level expand, no crown / stars / style box. */
+  .scout-pool{margin:1.8rem 0 0;max-width:42rem;border-top:2px solid var(--ink);padding-top:.7rem}
+  .scout-pool .rubric{font-size:.88rem;color:var(--ink-soft);margin:.55rem 0 .7rem}
+  .scout-pool td.rank{font-family:"IBM Plex Mono",monospace;font-size:.74rem;white-space:nowrap}
+  .scout-pool .why .k{display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.12rem}
+  .scout-pool .status{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-soft)}
   .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
     letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
@@ -712,6 +720,33 @@ function composerSlug(w){
   return id.includes("/")?id.split("/")[0]:id.split("_")[0];
 }
 
+function candidatesConsidered(w){
+  /* ADR-004. Work-level shortlist. Ordinal pool only. */
+  const rows=w.scout;
+  if(!rows || !rows.length) return "";
+  const body=rows.slice().sort((a,b)=>(a.rank||0)-(b.rank||0)).map(c=>{
+    const whyIn=c.why_in && String(c.why_in).trim();
+    const whyOut=c.why_out && String(c.why_out).trim();
+    const why=whyIn
+      ?`<p class="why"><span class="k">Why in</span>${esc(whyIn)}</p>`
+      :(whyOut?`<p class="why"><span class="k">Why out</span>${esc(whyOut)}</p>`:"");
+    return `<tr>
+      <td class="rank">${esc(String(c.rank))}</td>
+      <td>${esc(c.stance||"")}</td>
+      <td>${esc(c.identity||"")}${why}</td>
+      <td><span class="status">${esc(c.status||"")}</span></td>
+    </tr>`;
+  }).join("");
+  return `<details class="scout-pool">
+    <summary>Candidates considered</summary>
+    <p class="rubric">Ranked shortlist for a Critic cut. Ordinal rank only — not the signed assessed canon.</p>
+    <table>
+      <thead><tr><th>Rank</th><th>Stance</th><th>Identity</th><th>Status</th></tr></thead>
+      <tbody>${body}</tbody>
+    </table>
+  </details>`;
+}
+
 (function redirectLegacyHash(){
   const raw=(location.hash||"").replace(/^#/,"");
   if(!raw || !WORK_INDEX.length) return;
@@ -734,6 +769,7 @@ function workSection(w){
         <p class="strip"><span>${recs.length} recordings</span></p>
       </div>
       ${recs.map(identityLine).join("")}
+      ${candidatesConsidered(w)}
     </section>`;
   }
   const refs=recs.filter(r=>r.reference).length;
@@ -754,6 +790,7 @@ function workSection(w){
       <p><b>Citation</b> — a source links only when a locator is on file (URL, issue, or page). No locator means attributed, not linked.</p>
     </div>
     ${recs.map(entry).join("")}
+    ${candidatesConsidered(w)}
   </section>`;
 }
 
