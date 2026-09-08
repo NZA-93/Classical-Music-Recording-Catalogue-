@@ -1,0 +1,62 @@
+{
+  "work_id": "bach/brandenburg",
+  "entries": [
+    {
+      "recording": "bach/brandenburg/0",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-08",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": ["bach/brandenburg/1", "bach/brandenburg/4"],
+      "text": "Pinnock’s 1982 English Concert Brandenburgs remain the digital period-instrument classic for this set: animated, studio-clear, directed from the harpsichord. Against Harnoncourt’s 1964 pioneering tapes they are a generation later in technique; against Richter’s modern Munich cycle they restore natural brass and gut as audible stance. Later one-to-a-part HIP and Pinnock’s own Avie remake argue with these tapes — they do not retire them. Référence for the HIP studio side.",
+      "quotes": [],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {"axis": "interpretation", "tier": "A", "title": "MusicWeb International — Laurson on Pinnock Avie / Archiv baseline", "url": "https://www.musicweb-international.com/classrev/2008/Jan08/Bach_Brandenburg_AV2119.htm", "note": "1982 still ranked among top HIP choices; the baseline later HIP argues with."},
+          {"axis": "sound", "tier": "A", "title": "MusicBrainz — Archiv 1982 Henry Wood Hall (Pinnock / English Concert)", "url": "https://musicbrainz.org/release/b0255dd1-324d-4608-92e5-1638831c77b8", "note": "Early digital Archiv studio — clear, present; brass/strings of their moment."}
+        ]
+      }
+    },
+    {
+      "recording": "bach/brandenburg/1",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-08",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": ["bach/brandenburg/0", "bach/brandenburg/4"],
+      "text": "Harnoncourt’s first Concentus Musicus cycle is the pioneering original-instrument document — Vienna 1964, Telefunken Das Alte Werk — not the 1981 remake and not the “1967” year that later label copy invents. Against Pinnock 1982 it is rougher and historically first; against Richter it is the opposite instrumentarium. Keep it for the argument’s opening statement, not as the smoothest HIP listen.",
+      "quotes": [],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 2,
+        "ledger": [
+          {"axis": "interpretation", "tier": "A", "title": "Bach Cantatas Website — Harnoncourt Brandenburg cycles", "url": "https://www.bach-cantatas.com/NVP/Harnoncourt.htm", "note": "First complete CMW cycle; historical first statement of the HIP argument."},
+          {"axis": "sound", "tier": "B", "title": "MusicBrainz — Telefunken/Teldec 1964 Palais Schönburg", "url": "https://musicbrainz.org/release/5ef423b4-9500-4e40-9257-d610a4c82334", "note": "1964 OI capture — serviceable document; later DMM remake is smoother."}
+        ]
+      }
+    },
+    {
+      "recording": "bach/brandenburg/4",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-08",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": ["bach/brandenburg/0", "bach/brandenburg/1"],
+      "text": "Richter’s January 1967 Munich Archiv cycle is modern-instrument Bach freed from ponderous habit — concertino as soloists in ensemble, not yet HIP. Against Harnoncourt and Pinnock it is the other stance: steel strings and modern brass as a living orchestra. Voyager took the Second Concerto’s opening from these tapes; that is a fact of reception, not a magazine crown. The modern Munich pole of this argument.",
+      "quotes": [],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 3,
+        "ledger": [
+          {"axis": "interpretation", "tier": "A", "title": "MusicWeb International — McElhearn on Richter Brandenburg / Suites", "url": "https://www.musicweb-international.com/classrev/2002/Jul02/Bach_brandenburg_richter.htm", "note": "Light, quick modern Munich style; concertino balance as historical place-holder."},
+          {"axis": "sound", "tier": "A", "title": "NASA / Voyager Golden Record — Brandenburg 2 / Munich Bach Orchestra", "url": "https://science.nasa.gov/mission/voyager/voyager-golden-record-music-on-voyager/", "note": "1967 Archiv capture clean enough for the Golden Record; solid mid-sixties stereo."}
+        ]
+      }
+    }
+  ]
+}
