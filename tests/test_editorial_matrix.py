@@ -3,7 +3,9 @@
 The fixture remains synthetic. Live matrix is Critic-signed on the assessed
 Bach set: Goldberg (3), Fournier, Podger concertos, both sonatas & partitas,
 both Matthew Passions, Gardiner St John, Gardiner B-minor Mass, both Art of
-Fugue. This file does not invent scores; it maps existing integers onto the box.
+Fugue, and the three assessed Brandenburgs (Pinnock Référence, Harnoncourt,
+Richter). Gardiner /5 is not assessed. This file does not invent scores; it
+maps existing integers onto the box.
 """
 
 from __future__ import annotations
@@ -218,6 +220,9 @@ LIVE_MATRIX = {
     "bach/mass_b_minor/0": {"interpretation": 5, "sound": 4, "ledger": 2},
     "bach/art_of_fugue/0": {"interpretation": 2, "sound": 2, "ledger": 2},
     "bach/art_of_fugue/3": {"interpretation": 4, "sound": 4, "ledger": 2},
+    "bach/brandenburg/0": {"interpretation": 5, "sound": 4, "ledger": 2, "revision": 1},
+    "bach/brandenburg/1": {"interpretation": 4, "sound": 2, "ledger": 2, "revision": 1},
+    "bach/brandenburg/4": {"interpretation": 4, "sound": 3, "ledger": 2, "revision": 1},
 }
 
 
@@ -239,7 +244,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
                     self.assertNotIn("overall", mx)
                     self.assertEqual(len(mx["ledger"]), expected["ledger"])
                     self.assertEqual(ent["date"], "2026-09-08")
-                    self.assertEqual(ent["revision"], 4)
+                    self.assertEqual(ent["revision"], expected.get("revision", 4))
         self.assertEqual(sorted(found), sorted(LIVE_MATRIX))
 
     def test_goldberg_and_fournier_cards_show_interpretation_and_sound(self):
@@ -251,10 +256,6 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertGreater(len(recs), 0)
         for rid, rec in recs.items():
             ed = rec["editorial"]
-            if ed is None:
-                self.assertTrue(str(rid).startswith("bach/brandenburg/"), rid)
-                self.assertNotIn("matrix", rec)
-                continue
             if rid in LIVE_MATRIX:
                 mx = ed["matrix"]
                 self.assertEqual(mx["interpretation"], LIVE_MATRIX[rid]["interpretation"], rid)
@@ -308,18 +309,45 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(gould["editorial"]["matrix"]["sound"], 2)
         self.assertEqual(emerson["editorial"]["matrix"]["interpretation"], 4)
         self.assertEqual(emerson["editorial"]["matrix"]["sound"], 4)
+        brand = next(w for w in merged["works"] if w["id"] == "bach/brandenburg")
+        brand_html = _html_for(brand, merged)
+        self.assertIn("Pinnock’s 1982 English Concert Brandenburgs", brand_html)
+        self.assertIn("The modern Munich pole of this argument.", brand_html)
+        self.assertNotIn("Three stars", brand_html)
+        brand_cat = _embedded_catalogue(brand_html)
+        pinnock = next(
+            r for r in brand_cat["works"][0]["recordings"]
+            if r["id"] == "bach/brandenburg/0"
+        )
+        self.assertEqual(pinnock["editorial"]["matrix"]["interpretation"], 5)
+        self.assertEqual(pinnock["editorial"]["matrix"]["sound"], 4)
+        self.assertTrue(pinnock["editorial"]["reference"])
+        self.assertEqual(stylebox_grid_pos(5, 4), (4, 1))
 
-    def test_no_brandenburg_matrix(self):
-        ed_dir = ROOT / "data" / "editorial"
-        for path in sorted(ed_dir.glob("*.json")):
-            self.assertNotIn("brandenburg", path.name)
-            if path.name.startswith("_"):
-                continue
-            doc = json.loads(path.read_text(encoding="utf-8"))
-            for ent in doc.get("entries") or []:
-                self.assertNotIn("brandenburg", str(ent.get("recording") or ""))
-                if "matrix" in ent:
-                    self.assertNotIn("brandenburg", json.dumps(ent["matrix"]))
+    def test_brandenburg_matrix_is_the_three_assessed(self):
+        path = ROOT / "data" / "editorial" / "bach_brandenburg.json"
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        ids = [ent["recording"] for ent in doc["entries"]]
+        self.assertEqual(ids, [
+            "bach/brandenburg/0",
+            "bach/brandenburg/1",
+            "bach/brandenburg/4",
+        ])
+        self.assertNotIn("bach/brandenburg/5", ids)
+        by_id = {ent["recording"]: ent for ent in doc["entries"]}
+        self.assertTrue(by_id["bach/brandenburg/0"]["reference"])
+        self.assertFalse(by_id["bach/brandenburg/1"]["reference"])
+        self.assertFalse(by_id["bach/brandenburg/4"]["reference"])
+        richter = by_id["bach/brandenburg/4"]["text"]
+        self.assertTrue(
+            richter.endswith("The modern Munich pole of this argument."),
+            richter[-80:],
+        )
+        self.assertNotIn("Three stars", richter)
+        for ent in doc["entries"]:
+            self.assertNotIn("Three stars", ent["text"])
+            self.assertNotEqual(ent["recording"], "bach/brandenburg/5")
+            self.assertNotIn("Gardiner", ent["text"])
 
 
 class TestMatrixCardRender(unittest.TestCase):

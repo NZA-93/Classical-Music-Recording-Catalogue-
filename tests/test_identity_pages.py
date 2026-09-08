@@ -3,9 +3,9 @@
 Public cards are the critic-signed assessed IDs, not the harvest queue and
 not engine scores. goldberg/3 (Perahia) stays a candidate and must not
 appear. goldberg/4 (Schiff, Decca 1982) is assessed. Brandenburg assessed
-cut is /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967 — identity
-facts only, no signed Dictionnaire prose. Held Bach works stay off this
-slice.
+cut is /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967, now with
+Critic-signed Dictionnaire prose and Morningstar matrix. Gardiner /5 stays
+off the public cards. Held Bach works stay off this slice.
 """
 
 from __future__ import annotations
@@ -270,11 +270,8 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertNotIn("Britten", blob)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            if rec["id"] in BRANDENBURG_ASSESSED:
-                self.assertIsNone(rec["editorial"], rec["id"])
-            else:
-                self.assertIsNotNone(rec["editorial"], rec["id"])
-                self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+            self.assertIsNotNone(rec["editorial"], rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
 
     def test_goldberg_facts_stay_goulds_and_schiff_1982(self):
         gold = next(
@@ -342,7 +339,8 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertEqual(rec_ids, list(BRANDENBURG_ASSESSED))
         for rec in brand["recordings"]:
             _assert_no_aggregate(self, rec, rec["id"])
-            self.assertIsNone(rec.get("editorial"), rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
         engine = _engine_cat()
         eng_brand = next(w for w in engine["works"] if w["id"] == "bach_brandenburg")
         self.assertAlmostEqual(
@@ -510,7 +508,12 @@ class TestRemainingSignedPages(unittest.TestCase):
             self.assertNotIn('"candidates"', json.dumps(_embedded_catalogue(html)))
             if wid == "bach/brandenburg":
                 for name in BRANDENBURG_HOLD:
+                    if name == "Avie":
+                        continue
                     self.assertNotIn(name, html, f"{wid} leaked hold {name}")
+                cat = _embedded_catalogue(html)
+                for rec in cat["works"][0]["recordings"]:
+                    self.assertNotIn("Avie", rec.get("published") or "", rec["id"])
             else:
                 for name in BRANDENBURG_ONLY:
                     self.assertNotIn(name, html, f"{wid} leaked {name}")
@@ -709,10 +712,11 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             self.assertNotIn("seed_year_note", strip, rid)
             self.assertNotIn("cover_face", strip, rid)
             ed = rec["editorial"]
-            if rid in BRANDENBURG_ASSESSED:
-                self.assertIsNone(ed, rid)
-                continue
+            self.assertIsNotNone(ed, rid)
             consulted = ed.get("consulted") or []
+            if rid in BRANDENBURG_ASSESSED:
+                self.assertEqual(consulted, [], rid)
+                continue
             self.assertGreaterEqual(len(consulted), 1, rid)
             self.assertLessEqual(len(consulted), 8, rid)
             for item in consulted:
@@ -740,9 +744,10 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         self.assertEqual(harn["fact_strip"]["venue"], "Palais Schönburg, Vienna")
         self.assertEqual(harn["fact_strip"]["sessions"], "April 1964")
         self.assertEqual(richter["fact_strip"]["sessions"], "January 1967")
-        self.assertIsNone(pinnock["editorial"])
-        self.assertIsNone(harn["editorial"])
-        self.assertIsNone(richter["editorial"])
+        self.assertEqual(pinnock["editorial"]["author"]["id"], "cmrc")
+        self.assertTrue(pinnock["editorial"]["reference"])
+        self.assertFalse(harn["editorial"]["reference"])
+        self.assertFalse(richter["editorial"]["reference"])
 
     def test_emerson_lock_uses_only_the_caa_200_release(self):
         recs = {
@@ -812,6 +817,9 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             "bach/mass_b_minor/0",
             "bach/art_of_fugue/0",
             "bach/art_of_fugue/3",
+            "bach/brandenburg/0",
+            "bach/brandenburg/1",
+            "bach/brandenburg/4",
         }
         expected = {
             "bach/goldberg/0": (3, True, 4, "The 1955 Goldberg is still the shock"),
@@ -827,6 +835,9 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             "bach/mass_b_minor/0": (3, True, 4, "Gardiner’s first B-minor Mass"),
             "bach/art_of_fugue/0": (2, False, 4, "Gould’s only commercial organ recording"),
             "bach/art_of_fugue/3": (3, True, 4, "The Emersons play the Art of Fugue"),
+            "bach/brandenburg/0": (3, True, 1, "Pinnock’s 1982 English Concert Brandenburgs"),
+            "bach/brandenburg/1": (3, False, 1, "Harnoncourt’s first Concentus Musicus cycle"),
+            "bach/brandenburg/4": (3, False, 1, "The modern Munich pole of this argument."),
         }
         recs = {
             r["id"]: r
@@ -879,7 +890,21 @@ class TestBrandenburgPublicHtml(unittest.TestCase):
         self.assertEqual([r["id"] for r in recs], list(BRANDENBURG_ASSESSED))
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            self.assertIsNone(rec.get("editorial"), rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+        by_id = {r["id"]: r for r in recs}
+        self.assertTrue(by_id["bach/brandenburg/0"]["editorial"]["reference"])
+        self.assertFalse(by_id["bach/brandenburg/1"]["editorial"]["reference"])
+        self.assertFalse(by_id["bach/brandenburg/4"]["editorial"]["reference"])
+        self.assertIn("Pinnock’s 1982 English Concert Brandenburgs", html)
+        self.assertIn("Harnoncourt’s first Concentus Musicus cycle", html)
+        richter = by_id["bach/brandenburg/4"]["editorial"]["text"]
+        self.assertTrue(
+            richter.endswith("The modern Munich pole of this argument."),
+            richter[-80:],
+        )
+        self.assertNotIn("Three stars", html)
+        self.assertNotIn("Gardiner", html)
         identity_fn = html[html.index("function identityLine(r)"):html.index("function entry(r)")]
         self.assertNotIn("scorebox", identity_fn)
         self.assertNotIn("Référence", identity_fn)
@@ -891,7 +916,8 @@ class TestBrandenburgPublicHtml(unittest.TestCase):
         self.assertNotIn("2.853", blob)
         self.assertNotIn("2.814", blob)
         self.assertNotIn('"candidates"', blob)
-        self.assertNotIn("Avie", html)
+        self.assertIn("Avie remake", html)
+        self.assertNotIn("Avie, 2007", html)
         mbids = [r["editions"][0]["mbid"] for r in recs]
         self.assertEqual(
             mbids,
