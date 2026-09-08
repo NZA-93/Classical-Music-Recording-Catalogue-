@@ -4,8 +4,8 @@
     {
       "recording": "bach/goldberg/0",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": true,
       "compared_with": ["bach/goldberg/1", "bach/goldberg/4"],
@@ -52,13 +52,40 @@
           "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 3,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)",
+            "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/",
+            "note": "Public landmark: induction recognises the 1955 performance as a cultural document."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)",
+            "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72",
+            "note": "Debut no-repeats architecture; the shock that opened the piano Goldberg."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations",
+            "url": "https://www.discogs.com/master/261784",
+            "note": "Columbia mono studio — clear lines, historic floor; not reference-class digital."
+          }
+        ]
+      }
     },
     {
       "recording": "bach/goldberg/1",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": false,
       "compared_with": ["bach/goldberg/0", "bach/goldberg/4"],
@@ -105,13 +132,33 @@
           "url": "http://www.musicweb-international.com/classrev/2003/Feb03/Goldberg_Gould.htm",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Recording Academy — Glenn Gould Grammy awards",
+            "url": "https://www.grammy.com/artists/glenn-gould/3638/",
+            "note": "Late canonic architecture; deeper second thought beside 1955 without retiring it."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)",
+            "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00",
+            "note": "Digital-era CBS capture — quieter floor and presence than the mono debut."
+          }
+        ]
+      }
     },
     {
       "recording": "bach/goldberg/4",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 2,
       "reference": false,
       "compared_with": ["bach/goldberg/0", "bach/goldberg/1"],
@@ -158,7 +205,27 @@
           "url": "https://www.gramophone.co.uk/reviews/bach-goldberg-variations-14",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 3,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Bach Cantatas Website — András Schiff K-3",
+            "url": "https://www.bach-cantatas.com/NVP/Schiff.htm",
+            "note": "Complete-repeats piano alternative; solid catalogue choice, not a third Gould."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "Presto Music — Bach Goldberg Variations Decca 4171162",
+            "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988",
+            "note": "Kingsway Hall Decca — warm balance; excellent early-digital transfer class."
+          }
+        ]
+      }
     }
   ]
 }

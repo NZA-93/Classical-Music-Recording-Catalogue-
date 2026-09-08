@@ -1,7 +1,7 @@
-"""Morningstar matrix plumbing — schema, validate, card UI.
+"""Morningstar matrix — schema, validate, card UI, Critic Goldberg/Fournier scores.
 
-No Critic scores of live recordings. The fixture is synthetic. Live Bach
-editorial JSON must not grow a matrix on this path.
+The fixture remains synthetic. Live matrix is Critic-signed on four recordings
+only: Gould 1955, Gould 1981, Schiff Decca, Fournier Archiv.
 """
 
 from __future__ import annotations
@@ -173,8 +173,17 @@ class TestValidateMatrix(unittest.TestCase):
         self.assertEqual(val.matrix_overall(2, 2), "2.0")
 
 
-class TestLiveBachHasNoMatrix(unittest.TestCase):
-    def test_editorial_json_has_no_matrix_key(self):
+# Critic-signed Morningstar axes. Integers are judgements, not ledger-derived.
+LIVE_MATRIX = {
+    "bach/goldberg/0": {"interpretation": 5, "sound": 3, "ledger": 3},
+    "bach/goldberg/1": {"interpretation": 5, "sound": 4, "ledger": 2},
+    "bach/goldberg/4": {"interpretation": 3, "sound": 4, "ledger": 2},
+    "bach/cello_suites/1": {"interpretation": 5, "sound": 3, "ledger": 2},
+}
+
+
+class TestLiveCriticMatrix(unittest.TestCase):
+    def test_only_four_live_entries_carry_matrix(self):
         ed_dir = ROOT / "data" / "editorial"
         found = []
         for path in sorted(ed_dir.glob("*.json")):
@@ -183,10 +192,18 @@ class TestLiveBachHasNoMatrix(unittest.TestCase):
             doc = json.loads(path.read_text(encoding="utf-8"))
             for ent in doc.get("entries") or []:
                 if "matrix" in ent:
-                    found.append(f"{path.name}:{ent.get('recording')}")
-        self.assertEqual(found, [])
+                    found.append(ent.get("recording"))
+                    expected = LIVE_MATRIX[ent["recording"]]
+                    mx = ent["matrix"]
+                    self.assertEqual(mx["interpretation"], expected["interpretation"])
+                    self.assertEqual(mx["sound"], expected["sound"])
+                    self.assertNotIn("overall", mx)
+                    self.assertEqual(len(mx["ledger"]), expected["ledger"])
+                    self.assertEqual(ent["date"], "2026-09-08")
+                    self.assertEqual(ent["revision"], 4)
+        self.assertEqual(sorted(found), sorted(LIVE_MATRIX))
 
-    def test_identity_payload_and_goldberg_page_omit_matrix(self):
+    def test_goldberg_and_fournier_cards_show_interpretation_and_sound(self):
         recs = {
             r["id"]: r
             for w in ident.public_identity_works(_seed())
@@ -194,7 +211,14 @@ class TestLiveBachHasNoMatrix(unittest.TestCase):
         }
         self.assertGreater(len(recs), 0)
         for rid, rec in recs.items():
-            self.assertNotIn("matrix", rec["editorial"], rid)
+            ed = rec["editorial"]
+            if rid in LIVE_MATRIX:
+                mx = ed["matrix"]
+                self.assertEqual(mx["interpretation"], LIVE_MATRIX[rid]["interpretation"], rid)
+                self.assertEqual(mx["sound"], LIVE_MATRIX[rid]["sound"], rid)
+                self.assertNotIn("overall", mx)
+            else:
+                self.assertNotIn("matrix", ed, rid)
         merged = ident.merge_identity_works(
             {"algorithm_version": "2.0", "built": "2026-09-08",
              "works": [], "barcode_index": {}},
@@ -204,11 +228,22 @@ class TestLiveBachHasNoMatrix(unittest.TestCase):
         html = _html_for(gold, merged)
         cat = _embedded_catalogue(html)
         for rec in cat["works"][0]["recordings"]:
-            self.assertNotIn("matrix", rec["editorial"], rec["id"])
+            mx = rec["editorial"]["matrix"]
+            self.assertEqual(mx["interpretation"], LIVE_MATRIX[rec["id"]]["interpretation"])
+            self.assertEqual(mx["sound"], LIVE_MATRIX[rec["id"]]["sound"])
         signed = html[html.index("function signed(r)"):html.index("function factStrip")]
         self.assertIn("matrixStrip(e.matrix)", signed)
+        self.assertIn("Interpretation", signed)
+        self.assertIn("Sound", signed)
         self.assertIn("The 1955 Goldberg is still the shock", html)
         self.assertIn(">References<", html)
+        cello = next(w for w in merged["works"] if w["id"] == "bach/cello_suites")
+        cello_html = _html_for(cello, merged)
+        cello_cat = _embedded_catalogue(cello_html)
+        fournier = cello_cat["works"][0]["recordings"][0]
+        self.assertEqual(fournier["id"], "bach/cello_suites/1")
+        self.assertEqual(fournier["editorial"]["matrix"]["interpretation"], 5)
+        self.assertEqual(fournier["editorial"]["matrix"]["sound"], 3)
 
 
 class TestMatrixCardRender(unittest.TestCase):
