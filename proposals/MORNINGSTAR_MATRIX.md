@@ -1,18 +1,40 @@
-# Morningstar matrix — Critic rubric (plumbing contract)
+# Morningstar matrix — Critic rubric (plumbing + visual box)
 
-Schema and card UI only. **No scores are invented here.** Critic fills
-Goldberg / Fournier (and later entries) after this lands. Live Bach editorial
-JSON stays without `matrix` until then.
+Schema, validate, and card UI. **No scores are invented here.** Critic integers
+already signed on Goldberg / Fournier are mapped onto the 5×5 box; this change
+does not alter them.
 
 Shape: `data/editorial/_SCHEMA.json`. Gate: `agents/validate.py`.
 
 ## Card (three-second scan)
 
 - Dictionnaire signed prose first; stars / Référence stay the editorial headline.
-- When `editorial.matrix` is present: two integers only — Interpretation 1–5 ·
-  Sound 1–5 — under the prose, not inside it.
+- When `editorial.matrix` is present: a **5×5 Morningstar-style box** under the
+  prose (not inside it), mapping the Critic integers. One filled cell at
+  (sound, interpretation). Caption keeps the numbers:
+  `Interpretation {n} · Sound {m}`.
 - **No overall badge on the card.**
-- “How scored” expands to the evidence ledger.
+- Empty matrix stays invisible (no hollow box).
+- “How scored” expands to band-name ticks, optional overall, and the evidence ledger.
+
+## Visual box (UX + Prose SIGN)
+
+X = Sound, left→right (1→5). Y = Interpretation, bottom→top (1→5).
+
+**Axis ends on the box face only:**
+
+- Sound: Hard listen → Reference
+- Interpretation: Documentary → Landmark
+
+**Band names (ticks / How scored only — not 25 cell essays):**
+
+| Axis | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| Sound | Hard listen | Serviceable | Clean | Excellent | **Reference** |
+| Interpretation | Documentary | Competent | Solid | Outstanding | Landmark |
+
+**Reference** (English) is the Sound-axis end. **Référence** remains only the
+signed editorial flag. Do not conflate.
 
 ## Axes (Critic integers, never derived from the ledger)
 
