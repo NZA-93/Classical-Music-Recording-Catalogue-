@@ -159,19 +159,37 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar axes: two integers under the signed prose. No overall on the card. */
-  .signed .matrix{display:grid;grid-template-columns:1fr 1fr;margin:1.1rem 0 0;max-width:22rem;
-    border:1px solid var(--hair);background:var(--paper)}
-  .signed .matrix .cell{padding:.55rem .75rem;display:flex;align-items:baseline;
-    justify-content:space-between;gap:.6rem}
-  .signed .matrix .cell+.cell{border-left:1px solid var(--hair)}
-  .signed .matrix .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
-  .signed .matrix .n{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.45rem;line-height:1;
-    font-variant-numeric:tabular-nums}
+  /* Critic Morningstar 5×5: Sound →, Interpretation ↑. One filled cell. No overall on the card. */
+  .signed .matrix{margin:1.1rem 0 0;width:min(48vw,11.75rem)}
+  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch}
+  .signed .stylebox .ylab{
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+    text-align:center;padding:.15rem 0}
+  .signed .stylebox .plot{min-width:0}
+  .signed .stylebox .y-end,.signed .stylebox .x-end,.signed .stylebox .xlab{
+    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
+    color:var(--ink-soft);line-height:1.2}
+  .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
+  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem}
+  .signed .stylebox .grid{
+    display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);
+    aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
+  .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
+  .signed .stylebox .cell.filled{background:var(--ink)}
+  .signed .stylebox .xaxis{display:flex;justify-content:space-between;align-items:flex-start;gap:.2rem}
+  .signed .stylebox .xlab{text-transform:uppercase;letter-spacing:.1em;font-size:.5rem;align-self:center}
+  .signed .matrix-cap{
+    margin:.4rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+    font-weight:500;color:var(--ink-soft);letter-spacing:.02em}
   .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
-  .signed .how-scored .rubric,.signed .how-scored .overall{font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks{
+    font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
   .signed .how-scored .overall b{color:var(--ink);font-weight:500}
+  .signed .how-scored .ticks .k{
+    display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.12rem}
   .signed .how-scored table{font-size:.82rem}
   .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
     letter-spacing:.04em;margin-bottom:.25rem}
@@ -270,6 +288,7 @@
     .plate-cap{max-width:152px}
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
+    .signed .matrix{width:48vw;max-width:11.75rem;min-width:9.25rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -522,17 +541,46 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
+/* Band names: ticks / How scored only. Face shows axis ends. Sound 5 is English Reference, never Référence. */
+const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"];
+const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"];
+
 function matrixOverall(m){
   /* Expand only. Never on the card face. Never stored on the entry. */
   return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
 }
 
 function matrixStrip(m){
-  /* Two integers under the signed prose. No overall badge on the card. */
+  /* 5×5 style box under signed prose. X = sound 1→5 left→right; Y = interpretation 1→5 bottom→top. */
   if(!m) return "";
+  const i=m.interpretation, s=m.sound;
+  let cells="";
+  for(let y=5;y>=1;y--){
+    for(let x=1;x<=5;x++){
+      const filled=(x===s && y===i);
+      const aria=filled
+        ?` aria-label="Filled cell: Interpretation ${esc(i)} ${MATRIX_INTERP[i-1]}, Sound ${esc(s)} ${MATRIX_SOUND[s-1]}"`
+        :` aria-hidden="true"`;
+      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound="${x}" data-interpretation="${y}" style="grid-column:${x};grid-row:${6-y}"${aria}></span>`;
+    }
+  }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
-    <div class="cell"><span class="k">Interpretation</span><span class="n">${esc(m.interpretation)}</span></div>
-    <div class="cell"><span class="k">Sound</span><span class="n">${esc(m.sound)}</span></div>
+    <div class="stylebox">
+      <span class="ylab" aria-hidden="true">Interpretation</span>
+      <div class="plot">
+        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP[4]}</span>
+        <div class="grid" role="grid" aria-label="Sound axis, Hard listen to Reference, left to right. Interpretation axis, Documentary to Landmark, bottom to top.">
+          ${cells}
+        </div>
+        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP[0]}</span>
+        <div class="xaxis">
+          <span class="x-end">${MATRIX_SOUND[0]}</span>
+          <span class="xlab">Sound</span>
+          <span class="x-end">${MATRIX_SOUND[4]}</span>
+        </div>
+      </div>
+    </div>
+    <p class="matrix-cap">Interpretation ${esc(i)} · Sound ${esc(s)}</p>
   </div>`;
 }
 
@@ -554,9 +602,13 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
+  const interpTicks=MATRIX_INTERP.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
+  const soundTicks=MATRIX_SOUND.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
     <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
+    <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>
       <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
     <p class="modlabel">Evidence ledger</p>

@@ -35,7 +35,7 @@
         }
       ],
       "matrix": {
-        "_comment": "Optional. Critic Morningstar axes only — never invent these in seed or statements. Card face shows the two integers; overall is 0.6*interpretation + 0.4*sound at one decimal in the How scored expand, never stored, never on the card. Ledger is evidence, not a calculator: do not derive axis scores from it. Tier C alone cannot raise an axis (Critic rule; UI copy, not auto-computed).",
+        "_comment": "Optional. Critic Morningstar axes only — never invent these in seed or statements. Card face maps the two integers onto a 5×5 style box (X = sound 1–5 left→right, Y = interpretation 1–5 bottom→top) with a caption Interpretation n · Sound m; overall is 0.6*interpretation + 0.4*sound at one decimal in the How scored expand, never stored, never on the card. Ledger is evidence, not a calculator: do not derive axis scores from it. Tier C alone cannot raise an axis (Critic rule; UI copy, not auto-computed). Sound band 5 is English Reference; Référence remains the signed editorial flag only.",
         "interpretation": 4,
         "sound": 3,
         "ledger": [
