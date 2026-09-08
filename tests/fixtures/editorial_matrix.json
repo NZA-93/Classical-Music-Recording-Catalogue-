@@ -1,0 +1,44 @@
+{
+  "_comment": "Synthetic plumbing fixture. Not a live recording. No Critic score of a real performance.",
+  "work_id": "fixture/matrix",
+  "entries": [
+    {
+      "recording": "fixture/matrix/0",
+      "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
+      "date": "2026-09-08",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": [],
+      "text": "Fixture signed prose for matrix plumbing. This is not a listening report.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Example discography locator",
+          "url": "https://example.org/discography",
+          "kind": "discography"
+        }
+      ],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 3,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Example cited notice",
+            "url": "https://example.org/review",
+            "note": "Why this interpretation integer: schema-shaped fixture text only."
+          },
+          {
+            "axis": "sound",
+            "tier": "B",
+            "title": "Example attributed transfer note",
+            "url": "https://example.org/edition",
+            "note": "Why this sound integer: fixture ledger row, not a real transfer verdict."
+          }
+        ]
+      }
+    }
+  ]
+}

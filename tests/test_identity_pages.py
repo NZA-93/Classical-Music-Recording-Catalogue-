@@ -594,13 +594,19 @@ class TestTemplateIdentityPath(unittest.TestCase):
         self.assertIn("recs.every(r=>r.card===\"identity\")", tpl[work:])
         self.assertIn("${recs.map(identityLine).join(\"\")}", tpl[work:])
         signed = tpl[tpl.index("function signed(r)"):tpl.index("function factStrip(r)")]
-        refs_fn = tpl[tpl.index("function consultedRefs(e)"):tpl.index("function signed(r)")]
+        refs_fn = tpl[tpl.index("function consultedRefs(e)"):tpl.index("function matrixOverall")]
         self.assertIn("consultedRefs(", signed)
         self.assertIn(">References<", refs_fn)
         self.assertIn("function consultedRefs(e)", tpl)
+        self.assertIn("function matrixStrip(m)", tpl)
+        self.assertIn("function howScored(m)", tpl)
         body_start = signed.index('class="body"')
+        matrix_at = signed.index("matrixStrip(")
+        how_at = signed.index("howScored(")
         refs_at = signed.index("consultedRefs(")
-        self.assertGreater(refs_at, body_start)
+        self.assertGreater(matrix_at, body_start)
+        self.assertGreater(how_at, matrix_at)
+        self.assertGreater(refs_at, how_at)
 
 
 class TestAssessedEditionsRefsFactStrip(unittest.TestCase):

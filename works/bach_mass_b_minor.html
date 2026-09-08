@@ -159,6 +159,20 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
+  /* Critic Morningstar axes: two integers under the signed prose. No overall on the card. */
+  .signed .matrix{display:grid;grid-template-columns:1fr 1fr;margin:1.1rem 0 0;max-width:22rem;
+    border:1px solid var(--hair);background:var(--paper)}
+  .signed .matrix .cell{padding:.55rem .75rem;display:flex;align-items:baseline;
+    justify-content:space-between;gap:.6rem}
+  .signed .matrix .cell+.cell{border-left:1px solid var(--hair)}
+  .signed .matrix .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .signed .matrix .n{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.45rem;line-height:1;
+    font-variant-numeric:tabular-nums}
+  .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
+  .signed .how-scored .rubric,.signed .how-scored .overall{font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .overall b{color:var(--ink);font-weight:500}
+  .signed .how-scored table{font-size:.82rem}
   .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
     letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
@@ -311,7 +325,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/mass_b_minor", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Mass in B minor", "cat": "BWV 232 · 1749", "standfirst": "Assembled late from a lifetime's work; the choral-forces question.", "recordings": [{"id": "bach/mass_b_minor/0", "work": "bach/mass_b_minor", "card": "identity", "soloists": "", "director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists", "published": "Archiv, 1985", "editions": [{"id": "0_preferred", "label": "Archiv Produktion", "year": "1985", "catno": "415 514-2", "format": "2×CD", "mbid": "1db1e98a-5b64-4630-98c7-bcb71c3dee96", "verified": true}], "fact_strip": {"director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists; Monteverdi Choir", "label": "Archiv Produktion", "year": 1985, "published": "1985", "venue": "All Saints, Tooting, London", "sessions": "February 1985", "format": "2×CD", "catno": "415 514-2"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/mass_b_minor/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": [], "text": "Gardiner’s first B-minor Mass is mid-1980s Archiv HIP with a mixed choir of roughly two dozen and concertino–ripieno contrasts inside the Monteverdi Choir — not one-voice-per-part. Choral vitality and continuo practice still make the case. Gardiner later remade it because he judged this set incomplete; the remake does not retire the benchmark status the 1985 tapes acquired. Référence for the mid-1980s Archiv HIP studio Mass.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Mass in B minor conducted by Gardiner", "url": "https://www.bach-cantatas.com/Vocal/BWV232-Gardiner.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — Gardiner Rec5 V-1", "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm", "kind": "discography"}, {"title": "MusicBrainz release — Mass in B minor (Archiv 415 514-2)", "url": "https://musicbrainz.org/release/1db1e98a-5b64-4630-98c7-bcb71c3dee96", "kind": "discography"}, {"title": "MusicBrainz release — Mass in B minor (alternate 415 514-2 face)", "url": "https://musicbrainz.org/release/69ef4c1d-dc37-4c3c-b6aa-37cc17d51681", "kind": "discography"}, {"title": "Presto Music — DG Archiv 4155142", "url": "https://www.prestomusic.com/classical/products/7924606--bach-j-s-mass-in-b-minor-bwv232", "kind": "discography"}, {"title": "Deutsche Grammophon — Messe h-moll / Gardiner", "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-messe-h-moll-gardiner-9773", "kind": "label"}, {"title": "Discogs — Mass In B Minor (Gardiner / Archiv 1985)", "url": "https://www.discogs.com/release/3972766-JS-Bach-John-Eliot-Gardiner-Mass-In-B-Minor-Messe-In-H-Moll-Messe-En-Si-Mineur", "kind": "discography"}, {"title": "Gramophone — Gardiner returns to Bach’s B minor Mass", "url": "https://www.gramophone.co.uk/content/features/sir-john-eliot-gardiner-returns-to-bachs-b-minor-mass", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-08", "works": [{"id": "bach/mass_b_minor", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Mass in B minor", "cat": "BWV 232 · 1749", "standfirst": "Assembled late from a lifetime's work; the choral-forces question.", "recordings": [{"id": "bach/mass_b_minor/0", "work": "bach/mass_b_minor", "card": "identity", "soloists": "", "director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists", "published": "Archiv, 1985", "editions": [{"id": "0_preferred", "label": "Archiv Produktion", "year": "1985", "catno": "415 514-2", "format": "2×CD", "mbid": "1db1e98a-5b64-4630-98c7-bcb71c3dee96", "verified": true}], "fact_strip": {"director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists; Monteverdi Choir", "label": "Archiv Produktion", "year": 1985, "published": "1985", "venue": "All Saints, Tooting, London", "sessions": "February 1985", "format": "2×CD", "catno": "415 514-2"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/mass_b_minor/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": [], "text": "Gardiner’s first B-minor Mass is mid-1980s Archiv HIP with a mixed choir of roughly two dozen and concertino–ripieno contrasts inside the Monteverdi Choir — not one-voice-per-part. Choral vitality and continuo practice still make the case. Gardiner later remade it because he judged this set incomplete; the remake does not retire the benchmark status the 1985 tapes acquired. Référence for the mid-1980s Archiv HIP studio Mass.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Mass in B minor conducted by Gardiner", "url": "https://www.bach-cantatas.com/Vocal/BWV232-Gardiner.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — Gardiner Rec5 V-1", "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm", "kind": "discography"}, {"title": "MusicBrainz release — Mass in B minor (Archiv 415 514-2)", "url": "https://musicbrainz.org/release/1db1e98a-5b64-4630-98c7-bcb71c3dee96", "kind": "discography"}, {"title": "MusicBrainz release — Mass in B minor (alternate 415 514-2 face)", "url": "https://musicbrainz.org/release/69ef4c1d-dc37-4c3c-b6aa-37cc17d51681", "kind": "discography"}, {"title": "Presto Music — DG Archiv 4155142", "url": "https://www.prestomusic.com/classical/products/7924606--bach-j-s-mass-in-b-minor-bwv232", "kind": "discography"}, {"title": "Deutsche Grammophon — Messe h-moll / Gardiner", "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-messe-h-moll-gardiner-9773", "kind": "label"}, {"title": "Discogs — Mass In B Minor (Gardiner / Archiv 1985)", "url": "https://www.discogs.com/release/3972766-JS-Bach-John-Eliot-Gardiner-Mass-In-B-Minor-Messe-In-H-Moll-Messe-En-Si-Mineur", "kind": "discography"}, {"title": "Gramophone — Gardiner returns to Bach’s B minor Mass", "url": "https://www.gramophone.co.uk/content/features/sir-john-eliot-gardiner-returns-to-bachs-b-minor-mass", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -508,6 +522,48 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
+function matrixOverall(m){
+  /* Expand only. Never on the card face. Never stored on the entry. */
+  return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
+}
+
+function matrixStrip(m){
+  /* Two integers under the signed prose. No overall badge on the card. */
+  if(!m) return "";
+  return `<div class="matrix" role="group" aria-label="Interpretation and sound">
+    <div class="cell"><span class="k">Interpretation</span><span class="n">${esc(m.interpretation)}</span></div>
+    <div class="cell"><span class="k">Sound</span><span class="n">${esc(m.sound)}</span></div>
+  </div>`;
+}
+
+function howScored(m){
+  if(!m) return "";
+  const rows=(m.ledger||[]).map(row=>{
+    const title=esc(row.title||row.url||"");
+    const href=esc(row.url||"");
+    const link=href
+      ?`<a class="cite" href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>`
+      :title;
+    return `<tr>
+      <td><span class="prov">${esc(row.axis||"")}</span></td>
+      <td><span class="prov">${esc(row.tier||"")}</span></td>
+      <td>${link}</td>
+      <td>${esc(row.note||"")}</td>
+    </tr>`;
+  }).join("");
+  const table=rows
+    ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
+    :`<p class="prov">No ledger rows yet.</p>`;
+  return `<details class="how-scored">
+    <summary>How scored</summary>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="overall">Overall <b>${matrixOverall(m)}</b>
+      <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
+    <p class="modlabel">Evidence ledger</p>
+    ${table}
+  </details>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -524,6 +580,8 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${matrixStrip(e.matrix)}
+    ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}
   </div>`;
