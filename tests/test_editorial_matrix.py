@@ -251,6 +251,10 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertGreater(len(recs), 0)
         for rid, rec in recs.items():
             ed = rec["editorial"]
+            if ed is None:
+                self.assertTrue(str(rid).startswith("bach/brandenburg/"), rid)
+                self.assertNotIn("matrix", rec)
+                continue
             if rid in LIVE_MATRIX:
                 mx = ed["matrix"]
                 self.assertEqual(mx["interpretation"], LIVE_MATRIX[rid]["interpretation"], rid)
