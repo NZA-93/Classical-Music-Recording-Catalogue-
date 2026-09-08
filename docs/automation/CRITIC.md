@@ -12,6 +12,7 @@ proposes; a human still merges.
 | Path | Who | Lands how |
 |---|---|---|
 | Signed entry (`data/editorial/`) | **Critic** | Critic merges, or **Developer** ships the Critic PR, to `main` → live Pages. No human merge babysit |
+| Scout pool (`data/scout/`) | **Critic** | Same landing path as signed entries. Ordinal ranks only; never stars / Référence / matrix / `text`. Does not auto-promote |
 | Seed / identity / covers | Roles A–B, E | Pull request; human merges |
 | Citation proposals → `data/statements/` | Role C, then a human | Human ratifies; agents never write statements |
 | Composer rollup / site plumbing | Roles D–E, Developer | PR; human merges unless the change is only shipping already-signed Critic content |
@@ -23,6 +24,10 @@ proposes; a human still merges.
   evidence ledger). Axis integers are Critic judgements; they are not computed
   from the ledger. Overall (`0.6×I + 0.4×S`, one decimal) is expand-only and
   is never stored.
+- Author a scout pool (ADR-004): identity lock, ordinal rank, stance,
+  why-in / why-out, status. Never stars, Référence, matrix or Dictionnaire
+  `text` on that file. `promoted-to-cut` records an already-assessed row;
+  it does not write `assessed`
 - Close it with author id, name, date and revision — unsigned prose does not
   publish
 - Land it on `main` so GitHub Pages updates

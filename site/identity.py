@@ -7,6 +7,8 @@ more works on without new plumbing.
 
 No aggregate scores, engine stars, Référence, or statements belong here.
 A Critic-signed entry from data/editorial/ attaches when present (ADR-002).
+Scout pools (ADR-004, data/scout/) are a separate work-level shortlist and
+must not be merged into recording.editorial.
 """
 
 from __future__ import annotations

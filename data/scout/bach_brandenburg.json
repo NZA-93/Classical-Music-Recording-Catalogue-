@@ -1,0 +1,61 @@
+{
+  "work_id": "bach/brandenburg",
+  "schema": "ADR-004 scout pool pilot",
+  "note": "Ordinal scout ranks only. Never stars/Référence/matrix. Promoted rows match assessed cut #50/#51.",
+  "candidates": [
+    {
+      "recording": "bach/brandenburg/0",
+      "rank": 1,
+      "stance": "HIP studio digital",
+      "status": "promoted-to-cut",
+      "identity": "Pinnock / English Concert / Archiv 1982 Henry Wood Hall — not Avie 2007",
+      "why_in": "Widely cited digital period-instrument classic; clear neighbour to pioneering OI and modern Munich.",
+      "why_out": null
+    },
+    {
+      "recording": "bach/brandenburg/1",
+      "rank": 2,
+      "stance": "pioneering OI",
+      "status": "promoted-to-cut",
+      "identity": "Harnoncourt / CMW / Telefunken 1964 — not 1981 remake; not “1967” label copy",
+      "why_in": "Historical first complete CMW statement; required pole of the HIP argument.",
+      "why_out": null
+    },
+    {
+      "recording": "bach/brandenburg/4",
+      "rank": 3,
+      "stance": "modern Munich orchestra",
+      "status": "promoted-to-cut",
+      "identity": "Richter / Münchener Bach-Orchester / Archiv January 1967",
+      "why_in": "Modern-instrument pole against both HIP documents; Voyager reception is fact, not a crown.",
+      "why_out": null
+    },
+    {
+      "recording": "bach/brandenburg/3",
+      "rank": 4,
+      "stance": "English chamber modern",
+      "status": "held",
+      "identity": "Britten / ECO / Decca 1968 Maltings",
+      "why_in": null,
+      "why_out": "Solid identity; second-cut — overlaps modern/chamber space without adding a sharper stance than Richter vs HIP."
+    },
+    {
+      "recording": "bach/brandenburg/2",
+      "rank": 5,
+      "stance": "live hybrid 2000s",
+      "status": "held",
+      "identity": "Abbado / Orchestra Mozart / DG 2007 Reggio Emilia live",
+      "why_in": null,
+      "why_out": "Solid live hybrid; second-cut after the three-pole studio argument is on the shelf."
+    },
+    {
+      "recording": "bach/brandenburg/5",
+      "rank": 6,
+      "stance": "chamber HIP (seed broken)",
+      "status": "held",
+      "identity": "Seed says Archiv/1990s; complete cycle is SDG707 (2009) — do not assess until seed fixed",
+      "why_in": null,
+      "why_out": "Thin/wrong seed metadata; ranking a false Archiv ID would crown a ghost. Fix identity first."
+    }
+  ]
+}

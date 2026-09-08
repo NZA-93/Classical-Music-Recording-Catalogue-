@@ -35,6 +35,13 @@ is misdrafted. Stop and say so.
 exactly one place: the *signed editorial entry*, written in the named editorial
 voice and closed with initials and a date.
 
+**Amendment (ADR-004).** A scout pool in `data/scout/` is a ranked shortlist
+for “which deserve a Critic cut?” — never canon, never stars, never Référence,
+never matrix, never Dictionnaire `text`. Scout ranks do not feed the
+aggregate, statements or seed scoring, and they do not auto-promote into
+`assessed`. Only Critic authors the pool. See
+[`docs/adr/ADR-004-scout-candidate-pool.md`](docs/adr/ADR-004-scout-candidate-pool.md).
+
 **Amendment (Critic role).** That register is the job of the **Classical Music
 Recording Critic** — the named editorial role, including the Critic agent
 acting in that role. Critic may author the verdict (prose, stars, Référence)
@@ -62,7 +69,7 @@ An unsigned entry is not a signed entry, whatever the byline says.
 - Add tests, fix failing tests, improve error messages
 - Open pull requests, and respond to review comments on them
 - **Critic:** write signed entries in `data/editorial/` and land them on `main`
-  so Pages updates
+  so Pages updates; author scout pools in `data/scout/` (ordinal ranks only)
 - **Developer:** merge or push Critic editorial PRs so that content reaches
   `main` and live Pages — without inventing or rewriting the verdict
 
@@ -72,8 +79,10 @@ An unsigned entry is not a signed entry, whatever the byline says.
 - Invent scores, stars, `reference` flags or confidence values in the seed,
   statements or aggregate, or invent any of those without a citation basis.
   Critic may set stars and Référence on a signed entry in `data/editorial/`
-  only. The four Brandenburg / Tosca regression anchors must not move except
-  through a deliberate, reviewed algorithm-version bump
+  only. Scout (`data/scout/`) may carry ordinal ranks and stance tags, never
+  stars, Référence, matrix or `text`, and never feeds the aggregate. The four
+  Brandenburg / Tosca regression anchors must not move except through a
+  deliberate, reviewed algorithm-version bump
 - Merge a pull request, approve one, or push directly to `main` — **except**
   Critic editorial landings and the Developer path that ships that Critic
   content. Harvest proposals, identity applies, statement ingest and seed

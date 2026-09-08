@@ -327,6 +327,166 @@ def validate_editorial(entry: dict, path: pathlib.Path, recs: set[str]):
     return errs, warns
 
 
+# --------------------------------------------------------------- scout (ADR-004)
+
+SCOUT_STATUSES = frozenset({"shortlist", "held", "promoted-to-cut", "rejected"})
+SCOUT_FORBIDDEN_KEYS = frozenset({
+    "stars", "reference", "matrix", "text", "quotes", "consulted",
+    "overall", "score", "interpretation", "sound",
+})
+SCOUT_DOC_KEYS = frozenset({"work_id", "schema", "note", "candidates"})
+SCOUT_ROW_KEYS = frozenset({
+    "recording", "rank", "stance", "status", "identity", "why_in", "why_out",
+})
+MAX_SCOUT_WHY = 400
+MAX_SCOUT_IDENTITY = 240
+MAX_SCOUT_STANCE = 80
+
+
+def _scout_forbidden_keys(obj, path="$"):
+    """Yield dotted paths of keys that would publish a crown or Dictionnaire body."""
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            here = f"{path}.{k}"
+            if k in SCOUT_FORBIDDEN_KEYS or k.lower() in {"référence", "reference"}:
+                yield here
+            yield from _scout_forbidden_keys(v, here)
+    elif isinstance(obj, list):
+        for i, v in enumerate(obj):
+            yield from _scout_forbidden_keys(v, f"{path}[{i}]")
+
+
+def _is_ordinal_rank(value) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and value >= 1
+
+
+def validate_scout_candidate(cand: dict, path: pathlib.Path, recs: set[str],
+                             assessed: set[str], seen_ranks: set[int],
+                             seen_ids: set[str]):
+    errs = []
+    def e(m): errs.append(f"{path.name}: {m}")
+
+    if not isinstance(cand, dict):
+        e("scout row must be an object")
+        return errs
+
+    extra = set(cand) - SCOUT_ROW_KEYS
+    if extra:
+        e(f"unknown scout field(s) {sorted(extra)} — ordinal pool only")
+
+    rid = cand.get("recording")
+    if not rid:
+        e("scout row missing `recording`")
+    elif rid not in recs:
+        e(f"unknown recording `{rid}`")
+    elif rid in seen_ids:
+        e(f"duplicate scout recording `{rid}`")
+    else:
+        seen_ids.add(rid)
+
+    rank = cand.get("rank")
+    if not _is_ordinal_rank(rank):
+        e("`rank` must be a positive integer (ordinal, not a 0–3 aggregate)")
+    elif rank in seen_ranks:
+        e(f"duplicate scout rank {rank}")
+    else:
+        seen_ranks.add(rank)
+
+    if not str(cand.get("stance") or "").strip():
+        e("missing `stance` (short tag, not Dictionnaire prose)")
+    elif not isinstance(cand.get("stance"), str):
+        e("`stance` must be a string")
+    elif len(cand["stance"]) > MAX_SCOUT_STANCE:
+        e(f"`stance` is {len(cand['stance'])} characters; limit is {MAX_SCOUT_STANCE}")
+
+    identity = cand.get("identity")
+    if not str(identity or "").strip():
+        e("missing `identity` lock (artists / label / year)")
+    elif not isinstance(identity, str):
+        e("`identity` must be a string")
+    elif len(identity) > MAX_SCOUT_IDENTITY:
+        e(f"`identity` is {len(identity)} characters; limit is {MAX_SCOUT_IDENTITY}")
+
+    status = cand.get("status")
+    if status not in SCOUT_STATUSES:
+        e(f"`status` must be one of {sorted(SCOUT_STATUSES)}")
+    elif rid:
+        if status == "promoted-to-cut" and rid not in assessed:
+            e(f"`promoted-to-cut` on `{rid}` but it is not in seed assessed — "
+              "scout cannot auto-promote")
+        if status in {"held", "shortlist", "rejected"} and rid in assessed:
+            e(f"`{status}` on assessed recording `{rid}` — assessed cut rows "
+              "are `promoted-to-cut` only")
+
+    why_in, why_out = cand.get("why_in"), cand.get("why_out")
+    if "why_in" not in cand or "why_out" not in cand:
+        e("both `why_in` and `why_out` must be present (`null` when N/A)")
+    for field, val in (("why_in", why_in), ("why_out", why_out)):
+        if val is None:
+            continue
+        if not isinstance(val, str):
+            e(f"`{field}` must be a string or null")
+        elif not val.strip():
+            e(f"`{field}` is empty; use null when N/A")
+        elif len(val) > MAX_SCOUT_WHY:
+            e(f"`{field}` is {len(val)} characters; limit is {MAX_SCOUT_WHY}")
+    in_ok = isinstance(why_in, str) and why_in.strip()
+    out_ok = isinstance(why_out, str) and why_out.strip()
+    if not in_ok and not out_ok:
+        e("visible why-in / why-out required (one side must be a short reason)")
+    return errs
+
+
+def validate_scout_doc(doc: dict, path: pathlib.Path, recs: set[str],
+                       seed: dict | None = None):
+    """ADR-004. Scout cannot publish crowns or merge into editorial."""
+    errs = []
+    def e(m): errs.append(f"{path.name}: {m}")
+
+    if not isinstance(doc, dict):
+        e("scout file must be an object with work_id and candidates")
+        return errs
+
+    extra = set(doc) - SCOUT_DOC_KEYS
+    if extra:
+        e(f"unknown document field(s) {sorted(extra)}")
+
+    for hit in _scout_forbidden_keys(doc):
+        e(f"forbidden key {hit} — scout must never carry stars, reference, "
+          "matrix or Dictionnaire text")
+
+    wid = doc.get("work_id")
+    if not wid:
+        e("missing `work_id`")
+    expected = path.stem.replace("_", "/", 1) if "_" in path.stem else path.stem
+    if wid and path.stem != "_SCHEMA" and wid.replace("/", "_") != path.stem:
+        e(f"work_id `{wid}` does not match filename (expected `{expected}` "
+          "or the editorial-style stem)")
+
+    rows = doc.get("candidates")
+    if not isinstance(rows, list) or not rows:
+        e("`candidates` must be a non-empty list")
+        return errs
+
+    assessed: set[str] = set()
+    known_work = False
+    for work in (seed or {}).get("works") or []:
+        if work.get("id") == wid:
+            known_work = True
+            assessed = set(work.get("assessed") or [])
+            break
+    if wid and seed is not None and not known_work:
+        e(f"unknown work_id `{wid}`")
+
+    seen_ranks: set[int] = set()
+    seen_ids: set[str] = set()
+    for cand in rows:
+        errs.extend(validate_scout_candidate(
+            cand, path, recs, assessed, seen_ranks, seen_ids,
+        ))
+    return errs
+
+
 def validate_emerson_lock(seed: dict | None = None):
     """bach/art_of_fugue/3 may only carry the CAA-200 Emerson release MBID."""
     errs = []
@@ -358,6 +518,7 @@ PROSE_KEYS = frozenset({
 LONG_OK_KEYS = frozenset({
     "note", "listen_for", "standfirst", "transfer", "text", "album",
     "locator_caveat", "description",
+    "why_in", "why_out", "identity", "stance",
 })
 
 
@@ -463,6 +624,23 @@ def main() -> int:
             all_warns += w
     files = files + ed_files
 
+    seed_path = pathlib.Path("data/seed.json")
+    seed_doc = json.loads(seed_path.read_text(encoding="utf-8")) \
+        if seed_path.exists() else {}
+
+    scout_dir = pathlib.Path("data/scout")
+    scout_files = sorted(
+        f for f in scout_dir.glob("*.json") if not f.name.startswith("_")
+    ) if scout_dir.exists() else []
+    for path in scout_files:
+        try:
+            doc = json.loads(path.read_text("utf-8"))
+        except json.JSONDecodeError as err:
+            all_errs.append(f"{path.name}: not valid JSON — {err}")
+            continue
+        all_errs += validate_scout_doc(doc, path, recs, seed_doc)
+    files = files + scout_files
+
     data_errs = [] if args.skip_data else scan_data_tree()
     all_errs += data_errs
     all_errs += validate_emerson_lock()
@@ -472,9 +650,6 @@ def main() -> int:
     if community.exists():
         try:
             from community_comments import validate_store, load_store
-            seed_path = pathlib.Path("data/seed.json")
-            seed_doc = json.loads(seed_path.read_text(encoding="utf-8")) \
-                if seed_path.exists() else {}
             for msg in validate_store(load_store(), seed_doc):
                 all_errs.append(f"community: {msg}")
         except Exception as exc:  # noqa: BLE001 — surface import/IO clearly

@@ -1,12 +1,15 @@
 # Catalogue judgement paths.
 # data/editorial/ — Critic (named editorial role) authors; Critic or
 # Developer may land to main / Pages. Community cannot claim this path.
+# data/scout/ — Critic-authored ranked shortlist (ADR-004); never stars,
+# Référence, matrix or Dictionnaire text; never feeds the aggregate.
 # data/statements/ — still human-ratified; harvest agents never write here.
 # AGENTS.md and docs/adr/ — binding rules; process amendments go through PR.
 # @NZA-93 names the editorial owner (Nicolò), not a third-party babysit
 # on Critic landings.
 
 /data/editorial/    @NZA-93
+/data/scout/        @NZA-93
 /data/statements/   @NZA-93
 /proposals/review-decisions.json   @NZA-93
 /AGENTS.md          @NZA-93
