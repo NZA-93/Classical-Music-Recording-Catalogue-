@@ -233,8 +233,9 @@ class TestLiveCriticMatrix(unittest.TestCase):
             self.assertEqual(mx["sound"], LIVE_MATRIX[rec["id"]]["sound"])
         signed = html[html.index("function signed(r)"):html.index("function factStrip")]
         self.assertIn("matrixStrip(e.matrix)", signed)
-        self.assertIn("Interpretation", signed)
-        self.assertIn("Sound", signed)
+        strip = _fn(html, "matrixStrip(m)", "howScored(m)")
+        self.assertIn("Interpretation", strip)
+        self.assertIn("Sound", strip)
         self.assertIn("The 1955 Goldberg is still the shock", html)
         self.assertIn(">References<", html)
         cello = next(w for w in merged["works"] if w["id"] == "bach/cello_suites")
