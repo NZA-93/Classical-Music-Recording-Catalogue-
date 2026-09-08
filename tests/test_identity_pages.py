@@ -701,11 +701,17 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         self.assertNotIn(">References<", aof[start:end])
 
     def test_signed_fields_other_than_consulted_are_untouched(self):
+        matrix_ids = {
+            "bach/goldberg/0",
+            "bach/goldberg/1",
+            "bach/goldberg/4",
+            "bach/cello_suites/1",
+        }
         expected = {
-            "bach/goldberg/0": (3, True, 3, "The 1955 Goldberg is still the shock"),
-            "bach/goldberg/1": (3, False, 3, "Gould’s 1981 remake is a late architecture"),
-            "bach/goldberg/4": (2, False, 3, "Schiff’s first studio Goldberg"),
-            "bach/cello_suites/1": (3, True, 3, "Fournier’s Archiv studio cycle"),
+            "bach/goldberg/0": (3, True, 4, "The 1955 Goldberg is still the shock"),
+            "bach/goldberg/1": (3, False, 4, "Gould’s 1981 remake is a late architecture"),
+            "bach/goldberg/4": (2, False, 4, "Schiff’s first studio Goldberg"),
+            "bach/cello_suites/1": (3, True, 4, "Fournier’s Archiv studio cycle"),
             "bach/violin_concertos/4": (3, True, 3, "Podger and Brecon Baroque"),
             "bach/sonatas_partitas/0": (3, False, 3, "Milstein’s stereo remake"),
             "bach/sonatas_partitas/1": (3, True, 3, "Podger’s complete gut-strung cycle"),
@@ -726,7 +732,11 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             self.assertEqual(ed["stars"], stars, rid)
             self.assertEqual(ed["reference"], reference, rid)
             self.assertEqual(ed["revision"], revision, rid)
-            self.assertEqual(ed["date"], "2026-09-07", rid)
+            self.assertEqual(
+                ed["date"],
+                "2026-09-08" if rid in matrix_ids else "2026-09-07",
+                rid,
+            )
             self.assertIn(snippet, ed["text"], rid)
 
     def test_identity_editions_rejects_any_other_emerson_mbid(self):
