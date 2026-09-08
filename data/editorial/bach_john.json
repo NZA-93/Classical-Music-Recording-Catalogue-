@@ -4,8 +4,8 @@
     {
       "recording": "bach/john/1",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": true,
       "compared_with": [],
@@ -52,7 +52,27 @@
           "url": "https://www.gramophone.co.uk/reviews/js-bach-st-john-passion-gardiner",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Bach St. John Passion (419 324-2AH2)",
+            "url": "https://www.gramophone.co.uk/reviews/bach-st-john-passion-13",
+            "note": "First studio St John — period drama that later remakes still argue with."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — St. John Passion (Gardiner / Archiv)",
+            "url": "https://musicbrainz.org/release/8e46b5f1-9f7b-4313-96c1-8e2b1423b51b",
+            "note": "All Saints Tooting Archiv — clean, present, balanced for mid-1980s HIP."
+          }
+        ]
+      }
     }
   ]
 }

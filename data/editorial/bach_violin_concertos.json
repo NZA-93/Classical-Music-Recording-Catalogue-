@@ -4,8 +4,8 @@
     {
       "recording": "bach/violin_concertos/4",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": true,
       "compared_with": [],
@@ -52,7 +52,27 @@
           "url": "https://www.bbc.co.uk/programmes/m001ryw1",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "BBC Music — review of Podger / Brecon Baroque Violin Concertos",
+            "url": "https://www.bbc.co.uk/music/reviews/gqj9/",
+            "note": "One-to-a-part chamber Bach; BaL-level case for BWV 1041 on this disc."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — Violin Concertos (CCS SA 30910)",
+            "url": "https://musicbrainz.org/release/aedde372-197e-49bd-bc9f-4d036e592a27",
+            "note": "Channel hybrid SACD — lithe, polished, quiet enough for the approach."
+          }
+        ]
+      }
     }
   ]
 }

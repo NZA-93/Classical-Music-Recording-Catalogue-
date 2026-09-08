@@ -1,7 +1,8 @@
-"""Morningstar matrix — schema, validate, card UI, Critic Goldberg/Fournier scores.
+"""Morningstar matrix — schema, validate, card UI, Critic live Bach scores.
 
-The fixture remains synthetic. Live matrix is Critic-signed on four recordings
-only: Gould 1955, Gould 1981, Schiff Decca, Fournier Archiv.
+The fixture remains synthetic. Live matrix is Critic-signed on the assessed
+Bach set: Goldberg (3), Fournier, Podger concertos, both sonatas & partitas,
+both Matthew Passions, Gardiner St John, Gardiner B-minor Mass, both Art of Fugue.
 """
 
 from __future__ import annotations
@@ -179,11 +180,20 @@ LIVE_MATRIX = {
     "bach/goldberg/1": {"interpretation": 5, "sound": 4, "ledger": 2},
     "bach/goldberg/4": {"interpretation": 3, "sound": 4, "ledger": 2},
     "bach/cello_suites/1": {"interpretation": 5, "sound": 3, "ledger": 2},
+    "bach/violin_concertos/4": {"interpretation": 5, "sound": 4, "ledger": 2},
+    "bach/sonatas_partitas/0": {"interpretation": 4, "sound": 4, "ledger": 2},
+    "bach/sonatas_partitas/1": {"interpretation": 5, "sound": 4, "ledger": 2},
+    "bach/matthew/0": {"interpretation": 4, "sound": 3, "ledger": 2},
+    "bach/matthew/1": {"interpretation": 5, "sound": 4, "ledger": 2},
+    "bach/john/1": {"interpretation": 5, "sound": 4, "ledger": 2},
+    "bach/mass_b_minor/0": {"interpretation": 5, "sound": 4, "ledger": 2},
+    "bach/art_of_fugue/0": {"interpretation": 2, "sound": 2, "ledger": 2},
+    "bach/art_of_fugue/3": {"interpretation": 4, "sound": 4, "ledger": 2},
 }
 
 
 class TestLiveCriticMatrix(unittest.TestCase):
-    def test_only_four_live_entries_carry_matrix(self):
+    def test_live_assessed_bach_entries_carry_matrix(self):
         ed_dir = ROOT / "data" / "editorial"
         found = []
         for path in sorted(ed_dir.glob("*.json")):
@@ -245,6 +255,22 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(fournier["id"], "bach/cello_suites/1")
         self.assertEqual(fournier["editorial"]["matrix"]["interpretation"], 5)
         self.assertEqual(fournier["editorial"]["matrix"]["sound"], 3)
+        vc = next(w for w in merged["works"] if w["id"] == "bach/violin_concertos")
+        vc_html = _html_for(vc, merged)
+        vc_cat = _embedded_catalogue(vc_html)
+        podger = vc_cat["works"][0]["recordings"][0]
+        self.assertEqual(podger["id"], "bach/violin_concertos/4")
+        self.assertEqual(podger["editorial"]["matrix"]["interpretation"], 5)
+        self.assertEqual(podger["editorial"]["matrix"]["sound"], 4)
+        aof = next(w for w in merged["works"] if w["id"] == "bach/art_of_fugue")
+        aof_html = _html_for(aof, merged)
+        aof_cat = _embedded_catalogue(aof_html)
+        gould = next(r for r in aof_cat["works"][0]["recordings"] if r["id"] == "bach/art_of_fugue/0")
+        emerson = next(r for r in aof_cat["works"][0]["recordings"] if r["id"] == "bach/art_of_fugue/3")
+        self.assertEqual(gould["editorial"]["matrix"]["interpretation"], 2)
+        self.assertEqual(gould["editorial"]["matrix"]["sound"], 2)
+        self.assertEqual(emerson["editorial"]["matrix"]["interpretation"], 4)
+        self.assertEqual(emerson["editorial"]["matrix"]["sound"], 4)
 
 
 class TestMatrixCardRender(unittest.TestCase):

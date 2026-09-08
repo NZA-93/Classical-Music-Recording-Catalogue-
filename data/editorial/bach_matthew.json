@@ -4,8 +4,8 @@
     {
       "recording": "bach/matthew/0",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": false,
       "compared_with": ["bach/matthew/1"],
@@ -52,13 +52,33 @@
           "url": "https://www.musicweb-international.com/classrev/2001/Apr01/BachMatthew.htm",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 3,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Recording Academy — Best Choral Performance, 5th Annual Grammy Awards (1963)",
+            "url": "https://www.grammy.com/awards/categories/best-choral-performance/1963/",
+            "note": "Monumental modern studio Passion; cast still justifies the contested tempo."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — Matthäus-Passion (Klemperer / Philharmonia, EMI ZDMC 7 63058 2)",
+            "url": "https://musicbrainz.org/release/4da77bb8-262f-4aa6-84f5-f574118b6b2b",
+            "note": "Early-sixties EMI/Columbia — serviceable to clean; not a modern audiophile summit."
+          }
+        ]
+      }
     },
     {
       "recording": "bach/matthew/1",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": true,
       "compared_with": ["bach/matthew/0"],
@@ -105,7 +125,27 @@
           "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Bach St Matthew Passion (Gardiner / Archiv)",
+            "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19",
+            "note": "Period-instrument Archiv Passion with theatrical sense; HIP studio landmark."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — St. Matthew Passion (Gardiner / EBS / Monteverdi Choir)",
+            "url": "https://musicbrainz.org/release/51d08afb-0d81-4617-8c33-979806910ddf",
+            "note": "Snape Maltings Archiv — clear workshop balance, excellent digital-era capture."
+          }
+        ]
+      }
     }
   ]
 }

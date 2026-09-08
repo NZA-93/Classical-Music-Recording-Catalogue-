@@ -4,8 +4,8 @@
     {
       "recording": "bach/sonatas_partitas/0",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": false,
       "compared_with": ["bach/sonatas_partitas/1"],
@@ -52,13 +52,33 @@
           "url": "https://www.classicstoday.com/review/review-5594/",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Bach Violin Sonatas and Partitas (comparative)",
+            "url": "https://www.gramophone.co.uk/reviews/bach-violin-sonatas-and-partitas-0",
+            "note": "Late modern-instrument remake; polished and dance-aware beside the Capitol mono cycle."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — Sonaten & Partiten (Milstein / DG Originals 2×CD)",
+            "url": "https://musicbrainz.org/release/bb751c39-7d8b-480a-b1c6-120a53121ced",
+            "note": "1973–74 DG stereo — clean Conway Hall capture for its generation."
+          }
+        ]
+      }
     },
     {
       "recording": "bach/sonatas_partitas/1",
       "author": {"id": "cmrc", "name": "Classical Music Recording Critic"},
-      "date": "2026-09-07",
-      "revision": 3,
+      "date": "2026-09-08",
+      "revision": 4,
       "stars": 3,
       "reference": true,
       "compared_with": ["bach/sonatas_partitas/0"],
@@ -105,7 +125,27 @@
           "url": "https://www.flyinginkpot.com/1999/07/inkpot79-classical-music-reviews-j-s-bach-sonatas-partitas-for-solo-violin-podger-channel/",
           "kind": "review"
         }
-      ]
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "BBC Radio 3 — Building a Library: Bach (archived index)",
+            "url": "https://www.bbc.co.uk/radio3/classical/bach48/library.shtml",
+            "note": "BaL first-choice gut-strung cycle; implied polyphony heard cleanly."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicBrainz release — Complete Sonatas & Partitas (CCS SEL 2498)",
+            "url": "https://musicbrainz.org/release/2446f743-99b2-49ed-8a11-779382e8066c",
+            "note": "Channel Deventer sessions — natural church space, excellent for baroque violin."
+          }
+        ]
+      }
     }
   ]
 }
