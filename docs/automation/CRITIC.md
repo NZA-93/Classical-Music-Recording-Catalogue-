@@ -19,7 +19,10 @@ proposes; a human still merges.
 ## What Critic may do
 
 - Author a signed entry: `text`, `stars`, `reference`, `compared_with`,
-  ADR-003-bounded quotes
+  ADR-003-bounded quotes, and optional `matrix` (interpretation 1–5, sound 1–5,
+  evidence ledger). Axis integers are Critic judgements; they are not computed
+  from the ledger. Overall (`0.6×I + 0.4×S`, one decimal) is expand-only and
+  is never stored.
 - Close it with author id, name, date and revision — unsigned prose does not
   publish
 - Land it on `main` so GitHub Pages updates

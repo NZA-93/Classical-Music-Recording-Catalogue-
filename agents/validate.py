@@ -182,6 +182,75 @@ CONSULTED_MAX = 8
 EMERSON_ID = "bach/art_of_fugue/3"
 EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
 _URL_OK = re.compile(r"^https?://", re.I)
+MATRIX_AXES = AXES  # interpretation, sound — Critic integers, not ledger-derived
+MATRIX_LEDGER_TIERS = frozenset({"A", "B", "C"})
+MAX_LEDGER_NOTE = 200
+
+
+def _is_matrix_axis(value) -> bool:
+    """1–5 inclusive. bool is a subclass of int; reject it."""
+    return isinstance(value, int) and not isinstance(value, bool) and 1 <= value <= 5
+
+
+def matrix_overall(interpretation: int, sound: int) -> str:
+    """Expand-only figure: 0.6×I + 0.4×S, one decimal. Never stored, never on the card."""
+    return f"{0.6 * interpretation + 0.4 * sound:.1f}"
+
+
+def validate_editorial_matrix(matrix, path: pathlib.Path):
+    """Optional Morningstar block. Axis scores are Critic integers; ledger is evidence."""
+    errs = []
+    def e(m): errs.append(f"{path.name}: {m}")
+
+    if matrix is None:
+        return errs
+    if not isinstance(matrix, dict):
+        e("`matrix` must be an object with interpretation, sound, and optional ledger")
+        return errs
+    if "overall" in matrix:
+        e("`matrix.overall` is not stored — the How scored expand computes "
+          "0.6×interpretation + 0.4×sound. Do not write it on the entry.")
+
+    for axis in ("interpretation", "sound"):
+        if axis not in matrix:
+            e(f"`matrix.{axis}` is required (integer 1–5)")
+            continue
+        if not _is_matrix_axis(matrix[axis]):
+            e(f"`matrix.{axis}` must be an integer 1–5")
+
+    ledger = matrix.get("ledger")
+    if ledger is None:
+        return errs
+    if not isinstance(ledger, list):
+        e("`matrix.ledger` must be a list of evidence rows")
+        return errs
+    for i, row in enumerate(ledger, 1):
+        where = f"matrix.ledger {i}"
+        if not isinstance(row, dict):
+            e(f"{where}: must be an object with axis, tier, title, url, note")
+            continue
+        axis = row.get("axis")
+        if axis not in MATRIX_AXES:
+            e(f"{where}: axis must be one of {sorted(MATRIX_AXES)}")
+        tier = row.get("tier")
+        if tier not in MATRIX_LEDGER_TIERS:
+            e(f"{where}: tier must be one of {sorted(MATRIX_LEDGER_TIERS)}")
+        if not str(row.get("title") or "").strip():
+            e(f"{where}: missing `title`")
+        url = str(row.get("url") or "").strip()
+        if not url:
+            e(f"{where}: missing `url`")
+        elif not _URL_OK.match(url):
+            e(f"{where}: url must be http(s)")
+        note = row.get("note")
+        if note is None or not str(note).strip():
+            e(f"{where}: missing `note` (short why-this-score)")
+        elif not isinstance(note, str):
+            e(f"{where}: `note` must be a string")
+        elif len(note) > MAX_LEDGER_NOTE:
+            e(f"{where}: note is {len(note)} characters; the limit is "
+              f"{MAX_LEDGER_NOTE}")
+    return errs
 
 
 def validate_editorial(entry: dict, path: pathlib.Path, recs: set[str]):
@@ -251,6 +320,9 @@ def validate_editorial(entry: dict, path: pathlib.Path, recs: set[str]):
                         and "musicbrainz.org/release/" in url
                         and EMERSON_MBID not in url):
                     e(f"{where}: Emerson MusicBrainz release must be {EMERSON_MBID}")
+
+    if "matrix" in entry:
+        errs.extend(validate_editorial_matrix(entry.get("matrix"), path))
 
     return errs, warns
 

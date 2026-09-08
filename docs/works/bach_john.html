@@ -159,6 +159,20 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
+  /* Critic Morningstar axes: two integers under the signed prose. No overall on the card. */
+  .signed .matrix{display:grid;grid-template-columns:1fr 1fr;margin:1.1rem 0 0;max-width:22rem;
+    border:1px solid var(--hair);background:var(--paper)}
+  .signed .matrix .cell{padding:.55rem .75rem;display:flex;align-items:baseline;
+    justify-content:space-between;gap:.6rem}
+  .signed .matrix .cell+.cell{border-left:1px solid var(--hair)}
+  .signed .matrix .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .signed .matrix .n{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.45rem;line-height:1;
+    font-variant-numeric:tabular-nums}
+  .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
+  .signed .how-scored .rubric,.signed .how-scored .overall{font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .overall b{color:var(--ink);font-weight:500}
+  .signed .how-scored table{font-size:.82rem}
   .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
     letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
@@ -311,7 +325,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/john", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "St John Passion", "cat": "BWV 245 · 1724", "standfirst": "Sharper and more dramatic than the Matthew; several authorial versions.", "recordings": [{"id": "bach/john/1", "work": "bach/john", "card": "identity", "soloists": "", "director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists", "published": "Archiv, 1986", "editions": [{"id": "1_preferred", "label": "Archiv Produktion", "year": "1986", "catno": "419 324-2", "format": "2×CD", "mbid": "8e46b5f1-9f7b-4313-96c1-8e2b1423b51b", "verified": true}], "fact_strip": {"director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists; Monteverdi Choir", "label": "Archiv Produktion", "year": 1986, "published": "1986", "venue": "All Saints, Tooting, London", "sessions": "March 1986", "format": "2×CD", "catno": "419 324-2"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/john/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": [], "text": "Gardiner’s first St John Passion already finds the period-instrument drama that later remakes would chase: mixed choir, sharp turba pacing, Rolfe Johnson’s Evangelist in a clean English lyric line. Some tempi push hard; the continuity of the Passion holds. Later live remakes exist and some prefer them — this remains the studio benchmark those readings had to outgrow. Référence for the HIP first document.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Johannes-Passion conducted by Gardiner", "url": "https://www.bach-cantatas.com/Vocal/BWV245-Gardiner.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — Gardiner Rec5 V-3", "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm", "kind": "discography"}, {"title": "MusicBrainz release — St. John Passion (Gardiner / Archiv)", "url": "https://musicbrainz.org/release/8e46b5f1-9f7b-4313-96c1-8e2b1423b51b", "kind": "discography"}, {"title": "Deutsche Grammophon — Johannes-Passion Gardiner", "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-johannes-passion-gardiner-2217", "kind": "label"}, {"title": "musik-sammler.de — Johannes-Passion 2-CD 1986", "url": "https://deploy.musik-sammler.de/release/johann-sebastian-bach-johannes-passion-2-cd-686061/", "kind": "reference"}, {"title": "Gramophone — Bach St. John Passion (419 324-2AH2)", "url": "https://www.gramophone.co.uk/reviews/bach-st-john-passion-13", "kind": "review"}, {"title": "Classical Music — JS Bach: St John Passion (Monteverdi Choir, 2021 DG)", "url": "https://www.classical-music.com/reviews/choral-song/js-bach-st-john-passion-monteverdi-choir", "kind": "review"}, {"title": "Gramophone — JS BACH St John Passion (Gardiner 2021)", "url": "https://www.gramophone.co.uk/reviews/js-bach-st-john-passion-gardiner", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-08", "works": [{"id": "bach/john", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "St John Passion", "cat": "BWV 245 · 1724", "standfirst": "Sharper and more dramatic than the Matthew; several authorial versions.", "recordings": [{"id": "bach/john/1", "work": "bach/john", "card": "identity", "soloists": "", "director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists", "published": "Archiv, 1986", "editions": [{"id": "1_preferred", "label": "Archiv Produktion", "year": "1986", "catno": "419 324-2", "format": "2×CD", "mbid": "8e46b5f1-9f7b-4313-96c1-8e2b1423b51b", "verified": true}], "fact_strip": {"director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists; Monteverdi Choir", "label": "Archiv Produktion", "year": 1986, "published": "1986", "venue": "All Saints, Tooting, London", "sessions": "March 1986", "format": "2×CD", "catno": "419 324-2"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/john/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": [], "text": "Gardiner’s first St John Passion already finds the period-instrument drama that later remakes would chase: mixed choir, sharp turba pacing, Rolfe Johnson’s Evangelist in a clean English lyric line. Some tempi push hard; the continuity of the Passion holds. Later live remakes exist and some prefer them — this remains the studio benchmark those readings had to outgrow. Référence for the HIP first document.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Johannes-Passion conducted by Gardiner", "url": "https://www.bach-cantatas.com/Vocal/BWV245-Gardiner.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — Gardiner Rec5 V-3", "url": "https://www.bach-cantatas.com/Performers/Gardiner-Rec5.htm", "kind": "discography"}, {"title": "MusicBrainz release — St. John Passion (Gardiner / Archiv)", "url": "https://musicbrainz.org/release/8e46b5f1-9f7b-4313-96c1-8e2b1423b51b", "kind": "discography"}, {"title": "Deutsche Grammophon — Johannes-Passion Gardiner", "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-johannes-passion-gardiner-2217", "kind": "label"}, {"title": "musik-sammler.de — Johannes-Passion 2-CD 1986", "url": "https://deploy.musik-sammler.de/release/johann-sebastian-bach-johannes-passion-2-cd-686061/", "kind": "reference"}, {"title": "Gramophone — Bach St. John Passion (419 324-2AH2)", "url": "https://www.gramophone.co.uk/reviews/bach-st-john-passion-13", "kind": "review"}, {"title": "Classical Music — JS Bach: St John Passion (Monteverdi Choir, 2021 DG)", "url": "https://www.classical-music.com/reviews/choral-song/js-bach-st-john-passion-monteverdi-choir", "kind": "review"}, {"title": "Gramophone — JS BACH St John Passion (Gardiner 2021)", "url": "https://www.gramophone.co.uk/reviews/js-bach-st-john-passion-gardiner", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -508,6 +522,48 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
+function matrixOverall(m){
+  /* Expand only. Never on the card face. Never stored on the entry. */
+  return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
+}
+
+function matrixStrip(m){
+  /* Two integers under the signed prose. No overall badge on the card. */
+  if(!m) return "";
+  return `<div class="matrix" role="group" aria-label="Interpretation and sound">
+    <div class="cell"><span class="k">Interpretation</span><span class="n">${esc(m.interpretation)}</span></div>
+    <div class="cell"><span class="k">Sound</span><span class="n">${esc(m.sound)}</span></div>
+  </div>`;
+}
+
+function howScored(m){
+  if(!m) return "";
+  const rows=(m.ledger||[]).map(row=>{
+    const title=esc(row.title||row.url||"");
+    const href=esc(row.url||"");
+    const link=href
+      ?`<a class="cite" href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>`
+      :title;
+    return `<tr>
+      <td><span class="prov">${esc(row.axis||"")}</span></td>
+      <td><span class="prov">${esc(row.tier||"")}</span></td>
+      <td>${link}</td>
+      <td>${esc(row.note||"")}</td>
+    </tr>`;
+  }).join("");
+  const table=rows
+    ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
+    :`<p class="prov">No ledger rows yet.</p>`;
+  return `<details class="how-scored">
+    <summary>How scored</summary>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="overall">Overall <b>${matrixOverall(m)}</b>
+      <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
+    <p class="modlabel">Evidence ledger</p>
+    ${table}
+  </details>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -524,6 +580,8 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${matrixStrip(e.matrix)}
+    ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}
   </div>`;

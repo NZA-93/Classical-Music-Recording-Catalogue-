@@ -159,6 +159,20 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
+  /* Critic Morningstar axes: two integers under the signed prose. No overall on the card. */
+  .signed .matrix{display:grid;grid-template-columns:1fr 1fr;margin:1.1rem 0 0;max-width:22rem;
+    border:1px solid var(--hair);background:var(--paper)}
+  .signed .matrix .cell{padding:.55rem .75rem;display:flex;align-items:baseline;
+    justify-content:space-between;gap:.6rem}
+  .signed .matrix .cell+.cell{border-left:1px solid var(--hair)}
+  .signed .matrix .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .signed .matrix .n{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.45rem;line-height:1;
+    font-variant-numeric:tabular-nums}
+  .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
+  .signed .how-scored .rubric,.signed .how-scored .overall{font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .overall b{color:var(--ink);font-weight:500}
+  .signed .how-scored table{font-size:.82rem}
   .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
     letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
@@ -311,7 +325,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/violin_concertos", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Violin Concertos", "cat": "BWV 1041–1043 · c. 1730", "standfirst": "Including the Double Concerto, a repertory staple in every style.", "recordings": [{"id": "bach/violin_concertos/4", "work": "bach/violin_concertos", "card": "identity", "soloists": "Rachel Podger", "director": "", "ensemble": "Brecon Baroque", "published": "Channel Classics, 2009", "editions": [{"id": "4_preferred", "label": "Channel Classics", "year": "2010", "catno": "CCS SA 30910", "format": "Hybrid SACD", "mbid": "aedde372-197e-49bd-bc9f-4d036e592a27", "verified": true}], "fact_strip": {"soloists": "Rachel Podger", "ensemble": "Brecon Baroque", "label": "Channel Classics", "year": 2010, "published": "2010", "venue": "St John the Evangelist, Upper Norwood, London", "sessions": "May 2010", "format": "Hybrid SACD", "catno": "CCS SA 30910", "producer": "Jonathan Freeman-Attwood", "engineer": "C. Jared Sacks", "contents_note": "BWV 1041, 1042, 1056R, 1055R — not BWV 1043"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/violin_concertos/4", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": [], "text": "Podger and Brecon Baroque treat the violin concertos as chamber music — one to a part, directed from the violin. The ear hears lithe, polished playing and a sweet Andante in BWV 1041; the harpsichord-derived reconstructions fill a programme where only two solo concertos survive. This is chamber HIP Bach, not a phantom complete triad of 1041–1043. For that approach, this is the Référence.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Rachel Podger O-4", "url": "https://www.bach-cantatas.com/NVP/Podger-R.htm", "kind": "discography"}, {"title": "Channel Classics booklet PDF (via BCW)", "url": "https://www.bach-cantatas.com/Pic-NonVocal-BIG/Podger-R-O04c[Channel-SACD-booklet", "kind": "discography"}, {"title": "MusicBrainz release — Violin Concertos (CCS SA 30910)", "url": "https://musicbrainz.org/release/aedde372-197e-49bd-bc9f-4d036e592a27", "kind": "discography"}, {"title": "Presto Music — CCSSA30910", "url": "https://www.prestomusic.com/classical/products/7988378--js-bach-violin-concertos", "kind": "discography"}, {"title": "Presto — Recording of the Week (Chris O’Reilly)", "url": "https://www.prestomusic.com/classical/articles/189--recording-of-the-week-bachs-violin-concertos-from-rachel-podger-and-brecon-baroque", "kind": "discography"}, {"title": "AllMusic — Bach: Violin Concertos (Podger / Brecon Baroque)", "url": "https://www.allmusic.com/album/bach-violin-concertos-mw0002059032", "kind": "reference"}, {"title": "BBC Music — review of Podger / Brecon Baroque Violin Concertos", "url": "https://www.bbc.co.uk/music/reviews/gqj9/", "kind": "review"}, {"title": "BBC Radio 3 Record Review — BaL BWV 1041 (4 Nov 2023)", "url": "https://www.bbc.co.uk/programmes/m001ryw1", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-08", "works": [{"id": "bach/violin_concertos", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Violin Concertos", "cat": "BWV 1041–1043 · c. 1730", "standfirst": "Including the Double Concerto, a repertory staple in every style.", "recordings": [{"id": "bach/violin_concertos/4", "work": "bach/violin_concertos", "card": "identity", "soloists": "Rachel Podger", "director": "", "ensemble": "Brecon Baroque", "published": "Channel Classics, 2009", "editions": [{"id": "4_preferred", "label": "Channel Classics", "year": "2010", "catno": "CCS SA 30910", "format": "Hybrid SACD", "mbid": "aedde372-197e-49bd-bc9f-4d036e592a27", "verified": true}], "fact_strip": {"soloists": "Rachel Podger", "ensemble": "Brecon Baroque", "label": "Channel Classics", "year": 2010, "published": "2010", "venue": "St John the Evangelist, Upper Norwood, London", "sessions": "May 2010", "format": "Hybrid SACD", "catno": "CCS SA 30910", "producer": "Jonathan Freeman-Attwood", "engineer": "C. Jared Sacks", "contents_note": "BWV 1041, 1042, 1056R, 1055R — not BWV 1043"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/violin_concertos/4", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": [], "text": "Podger and Brecon Baroque treat the violin concertos as chamber music — one to a part, directed from the violin. The ear hears lithe, polished playing and a sweet Andante in BWV 1041; the harpsichord-derived reconstructions fill a programme where only two solo concertos survive. This is chamber HIP Bach, not a phantom complete triad of 1041–1043. For that approach, this is the Référence.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Rachel Podger O-4", "url": "https://www.bach-cantatas.com/NVP/Podger-R.htm", "kind": "discography"}, {"title": "Channel Classics booklet PDF (via BCW)", "url": "https://www.bach-cantatas.com/Pic-NonVocal-BIG/Podger-R-O04c[Channel-SACD-booklet", "kind": "discography"}, {"title": "MusicBrainz release — Violin Concertos (CCS SA 30910)", "url": "https://musicbrainz.org/release/aedde372-197e-49bd-bc9f-4d036e592a27", "kind": "discography"}, {"title": "Presto Music — CCSSA30910", "url": "https://www.prestomusic.com/classical/products/7988378--js-bach-violin-concertos", "kind": "discography"}, {"title": "Presto — Recording of the Week (Chris O’Reilly)", "url": "https://www.prestomusic.com/classical/articles/189--recording-of-the-week-bachs-violin-concertos-from-rachel-podger-and-brecon-baroque", "kind": "discography"}, {"title": "AllMusic — Bach: Violin Concertos (Podger / Brecon Baroque)", "url": "https://www.allmusic.com/album/bach-violin-concertos-mw0002059032", "kind": "reference"}, {"title": "BBC Music — review of Podger / Brecon Baroque Violin Concertos", "url": "https://www.bbc.co.uk/music/reviews/gqj9/", "kind": "review"}, {"title": "BBC Radio 3 Record Review — BaL BWV 1041 (4 Nov 2023)", "url": "https://www.bbc.co.uk/programmes/m001ryw1", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -508,6 +522,48 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
+function matrixOverall(m){
+  /* Expand only. Never on the card face. Never stored on the entry. */
+  return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
+}
+
+function matrixStrip(m){
+  /* Two integers under the signed prose. No overall badge on the card. */
+  if(!m) return "";
+  return `<div class="matrix" role="group" aria-label="Interpretation and sound">
+    <div class="cell"><span class="k">Interpretation</span><span class="n">${esc(m.interpretation)}</span></div>
+    <div class="cell"><span class="k">Sound</span><span class="n">${esc(m.sound)}</span></div>
+  </div>`;
+}
+
+function howScored(m){
+  if(!m) return "";
+  const rows=(m.ledger||[]).map(row=>{
+    const title=esc(row.title||row.url||"");
+    const href=esc(row.url||"");
+    const link=href
+      ?`<a class="cite" href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>`
+      :title;
+    return `<tr>
+      <td><span class="prov">${esc(row.axis||"")}</span></td>
+      <td><span class="prov">${esc(row.tier||"")}</span></td>
+      <td>${link}</td>
+      <td>${esc(row.note||"")}</td>
+    </tr>`;
+  }).join("");
+  const table=rows
+    ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
+    :`<p class="prov">No ledger rows yet.</p>`;
+  return `<details class="how-scored">
+    <summary>How scored</summary>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="overall">Overall <b>${matrixOverall(m)}</b>
+      <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
+    <p class="modlabel">Evidence ledger</p>
+    ${table}
+  </details>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -524,6 +580,8 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${matrixStrip(e.matrix)}
+    ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}
   </div>`;

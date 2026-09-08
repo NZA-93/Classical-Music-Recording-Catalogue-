@@ -1,5 +1,5 @@
 {
-  "_comment": "Signed editorial entries. See docs/adr/ADR-002-editorial-voice.md and docs/automation/CRITIC.md. An entry without author, date and revision does not publish. Only the Classical Music Recording Critic (named editorial role) may author `text`, `stars` or `reference`. Other agents must not draft, complete or suggest those fields. Critic (or Developer shipping Critic content) lands the entry on main / Pages.",
+      "_comment": "Signed editorial entries. See docs/adr/ADR-002-editorial-voice.md and docs/automation/CRITIC.md. An entry without author, date and revision does not publish. Only the Classical Music Recording Critic (named editorial role) may author `text`, `stars`, `reference` or `matrix`. Other agents must not draft, complete or suggest those fields. Critic (or Developer shipping Critic content) lands the entry on main / Pages.",
   "work_id": "composer/work",
   "entries": [
     {
@@ -33,7 +33,21 @@
           "locator": "p. 000",
           "source_length_words": 120
         }
-      ]
+      ],
+      "matrix": {
+        "_comment": "Optional. Critic Morningstar axes only — never invent these in seed or statements. Card face shows the two integers; overall is 0.6*interpretation + 0.4*sound at one decimal in the How scored expand, never stored, never on the card. Ledger is evidence, not a calculator: do not derive axis scores from it. Tier C alone cannot raise an axis (Critic rule; UI copy, not auto-computed).",
+        "interpretation": 4,
+        "sound": 3,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Source title",
+            "url": "https://example.org/locator",
+            "note": "Short why-this-score, at most 200 characters."
+          }
+        ]
+      }
     }
   ]
 }

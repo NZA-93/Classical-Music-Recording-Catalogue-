@@ -159,6 +159,20 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
+  /* Critic Morningstar axes: two integers under the signed prose. No overall on the card. */
+  .signed .matrix{display:grid;grid-template-columns:1fr 1fr;margin:1.1rem 0 0;max-width:22rem;
+    border:1px solid var(--hair);background:var(--paper)}
+  .signed .matrix .cell{padding:.55rem .75rem;display:flex;align-items:baseline;
+    justify-content:space-between;gap:.6rem}
+  .signed .matrix .cell+.cell{border-left:1px solid var(--hair)}
+  .signed .matrix .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .signed .matrix .n{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.45rem;line-height:1;
+    font-variant-numeric:tabular-nums}
+  .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
+  .signed .how-scored .rubric,.signed .how-scored .overall{font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .overall b{color:var(--ink);font-weight:500}
+  .signed .how-scored table{font-size:.82rem}
   .fact-strip .meta{display:block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
     letter-spacing:.04em;margin-bottom:.25rem}
   .diverge{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.05em;
@@ -311,7 +325,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-07", "works": [{"id": "bach/sonatas_partitas", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Sonatas and Partitas for Solo Violin", "cat": "BWV 1001–1006 · 1720", "standfirst": "The Chaconne of the D minor Partita.", "recordings": [{"id": "bach/sonatas_partitas/0", "work": "bach/sonatas_partitas", "card": "identity", "soloists": "Nathan Milstein", "director": "", "ensemble": "", "published": "Deutsche Grammophon, 1973", "editions": [{"id": "0_preferred", "label": "Deutsche Grammophon", "year": "1975", "catno": "2709 047 / 423 294-2 / 457 701-2", "format": "3×LP / 2×CD", "mbid": "bb751c39-7d8b-480a-b1c6-120a53121ced", "verified": true, "release_group_mbid": "1fbda302-ed20-339e-ad71-4cf455394ba3"}], "fact_strip": {"soloists": "Nathan Milstein", "label": "Deutsche Grammophon", "year": 1973, "published": "1975", "venue": "Conway Hall, London (BWV 1005–1006 also Brent/Wembley)", "sessions": "February–September 1973; April 1974 continuation for BWV 1005–1006", "format": "3×LP / 2×CD", "catno": "2709 047 / 423 294-2 / 457 701-2", "producer": "Werner Mayer", "engineer": "Klaus Hiemann"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/sonatas_partitas/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": false, "compared_with": ["bach/sonatas_partitas/1"], "text": "Milstein’s stereo remake of the complete sonatas and partitas is late modern-instrument Bach: polished, dance-aware, closer to the manuscript than his earlier Capitol mono cycle. Against Podger’s baroque-violin set it is the other side of the argument — the great modern statement rather than gut and implied polyphony. Not the Référence on this shelf — that goes to the HIP first choice.", "quotes": [], "consulted": [{"title": "Youngrok Lee — Nathan Milstein discography (Bach Sonatas & Partitas)", "url": "http://trmsolutions.co.kr/music/Milstein/discography-milstein.htm", "kind": "discography"}, {"title": "MusicBrainz release — Sonaten & Partiten (Milstein / DG Originals 2×CD)", "url": "https://musicbrainz.org/release/bb751c39-7d8b-480a-b1c6-120a53121ced", "kind": "discography"}, {"title": "MusicBrainz release group — Sonatas and Partitas for Solo Violin (Milstein)", "url": "https://musicbrainz.org/release-group/1fbda302-ed20-339e-ad71-4cf455394ba3", "kind": "discography"}, {"title": "Discogs master — Nathan Milstein / J. S. Bach: Sonatas & Partitas", "url": "https://www.discogs.com/master/581587-Nathan-Milstein-J-S-Bach-Sonatas-Partitas", "kind": "discography"}, {"title": "Esoteric ESSG-90276/77 product note — Bach Sonatas and Partitas (Milstein)", "url": "https://eu.teac-audio.com/en-GB/audio-hifi/vinyls-cd/sacd/compact-disc-/-super-audio-cd/sacd-werner-mayer-j.-s.-bach-sonatas-and-partitas-for-solo-violin/p/252503/pdf", "kind": "reference"}, {"title": "Deutsche Grammophon — Bach Sonatas and Partitas / Milstein", "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-sonatas-and-partitas-milstein-4028", "kind": "label"}, {"title": "Gramophone — Bach Violin Sonatas and Partitas (comparative)", "url": "https://www.gramophone.co.uk/reviews/bach-violin-sonatas-and-partitas-0", "kind": "review"}, {"title": "ClassicsToday — Bach Sonatas and Partitas (Fulkerson / Bridge)", "url": "https://www.classicstoday.com/review/review-5594/", "kind": "review"}]}, "divergence": null, "on_this_disc": []}, {"id": "bach/sonatas_partitas/1", "work": "bach/sonatas_partitas", "card": "identity", "soloists": "Rachel Podger", "director": "", "ensemble": "", "published": "Channel Classics, 1999", "editions": [{"id": "1_preferred", "label": "Channel Classics", "year": "2002", "catno": "CCS SEL 2498", "format": "2×CD", "mbid": "2446f743-99b2-49ed-8a11-779382e8066c", "verified": true}], "fact_strip": {"soloists": "Rachel Podger", "label": "Channel Classics", "year": 1999, "published": "1999", "venue": "Doopsgezinde Kerk, Deventer", "sessions": "December 1997; April 1998", "format": "2×CD", "catno": "CCS 12198 + CCS 14498 / CCSSEL2498"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/sonatas_partitas/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": ["bach/sonatas_partitas/0"], "text": "Podger’s complete gut-strung cycle hears Bach’s counterpoint and implied polyphony on a baroque violin. Against Milstein’s DG remake it is the other stance: HIP clarity while modern staples still owned the shop. The Chaconne accumulates; ornamentation stays alive without fuss. Référence for the complete solo cycle on period violin.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Rachel Podger instrumental discography, S-1", "url": "https://bach-cantatas.com/NVP/Podger-R.htm", "kind": "discography"}, {"title": "BBC Radio 3 — Building a Library: Bach (archived index)", "url": "https://www.bbc.co.uk/radio3/classical/bach48/library.shtml", "kind": "review"}, {"title": "Presto Music — Bach Complete Partitas and Sonatas for Violin Solo (CCSSEL2498)", "url": "https://www.prestomusic.com/classical/products/7939466--bach-complete-partitas-and-sonatas-for-violin-solo", "kind": "discography"}, {"title": "Presto Music — Partitas & Sonatas for Violin Solo vol.1 (CCS12198)", "url": "https://www.prestomusic.com/classical/products/7938594--partitas-sonatas-for-violin-solo-vol-1", "kind": "discography"}, {"title": "AllMusic — Bach: Sonatas and Partitas, Vol. 1 (Podger)", "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-1-mw0001824896", "kind": "reference"}, {"title": "AllMusic — Bach: Sonatas and Partitas, Vol. 2 (Podger)", "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-2-mw0001844170", "kind": "reference"}, {"title": "Apple Music Classical — Bach: Sonatas and Partitas, Vol. 2", "url": "https://classical.music.apple.com/dk/album/260285901", "kind": "reference"}, {"title": "Flying Inkpot #79 — Ng Yeuk Fan on Podger CCS 12198", "url": "https://www.flyinginkpot.com/1999/07/inkpot79-classical-music-reviews-j-s-bach-sonatas-partitas-for-solo-violin-podger-channel/", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-08", "works": [{"id": "bach/sonatas_partitas", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Sonatas and Partitas for Solo Violin", "cat": "BWV 1001–1006 · 1720", "standfirst": "The Chaconne of the D minor Partita.", "recordings": [{"id": "bach/sonatas_partitas/0", "work": "bach/sonatas_partitas", "card": "identity", "soloists": "Nathan Milstein", "director": "", "ensemble": "", "published": "Deutsche Grammophon, 1973", "editions": [{"id": "0_preferred", "label": "Deutsche Grammophon", "year": "1975", "catno": "2709 047 / 423 294-2 / 457 701-2", "format": "3×LP / 2×CD", "mbid": "bb751c39-7d8b-480a-b1c6-120a53121ced", "verified": true, "release_group_mbid": "1fbda302-ed20-339e-ad71-4cf455394ba3"}], "fact_strip": {"soloists": "Nathan Milstein", "label": "Deutsche Grammophon", "year": 1973, "published": "1975", "venue": "Conway Hall, London (BWV 1005–1006 also Brent/Wembley)", "sessions": "February–September 1973; April 1974 continuation for BWV 1005–1006", "format": "3×LP / 2×CD", "catno": "2709 047 / 423 294-2 / 457 701-2", "producer": "Werner Mayer", "engineer": "Klaus Hiemann"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/sonatas_partitas/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": false, "compared_with": ["bach/sonatas_partitas/1"], "text": "Milstein’s stereo remake of the complete sonatas and partitas is late modern-instrument Bach: polished, dance-aware, closer to the manuscript than his earlier Capitol mono cycle. Against Podger’s baroque-violin set it is the other side of the argument — the great modern statement rather than gut and implied polyphony. Not the Référence on this shelf — that goes to the HIP first choice.", "quotes": [], "consulted": [{"title": "Youngrok Lee — Nathan Milstein discography (Bach Sonatas & Partitas)", "url": "http://trmsolutions.co.kr/music/Milstein/discography-milstein.htm", "kind": "discography"}, {"title": "MusicBrainz release — Sonaten & Partiten (Milstein / DG Originals 2×CD)", "url": "https://musicbrainz.org/release/bb751c39-7d8b-480a-b1c6-120a53121ced", "kind": "discography"}, {"title": "MusicBrainz release group — Sonatas and Partitas for Solo Violin (Milstein)", "url": "https://musicbrainz.org/release-group/1fbda302-ed20-339e-ad71-4cf455394ba3", "kind": "discography"}, {"title": "Discogs master — Nathan Milstein / J. S. Bach: Sonatas & Partitas", "url": "https://www.discogs.com/master/581587-Nathan-Milstein-J-S-Bach-Sonatas-Partitas", "kind": "discography"}, {"title": "Esoteric ESSG-90276/77 product note — Bach Sonatas and Partitas (Milstein)", "url": "https://eu.teac-audio.com/en-GB/audio-hifi/vinyls-cd/sacd/compact-disc-/-super-audio-cd/sacd-werner-mayer-j.-s.-bach-sonatas-and-partitas-for-solo-violin/p/252503/pdf", "kind": "reference"}, {"title": "Deutsche Grammophon — Bach Sonatas and Partitas / Milstein", "url": "https://www.deutschegrammophon.com/en/catalogue/products/bach-sonatas-and-partitas-milstein-4028", "kind": "label"}, {"title": "Gramophone — Bach Violin Sonatas and Partitas (comparative)", "url": "https://www.gramophone.co.uk/reviews/bach-violin-sonatas-and-partitas-0", "kind": "review"}, {"title": "ClassicsToday — Bach Sonatas and Partitas (Fulkerson / Bridge)", "url": "https://www.classicstoday.com/review/review-5594/", "kind": "review"}]}, "divergence": null, "on_this_disc": []}, {"id": "bach/sonatas_partitas/1", "work": "bach/sonatas_partitas", "card": "identity", "soloists": "Rachel Podger", "director": "", "ensemble": "", "published": "Channel Classics, 1999", "editions": [{"id": "1_preferred", "label": "Channel Classics", "year": "2002", "catno": "CCS SEL 2498", "format": "2×CD", "mbid": "2446f743-99b2-49ed-8a11-779382e8066c", "verified": true}], "fact_strip": {"soloists": "Rachel Podger", "label": "Channel Classics", "year": 1999, "published": "1999", "venue": "Doopsgezinde Kerk, Deventer", "sessions": "December 1997; April 1998", "format": "2×CD", "catno": "CCS 12198 + CCS 14498 / CCSSEL2498"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/sonatas_partitas/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-07", "revision": 3, "stars": 3, "reference": true, "compared_with": ["bach/sonatas_partitas/0"], "text": "Podger’s complete gut-strung cycle hears Bach’s counterpoint and implied polyphony on a baroque violin. Against Milstein’s DG remake it is the other stance: HIP clarity while modern staples still owned the shop. The Chaconne accumulates; ornamentation stays alive without fuss. Référence for the complete solo cycle on period violin.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Rachel Podger instrumental discography, S-1", "url": "https://bach-cantatas.com/NVP/Podger-R.htm", "kind": "discography"}, {"title": "BBC Radio 3 — Building a Library: Bach (archived index)", "url": "https://www.bbc.co.uk/radio3/classical/bach48/library.shtml", "kind": "review"}, {"title": "Presto Music — Bach Complete Partitas and Sonatas for Violin Solo (CCSSEL2498)", "url": "https://www.prestomusic.com/classical/products/7939466--bach-complete-partitas-and-sonatas-for-violin-solo", "kind": "discography"}, {"title": "Presto Music — Partitas & Sonatas for Violin Solo vol.1 (CCS12198)", "url": "https://www.prestomusic.com/classical/products/7938594--partitas-sonatas-for-violin-solo-vol-1", "kind": "discography"}, {"title": "AllMusic — Bach: Sonatas and Partitas, Vol. 1 (Podger)", "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-1-mw0001824896", "kind": "reference"}, {"title": "AllMusic — Bach: Sonatas and Partitas, Vol. 2 (Podger)", "url": "https://www.allmusic.com/album/bach-sonatas-and-partitas-vol-2-mw0001844170", "kind": "reference"}, {"title": "Apple Music Classical — Bach: Sonatas and Partitas, Vol. 2", "url": "https://classical.music.apple.com/dk/album/260285901", "kind": "reference"}, {"title": "Flying Inkpot #79 — Ng Yeuk Fan on Podger CCS 12198", "url": "https://www.flyinginkpot.com/1999/07/inkpot79-classical-music-reviews-j-s-bach-sonatas-partitas-for-solo-violin-podger-channel/", "kind": "review"}]}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -508,6 +522,48 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
+function matrixOverall(m){
+  /* Expand only. Never on the card face. Never stored on the entry. */
+  return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
+}
+
+function matrixStrip(m){
+  /* Two integers under the signed prose. No overall badge on the card. */
+  if(!m) return "";
+  return `<div class="matrix" role="group" aria-label="Interpretation and sound">
+    <div class="cell"><span class="k">Interpretation</span><span class="n">${esc(m.interpretation)}</span></div>
+    <div class="cell"><span class="k">Sound</span><span class="n">${esc(m.sound)}</span></div>
+  </div>`;
+}
+
+function howScored(m){
+  if(!m) return "";
+  const rows=(m.ledger||[]).map(row=>{
+    const title=esc(row.title||row.url||"");
+    const href=esc(row.url||"");
+    const link=href
+      ?`<a class="cite" href="${href}" target="_blank" rel="noopener noreferrer">${title}</a>`
+      :title;
+    return `<tr>
+      <td><span class="prov">${esc(row.axis||"")}</span></td>
+      <td><span class="prov">${esc(row.tier||"")}</span></td>
+      <td>${link}</td>
+      <td>${esc(row.note||"")}</td>
+    </tr>`;
+  }).join("");
+  const table=rows
+    ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
+    :`<p class="prov">No ledger rows yet.</p>`;
+  return `<details class="how-scored">
+    <summary>How scored</summary>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="overall">Overall <b>${matrixOverall(m)}</b>
+      <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
+    <p class="modlabel">Evidence ledger</p>
+    ${table}
+  </details>`;
+}
+
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
@@ -524,6 +580,8 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
+    ${matrixStrip(e.matrix)}
+    ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}
   </div>`;
