@@ -36,11 +36,10 @@ for w in assessed.get("works", []):
         done[ALIAS.get(w["id"], w["id"])].append(r)
 
 # First-slice identity pages: hub chip and links come from assessed IDs,
-# not candidate/queue count. Engine-scored works already in `done` win.
+# not candidate/queue count. Identity wins over an engine-scored page
+# for the same work (Brandenburg public cards are the assessed cut).
 for w in public_identity_works(seed):
-    wid = w["id"]
-    if not done.get(wid):
-        done[wid] = list(w["recordings"])
+    done[w["id"]] = list(w["recordings"])
 
 by_composer: dict[tuple, list] = defaultdict(list)
 for w in seed["works"]:

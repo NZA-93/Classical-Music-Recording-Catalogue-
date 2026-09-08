@@ -243,7 +243,8 @@ class TestComposerHub(unittest.TestCase):
 
         The live bug was Bach showing 9 on the catalogue (works that have
         any assessment) while the hub listed 15 discs (2 Brandenburg engine
-        cards + 13 seed.assessed identity cards).
+        cards + 13 seed.assessed identity cards). Brandenburg is now three
+        identity cards replacing those two engine discs (16).
         """
         for (cid, name, dates), works in site.composers:
             match = re.search(
@@ -269,7 +270,7 @@ class TestComposerHub(unittest.TestCase):
 
         _, _, _, bach_works = site.composer_by_id("bach")
         bach_n = sum(len(site.done.get(w["id"], [])) for w in bach_works)
-        self.assertEqual(bach_n, 15)
+        self.assertEqual(bach_n, 16)
 
 
 class TestGalleryAndReviewHaveNoGlobalRelated(unittest.TestCase):

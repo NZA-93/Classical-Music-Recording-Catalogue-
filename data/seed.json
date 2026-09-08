@@ -102,7 +102,7 @@
       "catalogue": "BWV 1046–1051",
       "year": "1721",
       "note": "Concerto grosso and solo forms; the central HIP battleground.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/brandenburg/0",
@@ -113,7 +113,34 @@
           "year": "1982",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Archiv Produktion",
+              "year": "1983",
+              "format": "CD",
+              "mbid": "b0255dd1-324d-4608-92e5-1638831c77b8",
+              "verified": true,
+              "catno": "410 500-2",
+              "barcode": "028941050021",
+              "release_group_mbid": "749fff5e-cf59-329b-81dc-d7695d46a63b"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Trevor Pinnock, harpsichord",
+            "director": "Trevor Pinnock",
+            "ensemble": "The English Concert",
+            "label": "Archiv Produktion",
+            "year": 1982,
+            "published": "1983",
+            "venue": "Henry Wood Hall, London",
+            "sessions": "1982",
+            "format": "CD",
+            "catno": "410 500-2",
+            "producer": "Andreas Holschneider",
+            "contents_note": "Cover is Archiv 410 500-2 (concertos 1–3 of the 1982 English Concert cycle)"
+          }
         },
         {
           "id": "bach/brandenburg/1",
@@ -124,7 +151,34 @@
           "year": "1964",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Teldec",
+              "year": "1992",
+              "format": "2×CD",
+              "mbid": "c5286a10-3d04-402c-8f3e-65435a039e7c",
+              "verified": true,
+              "catno": "9031-77611-2",
+              "barcode": "090317761121",
+              "release_group_mbid": "bfa92d8f-6b21-3b68-b584-9e130b1405b3"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Alice Harnoncourt, Jürg Schaeftlein, Walter Holy and principals",
+            "director": "Nikolaus Harnoncourt",
+            "ensemble": "Concentus Musicus Wien",
+            "label": "Teldec / Das Alte Werk",
+            "year": 1964,
+            "published": "1992",
+            "venue": "Palais Schönburg, Vienna",
+            "sessions": "April 1964",
+            "format": "2×CD",
+            "catno": "9031-77611-2",
+            "producer": "Wolf Erichson (executive)",
+            "contents_note": "Teldec 9031-77611-2 — 1964 Palais Schönburg tapes (not the 1981 remake)"
+          }
         },
         {
           "id": "bach/brandenburg/2",
@@ -154,10 +208,34 @@
           "director": "Karl Richter",
           "ensemble": "Münchener Bach-Orchester",
           "label": "Archiv",
-          "year": "1960s",
+          "year": "1967",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "4_preferred",
+              "label": "Archiv Produktion",
+              "year": "2002",
+              "format": "3×CD",
+              "mbid": "ed4c4834-026d-4a09-a7e9-f2efc9e44f77",
+              "verified": true,
+              "catno": "463 657-2",
+              "barcode": "028946365724",
+              "release_group_mbid": "4689aee1-1a0d-4d4c-bbe4-bb57aa9b86b3"
+            }
+          ],
+          "fact_strip": {
+            "director": "Karl Richter",
+            "ensemble": "Münchener Bach-Orchester",
+            "label": "Archiv Produktion",
+            "year": 1967,
+            "published": "2002",
+            "sessions": "January 1967",
+            "format": "3×CD",
+            "catno": "463 657-2",
+            "contents_note": "Archiv Originals 463 657-2 / DG E4636572 — Brandenburg Concertos with Orchestral Suites and BWV 1044"
+          }
         },
         {
           "id": "bach/brandenburg/5",
@@ -171,7 +249,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/brandenburg/0", "bach/brandenburg/1", "bach/brandenburg/4"]
     },
     {
       "id": "bach/suites",

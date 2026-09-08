@@ -69,7 +69,10 @@ def identity_fact_strip(candidate: dict) -> dict | None:
 # Works that may emit identity-only public pages this slice. Content is
 # always the work's assessed IDs; add a work id here to publish it.
 # Goldberg stays on ( /0, /1, /4 — seed.assessed excludes /3 Perahia ).
+# Brandenburg: /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967.
+# Holds /2 Abbado, /3 Britten, /5 Gardiner stay off the public cards.
 FIRST_SLICE_WORKS = frozenset({
+    "bach/brandenburg",
     "bach/goldberg",
     "bach/cello_suites",
     "bach/violin_concertos",
@@ -177,16 +180,29 @@ def public_identity_works(
 
 
 def merge_identity_works(cat: dict, seed: dict) -> dict:
-    """Append first-slice identity works that the engine catalogue does not already carry."""
-    existing = {w.get("id") for w in cat.get("works") or []}
-    existing_anchors = {work_anchor(i) for i in existing if i}
-    extra = []
-    for work in public_identity_works(seed):
-        if work["id"] in existing or work_anchor(work["id"]) in existing_anchors:
-            continue
-        extra.append(work)
-    if not extra:
+    """Public Pages for a first-slice work are the identity cards.
+
+    An engine-scored page with the same work anchor is replaced, so
+    Brandenburg does not keep the old multi-score furniture once it is
+    on the allowlist. Engine aggregates stay in build/catalogue.json.
+    Works the engine does not carry are appended in seed order.
+    """
+    identity_works = public_identity_works(seed)
+    by_anchor = {work_anchor(w["id"]): w for w in identity_works}
+    used: set[str] = set()
+    out_works: list[dict] = []
+    for work in cat.get("works") or []:
+        anc = work_anchor(work.get("id") or "")
+        if anc in by_anchor:
+            out_works.append(by_anchor[anc])
+            used.add(anc)
+        else:
+            out_works.append(work)
+    for work in identity_works:
+        if work_anchor(work["id"]) not in used:
+            out_works.append(work)
+    if out_works == list(cat.get("works") or []):
         return cat
     out = dict(cat)
-    out["works"] = list(cat.get("works") or []) + extra
+    out["works"] = out_works
     return out
