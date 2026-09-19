@@ -1048,7 +1048,13 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
         self.assertFalse(any(e.get("mbid") for e in (mack.get("editions") or [])))
         work_fn = html[html.index("function workSection(w)"):html.index("function renderWorkDirectory")]
         self.assertIn("candidatesConsidered(w)", work_fn)
-        self.assertIn("Colin Davis", html)  # scout held row, not a public card
+        rows = cat["works"][0]["scout"]
+        self.assertEqual([c["recording"] for c in rows], [
+            "handel/messiah/2", "handel/messiah/1", "handel/messiah/3", "handel/messiah/0",
+        ])
+        self.assertIn("Davis / LSO", rows[3]["identity"])
+        rec_blob = json.dumps(recs)
+        self.assertNotIn("handel/messiah/0", rec_blob)
 
     def test_water_music_and_giulio_cesare_pages(self):
         water = _page("handel/water_music")
@@ -1063,7 +1069,9 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
         self.assertIn("Pinnock’s English Concert Water Music", water)
         self.assertIn("Harnoncourt’s Concentus Musicus Water Music", water)
         self.assertNotIn("Neville Marriner", json.dumps(water_cat["works"][0]["recordings"]))
-        self.assertIn("Neville Marriner", water)  # scout held
+        water_scout = water_cat["works"][0]["scout"]
+        self.assertEqual(water_scout[2]["recording"], "handel/water_music/1")
+        self.assertIn("Marriner / Academy of St Martin in the Fields", water_scout[2]["identity"])
 
         cesare = _page("handel/giulio_cesare")
         cesare_cat = _embedded_catalogue(cesare)
