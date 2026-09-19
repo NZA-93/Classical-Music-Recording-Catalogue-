@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "title": "Handel week-1 seed cut (Critic identity lock)",
+    "date": "2026-09-19",
+    "pattern": "Brandenburg #50 — assessed + editions/MBIDs only",
+    "no_invented_scores": true,
+    "works": [
+      "handel/messiah",
+      "handel/water_music",
+      "handel/giulio_cesare"
+    ],
+    "held_works": [
+      "handel/fireworks",
+      "handel/op6",
+      "handel/organ_concertos",
+      "handel/israel_in_egypt",
+      "handel/solomon",
+      "handel/alcina",
+      "handel/agrippina",
+      "handel/rodelinda",
+      "handel/dixit_dominus"
+    ],
+    "source": "editorial-landing/handel/2026-09-19-week1-identity.json"
+  },
+  "assessed": {
+    "handel/messiah": [
+      "handel/messiah/2",
+      "handel/messiah/1",
+      "handel/messiah/3"
+    ],
+    "handel/water_music": [
+      "handel/water_music/0",
+      "handel/water_music/2"
+    ],
+    "handel/giulio_cesare": [
+      "handel/giulio_cesare/1",
+      "handel/giulio_cesare/0"
+    ]
+  },
+  "seed_patches": [
+    {
+      "id": "handel/messiah/2",
+      "status": "assessed",
+      "director": "John Eliot Gardiner",
+      "ensemble": "Monteverdi Choir; English Baroque Soloists",
+      "soloists": "Margaret Marshall; Catherine Robbin; Charles Brett; Anthony Rolfe Johnson; Robert Hale; Saul Quirke",
+      "label": "Philips",
+      "year": "1983",
+      "session_year": "1982",
+      "editions": [
+        {
+          "id": "2_preferred",
+          "label": "Philips",
+          "year": "1992",
+          "catno": "434 297-2",
+          "format": "2×CD",
+          "mbid": "0362c231-a9d9-4a52-bf84-00f0e5835d22",
+          "verified": true,
+          "note": "Complete set preferred face; CAA front yes. Session London Nov 1982; first issue 1983."
+        }
+      ],
+      "identity_traps": [
+        "Session year ≠ issue year",
+        "Not English Concert",
+        "Highlights 412 267-2 ≠ complete"
+      ]
+    },
+    {
+      "id": "handel/messiah/1",
+      "status": "assessed",
+      "director": "Charles Mackerras",
+      "ensemble": "Ambrosian Singers; English Chamber Orchestra",
+      "soloists": "Elizabeth Harwood; Janet Baker; Paul Esswood; Robert Tear; Raimund Herincx",
+      "label": "EMI/HMV",
+      "year": "1967",
+      "session_year": "1966",
+      "edition_note": "Basil Lam",
+      "editions": [
+        {
+          "id": "1_preferred",
+          "label": "EMI Classics",
+          "year": "1990s",
+          "catno": "7243 5 69449 2 3",
+          "format": "2×CD",
+          "mbid": null,
+          "verified": false,
+          "note": "MBID not locked this harvest — use cat + Kingsway Hall Jun–Aug 1966 identity. Do NOT use highlights CDM 7690402."
+        }
+      ],
+      "identity_traps": [
+        "Highlights CDM 7690402",
+        "Later Mackerras remakes",
+        "Preferred chamber neighbour over Davis/LSO /0"
+      ],
+      "blocker": "musicbrainz_release_uuid still null — Developer may leave mbid null or resolve complete-set MBID without swapping remakes"
+    },
+    {
+      "id": "handel/messiah/3",
+      "status": "assessed",
+      "director": "William Christie",
+      "ensemble": "Les Arts Florissants",
+      "soloists": "Barbara Schlick; Sandrine Piau; Andreas Scholl; Mark Padmore; Nathan Berg",
+      "label": "Harmonia Mundi",
+      "year": "1994",
+      "session_year": "1993",
+      "seed_fix": "label Erato → Harmonia Mundi",
+      "editions": [
+        {
+          "id": "3_preferred",
+          "label": "Harmonia Mundi",
+          "year": "1994",
+          "catno": "HMC 901498.99",
+          "format": "2×CD",
+          "mbid": "733acdf1-f905-468f-ac76-9b169eac5f1f",
+          "verified": true,
+          "note": "Dec 1993 sessions; CAA front yes"
+        }
+      ],
+      "identity_traps": [
+        "Seed Erato is wrong",
+        "Not Christie Erato/Virgin boxes"
+      ]
+    },
+    {
+      "id": "handel/water_music/0",
+      "status": "assessed",
+      "director": "Trevor Pinnock",
+      "ensemble": "The English Concert",
+      "label": "Archiv Produktion",
+      "year": "1983",
+      "editions": [
+        {
+          "id": "0_preferred",
+          "label": "Archiv Produktion",
+          "year": "1983",
+          "catno": "410 525-2",
+          "format": "CD",
+          "mbid": "740bce03-6fdc-4225-95f2-3ce22cec1e60",
+          "verified": true,
+          "note": "Henry Wood Hall Apr 1983; Water Music ONLY — CAA front yes"
+        }
+      ],
+      "identity_traps": [
+        "Do not retarget to Fireworks 415 129-2",
+        "Later WM+FW comps combine distinct sessions"
+      ]
+    },
+    {
+      "id": "handel/water_music/2",
+      "status": "assessed",
+      "director": "Nikolaus Harnoncourt",
+      "ensemble": "Concentus Musicus Wien",
+      "label": "Telefunken/Teldec",
+      "year": "1978",
+      "seed_fix": "year 1990s → 1978",
+      "editions": [
+        {
+          "id": "2_preferred",
+          "label": "Teldec",
+          "year": "1984",
+          "catno": "8.42368",
+          "format": "CD",
+          "mbid": "b1afcfed-3c69-4a8c-9933-b30862ef914b",
+          "verified": true,
+          "note": "1978 cycle; CAA front absent on this face — alt organ-coupled aeb8de04… has CAA if needed for cover"
+        }
+      ],
+      "edition_cover_alt": {
+        "catno": "4509-93668-2",
+        "mbid": "aeb8de04-d04b-4b79-90ca-a857c8961583",
+        "note": "Same WM tapes + organ concertos; CAA front yes — prefer for cover plate if 8.42368 has no art"
+      },
+      "identity_traps": [
+        "Not 1990s remake",
+        "Usually couples organ concertos not Fireworks"
+      ]
+    },
+    {
+      "id": "handel/giulio_cesare/1",
+      "status": "assessed",
+      "director": "René Jacobs",
+      "ensemble": "Concerto Köln",
+      "soloists": "Jennifer Larmore; Barbara Schlick; Bernarda Fink; Marianne Rørholm; Derek Lee Ragin; Furio Zanasi; Dominique Visse; Olivier Lallouette",
+      "label": "Harmonia Mundi",
+      "year": "1991",
+      "editions": [
+        {
+          "id": "1_preferred",
+          "label": "Harmonia Mundi",
+          "year": "1991",
+          "catno": "HMC 901385.87",
+          "format": "4×CD",
+          "mbid": "f52d0506-c1e1-4f99-9402-fda14908143c",
+          "verified": true,
+          "note": "Cologne Jul 1991; CAA front yes"
+        }
+      ],
+      "identity_traps": [
+        "Drew Minter NOT in cast",
+        "Italian complete ≠ Baker English ENO"
+      ]
+    },
+    {
+      "id": "handel/giulio_cesare/0",
+      "status": "assessed",
+      "director": "Charles Mackerras",
+      "ensemble": "English National Opera Orchestra & Chorus",
+      "soloists": "Janet Baker; Valerie Masterson; Sarah Walker; Della Jones; James Bowman; John Tomlinson",
+      "label": "EMI",
+      "year": "1985",
+      "session_year": "1984",
+      "language": "English",
+      "editions": [
+        {
+          "id": "0_preferred",
+          "label": "EMI Classics",
+          "year": "1989",
+          "catno": "CMS 7 69760 2",
+          "format": "3×CD",
+          "mbid": "ebb73671-da20-451c-a13a-e6b36b843ca3",
+          "verified": true,
+          "note": "Abbey Road 1–7 Aug 1984; English Julius Caesar; CAA front yes. Chandos CHAN 3019 = same tapes"
+        }
+      ],
+      "identity_traps": [
+        "English language",
+        "Chandos reissue same 1984 tapes",
+        "≠ Baker Messiah"
+      ]
+    }
+  ],
+  "not_assessed_this_cut": [
+    {
+      "id": "handel/messiah/0",
+      "reason": "Davis LSO large-orchestra landmark — documented, not preferred chamber neighbour"
+    },
+    {
+      "id": "handel/water_music/1",
+      "reason": "Marriner — out of week-1 poles"
+    },
+    {
+      "id": "handel/water_music/3",
+      "reason": "Mackerras Decca — out of week-1 poles"
+    },
+    {
+      "id": "handel/giulio_cesare/2",
+      "reason": "Christie/von Otter seed thin / later residual"
+    },
+    {
+      "id": "handel/giulio_cesare/3",
+      "reason": "Harnoncourt — residual"
+    }
+  ]
+}
