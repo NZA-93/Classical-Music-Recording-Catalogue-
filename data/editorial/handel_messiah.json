@@ -1,0 +1,203 @@
+{
+  "work_id": "handel/messiah",
+  "entries": [
+    {
+      "recording": "handel/messiah/2",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": [
+        "handel/messiah/1",
+        "handel/messiah/3"
+      ],
+      "text": "Gardiner’s Philips Messiah remains the digital period-instrument classic for the work: the Monteverdi Choir agile and balanced, the English Baroque Soloists light without thinness. Marshall’s soprano and Rolfe Johnson’s tenor hold the drama clean; tempos run quicker than the mid-century monuments, and the rhetoric is theatrical rather than cathedral.\n\nBeside Mackerras’s modern-chamber ECO set it is the HIP statement of the same scale argument. Beside Christie’s later Harmonia Mundi reading it is less French in colour, more English-workshop clear. The period-instrument studio Messiah to hear first.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Gramophone — Gardiner / Monteverdi Choir / EBS Messiah (Philips)",
+          "url": "https://www.gramophone.co.uk/reviews/handel-messiah-31",
+          "kind": "review"
+        },
+        {
+          "title": "Gramophone — Gardiner Messiah highlights (same forces)",
+          "url": "https://www.gramophone.co.uk/reviews/handel-messiah-highlights-1",
+          "kind": "review"
+        },
+        {
+          "title": "Presto — Handel Messiah (Gardiner / Philips 4342972)",
+          "url": "https://www.prestomusic.com/classical/products/7931583--handel-messiah",
+          "kind": "label"
+        },
+        {
+          "title": "MusicBrainz — Philips 434 297-2",
+          "url": "https://musicbrainz.org/release/0362c231-a9d9-4a52-bf84-00f0e5835d22",
+          "kind": "discography"
+        }
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Gardiner Messiah complete",
+            "url": "https://www.gramophone.co.uk/reviews/handel-messiah-31",
+            "note": "Peerless Monteverdi Choir; first-rate HIP studio drama without Hogwood dogmatism."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Gardiner Messiah highlights",
+            "url": "https://www.gramophone.co.uk/reviews/handel-messiah-highlights-1",
+            "note": "Small-forces approach as demonstration piece; sensitivity and verve."
+          },
+          {
+            "axis": "sound",
+            "tier": "B",
+            "title": "MusicBrainz / Presto — Philips digital studio face",
+            "url": "https://musicbrainz.org/release/0362c231-a9d9-4a52-bf84-00f0e5835d22",
+            "note": "Early-80s Philips digital — clear, present; excellent for its generation."
+          }
+        ]
+      }
+    },
+    {
+      "recording": "handel/messiah/1",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": [
+        "handel/messiah/2",
+        "handel/messiah/3"
+      ],
+      "text": "Mackerras’s Ambrosian/ECO Messiah is the mid-sixties modern-chamber shock: Basil Lam’s edition, small forces, ornamentation that still startles. Baker’s alto and Tear’s tenor speak with urgency; the Ambrosians open-throated rather than polished-period. Against Davis’s large LSO Philips set of the same year it is the chamber neighbour; against Gardiner it is modern instruments arguing the same scale.\n\nSome of the trills and dotted rhythms now sound over-applied. That does not retire the disc. It remains the clearest modern-instrument chamber statement beside the HIP studio classics — Kingsway Hall EMI sound of its time, still serviceable on later CD faces.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Gramophone Classics Reconsidered — Mackerras / ECO Messiah",
+          "url": "https://www.gramophone.co.uk/features/article/classics-reconsidered-handel-s-messiah-english-chamber-orchestra-charles-mackerras",
+          "kind": "review"
+        },
+        {
+          "title": "Gramophone — Handel’s Messiah best recordings guide",
+          "url": "https://www.gramophone.co.uk/features/article/handels-messiah-a-complete-guide-to-the-best-recordings",
+          "kind": "review"
+        },
+        {
+          "title": "MusicWeb — Davis 1966 / Mackerras chamber follow-up context",
+          "url": "https://www.musicweb-international.com/classrev/2001/May01/Messiah.htm",
+          "kind": "review"
+        },
+        {
+          "title": "Charles Mackerras discography PDF",
+          "url": "https://charlesmackerras.com/wp-content/uploads/2016/02/mackerras-discography.pdf",
+          "kind": "discography"
+        }
+      ],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 3,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone Classics Reconsidered — Mackerras Messiah",
+            "url": "https://www.gramophone.co.uk/features/article/classics-reconsidered-handel-s-messiah-english-chamber-orchestra-charles-mackerras",
+            "note": "Radical 1960s chamber claim still holds; Baker/Ambrosian urgency; some ornament dated."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Messiah best recordings guide",
+            "url": "https://www.gramophone.co.uk/features/article/handels-messiah-a-complete-guide-to-the-best-recordings",
+            "note": "Landmark modern-chamber pole; stylistic excesses noted in retrospect."
+          },
+          {
+            "axis": "sound",
+            "tier": "B",
+            "title": "MusicWeb — 1960s Philips/EMI Messiah generation context",
+            "url": "https://www.musicweb-international.com/classrev/2001/May01/Messiah.htm",
+            "note": "Kingsway/EMI analogue of its day — clean enough on CD; not reference digital."
+          }
+        ]
+      }
+    },
+    {
+      "recording": "handel/messiah/3",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": [
+        "handel/messiah/2",
+        "handel/messiah/1"
+      ],
+      "text": "Christie’s Les Arts Florissants Messiah is the French HIP drama of the mid-nineties: text first, pacing sure, orchestra warm and homogeneous. Scholl’s “He was despised” still stops the room; Piau and Schlick share the soprano colour with ornament that feels live. Padmore and Berg hold the tenor and bass lines without Victorian weight.\n\nBeside Gardiner it is more Italianate in rhetorical colour, less English-workshop. Beside Mackerras it restores gut and period winds to a chamber scale already argued in the sixties. Not every chorus prefers puckish staccato; the whole still holds as continuous drama. Harmonia Mundi only — not the Christie Erato/Virgin boxes.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Gramophone — Christie / LAF Messiah (Harmonia Mundi)",
+          "url": "https://www.gramophone.co.uk/reviews/handel-messiah-11",
+          "kind": "review"
+        },
+        {
+          "title": "Flying Inkpot — Christie / LAF Messiah",
+          "url": "https://www.flyinginkpot.com/1999/05/inkpot42-classical-music-reviews-handel-messiah-variousles-arts-florissantschristie-harmonia-mundi/",
+          "kind": "review"
+        },
+        {
+          "title": "MusicBrainz — HMC 901498.99",
+          "url": "https://musicbrainz.org/release/733acdf1-f905-468f-ac76-9b169eac5f1f",
+          "kind": "discography"
+        },
+        {
+          "title": "medieval.org — HMC 90 1498/99 listing",
+          "url": "http://www.medieval.org/emfaq/cds/hmu1498.htm",
+          "kind": "discography"
+        }
+      ],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Christie Messiah",
+            "url": "https://www.gramophone.co.uk/reviews/handel-messiah-11",
+            "note": "Dramatic fluency; Scholl peak; alert choir; small staccato quibble."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "B",
+            "title": "Flying Inkpot — Christie / LAF",
+            "url": "https://www.flyinginkpot.com/1999/05/inkpot42-classical-music-reviews-handel-messiah-variousles-arts-florissantschristie-harmonia-mundi/",
+            "note": "Grace with power; ornament as live surprise; continuous architecture."
+          },
+          {
+            "axis": "sound",
+            "tier": "B",
+            "title": "MusicBrainz — HM 1994 digital face",
+            "url": "https://musicbrainz.org/release/733acdf1-f905-468f-ac76-9b169eac5f1f",
+            "note": "Mid-90s Harmonia Mundi — warm, homogeneous strings; exemplary for approach."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "work_id": "handel/water_music",
+  "entries": [
+    {
+      "recording": "handel/water_music/0",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": [
+        "handel/water_music/2"
+      ],
+      "text": "Pinnock’s English Concert Water Music is still the digital period-instrument classic for these suites: majestic F-major overture, brass that steals the D-major music without blare, G-major dances caught light. Woodwind that often fails on period instruments here holds its place. Against Harnoncourt’s earlier Concentus Musicus tapes it is smoother and studio-clear; against modern-chamber neighbours it restores gut and natural brass as audible stance.\n\nThe original Archiv face is Water Music only. Later Fireworks couplings and WM+Fireworks compilations are other objects — do not confuse them with these Henry Wood Hall tapes.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Gramophone — Pinnock / English Concert Water Music (Archiv)",
+          "url": "https://www.gramophone.co.uk/reviews/handel-water-music-16",
+          "kind": "review"
+        },
+        {
+          "title": "MusicWeb — Pinnock DG Panorama (includes 1983 Water Music)",
+          "url": "https://www.musicweb-international.com/classrev/2000/Oct00/Handelwaterpanorama.htm",
+          "kind": "review"
+        },
+        {
+          "title": "MusicBrainz — Archiv 410 525-2",
+          "url": "https://musicbrainz.org/release/740bce03-6fdc-4225-95f2-3ce22cec1e60",
+          "kind": "discography"
+        },
+        {
+          "title": "Decca/Archiv catalogue — Wassermusik Pinnock",
+          "url": "https://www.deccaclassics.com/en/catalogue/products/handel-wassermusik-pinnock-9554",
+          "kind": "label"
+        }
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 5,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Gramophone — Pinnock Water Music",
+            "url": "https://www.gramophone.co.uk/reviews/handel-water-music-16",
+            "note": "Tempos, brass, woodwind; replaced rivals in reviewer’s affections."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "Gramophone — Archiv digital capture",
+            "url": "https://www.gramophone.co.uk/reviews/handel-water-music-16",
+            "note": "Particularly satisfying clarity of strands; pleasing early digital."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "B",
+            "title": "MusicWeb — Pinnock Panorama",
+            "url": "https://www.musicweb-international.com/classrev/2000/Oct00/Handelwaterpanorama.htm",
+            "note": "Grace over attack; refined HIP studio baseline."
+          }
+        ]
+      }
+    },
+    {
+      "recording": "handel/water_music/2",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": [
+        "handel/water_music/0"
+      ],
+      "text": "Harnoncourt’s Concentus Musicus Water Music is the pioneering original-instrument statement — swift, brash, ceremonial rather than polished. Horns rasp; dances lean forward; the sense of outdoor occasion is the point. Against Pinnock 1983 it is historically first and deliberately less smooth; keep it for the argument’s opening pole, not as the easiest HIP listen.\n\nCycle year is 1978 (Telefunken), not a 1990s remake. Standard couplings are organ concertos, not Fireworks. Teldec reissues carry the same Water Music tapes with cleaner transfer options.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "Classical Net — Harnoncourt / CMW Water Music (Teldec reissue)",
+          "url": "https://www.classical.net/music/recs/reviews/t/tld692594a.php",
+          "kind": "review"
+        },
+        {
+          "title": "Los Angeles Times — Harnoncourt Water Music reissue",
+          "url": "https://www.latimes.com/archives/la-xpm-1994-05-15-ca-57781-story.html",
+          "kind": "reference"
+        },
+        {
+          "title": "MusicBrainz — Teldec 8.42368",
+          "url": "https://musicbrainz.org/release/b1afcfed-3c69-4a8c-9933-b30862ef914b",
+          "kind": "discography"
+        },
+        {
+          "title": "Warner Classics — Water Music + organ concertos line",
+          "url": "https://www.warnerclassics.com/release/handel-water-music-organ-concertos-0",
+          "kind": "label"
+        }
+      ],
+      "matrix": {
+        "interpretation": 4,
+        "sound": 3,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "Classical Net — Harnoncourt Water Music",
+            "url": "https://www.classical.net/music/recs/reviews/t/tld692594a.php",
+            "note": "Breakneck tempi, gallant style; brash CMW character as virtue."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "LA Times — Harnoncourt Water Music",
+            "url": "https://www.latimes.com/archives/la-xpm-1994-05-15-ca-57781-story.html",
+            "note": "Horn rasp and eccentric tempi as the document’s identity — not Pinnock polish."
+          },
+          {
+            "axis": "sound",
+            "tier": "B",
+            "title": "Classical Net — Teldec transfer",
+            "url": "https://www.classical.net/music/recs/reviews/t/tld692594a.php",
+            "note": "Excellent balance on reissue; ADD source — serviceable to good, not 1983 Archiv digital."
+          }
+        ]
+      }
+    }
+  ]
+}

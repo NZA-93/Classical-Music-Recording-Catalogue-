@@ -1,0 +1,25 @@
+{
+  "work_id": "handel/giulio_cesare",
+  "schema": "ADR-004 scout pool",
+  "note": "Ordinal scout ranks only. Never stars/Référence/matrix. Promoted rows match Handel week-1 assessed cut (2026-09-19).",
+  "candidates": [
+    {
+      "recording": "handel/giulio_cesare/1",
+      "rank": 1,
+      "stance": "Italian HIP studio",
+      "status": "promoted-to-cut",
+      "identity": "Jacobs / Concerto Köln / Larmore–Schlick–Fink–Rørholm–Ragin / HM 1991 · HMC 901385.87 · MBID f52d0506-c1e1-4f99-9402-fda14908143c",
+      "why_in": "Leading Italian complete on disc; cast locked (not Minter); clear HIP studio pole.",
+      "why_out": null
+    },
+    {
+      "recording": "handel/giulio_cesare/0",
+      "rank": 2,
+      "stance": "English ENO modern",
+      "status": "promoted-to-cut",
+      "identity": "Baker / Mackerras / ENO / English / EMI 1985 (sess. Aug 1984) · CMS 7 69760 2 · MBID ebb73671-da20-451c-a13a-e6b36b843ca3 — Chandos CHAN 3019 same tapes",
+      "why_in": "Required English-language theatre pole; Baker Handelian stature; solid Abbey Road identity.",
+      "why_out": null
+    }
+  ]
+}

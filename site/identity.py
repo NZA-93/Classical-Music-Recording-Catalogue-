@@ -30,9 +30,10 @@ EMERSON_MBID = "1d748095-0c33-4fd7-b925-9e50849f101d"
 
 # Identity editions carry catalogue facts for the cover plate. Never copy
 # sound, verdict, or transfer — those are judgements, not identity.
+# cover_mbid is art-only (CAA front) and must not replace edition.mbid.
 _EDITION_KEYS = (
     "id", "label", "year", "catno", "format", "mbid",
-    "verified", "barcode", "release_group_mbid",
+    "verified", "barcode", "release_group_mbid", "cover_mbid",
 )
 # Critic-internal notes stay off the public card.
 _FACT_STRIP_SKIP = frozenset({"seed_year_note", "cover_face"})
@@ -73,6 +74,11 @@ def identity_fact_strip(candidate: dict) -> dict | None:
 # Goldberg stays on ( /0, /1, /4 — seed.assessed excludes /3 Perahia ).
 # Brandenburg: /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967.
 # Holds /2 Abbado, /3 Britten, /5 Gardiner stay off the public cards.
+# Handel week-1: Messiah /2 Gardiner, /1 Mackerras, /3 Christie;
+# Water Music /0 Pinnock, /2 Harnoncourt; Giulio Cesare /1 Jacobs,
+# /0 Mackerras ENO. Identity/editions from the UX-SIGNed seed cut.
+# Mackerras Messiah complete-set MBID stays null. Signed entries attach
+# from data/editorial/; scout pools from data/scout/.
 FIRST_SLICE_WORKS = frozenset({
     "bach/brandenburg",
     "bach/goldberg",
@@ -83,6 +89,9 @@ FIRST_SLICE_WORKS = frozenset({
     "bach/john",
     "bach/mass_b_minor",
     "bach/art_of_fugue",
+    "handel/messiah",
+    "handel/water_music",
+    "handel/giulio_cesare",
 })
 
 
