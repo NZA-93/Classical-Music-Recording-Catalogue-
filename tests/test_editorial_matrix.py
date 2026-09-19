@@ -271,6 +271,9 @@ class TestLiveCriticMatrix(unittest.TestCase):
                 self.assertEqual(mx["interpretation"], LIVE_MATRIX[rid]["interpretation"], rid)
                 self.assertEqual(mx["sound"], LIVE_MATRIX[rid]["sound"], rid)
                 self.assertNotIn("overall", mx)
+            elif ed is None:
+                # Handel week-1 identity cards: no signed entry, no matrix.
+                self.assertTrue(str(rid).startswith("handel/"), rid)
             else:
                 self.assertNotIn("matrix", ed, rid)
         merged = ident.merge_identity_works(
