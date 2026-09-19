@@ -1,4 +1,4 @@
-"""Identity-only public pages from seed.works[].assessed (signed Bach).
+"""Identity-only public pages from seed.works[].assessed (signed Bach + Handel).
 
 Public cards are the critic-signed assessed IDs, not the harvest queue and
 not engine scores. goldberg/3 (Perahia) stays a candidate and must not
@@ -6,6 +6,10 @@ appear. goldberg/4 (Schiff, Decca 1982) is assessed. Brandenburg assessed
 cut is /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967, now with
 Critic-signed Dictionnaire prose and Morningstar matrix. Gardiner /5 stays
 off the public cards. Held Bach works stay off this slice.
+
+Handel week-1 assessed cut: Messiah /2 Gardiner (Référence), /1 Mackerras,
+/3 Christie; Water Music /0 Pinnock (Référence), /2 Harnoncourt; Giulio
+Cesare /1 Jacobs (Référence), /0 Mackerras ENO. messiah/1 MBID stays null.
 """
 
 from __future__ import annotations
@@ -42,7 +46,7 @@ BRANDENBURG_ASSESSED = (
     "bach/brandenburg/4",
 )
 
-PUBLIC_IDENTITY_IDS = BRANDENBURG_ASSESSED + SIGNED_IDENTITY_IDS
+BACH_PUBLIC_IDENTITY_IDS = BRANDENBURG_ASSESSED + SIGNED_IDENTITY_IDS
 
 REMAINING_TEN = (
     "bach/cello_suites/1",
@@ -57,7 +61,7 @@ REMAINING_TEN = (
     "bach/art_of_fugue/3",
 )
 
-IDENTITY_WORKS = (
+BACH_IDENTITY_WORKS = (
     "bach/brandenburg",
     "bach/violin_concertos",
     "bach/cello_suites",
@@ -68,6 +72,25 @@ IDENTITY_WORKS = (
     "bach/john",
     "bach/art_of_fugue",
 )
+
+HANDEL_IDENTITY_WORKS = (
+    "handel/messiah",
+    "handel/water_music",
+    "handel/giulio_cesare",
+)
+
+HANDEL_ASSESSED = (
+    "handel/messiah/2",
+    "handel/messiah/1",
+    "handel/messiah/3",
+    "handel/water_music/0",
+    "handel/water_music/2",
+    "handel/giulio_cesare/1",
+    "handel/giulio_cesare/0",
+)
+
+IDENTITY_WORKS = BACH_IDENTITY_WORKS + HANDEL_IDENTITY_WORKS
+PUBLIC_IDENTITY_IDS = BACH_PUBLIC_IDENTITY_IDS + HANDEL_ASSESSED
 
 SIGNED_GOLDBERG = (
     "bach/goldberg/0",
@@ -96,7 +119,8 @@ QUEUE_NAMES_GOLDBERG = ("Perahia", "Landowska")
 # Performer/label strings that live only on unassessed candidates of enabled
 # works. Must not leak onto sealed identity pages or the hub assessed list.
 # Harnoncourt and Richter belong on the Brandenburg assessed cut; they are
-# still forbidden on every other first-slice page.
+# still forbidden on every other Bach first-slice page. Handel Water Music
+# /2 is Harnoncourt — that is the week-1 cut, not a Brandenburg leak.
 QUEUE_ONLY = (
     "Perahia",
     "Landowska",
@@ -251,6 +275,28 @@ class TestSeedAssessedUnchanged(unittest.TestCase):
         seed = _seed()
         for wid in HELD_EMPTY:
             self.assertEqual(_work(seed, wid)["assessed"], [], wid)
+
+    def test_handel_week1_assessed_is_the_critic_cut(self):
+        seed = _seed()
+        self.assertEqual(
+            list(_work(seed, "handel/messiah")["assessed"]),
+            ["handel/messiah/2", "handel/messiah/1", "handel/messiah/3"],
+        )
+        self.assertEqual(
+            list(_work(seed, "handel/water_music")["assessed"]),
+            ["handel/water_music/0", "handel/water_music/2"],
+        )
+        self.assertEqual(
+            list(_work(seed, "handel/giulio_cesare")["assessed"]),
+            ["handel/giulio_cesare/1", "handel/giulio_cesare/0"],
+        )
+        self.assertEqual(_work(seed, "handel/fireworks")["assessed"], [])
+        mack = next(
+            c for c in _work(seed, "handel/messiah")["candidates"]
+            if c["id"] == "handel/messiah/1"
+        )
+        self.assertIsNone(mack.get("mbid"))
+        self.assertFalse(mack.get("editions"))
 
 
 class TestIdentityFromAssessed(unittest.TestCase):
@@ -519,6 +565,30 @@ class TestRemainingSignedPages(unittest.TestCase):
                 for rec in cat["works"][0]["recordings"]:
                     self.assertNotIn("Avie", rec.get("published") or "", rec["id"])
                 self.assertNotIn("scout", rec_blob)
+            elif wid in HANDEL_IDENTITY_WORKS:
+                cat = _embedded_catalogue(html)
+                rec_ids = [r["id"] for r in cat["works"][0]["recordings"]]
+                rec_blob = json.dumps(cat["works"][0]["recordings"])
+                self.assertNotIn("scout", rec_blob)
+                if wid == "handel/messiah":
+                    self.assertEqual(rec_ids, [
+                        "handel/messiah/2", "handel/messiah/1", "handel/messiah/3",
+                    ])
+                    self.assertNotIn("handel/messiah/0", rec_ids)
+                elif wid == "handel/water_music":
+                    self.assertEqual(rec_ids, [
+                        "handel/water_music/0", "handel/water_music/2",
+                    ])
+                    self.assertNotIn("Neville Marriner", rec_blob)
+                    self.assertNotIn("handel/water_music/1", rec_ids)
+                    self.assertNotIn("handel/water_music/3", rec_ids)
+                else:
+                    self.assertEqual(rec_ids, [
+                        "handel/giulio_cesare/1", "handel/giulio_cesare/0",
+                    ])
+                    self.assertNotIn("Anne Sofie von Otter", rec_blob)
+                    self.assertNotIn("handel/giulio_cesare/2", rec_ids)
+                    self.assertNotIn("handel/giulio_cesare/3", rec_ids)
             else:
                 for name in BRANDENBURG_ONLY:
                     self.assertNotIn(name, html, f"{wid} leaked {name}")
@@ -706,16 +776,23 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         self.assertEqual(set(recs), set(PUBLIC_IDENTITY_IDS))
         for rid, rec in recs.items():
             eds = rec.get("editions") or []
-            self.assertTrue(eds, rid)
-            self.assertTrue(any(e.get("mbid") for e in eds), rid)
             for ed in eds:
                 self.assertNotIn("sound", ed, rid)
                 self.assertNotIn("verdict", ed, rid)
                 self.assertNotIn("transfer", ed, rid)
             strip = rec.get("fact_strip") or {}
-            self.assertTrue(strip.get("label") or strip.get("venue") or strip.get("sessions"), rid)
             self.assertNotIn("seed_year_note", strip, rid)
             self.assertNotIn("cover_face", strip, rid)
+            if rid in BACH_PUBLIC_IDENTITY_IDS:
+                self.assertTrue(eds, rid)
+                self.assertTrue(any(e.get("mbid") for e in eds), rid)
+                self.assertTrue(
+                    strip.get("label") or strip.get("venue") or strip.get("sessions"),
+                    rid,
+                )
+            elif rid == "handel/messiah/1":
+                # Soft flag: Mackerras complete-set MBID may stay null.
+                self.assertFalse(any(e.get("mbid") for e in eds), rid)
             ed = rec["editorial"]
             self.assertIsNotNone(ed, rid)
             consulted = ed.get("consulted") or []
@@ -825,6 +902,7 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             "bach/brandenburg/0",
             "bach/brandenburg/1",
             "bach/brandenburg/4",
+            *HANDEL_ASSESSED,
         }
         expected = {
             "bach/goldberg/0": (3, True, 4, "The 1955 Goldberg is still the shock"),
@@ -843,6 +921,13 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             "bach/brandenburg/0": (3, True, 1, "Pinnock’s 1982 English Concert Brandenburgs"),
             "bach/brandenburg/1": (3, False, 1, "Harnoncourt’s first Concentus Musicus cycle"),
             "bach/brandenburg/4": (3, False, 1, "The modern Munich pole of this argument."),
+            "handel/messiah/2": (3, True, 1, "Gardiner’s Philips Messiah remains the digital period-instrument classic"),
+            "handel/messiah/1": (3, False, 1, "Mackerras’s Ambrosian/ECO Messiah"),
+            "handel/messiah/3": (3, False, 1, "Christie’s Les Arts Florissants Messiah"),
+            "handel/water_music/0": (3, True, 1, "Pinnock’s English Concert Water Music"),
+            "handel/water_music/2": (3, False, 1, "Harnoncourt’s Concentus Musicus Water Music"),
+            "handel/giulio_cesare/1": (3, True, 1, "Jacobs’s Concerto Köln Giulio Cesare"),
+            "handel/giulio_cesare/0": (3, False, 1, "Baker’s Julius Caesar for Mackerras"),
         }
         recs = {
             r["id"]: r
@@ -854,11 +939,13 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             self.assertEqual(ed["stars"], stars, rid)
             self.assertEqual(ed["reference"], reference, rid)
             self.assertEqual(ed["revision"], revision, rid)
-            self.assertEqual(
-                ed["date"],
-                "2026-09-08" if rid in matrix_ids else "2026-09-07",
-                rid,
-            )
+            if rid.startswith("handel/"):
+                date = "2026-09-19"
+            elif rid in matrix_ids:
+                date = "2026-09-08"
+            else:
+                date = "2026-09-07"
+            self.assertEqual(ed["date"], date, rid)
             self.assertIn(snippet, ed["text"], rid)
 
     def test_identity_editions_rejects_any_other_emerson_mbid(self):
@@ -934,6 +1021,91 @@ class TestBrandenburgPublicHtml(unittest.TestCase):
             ],
         )
         self.assertIn("coverartarchive.org/release/${ed.mbid}/front-500", html)
+
+
+class TestHandelWeek1PublicHtml(unittest.TestCase):
+    def test_messiah_page_is_the_assessed_cut_with_signed_entries(self):
+        html = _page("handel/messiah")
+        cat = _embedded_catalogue(html)
+        self.assertEqual([w["id"] for w in cat["works"]], ["handel/messiah"])
+        recs = cat["works"][0]["recordings"]
+        self.assertEqual([r["id"] for r in recs], [
+            "handel/messiah/2", "handel/messiah/1", "handel/messiah/3",
+        ])
+        self.assertNotIn("handel/messiah/0", {r["id"] for r in recs})
+        by_id = {r["id"]: r for r in recs}
+        self.assertTrue(by_id["handel/messiah/2"]["editorial"]["reference"])
+        self.assertFalse(by_id["handel/messiah/1"]["editorial"]["reference"])
+        self.assertFalse(by_id["handel/messiah/3"]["editorial"]["reference"])
+        self.assertIn("Gardiner’s Philips Messiah remains the digital period-instrument classic", html)
+        self.assertIn("Mackerras’s Ambrosian/ECO Messiah", html)
+        self.assertIn("Christie’s Les Arts Florissants Messiah", html)
+        self.assertNotIn("Three stars", html)
+        for rec in recs:
+            _assert_no_aggregate(self, rec, rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+        mack = by_id["handel/messiah/1"]
+        self.assertFalse(any(e.get("mbid") for e in (mack.get("editions") or [])))
+        work_fn = html[html.index("function workSection(w)"):html.index("function renderWorkDirectory")]
+        self.assertIn("candidatesConsidered(w)", work_fn)
+        self.assertIn("Colin Davis", html)  # scout held row, not a public card
+
+    def test_water_music_and_giulio_cesare_pages(self):
+        water = _page("handel/water_music")
+        water_cat = _embedded_catalogue(water)
+        self.assertEqual(
+            [r["id"] for r in water_cat["works"][0]["recordings"]],
+            ["handel/water_music/0", "handel/water_music/2"],
+        )
+        water_by = {r["id"]: r for r in water_cat["works"][0]["recordings"]}
+        self.assertTrue(water_by["handel/water_music/0"]["editorial"]["reference"])
+        self.assertFalse(water_by["handel/water_music/2"]["editorial"]["reference"])
+        self.assertIn("Pinnock’s English Concert Water Music", water)
+        self.assertIn("Harnoncourt’s Concentus Musicus Water Music", water)
+        self.assertNotIn("Neville Marriner", json.dumps(water_cat["works"][0]["recordings"]))
+        self.assertIn("Neville Marriner", water)  # scout held
+
+        cesare = _page("handel/giulio_cesare")
+        cesare_cat = _embedded_catalogue(cesare)
+        self.assertEqual(
+            [r["id"] for r in cesare_cat["works"][0]["recordings"]],
+            ["handel/giulio_cesare/1", "handel/giulio_cesare/0"],
+        )
+        cesare_by = {r["id"]: r for r in cesare_cat["works"][0]["recordings"]}
+        self.assertTrue(cesare_by["handel/giulio_cesare/1"]["editorial"]["reference"])
+        self.assertFalse(cesare_by["handel/giulio_cesare/0"]["editorial"]["reference"])
+        self.assertIn("Jacobs’s Concerto Köln Giulio Cesare", cesare)
+        self.assertIn("Baker’s Julius Caesar for Mackerras", cesare)
+        self.assertNotIn("Anne Sofie von Otter", json.dumps(cesare_cat["works"][0]["recordings"]))
+
+    def test_handel_hub_chips_from_assessed_not_queue(self):
+        cid, name, dates, works = site.composer_by_id("handel")
+        html = site.composer_hub(cid, name, dates, works)
+        expected = {
+            "handel_messiah": ("3 assessed", "handel_messiah.html"),
+            "handel_water_music": ("2 assessed", "handel_water_music.html"),
+            "handel_giulio_cesare": ("2 assessed", "handel_giulio_cesare.html"),
+        }
+        for anchor, (chip, page) in expected.items():
+            row = _hub_row(html, anchor)
+            self.assertIn(chip, row, anchor)
+            self.assertNotIn("queued", row, anchor)
+            self.assertIn(f"../works/{page}", row, anchor)
+            self.assertIn("open work", row, anchor)
+        fireworks = _hub_row(html, "handel_fireworks")
+        self.assertIn("queued", fireworks)
+        self.assertNotIn("assessed", fireworks)
+        self.assertNotIn("handel_fireworks.html", html)
+        start = html.index('class="rec-list"')
+        rec_list = html[start:html.index("</ul>", start)]
+        self.assertIn("John Eliot Gardiner — English Baroque Soloists", rec_list)
+        self.assertIn("Trevor Pinnock — The English Concert", rec_list)
+        self.assertIn("René Jacobs — Concerto Köln", rec_list)
+        self.assertIn("Janet Baker — Charles Mackerras — English National Opera", rec_list)
+        self.assertNotIn("Colin Davis", rec_list)
+        self.assertNotIn("Neville Marriner", rec_list)
+        self.assertNotIn("tosca", html.lower())
+        self.assertNotIn("dmitri shostakovich", html.lower())
 
 
 if __name__ == "__main__":

@@ -4,8 +4,10 @@ The fixture remains synthetic. Live matrix is Critic-signed on the assessed
 Bach set: Goldberg (3), Fournier, Podger concertos, both sonatas & partitas,
 both Matthew Passions, Gardiner St John, Gardiner B-minor Mass, both Art of
 Fugue, and the three assessed Brandenburgs (Pinnock Référence, Harnoncourt,
-Richter). Gardiner /5 is not assessed. This file does not invent scores; it
-maps existing integers onto the box.
+Richter). Gardiner /5 is not assessed. Handel week-1 adds Messiah (Gardiner
+Référence, Mackerras, Christie), Water Music (Pinnock Référence, Harnoncourt)
+and Giulio Cesare (Jacobs Référence, Mackerras ENO). This file does not invent
+scores; it maps existing integers onto the box.
 """
 
 from __future__ import annotations
@@ -224,11 +226,18 @@ LIVE_MATRIX = {
     "bach/brandenburg/0": {"interpretation": 5, "sound": 4, "ledger": 2, "revision": 1},
     "bach/brandenburg/1": {"interpretation": 4, "sound": 2, "ledger": 2, "revision": 1},
     "bach/brandenburg/4": {"interpretation": 4, "sound": 3, "ledger": 2, "revision": 1},
+    "handel/messiah/2": {"interpretation": 5, "sound": 4, "ledger": 3, "revision": 1, "date": "2026-09-19"},
+    "handel/messiah/1": {"interpretation": 4, "sound": 3, "ledger": 3, "revision": 1, "date": "2026-09-19"},
+    "handel/messiah/3": {"interpretation": 4, "sound": 4, "ledger": 3, "revision": 1, "date": "2026-09-19"},
+    "handel/water_music/0": {"interpretation": 5, "sound": 5, "ledger": 3, "revision": 1, "date": "2026-09-19"},
+    "handel/water_music/2": {"interpretation": 4, "sound": 3, "ledger": 3, "revision": 1, "date": "2026-09-19"},
+    "handel/giulio_cesare/1": {"interpretation": 5, "sound": 4, "ledger": 3, "revision": 1, "date": "2026-09-19"},
+    "handel/giulio_cesare/0": {"interpretation": 5, "sound": 4, "ledger": 3, "revision": 1, "date": "2026-09-19"},
 }
 
 
 class TestLiveCriticMatrix(unittest.TestCase):
-    def test_live_assessed_bach_entries_carry_matrix(self):
+    def test_live_assessed_entries_carry_matrix(self):
         ed_dir = ROOT / "data" / "editorial"
         found = []
         for path in sorted(ed_dir.glob("*.json")):
@@ -244,7 +253,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
                     self.assertEqual(mx["sound"], expected["sound"])
                     self.assertNotIn("overall", mx)
                     self.assertEqual(len(mx["ledger"]), expected["ledger"])
-                    self.assertEqual(ent["date"], "2026-09-08")
+                    self.assertEqual(ent["date"], expected.get("date", "2026-09-08"))
                     self.assertEqual(ent["revision"], expected.get("revision", 4))
         self.assertEqual(sorted(found), sorted(LIVE_MATRIX))
 
@@ -324,6 +333,47 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(pinnock["editorial"]["matrix"]["sound"], 4)
         self.assertTrue(pinnock["editorial"]["reference"])
         self.assertEqual(stylebox_grid_pos(5, 4), (4, 1))
+
+    def test_handel_week1_cards_show_interpretation_and_sound(self):
+        merged = ident.merge_identity_works(
+            {"algorithm_version": "2.0", "built": "2026-09-19",
+             "works": [], "barcode_index": {}},
+            _seed(),
+        )
+        messiah = next(w for w in merged["works"] if w["id"] == "handel/messiah")
+        html = _html_for(messiah, merged)
+        self.assertIn("Gardiner’s Philips Messiah remains the digital period-instrument classic", html)
+        self.assertIn("Mackerras’s Ambrosian/ECO Messiah", html)
+        self.assertNotIn("Three stars", html)
+        cat = _embedded_catalogue(html)
+        gardiner = next(
+            r for r in cat["works"][0]["recordings"] if r["id"] == "handel/messiah/2"
+        )
+        self.assertEqual(gardiner["editorial"]["matrix"]["interpretation"], 5)
+        self.assertEqual(gardiner["editorial"]["matrix"]["sound"], 4)
+        self.assertTrue(gardiner["editorial"]["reference"])
+        self.assertEqual(stylebox_grid_pos(5, 4), (4, 1))
+        water = next(w for w in merged["works"] if w["id"] == "handel/water_music")
+        water_html = _html_for(water, merged)
+        water_cat = _embedded_catalogue(water_html)
+        pinnock = next(
+            r for r in water_cat["works"][0]["recordings"]
+            if r["id"] == "handel/water_music/0"
+        )
+        self.assertEqual(pinnock["editorial"]["matrix"]["interpretation"], 5)
+        self.assertEqual(pinnock["editorial"]["matrix"]["sound"], 5)
+        self.assertTrue(pinnock["editorial"]["reference"])
+        self.assertEqual(stylebox_grid_pos(5, 5), (5, 1))
+        cesare = next(w for w in merged["works"] if w["id"] == "handel/giulio_cesare")
+        cesare_html = _html_for(cesare, merged)
+        cesare_cat = _embedded_catalogue(cesare_html)
+        jacobs = next(
+            r for r in cesare_cat["works"][0]["recordings"]
+            if r["id"] == "handel/giulio_cesare/1"
+        )
+        self.assertEqual(jacobs["editorial"]["matrix"]["interpretation"], 5)
+        self.assertEqual(jacobs["editorial"]["matrix"]["sound"], 4)
+        self.assertTrue(jacobs["editorial"]["reference"])
 
     def test_brandenburg_matrix_is_the_three_assessed(self):
         path = ROOT / "data" / "editorial" / "bach_brandenburg.json"

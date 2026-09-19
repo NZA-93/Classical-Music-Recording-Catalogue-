@@ -6430,7 +6430,11 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": [
+        "handel/messiah/2",
+        "handel/messiah/1",
+        "handel/messiah/3"
+      ]
     },
     {
       "id": "handel/water_music",
@@ -6488,7 +6492,10 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": [
+        "handel/water_music/0",
+        "handel/water_music/2"
+      ]
     },
     {
       "id": "handel/fireworks",
@@ -6604,7 +6611,10 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": [
+        "handel/giulio_cesare/1",
+        "handel/giulio_cesare/0"
+      ]
     },
     {
       "id": "handel/alcina",

@@ -73,6 +73,10 @@ def identity_fact_strip(candidate: dict) -> dict | None:
 # Goldberg stays on ( /0, /1, /4 — seed.assessed excludes /3 Perahia ).
 # Brandenburg: /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967.
 # Holds /2 Abbado, /3 Britten, /5 Gardiner stay off the public cards.
+# Handel week-1: Messiah /2 Gardiner, /1 Mackerras, /3 Christie;
+# Water Music /0 Pinnock, /2 Harnoncourt; Giulio Cesare /1 Jacobs,
+# /0 Mackerras ENO. No invented MBIDs on this path (Mackerras Messiah
+# complete-set MBID may stay null).
 FIRST_SLICE_WORKS = frozenset({
     "bach/brandenburg",
     "bach/goldberg",
@@ -83,6 +87,9 @@ FIRST_SLICE_WORKS = frozenset({
     "bach/john",
     "bach/mass_b_minor",
     "bach/art_of_fugue",
+    "handel/messiah",
+    "handel/water_music",
+    "handel/giulio_cesare",
 })
 
 
