@@ -104,7 +104,7 @@ font-size:.85rem;max-width:44rem}
   side by side; empty fields stay blank. Community notes help authoring; they stay
   on a separate layer from the owner’s editorial voice. Citation tasks are listed
   in the tally only — not on identity rows.</p>
-  <div class="tally"><div><b>90</b><span>accept-eligible</span></div><div><b>194</b><span>needs review</span></div><div><b>108</b><span>wrong work</span></div><div><b>510</b><span>citation tasks</span></div><div><b>359</b><span>unharvested</span></div><div><b>11</b><span>session year</span></div><div><b>61</b><span>live/studio</span></div></div>
+  <div class="tally"><div><b>91</b><span>accept-eligible</span></div><div><b>193</b><span>needs review</span></div><div><b>108</b><span>wrong work</span></div><div><b>510</b><span>citation tasks</span></div><div><b>359</b><span>unharvested</span></div><div><b>11</b><span>session year</span></div><div><b>61</b><span>live/studio</span></div></div>
 </div>
 
 <div class="banner owner">
@@ -1721,7 +1721,7 @@ font-size:.85rem;max-width:44rem}
   <div>
     <p class="meta">handel/messiah/2 · pack ACCEPT_ELIGIBLE</p>
     <h3>George Frideric Handel — Messiah</h3>
-    <p>John Eliot Gardiner / English Baroque Soloists · Philips, 1982</p>
+    <p>John Eliot Gardiner / Monteverdi Choir; English Baroque Soloists · Philips, 1983</p>
     <span class="chip pending">pending</span>
     <span class="meta">accept eligible</span>
     
@@ -1741,9 +1741,31 @@ font-size:.85rem;max-width:44rem}
 
 <article class="row" data-bucket="accept_eligible" data-decision="pending">
   <div>
+    <p class="meta">handel/messiah/3 · pack ACCEPT_ELIGIBLE</p>
+    <h3>George Frideric Handel — Messiah</h3>
+    <p>William Christie / Les Arts Florissants · Harmonia Mundi, 1994</p>
+    <span class="chip pending">pending</span>
+    <span class="meta">accept eligible</span>
+    
+    
+  </div>
+  <div>
+    <p class="meta">MusicBrainz match (confidence, not a verdict)</p>
+    <p>Messiah · first 1994-07-01 · match 100</p>
+    
+    <p class="actions"><a href="https://musicbrainz.org/release-group/1b1ebbb5-6347-36af-898f-53c1db5937ac" rel="noopener">MusicBrainz</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
+      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=handel/messiah/3&target=handel/messiah/3">Add community comment</a>
+    </p>
+  </div>
+</article>
+
+<article class="row" data-bucket="accept_eligible" data-decision="pending">
+  <div>
     <p class="meta">handel/water_music/0 · pack ACCEPT_ELIGIBLE</p>
     <h3>George Frideric Handel — Water Music</h3>
-    <p>Trevor Pinnock / The English Concert · Archiv, 1983</p>
+    <p>Trevor Pinnock / The English Concert · Archiv Produktion, 1983</p>
     <span class="chip pending">pending</span>
     <span class="meta">accept eligible</span>
     
@@ -2156,12 +2178,12 @@ font-size:.85rem;max-width:44rem}
       
       
       <span class="shown"><span class="k">conductor</span> Charles Mackerras</span>
-      <span class="shown"><span class="k">orchestra</span> English Chamber Orchestra</span>
-      <span class="blank" title="payload absent — honest omit">soloists: —</span>
+      <span class="shown"><span class="k">orchestra</span> Ambrosian Singers; English Chamber Orchestra</span>
+      <span class="shown"><span class="k">soloists</span> Elizabeth Harwood; Janet Baker; Paul Esswood; Robert Tear; Raimund Herincx</span>
       
       <span class="shown"><span class="k">seed year (release proxy, not session)</span> 1967</span>
       
-      <span class="shown"><span class="k">label</span> EMI</span>
+      <span class="shown"><span class="k">label</span> EMI/HMV</span>
     </div>
     
     
@@ -9888,56 +9910,6 @@ font-size:.85rem;max-width:44rem}
 <article class="row identity-rich" data-bucket="needs_review"
   data-decision="pending">
   <div>
-    <p class="meta">handel/messiah/3 · pack NEEDS_REVIEW</p>
-    <h3>George Frideric Handel — Messiah</h3>
-    <span class="chip pending">pending</span>
-    <span class="meta">needs review</span>
-    <div class="why"><h4>Why it missed auto-accept</h4><ul><li>date off by 4 years (1990 vs 1994) <span class="fields">[seed.year,payload.mb_first_release,review_flags]</span></li></ul></div>
-    <ul class="criteria"><li><span class="chip pass">pass</span> same_work — seed work matches MB title (language/ordinal variants allowed)</li><li><span class="chip absent">absent</span> same_principal_artists — seed forces shown; MB artist-credit not in harvest payload — cannot verify match</li><li><span class="chip conflict">conflict</span> release_year_proxy — seed year 1990 ≠ MB first-release 1994 (release-year proxies, not session)</li><li><span class="chip absent">absent</span> not_excerpt_or_sampler — no excerpt/sampler field in payload — cannot confirm</li><li><span class="chip absent">absent</span> mbid_is_this_performance — release-group MBID present; release MBID and artist-credit absent — human must open MB</li></ul>
-    <p class="siblings">Remake siblings: <span class="blank">none in seed</span></p>
-    
-  </div>
-  <div>
-    
-    <div class="pair">
-      <p class="col-h">Seed</p>
-      <span class="shown"><span class="k">work</span> Messiah</span>
-      <span class="shown"><span class="k">catalogue</span> HWV 56</span>
-      
-      
-      <span class="shown"><span class="k">conductor</span> William Christie</span>
-      <span class="shown"><span class="k">orchestra</span> Les Arts Florissants</span>
-      <span class="blank" title="payload absent — honest omit">soloists: —</span>
-      
-      <span class="shown"><span class="k">seed year (release proxy, not session)</span> 1990s</span>
-      
-      <span class="shown"><span class="k">label</span> Erato</span>
-    </div>
-    
-    
-    <div class="pair">
-      <p class="col-h">MusicBrainz (harvest)</p>
-      <span class="shown"><span class="k">mb_title</span> Messiah</span>
-      
-      
-      
-      <span class="shown"><span class="k">first release (release proxy, not session)</span> 1994-07-01</span>
-      
-      <span class="shown"><span class="k">release-group MBID</span> 1b1ebbb5-6347-36af-898f-53c1db5937ac</span>
-      <span class="shown"><span class="k">match confidence (not a verdict)</span> 100</span>
-    </div>
-    
-    <p class="actions"><a href="https://musicbrainz.org/release-group/1b1ebbb5-6347-36af-898f-53c1db5937ac" rel="noopener">Open release-group</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/blob/main/proposals/review-decisions.json">Owner: decisions file</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/actions/workflows/review-apply.yml">Owner: Review apply</a>
-      <a href="https://github.com/NZA-93/Classical-Music-Recording-Catalogue-/issues/new?template=community-review-comment.yml&title=handel/messiah/3&target=handel/messiah/3">Add community comment</a>
-    </p>
-  </div>
-</article>
-
-<article class="row identity-rich" data-bucket="needs_review"
-  data-decision="pending">
-  <div>
     <p class="meta">handel/water_music/3 · pack NEEDS_REVIEW</p>
     <h3>George Frideric Handel — Water Music</h3>
     <span class="chip pending">pending</span>
@@ -13489,10 +13461,10 @@ font-size:.85rem;max-width:44rem}
   <div>
     <p class="meta">handel/water_music/2 · pack REJECT_WRONG_WORK</p>
     <h3>George Frideric Handel — Water Music</h3>
-    <p>Nikolaus Harnoncourt / Concentus Musicus Wien · Teldec, 1990s</p>
+    <p>Nikolaus Harnoncourt / Concentus Musicus Wien · Telefunken/Teldec, 1978</p>
     <span class="chip wrong">wrong work</span>
     <span class="meta">reject wrong work</span>
-    <p class="flags" style="color:var(--oxblood);font-size:.88rem">confidence 30 &lt; 80<br>wrong work: MusicBrainz &#x27;Music at the Court of Mannheim&#x27; does not match seed &#x27;Water Music&#x27;</p>
+    <p class="flags" style="color:var(--oxblood);font-size:.88rem">confidence 30 &lt; 80<br>date off by 14 years (1978 vs 1992)<br>wrong work: MusicBrainz &#x27;Music at the Court of Mannheim&#x27; does not match seed &#x27;Water Music&#x27;</p>
     
   </div>
   <div>

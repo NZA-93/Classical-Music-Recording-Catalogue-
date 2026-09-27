@@ -361,8 +361,13 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const pos=v=>((v-DOMAIN[0])/(DOMAIN[1]-DOMAIN[0]))*100;
 const CHIP={"preferred transfer":"good","sound and serviceable":"mid","pass if you can":"bad","not yet assessed":"none"};
 
+function coverReleaseId(ed){
+  /* cover_mbid is CAA art only and must not replace the identity MBID. */
+  return (ed && (ed.cover_mbid || ed.mbid)) || null;
+}
+
 function coverEdition(r){
-  const withMbid=(r.editions||[]).filter(e=>e.mbid);
+  const withMbid=(r.editions||[]).filter(e=>coverReleaseId(e));
   if(!withMbid.length) return null;
   const want=parseInt((String(r.published).match(/\d{4}/)||[])[0]||"",10);
   if(!want) return withMbid[0];
@@ -381,9 +386,10 @@ function plate(r){
     <span class="yr">${year}${ed?"":" · no front cover"}</span></div>`;
   if(!ed) return `<div><div class="plate empty">${fb}</div>
     <p class="plate-cap">No Cover Art Archive front yet</p></div>`;
-  const src=`https://coverartarchive.org/release/${ed.mbid}/front-500`;
+  const coverId=coverReleaseId(ed);
+  const src=`https://coverartarchive.org/release/${coverId}/front-500`;
   const img=`<img src="${src}"
-    srcset="https://coverartarchive.org/release/${ed.mbid}/front-250 250w, ${src} 500w"
+    srcset="https://coverartarchive.org/release/${coverId}/front-250 250w, ${src} 500w"
     sizes="200px" alt="Front cover — ${label}, ${year}" loading="lazy"
     onload="this.parentElement.classList.add('has-art')"
     onerror="this.remove()">`;

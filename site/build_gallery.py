@@ -165,8 +165,9 @@ const FLAT = C.works.flatMap(w => w.recordings.map(r => ({...r, _w: w})));
 const CHIP = {"preferred transfer":"c-good","sound and serviceable":"c-mid",
               "pass if you can":"c-bad","not yet assessed":"c-none"};
 const esc = s => String(s??"").replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const coverReleaseId = ed => (ed && (ed.cover_mbid || ed.mbid)) || null;
 const coverEdition = r => {
-  const withMbid = (r.editions||[]).filter(e=>e.mbid);
+  const withMbid = (r.editions||[]).filter(e=>coverReleaseId(e));
   if(!withMbid.length) return null;
   const want = parseInt((String(r.published).match(/\\d{4}/)||[])[0]||"",10);
   if(!want) return withMbid[0];
@@ -178,7 +179,8 @@ const coverEdition = r => {
 };
 const cover = r => {
   const e = coverEdition(r);
-  return e ? `https://coverartarchive.org/release/${e.mbid}/front-500` : null;
+  const id = coverReleaseId(e);
+  return id ? `https://coverartarchive.org/release/${id}/front-500` : null;
 };
 
 function art(r){
@@ -186,9 +188,10 @@ function art(r){
   const plate = `<div class="plate"><b>${esc(r.published.split(",")[0])}</b>
     <span class="lbl">${esc(r.published.split(",").pop().trim())}${ed?"":" · no cover"}</span></div>`;
   if(!ed) return plate;
-  const url = `https://coverartarchive.org/release/${ed.mbid}/front-500`;
+  const coverId = coverReleaseId(ed);
+  const url = `https://coverartarchive.org/release/${coverId}/front-500`;
   return `${plate}<img src="${url}"
-    srcset="https://coverartarchive.org/release/${ed.mbid}/front-250 250w, ${url} 500w"
+    srcset="https://coverartarchive.org/release/${coverId}/front-250 250w, ${url} 500w"
     sizes="188px" alt="" loading="lazy"
     onload="this.parentElement.classList.add('has-art')"
     onerror="this.remove()">`;

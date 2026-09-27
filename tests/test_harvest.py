@@ -739,9 +739,13 @@ class TestIdentityFactEnrich(unittest.TestCase):
             (ROOT / "proposals" / "proposals-20260809.json").read_text(encoding="utf-8")
         )
         buckets = rq.bucket_identity(rv.rows(props, seed))
-        self.assertEqual(len(buckets["accept_eligible"]), 90)
-        self.assertEqual(len(buckets["needs_review"]), 194)
+        # #25 signed set was 90 / 194 / 108. Handel week-1 locked
+        # messiah/3 Christie to Harmonia Mundi 1994 (was Erato / 1990s),
+        # which clears the stale date-off flag. Not a harvest swap.
+        self.assertEqual(len(buckets["accept_eligible"]), 91)
+        self.assertEqual(len(buckets["needs_review"]), 193)
         self.assertEqual(len(buckets["reject_wrong_work"]), 108)
+        self.assertIn("handel/messiah/3", {r["target"] for r in buckets["accept_eligible"]})
         targets_a = {r["target"] for r in buckets["accept_eligible"]}
         targets_w = {r["target"] for r in buckets["reject_wrong_work"]}
         self.assertNotIn("shostakovich/sym1/4", targets_a)
