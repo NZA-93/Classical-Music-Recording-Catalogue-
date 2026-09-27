@@ -1,4 +1,4 @@
-"""Morningstar matrix — schema, validate, 5×5 style-box UI, Critic scores.
+"""Morningstar matrix — schema, validate, derived 3×3 style-box UI, Critic scores.
 
 The fixture remains synthetic. Live matrix is Critic-signed on the assessed
 Bach set: Goldberg (3), Fournier, Podger concertos, both sonatas & partitas,
@@ -93,31 +93,70 @@ class TestMatrixOverallFormula(unittest.TestCase):
         self.assertNotIn('class="badge"', strip)
 
 
-def stylebox_grid_pos(interpretation: int, sound: int) -> tuple[int, int]:
-    """CSS grid (column, row) for the 5×5 box.
-
-    X = sound, left→right 1–5. Y = interpretation, bottom→top 1–5.
-    CSS row 1 is the top of the grid.
-    """
-    return sound, 6 - interpretation
-
-
 def stylebox_cell_index(interpretation: int, sound: int) -> int:
-    """0-based index when cells are emitted high-Y first, then sound 1→5."""
-    row_from_top = 5 - interpretation
-    return row_from_top * 5 + (sound - 1)
+    """0-based index when cells are emitted high band first, then sound band left→right."""
+    ib = val.matrix_band_index(interpretation)
+    sb = val.matrix_band_index(sound)
+    row_from_top = 2 - ib
+    return row_from_top * 3 + sb
 
 
-class TestStyleBoxMapping(unittest.TestCase):
-    def test_interpretation_5_sound_3_is_top_row_column_three(self):
-        self.assertEqual(stylebox_grid_pos(5, 3), (3, 1))
-        self.assertEqual(stylebox_cell_index(5, 3), 2)
+class TestMatrixBandMapping(unittest.TestCase):
+    def test_every_integer_lands_in_exactly_one_band(self):
+        for bands in (val.INTERPRETATION_BANDS, val.SOUND_BANDS):
+            covered = []
+            for lo, hi, _name in bands:
+                covered.extend(range(lo, hi + 1))
+            self.assertEqual(covered, [1, 2, 3, 4, 5])
+            for score in range(1, 6):
+                self.assertEqual(len(val.matrix_band_hits(score, bands)), 1)
+            for score in (0, 6, 4.5, True, "4", None):
+                self.assertEqual(val.matrix_band_hits(score, bands), [])
 
-    def test_corners(self):
-        self.assertEqual(stylebox_grid_pos(1, 1), (1, 5))
-        self.assertEqual(stylebox_grid_pos(1, 5), (5, 5))
-        self.assertEqual(stylebox_grid_pos(5, 1), (1, 1))
-        self.assertEqual(stylebox_grid_pos(5, 5), (5, 1))
+    def test_named_bands(self):
+        self.assertEqual(
+            [val.matrix_band(n, val.INTERPRETATION_BANDS) for n in range(1, 6)],
+            [
+                "Of historical interest",
+                "Of historical interest",
+                "Solid",
+                "Outstanding",
+                "Outstanding",
+            ],
+        )
+        self.assertEqual(
+            [val.matrix_band(n, val.SOUND_BANDS) for n in range(1, 6)],
+            ["Limited", "Limited", "Good", "Excellent", "Excellent"],
+        )
+        self.assertNotIn("Référence", [name for _lo, _hi, name in val.INTERPRETATION_BANDS])
+        self.assertNotIn("Référence", [name for _lo, _hi, name in val.SOUND_BANDS])
+        self.assertNotIn("Reference", [name for _lo, _hi, name in val.SOUND_BANDS])
+
+    def test_js_uses_the_same_partition(self):
+        fn = _fn(_tpl(), "matrixBandIndex(score)", "matrixOverall(m)")
+        self.assertIn("if(score<=2) return 0;", fn)
+        self.assertIn("if(score===3) return 1;", fn)
+        self.assertIn("return 2;", fn)
+        self.assertIn('const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"]', _tpl())
+        self.assertIn(
+            'const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"]',
+            _tpl(),
+        )
+
+    def test_interpretation_5_sound_3_is_top_row_middle_column(self):
+        """Sound 3 is the middle band; interpretation 5 is the top band."""
+        self.assertEqual(val.stylebox_grid_pos(5, 3), (2, 1))
+        self.assertEqual(stylebox_cell_index(5, 3), 1)
+
+    def test_corners_and_collapsed_neighbours(self):
+        self.assertEqual(val.stylebox_grid_pos(1, 1), (1, 3))
+        self.assertEqual(val.stylebox_grid_pos(1, 5), (3, 3))
+        self.assertEqual(val.stylebox_grid_pos(5, 1), (1, 1))
+        self.assertEqual(val.stylebox_grid_pos(5, 5), (3, 1))
+        # 1 and 2 share the low band; 4 and 5 share the high band.
+        self.assertEqual(val.stylebox_grid_pos(1, 1), val.stylebox_grid_pos(2, 2))
+        self.assertEqual(val.stylebox_grid_pos(4, 4), val.stylebox_grid_pos(5, 5))
+        self.assertEqual(val.stylebox_grid_pos(3, 3), (2, 2))
 
 
 class TestValidateMatrix(unittest.TestCase):
@@ -165,6 +204,16 @@ class TestValidateMatrix(unittest.TestCase):
             "interpretation": 4, "sound": 3, "overall": 3.6,
         })
         self.assertTrue(any("overall" in e for e in errs))
+
+    def test_rejects_stored_band_or_cell(self):
+        errs, _ = self._check(matrix={
+            "interpretation": 4, "sound": 5, "interpretation_band": "Outstanding",
+        })
+        self.assertTrue(any("interpretation_band" in e and "not stored" in e for e in errs))
+        errs, _ = self._check(matrix={
+            "interpretation": 4, "sound": 5, "cell": "Outstanding / Excellent",
+        })
+        self.assertTrue(any("cell" in e and "not stored" in e for e in errs))
 
     def test_rejects_bad_ledger_row(self):
         base = {"interpretation": 4, "sound": 3}
@@ -252,6 +301,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
                     self.assertEqual(mx["interpretation"], expected["interpretation"])
                     self.assertEqual(mx["sound"], expected["sound"])
                     self.assertNotIn("overall", mx)
+                    self.assertEqual(set(mx), {"interpretation", "sound", "ledger"})
                     self.assertEqual(len(mx["ledger"]), expected["ledger"])
                     self.assertEqual(ent["date"], expected.get("date", "2026-09-08"))
                     self.assertEqual(ent["revision"], expected.get("revision", 4))
@@ -294,8 +344,9 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertIn("Interpretation", strip)
         self.assertIn("Sound", strip)
         self.assertIn("class=\"stylebox\"", strip)
-        self.assertIn("grid-column:${x}", strip)
-        self.assertIn("grid-row:${6-y}", strip)
+        self.assertIn("grid-column:${col}", strip)
+        self.assertIn("grid-row:${row}", strip)
+        self.assertIn("repeat(3,1fr)", html)
         self.assertIn("The 1955 Goldberg is still the shock", html)
         self.assertIn(">References<", html)
         cello = next(w for w in merged["works"] if w["id"] == "bach/cello_suites")
@@ -305,7 +356,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(fournier["id"], "bach/cello_suites/1")
         self.assertEqual(fournier["editorial"]["matrix"]["interpretation"], 5)
         self.assertEqual(fournier["editorial"]["matrix"]["sound"], 3)
-        self.assertEqual(stylebox_grid_pos(5, 3), (3, 1))
+        self.assertEqual(val.stylebox_grid_pos(5, 3), (2, 1))
         vc = next(w for w in merged["works"] if w["id"] == "bach/violin_concertos")
         vc_html = _html_for(vc, merged)
         vc_cat = _embedded_catalogue(vc_html)
@@ -335,7 +386,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(pinnock["editorial"]["matrix"]["interpretation"], 5)
         self.assertEqual(pinnock["editorial"]["matrix"]["sound"], 4)
         self.assertTrue(pinnock["editorial"]["reference"])
-        self.assertEqual(stylebox_grid_pos(5, 4), (4, 1))
+        self.assertEqual(val.stylebox_grid_pos(5, 4), (3, 1))
 
     def test_handel_week1_cards_show_interpretation_and_sound(self):
         merged = ident.merge_identity_works(
@@ -355,7 +406,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(gardiner["editorial"]["matrix"]["interpretation"], 5)
         self.assertEqual(gardiner["editorial"]["matrix"]["sound"], 4)
         self.assertTrue(gardiner["editorial"]["reference"])
-        self.assertEqual(stylebox_grid_pos(5, 4), (4, 1))
+        self.assertEqual(val.stylebox_grid_pos(5, 4), (3, 1))
         water = next(w for w in merged["works"] if w["id"] == "handel/water_music")
         water_html = _html_for(water, merged)
         water_cat = _embedded_catalogue(water_html)
@@ -366,7 +417,7 @@ class TestLiveCriticMatrix(unittest.TestCase):
         self.assertEqual(pinnock["editorial"]["matrix"]["interpretation"], 5)
         self.assertEqual(pinnock["editorial"]["matrix"]["sound"], 5)
         self.assertTrue(pinnock["editorial"]["reference"])
-        self.assertEqual(stylebox_grid_pos(5, 5), (5, 1))
+        self.assertEqual(val.stylebox_grid_pos(5, 5), (3, 1))
         cesare = next(w for w in merged["works"] if w["id"] == "handel/giulio_cesare")
         cesare_html = _html_for(cesare, merged)
         cesare_cat = _embedded_catalogue(cesare_html)
@@ -486,11 +537,14 @@ class TestMatrixCardRender(unittest.TestCase):
         self.assertIn(">References<", html)
         self.assertIn("class=\"matrix\"", strip)
         self.assertIn("class=\"stylebox\"", strip)
-        self.assertIn("Interpretation ${esc(i)} · Sound ${esc(s)}", strip)
+        self.assertIn("Interpretation: ${esc(iName)} · Sound: ${esc(sName)}", strip)
         self.assertNotIn("Overall", strip)
+        self.assertIn("Interpretation ${esc(m.interpretation)}", how)
+        self.assertIn("Sound ${esc(m.sound)}", how)
+        self.assertIn("[1,2,3,4,5]", how)
 
     def test_fixture_5_3_places_filled_cell_at_grid_position(self):
-        """Interpretation 5, Sound 3 → column 3, CSS row 1 (top)."""
+        """Interpretation 5, Sound 3 → middle column, CSS row 1 (top band)."""
         entry = _fixture_entry()
         entry["matrix"]["interpretation"] = 5
         entry["matrix"]["sound"] = 3
@@ -499,51 +553,62 @@ class TestMatrixCardRender(unittest.TestCase):
         matrix = cat["works"][0]["recordings"][0]["editorial"]["matrix"]
         self.assertEqual(matrix["interpretation"], 5)
         self.assertEqual(matrix["sound"], 3)
-        col, row = stylebox_grid_pos(5, 3)
-        self.assertEqual((col, row), (3, 1))
-        self.assertEqual(stylebox_cell_index(5, 3), 2)
+        self.assertNotIn("cell", matrix)
+        col, row = val.stylebox_grid_pos(5, 3)
+        self.assertEqual((col, row), (2, 1))
+        self.assertEqual(stylebox_cell_index(5, 3), 1)
         strip = _fn(html, "matrixStrip(m)", "howScored(m)")
-        self.assertIn("for(let y=5;y>=1;y--)", strip)
-        self.assertIn("for(let x=1;x<=5;x++)", strip)
-        self.assertIn("x===s && y===i", strip)
-        self.assertIn("grid-column:${x}", strip)
-        self.assertIn("grid-row:${6-y}", strip)
-        self.assertIn('data-sound="${x}"', strip)
-        self.assertIn('data-interpretation="${y}"', strip)
+        self.assertIn("for(let y=2;y>=0;y--)", strip)
+        self.assertIn("for(let x=0;x<=2;x++)", strip)
+        self.assertIn("x===sb && y===ib", strip)
+        self.assertIn("grid-column:${col}", strip)
+        self.assertIn("grid-row:${row}", strip)
+        self.assertIn('data-sound-band="${col}"', strip)
+        self.assertIn('data-interpretation-band="${y+1}"', strip)
         self.assertIn('class="cell${filled?" filled":""}"', strip)
-        self.assertIn("Interpretation ${esc(i)} · Sound ${esc(s)}", strip)
+        self.assertIn("Interpretation: ${esc(iName)} · Sound: ${esc(sName)}", strip)
         self.assertIn("Filled cell:", strip)
+        self.assertIn("repeat(3,1fr)", html)
 
-    def test_caption_keeps_integer_pair(self):
+    def test_caption_uses_band_names_integers_stay_in_the_expand(self):
         html = self._page(_fixture_entry())
         strip = _fn(html, "matrixStrip(m)", "howScored(m)")
+        how = _fn(html, "howScored(m)", "signed(r)")
         self.assertIn("matrix-cap", strip)
-        self.assertIn("Interpretation ${esc(i)} · Sound ${esc(s)}", strip)
+        self.assertIn("Interpretation: ${esc(iName)} · Sound: ${esc(sName)}", strip)
+        self.assertNotIn("Interpretation ${esc(i)} · Sound ${esc(s)}", strip)
+        self.assertIn("Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}", how)
+        self.assertIn("matrixBandIndex", how)
         cat = _embedded_catalogue(html)
         mx = cat["works"][0]["recordings"][0]["editorial"]["matrix"]
         self.assertEqual(mx["interpretation"], 4)
         self.assertEqual(mx["sound"], 3)
+        self.assertEqual(set(mx), {"interpretation", "sound", "ledger"})
+        self.assertEqual(val.matrix_band(4, val.INTERPRETATION_BANDS), "Outstanding")
+        self.assertEqual(val.matrix_band(3, val.SOUND_BANDS), "Good")
 
-    def test_sound_axis_uses_reference_not_reference_flag(self):
+    def test_band_names_are_not_the_reference_flag(self):
         tpl = _tpl()
-        self.assertIn('const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"]', tpl)
-        self.assertIn('const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"]', tpl)
+        self.assertIn('const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"]', tpl)
+        self.assertIn(
+            'const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"]',
+            tpl,
+        )
+        self.assertNotIn("Hard listen", tpl)
+        self.assertNotIn("Landmark", tpl)
         strip = _fn(tpl, "matrixStrip(m)", "howScored(m)")
         how = _fn(tpl, "howScored(m)", "signed(r)")
         self.assertNotIn("Référence", strip)
         self.assertNotIn("Référence", how)
-        self.assertIn("MATRIX_SOUND[0]", strip)
-        self.assertIn("MATRIX_SOUND[4]", strip)
-        self.assertIn("MATRIX_INTERP[0]", strip)
-        self.assertIn("MATRIX_INTERP[4]", strip)
-        self.assertNotIn("MATRIX_SOUND[1]", strip)
-        self.assertNotIn("MATRIX_SOUND[2]", strip)
-        self.assertNotIn("MATRIX_SOUND[3]", strip)
-        self.assertNotIn("MATRIX_INTERP[1]", strip)
-        self.assertNotIn("MATRIX_INTERP[2]", strip)
-        self.assertNotIn("MATRIX_INTERP[3]", strip)
-        self.assertIn("MATRIX_SOUND.map", how)
-        self.assertIn("MATRIX_INTERP.map", how)
+        self.assertIn("MATRIX_SOUND_BANDS[0]", strip)
+        self.assertIn("MATRIX_SOUND_BANDS[2]", strip)
+        self.assertIn("MATRIX_INTERP_BANDS[0]", strip)
+        self.assertIn("MATRIX_INTERP_BANDS[2]", strip)
+        self.assertNotIn("MATRIX_SOUND_BANDS[1]", strip)
+        self.assertNotIn("MATRIX_INTERP_BANDS[1]", strip)
+        self.assertIn("[1,2,3,4,5]", how)
+        self.assertIn("m.interpretation", how)
+        self.assertIn("m.sound", how)
         signed = _fn(tpl, "signed(r)", "factStrip(r)")
         self.assertIn("Référence", signed)
 
@@ -586,6 +651,21 @@ class TestMatrixCardRender(unittest.TestCase):
             cat["works"][0]["recordings"][0]["editorial"]["matrix"]["interpretation"],
             4,
         )
+
+    def test_engine_assessed_without_critic_matrix_stays_unscored(self):
+        """Puccini and Shostakovich are assessed by the aggregate. No cell is invented."""
+        cat = json.loads((ROOT / "build" / "catalogue.json").read_text(encoding="utf-8"))
+        tosca = next(w for w in cat["works"] if w["id"] == "puccini_tosca")
+        shos = next(w for w in cat["works"] if w["id"] == "shostakovich/sym5")
+        self.assertEqual(len(tosca["recordings"]), 2)
+        self.assertEqual(len(shos["recordings"]), 3)
+        for rec in tosca["recordings"] + shos["recordings"]:
+            self.assertTrue(rec.get("editorial") in (None, {}))
+            self.assertNotIn("matrix", rec.get("editorial") or {})
+        empty = json.loads(
+            (ROOT / "data" / "editorial" / "shostakovich_sym5.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(empty.get("entries"), [])
 
 
 class TestRegressionAnchorsUntouched(unittest.TestCase):

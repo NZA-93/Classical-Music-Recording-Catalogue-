@@ -23,7 +23,11 @@ proposes; a human still merges.
   ADR-003-bounded quotes, and optional `matrix` (interpretation 1–5, sound 1–5,
   evidence ledger). Axis integers are Critic judgements; they are not computed
   from the ledger. Overall (`0.6×I + 0.4×S`, one decimal) is expand-only and
-  is never stored.
+  is never stored. The work-page card derives a 3×3 cell from those integers
+  at render (ADR-005) and does not store it. Bands: Interpretation 1–2 Of
+  historical interest, 3 Solid, 4–5 Outstanding; Sound 1–2 Limited, 3 Good,
+  4–5 Excellent. Référence is the signed flag, not a cell. A recording with
+  no matrix integers gets no style box.
 - Author a scout pool (ADR-004): identity lock, ordinal rank, stance,
   why-in / why-out, status. Never stars, Référence, matrix or Dictionnaire
   `text` on that file. `promoted-to-cut` records an already-assessed row;

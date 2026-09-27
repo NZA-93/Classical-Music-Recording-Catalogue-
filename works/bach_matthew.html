@@ -159,9 +159,9 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar 5×5: Sound →, Interpretation ↑. One filled cell. No overall on the card. */
-  .signed .matrix{margin:1.1rem 0 0;width:min(48vw,11.75rem)}
-  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch}
+  /* Critic Morningstar 3×3: sound band →, interpretation band ↑. One filled cell. Derived, not stored. */
+  .signed .matrix{margin:1.1rem 0 0;width:max-content;max-width:100%}
+  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch;width:min(52vw,12.5rem)}
   .signed .stylebox .ylab{
     writing-mode:vertical-rl;transform:rotate(180deg);
     font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
@@ -172,9 +172,9 @@
     font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
     color:var(--ink-soft);line-height:1.2}
   .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
-  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem}
+  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem;max-width:12.5rem}
   .signed .stylebox .grid{
-    display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
     aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
   .signed .stylebox .cell.filled{background:var(--ink)}
@@ -296,7 +296,8 @@
     .plate-cap{max-width:152px}
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
-    .signed .matrix{width:48vw;max-width:11.75rem;min-width:9.25rem}
+    .signed .matrix{width:100%;max-width:100%}
+    .signed .stylebox{width:min(56vw,12.5rem);min-width:9.25rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -352,7 +353,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-19", "works": [{"id": "bach/matthew", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "St Matthew Passion", "cat": "BWV 244 · 1727", "standfirst": "Double choir and orchestra; the largest question of scale in Bach.", "recordings": [{"id": "bach/matthew/0", "work": "bach/matthew", "card": "identity", "soloists": "", "director": "Otto Klemperer", "ensemble": "Philharmonia", "published": "EMI, 1961", "editions": [{"id": "0_preferred", "label": "Columbia / EMI", "year": "1962", "format": "5×LP / 3×CD", "mbid": "4da77bb8-262f-4aa6-84f5-f574118b6b2b", "verified": true, "release_group_mbid": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e"}], "fact_strip": {"director": "Otto Klemperer", "ensemble": "Philharmonia Orchestra and Chorus", "soloists": "Pears; Fischer-Dieskau; Schwarzkopf; Ludwig; Gedda; Berry", "label": "Columbia / EMI", "year": 1961, "published": "1962", "venue": "Abbey Road Studio No. 1 and Kingsway Hall, London", "sessions": "November 1960 – November 1961", "format": "5×LP / 3×CD"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/matthew/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": false, "compared_with": ["bach/matthew/1"], "text": "Klemperer’s Philharmonia Matthew Passion is the monumental modern studio reading: slow from the first chorus, star opera and lieder cast, large choir with boys’ ripieno. Against Gardiner’s period Archiv set it is the opposite stance — opera-house weight rather than workshop clarity. Tempo remains contested; the cast still justifies the disc. The modern monument, not the Référence on this cut.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Matthäus-Passion BWV 244 conducted by Otto Klemperer", "url": "https://www.bach-cantatas.com/Vocal/BWV244-Klemperer.htm", "kind": "discography"}, {"title": "MusicBrainz release — Matthäus-Passion (Klemperer / Philharmonia, EMI ZDMC 7 63058 2)", "url": "https://musicbrainz.org/release/4da77bb8-262f-4aa6-84f5-f574118b6b2b", "kind": "discography"}, {"title": "MusicBrainz release group — St. Matthew Passion (Klemperer / Philharmonia)", "url": "https://musicbrainz.org/release-group/be359f8c-1a2a-3a3d-be77-787acb6bdb5e", "kind": "discography"}, {"title": "Discogs master 683476 — St. Matthew Passion (Klemperer / Philharmonia)", "url": "https://www.discogs.com/master/683476", "kind": "discography"}, {"title": "Classite — Performance Passio secundum Matthaeum (Klemperer 1960–61)", "url": "https://classite.com/composition/Johann-Sebastian-Bach_Passio-secundum-Matthaeum-c94938/performance/20484", "kind": "reference"}, {"title": "Recording Academy — Best Choral Performance, 5th Annual Grammy Awards (1963)", "url": "https://www.grammy.com/awards/categories/best-choral-performance/1963/", "kind": "award"}, {"title": "Grammy.com — Otto Klemperer artist awards", "url": "https://www.grammy.com/artists/otto-klemperer/12117/", "kind": "award"}, {"title": "MusicWeb International — Terry Barfoot on EMI CMS 5 67538 2", "url": "https://www.musicweb-international.com/classrev/2001/Apr01/BachMatthew.htm", "kind": "review"}], "matrix": {"interpretation": 4, "sound": 3, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Recording Academy — Best Choral Performance, 5th Annual Grammy Awards (1963)", "url": "https://www.grammy.com/awards/categories/best-choral-performance/1963/", "note": "Monumental modern studio Passion; cast still justifies the contested tempo."}, {"axis": "sound", "tier": "A", "title": "MusicBrainz release — Matthäus-Passion (Klemperer / Philharmonia, EMI ZDMC 7 63058 2)", "url": "https://musicbrainz.org/release/4da77bb8-262f-4aa6-84f5-f574118b6b2b", "note": "Early-sixties EMI/Columbia — serviceable to clean; not a modern audiophile summit."}]}}, "divergence": null, "on_this_disc": []}, {"id": "bach/matthew/1", "work": "bach/matthew", "card": "identity", "soloists": "", "director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists", "published": "Archiv, 1988", "editions": [{"id": "1_preferred", "label": "Archiv Produktion", "year": "1989", "catno": "427 648-2", "format": "3×CD", "mbid": "51d08afb-0d81-4617-8c33-979806910ddf", "verified": true, "release_group_mbid": "2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1"}], "fact_strip": {"director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists; Monteverdi Choir", "label": "Archiv Produktion", "year": 1988, "published": "1989", "venue": "Snape Maltings, Aldeburgh", "sessions": "April 1988", "format": "3×CD", "catno": "427 648-2", "producer": "Karl-August Naegler", "engineer": "Ulrich Vette"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/matthew/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": true, "compared_with": ["bach/matthew/0"], "text": "Gardiner’s 1988 Archiv Matthew Passion restored the work to period instruments and a tighter drama after the large modern monuments. The Monteverdi Choir and English Baroque Soloists play with theatrical sense; Rolfe Johnson and Schmidt hold the narrative clean. Against Klemperer’s Philharmonia epic it is the other stance — workshop clarity rather than opera-house weight. Référence for the HIP studio side: start here if that is the approach you want.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Matthäus-Passion BWV 244 conducted by John Eliot Gardiner", "url": "https://bach-cantatas.com/Vocal/BWV244-Gardiner.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — Complete Recordings 1980–1989 (entry 25) / Gardiner Rec5", "url": "https://www.bach-cantatas.com/Vocal/BWV244-Rec5.htm", "kind": "discography"}, {"title": "MusicBrainz release — St. Matthew Passion (Gardiner / EBS / Monteverdi Choir)", "url": "https://musicbrainz.org/release/51d08afb-0d81-4617-8c33-979806910ddf", "kind": "discography"}, {"title": "MusicBrainz release group — St. Matthew Passion (Gardiner)", "url": "https://musicbrainz.org/release-group/2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1", "kind": "discography"}, {"title": "Deutsche Grammophon — J.S. BACH St. Matthew Passion / Gardiner", "url": "https://www.deutschegrammophon.com/en/catalogue/products/j-s-bach-st-matthew-passion-gardiner-12271", "kind": "label"}, {"title": "Presto Music — Bach St Matthew Passion, DG Archiv 4276482", "url": "https://www.prestomusic.com/classical/products/7924616--bach-j-s-st-matthew-passion-bwv244", "kind": "discography"}, {"title": "University of Notre Dame library — St. Matthew Passion = Archiv 427 648-2", "url": "https://findit.library.nd.edu/Record/000851113/Description", "kind": "reference"}, {"title": "Gramophone — Bach St Matthew Passion (Gardiner / Archiv)", "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19", "kind": "review"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Gramophone — Bach St Matthew Passion (Gardiner / Archiv)", "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19", "note": "Period-instrument Archiv Passion with theatrical sense; HIP studio landmark."}, {"axis": "sound", "tier": "A", "title": "MusicBrainz release — St. Matthew Passion (Gardiner / EBS / Monteverdi Choir)", "url": "https://musicbrainz.org/release/51d08afb-0d81-4617-8c33-979806910ddf", "note": "Snape Maltings Archiv — clear workshop balance, excellent digital-era capture."}]}}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-27", "works": [{"id": "bach/matthew", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "St Matthew Passion", "cat": "BWV 244 · 1727", "standfirst": "Double choir and orchestra; the largest question of scale in Bach.", "recordings": [{"id": "bach/matthew/0", "work": "bach/matthew", "card": "identity", "soloists": "", "director": "Otto Klemperer", "ensemble": "Philharmonia", "published": "EMI, 1961", "editions": [{"id": "0_preferred", "label": "Columbia / EMI", "year": "1962", "format": "5×LP / 3×CD", "mbid": "4da77bb8-262f-4aa6-84f5-f574118b6b2b", "verified": true, "release_group_mbid": "be359f8c-1a2a-3a3d-be77-787acb6bdb5e"}], "fact_strip": {"director": "Otto Klemperer", "ensemble": "Philharmonia Orchestra and Chorus", "soloists": "Pears; Fischer-Dieskau; Schwarzkopf; Ludwig; Gedda; Berry", "label": "Columbia / EMI", "year": 1961, "published": "1962", "venue": "Abbey Road Studio No. 1 and Kingsway Hall, London", "sessions": "November 1960 – November 1961", "format": "5×LP / 3×CD"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/matthew/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": false, "compared_with": ["bach/matthew/1"], "text": "Klemperer’s Philharmonia Matthew Passion is the monumental modern studio reading: slow from the first chorus, star opera and lieder cast, large choir with boys’ ripieno. Against Gardiner’s period Archiv set it is the opposite stance — opera-house weight rather than workshop clarity. Tempo remains contested; the cast still justifies the disc. The modern monument, not the Référence on this cut.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Matthäus-Passion BWV 244 conducted by Otto Klemperer", "url": "https://www.bach-cantatas.com/Vocal/BWV244-Klemperer.htm", "kind": "discography"}, {"title": "MusicBrainz release — Matthäus-Passion (Klemperer / Philharmonia, EMI ZDMC 7 63058 2)", "url": "https://musicbrainz.org/release/4da77bb8-262f-4aa6-84f5-f574118b6b2b", "kind": "discography"}, {"title": "MusicBrainz release group — St. Matthew Passion (Klemperer / Philharmonia)", "url": "https://musicbrainz.org/release-group/be359f8c-1a2a-3a3d-be77-787acb6bdb5e", "kind": "discography"}, {"title": "Discogs master 683476 — St. Matthew Passion (Klemperer / Philharmonia)", "url": "https://www.discogs.com/master/683476", "kind": "discography"}, {"title": "Classite — Performance Passio secundum Matthaeum (Klemperer 1960–61)", "url": "https://classite.com/composition/Johann-Sebastian-Bach_Passio-secundum-Matthaeum-c94938/performance/20484", "kind": "reference"}, {"title": "Recording Academy — Best Choral Performance, 5th Annual Grammy Awards (1963)", "url": "https://www.grammy.com/awards/categories/best-choral-performance/1963/", "kind": "award"}, {"title": "Grammy.com — Otto Klemperer artist awards", "url": "https://www.grammy.com/artists/otto-klemperer/12117/", "kind": "award"}, {"title": "MusicWeb International — Terry Barfoot on EMI CMS 5 67538 2", "url": "https://www.musicweb-international.com/classrev/2001/Apr01/BachMatthew.htm", "kind": "review"}], "matrix": {"interpretation": 4, "sound": 3, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Recording Academy — Best Choral Performance, 5th Annual Grammy Awards (1963)", "url": "https://www.grammy.com/awards/categories/best-choral-performance/1963/", "note": "Monumental modern studio Passion; cast still justifies the contested tempo."}, {"axis": "sound", "tier": "A", "title": "MusicBrainz release — Matthäus-Passion (Klemperer / Philharmonia, EMI ZDMC 7 63058 2)", "url": "https://musicbrainz.org/release/4da77bb8-262f-4aa6-84f5-f574118b6b2b", "note": "Early-sixties EMI/Columbia — serviceable to clean; not a modern audiophile summit."}]}}, "divergence": null, "on_this_disc": []}, {"id": "bach/matthew/1", "work": "bach/matthew", "card": "identity", "soloists": "", "director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists", "published": "Archiv, 1988", "editions": [{"id": "1_preferred", "label": "Archiv Produktion", "year": "1989", "catno": "427 648-2", "format": "3×CD", "mbid": "51d08afb-0d81-4617-8c33-979806910ddf", "verified": true, "release_group_mbid": "2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1"}], "fact_strip": {"director": "John Eliot Gardiner", "ensemble": "English Baroque Soloists; Monteverdi Choir", "label": "Archiv Produktion", "year": 1988, "published": "1989", "venue": "Snape Maltings, Aldeburgh", "sessions": "April 1988", "format": "3×CD", "catno": "427 648-2", "producer": "Karl-August Naegler", "engineer": "Ulrich Vette"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/matthew/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": true, "compared_with": ["bach/matthew/0"], "text": "Gardiner’s 1988 Archiv Matthew Passion restored the work to period instruments and a tighter drama after the large modern monuments. The Monteverdi Choir and English Baroque Soloists play with theatrical sense; Rolfe Johnson and Schmidt hold the narrative clean. Against Klemperer’s Philharmonia epic it is the other stance — workshop clarity rather than opera-house weight. Référence for the HIP studio side: start here if that is the approach you want.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — Matthäus-Passion BWV 244 conducted by John Eliot Gardiner", "url": "https://bach-cantatas.com/Vocal/BWV244-Gardiner.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — Complete Recordings 1980–1989 (entry 25) / Gardiner Rec5", "url": "https://www.bach-cantatas.com/Vocal/BWV244-Rec5.htm", "kind": "discography"}, {"title": "MusicBrainz release — St. Matthew Passion (Gardiner / EBS / Monteverdi Choir)", "url": "https://musicbrainz.org/release/51d08afb-0d81-4617-8c33-979806910ddf", "kind": "discography"}, {"title": "MusicBrainz release group — St. Matthew Passion (Gardiner)", "url": "https://musicbrainz.org/release-group/2c5d82cb-ccab-3011-9b4a-84a8f98cf2f1", "kind": "discography"}, {"title": "Deutsche Grammophon — J.S. BACH St. Matthew Passion / Gardiner", "url": "https://www.deutschegrammophon.com/en/catalogue/products/j-s-bach-st-matthew-passion-gardiner-12271", "kind": "label"}, {"title": "Presto Music — Bach St Matthew Passion, DG Archiv 4276482", "url": "https://www.prestomusic.com/classical/products/7924616--bach-j-s-st-matthew-passion-bwv244", "kind": "discography"}, {"title": "University of Notre Dame library — St. Matthew Passion = Archiv 427 648-2", "url": "https://findit.library.nd.edu/Record/000851113/Description", "kind": "reference"}, {"title": "Gramophone — Bach St Matthew Passion (Gardiner / Archiv)", "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19", "kind": "review"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Gramophone — Bach St Matthew Passion (Gardiner / Archiv)", "url": "https://www.gramophone.co.uk/reviews/bach-st-matthew-passion-19", "note": "Period-instrument Archiv Passion with theatrical sense; HIP studio landmark."}, {"axis": "sound", "tier": "A", "title": "MusicBrainz release — St. Matthew Passion (Gardiner / EBS / Monteverdi Choir)", "url": "https://musicbrainz.org/release/51d08afb-0d81-4617-8c33-979806910ddf", "note": "Snape Maltings Archiv — clear workshop balance, excellent digital-era capture."}]}}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -555,9 +556,17 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
-/* Band names: ticks / How scored only. Face shows axis ends. Sound 5 is English Reference, never Référence. */
-const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"];
-const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"];
+/* 3×3 bands derived from stored 1–5 integers. Never written back onto the entry.
+   Face shows the band ends. Référence is the signed flag, not a band and not a cell. */
+const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"];
+const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"];
+
+function matrixBandIndex(score){
+  /* 1–2 → 0, 3 → 1, 4–5 → 2. Each integer lands in exactly one band. */
+  if(score<=2) return 0;
+  if(score===3) return 1;
+  return 2;
+}
 
 function matrixOverall(m){
   /* Expand only. Never on the card face. Never stored on the entry. */
@@ -565,36 +574,39 @@ function matrixOverall(m){
 }
 
 function matrixStrip(m){
-  /* 5×5 style box under signed prose. X = sound 1→5 left→right; Y = interpretation 1→5 bottom→top. */
+  /* 3×3 style box under signed prose. X = sound band left→right; Y = interpretation band bottom→top. */
   if(!m) return "";
   const i=m.interpretation, s=m.sound;
+  const ib=matrixBandIndex(i), sb=matrixBandIndex(s);
+  const iName=MATRIX_INTERP_BANDS[ib], sName=MATRIX_SOUND_BANDS[sb];
   let cells="";
-  for(let y=5;y>=1;y--){
-    for(let x=1;x<=5;x++){
-      const filled=(x===s && y===i);
+  for(let y=2;y>=0;y--){
+    for(let x=0;x<=2;x++){
+      const filled=(x===sb && y===ib);
+      const col=x+1, row=3-y;
       const aria=filled
-        ?` aria-label="Filled cell: Interpretation ${esc(i)} ${MATRIX_INTERP[i-1]}, Sound ${esc(s)} ${MATRIX_SOUND[s-1]}"`
+        ?` aria-label="Filled cell: Interpretation: ${esc(iName)} (${esc(i)}), Sound: ${esc(sName)} (${esc(s)})"`
         :` aria-hidden="true"`;
-      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound="${x}" data-interpretation="${y}" style="grid-column:${x};grid-row:${6-y}"${aria}></span>`;
+      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound-band="${col}" data-interpretation-band="${y+1}" style="grid-column:${col};grid-row:${row}"${aria}></span>`;
     }
   }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
     <div class="stylebox">
       <span class="ylab" aria-hidden="true">Interpretation</span>
       <div class="plot">
-        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP[4]}</span>
-        <div class="grid" role="grid" aria-label="Sound axis, Hard listen to Reference, left to right. Interpretation axis, Documentary to Landmark, bottom to top.">
+        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP_BANDS[2]}</span>
+        <div class="grid" role="grid" aria-label="Sound axis, Limited to Excellent, left to right. Interpretation axis, Of historical interest to Outstanding, bottom to top.">
           ${cells}
         </div>
-        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP[0]}</span>
+        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP_BANDS[0]}</span>
         <div class="xaxis">
-          <span class="x-end">${MATRIX_SOUND[0]}</span>
+          <span class="x-end">${MATRIX_SOUND_BANDS[0]}</span>
           <span class="xlab">Sound</span>
-          <span class="x-end">${MATRIX_SOUND[4]}</span>
+          <span class="x-end">${MATRIX_SOUND_BANDS[2]}</span>
         </div>
       </div>
     </div>
-    <p class="matrix-cap">Interpretation ${esc(i)} · Sound ${esc(s)}</p>
+    <p class="matrix-cap">Interpretation: ${esc(iName)} · Sound: ${esc(sName)}</p>
   </div>`;
 }
 
@@ -616,11 +628,12 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
-  const interpTicks=MATRIX_INTERP.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
-  const soundTicks=MATRIX_SOUND.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
+  const interpTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_INTERP_BANDS[matrixBandIndex(n)]}`).join(" · ");
+  const soundTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_SOUND_BANDS[matrixBandIndex(n)]}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
-    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
+    <p class="ticks"><span class="k">This recording</span>Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}</p>
     <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
     <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>

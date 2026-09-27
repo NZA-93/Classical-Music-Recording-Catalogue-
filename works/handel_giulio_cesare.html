@@ -159,9 +159,9 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar 5×5: Sound →, Interpretation ↑. One filled cell. No overall on the card. */
-  .signed .matrix{margin:1.1rem 0 0;width:min(48vw,11.75rem)}
-  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch}
+  /* Critic Morningstar 3×3: sound band →, interpretation band ↑. One filled cell. Derived, not stored. */
+  .signed .matrix{margin:1.1rem 0 0;width:max-content;max-width:100%}
+  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch;width:min(52vw,12.5rem)}
   .signed .stylebox .ylab{
     writing-mode:vertical-rl;transform:rotate(180deg);
     font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
@@ -172,9 +172,9 @@
     font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
     color:var(--ink-soft);line-height:1.2}
   .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
-  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem}
+  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem;max-width:12.5rem}
   .signed .stylebox .grid{
-    display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
     aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
   .signed .stylebox .cell.filled{background:var(--ink)}
@@ -296,7 +296,8 @@
     .plate-cap{max-width:152px}
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
-    .signed .matrix{width:48vw;max-width:11.75rem;min-width:9.25rem}
+    .signed .matrix{width:100%;max-width:100%}
+    .signed .stylebox{width:min(56vw,12.5rem);min-width:9.25rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -352,7 +353,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-19", "works": [{"id": "handel/giulio_cesare", "composer_id": "handel", "composer": "George Frideric Handel", "dates": "1685–1759", "title": "Giulio Cesare", "cat": "HWV 17 · 1724", "standfirst": "Opera seria for the Royal Academy.", "recordings": [{"id": "handel/giulio_cesare/1", "work": "handel/giulio_cesare", "card": "identity", "soloists": "Jennifer Larmore; Barbara Schlick; Bernarda Fink; Marianne Rørholm; Derek Lee Ragin; Furio Zanasi; Dominique Visse; Olivier Lallouette", "director": "René Jacobs", "ensemble": "Concerto Köln", "published": "Harmonia Mundi, 1991", "editions": [{"id": "1_preferred", "label": "Harmonia Mundi", "year": "1991", "catno": "HMC 901385.87", "format": "4×CD", "mbid": "f52d0506-c1e1-4f99-9402-fda14908143c", "verified": true}], "fact_strip": {"soloists": "Jennifer Larmore; Barbara Schlick; Bernarda Fink; Marianne Rørholm; Derek Lee Ragin; Furio Zanasi; Dominique Visse; Olivier Lallouette", "director": "René Jacobs", "ensemble": "Concerto Köln", "label": "Harmonia Mundi", "year": 1991, "published": "1991", "venue": "Cologne", "sessions": "July 1991", "format": "4×CD", "catno": "HMC 901385.87", "contents_note": "Italian complete. Cologne July 1991."}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "handel/giulio_cesare/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-19", "revision": 1, "stars": 3, "reference": true, "compared_with": ["handel/giulio_cesare/0"], "text": "Jacobs’s Concerto Köln Giulio Cesare is the Italian-language HIP studio classic for this opera: Larmore’s Cesare fearless in the runs, Schlick’s Cleopatra sharp in colour, Fink and Rørholm binding Cornelia and Sesto. Concerto Köln answers the score’s obbligatos and double orchestra with dramatic bite. Against the Baker/Mackerras ENO set in English it is the other language and the other instrumentarium — complete Italian studio drama rather than English theatre document.\n\nSome tempi sit slower than habit; a few rallentandos jar. The set still leads the Italian complete argument on disc. Harmonia Mundi’s four-CD face is the object — not excerpts.", "quotes": [], "consulted": [{"title": "MusicWeb — Jacobs / Concerto Köln Giulio Cesare", "url": "https://www.musicweb-international.com/classrev/2002/jan02/Handel_cesare.htm", "kind": "review"}, {"title": "ClassicsToday — Handel Giulio Cesare / Jacobs", "url": "https://www.classicstoday.com/review/review-9180/", "kind": "review"}, {"title": "MusicBrainz — HMC 901385.87", "url": "https://musicbrainz.org/release/f52d0506-c1e1-4f99-9402-fda14908143c", "kind": "discography"}, {"title": "Harmonia Mundi — Giulio Cesare complete PDF", "url": "https://www.harmoniamundi.com/wp-content/uploads/pdf/handel-giulio-cesare-complete-en.pdf", "kind": "label"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "MusicWeb — Jacobs Giulio Cesare", "url": "https://www.musicweb-international.com/classrev/2002/jan02/Handel_cesare.htm", "note": "Leading Italian complete; Larmore runs; cohesive dramatic view."}, {"axis": "interpretation", "tier": "A", "title": "ClassicsToday — Jacobs / Concerto Köln", "url": "https://www.classicstoday.com/review/review-9180/", "note": "Strong endorsement of 1991 HM cast and direction."}, {"axis": "sound", "tier": "B", "title": "MusicBrainz — HM 1991 Cologne studio", "url": "https://musicbrainz.org/release/f52d0506-c1e1-4f99-9402-fda14908143c", "note": "Early-90s Harmonia Mundi — clear, present; excellent for period-opera studio."}]}}, "divergence": null, "on_this_disc": []}, {"id": "handel/giulio_cesare/0", "work": "handel/giulio_cesare", "card": "identity", "soloists": "Janet Baker; Valerie Masterson; Sarah Walker; Della Jones; James Bowman; John Tomlinson", "director": "Charles Mackerras", "ensemble": "English National Opera Orchestra & Chorus", "published": "EMI, 1985", "editions": [{"id": "0_preferred", "label": "EMI Classics", "year": "1989", "catno": "CMS 7 69760 2", "format": "3×CD", "mbid": "ebb73671-da20-451c-a13a-e6b36b843ca3", "verified": true}], "fact_strip": {"soloists": "Janet Baker; Valerie Masterson; Sarah Walker; Della Jones; James Bowman; John Tomlinson", "director": "Charles Mackerras", "ensemble": "English National Opera Orchestra & Chorus", "label": "EMI", "year": 1985, "published": "1989", "venue": "Abbey Road", "sessions": "1–7 August 1984", "format": "3×CD", "catno": "CMS 7 69760 2", "contents_note": "English Julius Caesar. Chandos CHAN 3019 is the same 1984 tapes."}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "handel/giulio_cesare/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-19", "revision": 1, "stars": 3, "reference": false, "compared_with": ["handel/giulio_cesare/1"], "text": "Baker’s Julius Caesar for Mackerras and the ENO is the English-language modern-instrument document that still matters: sovereign Handelian mezzo, Masterson’s Cleopatra touching, Bowman and Tomlinson vivid in the court. Mackerras paces recitative and aria with theatre sense; the Abbey Road studio set preserves an ENO generation at full strength.\n\nAgainst Jacobs’s Italian HIP complete it is another work in another tongue — cuts exist, period instruments do not. The later Chandos reissue carries the same 1984 Abbey Road tapes, not a remake. Keep it for Baker and for the English theatre pole of the Cesare argument.", "quotes": [], "consulted": [{"title": "MusicWeb — Baker / Mackerras Julius Caesar (Chandos excerpts from EMI tapes)", "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm", "kind": "review"}, {"title": "Chandos — CHAN 3019 complete listing", "url": "https://www.chandos.net/products/catalogue/CHAN%203019", "kind": "label"}, {"title": "Presto — Giulio Cesare / Baker / Mackerras CHAN3019", "url": "https://www.prestomusic.com/classical/products/7945334--handel-giulio-cesare-in-egitto", "kind": "label"}, {"title": "MusicBrainz — EMI CMS 7 69760 2", "url": "https://musicbrainz.org/release/ebb73671-da20-451c-a13a-e6b36b843ca3", "kind": "discography"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "MusicWeb — Baker Julius Caesar", "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm", "note": "Baker as Handelian sovereign; Mackerras stylish modern-instrument drama."}, {"axis": "sound", "tier": "A", "title": "MusicWeb — Abbey Road 1984 capture", "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm", "note": "First-rate studio sound; EMI/Chandos transfers clean."}, {"axis": "interpretation", "tier": "C", "title": "Chandos product page — CHAN 3019", "url": "https://www.chandos.net/products/catalogue/CHAN%203019", "note": "Label identity/cast only — does not lift score alone."}]}}, "divergence": null, "on_this_disc": []}], "scout": [{"recording": "handel/giulio_cesare/1", "rank": 1, "stance": "Italian HIP studio", "status": "promoted-to-cut", "identity": "Jacobs / Concerto Köln / Larmore–Schlick–Fink–Rørholm–Ragin / HM 1991 · HMC 901385.87 · MBID f52d0506-c1e1-4f99-9402-fda14908143c", "why_in": "Leading Italian complete on disc; cast locked (not Minter); clear HIP studio pole.", "why_out": null}, {"recording": "handel/giulio_cesare/0", "rank": 2, "stance": "English ENO modern", "status": "promoted-to-cut", "identity": "Baker / Mackerras / ENO / English / EMI 1985 (sess. Aug 1984) · CMS 7 69760 2 · MBID ebb73671-da20-451c-a13a-e6b36b843ca3 — Chandos CHAN 3019 same tapes", "why_in": "Required English-language theatre pole; Baker Handelian stature; solid Abbey Road identity.", "why_out": null}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-27", "works": [{"id": "handel/giulio_cesare", "composer_id": "handel", "composer": "George Frideric Handel", "dates": "1685–1759", "title": "Giulio Cesare", "cat": "HWV 17 · 1724", "standfirst": "Opera seria for the Royal Academy.", "recordings": [{"id": "handel/giulio_cesare/1", "work": "handel/giulio_cesare", "card": "identity", "soloists": "Jennifer Larmore; Barbara Schlick; Bernarda Fink; Marianne Rørholm; Derek Lee Ragin; Furio Zanasi; Dominique Visse; Olivier Lallouette", "director": "René Jacobs", "ensemble": "Concerto Köln", "published": "Harmonia Mundi, 1991", "editions": [{"id": "1_preferred", "label": "Harmonia Mundi", "year": "1991", "catno": "HMC 901385.87", "format": "4×CD", "mbid": "f52d0506-c1e1-4f99-9402-fda14908143c", "verified": true}], "fact_strip": {"soloists": "Jennifer Larmore; Barbara Schlick; Bernarda Fink; Marianne Rørholm; Derek Lee Ragin; Furio Zanasi; Dominique Visse; Olivier Lallouette", "director": "René Jacobs", "ensemble": "Concerto Köln", "label": "Harmonia Mundi", "year": 1991, "published": "1991", "venue": "Cologne", "sessions": "July 1991", "format": "4×CD", "catno": "HMC 901385.87", "contents_note": "Italian complete. Cologne July 1991."}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "handel/giulio_cesare/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-19", "revision": 1, "stars": 3, "reference": true, "compared_with": ["handel/giulio_cesare/0"], "text": "Jacobs’s Concerto Köln Giulio Cesare is the Italian-language HIP studio classic for this opera: Larmore’s Cesare fearless in the runs, Schlick’s Cleopatra sharp in colour, Fink and Rørholm binding Cornelia and Sesto. Concerto Köln answers the score’s obbligatos and double orchestra with dramatic bite. Against the Baker/Mackerras ENO set in English it is the other language and the other instrumentarium — complete Italian studio drama rather than English theatre document.\n\nSome tempi sit slower than habit; a few rallentandos jar. The set still leads the Italian complete argument on disc. Harmonia Mundi’s four-CD face is the object — not excerpts.", "quotes": [], "consulted": [{"title": "MusicWeb — Jacobs / Concerto Köln Giulio Cesare", "url": "https://www.musicweb-international.com/classrev/2002/jan02/Handel_cesare.htm", "kind": "review"}, {"title": "ClassicsToday — Handel Giulio Cesare / Jacobs", "url": "https://www.classicstoday.com/review/review-9180/", "kind": "review"}, {"title": "MusicBrainz — HMC 901385.87", "url": "https://musicbrainz.org/release/f52d0506-c1e1-4f99-9402-fda14908143c", "kind": "discography"}, {"title": "Harmonia Mundi — Giulio Cesare complete PDF", "url": "https://www.harmoniamundi.com/wp-content/uploads/pdf/handel-giulio-cesare-complete-en.pdf", "kind": "label"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "MusicWeb — Jacobs Giulio Cesare", "url": "https://www.musicweb-international.com/classrev/2002/jan02/Handel_cesare.htm", "note": "Leading Italian complete; Larmore runs; cohesive dramatic view."}, {"axis": "interpretation", "tier": "A", "title": "ClassicsToday — Jacobs / Concerto Köln", "url": "https://www.classicstoday.com/review/review-9180/", "note": "Strong endorsement of 1991 HM cast and direction."}, {"axis": "sound", "tier": "B", "title": "MusicBrainz — HM 1991 Cologne studio", "url": "https://musicbrainz.org/release/f52d0506-c1e1-4f99-9402-fda14908143c", "note": "Early-90s Harmonia Mundi — clear, present; excellent for period-opera studio."}]}}, "divergence": null, "on_this_disc": []}, {"id": "handel/giulio_cesare/0", "work": "handel/giulio_cesare", "card": "identity", "soloists": "Janet Baker; Valerie Masterson; Sarah Walker; Della Jones; James Bowman; John Tomlinson", "director": "Charles Mackerras", "ensemble": "English National Opera Orchestra & Chorus", "published": "EMI, 1985", "editions": [{"id": "0_preferred", "label": "EMI Classics", "year": "1989", "catno": "CMS 7 69760 2", "format": "3×CD", "mbid": "ebb73671-da20-451c-a13a-e6b36b843ca3", "verified": true}], "fact_strip": {"soloists": "Janet Baker; Valerie Masterson; Sarah Walker; Della Jones; James Bowman; John Tomlinson", "director": "Charles Mackerras", "ensemble": "English National Opera Orchestra & Chorus", "label": "EMI", "year": 1985, "published": "1989", "venue": "Abbey Road", "sessions": "1–7 August 1984", "format": "3×CD", "catno": "CMS 7 69760 2", "contents_note": "English Julius Caesar. Chandos CHAN 3019 is the same 1984 tapes."}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "handel/giulio_cesare/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-19", "revision": 1, "stars": 3, "reference": false, "compared_with": ["handel/giulio_cesare/1"], "text": "Baker’s Julius Caesar for Mackerras and the ENO is the English-language modern-instrument document that still matters: sovereign Handelian mezzo, Masterson’s Cleopatra touching, Bowman and Tomlinson vivid in the court. Mackerras paces recitative and aria with theatre sense; the Abbey Road studio set preserves an ENO generation at full strength.\n\nAgainst Jacobs’s Italian HIP complete it is another work in another tongue — cuts exist, period instruments do not. The later Chandos reissue carries the same 1984 Abbey Road tapes, not a remake. Keep it for Baker and for the English theatre pole of the Cesare argument.", "quotes": [], "consulted": [{"title": "MusicWeb — Baker / Mackerras Julius Caesar (Chandos excerpts from EMI tapes)", "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm", "kind": "review"}, {"title": "Chandos — CHAN 3019 complete listing", "url": "https://www.chandos.net/products/catalogue/CHAN%203019", "kind": "label"}, {"title": "Presto — Giulio Cesare / Baker / Mackerras CHAN3019", "url": "https://www.prestomusic.com/classical/products/7945334--handel-giulio-cesare-in-egitto", "kind": "label"}, {"title": "MusicBrainz — EMI CMS 7 69760 2", "url": "https://musicbrainz.org/release/ebb73671-da20-451c-a13a-e6b36b843ca3", "kind": "discography"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "MusicWeb — Baker Julius Caesar", "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm", "note": "Baker as Handelian sovereign; Mackerras stylish modern-instrument drama."}, {"axis": "sound", "tier": "A", "title": "MusicWeb — Abbey Road 1984 capture", "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm", "note": "First-rate studio sound; EMI/Chandos transfers clean."}, {"axis": "interpretation", "tier": "C", "title": "Chandos product page — CHAN 3019", "url": "https://www.chandos.net/products/catalogue/CHAN%203019", "note": "Label identity/cast only — does not lift score alone."}]}}, "divergence": null, "on_this_disc": []}], "scout": [{"recording": "handel/giulio_cesare/1", "rank": 1, "stance": "Italian HIP studio", "status": "promoted-to-cut", "identity": "Jacobs / Concerto Köln / Larmore–Schlick–Fink–Rørholm–Ragin / HM 1991 · HMC 901385.87 · MBID f52d0506-c1e1-4f99-9402-fda14908143c", "why_in": "Leading Italian complete on disc; cast locked (not Minter); clear HIP studio pole.", "why_out": null}, {"recording": "handel/giulio_cesare/0", "rank": 2, "stance": "English ENO modern", "status": "promoted-to-cut", "identity": "Baker / Mackerras / ENO / English / EMI 1985 (sess. Aug 1984) · CMS 7 69760 2 · MBID ebb73671-da20-451c-a13a-e6b36b843ca3 — Chandos CHAN 3019 same tapes", "why_in": "Required English-language theatre pole; Baker Handelian stature; solid Abbey Road identity.", "why_out": null}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -555,9 +556,17 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
-/* Band names: ticks / How scored only. Face shows axis ends. Sound 5 is English Reference, never Référence. */
-const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"];
-const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"];
+/* 3×3 bands derived from stored 1–5 integers. Never written back onto the entry.
+   Face shows the band ends. Référence is the signed flag, not a band and not a cell. */
+const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"];
+const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"];
+
+function matrixBandIndex(score){
+  /* 1–2 → 0, 3 → 1, 4–5 → 2. Each integer lands in exactly one band. */
+  if(score<=2) return 0;
+  if(score===3) return 1;
+  return 2;
+}
 
 function matrixOverall(m){
   /* Expand only. Never on the card face. Never stored on the entry. */
@@ -565,36 +574,39 @@ function matrixOverall(m){
 }
 
 function matrixStrip(m){
-  /* 5×5 style box under signed prose. X = sound 1→5 left→right; Y = interpretation 1→5 bottom→top. */
+  /* 3×3 style box under signed prose. X = sound band left→right; Y = interpretation band bottom→top. */
   if(!m) return "";
   const i=m.interpretation, s=m.sound;
+  const ib=matrixBandIndex(i), sb=matrixBandIndex(s);
+  const iName=MATRIX_INTERP_BANDS[ib], sName=MATRIX_SOUND_BANDS[sb];
   let cells="";
-  for(let y=5;y>=1;y--){
-    for(let x=1;x<=5;x++){
-      const filled=(x===s && y===i);
+  for(let y=2;y>=0;y--){
+    for(let x=0;x<=2;x++){
+      const filled=(x===sb && y===ib);
+      const col=x+1, row=3-y;
       const aria=filled
-        ?` aria-label="Filled cell: Interpretation ${esc(i)} ${MATRIX_INTERP[i-1]}, Sound ${esc(s)} ${MATRIX_SOUND[s-1]}"`
+        ?` aria-label="Filled cell: Interpretation: ${esc(iName)} (${esc(i)}), Sound: ${esc(sName)} (${esc(s)})"`
         :` aria-hidden="true"`;
-      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound="${x}" data-interpretation="${y}" style="grid-column:${x};grid-row:${6-y}"${aria}></span>`;
+      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound-band="${col}" data-interpretation-band="${y+1}" style="grid-column:${col};grid-row:${row}"${aria}></span>`;
     }
   }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
     <div class="stylebox">
       <span class="ylab" aria-hidden="true">Interpretation</span>
       <div class="plot">
-        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP[4]}</span>
-        <div class="grid" role="grid" aria-label="Sound axis, Hard listen to Reference, left to right. Interpretation axis, Documentary to Landmark, bottom to top.">
+        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP_BANDS[2]}</span>
+        <div class="grid" role="grid" aria-label="Sound axis, Limited to Excellent, left to right. Interpretation axis, Of historical interest to Outstanding, bottom to top.">
           ${cells}
         </div>
-        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP[0]}</span>
+        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP_BANDS[0]}</span>
         <div class="xaxis">
-          <span class="x-end">${MATRIX_SOUND[0]}</span>
+          <span class="x-end">${MATRIX_SOUND_BANDS[0]}</span>
           <span class="xlab">Sound</span>
-          <span class="x-end">${MATRIX_SOUND[4]}</span>
+          <span class="x-end">${MATRIX_SOUND_BANDS[2]}</span>
         </div>
       </div>
     </div>
-    <p class="matrix-cap">Interpretation ${esc(i)} · Sound ${esc(s)}</p>
+    <p class="matrix-cap">Interpretation: ${esc(iName)} · Sound: ${esc(sName)}</p>
   </div>`;
 }
 
@@ -616,11 +628,12 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
-  const interpTicks=MATRIX_INTERP.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
-  const soundTicks=MATRIX_SOUND.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
+  const interpTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_INTERP_BANDS[matrixBandIndex(n)]}`).join(" · ");
+  const soundTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_SOUND_BANDS[matrixBandIndex(n)]}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
-    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
+    <p class="ticks"><span class="k">This recording</span>Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}</p>
     <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
     <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>

@@ -159,9 +159,9 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar 5×5: Sound →, Interpretation ↑. One filled cell. No overall on the card. */
-  .signed .matrix{margin:1.1rem 0 0;width:min(48vw,11.75rem)}
-  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch}
+  /* Critic Morningstar 3×3: sound band →, interpretation band ↑. One filled cell. Derived, not stored. */
+  .signed .matrix{margin:1.1rem 0 0;width:max-content;max-width:100%}
+  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch;width:min(52vw,12.5rem)}
   .signed .stylebox .ylab{
     writing-mode:vertical-rl;transform:rotate(180deg);
     font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
@@ -172,9 +172,9 @@
     font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
     color:var(--ink-soft);line-height:1.2}
   .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
-  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem}
+  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem;max-width:12.5rem}
   .signed .stylebox .grid{
-    display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
     aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
   .signed .stylebox .cell.filled{background:var(--ink)}
@@ -296,7 +296,8 @@
     .plate-cap{max-width:152px}
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
-    .signed .matrix{width:48vw;max-width:11.75rem;min-width:9.25rem}
+    .signed .matrix{width:100%;max-width:100%}
+    .signed .stylebox{width:min(56vw,12.5rem);min-width:9.25rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -352,7 +353,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-19", "works": [{"composer": "Dmitri Shostakovich", "dates": "1906–1975", "title": "Symphony No. 5", "cat": "Op. 47 · D minor · 1937", "standfirst": "Written after the Pravda attack and premiered to a half-hour ovation. Whether the finale is triumph or coercion is the argument, and every recording takes a side.", "id": "shostakovich/sym5", "recordings": [{"id": "shostakovich_sym5_nelsons", "work": "shostakovich/sym5", "status": "assessed", "editorial": null, "divergence": null, "soloists": "", "director": "Andris Nelsons", "ensemble": "Boston Symphony Orchestra", "published": "Deutsche Grammophon, 2016", "engineering": {"venue": "Symphony Hall, Boston", "sessions": "live, 2015", "producer": null, "engineer": null, "status": "unknown"}, "interpretation": 2.9, "confidence": 0.25, "stars": 3, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "First movement, opening canon", "listen_for": "The two-note descending figure the whole symphony is built from. How heavily it is attacked sets the terms for everything after.", "timing": null}, {"where": "Third movement, Largo", "listen_for": "Strings divided into eight parts, no brass at all. The question is whether the conductor lets it be slow enough to become uncomfortable.", "timing": null}, {"where": "Finale, the closing bars", "listen_for": "The repeated A in the strings under a hammered D major. Whether this reads as triumph or as coercion is the central interpretive argument of the piece, and every recording answers it.", "timing": null}], "reception": [{"decade": "1937", "note": "Premiered 21 November in Leningrad under Mravinsky; reported ovations of over half an hour. Received officially as rehabilitation after the 1936 Pravda attack."}, {"decade": "1940s–70s", "note": "Established in the West as a repertory symphony. Read largely at face value: a heroic affirmation, sometimes discussed as Soviet neoclassicism."}, {"decade": "1979–", "note": "Volkov's Testimony recasts the finale as forced rejoicing. Its authenticity is disputed; the reading is not. Performance practice divides along this line and has not reconverged."}, {"decade": "2010s–", "note": "The BSO/Nelsons cycle brings the work back to prominence on record, winning the 2017 Grammy for Best Orchestral Performance."}], "editions": [{"id": "sym5_dg_2016", "label": "Deutsche Grammophon", "catno": "479 5201", "year": "2016", "format": "2×CD", "transfer": "Original issue, live Symphony Hall recording. Grammy-winning album, coupled with Symphonies 8 and 9 and the Hamlet suite.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [{"source": "Grammy — Best Orchestral Performance, 59th Annual Grammy Awards", "class": "major award", "provenance": "cited", "score": 2.9, "weight": 0.9, "conflict": false, "text": "Awarded Best Orchestral Performance for the album containing Symphonies 5, 8 and 9.", "locator": "https://www.wgbh.org/news/local/2017-02-13/boston-symphony-orchestra-wins-second-consecutive-grammy-for-best-orchestral-performance"}], "algorithm_version": "2.0", "built": "2026-09-19", "on_this_disc": []}, {"id": "shostakovich_sym5_mravinsky", "work": "shostakovich/sym5", "status": "awaiting sources", "editorial": null, "divergence": null, "soloists": "", "director": "Yevgeny Mravinsky", "ensemble": "Leningrad Philharmonic Orchestra", "published": "various, 1954–1978", "engineering": {"venue": "Moscow (1954); Tokyo (1973); Vienna (1978)", "sessions": "1954 studio; later live performances", "producer": null, "engineer": "D. Gaklin (1954)", "status": "attributed"}, "interpretation": null, "confidence": null, "stars": null, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "First movement, development", "listen_for": "Mravinsky premiered the work in 1937. The tempo relationships here are the closest thing on record to a first reading.", "timing": null}, {"where": "Finale", "listen_for": "The speed of the coda, which Mravinsky treats faster than most Western conductors — a documentary fact in the argument about what the ending means.", "timing": null}], "reception": [{"decade": "1937", "note": "Mravinsky conducted the premiere and remained associated with the work for four decades."}, {"decade": "1950s–70s", "note": "Successive Leningrad performances circulate on Soviet and Japanese issues; the discography is tangled and poorly documented."}, {"decade": "1990s–", "note": "Japanese labels, chiefly Altus, issue restored live performances; edition identification becomes the practical problem for buyers."}], "editions": [{"id": "sym5_altus_alt002", "label": "Altus", "catno": "ALT002", "year": "2002", "format": "CD", "transfer": "Japanese issue, 44:08. Cover art present in the Cover Art Archive.", "barcode": null, "mbid": "2ff96318-7c8b-47d5-9532-daf88fafd07e", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_altus_alt289", "label": "Altus", "catno": "ALT289", "year": "2014", "format": "CD", "transfer": "Vienna 1978 live, coupled with Schubert 8. Barcode verified.", "barcode": "4543638002894", "mbid": "e9d634b2-aa6b-4aab-8c95-0823cd8bcaf5", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_praga", "label": "Praga", "catno": "PR 7250 085", "year": "1995", "format": "CD", "transfer": "Coupled with Symphony No. 9 under Košler. Barcode verified.", "barcode": "794881605422", "mbid": "8113cf4a-dc95-49ec-8782-e38d6fbf33f8", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_tokyo_1973", "label": "Altus", "catno": "—", "year": "1973 recording", "format": "CD", "transfer": "Tokyo, 26 May 1973, live. Barcode verified; MusicBrainz release not yet matched.", "barcode": "4543638000029", "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [], "algorithm_version": "2.0", "built": "2026-09-19", "on_this_disc": []}, {"id": "shostakovich_sym5_noseda", "work": "shostakovich/sym5", "status": "awaiting sources", "editorial": null, "divergence": null, "soloists": "", "director": "Gianandrea Noseda", "ensemble": "London Symphony Orchestra", "published": "LSO Live, 2020", "engineering": {"venue": "Barbican Hall, London", "sessions": "September 2016 and March 2019, live", "producer": "Nicholas Parker", "engineer": "Classic Sound Ltd", "status": "cited"}, "interpretation": null, "confidence": null, "stars": null, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "Third movement, Largo", "listen_for": "Barbican strings in eight parts, captured in DSD. A test of whether the hall's dry acoustic helps the transparency or thins the tone.", "timing": null}, {"where": "Finale, closing bars", "listen_for": "Where this account sits on the triumph-or-coercion question. Compare directly against Mravinsky's faster coda.", "timing": null}], "reception": [{"decade": "2020–", "note": "Issued as part of Noseda's nine-year LSO cycle, completed and boxed as LSO0907 in 2025. Reception of the cycle as a whole has been strong; individual-issue criticism of the Fifth is not yet cited here."}], "editions": [{"id": "sym5_lso0802", "label": "LSO Live", "catno": "LSO0802", "year": "2020", "format": "Hybrid SACD", "transfer": "Original issue, coupled with Symphony No. 1. DSD source, also released as 24-bit/96 kHz FLAC.", "barcode": "0822231180227", "mbid": null, "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_lso0907_box", "label": "LSO Live", "catno": "LSO0907", "year": "2025", "format": "10×SACD", "transfer": "Complete cycle box, Symphonies 1–15. Same recordings; transfer lineage not yet established.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [], "algorithm_version": "2.0", "built": "2026-09-19", "on_this_disc": []}], "composer_id": "shostakovich"}], "barcode_index": {"4543638002894": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_altus_alt289"}, "794881605422": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_praga"}, "4543638000029": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_tokyo_1973"}, "0822231180227": {"recording": "shostakovich_sym5_noseda", "edition": "sym5_lso0802"}}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-27", "works": [{"composer": "Dmitri Shostakovich", "dates": "1906–1975", "title": "Symphony No. 5", "cat": "Op. 47 · D minor · 1937", "standfirst": "Written after the Pravda attack and premiered to a half-hour ovation. Whether the finale is triumph or coercion is the argument, and every recording takes a side.", "id": "shostakovich/sym5", "recordings": [{"id": "shostakovich_sym5_nelsons", "work": "shostakovich/sym5", "status": "assessed", "editorial": null, "divergence": null, "soloists": "", "director": "Andris Nelsons", "ensemble": "Boston Symphony Orchestra", "published": "Deutsche Grammophon, 2016", "engineering": {"venue": "Symphony Hall, Boston", "sessions": "live, 2015", "producer": null, "engineer": null, "status": "unknown"}, "interpretation": 2.9, "confidence": 0.25, "stars": 3, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "First movement, opening canon", "listen_for": "The two-note descending figure the whole symphony is built from. How heavily it is attacked sets the terms for everything after.", "timing": null}, {"where": "Third movement, Largo", "listen_for": "Strings divided into eight parts, no brass at all. The question is whether the conductor lets it be slow enough to become uncomfortable.", "timing": null}, {"where": "Finale, the closing bars", "listen_for": "The repeated A in the strings under a hammered D major. Whether this reads as triumph or as coercion is the central interpretive argument of the piece, and every recording answers it.", "timing": null}], "reception": [{"decade": "1937", "note": "Premiered 21 November in Leningrad under Mravinsky; reported ovations of over half an hour. Received officially as rehabilitation after the 1936 Pravda attack."}, {"decade": "1940s–70s", "note": "Established in the West as a repertory symphony. Read largely at face value: a heroic affirmation, sometimes discussed as Soviet neoclassicism."}, {"decade": "1979–", "note": "Volkov's Testimony recasts the finale as forced rejoicing. Its authenticity is disputed; the reading is not. Performance practice divides along this line and has not reconverged."}, {"decade": "2010s–", "note": "The BSO/Nelsons cycle brings the work back to prominence on record, winning the 2017 Grammy for Best Orchestral Performance."}], "editions": [{"id": "sym5_dg_2016", "label": "Deutsche Grammophon", "catno": "479 5201", "year": "2016", "format": "2×CD", "transfer": "Original issue, live Symphony Hall recording. Grammy-winning album, coupled with Symphonies 8 and 9 and the Hamlet suite.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [{"source": "Grammy — Best Orchestral Performance, 59th Annual Grammy Awards", "class": "major award", "provenance": "cited", "score": 2.9, "weight": 0.9, "conflict": false, "text": "Awarded Best Orchestral Performance for the album containing Symphonies 5, 8 and 9.", "locator": "https://www.wgbh.org/news/local/2017-02-13/boston-symphony-orchestra-wins-second-consecutive-grammy-for-best-orchestral-performance"}], "algorithm_version": "2.0", "built": "2026-09-27", "on_this_disc": []}, {"id": "shostakovich_sym5_mravinsky", "work": "shostakovich/sym5", "status": "awaiting sources", "editorial": null, "divergence": null, "soloists": "", "director": "Yevgeny Mravinsky", "ensemble": "Leningrad Philharmonic Orchestra", "published": "various, 1954–1978", "engineering": {"venue": "Moscow (1954); Tokyo (1973); Vienna (1978)", "sessions": "1954 studio; later live performances", "producer": null, "engineer": "D. Gaklin (1954)", "status": "attributed"}, "interpretation": null, "confidence": null, "stars": null, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "First movement, development", "listen_for": "Mravinsky premiered the work in 1937. The tempo relationships here are the closest thing on record to a first reading.", "timing": null}, {"where": "Finale", "listen_for": "The speed of the coda, which Mravinsky treats faster than most Western conductors — a documentary fact in the argument about what the ending means.", "timing": null}], "reception": [{"decade": "1937", "note": "Mravinsky conducted the premiere and remained associated with the work for four decades."}, {"decade": "1950s–70s", "note": "Successive Leningrad performances circulate on Soviet and Japanese issues; the discography is tangled and poorly documented."}, {"decade": "1990s–", "note": "Japanese labels, chiefly Altus, issue restored live performances; edition identification becomes the practical problem for buyers."}], "editions": [{"id": "sym5_altus_alt002", "label": "Altus", "catno": "ALT002", "year": "2002", "format": "CD", "transfer": "Japanese issue, 44:08. Cover art present in the Cover Art Archive.", "barcode": null, "mbid": "2ff96318-7c8b-47d5-9532-daf88fafd07e", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_altus_alt289", "label": "Altus", "catno": "ALT289", "year": "2014", "format": "CD", "transfer": "Vienna 1978 live, coupled with Schubert 8. Barcode verified.", "barcode": "4543638002894", "mbid": "e9d634b2-aa6b-4aab-8c95-0823cd8bcaf5", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_praga", "label": "Praga", "catno": "PR 7250 085", "year": "1995", "format": "CD", "transfer": "Coupled with Symphony No. 9 under Košler. Barcode verified.", "barcode": "794881605422", "mbid": "8113cf4a-dc95-49ec-8782-e38d6fbf33f8", "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_tokyo_1973", "label": "Altus", "catno": "—", "year": "1973 recording", "format": "CD", "transfer": "Tokyo, 26 May 1973, live. Barcode verified; MusicBrainz release not yet matched.", "barcode": "4543638000029", "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [], "algorithm_version": "2.0", "built": "2026-09-27", "on_this_disc": []}, {"id": "shostakovich_sym5_noseda", "work": "shostakovich/sym5", "status": "awaiting sources", "editorial": null, "divergence": null, "soloists": "", "director": "Gianandrea Noseda", "ensemble": "London Symphony Orchestra", "published": "LSO Live, 2020", "engineering": {"venue": "Barbican Hall, London", "sessions": "September 2016 and March 2019, live", "producer": "Nicholas Parker", "engineer": "Classic Sound Ltd", "status": "cited"}, "interpretation": null, "confidence": null, "stars": null, "reference": false, "sound_best": null, "sound_best_edition": null, "anchors": [{"where": "Third movement, Largo", "listen_for": "Barbican strings in eight parts, captured in DSD. A test of whether the hall's dry acoustic helps the transparency or thins the tone.", "timing": null}, {"where": "Finale, closing bars", "listen_for": "Where this account sits on the triumph-or-coercion question. Compare directly against Mravinsky's faster coda.", "timing": null}], "reception": [{"decade": "2020–", "note": "Issued as part of Noseda's nine-year LSO cycle, completed and boxed as LSO0907 in 2025. Reception of the cycle as a whole has been strong; individual-issue criticism of the Fifth is not yet cited here."}], "editions": [{"id": "sym5_lso0802", "label": "LSO Live", "catno": "LSO0802", "year": "2020", "format": "Hybrid SACD", "transfer": "Original issue, coupled with Symphony No. 1. DSD source, also released as 24-bit/96 kHz FLAC.", "barcode": "0822231180227", "mbid": null, "verified": true, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}, {"id": "sym5_lso0907_box", "label": "LSO Live", "catno": "LSO0907", "year": "2025", "format": "10×SACD", "transfer": "Complete cycle box, Symphonies 1–15. Same recordings; transfer lineage not yet established.", "barcode": null, "mbid": null, "verified": false, "sound": null, "sound_confidence": null, "verdict": "not yet assessed", "sources": []}], "sources": [], "algorithm_version": "2.0", "built": "2026-09-27", "on_this_disc": []}], "composer_id": "shostakovich"}], "barcode_index": {"4543638002894": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_altus_alt289"}, "794881605422": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_praga"}, "4543638000029": {"recording": "shostakovich_sym5_mravinsky", "edition": "sym5_tokyo_1973"}, "0822231180227": {"recording": "shostakovich_sym5_noseda", "edition": "sym5_lso0802"}}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -555,9 +556,17 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
-/* Band names: ticks / How scored only. Face shows axis ends. Sound 5 is English Reference, never Référence. */
-const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"];
-const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"];
+/* 3×3 bands derived from stored 1–5 integers. Never written back onto the entry.
+   Face shows the band ends. Référence is the signed flag, not a band and not a cell. */
+const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"];
+const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"];
+
+function matrixBandIndex(score){
+  /* 1–2 → 0, 3 → 1, 4–5 → 2. Each integer lands in exactly one band. */
+  if(score<=2) return 0;
+  if(score===3) return 1;
+  return 2;
+}
 
 function matrixOverall(m){
   /* Expand only. Never on the card face. Never stored on the entry. */
@@ -565,36 +574,39 @@ function matrixOverall(m){
 }
 
 function matrixStrip(m){
-  /* 5×5 style box under signed prose. X = sound 1→5 left→right; Y = interpretation 1→5 bottom→top. */
+  /* 3×3 style box under signed prose. X = sound band left→right; Y = interpretation band bottom→top. */
   if(!m) return "";
   const i=m.interpretation, s=m.sound;
+  const ib=matrixBandIndex(i), sb=matrixBandIndex(s);
+  const iName=MATRIX_INTERP_BANDS[ib], sName=MATRIX_SOUND_BANDS[sb];
   let cells="";
-  for(let y=5;y>=1;y--){
-    for(let x=1;x<=5;x++){
-      const filled=(x===s && y===i);
+  for(let y=2;y>=0;y--){
+    for(let x=0;x<=2;x++){
+      const filled=(x===sb && y===ib);
+      const col=x+1, row=3-y;
       const aria=filled
-        ?` aria-label="Filled cell: Interpretation ${esc(i)} ${MATRIX_INTERP[i-1]}, Sound ${esc(s)} ${MATRIX_SOUND[s-1]}"`
+        ?` aria-label="Filled cell: Interpretation: ${esc(iName)} (${esc(i)}), Sound: ${esc(sName)} (${esc(s)})"`
         :` aria-hidden="true"`;
-      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound="${x}" data-interpretation="${y}" style="grid-column:${x};grid-row:${6-y}"${aria}></span>`;
+      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound-band="${col}" data-interpretation-band="${y+1}" style="grid-column:${col};grid-row:${row}"${aria}></span>`;
     }
   }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
     <div class="stylebox">
       <span class="ylab" aria-hidden="true">Interpretation</span>
       <div class="plot">
-        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP[4]}</span>
-        <div class="grid" role="grid" aria-label="Sound axis, Hard listen to Reference, left to right. Interpretation axis, Documentary to Landmark, bottom to top.">
+        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP_BANDS[2]}</span>
+        <div class="grid" role="grid" aria-label="Sound axis, Limited to Excellent, left to right. Interpretation axis, Of historical interest to Outstanding, bottom to top.">
           ${cells}
         </div>
-        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP[0]}</span>
+        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP_BANDS[0]}</span>
         <div class="xaxis">
-          <span class="x-end">${MATRIX_SOUND[0]}</span>
+          <span class="x-end">${MATRIX_SOUND_BANDS[0]}</span>
           <span class="xlab">Sound</span>
-          <span class="x-end">${MATRIX_SOUND[4]}</span>
+          <span class="x-end">${MATRIX_SOUND_BANDS[2]}</span>
         </div>
       </div>
     </div>
-    <p class="matrix-cap">Interpretation ${esc(i)} · Sound ${esc(s)}</p>
+    <p class="matrix-cap">Interpretation: ${esc(iName)} · Sound: ${esc(sName)}</p>
   </div>`;
 }
 
@@ -616,11 +628,12 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
-  const interpTicks=MATRIX_INTERP.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
-  const soundTicks=MATRIX_SOUND.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
+  const interpTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_INTERP_BANDS[matrixBandIndex(n)]}`).join(" · ");
+  const soundTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_SOUND_BANDS[matrixBandIndex(n)]}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
-    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
+    <p class="ticks"><span class="k">This recording</span>Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}</p>
     <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
     <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>
