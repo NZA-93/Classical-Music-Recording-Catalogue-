@@ -223,8 +223,6 @@
   .credits{border-left:2px solid var(--hair);padding:.15rem 0 .15rem .8rem;margin-bottom:1.4rem;
     font-size:.9rem;font-weight:400;color:var(--ink-soft);max-width:38rem}
   .credits b{color:var(--ink);font-weight:600}
-  .unknown{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
-    letter-spacing:.06em;color:var(--oxblood)}
 
   .modlabel{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-soft);margin:0 0 .5rem}
@@ -455,13 +453,52 @@ function scorebox(r){
   </div>`;
 }
 
+/* A fact strip lists only what we know. Null, blank, and placeholders
+   ("not established", "not known", "unknown", "n/a", a bare dash) drop out
+   with their label, so the sentence never keeps a dangling role or a
+   placeholder in code styling. */
+function knownFact(v){
+  if(v==null) return "";
+  if(typeof v==="number") return Number.isFinite(v)?String(v):"";
+  const s=String(v).trim();
+  if(!s) return "";
+  const norm=s.toLowerCase().replace(/\s+/g," ").replace(/[—–]/g,"-");
+  const placeholders=new Set([
+    "not established","not established - contribute","not yet established",
+    "not known","unknown","n/a","n.a.","n.a","na","tbd","null","-","--"
+  ]);
+  return placeholders.has(norm)?"":s;
+}
+
+function sessionSentence(venue,sessions){
+  const bits=[];
+  if(venue) bits.push(`<b>${esc(venue)}</b>`);
+  if(sessions) bits.push(esc(sessions));
+  return bits.length?bits.join(", ")+".":"";
+}
+
+function creditSentence(producer,engineer){
+  const cred=[];
+  if(producer) cred.push(`Producer ${esc(producer)}`);
+  if(engineer) cred.push(`Engineer ${esc(engineer)}`);
+  return cred.length?cred.join(". ")+".":"";
+}
+
 function credits(c){
-  const miss=`<span class="unknown">not established — contribute</span>`;
-  return `<p class="credits">
-    <b>${esc(c.venue)}</b>, ${esc(c.sessions)}.
-    Producer ${c.producer?esc(c.producer):miss}. Engineer ${c.engineer?esc(c.engineer):miss}.
-    <span class="prov${c.status==="cited"?"":" draft"}">credits ${esc(c.status)}</span>
-  </p>`;
+  if(!c||typeof c!=="object") return "";
+  const parts=[];
+  const where=sessionSentence(knownFact(c.venue),knownFact(c.sessions));
+  if(where) parts.push(where);
+  const cred=creditSentence(knownFact(c.producer),knownFact(c.engineer));
+  if(cred) parts.push(cred);
+  /* Provenance of the credits we do have. "unknown" here is a status, not a
+     stand-in for a missing name, so it is not run through knownFact. */
+  const status=c.status==null?"":String(c.status).trim();
+  const prov=status
+    ?`<span class="prov${status==="cited"?"":" draft"}">credits ${esc(status)}</span>`
+    :"";
+  if(!parts.length&&!prov) return "";
+  return `<p class="credits">${parts.join(" ")}${parts.length&&prov?" ":""}${prov}</p>`;
 }
 
 function anchors(list){
@@ -718,25 +755,30 @@ function signed(r){
 }
 
 function factStrip(r){
-  /* Brandenburg-lite: label / year / session / credits. Not an editions table. */
+  /* Brandenburg-lite: label / year / session / credits. Not an editions table.
+     Unknown placeholders are left out entirely — same rule as credits(). */
   const f=r.fact_strip;
   if(!f||typeof f!=="object") return "";
   const rows=[];
-  const meta=[f.label, f.published?`published ${f.published}`:"", f.format, f.catno]
-    .filter(Boolean).map(esc);
+  const meta=[];
+  const label=knownFact(f.label);
+  const published=knownFact(f.published);
+  const format=knownFact(f.format);
+  const catno=knownFact(f.catno);
+  if(label) meta.push(esc(label));
+  if(published) meta.push(esc(`published ${published}`));
+  if(format) meta.push(esc(format));
+  if(catno) meta.push(esc(catno));
   if(meta.length) rows.push(`<span class="meta">${meta.join(" · ")}</span>`);
-  const cast=[f.soloists,f.director,f.ensemble].filter(v=>v&&v!==r.soloists&&v!==r.director&&v!==r.ensemble);
+  const cast=[knownFact(f.soloists),knownFact(f.director),knownFact(f.ensemble)]
+    .filter(v=>v&&v!==knownFact(r.soloists)&&v!==knownFact(r.director)&&v!==knownFact(r.ensemble));
   if(cast.length) rows.push(cast.map(esc).join(" — "));
-  if(f.venue||f.sessions){
-    const venue=f.venue?`<b>${esc(f.venue)}</b>`:"";
-    const sessions=f.sessions?esc(f.sessions):"";
-    rows.push(`${venue}${venue&&sessions?", ":""}${sessions}${sessions||venue?".":""}`);
-  }
-  const cred=[];
-  if(f.producer) cred.push(`Producer ${esc(f.producer)}`);
-  if(f.engineer) cred.push(`Engineer ${esc(f.engineer)}`);
-  if(cred.length) rows.push(`${cred.join(". ")}.`);
-  if(f.contents_note) rows.push(esc(f.contents_note));
+  const where=sessionSentence(knownFact(f.venue),knownFact(f.sessions));
+  if(where) rows.push(where);
+  const cred=creditSentence(knownFact(f.producer),knownFact(f.engineer));
+  if(cred) rows.push(cred);
+  const note=knownFact(f.contents_note);
+  if(note) rows.push(esc(note));
   if(!rows.length) return "";
   return `<p class="credits fact-strip">${rows.join(" ")}</p>`;
 }
