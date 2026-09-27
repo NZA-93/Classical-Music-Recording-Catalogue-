@@ -1,0 +1,43 @@
+{
+  "work_id": "handel/messiah",
+  "schema": "ADR-004 scout pool",
+  "note": "Ordinal scout ranks only. Never stars/Référence/matrix. Promoted rows match Handel week-1 assessed cut (2026-09-19).",
+  "candidates": [
+    {
+      "recording": "handel/messiah/2",
+      "rank": 1,
+      "stance": "HIP studio digital",
+      "status": "promoted-to-cut",
+      "identity": "Gardiner / Monteverdi Choir / EBS / Philips 1983 (sess. 1982) · 434 297-2 · MBID 0362c231-a9d9-4a52-bf84-00f0e5835d22",
+      "why_in": "Widely cited digital period-instrument classic; clear HIP studio pole beside modern-chamber Mackerras and French Christie.",
+      "why_out": null
+    },
+    {
+      "recording": "handel/messiah/1",
+      "rank": 2,
+      "stance": "modern chamber (Lam)",
+      "status": "promoted-to-cut",
+      "identity": "Mackerras / Ambrosian / ECO / EMI 1967 (sess. 1966) · Basil Lam · cat 7243 5 69449 2 3 / SLS 774 · MBID null",
+      "why_in": "Preferred modern-instrument chamber neighbour to Gardiner HIP; Classics Reconsidered stature; clearer scale match than Davis LSO.",
+      "why_out": null
+    },
+    {
+      "recording": "handel/messiah/3",
+      "rank": 3,
+      "stance": "French HIP studio",
+      "status": "promoted-to-cut",
+      "identity": "Christie / LAF / Harmonia Mundi 1994 (sess. Dec 1993) · HMC 901498.99 · MBID 733acdf1-f905-468f-ac76-9b169eac5f1f — not Erato",
+      "why_in": "Solid HM identity (seed Erato corrected); Scholl-era French HIP drama as third pole.",
+      "why_out": null
+    },
+    {
+      "recording": "handel/messiah/0",
+      "rank": 4,
+      "stance": "large-orchestra modern landmark",
+      "status": "held",
+      "identity": "Davis / LSO Chorus / LSO / Philips 1966 · 420 865-2 · MBID 72c6baab-8c0e-463e-bbe5-a93c150715df",
+      "why_in": null,
+      "why_out": "Documented large-orchestra modern landmark; week-1 prefers Mackerras as chamber neighbour to Gardiner. Keep visible, not assessed this cut."
+    }
+  ]
+}

@@ -7,9 +7,11 @@ cut is /0 Pinnock 1982, /1 Harnoncourt 1964, /4 Richter 1967, now with
 Critic-signed Dictionnaire prose and Morningstar matrix. Gardiner /5 stays
 off the public cards. Held Bach works stay off this slice.
 
-Handel week-1 (Brandenburg #50 pattern): messiah /2 /1 /3, water_music
-/0 /2, giulio_cesare /1 /0. Identity cards only — no stars, Référence,
-matrix, Dictionnaire prose, or scout ranks.
+Handel week-1: messiah /2 Gardiner (Référence), /1 Mackerras, /3 Christie;
+water_music /0 Pinnock (Référence), /2 Harnoncourt; giulio_cesare /1 Jacobs
+(Référence), /0 Mackerras ENO. Identity from the UX-SIGNed seed cut; signed
+Dictionnaire + Morningstar attach; scout held rows render in Candidates
+considered (identity strings from data/scout/, not public cards).
 """
 
 from __future__ import annotations
@@ -371,11 +373,8 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertNotIn("Britten", blob)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            if rec["id"] in HANDEL_ASSESSED:
-                self.assertIsNone(rec["editorial"], rec["id"])
-            else:
-                self.assertIsNotNone(rec["editorial"], rec["id"])
-                self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+            self.assertIsNotNone(rec["editorial"], rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
 
     def test_goldberg_facts_stay_goulds_and_schiff_1982(self):
         gold = next(
@@ -866,9 +865,6 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             self.assertNotIn("seed_year_note", strip, rid)
             self.assertNotIn("cover_face", strip, rid)
             ed = rec["editorial"]
-            if rid in HANDEL_ASSESSED:
-                self.assertIsNone(ed, rid)
-                continue
             self.assertIsNotNone(ed, rid)
             consulted = ed.get("consulted") or []
             if rid in BRANDENBURG_ASSESSED:
@@ -1089,7 +1085,7 @@ class TestBrandenburgPublicHtml(unittest.TestCase):
 
 
 class TestHandelWeek1PublicHtml(unittest.TestCase):
-    """Identity cards only — no stars, Référence, matrix, or Dictionnaire."""
+    """Identity lock + Critic-signed entries; scout held rows are not cards."""
 
     GARDINER = "0362c231-a9d9-4a52-bf84-00f0e5835d22"
     CHRISTIE = "733acdf1-f905-468f-ac76-9b169eac5f1f"
@@ -1120,14 +1116,18 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
         self.assertIn("Kingsway Hall", html)
         self.assertIn("November 1982", html)
         self.assertIn("December 1993", html)
-        self.assertNotIn("handel/messiah/0", html)
-        self.assertNotIn("Colin Davis", html)
-        self.assertNotIn("Erato", html)
+        rec_blob = json.dumps(recs)
+        self.assertNotIn("handel/messiah/0", rec_blob)
+        self.assertNotIn("Colin Davis", rec_blob)
         self.assertNotIn("CDM 7690402", html)
         self.assertNotIn("412 267-2", html)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            self.assertIsNone(rec.get("editorial"), rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
+            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+        self.assertTrue(by_id["handel/messiah/2"]["editorial"]["reference"])
+        self.assertFalse(by_id["handel/messiah/1"]["editorial"]["reference"])
+        self.assertIn("Gardiner’s Philips Messiah remains the digital period-instrument classic", html)
         identity_fn = html[html.index("function identityLine(r)"):html.index("function entry(r)")]
         self.assertNotIn("scorebox", identity_fn)
         self.assertNotIn("Référence", identity_fn)
@@ -1135,7 +1135,15 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
         self.assertNotIn("editions(", identity_fn)
         blob = json.dumps(cat)
         self.assertNotIn('"candidates"', blob)
-        self.assertNotIn("scout", blob)
+        rows = cat["works"][0]["scout"]
+        self.assertEqual([c["recording"] for c in rows], [
+            "handel/messiah/2", "handel/messiah/1", "handel/messiah/3", "handel/messiah/0",
+        ])
+        self.assertEqual(rows[3]["status"], "held")
+        self.assertIn("Davis / LSO Chorus / LSO / Philips 1966", rows[3]["identity"])
+        self.assertIn("Davis / LSO Chorus / LSO / Philips 1966", html)
+        work_fn = html[html.index("function workSection(w)"):html.index("function renderWorkDirectory")]
+        self.assertIn("candidatesConsidered(w)", work_fn)
 
     def test_water_music_locks_pinnock_face_and_harnoncourt_year(self):
         html = _page("handel/water_music")
@@ -1155,13 +1163,24 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
         self.assertEqual(harn["editions"][0]["catno"], "8.42368")
         self.assertIn("Henry Wood Hall", html)
         self.assertIn("Water Music ONLY", html)
-        self.assertNotIn("415 129-2", html)
-        self.assertNotIn("handel/water_music/1", html)
-        self.assertNotIn("handel/water_music/3", html)
-        self.assertNotIn("Neville Marriner", html)
+        rec_blob = json.dumps(recs)
+        self.assertNotIn("415 129-2", rec_blob)
+        self.assertNotIn("handel/water_music/1", rec_blob)
+        self.assertNotIn("handel/water_music/3", rec_blob)
+        self.assertNotIn("Neville Marriner", rec_blob)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            self.assertIsNone(rec.get("editorial"), rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
+        self.assertTrue(pinnock["editorial"]["reference"])
+        self.assertIn("Pinnock’s English Concert Water Music", html)
+        water_scout = cat["works"][0]["scout"]
+        self.assertEqual(water_scout[2]["recording"], "handel/water_music/1")
+        self.assertEqual(water_scout[2]["status"], "held")
+        self.assertIn(
+            "Marriner / Academy of St Martin in the Fields",
+            water_scout[2]["identity"],
+        )
+        self.assertIn("Marriner / Academy of St Martin in the Fields", html)
 
     def test_giulio_cesare_is_jacobs_italian_and_mackerras_english(self):
         html = _page("handel/giulio_cesare")
@@ -1188,11 +1207,21 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
         self.assertNotIn("handel/giulio_cesare/3", html)
         self.assertNotIn("Anne Sofie von Otter", html)
         self.assertNotIn("Drew Minter", html)
+        rec_blob = json.dumps(recs)
+        self.assertNotIn("handel/giulio_cesare/2", rec_blob)
+        self.assertNotIn("handel/giulio_cesare/3", rec_blob)
+        self.assertNotIn("Anne Sofie von Otter", rec_blob)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            self.assertIsNone(rec.get("editorial"), rec["id"])
+            self.assertIsNotNone(rec.get("editorial"), rec["id"])
             self.assertNotIn("stars", rec)
-            self.assertNotIn("matrix", rec.get("editorial") or {})
+        self.assertTrue(jacobs["editorial"]["reference"])
+        self.assertIn("Jacobs’s Concerto Köln Giulio Cesare", html)
+        cesare_scout = cat["works"][0]["scout"]
+        self.assertEqual([c["recording"] for c in cesare_scout], [
+            "handel/giulio_cesare/1", "handel/giulio_cesare/0",
+        ])
+        self.assertTrue(all(c["status"] == "promoted-to-cut" for c in cesare_scout))
 
 
 if __name__ == "__main__":

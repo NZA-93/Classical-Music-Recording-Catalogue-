@@ -272,6 +272,9 @@ class TestComposerHub(unittest.TestCase):
         _, _, _, bach_works = site.composer_by_id("bach")
         bach_n = sum(len(site.done.get(w["id"], [])) for w in bach_works)
         self.assertEqual(bach_n, 16)
+        _, _, _, handel_works = site.composer_by_id("handel")
+        handel_n = sum(len(site.done.get(w["id"], [])) for w in handel_works)
+        self.assertEqual(handel_n, 7)
 
 
 class TestGalleryAndReviewHaveNoGlobalRelated(unittest.TestCase):

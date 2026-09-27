@@ -1,0 +1,34 @@
+{
+  "work_id": "handel/water_music",
+  "schema": "ADR-004 scout pool",
+  "note": "Ordinal scout ranks only. Never stars/Référence/matrix. Promoted rows match Handel week-1 assessed cut (2026-09-19).",
+  "candidates": [
+    {
+      "recording": "handel/water_music/0",
+      "rank": 1,
+      "stance": "HIP studio digital",
+      "status": "promoted-to-cut",
+      "identity": "Pinnock / English Concert / Archiv 1983 · 410 525-2 · MBID 740bce03-6fdc-4225-95f2-3ce22cec1e60 — Water Music only (not Fireworks 415 129-2)",
+      "why_in": "Gramophone landmark digital HIP; clear studio pole against pioneering Harnoncourt OI.",
+      "why_out": null
+    },
+    {
+      "recording": "handel/water_music/2",
+      "rank": 2,
+      "stance": "pioneering OI",
+      "status": "promoted-to-cut",
+      "identity": "Harnoncourt / CMW / Telefunken/Teldec 1978 · 8.42368 · MBID b1afcfed-3c69-4a8c-9933-b30862ef914b — cycle 1978 not 1990s",
+      "why_in": "Required early Concentus Musicus pole; brash OI character vs Pinnock polish.",
+      "why_out": null
+    },
+    {
+      "recording": "handel/water_music/1",
+      "rank": 3,
+      "stance": "modern chamber ASMF",
+      "status": "held",
+      "identity": "Marriner / Academy of St Martin in the Fields / Argo–Decca · Kingsway Hall May 1971 / issue 1972 (ZRG 697; later Decca CD faces e.g. 414 596-2 family)",
+      "why_in": null,
+      "why_out": "Solid modern-chamber identity; week-1 cut is HIP studio vs pioneering OI — Marriner overlaps modern/chamber without sharpening those two poles."
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "work_id": "handel/giulio_cesare",
+  "entries": [
+    {
+      "recording": "handel/giulio_cesare/1",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": true,
+      "compared_with": [
+        "handel/giulio_cesare/0"
+      ],
+      "text": "Jacobs’s Concerto Köln Giulio Cesare is the Italian-language HIP studio classic for this opera: Larmore’s Cesare fearless in the runs, Schlick’s Cleopatra sharp in colour, Fink and Rørholm binding Cornelia and Sesto. Concerto Köln answers the score’s obbligatos and double orchestra with dramatic bite. Against the Baker/Mackerras ENO set in English it is the other language and the other instrumentarium — complete Italian studio drama rather than English theatre document.\n\nSome tempi sit slower than habit; a few rallentandos jar. The set still leads the Italian complete argument on disc. Harmonia Mundi’s four-CD face is the object — not excerpts.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "MusicWeb — Jacobs / Concerto Köln Giulio Cesare",
+          "url": "https://www.musicweb-international.com/classrev/2002/jan02/Handel_cesare.htm",
+          "kind": "review"
+        },
+        {
+          "title": "ClassicsToday — Handel Giulio Cesare / Jacobs",
+          "url": "https://www.classicstoday.com/review/review-9180/",
+          "kind": "review"
+        },
+        {
+          "title": "MusicBrainz — HMC 901385.87",
+          "url": "https://musicbrainz.org/release/f52d0506-c1e1-4f99-9402-fda14908143c",
+          "kind": "discography"
+        },
+        {
+          "title": "Harmonia Mundi — Giulio Cesare complete PDF",
+          "url": "https://www.harmoniamundi.com/wp-content/uploads/pdf/handel-giulio-cesare-complete-en.pdf",
+          "kind": "label"
+        }
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "MusicWeb — Jacobs Giulio Cesare",
+            "url": "https://www.musicweb-international.com/classrev/2002/jan02/Handel_cesare.htm",
+            "note": "Leading Italian complete; Larmore runs; cohesive dramatic view."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "ClassicsToday — Jacobs / Concerto Köln",
+            "url": "https://www.classicstoday.com/review/review-9180/",
+            "note": "Strong endorsement of 1991 HM cast and direction."
+          },
+          {
+            "axis": "sound",
+            "tier": "B",
+            "title": "MusicBrainz — HM 1991 Cologne studio",
+            "url": "https://musicbrainz.org/release/f52d0506-c1e1-4f99-9402-fda14908143c",
+            "note": "Early-90s Harmonia Mundi — clear, present; excellent for period-opera studio."
+          }
+        ]
+      }
+    },
+    {
+      "recording": "handel/giulio_cesare/0",
+      "author": {
+        "id": "cmrc",
+        "name": "Classical Music Recording Critic"
+      },
+      "date": "2026-09-19",
+      "revision": 1,
+      "stars": 3,
+      "reference": false,
+      "compared_with": [
+        "handel/giulio_cesare/1"
+      ],
+      "text": "Baker’s Julius Caesar for Mackerras and the ENO is the English-language modern-instrument document that still matters: sovereign Handelian mezzo, Masterson’s Cleopatra touching, Bowman and Tomlinson vivid in the court. Mackerras paces recitative and aria with theatre sense; the Abbey Road studio set preserves an ENO generation at full strength.\n\nAgainst Jacobs’s Italian HIP complete it is another work in another tongue — cuts exist, period instruments do not. The later Chandos reissue carries the same 1984 Abbey Road tapes, not a remake. Keep it for Baker and for the English theatre pole of the Cesare argument.",
+      "quotes": [],
+      "consulted": [
+        {
+          "title": "MusicWeb — Baker / Mackerras Julius Caesar (Chandos excerpts from EMI tapes)",
+          "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm",
+          "kind": "review"
+        },
+        {
+          "title": "Chandos — CHAN 3019 complete listing",
+          "url": "https://www.chandos.net/products/catalogue/CHAN%203019",
+          "kind": "label"
+        },
+        {
+          "title": "Presto — Giulio Cesare / Baker / Mackerras CHAN3019",
+          "url": "https://www.prestomusic.com/classical/products/7945334--handel-giulio-cesare-in-egitto",
+          "kind": "label"
+        },
+        {
+          "title": "MusicBrainz — EMI CMS 7 69760 2",
+          "url": "https://musicbrainz.org/release/ebb73671-da20-451c-a13a-e6b36b843ca3",
+          "kind": "discography"
+        }
+      ],
+      "matrix": {
+        "interpretation": 5,
+        "sound": 4,
+        "ledger": [
+          {
+            "axis": "interpretation",
+            "tier": "A",
+            "title": "MusicWeb — Baker Julius Caesar",
+            "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm",
+            "note": "Baker as Handelian sovereign; Mackerras stylish modern-instrument drama."
+          },
+          {
+            "axis": "sound",
+            "tier": "A",
+            "title": "MusicWeb — Abbey Road 1984 capture",
+            "url": "https://www.musicweb-international.com/classrev/2003/Apr03/Handel_JCaesar_chandos.htm",
+            "note": "First-rate studio sound; EMI/Chandos transfers clean."
+          },
+          {
+            "axis": "interpretation",
+            "tier": "C",
+            "title": "Chandos product page — CHAN 3019",
+            "url": "https://www.chandos.net/products/catalogue/CHAN%203019",
+            "note": "Label identity/cast only — does not lift score alone."
+          }
+        ]
+      }
+    }
+  ]
+}
