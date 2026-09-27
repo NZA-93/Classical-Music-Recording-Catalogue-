@@ -1,6 +1,6 @@
 # ADR-005 — The Morningstar box is a derived 3×3
 
-**Status:** accepted · **Date:** 27 September 2026 · **Decided by:** Nicolò · **Depends on:** ADR-002 · **Amends:** the Morningstar card described in `proposals/MORNINGSTAR_MATRIX.md`
+**Status:** accepted · **Date:** 27 September 2026 · **Amended:** 27 September 2026 (Critic, prose editor, and UX: the band cut below) · **Decided by:** Nicolò · **Depends on:** ADR-002 · **Amends:** the Morningstar card described in `proposals/MORNINGSTAR_MATRIX.md`
 
 ---
 
@@ -21,30 +21,37 @@ or an overall is not a field on the entry.
 
 | Stored integer | Interpretation band | Sound band |
 |---|---|---|
-| 1–2 | Of historical interest | Limited |
-| 3 | Solid | Good |
-| 4–5 | Outstanding | Excellent |
+| 1–3 | With reservations | — |
+| 1–2 | — | Limited |
+| 3 | — | Good |
+| 4 | Strong | Excellent |
+| 5 | Outstanding | Excellent |
 
-Each integer lands in exactly one band. The filled cell is that pair. The
-caption names the bands (`Interpretation: Outstanding · Sound: Excellent`).
-How scored still shows the original integers, which integer sits in which
-band, the expand-only overall (`0.6×interpretation + 0.4×sound`), and the
+The two axes do not share a cut. Each integer lands in exactly one band on its
+own axis. The filled cell is that pair, taken from the signed integers and
+never from the ledger. The card face names every band, and the caption names
+the filled cell (`Interpretation: Outstanding · Sound: Excellent`).
+
+How scored shows the original integers, then this sentence once, in plain type:
+
+> Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.
+
+Then the expand-only overall (`0.6×interpretation + 0.4×sound`) and the
 evidence ledger.
 
 **Référence** stays the signed editorial flag. It is not a band and not a cell.
-The old English sound-end “Reference” is retired so the two words cannot be
-read as the same mark.
+The old English sound-end “Reference” is not a label anywhere on the card.
 
-A signed recording with no matrix integers renders no style box. The aggregate
-score box on engine-scored cards (Tosca, Shostakovich) is a different register
-and is not this grid.
+An assessed recording with no matrix integers shows the words “not yet scored”.
+It does not show an empty grid. The aggregate score box on engine-scored cards
+(Tosca, Shostakovich) is a different register and is not this grid.
 
 Scout pools (ADR-004) are unchanged: ordinal ranks, no stars, no Référence, no
 matrix, no Dictionnaire `text`.
 
 ## Consequence
 
-Neighbours whose integers were 4 and 5 now share a band, and may share a cell
-when the other axis falls in the same band too. That is a display collapse,
-not a new judgement. Whether a lost distinction still matters is a question
-for the Critic. This note does not move an integer, a star, or a Référence flag.
+Interpretation 4 and 5 are different bands (Strong, Outstanding). Sound 4 and 5
+still share Excellent. Interpretation 1, 2 and 3 share With reservations. That
+is a display grouping, not a new judgement. This note does not move an integer,
+a star, or a Référence flag.

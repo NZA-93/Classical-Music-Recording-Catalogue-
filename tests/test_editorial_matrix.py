@@ -95,10 +95,16 @@ class TestMatrixOverallFormula(unittest.TestCase):
 
 def stylebox_cell_index(interpretation: int, sound: int) -> int:
     """0-based index when cells are emitted high band first, then sound band left→right."""
-    ib = val.matrix_band_index(interpretation)
-    sb = val.matrix_band_index(sound)
+    ib = val.matrix_band_index(interpretation, val.INTERPRETATION_BANDS)
+    sb = val.matrix_band_index(sound, val.SOUND_BANDS)
     row_from_top = 2 - ib
     return row_from_top * 3 + sb
+
+
+BAND_LINE = (
+    "Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. "
+    "Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited."
+)
 
 
 class TestMatrixBandMapping(unittest.TestCase):
@@ -117,10 +123,10 @@ class TestMatrixBandMapping(unittest.TestCase):
         self.assertEqual(
             [val.matrix_band(n, val.INTERPRETATION_BANDS) for n in range(1, 6)],
             [
-                "Of historical interest",
-                "Of historical interest",
-                "Solid",
-                "Outstanding",
+                "With reservations",
+                "With reservations",
+                "With reservations",
+                "Strong",
                 "Outstanding",
             ],
         )
@@ -128,35 +134,63 @@ class TestMatrixBandMapping(unittest.TestCase):
             [val.matrix_band(n, val.SOUND_BANDS) for n in range(1, 6)],
             ["Limited", "Limited", "Good", "Excellent", "Excellent"],
         )
+        self.assertEqual(val.MATRIX_BAND_LINE, BAND_LINE)
         self.assertNotIn("Référence", [name for _lo, _hi, name in val.INTERPRETATION_BANDS])
         self.assertNotIn("Référence", [name for _lo, _hi, name in val.SOUND_BANDS])
         self.assertNotIn("Reference", [name for _lo, _hi, name in val.SOUND_BANDS])
+        self.assertNotIn("Reference", [name for _lo, _hi, name in val.INTERPRETATION_BANDS])
+
+    def test_cell_ignores_the_ledger(self):
+        """Same integers, different ledger rows: one cell. The ledger is not an argument."""
+        self.assertEqual(val.stylebox_grid_pos(4, 2), val.stylebox_grid_pos(4, 2))
+        self.assertEqual(
+            val.matrix_band(4, val.INTERPRETATION_BANDS),
+            "Strong",
+        )
+        strip = _fn(_tpl(), "matrixStrip(m)", "howScored(m)")
+        self.assertNotIn("m.ledger", strip)
+        self.assertNotIn("row.tier", strip)
+        ready = _fn(_tpl(), "matrixReady(m)", "matrixOverall(m)")
+        self.assertNotIn("m.ledger", ready)
+        self.assertIn("m.interpretation", ready)
+        self.assertIn("m.sound", ready)
 
     def test_js_uses_the_same_partition(self):
-        fn = _fn(_tpl(), "matrixBandIndex(score)", "matrixOverall(m)")
-        self.assertIn("if(score<=2) return 0;", fn)
-        self.assertIn("if(score===3) return 1;", fn)
-        self.assertIn("return 2;", fn)
+        interp = _fn(_tpl(), "interpretationBandIndex(score)", "soundBandIndex(score)")
+        sound = _fn(_tpl(), "soundBandIndex(score)", "matrixReady(m)")
+        self.assertIn("if(score<=3) return 0;", interp)
+        self.assertIn("if(score===4) return 1;", interp)
+        self.assertIn("return 2;", interp)
+        self.assertIn("if(score<=2) return 0;", sound)
+        self.assertIn("if(score===3) return 1;", sound)
+        self.assertIn("return 2;", sound)
         self.assertIn('const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"]', _tpl())
         self.assertIn(
-            'const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"]',
+            'const MATRIX_INTERP_BANDS=["With reservations","Strong","Outstanding"]',
             _tpl(),
         )
+        self.assertEqual(_tpl().count(BAND_LINE), 1)
+        self.assertNotIn('"Reference"', _tpl())
+        self.assertNotIn("Of historical interest", _tpl())
+        self.assertNotIn(">Landmark<", _tpl())
 
     def test_interpretation_5_sound_3_is_top_row_middle_column(self):
         """Sound 3 is the middle band; interpretation 5 is the top band."""
         self.assertEqual(val.stylebox_grid_pos(5, 3), (2, 1))
         self.assertEqual(stylebox_cell_index(5, 3), 1)
 
-    def test_corners_and_collapsed_neighbours(self):
+    def test_corners_and_which_neighbours_share_a_cell(self):
         self.assertEqual(val.stylebox_grid_pos(1, 1), (1, 3))
         self.assertEqual(val.stylebox_grid_pos(1, 5), (3, 3))
         self.assertEqual(val.stylebox_grid_pos(5, 1), (1, 1))
         self.assertEqual(val.stylebox_grid_pos(5, 5), (3, 1))
-        # 1 and 2 share the low band; 4 and 5 share the high band.
-        self.assertEqual(val.stylebox_grid_pos(1, 1), val.stylebox_grid_pos(2, 2))
-        self.assertEqual(val.stylebox_grid_pos(4, 4), val.stylebox_grid_pos(5, 5))
-        self.assertEqual(val.stylebox_grid_pos(3, 3), (2, 2))
+        # Interpretation 1, 2 and 3 share With reservations. Sound 1 and 2 share Limited.
+        self.assertEqual(val.stylebox_grid_pos(1, 1), val.stylebox_grid_pos(3, 2))
+        # Interpretation 4 is Strong, not Outstanding. Sound 4 and 5 share Excellent.
+        self.assertEqual(val.stylebox_grid_pos(4, 4), (3, 2))
+        self.assertNotEqual(val.stylebox_grid_pos(4, 4), val.stylebox_grid_pos(5, 5))
+        self.assertEqual(val.stylebox_grid_pos(5, 4), val.stylebox_grid_pos(5, 5))
+        self.assertEqual(val.stylebox_grid_pos(3, 3), (2, 3))
 
 
 class TestValidateMatrix(unittest.TestCase):
@@ -541,7 +575,11 @@ class TestMatrixCardRender(unittest.TestCase):
         self.assertNotIn("Overall", strip)
         self.assertIn("Interpretation ${esc(m.interpretation)}", how)
         self.assertIn("Sound ${esc(m.sound)}", how)
-        self.assertIn("[1,2,3,4,5]", how)
+        self.assertIn("${MATRIX_BAND_LINE}", how)
+        scores_at = how.index("Interpretation ${esc(m.interpretation)}")
+        line_at = how.index("${MATRIX_BAND_LINE}")
+        self.assertLess(scores_at, line_at)
+        self.assertNotIn("rubric", how[scores_at:line_at])
 
     def test_fixture_5_3_places_filled_cell_at_grid_position(self):
         """Interpretation 5, Sound 3 → middle column, CSS row 1 (top band)."""
@@ -578,37 +616,43 @@ class TestMatrixCardRender(unittest.TestCase):
         self.assertIn("Interpretation: ${esc(iName)} · Sound: ${esc(sName)}", strip)
         self.assertNotIn("Interpretation ${esc(i)} · Sound ${esc(s)}", strip)
         self.assertIn("Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}", how)
-        self.assertIn("matrixBandIndex", how)
+        self.assertIn("${MATRIX_BAND_LINE}", how)
+        self.assertLess(
+            how.index("Interpretation ${esc(m.interpretation)}"),
+            how.index("${MATRIX_BAND_LINE}"),
+        )
         cat = _embedded_catalogue(html)
         mx = cat["works"][0]["recordings"][0]["editorial"]["matrix"]
         self.assertEqual(mx["interpretation"], 4)
         self.assertEqual(mx["sound"], 3)
         self.assertEqual(set(mx), {"interpretation", "sound", "ledger"})
-        self.assertEqual(val.matrix_band(4, val.INTERPRETATION_BANDS), "Outstanding")
+        self.assertEqual(val.matrix_band(4, val.INTERPRETATION_BANDS), "Strong")
         self.assertEqual(val.matrix_band(3, val.SOUND_BANDS), "Good")
 
     def test_band_names_are_not_the_reference_flag(self):
         tpl = _tpl()
         self.assertIn('const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"]', tpl)
         self.assertIn(
-            'const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"]',
+            'const MATRIX_INTERP_BANDS=["With reservations","Strong","Outstanding"]',
             tpl,
         )
         self.assertNotIn("Hard listen", tpl)
         self.assertNotIn("Landmark", tpl)
+        self.assertNotIn('"Reference"', tpl)
+        self.assertEqual(tpl.count(BAND_LINE), 1)
         strip = _fn(tpl, "matrixStrip(m)", "howScored(m)")
         how = _fn(tpl, "howScored(m)", "signed(r)")
         self.assertNotIn("Référence", strip)
         self.assertNotIn("Référence", how)
-        self.assertIn("MATRIX_SOUND_BANDS[0]", strip)
-        self.assertIn("MATRIX_SOUND_BANDS[2]", strip)
-        self.assertIn("MATRIX_INTERP_BANDS[0]", strip)
-        self.assertIn("MATRIX_INTERP_BANDS[2]", strip)
-        self.assertNotIn("MATRIX_SOUND_BANDS[1]", strip)
-        self.assertNotIn("MATRIX_INTERP_BANDS[1]", strip)
-        self.assertIn("[1,2,3,4,5]", how)
+        self.assertNotIn(BAND_LINE, strip)
+        for index in (0, 1, 2):
+            self.assertIn(f"MATRIX_SOUND_BANDS[{index}]", strip)
+            self.assertIn(f"MATRIX_INTERP_BANDS[{index}]", strip)
         self.assertIn("m.interpretation", how)
         self.assertIn("m.sound", how)
+        self.assertIn('<p class="band-key">${MATRIX_BAND_LINE}</p>', how)
+        self.assertNotIn("<sup", how)
+        self.assertNotIn("†", how)
         signed = _fn(tpl, "signed(r)", "factStrip(r)")
         self.assertIn("Référence", signed)
 
@@ -633,9 +677,16 @@ class TestMatrixCardRender(unittest.TestCase):
         rec = cat["works"][0]["recordings"][0]
         self.assertNotIn("matrix", rec["editorial"])
         strip = _fn(html, "matrixStrip(m)", "howScored(m)")
-        self.assertIn("if(!m) return \"\"", strip)
+        self.assertIn('if(!matrixReady(m)) return ""', strip)
+        self.assertNotIn('class="grid"', _fn(html, "notYetScored()", "matrixStrip(m)"))
+        unscored = _fn(html, "notYetScored()", "matrixStrip(m)")
+        self.assertIn("not yet scored", unscored)
+        self.assertNotIn("stylebox", unscored)
         how = _fn(html, "howScored(m)", "signed(r)")
         self.assertIn("if(!m) return \"\"", how)
+        signed = _fn(html, "signed(r)", "factStrip(r)")
+        self.assertIn("notYetScored()", signed)
+        self.assertIn("matrixReady(e.matrix)?matrixStrip(e.matrix):notYetScored()", signed)
         self.assertIn("Fixture signed prose without a matrix.", html)
         self.assertIn(">References<", html)
         identity = html[html.index("function identityLine(r)"):html.index("function entry(r)")]

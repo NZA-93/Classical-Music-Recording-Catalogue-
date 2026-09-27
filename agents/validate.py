@@ -188,16 +188,23 @@ MAX_LEDGER_NOTE = 200
 # Stored keys only. The 3×3 cell is derived at render (ADR-005) and must not
 # be written onto the entry as a band, a cell, or an overall.
 _MATRIX_STORED_KEYS = frozenset({"interpretation", "sound", "ledger"})
-# Inclusive ranges. The three bands partition 1–5 with no overlap.
+# Inclusive ranges, low band first. The two axes do not share a cut.
+# Cells are derived from these integers only — never from the ledger.
+# Amended 27 Sep 2026 with the Critic, the prose editor, and UX (ADR-005).
 INTERPRETATION_BANDS = (
-    (1, 2, "Of historical interest"),
-    (3, 3, "Solid"),
-    (4, 5, "Outstanding"),
+    (1, 3, "With reservations"),
+    (4, 4, "Strong"),
+    (5, 5, "Outstanding"),
 )
 SOUND_BANDS = (
     (1, 2, "Limited"),
     (3, 3, "Good"),
     (4, 5, "Excellent"),
+)
+# Printed once in How scored, directly under the two integers.
+MATRIX_BAND_LINE = (
+    "Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. "
+    "Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited."
 )
 
 
@@ -218,15 +225,14 @@ def matrix_band_hits(score: int, bands: tuple) -> list[str]:
     return [name for lo, hi, name in bands if lo <= score <= hi]
 
 
-def matrix_band_index(score: int) -> int:
-    """0 low (1–2), 1 middle (3), 2 high (4–5)."""
+def matrix_band_index(score: int, bands: tuple) -> int:
+    """0 is the low band of this axis. Interpretation and sound use different tables."""
     if not _is_matrix_axis(score):
         raise ValueError(score)
-    if score <= 2:
-        return 0
-    if score == 3:
-        return 1
-    return 2
+    for index, (lo, hi, _name) in enumerate(bands):
+        if lo <= score <= hi:
+            return index
+    raise ValueError(score)
 
 
 def matrix_band(score: int, bands: tuple) -> str:
@@ -240,12 +246,12 @@ def stylebox_grid_pos(interpretation: int, sound: int) -> tuple[int, int]:
     """CSS (column, row) on the derived 3×3.
 
     X = sound band, left→right (Limited → Excellent).
-    Y = interpretation band, bottom→top (Of historical interest → Outstanding).
-    CSS row 1 is the top of the grid.
+    Y = interpretation band, bottom→top (With reservations → Outstanding).
+    CSS row 1 is the top of the grid. The ledger is not an input.
     """
     return (
-        matrix_band_index(sound) + 1,
-        3 - matrix_band_index(interpretation),
+        matrix_band_index(sound, SOUND_BANDS) + 1,
+        3 - matrix_band_index(interpretation, INTERPRETATION_BANDS),
     )
 
 

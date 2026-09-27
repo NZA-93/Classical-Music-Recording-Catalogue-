@@ -159,33 +159,45 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar 3×3: sound band →, interpretation band ↑. One filled cell. Derived, not stored. */
+  /* Critic Morningstar 3×3. Band words sit on the face. Cell derived from integers, never stored. */
   .signed .matrix{margin:1.1rem 0 0;width:max-content;max-width:100%}
-  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch;width:min(52vw,12.5rem)}
+  .signed .stylebox{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.4rem;align-items:stretch;width:min(100%,22rem)}
   .signed .stylebox .ylab{
     writing-mode:vertical-rl;transform:rotate(180deg);
-    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
+    font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
     letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
     text-align:center;padding:.15rem 0}
   .signed .stylebox .plot{min-width:0}
-  .signed .stylebox .y-end,.signed .stylebox .x-end,.signed .stylebox .xlab{
-    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
-    color:var(--ink-soft);line-height:1.2}
-  .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
-  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem;max-width:12.5rem}
+  .signed .board{
+    display:grid;
+    grid-template-columns:minmax(6.5rem,7.8rem) minmax(7.4rem,9rem);
+    column-gap:.45rem;row-gap:.28rem;align-items:stretch}
+  .signed .y-names{grid-column:1;grid-row:1;display:grid;grid-template-rows:repeat(3,1fr);align-items:center}
+  .signed .y-name,.signed .x-name,.signed .stylebox .xlab{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;
+    color:var(--ink);line-height:1.2}
+  .signed .y-name{display:block;text-align:right}
+  .signed .x-names{grid-column:2;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+  .signed .stylebox .xlab{
+    grid-column:2;grid-row:3;
+    text-transform:uppercase;letter-spacing:.1em;font-size:.56rem;color:var(--ink-soft);
+    text-align:center}
   .signed .stylebox .grid{
+    grid-column:2;grid-row:1;
     display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
-    aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
+    width:100%;aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
   .signed .stylebox .cell.filled{background:var(--ink)}
-  .signed .stylebox .xaxis{display:flex;justify-content:space-between;align-items:flex-start;gap:.2rem}
-  .signed .stylebox .xlab{text-transform:uppercase;letter-spacing:.1em;font-size:.5rem;align-self:center}
   .signed .matrix-cap{
-    margin:.4rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
-    font-weight:500;color:var(--ink-soft);letter-spacing:.02em}
+    margin:.55rem 0 0;font-family:"Newsreader",Georgia,serif;font-size:.95rem;
+    font-weight:500;color:var(--ink);letter-spacing:0}
+  .matrix-unscored{
+    margin:1.1rem 0 0;font-family:"Newsreader",Georgia,serif;font-size:1rem;
+    color:var(--ink-soft)}
   .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
-  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks{
-    font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks,
+  .signed .how-scored .band-key{
+    font-size:.95rem;color:var(--ink);margin:.55rem 0;font-family:"Newsreader",Georgia,serif}
   .signed .how-scored .overall b{color:var(--ink);font-weight:500}
   .signed .how-scored .ticks .k{
     display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
@@ -297,7 +309,9 @@
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
     .signed .matrix{width:100%;max-width:100%}
-    .signed .stylebox{width:min(56vw,12.5rem);min-width:9.25rem}
+    .signed .stylebox{width:100%}
+    .signed .board{grid-template-columns:minmax(5.4rem,6.6rem) minmax(6.2rem,1fr)}
+    .signed .y-name,.signed .x-name{font-size:.64rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -556,16 +570,31 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
-/* 3×3 bands derived from stored 1–5 integers. Never written back onto the entry.
-   Face shows the band ends. Référence is the signed flag, not a band and not a cell. */
+/* 3×3 bands derived from the signed 1–5 integers only. The ledger is not read.
+   Low band is index 0. The two axes do not share a cut. Référence is not a band. */
 const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"];
-const MATRIX_INTERP_BANDS=["Of historical interest","Solid","Outstanding"];
+const MATRIX_INTERP_BANDS=["With reservations","Strong","Outstanding"];
+const MATRIX_BAND_LINE="Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.";
 
-function matrixBandIndex(score){
-  /* 1–2 → 0, 3 → 1, 4–5 → 2. Each integer lands in exactly one band. */
+function interpretationBandIndex(score){
+  /* 1–3 → 0 With reservations, 4 → 1 Strong, 5 → 2 Outstanding. */
+  if(score<=3) return 0;
+  if(score===4) return 1;
+  return 2;
+}
+
+function soundBandIndex(score){
+  /* 1–2 → 0 Limited, 3 → 1 Good, 4–5 → 2 Excellent. */
   if(score<=2) return 0;
   if(score===3) return 1;
   return 2;
+}
+
+function matrixReady(m){
+  /* Placement uses the two integers. Never the ledger. */
+  if(!m) return false;
+  const i=m.interpretation, s=m.sound;
+  return i>=1 && i<=5 && s>=1 && s<=5;
 }
 
 function matrixOverall(m){
@@ -573,11 +602,16 @@ function matrixOverall(m){
   return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
 }
 
+function notYetScored(){
+  /* Words only. No empty grid. */
+  return `<p class="matrix-unscored">not yet scored</p>`;
+}
+
 function matrixStrip(m){
-  /* 3×3 style box under signed prose. X = sound band left→right; Y = interpretation band bottom→top. */
-  if(!m) return "";
+  /* 3×3 style box. X = sound band left→right; Y = interpretation band bottom→top. */
+  if(!matrixReady(m)) return "";
   const i=m.interpretation, s=m.sound;
-  const ib=matrixBandIndex(i), sb=matrixBandIndex(s);
+  const ib=interpretationBandIndex(i), sb=soundBandIndex(s);
   const iName=MATRIX_INTERP_BANDS[ib], sName=MATRIX_SOUND_BANDS[sb];
   let cells="";
   for(let y=2;y>=0;y--){
@@ -592,17 +626,23 @@ function matrixStrip(m){
   }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
     <div class="stylebox">
-      <span class="ylab" aria-hidden="true">Interpretation</span>
+      <span class="ylab">Interpretation</span>
       <div class="plot">
-        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP_BANDS[2]}</span>
-        <div class="grid" role="grid" aria-label="Sound axis, Limited to Excellent, left to right. Interpretation axis, Of historical interest to Outstanding, bottom to top.">
-          ${cells}
-        </div>
-        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP_BANDS[0]}</span>
-        <div class="xaxis">
-          <span class="x-end">${MATRIX_SOUND_BANDS[0]}</span>
+        <div class="board">
+          <div class="y-names">
+            <span class="y-name">${MATRIX_INTERP_BANDS[2]}</span>
+            <span class="y-name">${MATRIX_INTERP_BANDS[1]}</span>
+            <span class="y-name">${MATRIX_INTERP_BANDS[0]}</span>
+          </div>
+          <div class="grid" role="grid" aria-label="Sound axis, Limited, Good, Excellent, left to right. Interpretation axis, With reservations, Strong, Outstanding, bottom to top.">
+            ${cells}
+          </div>
+          <div class="x-names">
+            <span class="x-name">${MATRIX_SOUND_BANDS[0]}</span>
+            <span class="x-name">${MATRIX_SOUND_BANDS[1]}</span>
+            <span class="x-name">${MATRIX_SOUND_BANDS[2]}</span>
+          </div>
           <span class="xlab">Sound</span>
-          <span class="x-end">${MATRIX_SOUND_BANDS[2]}</span>
         </div>
       </div>
     </div>
@@ -628,14 +668,11 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
-  const interpTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_INTERP_BANDS[matrixBandIndex(n)]}`).join(" · ");
-  const soundTicks=[1,2,3,4,5].map(n=>`${n} ${MATRIX_SOUND_BANDS[matrixBandIndex(n)]}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
-    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
     <p class="ticks"><span class="k">This recording</span>Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}</p>
-    <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
-    <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
+    <p class="band-key">${MATRIX_BAND_LINE}</p>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>
       <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
     <p class="modlabel">Evidence ledger</p>
@@ -646,7 +683,7 @@ function howScored(m){
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
-    weighted consensus of published sources; it is not a listening report.</div>`;
+    weighted consensus of published sources; it is not a listening report.</div>${notYetScored()}`;
   const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
   const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
   const div = Number.isFinite(r.divergence) && r.divergence!==0
@@ -659,7 +696,7 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
-    ${matrixStrip(e.matrix)}
+    ${matrixReady(e.matrix)?matrixStrip(e.matrix):notYetScored()}
     ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}

@@ -11,16 +11,19 @@ Display decision: [`docs/adr/ADR-005-morningstar-3x3.md`](../docs/adr/ADR-005-mo
 ## Card (three-second scan)
 
 - Dictionnaire signed prose first; stars / Référence stay the editorial headline.
-- When `editorial.matrix` is present: a **3×3 Morningstar-style box** under the
-  prose (not inside it). The cell is **derived at render** from the stored
-  integers. One filled cell at (sound band, interpretation band). Caption names
-  the bands: `Interpretation: Outstanding · Sound: Excellent`.
+- When `editorial.matrix` has both integers: a **3×3 Morningstar-style box**
+  under the prose (not inside it). The cell is **derived at render from those
+  integers only**, never from the ledger. One filled cell. Every band name is
+  readable on the face. Caption names the filled cell:
+  `Interpretation: Outstanding · Sound: Excellent`.
 - **No overall badge on the card.**
-- Empty matrix stays invisible (no hollow box). Engine-scored cards with no
-  Critic matrix (Tosca, Shostakovich 5) keep their aggregate score box and do
-  not gain a style box.
-- “How scored” expands to the original 1–5 integers, the band each integer
-  belongs to, optional overall, and the evidence ledger.
+- No integers: the words **not yet scored**. No empty grid. Engine-scored cards
+  with no Critic matrix (Tosca, Shostakovich 5) keep their aggregate score box
+  and show those words instead of a style box.
+- “How scored” expands to the original integers, then this sentence once, in
+  plain type: “Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With
+  reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.”
+  Then optional overall and the evidence ledger.
 - The box is drawn on the sealed work page (the card a composer hub links to).
   Composer hubs list assessed recordings; they do not draw a second box.
   Candidates considered (ADR-004) stays a rank list with no style box.
@@ -29,24 +32,23 @@ Display decision: [`docs/adr/ADR-005-morningstar-3x3.md`](../docs/adr/ADR-005-mo
 
 X = Sound band, left→right. Y = Interpretation band, bottom→top.
 
-**Axis ends on the box face:**
+**Every band is named on the face** (row labels top→bottom, column labels left→right):
 
-- Sound: Limited → Excellent
-- Interpretation: Of historical interest → Outstanding
+- Interpretation: Outstanding, Strong, With reservations
+- Sound: Limited, Good, Excellent
 
-The middle bands (Good, Solid) appear in the caption when that is the cell,
-and in How scored for every integer.
-
-**Bands (derived; not stored; not 9 cell essays):**
+**Bands (derived from the integers; not stored; not taken from the ledger):**
 
 | Stored integer | Interpretation | Sound |
 |---|---|---|
-| 1–2 | Of historical interest | Limited |
-| 3 | Solid | Good |
-| 4–5 | Outstanding | Excellent |
+| 1–3 | With reservations | — |
+| 1–2 | — | Limited |
+| 3 | — | Good |
+| 4 | Strong | Excellent |
+| 5 | Outstanding | Excellent |
 
 **Référence** remains only the signed editorial flag. It is not a band and not
-a cell. Do not conflate it with a sound or interpretation label.
+a cell. The sound axis has no end-label “Reference”.
 
 ## Axes (Critic integers, never derived from the ledger)
 
