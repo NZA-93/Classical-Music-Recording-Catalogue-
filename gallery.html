@@ -263,6 +263,39 @@ function influence(r){
   }).join("");
 }
 
+/* A Made-by row lists only a known credit. Placeholders ("not established",
+   "not known", "unknown", "n/a", a bare dash) drop out with their label.
+   If nothing is known, the panel is omitted. */
+function knownFact(v){
+  if(v==null) return "";
+  if(typeof v==="number") return Number.isFinite(v)?String(v):"";
+  const s=String(v).trim();
+  if(!s) return "";
+  const norm=s.toLowerCase().replace(/\s+/g," ").replace(/[—–]/g,"-");
+  const placeholders=new Set([
+    "not established","not established - contribute","not yet established",
+    "not known","unknown","n/a","n.a.","n.a","na","tbd","null","-","--"
+  ]);
+  return placeholders.has(norm)?"":s;
+}
+
+function madeBy(engineering){
+  const e=engineering&&typeof engineering==="object"?engineering:{};
+  const rows=[
+    ["Venue", e.venue],
+    ["Sessions", e.sessions],
+    ["Producer", e.producer],
+    ["Engineer", e.engineer],
+    ["Credits", e.status],
+  ].map(([role,value])=>{
+    const known=knownFact(value);
+    if(!known) return "";
+    return `<div class="person"><span class="role">${esc(role)}</span><span class="name">${esc(known)}</span></div>`;
+  }).filter(Boolean);
+  if(!rows.length) return "";
+  return `<div class="panel"><h3>Made by</h3>${rows.join("")}</div>`;
+}
+
 function render(i){
   const r = FLAT[i], w = r._w;
   document.querySelectorAll(".card").forEach((c,j)=>c.setAttribute("aria-selected", j===i));
@@ -314,18 +347,11 @@ function render(i){
     <table><thead><tr><th>Edition</th><th>Year</th><th>What it did to the sound</th>
       <th>Sound</th><th>Verdict</th></tr></thead><tbody>${eds}</tbody></table>`;
 
-  const e = r.engineering, miss = '<span>not established</span>';
   /* D: no producer-across-works rail. Empty is preferred until a feed
-     can be scoped to this work. */
+     can be scoped to this work. Unknown credit rows are left out; if none
+     remain, Made by itself is left out. */
   document.getElementById("aside").innerHTML = `
-    <div class="panel">
-      <h3>Made by</h3>
-      <div class="person"><span class="role">Venue</span><span class="name">${esc(e.venue)}</span></div>
-      <div class="person"><span class="role">Sessions</span><span class="name">${esc(e.sessions)}</span></div>
-      <div class="person"><span class="role">Producer</span><span class="name">${e.producer?esc(e.producer):miss}</span></div>
-      <div class="person"><span class="role">Engineer</span><span class="name">${e.engineer?esc(e.engineer):miss}</span></div>
-      <div class="person"><span class="role">Credits</span><span class="name">${esc(e.status)}</span></div>
-    </div>
+    ${madeBy(r.engineering)}
     <div class="panel">
       <h3>Sound, best edition</h3>
       <div class="meterline"><span class="meter"><i style="width:${r.sound_best!=null?(((r.sound_best-1.5)/1.5)*100).toFixed(0):0}%"></i></span>

@@ -502,9 +502,9 @@ function credits(c){
   if(where) parts.push(where);
   const cred=creditSentence(knownFact(c.producer),knownFact(c.engineer));
   if(cred) parts.push(cred);
-  /* Provenance of the credits we do have. "unknown" here is a status, not a
-     stand-in for a missing name, so it is not run through knownFact. */
-  const status=c.status==null?"":String(c.status).trim();
+  /* Provenance is itself a credit. "unknown" and the other placeholders
+     print nothing — no "credits unknown" line and no empty label. */
+  const status=knownFact(c.status);
   const prov=status
     ?`<span class="prov${status==="cited"?"":" draft"}">credits ${esc(status)}</span>`
     :"";
