@@ -736,18 +736,18 @@ def _rendered_card(rec: dict) -> str:
     parts: list[str] = []
     if rec.get("card") != "identity":
         un = rec.get("interpretation") is None
-        if rec.get("reference") and editorial:
+        if editorial is None:
+            stand = '<span class="plain">No signed entry</span>'
+        elif rec.get("reference"):
             stand = (
                 '<span class="badge">Référence</span>'
                 '<span class="sub">interpretation only</span>'
             )
         elif un:
             stand = '<span class="v muted">—</span><span class="sub">awaiting sources</span>'
-        elif rec.get("reference"):
-            stand = '<span class="v muted">—</span>'
         else:
             stand = '<span class="v muted">—</span><span class="sub">not a référence</span>'
-        parts.append(f'<div class="scorebox">{stand}</div>')
+        parts.append(f'<div class="scorebox"><span class="k">Standing</span>{stand}</div>')
         if editorial is None:
             parts.append(
                 '<div class="unsigned">No signed entry yet.</div>'
@@ -775,9 +775,10 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
         start = tpl.index("function signedEntry(r)")
         scorebox = tpl[start:tpl.index("function credits(c)", start)]
         self.assertIn("function signedEntry(r)", scorebox)
-        self.assertIn("r.reference && signedEntry(r)", scorebox)
+        self.assertIn("!signedEntry(r)", scorebox)
+        self.assertIn('<span class="plain">No signed entry</span>', scorebox)
         self.assertLess(
-            scorebox.index("r.reference && signedEntry(r)"),
+            scorebox.index("!signedEntry(r)"),
             scorebox.index('<span class="badge">Référence</span>'),
         )
         signed = _fn(tpl, "signed(r)", "factStrip(r)")
@@ -786,6 +787,8 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
         gallery = (ROOT / "site/build_gallery.py").read_text(encoding="utf-8")
         self.assertIn("function signedEntry(r)", gallery)
         self.assertIn("r.reference && signedEntry(r)", gallery)
+        self.assertIn("!signedEntry(r)", gallery)
+        self.assertIn('<span class="plain">No signed entry</span>', gallery)
         self.assertNotIn("r.reference?'<span class=\"ref\">", gallery)
         self.assertNotIn("const stand = r.reference\n", gallery)
         hubs = (ROOT / "site/build_site.py").read_text(encoding="utf-8")
@@ -804,13 +807,17 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
             editorial = _signed_editorial(rec)
             if editorial is None:
                 unsigned.append(rec["id"])
+                self.assertIn("No signed entry", card, rec["id"])
                 self.assertNotIn("Référence", card, rec["id"])
+                self.assertNotIn("not a référence", card, rec["id"])
                 self.assertNotIn(">RÉF<", card, rec["id"])
             elif editorial.get("reference"):
                 signed_reference.append(rec["id"])
                 self.assertIn("Référence", card, rec["id"])
             else:
                 self.assertNotIn("Référence", card, rec["id"])
+                self.assertNotIn("No signed entry", card, rec["id"])
+                self.assertNotIn("not a référence", card, rec["id"])
         self.assertIn("puccini_tosca_desabata", unsigned)
         self.assertGreaterEqual(len(signed_reference), 1)
         callas = next(r for r in recordings if r["id"] == "puccini_tosca_desabata")
@@ -823,6 +830,30 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
         pinnock = next(r for r in recordings if r["id"] == "bach/brandenburg/0")
         self.assertTrue(_signed_editorial(pinnock)["reference"])
         self.assertIn("Référence", _rendered_card(pinnock))
+        for rid in (
+            "puccini_tosca_desabata",
+            "puccini_tosca_karajan",
+            "shostakovich_sym5_mravinsky",
+            "shostakovich_sym5_nelsons",
+            "shostakovich_sym5_noseda",
+        ):
+            self.assertIn(rid, unsigned)
+
+    def test_gallery_standing_says_no_signed_entry(self):
+        """Gallery rows are the engine catalogue. None of them carry a signed entry."""
+        raw = json.loads((ROOT / "build/catalogue.json").read_text(encoding="utf-8"))
+        recordings = [rec for work in raw["works"] for rec in work.get("recordings") or []]
+        self.assertGreaterEqual(len(recordings), 1)
+        gallery = (ROOT / "site/build_gallery.py").read_text(encoding="utf-8")
+        stand = gallery[gallery.index("const stand = !signedEntry(r)"):gallery.index("document.getElementById(\"report\")")]
+        self.assertIn("No signed entry", stand)
+        self.assertLess(stand.index("No signed entry"), stand.index("not a référence"))
+        for rec in recordings:
+            self.assertIsNone(_signed_editorial(rec), rec["id"])
+            card = _rendered_card(rec)
+            self.assertIn("No signed entry", card, rec["id"])
+            self.assertNotIn("not a référence", card, rec["id"])
+            self.assertNotIn("Référence", card, rec["id"])
 
 
 class TestRegressionAnchorsUntouched(unittest.TestCase):

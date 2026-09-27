@@ -93,6 +93,8 @@ a{color:var(--verd)}
   letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .scorebox .v{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.5rem;line-height:1}
 .scorebox .v.muted{font-size:1.05rem;color:var(--dim)}
+.scorebox .plain{font-family:"Newsreader",Georgia,serif;font-size:1rem;font-weight:500;
+  color:var(--bone);line-height:1.3}
 .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;color:var(--dim)}
 .scorebox .stars{color:var(--gold);font-size:1.15rem;letter-spacing:.14em}
 .scorebox .badge{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.6rem;
@@ -250,12 +252,14 @@ function render(i){
   const interpCell = un
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars">${st}</span><span class="v">${r.interpretation.toFixed(3)}</span>`;
-  const stand = (r.reference && signedEntry(r))
-    ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-    :`<span class="v muted">—</span>${
-        un?'<span class="sub">awaiting sources</span>'
-        :(r.reference?'':'<span class="sub">not a référence</span>')
-      }`;
+  const stand = !signedEntry(r)
+    ?`<span class="plain">No signed entry</span>`
+    :(r.reference
+      ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
+      :`<span class="v muted">—</span>${
+          un?'<span class="sub">awaiting sources</span>'
+          :'<span class="sub">not a référence</span>'
+        }`);
 
   document.getElementById("report").innerHTML = `
     <p class="headline">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
