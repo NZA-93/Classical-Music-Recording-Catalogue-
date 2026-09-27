@@ -97,6 +97,7 @@ a{color:var(--verd)}
   color:var(--bone);line-height:1.3}
 .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;color:var(--dim)}
 .scorebox .stars{color:var(--gold);font-size:1.15rem;letter-spacing:.14em}
+.scorebox .stars .off{color:rgba(232,235,227,.35)}
 .scorebox .badge{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.6rem;
   font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#0E110E;
   background:var(--crimson);padding:.25rem .45rem}
@@ -205,6 +206,18 @@ function signedEntry(r){
   return !!(e&&e.author&&e.date&&e.revision);
 }
 
+/* Standing reads the signed entry only. A missing stars field draws nothing. */
+function standingMarks(r){
+  if(!signedEntry(r)) return `<span class="plain">No signed entry</span>`;
+  const e=r.editorial;
+  const n=e.stars;
+  const stars=(typeof n==="number"&&Number.isFinite(n))
+    ?`<span class="stars" aria-label="${n} of 3 stars">${[0,1,2].map(i=>`<span class="${i<n?"on":"off"}">★</span>`).join("")}</span>`
+    :"";
+  const mark=e.reference?`<span class="badge">Référence</span>`:"";
+  return `${stars}${mark}`;
+}
+
 /* rail */
 document.getElementById("rail").innerHTML = FLAT.map((r,i)=>`
   <button class="card" role="tab" aria-selected="${i===0}" data-i="${i}">
@@ -222,6 +235,39 @@ function influence(r){
       title="${esc(s.source)} — ${esc(s.provenance)}, score ${s.score.toFixed(2)}, weight ${s.weight.toFixed(2)}">
       ${pct>16?s.weight.toFixed(2):""}</div>`;
   }).join("");
+}
+
+/* A Made-by row lists only a known credit. Placeholders ("not established",
+   "not known", "unknown", "n/a", a bare dash) drop out with their label.
+   If nothing is known, the panel is omitted. */
+function knownFact(v){
+  if(v==null) return "";
+  if(typeof v==="number") return Number.isFinite(v)?String(v):"";
+  const s=String(v).trim();
+  if(!s) return "";
+  const norm=s.toLowerCase().replace(/\\s+/g," ").replace(/[—–]/g,"-");
+  const placeholders=new Set([
+    "not established","not established - contribute","not yet established",
+    "not known","unknown","n/a","n.a.","n.a","na","tbd","null","-","--"
+  ]);
+  return placeholders.has(norm)?"":s;
+}
+
+function madeBy(engineering){
+  const e=engineering&&typeof engineering==="object"?engineering:{};
+  const rows=[
+    ["Venue", e.venue],
+    ["Sessions", e.sessions],
+    ["Producer", e.producer],
+    ["Engineer", e.engineer],
+    ["Credits", e.status],
+  ].map(([role,value])=>{
+    const known=knownFact(value);
+    if(!known) return "";
+    return `<div class="person"><span class="role">${esc(role)}</span><span class="name">${esc(known)}</span></div>`;
+  }).filter(Boolean);
+  if(!rows.length) return "";
+  return `<div class="panel"><h3>Made by</h3>${rows.join("")}</div>`;
 }
 
 function render(i){
@@ -252,14 +298,7 @@ function render(i){
   const interpCell = un
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars">${st}</span><span class="v">${r.interpretation.toFixed(3)}</span>`;
-  const stand = !signedEntry(r)
-    ?`<span class="plain">No signed entry</span>`
-    :(r.reference
-      ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-      :`<span class="v muted">—</span>${
-          un?'<span class="sub">awaiting sources</span>'
-          :'<span class="sub">not a référence</span>'
-        }`);
+  const stand = standingMarks(r);
 
   document.getElementById("report").innerHTML = `
     <p class="headline">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —
@@ -282,18 +321,11 @@ function render(i){
     <table><thead><tr><th>Edition</th><th>Year</th><th>What it did to the sound</th>
       <th>Sound</th><th>Verdict</th></tr></thead><tbody>${eds}</tbody></table>`;
 
-  const e = r.engineering, miss = '<span>not established</span>';
   /* D: no producer-across-works rail. Empty is preferred until a feed
-     can be scoped to this work. */
+     can be scoped to this work. Unknown credit rows are left out; if none
+     remain, Made by itself is left out. */
   document.getElementById("aside").innerHTML = `
-    <div class="panel">
-      <h3>Made by</h3>
-      <div class="person"><span class="role">Venue</span><span class="name">${esc(e.venue)}</span></div>
-      <div class="person"><span class="role">Sessions</span><span class="name">${esc(e.sessions)}</span></div>
-      <div class="person"><span class="role">Producer</span><span class="name">${e.producer?esc(e.producer):miss}</span></div>
-      <div class="person"><span class="role">Engineer</span><span class="name">${e.engineer?esc(e.engineer):miss}</span></div>
-      <div class="person"><span class="role">Credits</span><span class="name">${esc(e.status)}</span></div>
-    </div>
+    ${madeBy(r.engineering)}
     <div class="panel">
       <h3>Sound, best edition</h3>
       <div class="meterline"><span class="meter"><i style="width:${r.sound_best!=null?(((r.sound_best-1.5)/1.5)*100).toFixed(0):0}%"></i></span>
