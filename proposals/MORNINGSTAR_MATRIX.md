@@ -17,9 +17,11 @@ Display decision: [`docs/adr/ADR-005-morningstar-3x3.md`](../docs/adr/ADR-005-mo
   readable on the face. Caption names the filled cell:
   `Interpretation: Outstanding · Sound: Excellent`.
 - **No overall badge on the card.**
-- No integers: the words **not yet scored**. No empty grid. Engine-scored cards
+- No integers: the words **Not yet scored**. No empty grid. Engine-scored cards
   with no Critic matrix (Tosca, Shostakovich 5) keep their aggregate score box
-  and show those words instead of a style box.
+  and show those words instead of a style box. The aggregate reference flag
+  stays in the data and is not drawn as a badge until that disc has a signed
+  entry. A signed Référence badge stays on the signed entry.
 - “How scored” expands to the original integers, then this sentence once, in
   plain type: “Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With
   reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.”

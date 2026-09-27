@@ -42,9 +42,13 @@ evidence ledger.
 **Référence** stays the signed editorial flag. It is not a band and not a cell.
 The old English sound-end “Reference” is not a label anywhere on the card.
 
-An assessed recording with no matrix integers shows the words “not yet scored”.
+An assessed recording with no matrix integers shows the words “Not yet scored”.
 It does not show an empty grid. The aggregate score box on engine-scored cards
 (Tosca, Shostakovich) is a different register and is not this grid.
+
+The word Référence on a card is the signed editorial flag. The aggregate
+reference flag stays in the engine data. It is not drawn as a badge on a disc
+that has no signed entry.
 
 Scout pools (ADR-004) are unchanged: ordinal ranks, no stars, no Référence, no
 matrix, no Dictionnaire `text`.

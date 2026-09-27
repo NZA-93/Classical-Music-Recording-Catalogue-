@@ -680,7 +680,8 @@ class TestMatrixCardRender(unittest.TestCase):
         self.assertIn('if(!matrixReady(m)) return ""', strip)
         self.assertNotIn('class="grid"', _fn(html, "notYetScored()", "matrixStrip(m)"))
         unscored = _fn(html, "notYetScored()", "matrixStrip(m)")
-        self.assertIn("not yet scored", unscored)
+        self.assertIn("Not yet scored", unscored)
+        self.assertNotIn("not yet scored", unscored)
         self.assertNotIn("stylebox", unscored)
         how = _fn(html, "howScored(m)", "signed(r)")
         self.assertIn("if(!m) return \"\"", how)
@@ -717,6 +718,111 @@ class TestMatrixCardRender(unittest.TestCase):
             (ROOT / "data" / "editorial" / "shostakovich_sym5.json").read_text(encoding="utf-8")
         )
         self.assertEqual(empty.get("entries"), [])
+
+
+def _signed_editorial(rec: dict) -> dict | None:
+    """Same gate as signedEntry() in the page: author, date, revision."""
+    editorial = rec.get("editorial")
+    if not isinstance(editorial, dict):
+        return None
+    if not (editorial.get("author") and editorial.get("date") and editorial.get("revision")):
+        return None
+    return editorial
+
+
+def _rendered_card(rec: dict) -> str:
+    """Card face the work page draws. Aggregate Référence waits for a signature."""
+    editorial = _signed_editorial(rec)
+    parts: list[str] = []
+    if rec.get("card") != "identity":
+        un = rec.get("interpretation") is None
+        if rec.get("reference") and editorial:
+            stand = (
+                '<span class="badge">Référence</span>'
+                '<span class="sub">interpretation only</span>'
+            )
+        elif un:
+            stand = '<span class="v muted">—</span><span class="sub">awaiting sources</span>'
+        elif rec.get("reference"):
+            stand = '<span class="v muted">—</span>'
+        else:
+            stand = '<span class="v muted">—</span><span class="sub">not a référence</span>'
+        parts.append(f'<div class="scorebox">{stand}</div>')
+        if editorial is None:
+            parts.append(
+                '<div class="unsigned">No signed entry yet.</div>'
+                '<p class="matrix-unscored">Not yet scored</p>'
+            )
+    if editorial is not None:
+        badge = '<span class="badge">Référence</span>' if editorial.get("reference") else ""
+        parts.append(f'<div class="signed">{badge}</div>')
+        matrix = editorial.get("matrix") if isinstance(editorial.get("matrix"), dict) else None
+        ready = bool(
+            matrix
+            and isinstance(matrix.get("interpretation"), int)
+            and isinstance(matrix.get("sound"), int)
+            and 1 <= matrix["interpretation"] <= 5
+            and 1 <= matrix["sound"] <= 5
+        )
+        if not ready:
+            parts.append('<p class="matrix-unscored">Not yet scored</p>')
+    return "".join(parts)
+
+
+class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
+    def test_template_and_gallery_hide_the_aggregate_badge(self):
+        tpl = _tpl()
+        start = tpl.index("function signedEntry(r)")
+        scorebox = tpl[start:tpl.index("function credits(c)", start)]
+        self.assertIn("function signedEntry(r)", scorebox)
+        self.assertIn("r.reference && signedEntry(r)", scorebox)
+        self.assertLess(
+            scorebox.index("r.reference && signedEntry(r)"),
+            scorebox.index('<span class="badge">Référence</span>'),
+        )
+        signed = _fn(tpl, "signed(r)", "factStrip(r)")
+        self.assertIn("if(!e)", signed)
+        self.assertLess(signed.index("if(!e)"), signed.index("Référence"))
+        gallery = (ROOT / "site/build_gallery.py").read_text(encoding="utf-8")
+        self.assertIn("function signedEntry(r)", gallery)
+        self.assertIn("r.reference && signedEntry(r)", gallery)
+        self.assertNotIn("r.reference?'<span class=\"ref\">", gallery)
+        self.assertNotIn("const stand = r.reference\n", gallery)
+        hubs = (ROOT / "site/build_site.py").read_text(encoding="utf-8")
+        self.assertNotIn("Référence", hubs)
+
+    def test_unsigned_cards_hide_reference_and_signed_cards_keep_it(self):
+        seed = _seed()
+        raw = json.loads((ROOT / "build/catalogue.json").read_text(encoding="utf-8"))
+        works = ident.merge_identity_works(raw, seed)["works"]
+        recordings = [rec for work in works for rec in work.get("recordings") or []]
+        self.assertEqual(len(recordings), 28)
+        unsigned = []
+        signed_reference = []
+        for rec in recordings:
+            card = _rendered_card(rec)
+            editorial = _signed_editorial(rec)
+            if editorial is None:
+                unsigned.append(rec["id"])
+                self.assertNotIn("Référence", card, rec["id"])
+                self.assertNotIn(">RÉF<", card, rec["id"])
+            elif editorial.get("reference"):
+                signed_reference.append(rec["id"])
+                self.assertIn("Référence", card, rec["id"])
+            else:
+                self.assertNotIn("Référence", card, rec["id"])
+        self.assertIn("puccini_tosca_desabata", unsigned)
+        self.assertGreaterEqual(len(signed_reference), 1)
+        callas = next(r for r in recordings if r["id"] == "puccini_tosca_desabata")
+        self.assertTrue(callas["reference"])
+        self.assertIsNone(callas.get("editorial"))
+        callas_card = _rendered_card(callas)
+        self.assertIn("Not yet scored", callas_card)
+        self.assertNotIn("Référence", callas_card)
+        self.assertNotIn("not a référence", callas_card)
+        pinnock = next(r for r in recordings if r["id"] == "bach/brandenburg/0")
+        self.assertTrue(_signed_editorial(pinnock)["reference"])
+        self.assertIn("Référence", _rendered_card(pinnock))
 
 
 class TestRegressionAnchorsUntouched(unittest.TestCase):

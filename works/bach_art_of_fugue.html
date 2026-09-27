@@ -414,6 +414,12 @@ function plate(r){
     <p class="plate-cap">${edLabel}${edLabel&&edYear?" · ":""}${edYear}</p></div>`;
 }
 
+function signedEntry(r){
+  /* Author, date and revision. The aggregate reference flag is not a signature. */
+  const e=r&&r.editorial;
+  return !!(e&&e.author&&e.date&&e.revision);
+}
+
 function scorebox(r){
   const un=r.interpretation===null;
   const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
@@ -427,9 +433,13 @@ function scorebox(r){
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
        <span class="v">${r.interpretation.toFixed(3)}</span>`;
-  const stand=r.reference
+  /* Aggregate Référence is drawn only once a signed entry exists. */
+  const stand=(r.reference && signedEntry(r))
     ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-    :`<span class="v muted">—</span><span class="sub">${un?"awaiting sources":"not a référence"}</span>`;
+    :`<span class="v muted">—</span>${
+        un?'<span class="sub">awaiting sources</span>'
+        :(r.reference?'':'<span class="sub">not a référence</span>')
+      }`;
   return `<div class="scorebox" role="group" aria-label="Recording scores">
     <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
     <div class="cell"><span class="k">Sound</span>${soundCell}</div>
@@ -604,7 +614,7 @@ function matrixOverall(m){
 
 function notYetScored(){
   /* Words only. No empty grid. */
-  return `<p class="matrix-unscored">not yet scored</p>`;
+  return `<p class="matrix-unscored">Not yet scored</p>`;
 }
 
 function matrixStrip(m){
@@ -828,7 +838,7 @@ function workSection(w){
       ${candidatesConsidered(w)}
     </section>`;
   }
-  const refs=recs.filter(r=>r.reference).length;
+  const refs=recs.filter(r=>signedEntry(r)&&r.editorial.reference).length;
   const eds=recs.reduce((a,r)=>a+(r.editions||[]).length,0);
   return `<section class="work" id="${esc(workDomId(w))}">
     <div class="work-head">
@@ -837,7 +847,7 @@ function workSection(w){
       <p class="cat">${esc(w.cat)}</p>
       <p class="standfirst">${esc(w.standfirst)}</p>
       <p class="strip"><span>${recs.length} recordings</span>
-        <span>${eds} editions tracked</span><span>${refs} référence</span></p>
+        <span>${eds} editions tracked</span>${refs?`<span>${refs} référence</span>`:""}</p>
     </div>
     <div class="legend">
       <p><span class="swatch sw-solid"></span><b>Influence</b> — bar widths are each source's share of the verdict. Darker means it rated the recording higher.</p>
