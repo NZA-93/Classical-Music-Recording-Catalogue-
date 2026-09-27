@@ -87,6 +87,7 @@ a{color:var(--verd)}
   color:var(--bone);line-height:1.3}
 .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;color:var(--dim)}
 .scorebox .stars{color:var(--gold);font-size:1.15rem;letter-spacing:.14em}
+.scorebox .stars .off{color:rgba(232,235,227,.35)}
 .scorebox .badge{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.6rem;
   font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#0E110E;
   background:var(--crimson);padding:.25rem .45rem}
@@ -231,6 +232,18 @@ function signedEntry(r){
   return !!(e&&e.author&&e.date&&e.revision);
 }
 
+/* Standing reads the signed entry only. A missing stars field draws nothing. */
+function standingMarks(r){
+  if(!signedEntry(r)) return `<span class="plain">No signed entry</span>`;
+  const e=r.editorial;
+  const n=e.stars;
+  const stars=(typeof n==="number"&&Number.isFinite(n))
+    ?`<span class="stars" aria-label="${n} of 3 stars">${[0,1,2].map(i=>`<span class="${i<n?"on":"off"}">★</span>`).join("")}</span>`
+    :"";
+  const mark=e.reference?`<span class="badge">Référence</span>`:"";
+  return `${stars}${mark}`;
+}
+
 /* rail */
 document.getElementById("rail").innerHTML = FLAT.map((r,i)=>`
   <button class="card" role="tab" aria-selected="${i===0}" data-i="${i}">
@@ -278,14 +291,7 @@ function render(i){
   const interpCell = un
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars">${st}</span><span class="v">${r.interpretation.toFixed(3)}</span>`;
-  const stand = !signedEntry(r)
-    ?`<span class="plain">No signed entry</span>`
-    :(r.reference
-      ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-      :`<span class="v muted">—</span>${
-          un?'<span class="sub">awaiting sources</span>'
-          :'<span class="sub">not a référence</span>'
-        }`);
+  const stand = standingMarks(r);
 
   document.getElementById("report").innerHTML = `
     <p class="headline">${esc(r.soloists)} — <span class="dir">${esc(r.director)}</span> —

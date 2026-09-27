@@ -125,6 +125,12 @@
   .scorebox .v.muted{font-size:1.05rem;color:var(--ink-soft)}
   .scorebox .plain{font-family:"Newsreader",Georgia,serif;font-size:1rem;font-weight:500;
     color:var(--ink);line-height:1.3}
+  .standing{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem;
+    margin:0 0 1.15rem;max-width:28rem}
+  .standing .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  .standing .plain{font-family:"Newsreader",Georgia,serif;font-size:1rem;font-weight:500;color:var(--ink)}
+  .standing .stars{font-size:1.15rem;letter-spacing:.14em}
   .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
     color:var(--ink-soft);letter-spacing:.03em}
   .scorebox .stars{font-size:1.15rem;letter-spacing:.14em;line-height:1;color:var(--ink)}
@@ -420,6 +426,19 @@ function signedEntry(r){
   return !!(e&&e.author&&e.date&&e.revision);
 }
 
+/* Standing reads the signed entry only. Aggregate stars and the aggregate
+   reference flag are not used. A missing stars field draws nothing. */
+function standingMarks(r){
+  if(!signedEntry(r)) return `<span class="plain">No signed entry</span>`;
+  const e=r.editorial;
+  const n=e.stars;
+  const stars=(typeof n==="number"&&Number.isFinite(n))
+    ?`<span class="stars" aria-label="${n} of 3 stars">${[0,1,2].map(i=>`<span class="${i<n?"on":"off"}">★</span>`).join("")}</span>`
+    :"";
+  const mark=e.reference?`<span class="badge">Référence</span>`:"";
+  return `${stars}${mark}`;
+}
+
 function scorebox(r){
   const un=r.interpretation===null;
   const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
@@ -433,15 +452,7 @@ function scorebox(r){
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
        <span class="v">${r.interpretation.toFixed(3)}</span>`;
-  /* Unsigned discs share one Standing line. Signed discs keep the badge or the prior fallback. */
-  const stand=!signedEntry(r)
-    ?`<span class="plain">No signed entry</span>`
-    :(r.reference
-      ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-      :`<span class="v muted">—</span>${
-          un?'<span class="sub">awaiting sources</span>'
-          :'<span class="sub">not a référence</span>'
-        }`);
+  const stand=standingMarks(r);
   return `<div class="scorebox" role="group" aria-label="Recording scores">
     <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
     <div class="cell"><span class="k">Sound</span>${soundCell}</div>
@@ -735,14 +746,15 @@ function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
     weighted consensus of published sources; it is not a listening report.</div>${notYetScored()}`;
-  const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
+  const hasStars=typeof e.stars==="number"&&Number.isFinite(e.stars);
+  const st=hasStars?[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join(""):"";
   const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
   const div = Number.isFinite(r.divergence) && r.divergence!==0
     ? `<p class="diverge">The weighted consensus gives ${r.stars} ★ here. The signed entry gives
        ${e.stars}. The disagreement is deliberate; the reasoning is above.</p>` : "";
   return `<div class="signed">
     <p class="kicker">Signed entry</p>
-    <div class="verdict"><span class="stars">${st}</span>
+    <div class="verdict">${hasStars?`<span class="stars">${st}</span>`:""}
       ${e.reference?'<span class="badge">Référence</span>':""}</div>
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
@@ -792,6 +804,7 @@ function identityLine(r){
     <div>
       <p class="head-line">${who||esc(r.id)} <span class="pub">(${esc(r.published)})</span></p>
       ${factStrip(r)}
+      <div class="standing" role="group" aria-label="Standing"><span class="k">Standing</span>${standingMarks(r)}</div>
       ${r.editorial?signed(r):""}
     </div>
   </article>`;

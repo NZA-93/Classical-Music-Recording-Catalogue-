@@ -730,29 +730,34 @@ def _signed_editorial(rec: dict) -> dict | None:
     return editorial
 
 
+def _star_marks(n: int) -> str:
+    marks = "".join(
+        f'<span class="{"on" if i < n else "off"}">★</span>' for i in range(3)
+    )
+    return f'<span class="stars" aria-label="{n} of 3 stars">{marks}</span>'
+
+
+def _standing_html(editorial: dict | None) -> str:
+    """Same rule as standingMarks(): signed stars, plus the mark when signed Référence."""
+    if editorial is None:
+        return '<span class="plain">No signed entry</span>'
+    n = editorial.get("stars")
+    stars = _star_marks(n) if isinstance(n, int) and not isinstance(n, bool) else ""
+    mark = '<span class="badge">Référence</span>' if editorial.get("reference") else ""
+    return f"{stars}{mark}"
+
+
 def _rendered_card(rec: dict) -> str:
-    """Card face the work page draws. Aggregate Référence waits for a signature."""
+    """Card face the work page draws. Standing reads the signed entry, not the aggregate."""
     editorial = _signed_editorial(rec)
-    parts: list[str] = []
-    if rec.get("card") != "identity":
-        un = rec.get("interpretation") is None
-        if editorial is None:
-            stand = '<span class="plain">No signed entry</span>'
-        elif rec.get("reference"):
-            stand = (
-                '<span class="badge">Référence</span>'
-                '<span class="sub">interpretation only</span>'
-            )
-        elif un:
-            stand = '<span class="v muted">—</span><span class="sub">awaiting sources</span>'
-        else:
-            stand = '<span class="v muted">—</span><span class="sub">not a référence</span>'
-        parts.append(f'<div class="scorebox"><span class="k">Standing</span>{stand}</div>')
-        if editorial is None:
-            parts.append(
-                '<div class="unsigned">No signed entry yet.</div>'
-                '<p class="matrix-unscored">Not yet scored</p>'
-            )
+    parts: list[str] = [
+        f'<div class="standing"><span class="k">Standing</span>{_standing_html(editorial)}</div>'
+    ]
+    if rec.get("card") != "identity" and editorial is None:
+        parts.append(
+            '<div class="unsigned">No signed entry yet.</div>'
+            '<p class="matrix-unscored">Not yet scored</p>'
+        )
     if editorial is not None:
         badge = '<span class="badge">Référence</span>' if editorial.get("reference") else ""
         parts.append(f'<div class="signed">{badge}</div>')
@@ -814,10 +819,21 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
             elif editorial.get("reference"):
                 signed_reference.append(rec["id"])
                 self.assertIn("Référence", card, rec["id"])
+                self.assertIn(
+                    f'aria-label="{editorial["stars"]} of 3 stars"',
+                    card,
+                    rec["id"],
+                )
+                self.assertNotIn("not a référence", card, rec["id"])
             else:
                 self.assertNotIn("Référence", card, rec["id"])
                 self.assertNotIn("No signed entry", card, rec["id"])
                 self.assertNotIn("not a référence", card, rec["id"])
+                self.assertIn(
+                    f'aria-label="{editorial["stars"]} of 3 stars"',
+                    card,
+                    rec["id"],
+                )
         self.assertIn("puccini_tosca_desabata", unsigned)
         self.assertGreaterEqual(len(signed_reference), 1)
         callas = next(r for r in recordings if r["id"] == "puccini_tosca_desabata")
@@ -845,9 +861,13 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
         recordings = [rec for work in raw["works"] for rec in work.get("recordings") or []]
         self.assertGreaterEqual(len(recordings), 1)
         gallery = (ROOT / "site/build_gallery.py").read_text(encoding="utf-8")
-        stand = gallery[gallery.index("const stand = !signedEntry(r)"):gallery.index("document.getElementById(\"report\")")]
+        start = gallery.index("function standingMarks")
+        stand = gallery[start:gallery.index("/* rail */", start)]
         self.assertIn("No signed entry", stand)
-        self.assertLess(stand.index("No signed entry"), stand.index("not a référence"))
+        self.assertIn("e.reference", stand)
+        self.assertIn("e.stars", stand)
+        self.assertNotIn("not a référence", stand)
+        self.assertNotIn("not a référence", gallery)
         for rec in recordings:
             self.assertIsNone(_signed_editorial(rec), rec["id"])
             card = _rendered_card(rec)
