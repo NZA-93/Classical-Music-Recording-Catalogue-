@@ -123,6 +123,8 @@
   .scorebox .v{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.55rem;line-height:1;
     letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .scorebox .v.muted{font-size:1.05rem;color:var(--ink-soft)}
+  .scorebox .plain{font-family:"Newsreader",Georgia,serif;font-size:1rem;font-weight:500;
+    color:var(--ink);line-height:1.3}
   .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
     color:var(--ink-soft);letter-spacing:.03em}
   .scorebox .stars{font-size:1.15rem;letter-spacing:.14em;line-height:1;color:var(--ink)}
@@ -159,33 +161,45 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar 5×5: Sound →, Interpretation ↑. One filled cell. No overall on the card. */
-  .signed .matrix{margin:1.1rem 0 0;width:min(48vw,11.75rem)}
-  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch}
+  /* Critic Morningstar 3×3. Band words sit on the face. Cell derived from integers, never stored. */
+  .signed .matrix{margin:1.1rem 0 0;width:max-content;max-width:100%}
+  .signed .stylebox{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.4rem;align-items:stretch;width:min(100%,22rem)}
   .signed .stylebox .ylab{
     writing-mode:vertical-rl;transform:rotate(180deg);
-    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
+    font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
     letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
     text-align:center;padding:.15rem 0}
   .signed .stylebox .plot{min-width:0}
-  .signed .stylebox .y-end,.signed .stylebox .x-end,.signed .stylebox .xlab{
-    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
-    color:var(--ink-soft);line-height:1.2}
-  .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
-  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem}
+  .signed .board{
+    display:grid;
+    grid-template-columns:minmax(6.5rem,7.8rem) minmax(7.4rem,9rem);
+    column-gap:.45rem;row-gap:.28rem;align-items:stretch}
+  .signed .y-names{grid-column:1;grid-row:1;display:grid;grid-template-rows:repeat(3,1fr);align-items:center}
+  .signed .y-name,.signed .x-name,.signed .stylebox .xlab{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;
+    color:var(--ink);line-height:1.2}
+  .signed .y-name{display:block;text-align:right}
+  .signed .x-names{grid-column:2;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+  .signed .stylebox .xlab{
+    grid-column:2;grid-row:3;
+    text-transform:uppercase;letter-spacing:.1em;font-size:.56rem;color:var(--ink-soft);
+    text-align:center}
   .signed .stylebox .grid{
-    display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);
-    aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
+    grid-column:2;grid-row:1;
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
+    width:100%;aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
   .signed .stylebox .cell.filled{background:var(--ink)}
-  .signed .stylebox .xaxis{display:flex;justify-content:space-between;align-items:flex-start;gap:.2rem}
-  .signed .stylebox .xlab{text-transform:uppercase;letter-spacing:.1em;font-size:.5rem;align-self:center}
   .signed .matrix-cap{
-    margin:.4rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
-    font-weight:500;color:var(--ink-soft);letter-spacing:.02em}
+    margin:.55rem 0 0;font-family:"Newsreader",Georgia,serif;font-size:.95rem;
+    font-weight:500;color:var(--ink);letter-spacing:0}
+  .matrix-unscored{
+    margin:1.1rem 0 0;font-family:"Newsreader",Georgia,serif;font-size:1rem;
+    color:var(--ink-soft)}
   .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
-  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks{
-    font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks,
+  .signed .how-scored .band-key{
+    font-size:.95rem;color:var(--ink);margin:.55rem 0;font-family:"Newsreader",Georgia,serif}
   .signed .how-scored .overall b{color:var(--ink);font-weight:500}
   .signed .how-scored .ticks .k{
     display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
@@ -296,7 +310,10 @@
     .plate-cap{max-width:152px}
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
-    .signed .matrix{width:48vw;max-width:11.75rem;min-width:9.25rem}
+    .signed .matrix{width:100%;max-width:100%}
+    .signed .stylebox{width:100%}
+    .signed .board{grid-template-columns:minmax(5.4rem,6.6rem) minmax(6.2rem,1fr)}
+    .signed .y-name,.signed .x-name{font-size:.64rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -352,7 +369,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-19", "works": [], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-27", "works": [], "barcode_index": {}};
 const WORK_INDEX = [{"id": "bach/brandenburg", "anchor": "bach_brandenburg", "composer_id": "bach", "title": "Brandenburg Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1046–1051 · 1721", "recordings": ["bach/brandenburg/0", "bach/brandenburg/1", "bach/brandenburg/4"]}, {"id": "shostakovich/sym5", "anchor": "shostakovich_sym5", "composer_id": "shostakovich", "title": "Symphony No. 5", "composer": "Dmitri Shostakovich", "dates": "1906–1975", "cat": "Op. 47 · D minor · 1937", "recordings": ["shostakovich_sym5_nelsons", "shostakovich_sym5_mravinsky", "shostakovich_sym5_noseda"]}, {"id": "puccini_tosca", "anchor": "puccini_tosca", "composer_id": "puccini", "title": "Tosca", "composer": "Giacomo Puccini", "dates": "1858–1924", "cat": "Teatro Costanzi, Rome · 14 January 1900", "recordings": ["puccini_tosca_desabata", "puccini_tosca_karajan"]}, {"id": "bach/violin_concertos", "anchor": "bach_violin_concertos", "composer_id": "bach", "title": "Violin Concertos", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1041–1043 · c. 1730", "recordings": ["bach/violin_concertos/4"]}, {"id": "bach/cello_suites", "anchor": "bach_cello_suites", "composer_id": "bach", "title": "Cello Suites", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1007–1012 · c. 1720", "recordings": ["bach/cello_suites/1"]}, {"id": "bach/sonatas_partitas", "anchor": "bach_sonatas_partitas", "composer_id": "bach", "title": "Sonatas and Partitas for Solo Violin", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1001–1006 · 1720", "recordings": ["bach/sonatas_partitas/0", "bach/sonatas_partitas/1"]}, {"id": "bach/goldberg", "anchor": "bach_goldberg", "composer_id": "bach", "title": "Goldberg Variations", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 988 · 1741", "recordings": ["bach/goldberg/0", "bach/goldberg/1", "bach/goldberg/4"]}, {"id": "bach/mass_b_minor", "anchor": "bach_mass_b_minor", "composer_id": "bach", "title": "Mass in B minor", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 232 · 1749", "recordings": ["bach/mass_b_minor/0"]}, {"id": "bach/matthew", "anchor": "bach_matthew", "composer_id": "bach", "title": "St Matthew Passion", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 244 · 1727", "recordings": ["bach/matthew/0", "bach/matthew/1"]}, {"id": "bach/john", "anchor": "bach_john", "composer_id": "bach", "title": "St John Passion", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 245 · 1724", "recordings": ["bach/john/1"]}, {"id": "bach/art_of_fugue", "anchor": "bach_art_of_fugue", "composer_id": "bach", "title": "The Art of Fugue", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "cat": "BWV 1080 · c. 1740–50", "recordings": ["bach/art_of_fugue/0", "bach/art_of_fugue/3"]}, {"id": "handel/messiah", "anchor": "handel_messiah", "composer_id": "handel", "title": "Messiah", "composer": "George Frideric Handel", "dates": "1685–1759", "cat": "HWV 56 · 1741", "recordings": ["handel/messiah/2", "handel/messiah/1", "handel/messiah/3"]}, {"id": "handel/water_music", "anchor": "handel_water_music", "composer_id": "handel", "title": "Water Music", "composer": "George Frideric Handel", "dates": "1685–1759", "cat": "HWV 348–350 · 1717", "recordings": ["handel/water_music/0", "handel/water_music/2"]}, {"id": "handel/giulio_cesare", "anchor": "handel_giulio_cesare", "composer_id": "handel", "title": "Giulio Cesare", "composer": "George Frideric Handel", "dates": "1685–1759", "cat": "HWV 17 · 1724", "recordings": ["handel/giulio_cesare/1", "handel/giulio_cesare/0"]}];
 const BASE = "";
 
@@ -399,6 +416,12 @@ function plate(r){
     <p class="plate-cap">${edLabel}${edLabel&&edYear?" · ":""}${edYear}</p></div>`;
 }
 
+function signedEntry(r){
+  /* Author, date and revision. The aggregate reference flag is not a signature. */
+  const e=r&&r.editorial;
+  return !!(e&&e.author&&e.date&&e.revision);
+}
+
 function scorebox(r){
   const un=r.interpretation===null;
   const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
@@ -412,9 +435,15 @@ function scorebox(r){
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
        <span class="v">${r.interpretation.toFixed(3)}</span>`;
-  const stand=r.reference
-    ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-    :`<span class="v muted">—</span><span class="sub">${un?"awaiting sources":"not a référence"}</span>`;
+  /* Unsigned discs share one Standing line. Signed discs keep the badge or the prior fallback. */
+  const stand=!signedEntry(r)
+    ?`<span class="plain">No signed entry</span>`
+    :(r.reference
+      ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
+      :`<span class="v muted">—</span>${
+          un?'<span class="sub">awaiting sources</span>'
+          :'<span class="sub">not a référence</span>'
+        }`);
   return `<div class="scorebox" role="group" aria-label="Recording scores">
     <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
     <div class="cell"><span class="k">Sound</span>${soundCell}</div>
@@ -555,46 +584,83 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
-/* Band names: ticks / How scored only. Face shows axis ends. Sound 5 is English Reference, never Référence. */
-const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"];
-const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"];
+/* 3×3 bands derived from the signed 1–5 integers only. The ledger is not read.
+   Low band is index 0. The two axes do not share a cut. Référence is not a band. */
+const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"];
+const MATRIX_INTERP_BANDS=["With reservations","Strong","Outstanding"];
+const MATRIX_BAND_LINE="Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.";
+
+function interpretationBandIndex(score){
+  /* 1–3 → 0 With reservations, 4 → 1 Strong, 5 → 2 Outstanding. */
+  if(score<=3) return 0;
+  if(score===4) return 1;
+  return 2;
+}
+
+function soundBandIndex(score){
+  /* 1–2 → 0 Limited, 3 → 1 Good, 4–5 → 2 Excellent. */
+  if(score<=2) return 0;
+  if(score===3) return 1;
+  return 2;
+}
+
+function matrixReady(m){
+  /* Placement uses the two integers. Never the ledger. */
+  if(!m) return false;
+  const i=m.interpretation, s=m.sound;
+  return i>=1 && i<=5 && s>=1 && s<=5;
+}
 
 function matrixOverall(m){
   /* Expand only. Never on the card face. Never stored on the entry. */
   return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
 }
 
+function notYetScored(){
+  /* Words only. No empty grid. */
+  return `<p class="matrix-unscored">Not yet scored</p>`;
+}
+
 function matrixStrip(m){
-  /* 5×5 style box under signed prose. X = sound 1→5 left→right; Y = interpretation 1→5 bottom→top. */
-  if(!m) return "";
+  /* 3×3 style box. X = sound band left→right; Y = interpretation band bottom→top. */
+  if(!matrixReady(m)) return "";
   const i=m.interpretation, s=m.sound;
+  const ib=interpretationBandIndex(i), sb=soundBandIndex(s);
+  const iName=MATRIX_INTERP_BANDS[ib], sName=MATRIX_SOUND_BANDS[sb];
   let cells="";
-  for(let y=5;y>=1;y--){
-    for(let x=1;x<=5;x++){
-      const filled=(x===s && y===i);
+  for(let y=2;y>=0;y--){
+    for(let x=0;x<=2;x++){
+      const filled=(x===sb && y===ib);
+      const col=x+1, row=3-y;
       const aria=filled
-        ?` aria-label="Filled cell: Interpretation ${esc(i)} ${MATRIX_INTERP[i-1]}, Sound ${esc(s)} ${MATRIX_SOUND[s-1]}"`
+        ?` aria-label="Filled cell: Interpretation: ${esc(iName)} (${esc(i)}), Sound: ${esc(sName)} (${esc(s)})"`
         :` aria-hidden="true"`;
-      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound="${x}" data-interpretation="${y}" style="grid-column:${x};grid-row:${6-y}"${aria}></span>`;
+      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound-band="${col}" data-interpretation-band="${y+1}" style="grid-column:${col};grid-row:${row}"${aria}></span>`;
     }
   }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
     <div class="stylebox">
-      <span class="ylab" aria-hidden="true">Interpretation</span>
+      <span class="ylab">Interpretation</span>
       <div class="plot">
-        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP[4]}</span>
-        <div class="grid" role="grid" aria-label="Sound axis, Hard listen to Reference, left to right. Interpretation axis, Documentary to Landmark, bottom to top.">
-          ${cells}
-        </div>
-        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP[0]}</span>
-        <div class="xaxis">
-          <span class="x-end">${MATRIX_SOUND[0]}</span>
+        <div class="board">
+          <div class="y-names">
+            <span class="y-name">${MATRIX_INTERP_BANDS[2]}</span>
+            <span class="y-name">${MATRIX_INTERP_BANDS[1]}</span>
+            <span class="y-name">${MATRIX_INTERP_BANDS[0]}</span>
+          </div>
+          <div class="grid" role="grid" aria-label="Sound axis, Limited, Good, Excellent, left to right. Interpretation axis, With reservations, Strong, Outstanding, bottom to top.">
+            ${cells}
+          </div>
+          <div class="x-names">
+            <span class="x-name">${MATRIX_SOUND_BANDS[0]}</span>
+            <span class="x-name">${MATRIX_SOUND_BANDS[1]}</span>
+            <span class="x-name">${MATRIX_SOUND_BANDS[2]}</span>
+          </div>
           <span class="xlab">Sound</span>
-          <span class="x-end">${MATRIX_SOUND[4]}</span>
         </div>
       </div>
     </div>
-    <p class="matrix-cap">Interpretation ${esc(i)} · Sound ${esc(s)}</p>
+    <p class="matrix-cap">Interpretation: ${esc(iName)} · Sound: ${esc(sName)}</p>
   </div>`;
 }
 
@@ -616,13 +682,11 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
-  const interpTicks=MATRIX_INTERP.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
-  const soundTicks=MATRIX_SOUND.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
-    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
-    <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
-    <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
+    <p class="ticks"><span class="k">This recording</span>Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}</p>
+    <p class="band-key">${MATRIX_BAND_LINE}</p>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>
       <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
     <p class="modlabel">Evidence ledger</p>
@@ -633,7 +697,7 @@ function howScored(m){
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
-    weighted consensus of published sources; it is not a listening report.</div>`;
+    weighted consensus of published sources; it is not a listening report.</div>${notYetScored()}`;
   const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
   const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
   const div = Number.isFinite(r.divergence) && r.divergence!==0
@@ -646,7 +710,7 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
-    ${matrixStrip(e.matrix)}
+    ${matrixReady(e.matrix)?matrixStrip(e.matrix):notYetScored()}
     ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}
@@ -778,7 +842,7 @@ function workSection(w){
       ${candidatesConsidered(w)}
     </section>`;
   }
-  const refs=recs.filter(r=>r.reference).length;
+  const refs=recs.filter(r=>signedEntry(r)&&r.editorial.reference).length;
   const eds=recs.reduce((a,r)=>a+(r.editions||[]).length,0);
   return `<section class="work" id="${esc(workDomId(w))}">
     <div class="work-head">
@@ -787,7 +851,7 @@ function workSection(w){
       <p class="cat">${esc(w.cat)}</p>
       <p class="standfirst">${esc(w.standfirst)}</p>
       <p class="strip"><span>${recs.length} recordings</span>
-        <span>${eds} editions tracked</span><span>${refs} référence</span></p>
+        <span>${eds} editions tracked</span>${refs?`<span>${refs} référence</span>`:""}</p>
     </div>
     <div class="legend">
       <p><span class="swatch sw-solid"></span><b>Influence</b> — bar widths are each source's share of the verdict. Darker means it rated the recording higher.</p>

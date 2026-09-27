@@ -1,47 +1,64 @@
 # Morningstar matrix — Critic rubric (plumbing + visual box)
 
 Schema, validate, and card UI. **No scores are invented here.** Critic integers
-already signed on Goldberg / Fournier are mapped onto the 5×5 box; this change
+already signed on the assessed set stay 1–5 in `data/editorial/`. This note
 does not alter them.
 
 Shape: `data/editorial/_SCHEMA.json`. Gate: `agents/validate.py`.
+Display decision: [`docs/adr/ADR-005-morningstar-3x3.md`](../docs/adr/ADR-005-morningstar-3x3.md)
+(Nicolò, 27 September 2026).
 
 ## Card (three-second scan)
 
 - Dictionnaire signed prose first; stars / Référence stay the editorial headline.
-- When `editorial.matrix` is present: a **5×5 Morningstar-style box** under the
-  prose (not inside it), mapping the Critic integers. One filled cell at
-  (sound, interpretation). Caption keeps the numbers:
-  `Interpretation {n} · Sound {m}`.
+- When `editorial.matrix` has both integers: a **3×3 Morningstar-style box**
+  under the prose (not inside it). The cell is **derived at render from those
+  integers only**, never from the ledger. One filled cell. Every band name is
+  readable on the face. Caption names the filled cell:
+  `Interpretation: Outstanding · Sound: Excellent`.
 - **No overall badge on the card.**
-- Empty matrix stays invisible (no hollow box).
-- “How scored” expands to band-name ticks, optional overall, and the evidence ledger.
+- No integers: the words **Not yet scored**. No empty grid. Engine-scored cards
+  with no Critic matrix (Tosca, Shostakovich 5) keep their aggregate score box
+  and show those words instead of a style box. The aggregate reference flag
+  stays in the data and is not drawn as a badge until that disc has a signed
+  entry. A signed Référence badge stays on the signed entry.
+- “How scored” expands to the original integers, then this sentence once, in
+  plain type: “Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With
+  reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.”
+  Then optional overall and the evidence ledger.
+- The box is drawn on the sealed work page (the card a composer hub links to).
+  Composer hubs list assessed recordings; they do not draw a second box.
+  Candidates considered (ADR-004) stays a rank list with no style box.
 
 ## Visual box (UX + Prose SIGN)
 
-X = Sound, left→right (1→5). Y = Interpretation, bottom→top (1→5).
+X = Sound band, left→right. Y = Interpretation band, bottom→top.
 
-**Axis ends on the box face only:**
+**Every band is named on the face** (row labels top→bottom, column labels left→right):
 
-- Sound: Hard listen → Reference
-- Interpretation: Documentary → Landmark
+- Interpretation: Outstanding, Strong, With reservations
+- Sound: Limited, Good, Excellent
 
-**Band names (ticks / How scored only — not 25 cell essays):**
+**Bands (derived from the integers; not stored; not taken from the ledger):**
 
-| Axis | 1 | 2 | 3 | 4 | 5 |
-|---|---|---|---|---|---|
-| Sound | Hard listen | Serviceable | Clean | Excellent | **Reference** |
-| Interpretation | Documentary | Competent | Solid | Outstanding | Landmark |
+| Stored integer | Interpretation | Sound |
+|---|---|---|
+| 1–3 | With reservations | — |
+| 1–2 | — | Limited |
+| 3 | — | Good |
+| 4 | Strong | Excellent |
+| 5 | Outstanding | Excellent |
 
-**Reference** (English) is the Sound-axis end. **Référence** remains only the
-signed editorial flag. Do not conflate.
+**Référence** remains only the signed editorial flag. It is not a band and not
+a cell. The sound axis has no end-label “Reference”.
 
 ## Axes (Critic integers, never derived from the ledger)
 
 | Field | Value |
 |---|---|
-| `interpretation` | integer 1–5 |
-| `sound` | integer 1–5 |
+| `interpretation` | integer 1–5, stored |
+| `sound` | integer 1–5, stored |
+| 3×3 cell | derived at render, never stored |
 | overall (expand only) | `0.6×interpretation + 0.4×sound`, one decimal |
 
 Overall is computed at render for the expand panel. It is not stored on the

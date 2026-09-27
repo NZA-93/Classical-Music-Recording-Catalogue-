@@ -185,6 +185,27 @@ _URL_OK = re.compile(r"^https?://", re.I)
 MATRIX_AXES = AXES  # interpretation, sound — Critic integers, not ledger-derived
 MATRIX_LEDGER_TIERS = frozenset({"A", "B", "C"})
 MAX_LEDGER_NOTE = 200
+# Stored keys only. The 3×3 cell is derived at render (ADR-005) and must not
+# be written onto the entry as a band, a cell, or an overall.
+_MATRIX_STORED_KEYS = frozenset({"interpretation", "sound", "ledger"})
+# Inclusive ranges, low band first. The two axes do not share a cut.
+# Cells are derived from these integers only — never from the ledger.
+# Amended 27 Sep 2026 with the Critic, the prose editor, and UX (ADR-005).
+INTERPRETATION_BANDS = (
+    (1, 3, "With reservations"),
+    (4, 4, "Strong"),
+    (5, 5, "Outstanding"),
+)
+SOUND_BANDS = (
+    (1, 2, "Limited"),
+    (3, 3, "Good"),
+    (4, 5, "Excellent"),
+)
+# Printed once in How scored, directly under the two integers.
+MATRIX_BAND_LINE = (
+    "Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. "
+    "Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited."
+)
 
 
 def _is_matrix_axis(value) -> bool:
@@ -197,6 +218,43 @@ def matrix_overall(interpretation: int, sound: int) -> str:
     return f"{0.6 * interpretation + 0.4 * sound:.1f}"
 
 
+def matrix_band_hits(score: int, bands: tuple) -> list[str]:
+    """Band names whose range contains score. Empty outside 1–5."""
+    if isinstance(score, bool) or not isinstance(score, int):
+        return []
+    return [name for lo, hi, name in bands if lo <= score <= hi]
+
+
+def matrix_band_index(score: int, bands: tuple) -> int:
+    """0 is the low band of this axis. Interpretation and sound use different tables."""
+    if not _is_matrix_axis(score):
+        raise ValueError(score)
+    for index, (lo, hi, _name) in enumerate(bands):
+        if lo <= score <= hi:
+            return index
+    raise ValueError(score)
+
+
+def matrix_band(score: int, bands: tuple) -> str:
+    hits = matrix_band_hits(score, bands)
+    if len(hits) != 1:
+        raise ValueError(score)
+    return hits[0]
+
+
+def stylebox_grid_pos(interpretation: int, sound: int) -> tuple[int, int]:
+    """CSS (column, row) on the derived 3×3.
+
+    X = sound band, left→right (Limited → Excellent).
+    Y = interpretation band, bottom→top (With reservations → Outstanding).
+    CSS row 1 is the top of the grid. The ledger is not an input.
+    """
+    return (
+        matrix_band_index(sound, SOUND_BANDS) + 1,
+        3 - matrix_band_index(interpretation, INTERPRETATION_BANDS),
+    )
+
+
 def validate_editorial_matrix(matrix, path: pathlib.Path):
     """Optional Morningstar block. Axis scores are Critic integers; ledger is evidence."""
     errs = []
@@ -207,9 +265,13 @@ def validate_editorial_matrix(matrix, path: pathlib.Path):
     if not isinstance(matrix, dict):
         e("`matrix` must be an object with interpretation, sound, and optional ledger")
         return errs
-    if "overall" in matrix:
-        e("`matrix.overall` is not stored — the How scored expand computes "
-          "0.6×interpretation + 0.4×sound. Do not write it on the entry.")
+    for key in matrix:
+        if key == "overall":
+            e("`matrix.overall` is not stored — the How scored expand computes "
+              "0.6×interpretation + 0.4×sound. Do not write it on the entry.")
+        elif key not in _MATRIX_STORED_KEYS:
+            e(f"`matrix.{key}` is not stored. The 3×3 cell is derived from "
+              "the 1–5 integers at render; do not write a band or cell on the entry.")
 
     for axis in ("interpretation", "sound"):
         if axis not in matrix:

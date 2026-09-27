@@ -123,6 +123,8 @@
   .scorebox .v{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.55rem;line-height:1;
     letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .scorebox .v.muted{font-size:1.05rem;color:var(--ink-soft)}
+  .scorebox .plain{font-family:"Newsreader",Georgia,serif;font-size:1rem;font-weight:500;
+    color:var(--ink);line-height:1.3}
   .scorebox .sub{font-family:"IBM Plex Mono",monospace;font-size:.68rem;font-weight:500;
     color:var(--ink-soft);letter-spacing:.03em}
   .scorebox .stars{font-size:1.15rem;letter-spacing:.14em;line-height:1;color:var(--ink)}
@@ -159,33 +161,45 @@
     text-decoration:none;border-bottom:1px solid var(--verdigris)}
   .signed .refs a:hover,.signed .refs a:focus-visible{color:var(--ink);border-bottom-color:var(--ink)}
   .signed .refs .kind{margin-left:.45rem}
-  /* Critic Morningstar 5×5: Sound →, Interpretation ↑. One filled cell. No overall on the card. */
-  .signed .matrix{margin:1.1rem 0 0;width:min(48vw,11.75rem)}
-  .signed .stylebox{display:grid;grid-template-columns:auto 1fr;column-gap:.32rem;align-items:stretch}
+  /* Critic Morningstar 3×3. Band words sit on the face. Cell derived from integers, never stored. */
+  .signed .matrix{margin:1.1rem 0 0;width:max-content;max-width:100%}
+  .signed .stylebox{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:.4rem;align-items:stretch;width:min(100%,22rem)}
   .signed .stylebox .ylab{
     writing-mode:vertical-rl;transform:rotate(180deg);
-    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:600;
+    font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
     letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
     text-align:center;padding:.15rem 0}
   .signed .stylebox .plot{min-width:0}
-  .signed .stylebox .y-end,.signed .stylebox .x-end,.signed .stylebox .xlab{
-    font-family:"IBM Plex Mono",monospace;font-size:.52rem;font-weight:500;
-    color:var(--ink-soft);line-height:1.2}
-  .signed .stylebox .y-end.high{display:block;margin-bottom:.16rem}
-  .signed .stylebox .y-end.low{display:block;margin:.16rem 0 .1rem}
+  .signed .board{
+    display:grid;
+    grid-template-columns:minmax(6.5rem,7.8rem) minmax(7.4rem,9rem);
+    column-gap:.45rem;row-gap:.28rem;align-items:stretch}
+  .signed .y-names{grid-column:1;grid-row:1;display:grid;grid-template-rows:repeat(3,1fr);align-items:center}
+  .signed .y-name,.signed .x-name,.signed .stylebox .xlab{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;font-weight:500;
+    color:var(--ink);line-height:1.2}
+  .signed .y-name{display:block;text-align:right}
+  .signed .x-names{grid-column:2;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+  .signed .stylebox .xlab{
+    grid-column:2;grid-row:3;
+    text-transform:uppercase;letter-spacing:.1em;font-size:.56rem;color:var(--ink-soft);
+    text-align:center}
   .signed .stylebox .grid{
-    display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);
-    aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
+    grid-column:2;grid-row:1;
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
+    width:100%;aspect-ratio:1;gap:1px;background:var(--ink);border:1px solid var(--ink)}
   .signed .stylebox .cell{background:var(--paper);min-width:0;min-height:0}
   .signed .stylebox .cell.filled{background:var(--ink)}
-  .signed .stylebox .xaxis{display:flex;justify-content:space-between;align-items:flex-start;gap:.2rem}
-  .signed .stylebox .xlab{text-transform:uppercase;letter-spacing:.1em;font-size:.5rem;align-self:center}
   .signed .matrix-cap{
-    margin:.4rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.62rem;
-    font-weight:500;color:var(--ink-soft);letter-spacing:.02em}
+    margin:.55rem 0 0;font-family:"Newsreader",Georgia,serif;font-size:.95rem;
+    font-weight:500;color:var(--ink);letter-spacing:0}
+  .matrix-unscored{
+    margin:1.1rem 0 0;font-family:"Newsreader",Georgia,serif;font-size:1rem;
+    color:var(--ink-soft)}
   .signed .how-scored{margin:0.85rem 0 0;border-top:1px solid var(--hair);padding-top:.55rem}
-  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks{
-    font-size:.88rem;color:var(--ink-soft);margin:.55rem 0}
+  .signed .how-scored .rubric,.signed .how-scored .overall,.signed .how-scored .ticks,
+  .signed .how-scored .band-key{
+    font-size:.95rem;color:var(--ink);margin:.55rem 0;font-family:"Newsreader",Georgia,serif}
   .signed .how-scored .overall b{color:var(--ink);font-weight:500}
   .signed .how-scored .ticks .k{
     display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;font-weight:600;
@@ -296,7 +310,10 @@
     .plate-cap{max-width:152px}
     .scorebox{max-width:none}
     .scorebox .v{font-size:1.35rem}
-    .signed .matrix{width:48vw;max-width:11.75rem;min-width:9.25rem}
+    .signed .matrix{width:100%;max-width:100%}
+    .signed .stylebox{width:100%}
+    .signed .board{grid-template-columns:minmax(5.4rem,6.6rem) minmax(6.2rem,1fr)}
+    .signed .y-name,.signed .x-name{font-size:.64rem}
     .period{grid-template-columns:1fr}
     table{font-size:.78rem}
   }
@@ -352,7 +369,7 @@
 </div>
 
 <script>
-const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-19", "works": [{"id": "bach/goldberg", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Goldberg Variations", "cat": "BWV 988 · 1741", "standfirst": "Thirty variations over a bass; the piano-versus-harpsichord argument.", "recordings": [{"id": "bach/goldberg/0", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "Columbia, 1955", "editions": [{"id": "0_preferred", "label": "Columbia Masterworks", "year": "1956", "catno": "ML 5060", "format": "LP (mono)", "mbid": "2a7844fb-13b9-437a-8f68-c018c53f5f72", "verified": true, "release_group_mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a"}], "fact_strip": {"soloists": "Glenn Gould", "label": "Columbia Masterworks", "year": 1955, "published": "1956", "venue": "Columbia 30th Street Studio, New York", "sessions": "June 1955", "format": "LP (mono)", "catno": "ML 5060"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": true, "compared_with": ["bach/goldberg/1", "bach/goldberg/4"], "text": "The 1955 Goldberg is still the shock that made Bach’s variations a public event on the piano. No repeats, about thirty-eight minutes: lines cut with a clarity that was almost theatrical for its day. Beside Schiff’s long Decca survey it is another work — a debut document, not a cycle that unfolds. Beside Gould’s own 1981 remake it is the hotter, leaner object. Gould later disliked some of its tempi and the nocturnal Variation 25; that regret does not retire the disc. For a first piano Goldberg in the house, this remains the Référence: the performance that opened the door.", "quotes": [], "consulted": [{"title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)", "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72", "kind": "discography"}, {"title": "MusicBrainz release group — The Goldberg Variations (1955 recording)", "url": "https://musicbrainz.org/release-group/dcff25f1-702d-3b5e-b0da-d48172e6e62a", "kind": "discography"}, {"title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations", "url": "https://www.discogs.com/master/261784", "kind": "discography"}, {"title": "pianistdiscography.com — Columbia ML 5060", "url": "https://www.pianistdiscography.com/discography/pianistLabel.php?cdnum=11524", "kind": "discography"}, {"title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)", "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/", "kind": "reference"}, {"title": "Library of Congress — Tim Page essay PDF on Gould 1955 Goldbergs", "url": "https://loc.gov/static/programs/national-recording-preservation-board/documents/GoldbergVar.pdf", "kind": "reference"}, {"title": "LOC press — inaugural National Recording Registry", "url": "https://loc.gov/today/pr/2003/03-014.html", "kind": "reference"}, {"title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs", "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm", "kind": "review"}], "matrix": {"interpretation": 5, "sound": 3, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)", "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/", "note": "Public landmark: induction recognises the 1955 performance as a cultural document."}, {"axis": "interpretation", "tier": "B", "title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)", "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72", "note": "No-repeats debut; the performance that made the piano Goldberg a public fact."}, {"axis": "sound", "tier": "A", "title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations", "url": "https://www.discogs.com/master/261784", "note": "Columbia mono studio — clear lines, historic floor; not reference-class digital."}]}}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/1", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1981", "editions": [{"id": "1_preferred", "label": "CBS Masterworks", "year": "1982", "catno": "IM 37779", "format": "LP / CD", "mbid": "fed9286f-4145-4fe7-b130-36744a6bdd00", "verified": true}], "fact_strip": {"soloists": "Glenn Gould", "label": "CBS Masterworks", "year": 1981, "published": "1982", "venue": "Columbia 30th Street Studio, New York", "sessions": "April–May 1981", "format": "LP / CD", "catno": "IM 37779"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/4"], "text": "Gould’s 1981 remake is a late architecture — selected first-half repeats, about fifty-one minutes — built around canons and four-part writing rather than debut bravura. Beside the 1955 Référence it is the deeper second thought; beside Schiff’s Decca it remains Gould’s instrument and Gould’s edit, not a complete-repeats survey. Keep both Goulds if you can. If the shelf has room for only one late-studio piano Goldberg, this is the disc — without displacing 1955 as the landmark.", "quotes": [], "consulted": [{"title": "Discogs — Bach / Glenn Gould: The Goldberg Variations (CBS IM 37779)", "url": "https://www.discogs.com/release/4579917-Bach-Glenn-Gould-The-Goldberg-Variations", "kind": "discography"}, {"title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)", "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00", "kind": "discography"}, {"title": "Sony Classical / glenngould.com — Complete Unreleased 1981 Studio Sessions", "url": "https://glenngould.com/the-goldberg-variations-the-complete-unreleased-1981-studio-sessions/", "kind": "reference"}, {"title": "Sony Classical product — Complete 1981 Studio Sessions", "url": "https://www.sonyclassical.com/releases/releases-details/glenn-gould-the-goldberg-variations-the-complete-1981-studio-sessions", "kind": "reference"}, {"title": "Recording Academy — Glenn Gould Grammy awards", "url": "https://www.grammy.com/artists/glenn-gould/3638/", "kind": "award"}, {"title": "Grammy category page — Best Classical Album 1983", "url": "https://www.grammy.com/awards/categories/classical-album/1983/", "kind": "award"}, {"title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs", "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm", "kind": "review"}, {"title": "MusicWeb International — Jonathan Woolf on Sony SM3K 87703", "url": "http://www.musicweb-international.com/classrev/2003/Feb03/Goldberg_Gould.htm", "kind": "review"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Recording Academy — Glenn Gould Grammy awards", "url": "https://www.grammy.com/artists/glenn-gould/3638/", "note": "Late canonic architecture; deeper second thought beside 1955 without retiring it."}, {"axis": "sound", "tier": "A", "title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)", "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00", "note": "Digital-era CBS capture — quieter floor and presence than the mono debut."}]}}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/4", "work": "bach/goldberg", "card": "identity", "soloists": "András Schiff", "director": "", "ensemble": "", "published": "Decca, 1982", "editions": [{"id": "4_preferred", "label": "Decca", "year": "1983", "catno": "417 116-2", "format": "CD", "mbid": "920fec1f-b49e-4019-bc03-e7756cb470ec", "verified": true, "release_group_mbid": "d51204a7-de33-333f-89d9-9ce844232277"}], "fact_strip": {"soloists": "András Schiff", "label": "Decca", "year": 1982, "published": "1983", "venue": "Kingsway Hall, London", "sessions": "13–15 April 1982", "format": "CD", "catno": "417 116-2", "producer": "Michael Haas", "engineer": "Simon Eadon"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/4", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 2, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/1"], "text": "Schiff’s first studio Goldberg restores the duration and symmetry the mono debut refused. Near-complete repeats, about seventy-two minutes, thought in three large arcs; some repeats taken an octave up or down, a habit he later dropped. Against Gould 1955 it is another pianist’s complete-repeats world; against Gould 1981 it is warmer and less canonic in obsession. A serious piano alternative on the shelf, not a third Gould. Do not confuse it with the ECM Basel live remake of 2001.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — András Schiff K-3", "url": "https://www.bach-cantatas.com/NVP/Schiff.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — BWV 988 played by Andras Schiff", "url": "https://www.bach-cantatas.com/NVD/BWV988-Schiff.htm", "kind": "discography"}, {"title": "Presto Music — Bach Goldberg Variations Decca 4171162", "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988", "kind": "discography"}, {"title": "MusicBrainz release group — Goldberg Variations (1982 recording)", "url": "https://musicbrainz.org/release-group/d51204a7-de33-333f-89d9-9ce844232277", "kind": "discography"}, {"title": "MusicBrainz release — Decca 417 116-2", "url": "https://musicbrainz.org/release/920fec1f-b49e-4019-bc03-e7756cb470ec", "kind": "discography"}, {"title": "MusicBrainz — April-dated recording cluster (Haas/Eadon/Kingsway)", "url": "https://musicbrainz.org/recording/c31a3621-6ba9-4ad5-ad59-86f326966928", "kind": "discography"}, {"title": "Gramophone — Jed Distler on Schiff Complete Decca Recordings", "url": "https://www.gramophone.co.uk/content/review/review-andras-schiffs-complete-decca-recordings", "kind": "review"}, {"title": "Gramophone — Distler on Schiff ECM 2001 Goldberg", "url": "https://www.gramophone.co.uk/reviews/bach-goldberg-variations-14", "kind": "review"}], "matrix": {"interpretation": 3, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Bach Cantatas Website — András Schiff K-3", "url": "https://www.bach-cantatas.com/NVP/Schiff.htm", "note": "Complete-repeats piano alternative; solid catalogue choice, not a third Gould."}, {"axis": "sound", "tier": "A", "title": "Presto Music — Bach Goldberg Variations Decca 4171162", "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988", "note": "Kingsway Hall Decca — warm balance; excellent early-digital transfer class."}]}}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
+const CATALOGUE = {"algorithm_version": "2.0", "built": "2026-09-27", "works": [{"id": "bach/goldberg", "composer_id": "bach", "composer": "Johann Sebastian Bach", "dates": "1685–1750", "title": "Goldberg Variations", "cat": "BWV 988 · 1741", "standfirst": "Thirty variations over a bass; the piano-versus-harpsichord argument.", "recordings": [{"id": "bach/goldberg/0", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "Columbia, 1955", "editions": [{"id": "0_preferred", "label": "Columbia Masterworks", "year": "1956", "catno": "ML 5060", "format": "LP (mono)", "mbid": "2a7844fb-13b9-437a-8f68-c018c53f5f72", "verified": true, "release_group_mbid": "dcff25f1-702d-3b5e-b0da-d48172e6e62a"}], "fact_strip": {"soloists": "Glenn Gould", "label": "Columbia Masterworks", "year": 1955, "published": "1956", "venue": "Columbia 30th Street Studio, New York", "sessions": "June 1955", "format": "LP (mono)", "catno": "ML 5060"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/0", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": true, "compared_with": ["bach/goldberg/1", "bach/goldberg/4"], "text": "The 1955 Goldberg is still the shock that made Bach’s variations a public event on the piano. No repeats, about thirty-eight minutes: lines cut with a clarity that was almost theatrical for its day. Beside Schiff’s long Decca survey it is another work — a debut document, not a cycle that unfolds. Beside Gould’s own 1981 remake it is the hotter, leaner object. Gould later disliked some of its tempi and the nocturnal Variation 25; that regret does not retire the disc. For a first piano Goldberg in the house, this remains the Référence: the performance that opened the door.", "quotes": [], "consulted": [{"title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)", "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72", "kind": "discography"}, {"title": "MusicBrainz release group — The Goldberg Variations (1955 recording)", "url": "https://musicbrainz.org/release-group/dcff25f1-702d-3b5e-b0da-d48172e6e62a", "kind": "discography"}, {"title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations", "url": "https://www.discogs.com/master/261784", "kind": "discography"}, {"title": "pianistdiscography.com — Columbia ML 5060", "url": "https://www.pianistdiscography.com/discography/pianistLabel.php?cdnum=11524", "kind": "discography"}, {"title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)", "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/", "kind": "reference"}, {"title": "Library of Congress — Tim Page essay PDF on Gould 1955 Goldbergs", "url": "https://loc.gov/static/programs/national-recording-preservation-board/documents/GoldbergVar.pdf", "kind": "reference"}, {"title": "LOC press — inaugural National Recording Registry", "url": "https://loc.gov/today/pr/2003/03-014.html", "kind": "reference"}, {"title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs", "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm", "kind": "review"}], "matrix": {"interpretation": 5, "sound": 3, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Library of Congress NRPB — Goldberg Variations (album), Glenn Gould (1955)", "url": "https://www.loc.gov/programs/national-recording-preservation-board/recording-registry/registry-by-induction-years/2003/", "note": "Public landmark: induction recognises the 1955 performance as a cultural document."}, {"axis": "interpretation", "tier": "B", "title": "MusicBrainz release — The Goldberg Variations (Columbia Masterworks ML 5060)", "url": "https://musicbrainz.org/release/2a7844fb-13b9-437a-8f68-c018c53f5f72", "note": "No-repeats debut; the performance that made the piano Goldberg a public fact."}, {"axis": "sound", "tier": "A", "title": "Discogs master — Bach / Glenn Gould: The Goldberg Variations", "url": "https://www.discogs.com/master/261784", "note": "Columbia mono studio — clear lines, historic floor; not reference-class digital."}]}}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/1", "work": "bach/goldberg", "card": "identity", "soloists": "Glenn Gould", "director": "", "ensemble": "", "published": "CBS, 1981", "editions": [{"id": "1_preferred", "label": "CBS Masterworks", "year": "1982", "catno": "IM 37779", "format": "LP / CD", "mbid": "fed9286f-4145-4fe7-b130-36744a6bdd00", "verified": true}], "fact_strip": {"soloists": "Glenn Gould", "label": "CBS Masterworks", "year": 1981, "published": "1982", "venue": "Columbia 30th Street Studio, New York", "sessions": "April–May 1981", "format": "LP / CD", "catno": "IM 37779"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/1", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 3, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/4"], "text": "Gould’s 1981 remake is a late architecture — selected first-half repeats, about fifty-one minutes — built around canons and four-part writing rather than debut bravura. Beside the 1955 Référence it is the deeper second thought; beside Schiff’s Decca it remains Gould’s instrument and Gould’s edit, not a complete-repeats survey. Keep both Goulds if you can. If the shelf has room for only one late-studio piano Goldberg, this is the disc — without displacing 1955 as the landmark.", "quotes": [], "consulted": [{"title": "Discogs — Bach / Glenn Gould: The Goldberg Variations (CBS IM 37779)", "url": "https://www.discogs.com/release/4579917-Bach-Glenn-Gould-The-Goldberg-Variations", "kind": "discography"}, {"title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)", "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00", "kind": "discography"}, {"title": "Sony Classical / glenngould.com — Complete Unreleased 1981 Studio Sessions", "url": "https://glenngould.com/the-goldberg-variations-the-complete-unreleased-1981-studio-sessions/", "kind": "reference"}, {"title": "Sony Classical product — Complete 1981 Studio Sessions", "url": "https://www.sonyclassical.com/releases/releases-details/glenn-gould-the-goldberg-variations-the-complete-1981-studio-sessions", "kind": "reference"}, {"title": "Recording Academy — Glenn Gould Grammy awards", "url": "https://www.grammy.com/artists/glenn-gould/3638/", "kind": "award"}, {"title": "Grammy category page — Best Classical Album 1983", "url": "https://www.grammy.com/awards/categories/classical-album/1983/", "kind": "award"}, {"title": "MusicWeb International — Christopher Howell, A Quintet of Goldbergs", "url": "http://www.musicweb-international.com/classrev/2002/nov02/goldbergs.htm", "kind": "review"}, {"title": "MusicWeb International — Jonathan Woolf on Sony SM3K 87703", "url": "http://www.musicweb-international.com/classrev/2003/Feb03/Goldberg_Gould.htm", "kind": "review"}], "matrix": {"interpretation": 5, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Recording Academy — Glenn Gould Grammy awards", "url": "https://www.grammy.com/artists/glenn-gould/3638/", "note": "Late canonic architecture; deeper second thought beside 1955 without retiring it."}, {"axis": "sound", "tier": "A", "title": "MusicBrainz release — The Goldberg Variations (IM 37779 / D 37779 cluster)", "url": "https://musicbrainz.org/release/fed9286f-4145-4fe7-b130-36744a6bdd00", "note": "Digital-era CBS capture — quieter floor and presence than the mono debut."}]}}, "divergence": null, "on_this_disc": []}, {"id": "bach/goldberg/4", "work": "bach/goldberg", "card": "identity", "soloists": "András Schiff", "director": "", "ensemble": "", "published": "Decca, 1982", "editions": [{"id": "4_preferred", "label": "Decca", "year": "1983", "catno": "417 116-2", "format": "CD", "mbid": "920fec1f-b49e-4019-bc03-e7756cb470ec", "verified": true, "release_group_mbid": "d51204a7-de33-333f-89d9-9ce844232277"}], "fact_strip": {"soloists": "András Schiff", "label": "Decca", "year": 1982, "published": "1983", "venue": "Kingsway Hall, London", "sessions": "13–15 April 1982", "format": "CD", "catno": "417 116-2", "producer": "Michael Haas", "engineer": "Simon Eadon"}, "anchors": [], "reception": [], "sources": [], "editorial": {"recording": "bach/goldberg/4", "author": {"id": "cmrc", "name": "Classical Music Recording Critic"}, "date": "2026-09-08", "revision": 4, "stars": 2, "reference": false, "compared_with": ["bach/goldberg/0", "bach/goldberg/1"], "text": "Schiff’s first studio Goldberg restores the duration and symmetry the mono debut refused. Near-complete repeats, about seventy-two minutes, thought in three large arcs; some repeats taken an octave up or down, a habit he later dropped. Against Gould 1955 it is another pianist’s complete-repeats world; against Gould 1981 it is warmer and less canonic in obsession. A serious piano alternative on the shelf, not a third Gould. Do not confuse it with the ECM Basel live remake of 2001.", "quotes": [], "consulted": [{"title": "Bach Cantatas Website — András Schiff K-3", "url": "https://www.bach-cantatas.com/NVP/Schiff.htm", "kind": "discography"}, {"title": "Bach Cantatas Website — BWV 988 played by Andras Schiff", "url": "https://www.bach-cantatas.com/NVD/BWV988-Schiff.htm", "kind": "discography"}, {"title": "Presto Music — Bach Goldberg Variations Decca 4171162", "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988", "kind": "discography"}, {"title": "MusicBrainz release group — Goldberg Variations (1982 recording)", "url": "https://musicbrainz.org/release-group/d51204a7-de33-333f-89d9-9ce844232277", "kind": "discography"}, {"title": "MusicBrainz release — Decca 417 116-2", "url": "https://musicbrainz.org/release/920fec1f-b49e-4019-bc03-e7756cb470ec", "kind": "discography"}, {"title": "MusicBrainz — April-dated recording cluster (Haas/Eadon/Kingsway)", "url": "https://musicbrainz.org/recording/c31a3621-6ba9-4ad5-ad59-86f326966928", "kind": "discography"}, {"title": "Gramophone — Jed Distler on Schiff Complete Decca Recordings", "url": "https://www.gramophone.co.uk/content/review/review-andras-schiffs-complete-decca-recordings", "kind": "review"}, {"title": "Gramophone — Distler on Schiff ECM 2001 Goldberg", "url": "https://www.gramophone.co.uk/reviews/bach-goldberg-variations-14", "kind": "review"}], "matrix": {"interpretation": 3, "sound": 4, "ledger": [{"axis": "interpretation", "tier": "A", "title": "Bach Cantatas Website — András Schiff K-3", "url": "https://www.bach-cantatas.com/NVP/Schiff.htm", "note": "Complete-repeats piano alternative; solid catalogue choice, not a third Gould."}, {"axis": "sound", "tier": "A", "title": "Presto Music — Bach Goldberg Variations Decca 4171162", "url": "https://www.prestomusic.com/classical/products/7932136--bach-j-s-goldberg-variations-bwv988", "note": "Kingsway Hall Decca — warm balance; excellent early-digital transfer class."}]}}, "divergence": null, "on_this_disc": []}]}], "barcode_index": {}};
 const WORK_INDEX = [];
 const BASE = "../";
 
@@ -399,6 +416,12 @@ function plate(r){
     <p class="plate-cap">${edLabel}${edLabel&&edYear?" · ":""}${edYear}</p></div>`;
 }
 
+function signedEntry(r){
+  /* Author, date and revision. The aggregate reference flag is not a signature. */
+  const e=r&&r.editorial;
+  return !!(e&&e.author&&e.date&&e.revision);
+}
+
 function scorebox(r){
   const un=r.interpretation===null;
   const st=[0,1,2].map(i=>`<span class="${!un&&i<r.stars?"on":"off"}">★</span>`).join("");
@@ -412,9 +435,15 @@ function scorebox(r){
     ?`<span class="v muted">—</span><span class="sub">awaiting sources</span>`
     :`<span class="stars" aria-label="${r.stars} of 3 stars">${st}</span>
        <span class="v">${r.interpretation.toFixed(3)}</span>`;
-  const stand=r.reference
-    ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
-    :`<span class="v muted">—</span><span class="sub">${un?"awaiting sources":"not a référence"}</span>`;
+  /* Unsigned discs share one Standing line. Signed discs keep the badge or the prior fallback. */
+  const stand=!signedEntry(r)
+    ?`<span class="plain">No signed entry</span>`
+    :(r.reference
+      ?`<span class="badge">Référence</span><span class="sub">interpretation only</span>`
+      :`<span class="v muted">—</span>${
+          un?'<span class="sub">awaiting sources</span>'
+          :'<span class="sub">not a référence</span>'
+        }`);
   return `<div class="scorebox" role="group" aria-label="Recording scores">
     <div class="cell"><span class="k">Interpretation</span>${interpCell}</div>
     <div class="cell"><span class="k">Sound</span>${soundCell}</div>
@@ -555,46 +584,83 @@ function consultedRefs(e){
   return `<div class="refs"><p class="modlabel">References</p><ul>${lis}</ul></div>`;
 }
 
-/* Band names: ticks / How scored only. Face shows axis ends. Sound 5 is English Reference, never Référence. */
-const MATRIX_SOUND=["Hard listen","Serviceable","Clean","Excellent","Reference"];
-const MATRIX_INTERP=["Documentary","Competent","Solid","Outstanding","Landmark"];
+/* 3×3 bands derived from the signed 1–5 integers only. The ledger is not read.
+   Low band is index 0. The two axes do not share a cut. Référence is not a band. */
+const MATRIX_SOUND_BANDS=["Limited","Good","Excellent"];
+const MATRIX_INTERP_BANDS=["With reservations","Strong","Outstanding"];
+const MATRIX_BAND_LINE="Interpretation: 5 is Outstanding, 4 is Strong, 1 to 3 is With reservations. Sound: 4 or 5 is Excellent, 3 is Good, 1 or 2 is Limited.";
+
+function interpretationBandIndex(score){
+  /* 1–3 → 0 With reservations, 4 → 1 Strong, 5 → 2 Outstanding. */
+  if(score<=3) return 0;
+  if(score===4) return 1;
+  return 2;
+}
+
+function soundBandIndex(score){
+  /* 1–2 → 0 Limited, 3 → 1 Good, 4–5 → 2 Excellent. */
+  if(score<=2) return 0;
+  if(score===3) return 1;
+  return 2;
+}
+
+function matrixReady(m){
+  /* Placement uses the two integers. Never the ledger. */
+  if(!m) return false;
+  const i=m.interpretation, s=m.sound;
+  return i>=1 && i<=5 && s>=1 && s<=5;
+}
 
 function matrixOverall(m){
   /* Expand only. Never on the card face. Never stored on the entry. */
   return (0.6*m.interpretation + 0.4*m.sound).toFixed(1);
 }
 
+function notYetScored(){
+  /* Words only. No empty grid. */
+  return `<p class="matrix-unscored">Not yet scored</p>`;
+}
+
 function matrixStrip(m){
-  /* 5×5 style box under signed prose. X = sound 1→5 left→right; Y = interpretation 1→5 bottom→top. */
-  if(!m) return "";
+  /* 3×3 style box. X = sound band left→right; Y = interpretation band bottom→top. */
+  if(!matrixReady(m)) return "";
   const i=m.interpretation, s=m.sound;
+  const ib=interpretationBandIndex(i), sb=soundBandIndex(s);
+  const iName=MATRIX_INTERP_BANDS[ib], sName=MATRIX_SOUND_BANDS[sb];
   let cells="";
-  for(let y=5;y>=1;y--){
-    for(let x=1;x<=5;x++){
-      const filled=(x===s && y===i);
+  for(let y=2;y>=0;y--){
+    for(let x=0;x<=2;x++){
+      const filled=(x===sb && y===ib);
+      const col=x+1, row=3-y;
       const aria=filled
-        ?` aria-label="Filled cell: Interpretation ${esc(i)} ${MATRIX_INTERP[i-1]}, Sound ${esc(s)} ${MATRIX_SOUND[s-1]}"`
+        ?` aria-label="Filled cell: Interpretation: ${esc(iName)} (${esc(i)}), Sound: ${esc(sName)} (${esc(s)})"`
         :` aria-hidden="true"`;
-      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound="${x}" data-interpretation="${y}" style="grid-column:${x};grid-row:${6-y}"${aria}></span>`;
+      cells+=`<span class="cell${filled?" filled":""}" role="gridcell" data-sound-band="${col}" data-interpretation-band="${y+1}" style="grid-column:${col};grid-row:${row}"${aria}></span>`;
     }
   }
   return `<div class="matrix" role="group" aria-label="Interpretation and sound">
     <div class="stylebox">
-      <span class="ylab" aria-hidden="true">Interpretation</span>
+      <span class="ylab">Interpretation</span>
       <div class="plot">
-        <span class="y-end high" aria-hidden="true">${MATRIX_INTERP[4]}</span>
-        <div class="grid" role="grid" aria-label="Sound axis, Hard listen to Reference, left to right. Interpretation axis, Documentary to Landmark, bottom to top.">
-          ${cells}
-        </div>
-        <span class="y-end low" aria-hidden="true">${MATRIX_INTERP[0]}</span>
-        <div class="xaxis">
-          <span class="x-end">${MATRIX_SOUND[0]}</span>
+        <div class="board">
+          <div class="y-names">
+            <span class="y-name">${MATRIX_INTERP_BANDS[2]}</span>
+            <span class="y-name">${MATRIX_INTERP_BANDS[1]}</span>
+            <span class="y-name">${MATRIX_INTERP_BANDS[0]}</span>
+          </div>
+          <div class="grid" role="grid" aria-label="Sound axis, Limited, Good, Excellent, left to right. Interpretation axis, With reservations, Strong, Outstanding, bottom to top.">
+            ${cells}
+          </div>
+          <div class="x-names">
+            <span class="x-name">${MATRIX_SOUND_BANDS[0]}</span>
+            <span class="x-name">${MATRIX_SOUND_BANDS[1]}</span>
+            <span class="x-name">${MATRIX_SOUND_BANDS[2]}</span>
+          </div>
           <span class="xlab">Sound</span>
-          <span class="x-end">${MATRIX_SOUND[4]}</span>
         </div>
       </div>
     </div>
-    <p class="matrix-cap">Interpretation ${esc(i)} · Sound ${esc(s)}</p>
+    <p class="matrix-cap">Interpretation: ${esc(iName)} · Sound: ${esc(sName)}</p>
   </div>`;
 }
 
@@ -616,13 +682,11 @@ function howScored(m){
   const table=rows
     ?`<table><thead><tr><th>Axis</th><th>Tier</th><th>Source</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>`
     :`<p class="prov">No ledger rows yet.</p>`;
-  const interpTicks=MATRIX_INTERP.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
-  const soundTicks=MATRIX_SOUND.map((n,idx)=>`${idx+1} ${n}`).join(" · ");
   return `<details class="how-scored">
     <summary>How scored</summary>
-    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger.</p>
-    <p class="ticks"><span class="k">Interpretation</span>${interpTicks}</p>
-    <p class="ticks"><span class="k">Sound</span>${soundTicks}</p>
+    <p class="ticks"><span class="k">This recording</span>Interpretation ${esc(m.interpretation)} · Sound ${esc(m.sound)}</p>
+    <p class="band-key">${MATRIX_BAND_LINE}</p>
+    <p class="rubric">Tier C evidence cannot raise an axis on its own. Axis scores are the Critic’s integers; they are not computed from this ledger. The 3×3 cell is derived from those integers when the page is drawn; it is not stored.</p>
     <p class="overall">Overall <b>${matrixOverall(m)}</b>
       <span class="prov">0.6×interpretation + 0.4×sound · expand only, not on the card</span></p>
     <p class="modlabel">Evidence ledger</p>
@@ -633,7 +697,7 @@ function howScored(m){
 function signed(r){
   const e = r.editorial;
   if(!e) return `<div class="unsigned">No signed entry yet. The aggregate below is the
-    weighted consensus of published sources; it is not a listening report.</div>`;
+    weighted consensus of published sources; it is not a listening report.</div>${notYetScored()}`;
   const st=[0,1,2].map(i=>`<span class="${i<e.stars?"on":"off"}">★</span>`).join("");
   const paras = String(e.text).split(/\n\s*\n/).map(p=>`<p>${esc(p.trim())}</p>`).join("");
   const div = Number.isFinite(r.divergence) && r.divergence!==0
@@ -646,7 +710,7 @@ function signed(r){
     <div class="body">${paras}</div>
     <p class="sig">${esc(e.author.name || e.author.id)}
       <span>${esc(e.date)} · rev ${e.revision}</span></p>
-    ${matrixStrip(e.matrix)}
+    ${matrixReady(e.matrix)?matrixStrip(e.matrix):notYetScored()}
     ${howScored(e.matrix)}
     ${consultedRefs(e)}
     ${div}
@@ -778,7 +842,7 @@ function workSection(w){
       ${candidatesConsidered(w)}
     </section>`;
   }
-  const refs=recs.filter(r=>r.reference).length;
+  const refs=recs.filter(r=>signedEntry(r)&&r.editorial.reference).length;
   const eds=recs.reduce((a,r)=>a+(r.editions||[]).length,0);
   return `<section class="work" id="${esc(workDomId(w))}">
     <div class="work-head">
@@ -787,7 +851,7 @@ function workSection(w){
       <p class="cat">${esc(w.cat)}</p>
       <p class="standfirst">${esc(w.standfirst)}</p>
       <p class="strip"><span>${recs.length} recordings</span>
-        <span>${eds} editions tracked</span><span>${refs} référence</span></p>
+        <span>${eds} editions tracked</span>${refs?`<span>${refs} référence</span>`:""}</p>
     </div>
     <div class="legend">
       <p><span class="swatch sw-solid"></span><b>Influence</b> — bar widths are each source's share of the verdict. Darker means it rated the recording higher.</p>
