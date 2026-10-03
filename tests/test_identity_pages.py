@@ -12,6 +12,9 @@ water_music /0 Pinnock (Référence), /2 Harnoncourt; giulio_cesare /1 Jacobs
 (Référence), /0 Mackerras ENO. Identity from the UX-SIGNed seed cut; signed
 Dictionnaire + Morningstar attach; scout held rows render in Candidates
 considered (identity strings from data/scout/, not public cards).
+
+Bach batch 1 is identity only: wtc/1, harpsichord_concertos/0 and /2,
+suites/0 and /1. No signed entry, stars, or matrix on those cards.
 """
 
 from __future__ import annotations
@@ -84,7 +87,38 @@ HANDEL_NOT_THIS_CUT = (
     "handel/giulio_cesare/3",
 )
 
-PUBLIC_IDENTITY_IDS = BRANDENBURG_ASSESSED + SIGNED_IDENTITY_IDS + HANDEL_ASSESSED
+# Seed order: suites after Brandenburg, WTC after Goldberg, harpsichord
+# concertos after the Art of Fugue, then Handel week-1.
+PUBLIC_IDENTITY_IDS = (
+    BRANDENBURG_ASSESSED
+    + ("bach/suites/0", "bach/suites/1")
+    + SIGNED_IDENTITY_IDS[:7]
+    + ("bach/wtc/1",)
+    + SIGNED_IDENTITY_IDS[7:]
+    + ("bach/harpsichord_concertos/0", "bach/harpsichord_concertos/2")
+    + HANDEL_ASSESSED
+)
+
+BACH_BATCH_ASSESSED = (
+    "bach/wtc/1",
+    "bach/harpsichord_concertos/0",
+    "bach/harpsichord_concertos/2",
+    "bach/suites/0",
+    "bach/suites/1",
+)
+
+BACH_BATCH_HELD = (
+    "bach/wtc/0",
+    "bach/wtc/2",
+    "bach/wtc/3",
+    "bach/wtc/4",
+    "bach/harpsichord_concertos/1",
+    "bach/harpsichord_concertos/3",
+    "bach/harpsichord_concertos/4",
+    "bach/suites/2",
+    "bach/suites/3",
+    "bach/suites/4",
+)
 
 REMAINING_TEN = (
     "bach/cello_suites/1",
@@ -101,14 +135,17 @@ REMAINING_TEN = (
 
 IDENTITY_WORKS = (
     "bach/brandenburg",
+    "bach/suites",
     "bach/violin_concertos",
     "bach/cello_suites",
     "bach/sonatas_partitas",
     "bach/goldberg",
+    "bach/wtc",
     "bach/mass_b_minor",
     "bach/matthew",
     "bach/john",
     "bach/art_of_fugue",
+    "bach/harpsichord_concertos",
     "handel/messiah",
     "handel/water_music",
     "handel/giulio_cesare",
@@ -130,11 +167,9 @@ def _assert_no_aggregate(test, rec, rid=""):
     test.assertNotIn("confidence", rec, rid)
     test.assertEqual(rec.get("sources"), [], rid)
 
-HELD_EMPTY = (
-    "bach/suites",
-    "bach/wtc",
-    "bach/harpsichord_concertos",
-)
+# Works that still have an empty assessed list and must stay off Pages.
+# The Bach batch-1 works are no longer in this set.
+HELD_EMPTY = ()
 
 QUEUE_NAMES_GOLDBERG = ("Perahia", "Landowska")
 
@@ -267,7 +302,13 @@ class TestSeedAssessedUnchanged(unittest.TestCase):
     def test_remaining_ten_are_already_the_seed_assessed_set(self):
         seed = _seed()
         got = []
-        skip = {"bach/goldberg", "bach/brandenburg"}
+        skip = {
+            "bach/goldberg",
+            "bach/brandenburg",
+            "bach/suites",
+            "bach/wtc",
+            "bach/harpsichord_concertos",
+        }
         for work in seed["works"]:
             if not str(work["id"]).startswith("bach/"):
                 continue
@@ -373,8 +414,11 @@ class TestIdentityFromAssessed(unittest.TestCase):
         self.assertNotIn("Britten", blob)
         for rec in recs:
             _assert_no_aggregate(self, rec, rec["id"])
-            self.assertIsNotNone(rec["editorial"], rec["id"])
-            self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
+            if rec["id"] in BACH_BATCH_ASSESSED:
+                self.assertIsNone(rec["editorial"], rec["id"])
+            else:
+                self.assertIsNotNone(rec["editorial"], rec["id"])
+                self.assertEqual(rec["editorial"]["author"]["id"], "cmrc")
 
     def test_goldberg_facts_stay_goulds_and_schiff_1982(self):
         gold = next(
@@ -609,6 +653,8 @@ class TestRemainingSignedPages(unittest.TestCase):
         for wid in IDENTITY_WORKS:
             html = _page(wid)
             for name in QUEUE_ONLY:
+                if wid == "bach/harpsichord_concertos" and name == "Gustav Leonhardt":
+                    continue
                 self.assertNotIn(name, html, f"{wid} leaked {name}")
             self.assertNotIn('"candidates"', json.dumps(_embedded_catalogue(html)))
             if wid == "bach/brandenburg":
@@ -625,7 +671,11 @@ class TestRemainingSignedPages(unittest.TestCase):
                 self.assertNotIn("scout", rec_blob)
             else:
                 for name in BRANDENBURG_ONLY:
-                    if wid == "handel/water_music" and name == "Nikolaus Harnoncourt":
+                    if name == "Nikolaus Harnoncourt" and wid in {
+                        "handel/water_music",
+                        "bach/suites",
+                        "bach/harpsichord_concertos",
+                    }:
                         continue
                     self.assertNotIn(name, html, f"{wid} leaked {name}")
 
@@ -715,6 +765,9 @@ class TestHubChipFromAssessed(unittest.TestCase):
             "bach_john": ("1 assessed", "bach_john.html"),
             "bach_mass_b_minor": ("1 assessed", "bach_mass_b_minor.html"),
             "bach_art_of_fugue": ("2 assessed", "bach_art_of_fugue.html"),
+            "bach_wtc": ("1 assessed", "bach_wtc.html"),
+            "bach_harpsichord_concertos": ("2 assessed", "bach_harpsichord_concertos.html"),
+            "bach_suites": ("2 assessed", "bach_suites.html"),
         }
         for anchor, (chip, page) in expected.items():
             row = _hub_row(html, anchor)
@@ -852,8 +905,9 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
         for rid, rec in recs.items():
             eds = rec.get("editions") or []
             self.assertTrue(eds, rid)
-            if rid == "handel/messiah/1":
+            if rid in {"handel/messiah/1", "bach/suites/0", "bach/suites/1"}:
                 self.assertFalse(any(e.get("mbid") for e in eds), rid)
+                self.assertTrue(any(e.get("catno") for e in eds), rid)
             else:
                 self.assertTrue(any(e.get("mbid") for e in eds), rid)
             for ed in eds:
@@ -865,6 +919,9 @@ class TestAssessedEditionsRefsFactStrip(unittest.TestCase):
             self.assertNotIn("seed_year_note", strip, rid)
             self.assertNotIn("cover_face", strip, rid)
             ed = rec["editorial"]
+            if rid in BACH_BATCH_ASSESSED:
+                self.assertIsNone(ed, rid)
+                continue
             self.assertIsNotNone(ed, rid)
             consulted = ed.get("consulted") or []
             if rid in BRANDENBURG_ASSESSED:
@@ -1222,6 +1279,173 @@ class TestHandelWeek1PublicHtml(unittest.TestCase):
             "handel/giulio_cesare/1", "handel/giulio_cesare/0",
         ])
         self.assertTrue(all(c["status"] == "promoted-to-cut" for c in cesare_scout))
+
+
+class TestBachBatch1Identity(unittest.TestCase):
+    """Facts-only cut. No stars, prose, or matrix. Two suite MBIDs stay empty."""
+
+    GOULD_COMPLETE = "60ae8385-dc02-4921-afaf-8c8561152158"
+    GOULD_BOOK_I = "8c26ae05-caf0-45cb-a0d3-6109e9f57fd0"
+    GOULD_BOOK_II = "bf83a8a2-375f-4a54-9cfe-1ebfb441a211"
+    PINNOCK_HC = "2b888bed-06e1-461e-87c0-541e2ab492c3"
+    PINNOCK_HC_RG = "a47e5b22-b37c-49d3-b1a3-a186be334f6f"
+    LEONHARDT = "11962aa7-3711-4c74-bc68-a83af61be92d"
+    LEONHARDT_RG = "b94cc2c4-ca20-41ff-ad44-e5b97e89d9e8"
+    FORBIDDEN_SUITES_MBID = "b55330fc-1a37-4963-93c4-e88a422f6ef0"
+
+    def test_assessed_cut_is_the_five_and_holds_stay_bare(self):
+        seed = _seed()
+        wtc = _work(seed, "bach/wtc")
+        hc = _work(seed, "bach/harpsichord_concertos")
+        suites = _work(seed, "bach/suites")
+        self.assertEqual(list(wtc["assessed"]), ["bach/wtc/1"])
+        self.assertEqual(
+            list(hc["assessed"]),
+            ["bach/harpsichord_concertos/0", "bach/harpsichord_concertos/2"],
+        )
+        self.assertEqual(list(suites["assessed"]), ["bach/suites/0", "bach/suites/1"])
+        held = {
+            "bach/wtc/0": ("Glenn Gould", "Columbia", "1955"),
+            "bach/wtc/2": ("Wanda Landowska", "RCA", "1940s"),
+            "bach/wtc/3": ("András Schiff", "Decca", "1980s"),
+            "bach/wtc/4": ("Angela Hewitt", "Hyperion", "2000s"),
+            "bach/harpsichord_concertos/1": ("", "Teldec", "1960s"),
+            "bach/harpsichord_concertos/3": ("Murray Perahia", "Sony", "1980s"),
+            "bach/harpsichord_concertos/4": ("András Schiff", "Deutsche Grammophon", "1990s"),
+            "bach/suites/2": ("", "Archiv", "1994"),
+            "bach/suites/3": ("", "Archiv", "1960s"),
+            "bach/suites/4": ("", "L'Oiseau-Lyre", "1980s"),
+        }
+        by_id = {}
+        for work in (wtc, hc, suites):
+            for cand in work["candidates"]:
+                by_id[cand["id"]] = cand
+        for rid in BACH_BATCH_HELD:
+            self.assertNotIn(rid, wtc["assessed"] + hc["assessed"] + suites["assessed"], rid)
+            cand = by_id[rid]
+            soloists, label, year = held[rid]
+            self.assertEqual(cand.get("soloists") or "", soloists, rid)
+            self.assertEqual(cand["label"], label, rid)
+            self.assertEqual(cand["year"], year, rid)
+            self.assertNotIn("editions", cand, rid)
+            self.assertNotIn("fact_strip", cand, rid)
+            self.assertIsNone(cand.get("mbid"), rid)
+        schiff = by_id["bach/harpsichord_concertos/4"]
+        self.assertEqual(schiff["director"], "Karl Richter")
+        self.assertEqual(schiff["ensemble"], "Münchener Bach-Orchester")
+        self.assertEqual(by_id["bach/harpsichord_concertos/1"]["director"], "Nikolaus Harnoncourt")
+        self.assertEqual(
+            by_id["bach/harpsichord_concertos/1"]["ensemble"],
+            "Concentus Musicus Wien",
+        )
+        self.assertEqual(by_id["bach/harpsichord_concertos/3"]["director"], "")
+        self.assertEqual(
+            by_id["bach/harpsichord_concertos/3"]["ensemble"],
+            "English Chamber Orchestra",
+        )
+        gardiner = by_id["bach/suites/2"]
+        self.assertEqual(gardiner["director"], "John Eliot Gardiner")
+        self.assertEqual(gardiner["ensemble"], "English Baroque Soloists")
+        blob = json.dumps(seed)
+        self.assertNotIn(self.FORBIDDEN_SUITES_MBID, blob)
+        self.assertNotIn("423 492-2", json.dumps(by_id["bach/suites/0"]["editions"]))
+
+    def test_pages_are_identity_cards_without_a_signed_entry(self):
+        works = {w["id"]: w for w in ident.public_identity_works(_seed())}
+        for wid in ("bach/wtc", "bach/harpsichord_concertos", "bach/suites"):
+            self.assertIn(wid, works, wid)
+        wtc = works["bach/wtc"]["recordings"]
+        hc = works["bach/harpsichord_concertos"]["recordings"]
+        suites = works["bach/suites"]["recordings"]
+        self.assertEqual([r["id"] for r in wtc], ["bach/wtc/1"])
+        self.assertEqual(
+            [r["id"] for r in hc],
+            ["bach/harpsichord_concertos/0", "bach/harpsichord_concertos/2"],
+        )
+        self.assertEqual([r["id"] for r in suites], ["bach/suites/0", "bach/suites/1"])
+
+        gould = wtc[0]
+        self.assertEqual(gould["soloists"], "Glenn Gould, piano")
+        self.assertEqual(gould["published"], "Columbia/CBS, 1962–1971")
+        self.assertEqual(
+            [e["mbid"] for e in gould["editions"]],
+            [self.GOULD_COMPLETE, self.GOULD_BOOK_I, self.GOULD_BOOK_II],
+        )
+        self.assertEqual(gould["editions"][0]["catno"], "SX4K 60150")
+        self.assertEqual(gould["fact_strip"]["sessions"], "Book I 1962–1965; Book II 1966–1971")
+        self.assertEqual(gould["fact_strip"]["venue"], "CBS 30th Street; Eaton's Auditorium")
+        self.assertIsNone(gould["editorial"])
+        _assert_no_aggregate(self, gould, gould["id"])
+
+        pinnock, leonhardt = hc
+        self.assertEqual(pinnock["published"], "Archiv, 1979–1981")
+        self.assertEqual(pinnock["editions"][0]["mbid"], self.PINNOCK_HC)
+        self.assertEqual(pinnock["editions"][0]["release_group_mbid"], self.PINNOCK_HC_RG)
+        self.assertEqual(pinnock["editions"][0]["catno"], "471 754-2")
+        self.assertNotIn("Avie", pinnock["published"])
+        self.assertIsNone(pinnock["editorial"])
+        self.assertEqual(leonhardt["published"], "Telefunken/Teldec, 1967–1968")
+        self.assertNotIn("Deutsche Harmonia Mundi", json.dumps(leonhardt))
+        self.assertEqual(leonhardt["editions"][0]["mbid"], self.LEONHARDT)
+        self.assertEqual(leonhardt["editions"][0]["release_group_mbid"], self.LEONHARDT_RG)
+        self.assertEqual(leonhardt["editions"][0]["catno"], "4509-97452-2")
+        self.assertIn("Herbert Tachezi", leonhardt["soloists"])
+        self.assertIn("Bennebroek", leonhardt["fact_strip"]["venue"])
+        self.assertIsNone(leonhardt["editorial"])
+        _assert_no_aggregate(self, pinnock, pinnock["id"])
+        _assert_no_aggregate(self, leonhardt, leonhardt["id"])
+
+        suite_p, suite_h = suites
+        self.assertEqual(suite_p["published"], "Archiv, 1978–1979")
+        self.assertEqual(suite_p["editions"][0]["catno"], "2533 411")
+        self.assertNotIn("mbid", suite_p["editions"][0])
+        self.assertEqual(suite_p["fact_strip"]["sessions"], "June 1978; Suite no. 4 on 3 August 1979")
+        self.assertIsNone(suite_p["editorial"])
+        self.assertEqual(suite_h["published"], "Telefunken, 1966")
+        self.assertEqual(suite_h["editions"][0]["catno"], "SAWT 9509/10-A")
+        self.assertNotIn("mbid", suite_h["editions"][0])
+        self.assertEqual(suite_h["fact_strip"]["venue"], "Casino Zögernitz")
+        self.assertIsNone(suite_h["editorial"])
+        _assert_no_aggregate(self, suite_p, suite_p["id"])
+        _assert_no_aggregate(self, suite_h, suite_h["id"])
+
+        for html_id, banned in (
+            ("bach/wtc", ("bach/wtc/0", "Wanda Landowska", "Angela Hewitt", "1955")),
+            ("bach/harpsichord_concertos", (
+                "bach/harpsichord_concertos/1",
+                "bach/harpsichord_concertos/3",
+                "bach/harpsichord_concertos/4",
+                "Murray Perahia",
+                "Karl Richter",
+                "Deutsche Harmonia Mundi",
+            )),
+            ("bach/suites", (
+                "bach/suites/2",
+                "John Eliot Gardiner",
+                "423 492-2",
+                self.FORBIDDEN_SUITES_MBID,
+                "439 780-2",
+            )),
+        ):
+            html = _page(html_id)
+            # The suites note names the wrong faces so they are not the edition.
+            if html_id == "bach/suites":
+                cat = _embedded_catalogue(html)
+                eds = [
+                    e for r in cat["works"][0]["recordings"] for e in r["editions"]
+                ]
+                blob = json.dumps(eds)
+                self.assertNotIn("423 492-2", blob)
+                self.assertNotIn("439 780-2", blob)
+                self.assertNotIn(self.FORBIDDEN_SUITES_MBID, blob)
+                self.assertNotIn("mbid", blob)
+            else:
+                for token in banned:
+                    self.assertNotIn(token, html, f"{html_id} leaked {token}")
+            if html_id != "bach/suites":
+                continue
+            for token in ("bach/suites/2", "John Eliot Gardiner"):
+                self.assertNotIn(token, html, token)
 
 
 if __name__ == "__main__":

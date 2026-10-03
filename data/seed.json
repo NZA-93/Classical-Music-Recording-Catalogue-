@@ -260,7 +260,7 @@
       "catalogue": "BWV 1066–1069",
       "year": "c. 1725–39",
       "note": "French overture style; the Air of No. 3 and the B minor flute suite.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/suites/0",
@@ -268,21 +268,65 @@
           "director": "Trevor Pinnock",
           "ensemble": "The English Concert",
           "label": "Archiv",
-          "year": "1980s",
+          "year": "1978–1979",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Archiv",
+              "year": "1979",
+              "format": "LP",
+              "verified": false,
+              "catno": "2533 411"
+            }
+          ],
+          "fact_strip": {
+            "director": "Trevor Pinnock",
+            "ensemble": "The English Concert",
+            "label": "Archiv",
+            "year": "1978–1979",
+            "published": "1979",
+            "venue": "Henry Wood Hall; Herkulessaal",
+            "sessions": "June 1978; Suite no. 4 on 3 August 1979",
+            "format": "LP",
+            "catno": "2533 411",
+            "contents_note": "First LP of Suites nos. 1 and 3, Archiv 2533 411 (1979). Not Archiv 423 492-2 and not the 1993–94 remake Archiv 439 780-2."
+          }
         },
         {
           "id": "bach/suites/1",
           "soloists": "",
           "director": "Nikolaus Harnoncourt",
           "ensemble": "Concentus Musicus Wien",
-          "label": "Teldec",
-          "year": "1960s",
+          "label": "Telefunken",
+          "year": "1966",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Telefunken Das Alte Werk",
+              "year": "1967",
+              "format": "LP",
+              "verified": false,
+              "catno": "SAWT 9509/10-A"
+            }
+          ],
+          "fact_strip": {
+            "director": "Nikolaus Harnoncourt",
+            "ensemble": "Concentus Musicus Wien",
+            "label": "Telefunken Das Alte Werk",
+            "year": 1966,
+            "published": "1967",
+            "venue": "Casino Zögernitz",
+            "sessions": "December 1966",
+            "format": "LP",
+            "catno": "SAWT 9509/10-A",
+            "contents_note": "First issue Telefunken Das Alte Werk SAWT 9509/10-A (℗ 1967). No later remake."
+          }
         },
         {
           "id": "bach/suites/2",
@@ -318,7 +362,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/suites/0", "bach/suites/1"]
     },
     {
       "id": "bach/violin_concertos",
@@ -755,7 +799,7 @@
       "catalogue": "BWV 846–893",
       "year": "1722 / 1742",
       "note": "Forty-eight preludes and fugues.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/wtc/0",
@@ -770,14 +814,55 @@
         },
         {
           "id": "bach/wtc/1",
-          "soloists": "Glenn Gould",
+          "soloists": "Glenn Gould, piano",
           "director": "",
           "ensemble": "",
-          "label": "CBS",
-          "year": "1972",
+          "label": "Columbia/CBS",
+          "year": "1962–1971",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "1_preferred",
+              "label": "Sony Classical",
+              "year": "1997",
+              "format": "4×CD",
+              "mbid": "60ae8385-dc02-4921-afaf-8c8561152158",
+              "verified": true,
+              "catno": "SX4K 60150",
+              "barcode": "5099706015024"
+            },
+            {
+              "id": "1_book_i",
+              "label": "Sony Classical",
+              "format": "2×CD",
+              "mbid": "8c26ae05-caf0-45cb-a0d3-6109e9f57fd0",
+              "verified": true,
+              "catno": "SM2K 52600",
+              "barcode": "5099705260029"
+            },
+            {
+              "id": "1_book_ii",
+              "label": "Sony Classical",
+              "format": "2×CD",
+              "mbid": "bf83a8a2-375f-4a54-9cfe-1ebfb441a211",
+              "verified": true,
+              "catno": "SM2K 52603",
+              "barcode": "5099705260326"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Glenn Gould, piano",
+            "label": "Sony Classical",
+            "year": "1962–1971",
+            "published": "1997",
+            "venue": "CBS 30th Street; Eaton's Auditorium",
+            "sessions": "Book I 1962–1965; Book II 1966–1971",
+            "format": "4×CD",
+            "catno": "SX4K 60150",
+            "contents_note": "Columbia/CBS studio cycle, both books. Complete CD face Sony Classical SX4K 60150 (1997). Book I alone Sony SM2K 52600; Book II alone Sony SM2K 52603."
+          }
         },
         {
           "id": "bach/wtc/2",
@@ -813,7 +898,7 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": ["bach/wtc/1"]
     },
     {
       "id": "bach/mass_b_minor",
@@ -1214,18 +1299,44 @@
       "catalogue": "BWV 1052–1058",
       "year": "c. 1738",
       "note": "Mostly arrangements; the founding documents of the keyboard concerto.",
-      "status": "awaiting sources",
+      "status": "shortlisted",
       "candidates": [
         {
           "id": "bach/harpsichord_concertos/0",
-          "soloists": "Trevor Pinnock",
+          "soloists": "Trevor Pinnock, harpsichord",
           "director": "Trevor Pinnock",
           "ensemble": "The English Concert",
           "label": "Archiv",
-          "year": "1980s",
+          "year": "1979–1981",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "0_preferred",
+              "label": "Archiv Produktion",
+              "year": "2002",
+              "format": "3×CD",
+              "mbid": "2b888bed-06e1-461e-87c0-541e2ab492c3",
+              "verified": true,
+              "catno": "471 754-2",
+              "barcode": "0028947175421",
+              "release_group_mbid": "a47e5b22-b37c-49d3-b1a3-a186be334f6f"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Trevor Pinnock, harpsichord",
+            "director": "Trevor Pinnock",
+            "ensemble": "The English Concert",
+            "label": "Archiv Produktion",
+            "year": "1979–1981",
+            "published": "2002",
+            "venue": "Munich and London",
+            "sessions": "1979–1981",
+            "format": "3×CD",
+            "catno": "471 754-2",
+            "contents_note": "BWV 1052–1058. The three-disc face also carries BWV 1060–1065. Archiv 471 754-2."
+          }
         },
         {
           "id": "bach/harpsichord_concertos/1",
@@ -1240,14 +1351,40 @@
         },
         {
           "id": "bach/harpsichord_concertos/2",
-          "soloists": "Gustav Leonhardt",
-          "director": "Gustav Leonhardt",
-          "ensemble": "Leonhardt Consort",
-          "label": "Deutsche Harmonia Mundi",
-          "year": "1970s",
+          "soloists": "Gustav Leonhardt; Herbert Tachezi (BWV 1052)",
+          "director": "Gustav Leonhardt; Nikolaus Harnoncourt (BWV 1052)",
+          "ensemble": "Leonhardt Consort; Concentus Musicus Wien (BWV 1052)",
+          "label": "Telefunken/Teldec",
+          "year": "1967–1968",
           "verified": false,
           "mbid": null,
-          "status": "candidate"
+          "status": "candidate",
+          "editions": [
+            {
+              "id": "2_preferred",
+              "label": "Teldec",
+              "year": "1995",
+              "format": "3×CD",
+              "mbid": "11962aa7-3711-4c74-bc68-a83af61be92d",
+              "verified": true,
+              "catno": "4509-97452-2",
+              "barcode": "745099745226",
+              "release_group_mbid": "b94cc2c4-ca20-41ff-ad44-e5b97e89d9e8"
+            }
+          ],
+          "fact_strip": {
+            "soloists": "Gustav Leonhardt; Herbert Tachezi (BWV 1052)",
+            "director": "Gustav Leonhardt; Nikolaus Harnoncourt (BWV 1052)",
+            "ensemble": "Leonhardt Consort; Concentus Musicus Wien (BWV 1052)",
+            "label": "Teldec",
+            "year": "1967–1968",
+            "published": "1995",
+            "venue": "Bennebroek",
+            "sessions": "1967–1968",
+            "format": "3×CD",
+            "catno": "4509-97452-2",
+            "contents_note": "BWV 1053–1058 are Leonhardt with the Leonhardt Consort, Telefunken/Teldec, Bennebroek. BWV 1052 on the same boxes is Herbert Tachezi with Nikolaus Harnoncourt and Concentus Musicus Wien, the same project."
+          }
         },
         {
           "id": "bach/harpsichord_concertos/3",
@@ -1272,7 +1409,10 @@
           "status": "candidate"
         }
       ],
-      "assessed": []
+      "assessed": [
+        "bach/harpsichord_concertos/0",
+        "bach/harpsichord_concertos/2"
+      ]
     },
     {
       "id": "beethoven/sym3",
