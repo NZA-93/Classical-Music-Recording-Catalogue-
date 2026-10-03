@@ -356,8 +356,14 @@ class TestLiveCriticMatrix(unittest.TestCase):
                 self.assertEqual(mx["sound"], LIVE_MATRIX[rid]["sound"], rid)
                 self.assertNotIn("overall", mx)
             elif ed is None:
-                # Handel week-1 identity cards: no signed entry, no matrix.
-                self.assertTrue(str(rid).startswith("handel/"), rid)
+                # Bach batch 1 is identity only. Scores come later.
+                self.assertIn(rid, {
+                    "bach/wtc/1",
+                    "bach/harpsichord_concertos/0",
+                    "bach/harpsichord_concertos/2",
+                    "bach/suites/0",
+                    "bach/suites/1",
+                }, rid)
             else:
                 self.assertNotIn("matrix", ed, rid)
         merged = ident.merge_identity_works(
@@ -804,7 +810,7 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
         raw = json.loads((ROOT / "build/catalogue.json").read_text(encoding="utf-8"))
         works = ident.merge_identity_works(raw, seed)["works"]
         recordings = [rec for work in works for rec in work.get("recordings") or []]
-        self.assertEqual(len(recordings), 28)
+        self.assertEqual(len(recordings), 33)
         unsigned = []
         signed_reference = []
         for rec in recordings:
@@ -854,6 +860,14 @@ class TestReferenceBadgeIsSignedOnly(unittest.TestCase):
             "shostakovich_sym5_noseda",
         ):
             self.assertIn(rid, unsigned)
+        for rid in (
+            "bach/wtc/1",
+            "bach/harpsichord_concertos/0",
+            "bach/harpsichord_concertos/2",
+            "bach/suites/0",
+            "bach/suites/1",
+        ):
+            self.assertIn(rid, unsigned, rid)
 
     def test_gallery_standing_says_no_signed_entry(self):
         """Gallery rows are the engine catalogue. None of them carry a signed entry."""

@@ -79,6 +79,10 @@ def identity_fact_strip(candidate: dict) -> dict | None:
 # /0 Mackerras ENO. Identity/editions from the UX-SIGNed seed cut.
 # Mackerras Messiah complete-set MBID stays null. Signed entries attach
 # from data/editorial/; scout pools from data/scout/.
+# Bach batch 1 (facts only, no signed entry yet): WTC /1 Gould;
+# harpsichord concertos /0 Pinnock and /2 Leonhardt; suites /0 Pinnock
+# and /1 Harnoncourt. Suite edition MBIDs stay empty. Holds stay off
+# the cards: WTC /0, harpsichord /1 /3 /4, suites /2 /3 /4.
 FIRST_SLICE_WORKS = frozenset({
     "bach/brandenburg",
     "bach/goldberg",
@@ -89,6 +93,9 @@ FIRST_SLICE_WORKS = frozenset({
     "bach/john",
     "bach/mass_b_minor",
     "bach/art_of_fugue",
+    "bach/wtc",
+    "bach/harpsichord_concertos",
+    "bach/suites",
     "handel/messiah",
     "handel/water_music",
     "handel/giulio_cesare",
