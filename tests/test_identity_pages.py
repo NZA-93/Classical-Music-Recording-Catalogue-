@@ -1400,11 +1400,19 @@ class TestBachBatch1Identity(unittest.TestCase):
         self.assertEqual(suite_p["editions"][0]["catno"], "2533 411")
         self.assertNotIn("mbid", suite_p["editions"][0])
         self.assertEqual(suite_p["fact_strip"]["sessions"], "June 1978; Suite no. 4 on 3 August 1979")
+        self.assertEqual(
+            suite_p["fact_strip"]["contents_note"],
+            "First LP of Suites nos. 1 and 3, Archiv 2533 411 (1979).",
+        )
         self.assertIsNone(suite_p["editorial"])
         self.assertEqual(suite_h["published"], "Telefunken, 1966")
         self.assertEqual(suite_h["editions"][0]["catno"], "SAWT 9509/10-A")
         self.assertNotIn("mbid", suite_h["editions"][0])
         self.assertEqual(suite_h["fact_strip"]["venue"], "Casino Zögernitz")
+        self.assertEqual(
+            suite_h["fact_strip"]["contents_note"],
+            "First issue Telefunken Das Alte Werk SAWT 9509/10-A (℗ 1967).",
+        )
         self.assertIsNone(suite_h["editorial"])
         _assert_no_aggregate(self, suite_p, suite_p["id"])
         _assert_no_aggregate(self, suite_h, suite_h["id"])
@@ -1439,6 +1447,11 @@ class TestBachBatch1Identity(unittest.TestCase):
                 self.assertNotIn("439 780-2", blob)
                 self.assertNotIn(self.FORBIDDEN_SUITES_MBID, blob)
                 self.assertNotIn("mbid", blob)
+                self.assertNotIn("423 492-2", html)
+                self.assertNotIn("439 780-2", html)
+                self.assertNotIn("No later remake", html)
+                self.assertIn("Archiv 2533 411 (1979)", html)
+                self.assertIn("SAWT 9509/10-A", html)
             else:
                 for token in banned:
                     self.assertNotIn(token, html, f"{html_id} leaked {token}")
